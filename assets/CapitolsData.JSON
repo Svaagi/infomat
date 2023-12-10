@@ -2513,7 +2513,564 @@
       "points": 20,
       "weeklyChallenge": 0,
       "tests": [
-         
+         {
+          "introduction": "V dnešnej dobe často počujeme slová ako „hoaxy“, „dezinformácie“ či „fake news“. V tomto kvíze sa naučíme, ako tieto pojmy správne používať.",
+          "name": "Pojmový aparát",
+          "points": 5,
+          "questions":[
+            {
+              "answers": [
+                "Nepravdivá informácia, ktorá sa virálne šíri, hlavne sociálnymi sieťami",
+                "Zavádzajúca satirická informácia šírená s cieľom pobaviť čitateľov",
+                "Informácia, ktorej účelom je očierniť povesť politikov alebo iných verejných osôb",
+                "Konšpiračná informácia, ktorá tvrdí, že existujú tajné sprisahanecké skupiny mocných ľudí"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Hoax je nepravdivá informácia, ktorá sa virálne šíri. Slovom „hoax“ nemôžeme označovať informácie, ktoré sa nám nepáčia, očierňujú naše obľúbené verejné osoby alebo nesedia do nášho svetonázoru."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Čo je hoax?",
+              "subQuestion": "",
+              "title": "Hoax"
+            },
+            {
+              "answers": [
+                "Misinformácia je nepresná informácia, zatiaľ čo dezinformácia je vyslovene nepravdivá",
+                "Misinformácia je irelevantná informácia, ktorá nesúvisí s témou, zatiaľ čo dezinformácia môže súvisieť s témou, ale jej obsah je nepravdivý alebo nepresný",
+                "Oba pojmy popisujú nepravdivú informáciu, ale misinformácia bola vypustená omylom, zatiaľ čo dezinformácia bola vypustená zámerne",
+                "Misinformácia a dezinformácia sú synonymá"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Misinformácia je nepravdivá alebo nepresná informácia, ktorá bola do mediálneho priestoru vypustená omylom. Misinformácie môže šíriť ktokoľvek z nás, ak nie sme dosť opatrní. Dezinformácia je tiež nepravdivá informácia, ale bola vypustená zámerne."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Aký je rozdiel medzi misinformáciou a dezinformáciou?",
+              "subQuestion": "",
+              "title": "Misinformácia a dezinformácia"
+            },
+            {
+              "answers": [
+                "Označenie správ, ktoré odporujú môjmu svetonázoru",
+                "Správy a médiá, ktoré nepokrývajú všetko dianie vo svete, ale len niektoré udalosti",
+                "Zavádzajúce a manipulatívne informácie, ktoré sú ale založené na kúsku pravdy",
+                "Nepravdivé informácie, ktoré vizuálne napodobňujú štandardné spravodajstvo"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Falošné správy sa tvária ako dôveryhodné spravodajstvo. Napríklad sa nachádzajú na webových portáloch, ktoré majú logo a nejakú grafickú úpravu. Pre porovnanie, hoax môže byť aj vo forme statusu na sociálnych sieťach, ale falošná správa musí na prvý pohľad vyzerať ako legitímny článok."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Čo sú falošné správy („fake news“)?",
+              "subQuestion": "",
+              "title": "Falošné správy"
+            },
+            {
+              "answers": [
+                "Sú využívané iba bulvárnymi médiami",
+                "Sú využívané iba dezinformačnými médiami",
+                "Seriózne médiá by ich nemali používať",
+                "Ich obsah je nepravdivý",
+                "Často zamlčiavajú a skrývajú pointu článku",
+                "Používajú emočne nabité slová ako „šok“ a „škandál“"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 },
+                { "correct": 4, "index": 4 },
+                { "correct": 5, "index": 5 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Clickbait nadpisy sú využívané bulvárnymi aj dezinformačnými médiami. Ich cieľom je prilákať pozornosť čitateľa. Seriózne médiá by sa mali takýmto praktikám vyhýbať a snažiť sa prilákať čitateľov kvalitou obsahu. Ich obsah je často zavádzajúci, ale nemusí byť automaticky nepravdivý. Hlavne bulvárne médiá sa snažia neklamať, ale manipulatívne naformulovať nadpis tak, aby znel šokujúco."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "„Clickbait“ je zámerne pútavý nadpis, ktorý sa snaží zaujať pozornosť čitateľov a naviesť ich ku kliknutiu na článok. Ktoré tvrdenia sú pravdivé o clickbait nadpisoch?",
+              "subQuestion": "",
+              "title": "Clickbait"
+            },
+            {
+              "answers": [
+                "Úmyselné šírenie nepravdivých informácií",
+                "Šírenie konšpiračných tvrdení o tom, že existujú tajné sprisahanecké skupiny mocných ľudí",
+                "Systematická kampaň s cieľom ovplyvniť názory ľudí, hlavne v politických témach",
+                "Potláčanie slobody slova a mediálnej slobody"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Cieľom propagandy je ovplyvniť verejnú mienku aj na úkor objektivity. Na dosiahnutie tohto cieľa často využíva nepravdivé informácie, ale môže používať aj pravdivé informácie, ktoré sú selektívne vybrané a jednostranne odprezentované. Propaganda je často použitá štátnou mocou na vykreslenie svojho štátu pozitívne alebo na očiernenie iných štátov."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Čo je propaganda?",
+              "subQuestion": "",
+              "title": "Propaganda"
+            }            
+
+          ]
+         },
+         {
+          "introduction": "V dnešnom kvíze si zopakujeme pojmový aparát z predošlého kvízu a naučíme sa ho používať v praxi. Poznať definície slov ako „hoax“ či „dezinformácia“ je dôležité, ale ešte dôležitejšie je vedieť ich aplikovať na príklady z reálneho života",
+          "name": "Hoaxy a dezinformácie v praxi",
+          "points": 6,
+          "questions":[
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 4, "index": 0 },
+                { "correct": 2, "index": 1 },
+                { "correct": 5, "index": 2 },
+                { "correct": 0, "index": 3 },
+                { "correct": 3, "index": 4 },
+                { "correct": 1, "index": 5 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Na úvod sme si oprášili vedomosti z predošlého kvízu. Je dôležité vedieť, že tieto pojmy znamenajú rozdielne veci a treba ich používať opatrne a uvedomelo."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "Bulvárny nadpis, ktorý sa snaží čitateľa zaujať a naviesť ku kliknutiu na článok.",
+                "Nepravdivé informácie, ktoré zámerne vizuálne napodobňujú štandardné spravodajstvo. ",
+                "Nepravdivá informácia, ktorá bola zámerne vypustená do mediálneho priestoru.",
+                "Systematická kampaň vytvorená za účelom ovplyvniť názory ľudí., cieľom môže byť napríklad vykreslenie nejakého štátu v dobrom svetle.",
+                "Nepravdivá informácia, ktorá sa šíri virálne, väčšinou sociálnymi sieťami.",
+                "Nepravdivá alebo nepresná informácia, ktorá bola do mediálneho priestoru vypustená omylom."
+              ],
+              "matches": [
+                "Propaganda",
+                "Misinformácia",
+                "Fake news",
+                "Hoax",
+                "Clickbait",
+                "Dezinformácia"
+              ],
+              "question": "Spoj pojem s definíciou:",
+              "subQuestion": "",
+              "title": "Pojmový aparát"
+            },
+            {
+              "answers": [
+                "Misinformácia",
+                "Dezinformácia",
+                "Hoax",
+                "Falošné správy",
+                "Propaganda",
+                "Clickbait",
+                "Ani jedno z vyššie uvedených"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 5, "index": 5 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o clickbait nadpis, lebo autor zamlčiava pointu článku – nevieme, čo žena chovala na farme. Nadpis navodzuje pocit zvedavosti s cieľom zaujať čitateľov, aby klikli na článok. Samotný obsah článku je omnoho menej šokujúci: žena chovala hady."
+              ],
+              "images": [
+                "assets/pictures/picture19.png"
+              ],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Určite, aký pojem najlepšie opisuje tento nadpis:",
+              "subQuestion": "",
+              "title": "Príklad 1"
+            },
+            {
+              "answers": [
+                "Misinformácia",
+                "Dezinformácia",
+                "Hoax",
+                "Falošné správy",
+                "Propaganda",
+                "Clickbait",
+                "Ani jedno z vyššie uvedených"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o hoax, lebo je to nepravdivé informácia, ktorá sa virálne šíri. Na snímke obrazovky je vidieť, že status má 36 tisíc zdieľaní. Tento status sa vo veľkom šíril slovenským Facebookom napriek tomu, že bol niekoľkokrát vyvrátený. Rómovia nedostávajú lieky zadarmo, neexistuje prideľovanie dávok na etnickom princípe."
+              ],
+              "images": [
+                "assets/pictures/picture20.png"
+              ],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Určite, aký pojem najlepšie opisuje tento status:",
+              "subQuestion": "",
+              "title": "Príklad 2"
+            },
+            {
+              "answers": [
+                "Misinformácia",
+                "Dezinformácia",
+                "Hoax",
+                "Falošné správy",
+                "Propaganda",
+                "Clickbait",
+                "Ani jedno z vyššie uvedených"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 6, "index": 6 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o pravdivú správu, ktorá sa nachádza na dôveryhodnom médiu. Aktuality.sk je načítanejší slovenský online mediálny portál. Správa je prevzatá od Tlačovej agentúry Slovenskej republiky. Nadpis nie je zavádzajúci a nepoužíva emočne zafarbený jazyk."
+              ],
+              "images": [
+                "assets/pictures/picture21.png"
+              ],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Určite, aký pojem najlepšie opisuje tento článok:",
+              "subQuestion": "",
+              "title": "Príklad 3"
+            },
+            {
+              "answers": [
+                "Misinformácia",
+                "Dezinformácia",
+                "Hoax",
+                "Falošné správy",
+                "Propaganda",
+                "Clickbait",
+                "Ani jedno z vyššie uvedených"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Nemôže ísť o misinformáciu, lebo túto fotomontáž musel niekto zámerne vytvoriť. Takže ide o zámerne nepravdivú informáciu, t. j. dezinformáciu."
+              ],
+              "images": [
+                "assets/pictures/picture22.png",
+                "assets/pictures/picture23.png"
+              ],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Na obrázku hore vidíte pôvodnú fotografiu z návštevy prezidenta USA na Ukrajine. Obrázok dole je fotomontáž z tohto stretnutia. Určite, aký pojem najlepšie opisuje obrázok hore:",
+              "subQuestion": "",
+              "title": "Príklad 4"
+            },            
+            {
+              "answers": [
+                "Misinformácia",
+                "Dezinformácia",
+                "Hoax",
+                "Falošné správy",
+                "Propaganda",
+                "Clickbait",
+                "Ani jedno z vyššie uvedených"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Táto informácia je vizuálne spracovaná tak, že na prvý pohľad napodobňuje bežný internetový mediálny portál. Avšak jej obsah je nepravdivý a zavádzajúci, dáva čitateľom falošnú nádej a apeluje na emócie."
+              ],
+              "images": [
+                "assets/pictures/picture24.png"
+              ],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Určite, aký pojem najlepšie opisuje tento článok:",
+              "subQuestion": "",
+              "title": "Príklad 5"
+            }            
+          ]
+         },
+         {
+          "introduction": "Keď sa pohybujeme v mediálnom priestore, je dôležité vedieť čítať s porozumením a odhaľovať manipulatívne formulácie. V tomto kvíze si vyskúšate nájsť vhodné nadpisy k článku a naučíš sa rozpoznať zavádzajúce a clickbait nadpisy. Články sú vymyslené pre účely tejto úlohy.",
+          "name": "Zavádzajúce nadpisy",
+          "points": 6,
+          "questions":[
+            {
+              "answers": [
+                "Neuveríte, čo objavili vedci! TOTO sa skrýva na vzdialenej planéte",
+                "Vedci objavili exoplanétu s podmienkami vhodnými na život",
+                "Astronómom sa podarilo nadviazať kontakt s planétou Kepler-452b, ktorá má podobné podmienky ako Zem",
+                "Vedecký objav: známky života na skalnatej planéte mimo našej slnečnej sústavy"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 1 }
+              ],
+              "definition": "Nový objav v oblasti astronómie vyvoláva vzrušenie medzi vedcami. Použitím pokročilých teleskopov sa výskumníkom podarilo identifikovať vzdialenú exoplanétu, ktorá má podobné podmienky ako Zem. Planéta s názvom Kepler-452b má skalnatý povrch a nachádza sa v zóne, kde by teoreticky mohol existovať život. Tento objav vyvoláva nádej, že sa raz podarí nájsť život mimo našej slnečnej sústavy.",
+              "explanation": [
+                "Prvý nadpis je príklad clickbaitu. Druhý nadpis je vhodný a fakticky sedí s obsahom článku. Tretí a štvrtý nadpis obsahujú unáhlené závery – kontakt s planétou nebol nadviazaný a známky života tiež ešte neboli nájdené."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyber všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 1 – exoplanéta"
+            },
+            {
+              "answers": [
+                "Odvážne tvrdenie vedkyne: Nanoroboty ponúkajú liek na rakovinu",
+                "Nanoroboty menia liečbu rakoviny: Odvážna inovácia profesorky Horváthovej",
+                "Internetom sa šíri ďalší hoax o rakovine: Nanoroboty majú liečiť rakovinu, vedecká komunita to odmieta",
+                "Kontroverzia v liečbe rakoviny: Prinesie terapia pomocou nanorobotov revolučné výsledky?"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "Kontroverzný návrh jednej vedkyne vyvolal vášnivú diskusiu medzi odborníkmi. Profesorka Horváthová tvrdí, že vyvinula revolučnú metódu liečby všetkých typov rakoviny. Jej technika zahŕňa využitie nanorobotov na zacieľovanie a likvidáciu nádorových buniek v tele. Zatiaľ čo niektorí vedci sú optimistickí ohľadom tohto potenciálneho prelomu, iní vyjadrili obavy o jeho bezpečnosti a účinnosti.",
+              "explanation": [
+                "Nadpisy a) a d) sú vhodné, lebo zohľadňujú fakt, že nejde o vedeckú zhodu. V nadpise a) je slovo „tvrdenie“, v nadpise d) je slovo „kontroverzia“. Naopak, nadpis b) znie, ako keby bol výskum v tejto oblasti definitívny. Nadpis c) zas úplne odmieta túto liečbu a označuje ju ako hoax, napriek tomu, že časť vedeckej komunity je ohľadom liečby optimistická."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 2 – nanoroboty"
+            },
+            {
+              "answers": [
+                "Odhaľovanie temnej strany sociálnych médií: Štúdia spája ich nadmerné používanie s duševnými problémami",
+                "Psychologická daň sociálnych médií: Výskum odhaľuje negatívne vplyvy na mládež",
+                "Možná príčina nárastu depresií medzi mladými ľuďmi: priveľa času na sociálnych sieťach",
+                "Vedecká štúdia potvrdzuje, že je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam: Ničia im mentálne zdravie, tvrdí tím psychologičiek"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 1, "index": 1 },
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "Nová štúdia vedená poprednými psychologičkami poukazuje na vplyv sociálnych médií na duševné zdravie. Výskum dokazuje silnú súvislosť medzi nadmerným používaním sociálnych médií a príznakmi úzkosti a depresie u mladých ľudí. Štúdia tiež naznačuje, že keď mladí ľudia neustále vidia nerealistické a upravené fotografie ostatných ľudí na sociálnych platformách, môže to prispieť k pocitom nedostatočnosti a nízkej sebaúcte.",
+              "explanation": [
+                "Jediný zavádzajúci nadpis je v tomto prípade nadpis d), ktorý pridáva k záverom štúdie aj hodnotiace stanovisko, že „je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam“. Toto tvrdenie nie je priamo v texte, ide o dodatočné názorové stanovisko autora."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 3 – sociálne médiá"
+            },
+            {
+              "answers": [
+                "Návrh zákona o slobode prejavu na internete vyvoláva protesty a obavy o občianske slobody",
+                "Boj za online slobodu: Občania sa zhromažďujú proti kontroverznému návrhu zákona",
+                "Nový zákon obmedzuje súkromie na internete: Sloboda prejavu je ohrozená, tvrdia kritici",
+                "Zákon o štátnom monitorovaní internetového obsahu čelí kritike: Masové protesty zaplavili krajinu"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 1, "index": 1 }
+              ],
+              "definition": "Nadpis c) vyznieva, ako keby bol návrh zákona už schválený, takže je zavádzajúci. Nadpis d) zas pridáva prívlastok „masové“ k protestom, avšak samotný článok nehovorí nič o veľkosti protestov.",
+              "explanation": [
+                "Vláda navrhla polarizujúci zákon, ktorý vyvolal vlnu protestov po celej krajine. Návrh zákona by viedol k zvýšeniu štátneho dohľadu nad dianím na internete – štát by mohol jednoduchšie monitorovať a regulovať obsah. Kritici tvrdia, že ide o zásah do občianskych slobôd občanov a ohrozenie slobody prejavu. Aktivistické skupiny organizovali demonštrácie, aby vyjadrili odpor voči návrhu zákona."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 4 – návrh zákona"
+            },
+            {
+              "answers": [
+                "Odhalenie stratenej civilizácie: Archeologický objav má potenciál zmeniť dejiny ľudstva",
+                "Starodávne artefakty odkrývajú zabudnutú civilizáciu: Paradigmatická zmena v archeológii?",
+                "Nové archeologické nálezy prepisujú príbeh ľudstva: vyzerá to tak, že komplexné spoločnosti sme tvorili skôr, než sme si mysleli",
+                "Enigma skorej civilizácie: Vykopávky odhaľujú neznámu starovekú spoločnosť"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 1, "index": 1 },
+                { "correct": 2, "index": 2 },
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "Prelomový archeologický objav prepisuje dejiny. Pri vykopávkach v odľahlom regióne boli objavené starodávne artefakty, ktoré idú proti predchádzajúcim teóriám o vývoji ľudskej civilizácie. Artefakty, vrátane sofistikovaných nástrojov a umeleckých diel, naznačujú existenciu vyspelého spoločenstva, ktoré je staršie než doposiaľ známe civilizácie. Tento objav má potenciál pretransformovať naše porozumenie ľudského vývoja a kultúrnej evolúcie.",
+              "explanation": [
+                "Všetky tieto titulky sú vhodné. Žiaden z nich nerobí unáhlené alebo definitívne závery."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 5 – archeologický objav"
+            },
+            {
+              "answers": [
+                "Súd rozhodol: dvojnásobný vrah Radovan je vinný!",
+                "Súd vyslovil verdikt o vine: Radovan M., podozrivý z dvojitej vraždy, bude väzobne stíhaný",
+                "Rozpoltené názory: Mal súd oslobodiť podozrivého Radovana M.?",
+                "Novinka ohľadom dvojitej vraždy v Hrone: podozrivý Radovan M. bude väzobne stíhaný!"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "Prednedávnom Polícia SR oznámila, že zadržala Radovana M. podozrivého z dvojitej úkladnej vraždy. Tento skutok sa odohral pred mesiacom a telá boli nájdené na brehu rieky Hron. Podľa všetkého boli obete násilne utopené. Následne na základe dôkazov vzniesol prokurátor obvinenie voči Radovanovi M. Dnes súd rozhodol, že Radovan M. nebude stíhaný na slobode – naopak, bude väzobne stíhaný. Niektorí ľudia v krajine s týmto rozhodnutím súhlasia, iní sa sťažujú na nespravodlivý proces.",
+              "explanation": [
+                "V tomto úryvku bolo dôležité pochopiť, že súd nerozhodoval o vine a nevine, ale o tom, či bude obžalovaný stíhaný na slobode alebo väzobne stíhaný. Súd v tomto prípade len rozhodol, že Radovan bude väzobne stíhaný, ale stále platí, že je považovaný za nevinného pokiaľ mu nebola dokázaná vina"
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
+              "subQuestion": "",
+              "title": "Nadpis 6 – trestné stíhanie"
+            }            
+                                    
+          ]
+         },
+         {
+          "introduction": "Médiá nie sú neutrálnym prenášačom informácií a teda sa nestačí sústrediť len na obsah, ktorý nám médiá ponúkajú, ale je nutné rozumieť aj forme a technológiám, ktoré média využívajú. Každý typ média má zásadný vplyv na spôsob, akým vnímame ponúkanú informáciu. Novinový článok, televízny vstup a príspevok na Facebooku môžu obsahovať tú istú informáciu, ale rozdielny spôsob podania danej informácie ovplyvní závery, ktoré z toho čitatelia vyvodia. Kvôli týmto dôvodom je nutné poznať typy médií a pochopiť ich fungovanie.",
+          "name": "Typológia médií",
+          "points": 3,
+          "questions":[
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 0, "index": 1 },
+                { "correct": 1, "index": 2 },
+                { "correct": 1, "index": 3 },
+                { "correct": 0, "index": 4 },
+                { "correct": 1, "index": 5 }
+              ],
+              "definition": "",
+              "explanation": [
+                "K starým médiám zaraďujeme tie, ktoré tradične nepotrebujú na svoje fungovanie internet a naopak nové médiá sú tie, ktoré svoj obsah šíria digitálne, cez internet."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "Tlačené noviny",
+                "Rádio",
+                "Podcastová platforma",
+                "Webová stránka",
+                "Televízia",
+                "Sociálne siete"
+              ],
+              "matches": ["Staré médium", "Nové médium"],
+              "question": "Rozhodnite či dané médium kategorizujeme ako staré alebo nové.",
+              "subQuestion": "",
+              "title": "Technológia prenosu informácií sa vyvíja skrz históriu a spolu s tým pretvára spoločnosť. Najväčšia revolúcia však prichádza z rozšírením internetu, ktoréj bude venovaná samostatná sekcia v tejto kapitole. Tým pádom, médiá možno na základe použitej technológie rozdeliť do dvoch základných skupín."
+            },
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 1, "index": 1 },
+                { "correct": 3, "index": 2 },
+                { "correct": 2, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "ch úlohou je zhromažďovať tvrdé fakty a informácie, ktoré sú podané nespracovane a objektívne. Ostatné médiá si následne od nich môžu odkúpiť obsah a použiť ho ako podklad pre vlastné články.",
+                "Médiá, ktorých cieľom je pravdivo informovať verejnosť o dôležitých spoločenských témach. O znakoch serióznych médií bude celá sekcia v tejto kapitole, ale medzi základné znaky patria tieto: tvoria dôveryhodný obsah, dodržiavajú žurnalistický etický kódex, uvádzajú autorov a členov redakcie, uvádzajú zdroje a opravujú prípadné chyby.",
+                "Ide o médiá, ktoré šíria nepodložené alebo nepravdivé informácie. Takéto médiá používajú rôzne stratégie a majú mnoho foriem, ale medzi základné znaky patrí napríklad: neuvádzajú autorov, nemajú stabilnú redakciu, nie je jasná vlastnícka štruktúra, neuvádzajú zdroje atď.",
+                "Tento typ médií produkuje obsah, ktorý je často zameraný na menej dôležité aspekty spoločenského diania, ako napríklad osobné životy celebrít či politikov. Aj keď sa venuje vážnym témam, podáva ich skôr povrchne a s cieľom vytvoriť senzáciu, či vyvolať silnú emočnú reakciu. Často šíry „škandály“ a „klebety“."
+              ],
+              "matches": [
+                "Spravodajské agentúry",
+                "Seriózne médiá",
+                "Bulvárne médiá",
+                "Dezinformačné médiá"
+              ],
+              "question": "Na základe definície rozhodnite o aký typ médií ide.",
+              "subQuestion": "",
+              "title": " Popri forme média netreba zabúdať aj na samotný obsah správ. Médiá možno rozdeliť do štyroch základných kategórií na základe obsahu. "
+            },
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 2, "index": 1 },
+                { "correct": 1, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "Sú financované hlavne z tzv. koncesionárskych poplatkov, ktoré platí každý občan, ktorý je odberateľom elektriny. Ich hlavnou úlohou je informovať verejnosť objektívne, vyvážene a nestranne a môžu si ju napĺňať, práve kvôli stabilnému príjmu.",
+                "Sú vlastnené jednotlivcami alebo firmami. Tieto médiá si musia zarobiť na vlastné fungovanie. Najčastejšie spôsoby financovania sú buď skrz predplatiteľov alebo predaj reklamného priestoru.",
+                "Sú bežné v nedemokratických režimoch a často zneužívané na šírenie propagandy, keďže sú priamo kontrolované štátom. Takéto médiá na Slovensku už neexistuje."
+              ],
+              "matches": [
+                "Verejnoprávne médiá",
+                "Štátne médiá",
+                "Súkromné médiá"
+              ],
+              "question": "Priradťe pojmy k definíciam.",
+              "subQuestion": "",
+              "title": "Posledným typom delenia je na základe financovania. Rozumieť spôsobu financovania médií je dôležité, keďže financie často ovplyvňujú ich vnútorné mechanizmy fungovania."
+            }
+                              
+          ]
+         }
       ]
   },
   {
