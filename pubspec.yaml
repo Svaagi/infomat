@@ -1,0 +1,57 @@
+name: infomat
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  firebase_core: ^2.24.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  google_fonts: ^6.1.0
+  firebase_auth: ^4.15.0
+  flutter_svg: ^2.0.9
+  flutter_styled_toast: ^2.2.1
+  cloud_firestore: ^4.13.5
+  csv: ^5.1.1
+  excel: ^4.0.0
+  cloud_functions: ^4.5.8
+  file_picker: ^6.1.1
+  dropdown_button2: ^2.3.9
+  percent_indicator: ^4.2.3
+  url_launcher: ^6.2.2
+  image_picker_web: ^3.1.1
+  firebase_storage: ^11.5.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/testAnswer.png
+    - assets/skoly.txt
+    - assets/placeholder.png
+    - assets/profilePicture.svg
+    - assets/logo.svg
+    - assets/import.png
+    - assets/logoFilled.svg
+    - assets/background.svg
+    - assets/lastScreenBackground.svg
+    - assets/star.png
+    - assets/badges/
+    - assets/pictures/
+    - assets/pictureAnswers/
+    - assets/avatars/
+    - assets/icons/
+    - assets/tutorial/
+    - assets/roadmap/
+    - assets/bottomBackground.svg
+    - assets/notifications/
+    - assets/learningCards/
+    - assets/Žiaci.xlsx
+    - assets/CapitolsData.json

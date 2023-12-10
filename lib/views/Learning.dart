@@ -1,0 +1,307 @@
+import 'package:flutter/material.dart';
+import 'package:infomat/widgets/MaterialCardWidget.dart';
+import 'package:infomat/widgets/MaterialForm.dart';
+import 'package:infomat/controllers/MaterialController.dart';
+import 'package:infomat/controllers/ClassController.dart';
+import 'package:infomat/Colors.dart';
+import 'package:infomat/widgets/Widgets.dart';
+import 'dart:html' as html;
+import 'dart:async';
+import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/models/MaterialModel.dart';
+
+
+class Learning extends StatefulWidget {
+  final Future<void> fetch;
+  final UserData? currentUserData;
+
+
+  Learning({
+    Key? key,
+    required this.fetch,
+    required this.currentUserData,
+  }) : super(key: key);
+
+  @override
+  _LearningState createState() => _LearningState();
+}
+
+class _LearningState extends State<Learning> {
+  bool showAll = true;
+   ClassData? currentClassData ;
+   final PageController _pageController = PageController();
+   int _selectedIndex = 0;
+   bool _loading = true;
+   bool isMobile = false;
+  bool isDesktop = false;
+  bool _add = false;
+  List<String> favouriteMaterials = [];
+  final List<Future<void>> _databaseUpdateQueue = [];
+  bool _isDatabaseUpdateInProgress = false;
+  UserData? userData;
+
+  final userAgent = html.window.navigator.userAgent.toLowerCase();
+
+  fetchCurrentClass() async {
+    try {
+        ClassData classData = await fetchClass(widget.currentUserData!.schoolClass!);
+    if (classData != null) {
+        // Fetch the user data using the fetchUser function
+        if (mounted) {
+          setState(() {
+            userData = widget.currentUserData;
+            currentClassData = classData;
+            _loading = false;
+            favouriteMaterials = widget.currentUserData!.materials;
+          });
+        }
+      } else {
+        print('User is not logged in.');
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+    }
+  }
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    final userAgent = html.window.navigator.userAgent.toLowerCase();
+    isMobile = userAgent.contains('mobile');
+    isDesktop = userAgent.contains('macintosh') ||
+        userAgent.contains('windows') ||
+        userAgent.contains('linux');
+    fetchCurrentClass();
+  }
+
+  @override
+  void dispose() {
+    // Cancel timers or stop animations...
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if(_loading) return Center(child: CircularProgressIndicator());
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      child: PageView(
+      controller: _pageController,
+      onPageChanged: _onPageChanged,
+        children: [
+        Center( 
+          child: Container(
+          alignment: Alignment.center,
+          width: 900,
+          child: Column(
+            children: [
+              SizedBox(height: 10,),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          showAll = true;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: showAll ? AppColors.getColor('mono').lighterGrey : Colors.white,
+                        ),
+                        width: 150,
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text('Všetky'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          showAll = false;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: showAll ? Colors.white : AppColors.getColor('mono').lighterGrey,
+                        ),
+                        width: 150,
+                        height: 30,
+                        alignment: Alignment.center,
+                        child: Text('Uložené'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5),
+              if (widget.currentUserData!.teacher && !isMobile)Container(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    width: 260,
+                    child: widget.currentUserData!.teacher ? ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('primary').main, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('primary').light, 
+                      hoverColor: AppColors.getColor('primary').lighter, 
+                      textColor: Theme.of(context).colorScheme.onPrimary, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: '+ PRIDAŤ OBSAH',
+                      onTap: () {
+                        _onNavigationItemSelected(1);
+                        _selectedIndex = 1;
+                        _add = true;
+                      },
+                    ) : null,
+                  ),
+                )
+              ),
+                ]
+              ),
+              Expanded(
+                child: FutureBuilder<List<MaterialData>>(
+                  future: showAll ? fetchMaterials(currentClassData!.materials) : fetchMaterials(favouriteMaterials),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<MaterialData> materials = snapshot.data!;
+
+                      return ListView.builder(
+                        itemCount: materials.length,
+                        itemBuilder: (context, index) {
+                          MaterialData material = materials[index];
+                            return MaterialCardWidget(
+                                image: material.image,
+                                title: material.title,
+                                background: material.background,
+                                description: material.description,
+                                link: material.link,
+                                subject: material.subject,
+                                type: material.type,
+                                association: material.association,
+                                video: material.video,
+                                materialId: material.materialId!,
+                                favoriteMaterialIds: favouriteMaterials,
+                                userData: userData,
+                              );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error fetching materials'),
+                      );
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+              if (widget.currentUserData!.teacher && isMobile)Container(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    width: 260,
+                    child: widget.currentUserData!.teacher ? ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('primary').main, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('primary').light, 
+                      hoverColor: AppColors.getColor('mono').lighterGrey, 
+                      textColor: Theme.of(context).colorScheme.onPrimary, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: '+ PRIDAŤ OBSAH',  
+                      onTap: () {
+                        _onNavigationItemSelected(1);
+                        _selectedIndex = 1;
+                        _add = true;
+                      },
+                    ) : null,
+                  ),
+                )
+              ),
+              SizedBox(height: 20,)
+            ],
+          ),
+        ),
+      ),
+      if (widget.currentUserData!.teacher && _add)Center(
+        child: Column(
+          children: [
+            Container(
+              width: 900,
+              alignment: Alignment.topLeft,
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: AppColors.getColor('mono').darkGrey,
+                    ),
+                    onPressed: () {
+                      _onNavigationItemSelected(0);
+                      setState(() {
+                        _add = false;
+                      });  
+                    },
+                  ),
+                  Text(
+                    'Späť',
+                    style: TextStyle(color: AppColors.getColor('mono').darkGrey),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Pridať obsah',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 100,)
+                ],
+              ),
+            ),
+            MaterialForm(currentUserData: widget.currentUserData, fetch: fetchCurrentClass()),
+          ]
+        )
+      ),
+        ]
+      )
+    );
+  }
+   void _onPageChanged(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _onNavigationItemSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _pageController.animateToPage(
+        index,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
+  }
+}

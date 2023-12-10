@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499783588915",
+    "project_id": "infomat-39565",
+    "storage_bucket": "infomat-39565.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499783588915:android:d9cbd3f407dc40a78a5746",
+        "android_client_info": {
+          "package_name": "com.example.infomat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH3jBFWKJd3sdoMFb0_gN75iy_SHTsLtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

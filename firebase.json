@@ -1,0 +1,6 @@
+{
+    "hosting": {
+        "site": "infomat-39565",
+        "public": "build/web"
+    }
+}
