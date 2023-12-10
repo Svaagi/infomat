@@ -3082,7 +3082,237 @@
       "points": 9,
       "weeklyChallenge": 0,
       "tests": [
-         
+         {
+          "introduction": "Jednou častou stratégiou dezinformátorov je manipulovať s obrázkami v článkoch alebo na sociálnych sieťach. Dezinformátori niekedy zdieľajú fotomontáže, inokedy vytrhávajú fotografie z kontextu. Najnovšie sa používajú aj obrázky vygenerované umelou inteligenciou. Preto je dôležité vedieť odhaliť pôvod obrázkov a overiť ich reálnosť.",
+          "name": "Overovanie obrázkov",
+          "points": 7,
+          "questions":[
+            {
+              "answers": [
+                "Použiť webstránku TinEye",
+                "Použiť aplikáciu MidJourney",
+                "Použiť funkciu Google Search Images",
+                "Sústrediť sa na detaily v obrázku – oblečenie, nápisy, javy v pozadí...",
+                "Sústrediť sa na viditeľné znaky fotomontáže – chýbajúce tiene, ostré obrysy objektov",
+                "Sústrediť sa na pôvod obrázku – ak je v online médiách, bude pravdivý, ak je v náhodnom statuse na sociálnych sieťach, bude asi nepravdivý"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 2, "index": 2 },
+                { "correct": 3, "index": 3 },
+                { "correct": 4, "index": 4 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Pri overovaní obrázkov je najlepšie použiť niekoľko vrstiev overovania: Spoliehajme sa aj na vlastnú hlavu a všímajme si, či nie sú v obrázku nápovede o tom, že by mohol byť falošný alebo vytrhnutý z kontextu. Následne sa pokús nájsť pôvod obrázku skrz vyhľadanie vizuálnych zhôd cez TinEye, Google Image Search alebo iné. V nasledujúcich úlohách budete musieť tieto zručnosti využiť!"
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Aké stratégie môžeme použiť, keď chceme overiť pôvod obrázku? Zaškrtnite všetky možnosti, ktoré sa hodia:",
+              "subQuestion": "",
+              "title": "Stratégie overovania obrázkov"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 1 }
+              ],
+              "definition": "",
+              "explanation": [
+                "V tomto prípade je kontext fotografie veľmi dôležitý. V skutočnosti ide o protest z roku 2004 v Chicagu, ktorý sa snažil poukázať na mučenie a kruté zaobchádzanie čínskej vlády s členmi spirituálneho hnutia Falun Gong. Žena na obrázku je len aktivistka-herečka, nejde o záber reálneho mučenia. Podobné obrázky sa šírili Twitterom, kde ho zdieľali ľudia s dobrým zámerom informovať o stave Ujgurskej menšiny v Číne. Podľa všetkého sú Ujguri naozaj nespravodlivo prenasledovaní a utláčaní vládou. Avšak aj ľudia s dobrým zámerom môžu šíriť misinformácie."
+              ],
+              "images": ["assets/pictures/picture25.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku. Pri riešení úloh si pomôžte internetom. (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Ujgurská menšina je v Číne brutálne utláčaná! Pozri si fotografie toho, v akých nehumánnych podmienkach žijú.",
+              "title": "Over obrázok 1 - Ujguri"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o obrázok vygenerovaný programom Midjourney, ktorý je schopný generovať vysoko kvalitné obrázky. Uverejnil ho instagramový účet Arteficialismo, ktorý sa netají tým, že ide o výtvor umelej inteligencie."
+              ],
+              "images": ["assets/pictures/picture26.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Vedeli ste o tom, že Lionel Messi sa narodil do veľmi chudobnej rodiny? Napriek tomu sa sám vypracoval až na vrchol!",
+              "title": "Over obrázok 2 – Lionel Messi"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o fotomontáž zo stretnutia senátorov USA s bývalým prezidentom Afganistanu. Tvár známeho teroristu Osamu Bin Ladena je vystrihnutá a vložená na tvár afganského prezidenta. Autor tejto fotomontáže využil fakt, že afganský prezident má oblečenie typické pre moslimov. Udalosť sa v skutočnosti nestala, ale fotomontáž sa ako hoax šírila internetom po úmrtí senátora Johna McCaina."
+              ],
+              "images": ["assets/pictures/picture27.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Hanebné tajomstvo republikánskeho senátora a údajného „hrdinu“ Johna McCaina. Na verejnosti obhajoval záujmy USA, za zatvorenými dverami sa paktoval s teroristom Bin Ladenom!",
+              "title": "Over obrázok 3 – Bin Laden"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o fotografiu z roku 2006, na ktorej naozaj bojovníci z Brigády mučeníkov al-Aksá dávajú karafiáty mníškam. Na odhalenie pôvodu fotografie ste mohli zvoliť dva spôsoby: Za prvé, mohli ste zadať kľúčové slová zo statusu do vyhľadávača (napr. „Brigáda mučeníkov Al-Aksá“, „karafiáty“, „mníšky“, ideálne v anglickom jazyku). Za druhé, mohli ste vyhľadať rovno samotný obrázok cez Google Search Images alebo TinEye."
+              ],
+              "images": ["assets/pictures/picture28.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Dojímavé fotografie: Je dôležité nezabúdať na ľudskosť, aj keď máme rozličné názory a vierovyznania. Pozrite si, ako maskovaní palestínski ozbrojenci z Brigády mučeníkov al-Aksá kedysi rozdávali karafiáty mníškam!",
+              "title": "Over obrázok 4 – Palestínski bojovníci"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Ide o obrázok vygenerovaný v programe Bing Image Creator. Mohli ste zistiť, že nejde o skutočnú udalosť, keďže žiadne podobné obrázky sa na internete nenachádzajú. Taktiež neexistujú správy o takomto rozsiahlom požiari na Kriváni."
+              ],
+              "images": ["assets/pictures/picture29.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Mladé generácie už zabudli, keď pýcha našich Tatier vzbĺkla v plameňoch. Pripomeňme si požiar Kriváňa fotografiami.",
+              "title": "Over obrázok 5 – Požiar na Kriváni"
+            },
+            {
+              "answers": [
+                "Obrázok je reálny a sedí k nadpisu článku",
+                "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
+                "Obrázok je falošný, ide o fotomontáž",
+                "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 1 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Je pravda, že ide o konflikt medzi migrantmi a maďarskou políciou na vlakovej stanici v Budapešti. V pozadí sú vlaky, takže určite ide o vlakovú stanicu. Polícia má na uniformách maďarskú vlajku. Protestujúci majú tmavšiu pleť, typickú skôr pre Blízky východ než pre strednú Európu. Na prvý pohľad sa preto môže zdať, že obrázok naozaj zachytáva udalosť z titulku. Avšak v skutočnosti ide o udalosť z roku 2015, nie z roku 2021, ako uvádza titulok. Na odhalenie kontextu bolo potrebné použiť Google Search Images alebo TinEye."
+              ],
+              "images": ["assets/pictures/picture30.png"],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+              "subQuestion": "Migranti zo Sýrie zaplavili vlakovú stanicu v Budapešti, nastali konflikty s políciou. Takto vyzerala migračná kríza v lete 2023!",
+              "title": "Over obrázok 6 – Imigranti v Maďarsku"
+            }                        
+          ]
+         },
+         {
+          "introduction": "Zorientovať sa v mediálnom priestore sa stáva stále náročnejším. Slepo veriť všetkému, čo prečítame na internete, je neprípustné, keďže tam môže ktokoľvek uverejniť (takmer) akékoľvek informácie. Spoliehať sa na intuíciu a vizuál stránky taktiež nestačí, keďže stratégie dezinformačných webov sú často komplexné. Na druhú stranu, veriť len tým informáciám, ktoré nenarúšajú náš svetonázor, znamená prepadnutie konfirmačnému skresleniu a uzatváranie sa do názorových bublín. V tejto lekcií sa naučíme základy k tomu, ako rozpoznávať dôveryhodné médiá.",
+          "name": "Formálne znaky médií",
+          "points": 2,
+          "questions":[
+            {
+              "answers": [
+                "v nadpisoch občas využíva emočné slová ako „škandál“ aby zaujal čitateľa",
+                "uvádza zdroj informácií",
+                "uvádza meno autora alebo autorky správy / článku",
+                "je ideologicky motivovaný a v jeho často článkoch vidieť silné názorové zafarbenie",
+                "jasne oddelené spravodajstvo od názorovej sekcie",
+                "informácie o redakcii a vlastníkovi sa dajú dohľadať na stránke",
+                "na svojej stránke neuvádza spôsob financovania",
+                "má dohľadateľný etický/redakčný kódex",
+                "neuverejňuje opravy chýb alebo ospravedlnenia",
+                "uvádza varovania o potenciálnych stretoch záujmov"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 1 },
+                { "correct": 2, "index": 2 },
+                { "correct": 4, "index": 4 },
+                { "correct": 5, "index": 5 },
+                { "correct": 7, "index": 7 }
+              ],
+              "definition": "",
+              "explanation": [],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Zo zoznamu vyberte všetky znaky dôveryhodného média:",
+              "subQuestion": "",
+              "title": "Pri vyhodnocovaní dôveryhodnosti média je nutné pozrieť sa na objektívne prvky, ktoré musí každé dôveryhodné médium spĺňať."
+            },
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 0 },
+                { "correct": 0, "index": 1 }
+              ],
+              "definition": "",
+              "explanation": [],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "Médium nemá uvedeného jasného vlastníka, kamennú redakciu ani počet zamestnancov. Ako spôsob financovania má uvedenú jednu firmu, ktorú však nevieme nikde na internete dohľadať. Na stránke síce médium uvádza 6 rôznych mien redaktorov, avšak chýbajú bližšie informácie o kvalifikáciách a zamestnaneckom statuse. Nevieme nájsť kontakt ani na jedného z týchto redaktorov.",
+                "Dajú sa dohľadať potrebné informácie o médiu: má profesionálnu redakciu, je to registrovaná firma, vieme dokonca aj dátum vzniku a meno šéfredaktora, ktorý má dlhoročnú prax. V jednom z článkov autor rozpráva o úspechoch jednej z politických strán. Ku koncu článku autor prechádza do roviny vlastnej interpretácie a článok naberie mierne ideologiké zafarbenie. Autor však na to upozorní slovami ako „zrejme“ alebo „je možné sa domnievať“ a vyhýba sa definitívnemu hodnoteniu danej politickej strany."
+              ],
+              "matches": ["Skôr dôveryhodné", "Skôr nedôveryhodné"],
+              "question": "Pri opísanej situácií rozhodnite, či považujete opisované (fiktívne) médium za skôr dôveryhodné alebo skôr nedôveryhodné",
+              "subQuestion": "",
+              "title": ""
+            }                        
+          ]
+         }
       ]
   },
   {
@@ -3094,7 +3324,142 @@
       "points": 5,
       "weeklyChallenge": 0,
       "tests": [
-         
+         {
+          "introduction": "Konšpiračné teórie sú často založené na hoaxoch a dezinformáciách, ale tento jav je oveľa komplikovanejší. Nejde o izolované nepravdivé informácie, ale o zložitú spleť pravdivých a nepravdivých informácií. Keď raz niekto uverí konšpiračnej teórii, je veľmi náročné jeho/ju presvedčiť o opaku. Preto je dôležité vedieť rozpoznať konšpiračné stratégie a byť voči nim odolný.",
+          "name": "Konšpiračné teórie",
+          "points": 5,
+          "questions":[
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 0 },
+                { "correct": 3, "index": 1 },
+                { "correct": 0, "index": 2 },
+                { "correct": 4, "index": 3 },
+                { "correct": 1, "index": 4 }
+              ],
+              "definition": "",
+              "explanation": [],
+              "images": [],
+              "division": [],
+              "matchmaking": [
+                "Nedôveryhodná platforma na uverejňovanie a šírenie správ, ktoré obsahujú konšpiračné teórie",
+                "Ide o jav, pri ktorom je človek všeobecne skeptický voči autoritám a nedôveruje systému či oficiálnym verziám udalostí",
+                "Tajné sprisahanie skupiny mocných ľudí, ktoré reálne existuje/existovalo.",
+                "Nedostatočne podložená domnienka o existencii tajnej sprisahaneckej skupiny so zlými úmyslami",
+                "Osoba, ktorá verejne a profesionálne šíri konšpiračné teórie"
+              ],
+              "matches": [
+                "Konšpirácia",
+                "Konšpiračná teória",
+                "Konšpiračné médium",
+                "Konšpiračný teoretik",
+                "Konšpiračné myslenie"
+              ],
+              "question": "Spojte pojem so správnou definíciou",
+              "subQuestion": "",
+              "title": "Definície pojmov"
+            },
+            {
+              "answers": [
+                "Konšpiračné teórie sú vždy nepravdivé.",
+                "Každý hoax alebo dezinformácia je súčasťou nejakej väčšej konšpiračnej teórie.",
+                "Konšpiračné teórie sú založené na domnienke, že nič nie je náhoda a všetko je spolu prepojené",
+                "Konšpiračné teórie sú komplexnejšie ako hoaxy a často svojmu publiku poskytujú ucelený logický systém.",
+                "Konšpiračné teórie sú vždy podložené dôveryhodnými dôkazmi, preto máme problém s ich vyvracaním."
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 },
+                { "correct": 3, "index": 3 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Zatiaľ čo hoaxy a dezinformácie sú nepravdivé, konšpiračná teória môže byť pravdivá. Aj keď väčšina konšpiračných teórií sú nepravdivé (napr. že Zem je plochá), občas sa ukáže, že niektoré teórie sú podložené. Problém je, že konšpiračné teórie sú zväčša podložené neoverenými „dôkazmi“ z nedôveryhodných zdrojov. Konšpiračné teórie sú často založené na hoaxoch a dezinformáciách, ale to neznamená, že každá dezinformácia musí byť súčasťou nejakej konšpiračnej teórie."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Označ všetky pravdivé tvrdenia o konšpiračných teóriách:",
+              "subQuestion": "",
+              "title": "Vlastnosti konšpiračných teórií"
+            },
+            {
+              "answers": [
+                "Čierno biele delenie sveta – zjednodušenie reality na dobro verzus zlo",
+                "Odkazovanie na falošné autority – vyjadrenia údajných „expertov“, nedôveryhodné zdroje",
+                "Apel na intuíciu – vyzývanie čitateľov, nech sa „zobudia“ a použijú „zdravý rozum“",
+                "Vyberanie čerešní („cherry-picking“) – zameranie sa na zopár náhodných faktov, ktoré sú skôr výnimky z pravidla",
+                "Hľadanie obetného baránka – vždy je nejaká skupina ľudí, ktorí sú údajne zodpovední za všetko zlo"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 },
+                { "correct": 1, "index": 1 },
+                { "correct": 2, "index": 2 },
+                { "correct": 3, "index": 3 },
+                { "correct": 4, "index": 4 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Všetky tieto argumentačné fauly patria medzi najčastejšie manipulatívne stratégie konšpirátorov. Všetky stratégie majú spoločné to, že sa snažia apelovať na emócie čitateľa, vyvolať strach a hnev."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Ktoré z nasledujúcich argumentačných stratégií a naratívov sú často využívané konšpiračnými teoretikmi:",
+              "subQuestion": "",
+              "title": "Stratégie konšpirátorov"
+            },
+            {
+              "answers": [
+                "Ide o nepodloženú konšpiračnú teóriu",
+                "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi",
+                "Ide o konšpiráciu, ktorá sa naozaj odohrala"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 0, "index": 0 }
+              ],
+              "definition": "Globálne elity plánujú urobiť tzv. Veľký Reset – zvrhnú nepohodlných politikov a nastolia celosvetovú totalitu. Začalo to tak, že tieto elity zorchestrovali pandémiu Covid-19. To im dalo zámienku „resetovať“ ekonomické a politické zriadenie a podmaniť si dianie vo svete pod svoju kontrolu. Za týmto cieľom využívajú aj rôzne technologické inovácie – 5G siete, mikročipy, umelú inteligenciu. Dohodli sa na tom na stretnutí World Economic Forum v lete 2020 a odvtedy postupne vykonávajú tento plán.",
+              "explanation": [
+                "Ide o typický príklad komplexnej konšpiračnej teórie, ktorá vznikla počas pandémie Covid-19. Konšpiračne zmýšľajúci ľudia hľadali nejaké tajné vysvetlenie tejto udalosti, za ktorú by boli zodpovedné „zlé“ globálne elity. Následne boli misinterpretované a prekrútené slová zo samitu Svetového ekonomického fóra 2020 o „Veľkom resete“. Tento pojem mal popisovať plán ekonomických reforiem, avšak konšpirátori z toho vytvorili plán na „zotročenie ľudstva“."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Prečítaj si nasledujúci úryvok textu a urči, či ide o nepodloženú konšpiračnú teóriu:",
+              "subQuestion": "",
+              "title": "Over konšpiračnú teóriu 1 – Veľký Reset"
+            },
+            {
+              "answers": [
+                "Ide o nepodloženú konšpiračnú teóriu",
+                "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi",
+                "Ide o konšpiráciu, ktorá sa naozaj odohrala"
+              ],
+              "answersImage": [],
+              "correct": [
+                { "correct": 2, "index": 2 }
+              ],
+              "definition": "Vedeli ste, že americká CIA v minulosti robila tajný projekt, v ktorom robila nehumánne experimenty na nevinných ľuďoch? Tento projekt sa nazýval MK-Ultra. Zahŕňal napríklad aj využívanie drogy LSD s cieľom kontrolovať mysle ľudí. Taktiež dávali ľuďom elektrošoky a pokúšali sa ich hypnotizovať. Toto všetko, prosím pekne, robili v USA počas Studenej vojny! Cieľom bolo zneužiť tieto praktiky na špiónoch a vojakoch zo Sovietskeho zväzu.",
+              "explanation": [
+                "Napriek tomu, že tieto udalosti znejú neuveriteľne, táto konšpirácia je skutočná. Experimenty sa reálne odohrávali počas studenej vojny v USA. Projekt MK-Ultra bol oficiálne schválený v roku 1953 a oficiálne zastavený v roku 1973. Následne v 1975 vytvoril prezident Ford komisiu, ktorá oficiálne odhalila MK-Ultra, avšak niektoré podrobnosti projektu zostávajú utajené."
+              ],
+              "images": [],
+              "division": [],
+              "matchmaking": [],
+              "matches": [],
+              "question": "Prečítaj si nasledujúci úryvok textu a urči, či ide o nepodloženú konšpiračnú teóriu:",
+              "subQuestion": "",
+              "title": "Over konšpiračnú teóriu 2 – MK-Ultra"
+            }
+          ]
+         }
       ]
   }
 ]
