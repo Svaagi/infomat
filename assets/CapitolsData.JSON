@@ -1,3 +1,4 @@
+
 [
   {
     "badge": "assets/badges/badgeCrit.svg",
@@ -50,12 +51,13 @@
             "explanation": [
               "Kritické myslenie nie je o memorovaní faktov, čo je v dnešnom rýchlo sa meniacom svete zbytočné. Naopak, kritické myslenie podporuje nezávislé, inovatívne a analytické rozmýšľanie. Kriticky mysliaci človek sa pýta otázky a snaží sa nájsť pravdu, avšak nie je skeptický voči úplne všetkému. Takýto človek si uvedomuje, že niektoré fakty sú objektívne pravdivé a zohľadňuje ich vo svojom rozmýšľaní."
             ],
-            "division": [],
+            
             "images": [],
             "matchmaking": [],
             "matches": [],
             "question": "Čo je to kritické myslenie? Zaškrtni všetky vhodné odpovede.",
             "subQuestion": "Kritické myslenie znamená...",
+            "conclusion": "",
             "title": "Definícia kritického myslenia"
           },
           {
@@ -85,12 +87,13 @@
               "explanation": [
                 "Mediálna gramotnosť je v podstate aplikácia kritického myslenia na mediálne prostredie. Mediálny gramotný človek vie vyhodnotiť dôveryhodnosť informácií na základe objektívnych znakov a nerozhoduje sa len podľa svojho názoru. Mediálnou gramotnosťou neučíme ľudí čo si majú myslieť a ktoré médiá majú čítať."
               ],
-              "division": [],
+              
               "images": [],
               "matchmaking": [],
               "matches": [],
               "question": "Čo je to mediálna gramotnosť? Zaškrtni všetky vhodné odpovede.",
               "subQuestion": "Mediálna gramotnosť je...",
+              "conclusion": "",
               "title": "Definícia mediálnej gramotnosti"
           },
           {
@@ -111,12 +114,13 @@
           "explanation": [
               "Emócie sú neoddeliteľnou časťou ľudského života, a rovnako to platí pri kritickom rozmýšľaní. Úplne poprieť emócie je nemožné a snažiť sa o to nás vedie len k sebaklamu. Počas vypĺňania kvízov InfoMentor sa pokojne zamýšľajte nad tým, ako sa cítiš a prečo. S emóciami sa dá konštruktívne pracovať len vtedy, keď priznáme, že ich máme. Nie sme roboti."
           ],
-          "division": [],
+          
           "images": [],
           "matchmaking": [],
           "matches": [],
           "question": "Akú rolu majú emócie v kritickom myslení?",
           "subQuestion": "",
+          "conclusion": "",
           "title": "Emócie a kritické myslenie"
           },
           {
@@ -156,7 +160,7 @@
               "explanation": [
                 "Faktické tvrdenie nemusí byť pravdivé (napríklad, že na Slovensku žije 7 miliónov ľudí), ale musí byť overiteľné na základe objektívnych kritérií. Naopak názory reflektujú osobné preferencie jednotlivca. Je dôležité vedieť ich rozlíšiť, lebo faktické tvrdenia overujeme („fact-checking“) a o názoroch môžeme diskutovať. Aj názory by mali byť založené na faktoch."
               ],
-              "division": [],
+              
               "images": [],
               "matchmaking": [
                 "Cestovať časom je teoreticky možné na základe princípov všeobecnej teórie relativity.",
@@ -173,6 +177,7 @@
               ],
               "question": "Urči, ktoré z nasledujúcich výrokov sú faktické tvrdenia a ktoré sú názory:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Názory a fakty"
             }              
           ]
@@ -198,12 +203,13 @@
                   ],
                   "definition": "",
                   "explanation": [],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „kotvenie“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Kotvenie"
                 },
                 {
@@ -224,12 +230,13 @@
                   "explanation": [
                     "Keď dostaneme prvú informáciu, že značkové tenisky stoja napr. 200 eur, „zakotvíme“ s touto informáciou. Následne kvôli kognitívnemu skresleniu kotvenia sa potešíme, keď zlacnia napr. na 100 eur, napriek tomu, že ich výrobná hodnota môže byť 10-20 eur."
                   ],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Ktoré z nasledujúcich scenárov sú príkladom kotvenia?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Kotvenie"
                 },
                 {
@@ -248,18 +255,19 @@
                   ],
                   "definition": "",
                   "explanation": [],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „konfirmačné skreslenie“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Konfirmačné skreslenie"
                 },
                 {
                   "answers": [
                     "Keď sa pripravujem na referát o kapitalizme a zadám do vyhľadávača Google otázku: „Prečo je kapitalizmus najlepší ekonomický systém na svete?“",
-                    "eď si kúpim noviny, ktoré majú skôr liberálne ideologické zafarbenie. Napriek tomu, že moje zmýšľanie je skôr konzervatívne, zaujíma ma, čo si myslia iné názorové skupiny",
+                    "Keď si kúpim noviny, ktoré majú skôr liberálne ideologické zafarbenie. Napriek tomu, že moje zmýšľanie je skôr konzervatívne, zaujíma ma, čo si myslia iné názorové skupiny",
                     "Keď uverím šokujúcej klebete o mojej spolužiačke, napriek tomu, že klebeta je neoverená a nepodložená",
                     "Keď si na Facebooku čítam statusy len tých politikov a političiek, ktorých názory sa mi páčia"
                   ],
@@ -278,12 +286,13 @@
                   "explanation": [
                     "Ak vyhľadávam informácie, že prečo je X najlepšie, tak nájdem len také výsledky, ktoré potvrdzujú môj svetonázor. Kriticky mysliaci človek by zadal do vyhľadávača napr. „výhody a nevýhody X“ a až potom by si vytvoril názor. Rovnako pri čítaní statusov politikov – ak budem počúvať len tých, s ktorými súhlasím, tak si tým len potvrdím to, čo si už myslím."
                   ],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Ktoré z nasledujúcich scenárov sú príkladom konfirmačného skreslenia?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Konfirmačné skreslenie"
                 },
                 {
@@ -302,12 +311,13 @@
                   ],
                   "definition": "",
                   "explanation": [],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „apofénia“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Apofénia"
                 },
                 {
@@ -332,12 +342,13 @@
                   "explanation": [
                     "Viera v astrológiu je typický príklad apofénie – niektorí ľudia veria, že len na základe rozpoloženia hviezd pri našom narodení vieme predpokladať javy v našom živote. Rovnako, približne rovnaké výsledky troch volieb sú len náhodou a spolu nesúvisia – odohrali sa v iných časoch, iných krajinách a s iným počtom hlasov. Takáto konšpiračná teória sa šírila po prezidentských voľbách v Česku v roku 2023."
                   ],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Ktoré z nasledujúcich scenárov sú príkladom apofénie?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Apofénia"
                 },
                 {
@@ -350,18 +361,19 @@
                   "answersImage": [],
                   "correct": [
                     {
-                      "correct": 0,
-                      "index": 0
+                      "correct": 2,
+                      "index": 2
                     }
                   ],
                   "definition": "",
                   "explanation": [],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „skreslenie preživšieho“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Skreslenie preživšieho"
                 },
                 {
@@ -386,12 +398,13 @@
                   "explanation": [
                     "Aby sa niekto stal profesionálnym basketbalistom, musí mať isté predispozície, ako napríklad nadpriemernú výšku. Ak vyvodíme všeobecné závery len na základe výšky už úspešných basketbalistov, dopúšťame sa skreslenia preživšieho – v tejto skupine budú chýbať ľudia, ktorí sú vysokí, ale nie sú dobrí v basketbale. Rovnako sa dopúšťame skreslenia preživšieho, ak na základe komentárov na sociálnych sieťach vyvodíme všeobecné závery. Dá sa predpokladať, že práve tí najviac nahnevaní ľudia budú chcieť písať agresívne komentáre, zatiaľ čo slušní ľudia si svoje myšlienky nechajú pre seba."
                   ],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „skreslenie preživšieho“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Skreslenie preživšieho"
                 },
                 {
@@ -410,12 +423,13 @@
                   ],
                   "definition": "",
                   "explanation": [],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Čo znamená kognitívne skreslenie, ktoré sa nazýva „heuristika dostupnosti“?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Heuristika dostupnosti"
                 },
                 {
@@ -444,12 +458,13 @@
                   "explanation": [
                     "Kvôli heuristike dostupnosti často nadhodnocujeme individuálne živé spomienky na úkor objektívnych dát. V bežnom živote to môže byť jeden silný zážitok – napríklad, keď ti spolužiačka detailne opísala, ako ju na danej ulici okradli. Ale heuristika dostupnosti nastáva aj kvôli tomu, že niektoré udalosti sa častejšie dostanú do médií – napríklad havárie lietadiel alebo útoky medveďov. Oba javy sú síce veľmi zriedkavé, ale vždy keď sa stanú, ocitnú sa v médiách. Pritom podľa dát je cesta autom nebezpečnejšia a napr. kliešť spôsobí oveľa viac úmrtí ako medveď."
                   ],
-                  "division": [],
+                  
                   "images": [],
                   "matchmaking": [],
                   "matches": [],
                   "question": "Ktorý z nasledujúcich scenárov je príkladom heuristiky dostupnosti?",
                   "subQuestion": "",
+                  "conclusion": "",
                   "title": "Heuristika dostupnosti"
                 }
           ]
@@ -484,14 +499,15 @@
                       ],
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie je myšlienkové zhrnutie záveru celého argumentu.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -508,14 +524,15 @@
                       ],
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie by malo obsahovať zložité a odborné termíny, aby pôsobilo viac presvedčivo.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -530,16 +547,17 @@
                           "index": 0
                         }
                       ],
-                      "division": [],
+                      
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie je prezentované hneď v úvode argumentu.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -554,16 +572,17 @@
                           "index": 0
                         }
                       ],
-                      "division": [],
+                      
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie je najdôležitejšia časť argumentu, má preto viacero aspektov a zameriava sa na viacero vecí naraz.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -578,16 +597,17 @@
                           "index": 1
                         }
                       ],
-                      "division": [],
+                      
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie by malo obsahovať všetky dôkazy a podrobnosti podporujúce argument.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -602,16 +622,17 @@
                           "index": 0
                         }
                       ],
-                      "division": [],
+                      
                       "definition": "",
                       "explanation": [
-                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorčích častiach argumentu."
+                        "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
                       ],
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Tvrdenie by malo byť jednoduché a čo možno najstručnejšie.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Zadanie: Rozhodnite či sú dané tvrdenia o argumentačných tvrdeniach pravdivé alebo nepravdivé."
                     },
                     {
@@ -635,20 +656,21 @@
                         "Toto vysvetlenie má jasný príčinno-následkový reťazec.",
                         "argument nesúvisí s témou, takže je irelevantný. Alarmy a kamery si môžu ľudia kúpiť, aj keď nevlastnia zbrane."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "",
                       "subQuestion": "",
-                      "title": "Téma znie: Držba strelných zbraní pre osobné účely by mala byť zakázaná.  A vaše tvrdenie je: \"Zákaz strelných zbraní povedie k vyššej bezpečnosti v domácnostiach.\" Vyber najsilnejšie vysvetlenie k tvrdeniu."
+                      "conclusion": "",
+                      "title": "Téma znie: Držba strelných zbraní pre osobné účely by mala byť zakázaná.  Vaše tvrdenie je: \"Zákaz strelných zbraní povedie k vyššej bezpečnosti v domácnostiach.\" Vyber najsilnejšie vysvetlenie k tvrdeniu."
                     }
               ]
           },
           {
-              "introduction": "",
+              "introduction": " Argument je základný stavebný kameň každej akademickej debaty a kultivovanej diskusie. Argumenty používame na to, aby sme svoje závery zdôvodnili a iných presvedčili o ich správnosti. V tejto lekcii sa naučíme ako takýto argument môžeme vystavať.",
               "name": "Časti debatného argumentu",
-              "points": 9,
+              "points": 5,
               "questions":[
                   {
                       "answers": [
@@ -660,18 +682,19 @@
                       "correct": [
                         {
                           "correct": 2,
-                          "index": 0
+                          "index": 2
                         }
                       ],
                       "definition": "Závery výskumu z University of Missouri z roku 2010 potvrdzujú, že základné školy, kde sú zavedené školské uniformy, zaznamenávajú nižší počet incidentov spojených s problémovým správaním svojich žiakov a žiačok ako školy, kde uniformná politika zavedená nie je.",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
-                      "question": "",
+                      "question": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy.",
                       "subQuestion": "",
-                      "title": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy."
+                      "conclusion": "",
+                      "title": "O ktorú časť argumentu ide?"
                     },
                     {
                       "answers": [
@@ -683,18 +706,19 @@
                       "correct": [
                         {
                           "correct": 1,
-                          "index": 0
+                          "index": 1
                         }
                       ],
                       "definition": "Nosenie uniformy ovplyvňuje to, ako sa človek vníma a ako sa správa. Rôzne typy uniforiem sú spojené s rôznymi očakávaniami a typmi úloh, ktoré ich nositelia zohrávajú. Pohľad na školskú uniformu prirodzene vyvoláva myšlienku na školské prostredie a vzdelávanie, preto sa v momente jej nasadenia žiak alebo žiačka začína mentálne pripravovať na pobyt v škole a myšlienky na iné prostredie či aktivity ustupujú. Zároveň nosenie školskej uniformy stavia svojho nositeľa do úlohy študenta, ktorá sa spája so zvedavosťou, hľadaním odpovedí na otázky, či nadobúdaním vedomostí. Túto úlohu sa žiaci a žiačky celkom podvedome snažia napĺňať, preto počas vyučovania menej vyrušujú a viac sa sústredia na predmet výučby.",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
-                      "question": "",
+                      "question": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy.",
                       "subQuestion": "",
-                      "title": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy."
+                      "conclusion": "",
+                      "title": "O ktorú časť argumentu ide?"
                     },
                     {
                       "answers": [
@@ -711,17 +735,59 @@
                       ],
                       "definition": "Žiaci a žiačky základných škôl by mali povinne nosiť školské uniformy, pretože to zlepšuje ich správanie v škole a zvyšuje sústredenie sa na vyučovanie.",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
-                      "question": "",
+                      "question": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy.",
                       "subQuestion": "",
-                      "title": "V tejto úlohe je rozpísaný argument o tom, že by mali byť povinné školské uniformy. Ale jednotlivé časti argumentu sú rozhádzané. Priraď k častiam argumentu ich správne názvy."
-                    }
-                    
-                    
-                    
+                      "conclusion": "",
+                      "title": "O ktorú časť argumentu ide?"
+                    },
+                    {
+                      "answers": [
+                        "V argumente chýba vysvetlenie",
+                        "V argumente chýba dôkaz",
+                        "V argumente nič nechýba"
+                      ],
+                      "answersImage": [],
+                      "correct": [
+                        { "correct": 0, "index": 0 }
+                      ],
+                      "definition": "Aktivisti a aktivistky protestujú pred továrňou na spracovanie kuracieho mäsa. Aktivistka na pódiu má megafón a prednáša nasledujúci argument o tom, že konzumácia mäsa je nemorálna. Jesť mäso je nemorálne, lebo kvôli tomu spôsobujeme veľké utrpenie zvieratám. Pozrime sa napríklad na to, ako sa bežne zaobchádza s kurčatami. Každoročne je zavraždených približne 70 miliárd kurčiat. Medzi bežné praktiky sa považuje napríklad odsekávanie zobákov alebo odopieranie prístupu k jedlu, aby znášali viac vajec. Kvôli genetickým úpravám a šľachteniam pre maximalizáciu objemu mäsa až 30% kurčiat nevie poriadne chodiť. A prečo? Len pre naše potešenie. Takéto vedomé a nepotrebné spôsobovanie utrpenia inej cítiacej bytosti je nemorálne. Táto továreň na mäso by mala byť okamžite zatvorená.",
+                      "explanation": [
+                        "Rečníčka poukázala na mnoho nemorálnych praktík, ktoré sa využívajú pri klietkovom chove zvierat. Avšak nikdy nebolo vysvetlené, prečo je takýto prístup tak často používaný. Taktiež nebolo vysvetlené, ako tomu predídeme tým, keď prestaneme jesť mäso."
+                      ],
+                      
+                      "images": [],
+                      "matchmaking": [],
+                      "matches": [],
+                      "question": "Prečítaj si argument a urči, ktorá časť mu chýba.",
+                      "subQuestion": "",
+                      "conclusion": "",
+                      "title": "Prečítaj si argument a urči, ktorá časť mu chýba."
+                    },
+                    {
+                      "answers": [
+                        "a) V argumente chýba vysvetlenie",
+                        "b) V argumente chýba dôkaz",
+                        "c) V argumente nič nechýba"
+                      ],
+                      "answersImage": [],
+                      "correct": [
+                        { "correct": 1, "index": 1 }
+                      ],
+                      "definition": "Nachádzame sa na politologickej konferencii s názvom „Ako zlepšiť demokraciu?“. Prebieha panelová diskusia, kde akademici a akademičky riešia, či by mala byť volebná účasť povinná. Ozve sa akademička, ktorá prednesie nasledujúci argument: Povinná volebná účasť zaručuje, že politici lepšie zastupujú vôľu ľudu. Momentálne po celom svete klesá účasť na voľbách. Ľudia sú apatickí a často sa vôbec nezaujímajú o politiku. To je problematické, lebo čím ďalej tým menšia časť spoločnosti rozhoduje o politickom zložení vlády, ktorá má zastupovať všetkých občanov. To je však takmer nemožné, pokiaľ väčšina občanov ani nevyjadrí svoje preferencie pri volebnej urne. Tým pádom vznikajú nereprezentatívne vlády, ktoré nereflektujú názory občanov. Takže buď zavedieme povinné voľby, alebo sa môžeme rozlúčiť s demokraciou. Keby sa zaviedla povinnosť voliť, tak by výrazne stúpla volebná účasť. A keďže občania by vedeli, že musia ísť voliť, tak by si predtým naštudovali, komu hodia svoj hlas. Po voľbách by vznikla naozaj reprezentatívna vláda s omnoho vyššou legitimitou, lebo by naozaj zastupovala celý ľud. Mať reprezentatívnu vládu je veľmi dôležité, lebo potom je väčšina občanov spokojná. Politici totiž pri vládnutí zohľadňujú záujmy všetkých občanov a snažia sa vyhovieť väčšine. Tým stúpa dôvera v demokraciu.",
+                      "explanation": [],
+                      
+                      "images": [],
+                      "matchmaking": [],
+                      "matches": [],
+                      "question": "Prečítaj si argument a urči, ktorá časť mu chýba.",
+                      "subQuestion": "",
+                      "conclusion": "",
+                      "title": "Prečítaj si argument a urči, ktorá časť mu chýba."
+                    }                                        
               ]
           },
           {
@@ -748,7 +814,7 @@
                       ],
                       "definition": "",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [
                         "Tento argument je zväčša krátky a nepodložený dôkazmi. Dokážeme ich robiť intuitívne napríklad pri komunikácii s kamarátmi či rodinou, keď sa ostatných snažíme presvedčiť o správnosti našich záverov.",
@@ -762,7 +828,8 @@
                       ],
                       "question": "Argument je uzavretý myšlienkový celok, ktorým sa snažíme niekoho presvedčiť o správnosti našich záverov.",
                       "subQuestion": "",
-                      "title": "Argument vyzerá inak v bežnom živote, inak vo filozofii a inak v akademickej debate. Priraďte definície ku pojmom. (design: matchmaking)"
+                      "conclusion": "",
+                      "title": "Argument vyzerá inak v bežnom živote, inak vo filozofii a inak v akademickej debate. Priraďte definície ku pojmom."
                     },
                     {
                       "answers": [
@@ -783,6 +850,7 @@
                       "matches": [],
                       "question": "Argument je uzavretý myšlienkový celok, ktorým sa snažíme niekoho presvedčiť o správnosti našich záverov.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -801,12 +869,13 @@
                       "explanation": [
                         "Argumenty musíme súdiť podľa ich kvality a presvedčivosti. Argumenty, ktoré sú vysvetlené do hĺbky, podložené dôkazmi a neobsahujú logické chyby, sú viac valídne ako krátke, povrchné a nepodložené tvrdenia."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Argumenty sú o osobných názoroch, takže všetky argumenty sú rovnako valídne.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },                      
                     {
@@ -823,12 +892,13 @@
                       ],
                       "definition": "",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Argumenty musia byť štruktúrované a logicky konzistentné.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -847,12 +917,13 @@
                       "explanation": [
                         "Argument sa skladá zo štyroch častí – tvrdenie, vysvetlenie a dôkaz. Ak má „argument“ jednu vetu, ide len o tvrdenie. Tvrdením oznámime svoj názor, ale nevysvetlíme ho, tým pádom to nemôžeme považovať za plnohodnotný argument."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Niekedy stačí na argument jedna veta.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -869,12 +940,13 @@
                       ],
                       "definition": "",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Silný argument je relevantný k téme, o ktorej sa diskutuje.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -893,12 +965,13 @@
                       "explanation": [
                         "Nie je dobré, ak je argument rozvláčny, lebo sa stáva, že jeho pointa zanikne. Taktiež by sa nemali časti vysvetlenia opakovať."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Čím rozsiahlejší je argument, tým je silnejší.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -917,12 +990,13 @@
                       "explanation": [
                         "Cieľom argumentu je presvedčiť publikum o správnosti vašich názorov. Takže záverom argumentu by mala byť obhajoba istej názorovej pozície."
                       ],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [],
                       "matches": [],
                       "question": "Argument nemusí mať žiaden záver.",
                       "subQuestion": "",
+                      "conclusion": "",
                       "title": "Vyberte, ktoré z týchto tvrdení o debatnom argumente sú pravdivé?"
                     },
                     {
@@ -944,7 +1018,7 @@
                       ],
                       "definition": "",
                       "explanation": [],
-                      "division": [],
+                      
                       "images": [],
                       "matchmaking": [
                         "Ide o jednoduché zhrnutie hlavnej myšlienky argumentu. Býva spravidla formulované ako zrozumiteľná a stručná veta, vďaka ktorej si poslucháč už na začiatku argumentu vie predstaviť, kam bude argument smerovať a čo sa bude snažiť dokázať.",
@@ -956,9 +1030,10 @@
                         "Dôkaz",
                         "Tvrdenie"
                       ],
-                      "question": "Argument nemusí mať žiaden záver.",
+                      "question": "",
                       "subQuestion": "",
-                      "title": "Vyber pojem, o ktorom definícia hovorí."
+                      "conclusion": "",
+                      "title": "Vyberte pojem, o ktorom definícia hovorí"
                     }
                     
               ]
@@ -991,12 +1066,13 @@
                 "explanation": [
                   "Osobná skúsenosť nie je dobrým dôkazom v argumente, keďže ju často nevieme zovšeobecniť a tým zosilniť. Internetové články sú oveľa lepšími dôkazmi, ale vždy treba dávať pozor na ich relevanciu a kredibilitu, keďže nie všetky spĺňajú štandardy dôveryhodného zdroja informácií."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Označte všetky pravdivé tvrdenia o argumentačných dôkazoch:"
               },
               {
@@ -1005,14 +1081,14 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 0
+                    "index": 1
                   }
                 ],
                 "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "explanation": [
                   " Osobná skúsenosť nie je zovšeobecniteľná. Mohlo ísť o výnimku"
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [
                   "Počul/-a som, že jeden rodič omylom postrelil svojho syna do nohy na poľovačke. Syn potom dostal otravu krvi a skoro prišiel o život. Kamarát môjho otca bol práve primárom na oddelení kde ten chalan ležal a vravel, že to vôbec nebol pekný pohľad. Tohoto chalana zbrane skoro stáli život."
@@ -1023,6 +1099,7 @@
                 ],
                 "question": "Téma: Držba strelných zbraní pre osobné účely by mala byť zakázaná.",
                 "subQuestion": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
+                "conclusion": "",
                 "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
               },
               {
@@ -1031,14 +1108,14 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 0
+                    "index": 1
                   }
                 ],
                 "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "explanation": [
                   "Anketa v tomto prípade nie je reprezentatívna - je málo respondentov a náchádza sa na (vymyslenej) stránke protizbraniam.sk, ktorá pravdepodobne nebude objektívna."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [
                   "Podľa výsledkov ankety na stránke protizbraniam.sk si až 81% ľudí myslí, že zbrane by mali byť zakázané. Navyše až 35% ľudí uviedlo, že má negatívnu osobnú skúsenosť so zbraňami. Do ankety sa zapojilo 670 respondentov, čo je dosť veľký objem ľudí."
@@ -1049,6 +1126,7 @@
                 ],
                 "question": "Téma: Držba strelných zbraní pre osobné účely by mala byť zakázaná.",
                 "subQuestion": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
+                "conclusion": "",
                 "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
               },
               {
@@ -1064,7 +1142,7 @@
                 "explanation": [
                   "Ide o dôveryhodnú vedeckú štúdiu, ktorá je relevantná pre argument."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [
                   "V USA je držba zbraní legálna. Štúdia z Annals of Internal Medicine z 2014 porovnávala americké domácnosti ktoré vlastnili zbrane s tými, ktoré nevlastnili. Ukázalo sa, že prítomnosť zbrane v domácnosti zdvojnásobila šancu zomrieť na zastrelenie a strojnásobila nebezpečenstvo samovraždy."
@@ -1075,6 +1153,7 @@
                 ],
                 "question": "Téma: Držba strelných zbraní pre osobné účely by mala byť zakázaná.",
                 "subQuestion": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
+                "conclusion": "",
                 "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
               },
               {
@@ -1083,14 +1162,14 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 0
+                    "index": 1
                   }
                 ],
-                "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
+                "definition": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
                 "explanation": [
                   "Dôkaz nesúvisí s vysvetlením. Vysvetlenie je o neopatrnom zaobchádzaní so zbraňami, dôkaz je o životnom prostredí."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [
                   "Štúdia od Rachel Deming z roku 2018 poukazuje na zásadnú environmentálnu záťaž, ktorú spôsobujú zbrane. Strelnice sú rizikom pre životné prostredie, lebo pri streľbe sa vypúšťajú nebezpečné látky, napríklad olovo, zinok, meď a niekedy dokonca ortuť. Tieto látky sa usadia v pôde a potom môžu kontaminovať podzemné vody."
@@ -1100,7 +1179,8 @@
                   "Nevhodný"
                 ],
                 "question": "Téma: Držba strelných zbraní pre osobné účely by mala byť zakázaná.",
-                "subQuestion": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
+                "subQuestion": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
+                "conclusion": "",
                 "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
               }
               
@@ -1108,7 +1188,7 @@
             ]
           },
           {
-            "introduction": "",
+            "introduction": "V predošlých lekciach ste sa naučili podstatné informácie o tom, ako majú argumenty vyzerať a ako ich viete čo najefektívnejšie vytvoriť. V tejto lekcií musíte všetky tieto znalosti zužitkovať aby ste dokázali rozoznať silné argumenty od slabých. Táto schopnosť je veľmi dôležitá. Nevšímavosť voči kvalite argumentov nás môže spraviť náchylnými k manipulácii. Vedieť rozpoznať slabé argumenty nám umožňuje byť menej ovplyvniteľnými nepravdivými alebo zavádzajúcimi tvrdeniami.",
             "name": "Silné a slabé argumenty 1",
             "points": 3,
             "questions":[
@@ -1121,19 +1201,20 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 0
+                    "index": 1
                   }
                 ],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie pracuje s predpokladom, že ak budú vysoké školy zadarmo, viac ľudí získa titul. Avšak počet absolventov nesúvisí s cenou školného – aj školy zadarmo môžu mať limity na to, koľko študentov príjmu. Tvrdenie hovorí len o nadbytku kvalifikovaných ľudí, ale nevyjadruje sa k otázke ceny."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 1: Nie. Priveľmi jednoducho získané vzdelanie vedie k priveľa kvalifikovaným ľuďom a potom k nezamestnanosti.",
                 "subQuestion": "Nie. Priveľmi jednoducho získané vzdelanie vedie k priveľa kvalifikovaným ľuďom a potom k nezamestnanosti.",
+                "conclusion": "",
                 "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mali by byť vysoké školy zadarmo?"
               },
               {
@@ -1146,12 +1227,14 @@
                 "explanation": [
                   "Tvrdenie sa priamo vyjadruje k položenej otázke a jasne pomenováva nevýhodu vyplývajúcu zo zavedenia opatrenia. Navyše, toto tvrdenie prináša aj dôkaz v podobe štúdii, ktoré robia jeho dopady uveriteľnejšie."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 2: Nie, pretože rôzne štúdie ukázali, že študenti, ktorí nie sú povinní platiť školné, si školu vážia menej, menej sa jej venujú a dosahujú horšie výsledky.",
-                "subQuestion": ""
+                "subQuestion": "",
+                "conclusion": "",
+                "title": ""
               },
               {
                 "answers": ["silné", "slabé"],
@@ -1163,12 +1246,13 @@
                 "explanation": [
                   "Tvrdenie vytvára ucelenú analýzu. Pomenuje problém, vysvetlí, ako tento problém operuje a je zakončené náčrtom dopadov na spoločnosť."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 3: Áno, lebo školné vie byť pre veľa študentov príliš vysoké. Potom si veľa ľudí nevie dovoliť chodiť na univerzity, hlavne študenti zo sociálne slabších rodín. Toto nie je spravodlivé a len to prehlbuje rozdiely medzi bohatými a chudobnými.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mali by byť vysoké školy zadarmo?"
               }
             ]
@@ -1188,12 +1272,13 @@
                 "explanation": [
                   "Tvrdeniu chýba vysvetlenie mechanizmu, prečo minimálna mzda zapríčiňuje prosperitu. Ten vzťah môže byť kľudne opačný (prosperujúce krajiny si môžu dovoliť navýšiť minimálnu mzdu) alebo dokonca náhodný, keďže veľa neprosperujúcich krajín má minimálnu mzdu."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 1: Áno. Krajiny, kde nie je fixná minimálna mzda, sú často dysfunkčné a plné chudoby. Bohaté a prosperujúce štáty minimálnu mzdu naopak majú. Ak štát chce byť bohatý a prosperujúci, mal by preto zaviesť minimálnu mzdu.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?   2) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
               },
               {
@@ -1206,12 +1291,13 @@
                 "explanation": [
                   "Tvrdenie sa priamo vyjadruje k položenej otázke a veľmi jasne pomenúva nevýhodu fixnej minimálnej mzdy. Navyše obsahuje ucelený príčinno-následkový reťazec, teda nám presne vysvetľuje čo sa stane a aké to bude mať následky."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 2: Nie, minimálna mzda vedie k chudobe tým, že tlačí podniky k tomu, aby prijímali zamestnancov len na polovičný alebo čiastočný úväzok, pretože si nemôžu dovoliť platiť zamestnancov na plný úväzok.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
               },
               {
@@ -1224,134 +1310,20 @@
                 "explanation": [
                   "Tvrdenie sa nevyjadruje priamo k téme, je len o tom, prečo by mali byť ľudia platení za svoju prácu a ako by to malo byť ich základné ľudské právo. Avšak zavedenie minimálnej mzdy neznamená, že každý človek bude mať prácu a zaručené dôstojné živobytie"
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 3: Áno, stabilný príjem, aj keď len minimálnej hodnoty, by mal byť základným ľudským právom. Každý človek by mal mať zaručené dôstojné živobytie.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
               }
             ]
           },
           {
-            "introduction": "",
-            "name": "Závery (výroková logika I.)",
-            "points": 6,
-            "questions":[
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 0, "index": 0 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "V predpoklade sú spomenuté len súkromné podzemné knižnice. Predpoklad nevylučuje existenciu väčšej podzemnej knižnice, ktorá je vlastnená inak ako súkromne."
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike",
-                "subQuestion": "Záver 1: V Českej Republike môže existovať väčšia podzemná knižnica ako tá, ktorú vybudoval Jakub Rajčina.",
-                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              },
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 1, "index": 1 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "Predpoklad hovorí len o súkromne vlastnených podzemných knižniciach. Navyše, je tento záver vzájomne výlučný so záverom 1, čo znamená, že ak ste  odpovedali „áno“ pri prvom závere, odpoveď na druhý záver sa dala vydedukovať."
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike.",
-                "subQuestion": " Záver 2: Podzemná knižnica Jakuba Rajčinu je najväčšou podzemnou knižnicou v Českej Republike.",
-                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              },
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 1, "index": 1 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "Predpoklad hovorí len o podzemných knižniciach a teda nevyulučuje existenciu iných, väčších knižníc (napr. univerzitných). Tento záver nešpecifikuje miesto, takže hovorí o všeobecnom výskyte súkromných knižníc. Keďže náš predpoklad presne špecifikuje miesto, záver, že nikde inde na svete nemôže existovať väčšia súkromná knižnica, je nesprávny"
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike.",
-                "subQuestion": "Záver 3: Neexistuje väčšia súkromná knižnica ako má Jakub Rajčina.",
-                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              },
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 1, "index": 1 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "Predpoklad nevylučuje možnosť, že predošlé roky, prichádzali do Poľska utečenci z Afganistanu. Predpoklad len vylučuje možnosť, že ich v predošlé roky bolo viac ako v roku 2015."
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu",
-                "subQuestion": " Záver 1: V roku 2014 Poľsko neprijalo žiadnych utečencov z Afganistanu.",
-                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              },
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 1, "index": 1 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "Predpoklad sa vyjadruje len k faktu, že utečencov prichádzajúcich z Afganistanu bolo najviac v roku 2015, pričom nehovorí, že z celkového počtu utečencov, ktorí v roku 2015 prišli do Poľska, bolo najviac tých z Afganistanu."
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu.",
-                "subQuestion": "Záver 2: V roku 2015 bolo najviac utečencov prichádzajúcich do Poľska z Afganistanu",
-                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              },
-              {
-                "answers": ["Áno", "Nie"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 0, "index": 0 }
-                ],
-                "definition": "",
-                "explanation": [
-                  "Predpoklad sa nevyjadruje o celkových číslach utečencov naprieč históriou, ale hovorí špecificky o Afganských utečencoch v 2015. Tých síce v 2015 bolo najviac, no to nie je výlučné so záverom, že v predošlých rokoch do Poľska prišlo celkovo viac utečencov."
-                ],
-                "division": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "v  Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu.",
-                "subQuestion": "Záver 3: V roku 2015 prišlo do Poľska najviac utečencov v histórii.",
-                "title": "Zadanie: Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
-              }                                                                                    
-            ]
-          },
-          {
-            "introduction": "",
-            "name": "Predpoklady (výroková logika II.)",
+            "introduction": "V tejto výzve sa naučíte pracovať so zamlčaným predpokladom skrz dopĺňanie chýbajúcich predpokladov do radu sústavy výrokov tak, aby ste dosiahli platný záver. Schopnosť správne vyvodzovať závery z predpokladov nám umožňuje lepšie pochopiť informácie, ktoré sú nám poskytnuté. Pomáha nám získať hlbší pohľad na súvislosti medzi informáciami a získavať z nich relevantné závery.",
+            "name": "Výrokova logika - predpoklady",
             "points": 5,
             "questions":[
               {
@@ -1366,15 +1338,16 @@
                 ],
                 "definition": "",
                 "explanation": [
-                  "Moja káva je lepšia ako tvoja. Vždy je potrebné zamyslieť sa, ako sa dá dosiahnuť potrebný záver; ako vytvoríme lepšiu kávu. Odpoveď b) je správna, pretože sa priamo vyjadruje k tomu, na základe akej charakteristiky posudzujeme kvalitu kávy – na základe množstva kofeínu. Ostatné dve odpovede hovoria len o velkostiach kávy, ktoré môžu zdanlivo súvisieť s predpokladom č.1, ale nedostanú nás k potrebnému záveru."
+                  "Vždy je potrebné zamyslieť sa, ako sa dá dosiahnuť potrebný záver; ako vytvoríme lepšiu kávu. Odpoveď b) je správna, pretože sa priamo vyjadruje k tomu, na základe akej charakteristiky posudzujeme kvalitu kávy – na základe množstva kofeínu. Ostatné dve odpovede hovoria len o velkostiach kávy, ktoré môžu zdanlivo súvisieť s predpokladom č.1, ale nedostanú nás k potrebnému záveru."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "v  Predpoklad 1: V mojej dvojitej káve je viac kofeínu ako v tvojej.",
+                "question": "Predpoklad 1: V mojej dvojitej káve je viac kofeínu ako v tvojej.",
                 "subQuestion": "Predpoklad 2: Čím viac kofeínu je v káve, tým je káva lepšia.",
-                "title": "Doplň zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver. (inšpiráciu na tento typ úloh sme čerpali v: Martin Schmidt et al. (2018), Ako správne argumentovať, písať a diskutovať.)"
+                "conclusion": "Moja káva je lepšia ako tvoja.",
+                "title": "Doplňte zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
               },
               {
                 "answers": [
@@ -1388,15 +1361,16 @@
                 ],
                 "definition": "",
                 "explanation": [
-                  "Preto sú Košice krajšie ako Svidník. Bolo treba porozmýšlať, ako dosiahneme, aby Košice boli krajšie ako Bardejov aj ako Svidník zároveň. Predpoklad a) sa nevyjadruje k Svidníku a teda z neho nedokážeme vyvodiť záver. Predpoklad b) je tiež nesprávny, pretože nám z neho síce vyplýva, že Svidník aj Košice sú obe krajšie ako Bardejov, nevieme určiť, ktoré mesto je krajšie. Predpoklad c) je jediný správny, pretože platí, že ak je Bardejov krajší ako Svidník, a zároveň sú Košice krajšie ako Bardejov, Svidník padá v rebríčku za Košice a záver platí."
+                  "Bolo treba porozmýšlať, ako dosiahneme, aby Košice boli krajšie ako Bardejov aj ako Svidník zároveň. Predpoklad a) sa nevyjadruje k Svidníku a teda z neho nedokážeme vyvodiť záver. Predpoklad b) je tiež nesprávny, pretože nám z neho síce vyplýva, že Svidník aj Košice sú obe krajšie ako Bardejov, nevieme určiť, ktoré mesto je krajšie. Predpoklad c) je jediný správny, pretože platí, že ak je Bardejov krajší ako Svidník, a zároveň sú Košice krajšie ako Bardejov, Svidník padá v rebríčku za Košice a záver platí."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "v  Predpoklad 1: Košice sú krajšia ako Bardejov",
+                "question": "Predpoklad 1: Košice sú krajšia ako Bardejov",
                 "subQuestion": "Predpoklad 2: Svidník je krajší ako Košice",
-                "title": "Doplň zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
+                "conclusion": "Preto sú Košice krajšie ako Svidník.",
+                "title": "Doplňte zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
               },
               {
                 "answers": [
@@ -1410,15 +1384,16 @@
                 ],
                 "definition": "",
                 "explanation": [
-                  "Preto Filip nepoužíva ťaháky. Je potrebné doplniť predpoklad, v ktorom zovšeobecníme pravidlo natoľko, aby sme mohli povedať, že každý človek z určitej vzorky bude mať rovnakú vlastnosť. V tomto prípade je opisovaná vlastnosť nepoužívanie ťahákou a vzorkou sú všetci žiaci, ktorým ide matematika. Odpoveď a) ako jediná ponúka takéto zovšeobecnenie a preto je správna."
+                  "Je potrebné doplniť predpoklad, v ktorom zovšeobecníme pravidlo natoľko, aby sme mohli povedať, že každý človek z určitej vzorky bude mať rovnakú vlastnosť. V tomto prípade je opisovaná vlastnosť nepoužívanie ťahákou a vzorkou sú všetci žiaci, ktorým ide matematika. Odpoveď a) ako jediná ponúka takéto zovšeobecnenie a preto je správna."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "v  Predpoklad 1: Filip je dobrý v matematike, ale Jakub nie je.",
                 "subQuestion": "Predpoklad 2: Žiaden dobrý žiak v matematike nepoužíva ťaháky.",
-                "title": "Doplň zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
+                "conclusion": " Preto Filip nepoužíva ťaháky.",
+                "title": "Doplňte zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
               },
               {
                 "answers": [
@@ -1432,15 +1407,16 @@
                 ],
                 "definition": "",
                 "explanation": [
-                  "Katar má vyšší index ľudského rozvoja ako Turecko. Bolo sa treba zamyslieť, ako sa dá prepojiť bohatstvo s indexom ľudského rozvoja. Odpoveď b) je správna, pretože ako jediná správne pomenováva vzťah medzi týmito dvoma veličinami a ako jediná nás dokáže doviesť k potrebnému záveru."
+                  "Bolo sa treba zamyslieť, ako sa dá prepojiť bohatstvo s indexom ľudského rozvoja. Odpoveď b) je správna, pretože ako jediná správne pomenováva vzťah medzi týmito dvoma veličinami a ako jediná nás dokáže doviesť k potrebnému záveru."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "v  Predpoklad 1: Katar je bohatší ako Turecko",
                 "subQuestion": "Predpoklad 2: Index ľudského rozvoja Kataru je vyšší ako index ľudského rozvoja Turecka.",
-                "title": "Doplň zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
+                "conclusion": "Katar má vyšší index ľudského rozvoja ako Turecko. ",
+                "title": "Doplňte zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
               },
               {
                 "answers": [
@@ -1454,16 +1430,138 @@
                 ],
                 "definition": "",
                 "explanation": [
-                  "Dunčo v pondelok neštekal. Odpoveď c) je jediná správna, keďže ostatné dve odpovede pracujú s domnienkou, že predpoklad č.1 je limitovaný na „naše“ psy. Avšak, v tomto prepdoklade nie je použitý žiaden výraz, ktorý by nás k takémuto záveru doviedol – neboli použité žiadne slová ako len alebo iba. To, že naše psy štekali celú noc, ešte neznamená, že neštekali žiadne iné. Ak Dunčo v pondelok neštekal a naše psy štekali celú noc, neznamená to, že Dunčo nemôže byť susedov pes, ktorý taktiež štekal celú noc."
+                  "Odpoveď c) je jediná správna, keďže ostatné dve odpovede pracujú s domnienkou, že predpoklad č.1 je limitovaný na „naše“ psy. Avšak, v tomto prepdoklade nie je použitý žiaden výraz, ktorý by nás k takémuto záveru doviedol – neboli použité žiadne slová ako len alebo iba. To, že naše psy štekali celú noc, ešte neznamená, že neštekali žiadne iné. Ak Dunčo v pondelok neštekal a naše psy štekali celú noc, neznamená to, že Dunčo nemôže byť susedov pes, ktorý taktiež štekal celú noc."
                 ],
-                "division": [],
+                
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "v Predpoklad 1: Všetky naše psy štekali celú pondelkovú noc.",
                 "subQuestion": "v Predpoklad 2: Žiadny iný pes okrem našich psov neštekal celú pondelkovú noc.",
-                "title": "Doplň zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
+                "conclusion": "Dunčo v pondelok neštekal.",
+                "title": "Doplňte zamlčaný predpoklad do prázdneho miesta tak, aby z oboch predpokladov dokopy vyplynul záver."
               }                                                                      
+            ]
+          },
+          {
+            "introduction": "V tejto výzve sa naučíte pracovať so zamlčaným predpokladom skrz dopĺňanie chýbajúcich predpokladov do radu sústavy výrokov tak, aby ste dosiahli platný záver. Schopnosť správne vyvodzovať závery z predpokladov nám umožňuje lepšie pochopiť informácie, ktoré sú nám poskytnuté. Pomáha nám získať hlbší pohľad na súvislosti medzi informáciami a získavať z nich relevantné závery.",
+            "name": "Výrokova logika - závery",
+            "points": 6,
+            "questions":[
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 0, "index": 0 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "V predpoklade sú spomenuté len súkromné podzemné knižnice. Predpoklad nevylučuje existenciu väčšej podzemnej knižnice, ktorá je vlastnená inak ako súkromne."
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike.",
+                "subQuestion": "Záver 1: V Českej Republike môže existovať väčšia podzemná knižnica ako tá, ktorú vybudoval Jakub Rajčina.",
+                "conclusion": "",
+                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              },
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 1, "index": 1 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "Predpoklad hovorí len o súkromne vlastnených podzemných knižniciach. Navyše, je tento záver vzájomne výlučný so záverom 1, čo znamená, že ak ste  odpovedali „áno“ pri prvom závere, odpoveď na druhý záver sa dala vydedukovať."
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "v  Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike.",
+                "subQuestion": " Záver 2: Podzemná knižnica Jakuba Rajčinu je najväčšou podzemnou knižnicou v Českej Republike.",
+                "conclusion": "",
+                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              },
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 1, "index": 1 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "Predpoklad hovorí len o podzemných knižniciach a teda nevyulučuje existenciu iných, väčších knižníc (napr. univerzitných). Tento záver nešpecifikuje miesto, takže hovorí o všeobecnom výskyte súkromných knižníc. Keďže náš predpoklad presne špecifikuje miesto, záver, že nikde inde na svete nemôže existovať väčšia súkromná knižnica, je nesprávny"
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "Predpoklad: Jakub Rajčina vo svojej pivnici v Liberci vybudoval najväčšiu súkromnú podzemnú knižnicu v Českej Republike.",
+                "subQuestion": "Záver 3: Neexistuje väčšia súkromná knižnica ako má Jakub Rajčina.",
+                "conclusion": "",
+                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              },
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 1, "index": 1 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "Predpoklad nevylučuje možnosť, že predošlé roky, prichádzali do Poľska utečenci z Afganistanu. Predpoklad len vylučuje možnosť, že ich v predošlé roky bolo viac ako v roku 2015."
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu.",
+                "subQuestion": " Záver 1: V roku 2014 Poľsko neprijalo žiadnych utečencov z Afganistanu.",
+                "conclusion": "",
+                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              },
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 1, "index": 1 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "Predpoklad sa vyjadruje len k faktu, že utečencov prichádzajúcich z Afganistanu bolo najviac v roku 2015, pričom nehovorí, že z celkového počtu utečencov, ktorí v roku 2015 prišli do Poľska, bolo najviac tých z Afganistanu."
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu.",
+                "subQuestion": "Záver 2: V roku 2015 bolo najviac utečencov prichádzajúcich do Poľska z Afganistanu",
+                "conclusion": "",
+                "title": "Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              },
+              {
+                "answers": ["Áno", "Nie"],
+                "answersImage": [],
+                "correct": [
+                  { "correct": 1, "index": 1 }
+                ],
+                "definition": "",
+                "explanation": [
+                  "Predpoklad sa nevyjadruje o celkových číslach utečencov naprieč históriou, ale hovorí špecificky o Afganských utečencoch v 2015. Tých síce v 2015 bolo najviac, no to nie je výlučné so záverom, že v predošlých rokoch do Poľska prišlo celkovo viac utečencov."
+                ],
+                
+                "images": [],
+                "matchmaking": [],
+                "matches": [],
+                "question": "Predpoklad: V roku 2015 prijalo Poľsko rekordné množstvo utečencov z Afganistanu.",
+                "subQuestion": "Záver 3: V roku 2015 prišlo do Poľska najviac utečencov v histórii.",
+                "conclusion": "",
+                "title": "Zadanie: Predstavte si, že je predpoklad vo vete pravdivý. Aké závery vieme vyvodiť z tohoto predpokladu?"
+              }                                                                                    
             ]
           }
       ]
@@ -1492,27 +1590,13 @@
                 ],
                 "definition": "",
                 "explanation": [],
-                "division": [
-                  {
-                    "title": "ÚSKOKY",
-                    "text": "Je to typ argumentačných faulov, ktoré sa snažia neférovo odkloniť diskusiu a odviesť pozornosť od pôvodnej témy. Rečník týmito faulami zámerne znižuje prehľadnosť diskusie a pokrivuje ju vo svoj prospech. Obsah takýchto faulov môže byť aj pravdivý, avšak je irelevantný pre diskusiu."
-                  },
-                  {
-                    "title": "LOGICKÉ CHYBY",
-                    "text": "Tieto argumenty sú síce relevantné k téme, ale ich vnútorná logika nesedí. Argumenty poznačené takýmito faulami pracujú s nesprávnymi predpokladmi alebo nekorektne vyvodzujú príčinno-následkové vzťahy medzi krokmi v argumente."
-                  },
-                  {
-                    "title": "FALOŠNÉ KRITÉRIÁ",
-                    "text": "Argumentačný faul, podľa ktorého si rečník stanoví nepodstatné meradlo, podľa ktorého by mala údajne vyhodnocovať sila jeho argumentu alebo tvrdenia. Dôležitosť takéhoto meradla nie je vysvetlená, a rečník sa pri ich používaní spolieha len na intuíciu publika. Takéto argumenty a tvrdenia sa nespoliehajú na silu dôkazov alebo logickú analýzu, ale iba na irelevantné faktory, ako sú napríklad názor väčšiny či tvrdenia autority."
-                  }
-                ],
                 "images": [],
                 "matchmaking": ["“Sila argumentu je postavená na irelevantných faktoroch, nie na logike alebo dôkazoch.”", "“Argumenty neférovo odkláňajú diskusiu od pôvodnej témy.”", "“Argumenty pracujú s nesprávnymi predpokladmi alebo majú zlý príčinno-následkový reťazec.”"],
                 "matches": ["ÚSKOKY", "LOGICKÉ CHYBY", "FALOŠNÉ KRITÉRIÁ"],
-                "question": "Argumentačných faulov sa dopúšťajú ľudia v politike, mediálnom prostredí, ale aj v bežnom živote pri diskusií s priateľmi. Kriticky mysliaci človek by mal preto vedieť poukázať na tieto chyby. Poznáme tri typy argumentačných faulov. Priradťe definície k pojmom.",
-                "subQuestion": "",
-                "title": "Delenie",
-                "subTitle": "Priraďte definície k jednotlivým typom argumentačných faulov."
+                "question": "Priraďte definície k jednotlivým typom argumentačných faulov.",
+                "subQuestion": "Argumentačných faulov sa dopúšťajú ľudia v politike, mediálnom prostredí, ale aj v bežnom živote pri diskusií s priateľmi. Kriticky mysliaci človek by mal preto vedieť poukázať na tieto chyby. Poznáme tri typy argumentačných faulov. Priradťe definície k pojmom.",
+                "conclusion": "",
+                "title": "Delenie"
               },
               {
                 "answers": ["Pravda", "Nepravda"],
@@ -1523,11 +1607,11 @@
                 "definition": "",
                 "explanation": [],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Úskoky sú spravidla irelevatné pre diskusiu.“",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1539,11 +1623,11 @@
                 "definition": "",
                 "explanation": [],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Argumenty postavené na logických chybách môžu byť tématicky relevantné“",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1557,11 +1641,11 @@
                   "Tému diskusie sa pokúšajú zmeniť argumentačné úskoky."
                 ],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Rečník sa falošnými kritériami snaží zmeniť tému diskusie, aby sa nedostal do nepríjemnej situácie.“",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1575,11 +1659,11 @@
                   "Obsah úskokov môže byť aj pravdivý, avšak je irelevantný pre diskusiu."
                 ],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Obsah argumentačného úskoku je vždy nepravdivý.“",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1591,11 +1675,11 @@
                 "definition": "",
                 "explanation": [],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               }
             ]
@@ -1624,11 +1708,11 @@
                   "Ad hominem útoky sú často vulgárne a podnecujú hnev. Publikum sa nedozvedá nové potrebné informácie, len je po diskusií viac polarizované. Kvalita takejto diskusie je veľmi nízka a riadená emóciami."
                 ],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Predstavte si situáciu, že sa v parlamentne diskutuje o navýšení finančného príspevku na dieťa. Ktoré z nasledujúcich výrokov by ste označili za faul ad hominem?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1647,11 +1731,11 @@
                 "definition": "Slamený panák je úskok pri ktorom rečník prekrúti slová oponenta. Neférovo odprezentuje slabšiu verziu argumentu súpera, a následne reaguje na túto oslabenú verziu. Rečník vytvorí atrapu, „slameného panáka“, súperovho argumentu. Tento faul je efektívny, lebo ním diskutér vkladá slová do úst oponenta, a zároveň vytvára falošný dojem, že oponentov argument bol zdiskreditovaný.",
                 "explanation": [],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Predstavte si situáciu, že sa vo verejnej diskusii moderátorka rozpráva o znčisťovaní životného prostredia: „Som presvedčená, že by sme mali znižovať uhlíkovú stopu. Treba investovať viac do zelených technológii a menej sa spoliehať na plyn, ropu a uhlie.“ Vyberte všetky reakcie, ktoré neobsahujú faul slameného panáka.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1671,11 +1755,12 @@
                   "Prvé dve odpovede obviňujú niekoho iného z podobných praktík a tým sa snažia odvrátiť pozornosť od situácie v Bielorusku. Ostatné odpovede, aj keď sú možno fakticky nesprávne, sa takejto chyby nedopúšťajú."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Predstavte si situáciu, v ktorej politici a političky diskutujú o Bielorusku. Na začiatku debaty zaznie: „Mali by sme odsúdiť režim v Bielorusku! Ide o nedemokratický režim, ktorý odopiera svojim občanom základné práva a slobody.“ Ktoré z následujúcich reakcií sa dopúšťajú chyby whataboutizmu?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               }
                                           
@@ -1703,7 +1788,6 @@
                   "Sloboda slova, aj keď určite dôležitým pilierom demokracie je stále proporcionálna k ostatným právam a slobodám. To znamená, že aj v demokratických štátoch môže byť do značnej miery obmedzená a to hlavne v záujme chránenia iných práv a slobôd."
                 ],
                 "images": [],
-                "division": [],
                 "matchmaking": [
                   "Kriminalita je vážny problém. Buď zavedieme trest smrti, alebo bude zločin naďalej stúpať.",
                   "K čítaniu potrebujem svetlo. Buď ho zapneš, alebo nebudem nič vidieť.",
@@ -1713,6 +1797,7 @@
                 "matches": ["Falošná dilemma", "Konkrétne tvrdenie"],
                 "question": "Zistite či ide o falošnú dilemu alebo konkrétne tvrdenie.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1732,11 +1817,11 @@
                   "Prvé dve možnosti dotiahli svoje argumenty do veľmi nafúknutých a nerealistických záverov. Aby sme sa takejto chybe vyhli, mali by sme sa zamýšlať nad tým, ako realistické závery, ktoré opisujeme sú, resp. koľko veľa a ako pravdepodobných medzikrokov sa musí stať, na to aby platili."
                 ],
                 "images": [],
-                "division": [],
                 "matchmaking": [],
                 "matches": [],
                 "question": "Predstavte si situáciu, v ktorej moderátorka politickej diskusie rozpráva o zmierňovaní trestov za mäkké drogy, akou je napríklad marihuana. Ktorá z následujúcich reakcí obsahuje logickú chybu klzkého svahu?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1756,11 +1841,12 @@
                   "Všetky tvrdenia sa dopustili chyby zovšeobecňovania a vytvorili tým neférové a škodlivé stereotypy o Rómskej menšine."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Určite, ktoré z týchto výrokov sú príkladmi neférového zovšeobecňovania.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               }                            
             ]
@@ -1787,11 +1873,12 @@
                   "Ak sa nechcete dopustiť chyby hlas ľudu musíte sa vyhnúť obhajobe istého opatrenia iba tým, že vo verejnosti žije veľká skupina ľudí, ktorá by si podobný zákrok priala – podobnú logiku aplikovali tvrdenia B a C a preto sú argumentačne nesprávne."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Ktoré z následujúcich tvrdení používajú takéto falošné kritérium?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Hlas ľudu je jedno z falošných kritérií používaných pri argumentácií – táto chyba sa spolieha na názor väčšiny populácie. Názor väčšiny však automaticky neznamená správny názor, keďže vie byť často podmienený predsudkami, nepravdivými informáciami alebo nenávisťou. Aj ľud sa často mýli, preto by sa silné argumenty mali spoliehať na logickú konzistenciu a fakty."
               },
               {
@@ -1812,11 +1899,12 @@
                   "Prvé dve odpovede sa odkazujú na „autority“, ktoré nemôžeme pokladať za relevantné v otázke zdravia a očkovania. Tretia odpoveď sa odkazuje na štúdiu z roku 1998 aj keď zväčša sú vedecké štúdie spoľahlivý zdroj informácií, táto bola mnohokrát vyvrátená a zdiskreditovaná. Posledná odpoveď je jediná, ktorá sa chyby falošnej autority nedopúsťa."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Predstavte si, že sa náhodou ocitnete na proteste proti očkovaniu. Ktoré z týchto výrokov sa podľa vás dopustili argumentačnej chyby odkazu na (falošnú) autoritu?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Aj keď je správne vyhľadávať vyjadrenia odborníkov v témach, v ktorých sa nevyznáme, ak sú niekoho argumenty postavené  len na názore jednej konkrétnej autority, napríklad političky, akademika, celebrity alebo influencera, vie to byť problematické. Totiž, aj spoľahliví experti medzi sebou občas nesúhlasia, preto musí byť odkaz na autoritu vždy podporený logickou analýzou argumentu. Ešte väčší problém je, keď ide o falošnú autoritu. Takáto 'autorita' napríklad nie je odborník v téme alebo jej teórie boli vyvrátené."
               },
               {
@@ -1838,11 +1926,12 @@
                   "Všetkým týmto tvrdeniam chýba hlbšie vysvetlenie, keďže ani jedno nepoužilo pri analyzovaní niečo viac ako len odkaz na tradíciu. Bod s interupciami by bol napríklad vysvetlený lepšie, ak by sa tvrdenie pozrelo na benefity interpucií a tak ukázalo, prečo je táto praktika v aktuálnej dobe potrebná."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Ktorým z týchto tvrdení odvolávajúcim sa na tradíciu chýba hlbšie vysvetlenie?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Odkaz na tradíciu je argumentačná chyba, ktorá vychádza z predpokladu, že ak niečo sa robilo v minulosti, musí sa to robiť aj teraz. No pravdou je, že minulosťou sa oháňať nestačí, lebo v minulosti ľudstvo robilo mnoho chýb. Zároveň však toto neznamená, že každá tradícia je automaticky zlá. Každé odvolávanie sa na tradíciu treba kriticky vyhodnocovať a používať logické analýzy o tom prečo sú jednotlivé tradície správne. Táto chyba preto nie nutne robí všetky argumenty automaticky nepoužiteľné, skôr len poukazuje na nutnosť hlbšieho vysvetlenia."
               }
                             
@@ -1866,7 +1955,7 @@
                 "definition": "",
                 "explanation": [],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [
                   "Popisuje vzťah medzi jednou udalosťou (príčinou) a druhou udalosťou (následkom), kde druhá udalosť je priamy dôsledok prvej. Napríklad, ak dáme vodu do mínusových teplôt (príčina), premení sa na ľad (následok).",
                   "Vzťah medzi dvoma javmi, ktoré medzi sebou zdanlivo súvisia, aj keď jeden nezapríčiňuje ten druhý. Napríklad, ak žiaci veria, že použitie ich “šťastného pera” pri písomke im prinesie lepšiu známku. Ak aj dobrú známku dostanú, nezapríčinilo ju ich šťastné pero – dosiahli ju pravdepodobne kvôli svojim dobrým vedomostiam.",
@@ -1883,6 +1972,7 @@
                 ],
                 "question": "Priraď definície k nasledujúcim pojmom:",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               },
               {
@@ -1898,11 +1988,12 @@
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture1.png"],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 1: Čím viac doktorandských titulov zo sociológie sa udelí v USA (oranžová), tým viac nekomerčných výjazdov do vesmíru sa každoročne uskutoční (modrá).",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Prečítaj si nasledujúce tvrdenia a zhodnoť, aký vzťah je medzi javmi."
               },
               {
@@ -1918,11 +2009,12 @@
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture2.png"],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 2: V zimných mesiacoch (os X) ľudia míňajú viac peňazí v obchodoch (os Y), lebo je im zima a nemôžu tráviť čas vonku.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Prečítaj si nasledujúce tvrdenia a zhodnoť, aký vzťah je medzi javmi."
               },
               {
@@ -1938,11 +2030,12 @@
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture3.png"],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 3: Čím viac cigariet sa v USA vyfajčí (modrá), tým viac ľudí tam zomrie na rakovinu pľúc (čierna).",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Prečítaj si nasledujúce tvrdenia a zhodnoť, aký vzťah je medzi javmi."
               },
               {
@@ -1952,11 +2045,12 @@
                 "definition": "Čína je nedemokratická krajina, v ktorej je všetka moc centralizovaná v rukách komunistickej strany. India je naopak demokraticky riadená, pravidelne sa tam odohrávajú slobodné voľby. Obe krajiny majú približne rovnakú populáciu (okolo 1,4 miliardy). Od začiatku pandémie Covid 19 v Číne nahlásili menej než 5 tisíc úmrtí na koronavírus, zatiaľ čo v Indii nahlásili takmer pol milióna obetí. Z toho vyplýva, že autokratické krajiny vedia byť oveľa efektívnejšie v boji s pandémiou, lebo nemusia myslieť na voličov a robiť populistické opatrenia.",
                 "explanation": ["Treba sa zamyslieť, či nemôže existovať alternatívna skrytá príčina tohto javu. Ak existuje alternatívne vysvetlenie, tak záver nevyplýva z údajov uvedených v texte. Navyše sa záver dopúšťa jednej argumentačnej chyby – generalizácie."],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Bolo by správne, na základe dát v texte, vyvodiť záver, že autokratické krajiny bojovali proti pandémií efektívnejšie než demokratické krajiny?",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Zadanie: Prečítajte si nasledujúcu interpretáciu dát a následne odpovedzte na otázky."
               },
               {
@@ -1973,11 +2067,12 @@
                   "Spôsob ohlasovania a zaznamenávania úmrtí bol v Číne veľmi netransparentný. Mnoho expertov sa domnieva, že Čínska autokratívna vláda sa snažila utajiť počty úmrtí a reálne čísla sú omnoho väčšie."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Označ všetky skryté príčiny, ktoré by potenciálne dokázali vyvetliť jav, o ktorom článok hovorí.",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": ""
               }
             ]
@@ -1996,12 +2091,13 @@
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture4.png", "assets/pictures/6.png"],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Elion Minsk uverejnil na Twitteri tieto príspevky ohľadom jedného používteľa, volajme ho Donald Duck, ktorému bol v minulosti zablokovaný účet:",
                 "subQuestion": "",
-                "title": "Vyberte z možností jeden argumentačný faul, ktorý je najviac viditeľný v následujúcich príspevkoch."
+                "conclusion": "",
+                "title": "Vyberte z možností jeden argumentačný faul, ktorý je najviac viditeľný v nasledujúcich príspevkoch."
               },
               {
                 "answers": [
@@ -2017,11 +2113,12 @@
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/7.png"],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": "Fiktívny politik si dal urobiť prieskum verejnej mienky ohľadom podpory zelených projektov. Znenie otázky je nasledovné"
               },
               {
@@ -2044,11 +2141,12 @@
                   "M1 – vyberanie čerešní („cherry-picking“): Ide o argumentačný faul, kedy diskutujúci úmyselne vyberie dôkaz, ktorý podporuje jeho tvrdenie, aj keď nezodpovedá všeobecnému trendu. V tomto prípade sa Milan dopustil tejto chyby, keď si zámerne vybral jednu špecifickú situáciu, ktorá sedí do jeho analýzy. M3 – klzký svah: Chyba, pri ktorej diskutujúci nesprávne predpokladá, že drobná zmena na začiatku príčinno-následkového reťazca bude nutne viesť k následnej lavíne nežiadúcich, občas až nadrozmerných, dôsledkov. M4 – červený sleď: Neférová argumentácia, pri ktorej sa diskutér snaží odviesť pozornosť od pôvodnej témy. V tomto prípade sa Milan snažil odviesť pozornosť od diskusie o globálnom otepľovaní tým, že prihodil do diskusie inú, tiež veľmi komplexnú tému – medzinárodné vzťahy."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Časť 1:  Milan",
                 "subQuestion": "",
+                "conclusion": "",
                 "title": " Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď akých argumetačných faulov sa obaja dopustili v tejto konverzácii."
               },
               {
@@ -2070,11 +2168,12 @@
                   "J1 – ad hominem: Chyba, pri ktorej diskutujúci namiesto útočenia na to, čo bolo povedané, zámerne útočí na osobu názorovej protistrany. V tomto prípade nebolo fér, že Jožo prirovnal kamaráta ku „americkému chmuľovi.“ J3 – odkaz na autoritu: Neférová stratégia, keď diskutér zakladá silu svojho argumentu výhradne na cudzej autorite. Len preto, že niečo zakázala Európska únia – teda nejaká vyššia autorita, ešte to nemusí byť správny krok."
                 ],
                 "images": [],
-                "division": [],
+                
                 "matchmaking": [],
                 "matches": [],
                 "question": "Časť 2: Jožo",
                 "subQuestion": "",
+                "conclusion": "",
                 "title":"Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď akých argumetačných faulov sa obaja dopustili v tejto konverzácii."
               }                                              
             ]
@@ -2106,7 +2205,7 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Tento graf je najlepšie použiť na porovnávanie rôznych častí z jednotného celku. Nedokážeme však na ňom efektívne znázorniť zmeny v priebehu času.",
                 "Tieto grafy využívame na porovnanie dát medzi rôznymi skupinami, alebo na sledovanie zmien v priebehu času.",
@@ -2115,6 +2214,7 @@
               "matches": ["Čiarový graf", "Koláčový graf", "Stĺpcový graf"],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Priraď pojmy k definíciam."
             },
             {
@@ -2134,11 +2234,12 @@
                 "Koláčový graf je nevhodný, keďže v ňom nevidieť trend rastu priemernej mzdy. Koláčové grafy sa používajú na vyobrazenie jedného celku, rozdeleného na niekoľko častí, no dáta tu jednotný celok nevytvárajú."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Spomedzi týchto infografík vyberte tú (alebo tie), ktorá najlepšie ilustruje vývoj priemernej mzdy na Slovensku."
             },
             {
@@ -2158,11 +2259,12 @@
                 "Koláčový graf je nevhodný, lebo nezachytáva trend rastu minimálnej mzdy. Taktiež opisované dáta nevytvárajú jednotný celok, takže je použitie koláčového grafu nezmyselné."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Spomedzi týchto infografík vyberte tú (alebo tie), ktorá najlepšie zachytáva medziročný vývoj minimálnej mzdy na Slovensku."
             },
             {
@@ -2183,11 +2285,12 @@
                 "Koláčový graf je nevhodný, keďže taký graf používame len ak súčet jednotlivých častí koláča dokopy tvorí celok, teda 100%. V tomto príklade je na grafe zobrazených len 83%. Strany, ktoré mali menej ako 4% na grafe nie sú zobrazené."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Spomedzi týchto infografík vyberte tú (alebo tie), ktorá najlepšie ilustruje výsledky parlamentných volieb."
             },
             {
@@ -2208,11 +2311,12 @@
                 "Toto je správna odpoveď, keďže plný počet poslaneckých mandátov je 150 a súčet mandátov jednotlivých strán je dokopy 150, takže v koláčovom grafe nechýbajú žiadne dáta."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Spomedzi týchto infografík vyberte tú (alebo tie), ktorá najlepšie zachytáva medziročný vývoj minimálnej mzdy na Slovensku."
             }                                    
           ]
@@ -2240,7 +2344,7 @@
                 "assets/pictures/picture7.png",
                 "assets/pictures/picture8.png"
               ],
-              "division": [],
+              
               "matchmaking": [
                 "Graf 1 ukazuje väčší nárast zisku ako Graf 2",
                 "Graf 1 zobrazuje dvojnásobný nárast zisku medzi rokmi 2009 a 2013",
@@ -2251,6 +2355,7 @@
               "matches": ["Áno", "Nie"],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Porovnajte grafy a odpovedzte na otázky."
             },
             {
@@ -2271,7 +2376,7 @@
                 "assets/pictures/picture9.png",
                 "assets/pictures/picture10.png"
               ],
-              "division": [],
+              
               "matchmaking": [
                 "Graf 2 ukazuje väčší nárast zisku ako Graf 1",
                 "Graf 1 zobrazuje dvojnásobný nárast zisku medzi rokmi 2009 a 2013",
@@ -2282,6 +2387,7 @@
               "matches": ["Áno", "Nie"],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Porovnajte grafy a odpovedzte na otázky."
             },
             {
@@ -2302,11 +2408,12 @@
               "images": [
                 
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Označte všetky správne tvrdenia, ktoré platia o týchto grafoch."
             }                        
             
@@ -2338,11 +2445,12 @@
               "images": [
                 "assets/pictures/picture14.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Predstavte si, že na internete uvidíte nasledujúci graf s popiskom: „Nové dáta prinášajú skvelé správy! Na Slovensku stále stúpa počet denne podaných vakcín.“ Označné všeky tvrdenia, ktoré vyplývajú z grafu s takýmto popiskom."
             },
             {
@@ -2366,11 +2474,12 @@
                 "assets/pictures/picture16.png",
                 "assets/pictures/picture17.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "",
               "subQuestion": "",
+              "conclusion": "",
               "title": "V možnostiach sa nachádzajú tri verzie čiarového grafu, ktoré zobrazujú rovnaké údaje. Všetky grafy porovnávajú HDP Nemecka a celosvetové HDP (údaje sú fiktívne). Ktoré z týchto infografík považujete za vizuálne zavádzajúce alebo neprehľadné?"
             }              
           ]
@@ -2391,11 +2500,12 @@
                 "Na Slovneksu v čase písania textu žilo približne 450 tisíc rómskych obyvateľov, ako sa píše v tretej vete textu. Číslo 417 tisíc opisuje len počet rómov žijúcich v obciach, ktorým sa venuje Atlas."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Na Slovensku žije približne 417 tisíc rómskych obyvateľov.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },
             {
@@ -2409,11 +2519,12 @@
                 "V texte sa naozaj uvádza, že tretina Rómov býva integrovane medzi majoritnými obyvateľmi. Avšak hneď ďalšia veta vyjasňuje, že by bolo „omylom myslieť si, že všetky koncentrácie sú tzv. osady“. V chatrčiach a dreveniciach v skutočnosti býva asi 16% Rómov."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Len tretina Rómov žije integrovane s majoritou, zvyšok žije v osadách mimo obce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },
             {
@@ -2425,11 +2536,12 @@
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Samospráva s najvyšším počtom rómskych obyvateľov sa nachádza v Košickom kraji.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },            
             {
@@ -2441,11 +2553,12 @@
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Samospráva s najvyšším počtom rómskych obyvateľov sa nachádza v Košickom kraji.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },
             {
@@ -2459,11 +2572,12 @@
                 "V texte sa uvádza, že slovenčina je preferovaný jazyk pre 35% komunít. Preferovaný jazyk znamená, že tak komunikujú v domácnostiach. Keď má niekto preferovaný jazyk rómčinu ešte neznamená, že neovláda slovenčinu. Mnoho takýchto domácností sú práveže bilingválne."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Väčšina Rómov neovláda slovenčinu.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },
             {
@@ -2475,11 +2589,12 @@
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Čím bližšie sa rómska koncentrácia nachádza k centru obce, tým lepšie životné podmienky majú obyvatelia danej koncentrácie.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             },
             {
@@ -2493,11 +2608,12 @@
                 "V texte sa uvádza, že 6700 obyvateľov je v koncentrácii na okraji mesta Trebišov. Celé mesto má okolo 25 000 obyvateľov."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Trebišov má 6700 obyvateľov.",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             }            
           ]
@@ -2534,11 +2650,12 @@
                 "Hoax je nepravdivá informácia, ktorá sa virálne šíri. Slovom „hoax“ nemôžeme označovať informácie, ktoré sa nám nepáčia, očierňujú naše obľúbené verejné osoby alebo nesedia do nášho svetonázoru."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Čo je hoax?",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Hoax"
             },
             {
@@ -2557,11 +2674,12 @@
                 "Misinformácia je nepravdivá alebo nepresná informácia, ktorá bola do mediálneho priestoru vypustená omylom. Misinformácie môže šíriť ktokoľvek z nás, ak nie sme dosť opatrní. Dezinformácia je tiež nepravdivá informácia, ale bola vypustená zámerne."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Aký je rozdiel medzi misinformáciou a dezinformáciou?",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Misinformácia a dezinformácia"
             },
             {
@@ -2580,11 +2698,12 @@
                 "Falošné správy sa tvária ako dôveryhodné spravodajstvo. Napríklad sa nachádzajú na webových portáloch, ktoré majú logo a nejakú grafickú úpravu. Pre porovnanie, hoax môže byť aj vo forme statusu na sociálnych sieťach, ale falošná správa musí na prvý pohľad vyzerať ako legitímny článok."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Čo sú falošné správy („fake news“)?",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Falošné správy"
             },
             {
@@ -2607,11 +2726,12 @@
                 "Clickbait nadpisy sú využívané bulvárnymi aj dezinformačnými médiami. Ich cieľom je prilákať pozornosť čitateľa. Seriózne médiá by sa mali takýmto praktikám vyhýbať a snažiť sa prilákať čitateľov kvalitou obsahu. Ich obsah je často zavádzajúci, ale nemusí byť automaticky nepravdivý. Hlavne bulvárne médiá sa snažia neklamať, ale manipulatívne naformulovať nadpis tak, aby znel šokujúco."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "„Clickbait“ je zámerne pútavý nadpis, ktorý sa snaží zaujať pozornosť čitateľov a naviesť ich ku kliknutiu na článok. Ktoré tvrdenia sú pravdivé o clickbait nadpisoch?",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Clickbait"
             },
             {
@@ -2630,11 +2750,12 @@
                 "Cieľom propagandy je ovplyvniť verejnú mienku aj na úkor objektivity. Na dosiahnutie tohto cieľa často využíva nepravdivé informácie, ale môže používať aj pravdivé informácie, ktoré sú selektívne vybrané a jednostranne odprezentované. Propaganda je často použitá štátnou mocou na vykreslenie svojho štátu pozitívne alebo na očiernenie iných štátov."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Čo je propaganda?",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Propaganda"
             }            
 
@@ -2661,7 +2782,7 @@
                 "Na úvod sme si oprášili vedomosti z predošlého kvízu. Je dôležité vedieť, že tieto pojmy znamenajú rozdielne veci a treba ich používať opatrne a uvedomelo."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Bulvárny nadpis, ktorý sa snaží čitateľa zaujať a naviesť ku kliknutiu na článok.",
                 "Nepravdivé informácie, ktoré zámerne vizuálne napodobňujú štandardné spravodajstvo. ",
@@ -2680,6 +2801,7 @@
               ],
               "question": "Spoj pojem s definíciou:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Pojmový aparát"
             },
             {
@@ -2703,11 +2825,12 @@
               "images": [
                 "assets/pictures/picture19.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Určite, aký pojem najlepšie opisuje tento nadpis:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Príklad 1"
             },
             {
@@ -2731,11 +2854,12 @@
               "images": [
                 "assets/pictures/picture20.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Určite, aký pojem najlepšie opisuje tento status:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Príklad 2"
             },
             {
@@ -2759,11 +2883,12 @@
               "images": [
                 "assets/pictures/picture21.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Určite, aký pojem najlepšie opisuje tento článok:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Príklad 3"
             },
             {
@@ -2788,11 +2913,12 @@
                 "assets/pictures/picture22.png",
                 "assets/pictures/picture23.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Na obrázku hore vidíte pôvodnú fotografiu z návštevy prezidenta USA na Ukrajine. Obrázok dole je fotomontáž z tohto stretnutia. Určite, aký pojem najlepšie opisuje obrázok hore:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Príklad 4"
             },            
             {
@@ -2816,11 +2942,12 @@
               "images": [
                 "assets/pictures/picture24.png"
               ],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Určite, aký pojem najlepšie opisuje tento článok:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Príklad 5"
             }            
           ]
@@ -2846,11 +2973,12 @@
                 "Prvý nadpis je príklad clickbaitu. Druhý nadpis je vhodný a fakticky sedí s obsahom článku. Tretí a štvrtý nadpis obsahujú unáhlené závery – kontakt s planétou nebol nadviazaný a známky života tiež ešte neboli nájdené."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyber všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 1 – exoplanéta"
             },
             {
@@ -2870,11 +2998,12 @@
                 "Nadpisy a) a d) sú vhodné, lebo zohľadňujú fakt, že nejde o vedeckú zhodu. V nadpise a) je slovo „tvrdenie“, v nadpise d) je slovo „kontroverzia“. Naopak, nadpis b) znie, ako keby bol výskum v tejto oblasti definitívny. Nadpis c) zas úplne odmieta túto liečbu a označuje ju ako hoax, napriek tomu, že časť vedeckej komunity je ohľadom liečby optimistická."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 2 – nanoroboty"
             },
             {
@@ -2895,11 +3024,12 @@
                 "Jediný zavádzajúci nadpis je v tomto prípade nadpis d), ktorý pridáva k záverom štúdie aj hodnotiace stanovisko, že „je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam“. Toto tvrdenie nie je priamo v texte, ide o dodatočné názorové stanovisko autora."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 3 – sociálne médiá"
             },
             {
@@ -2919,11 +3049,12 @@
                 "Vláda navrhla polarizujúci zákon, ktorý vyvolal vlnu protestov po celej krajine. Návrh zákona by viedol k zvýšeniu štátneho dohľadu nad dianím na internete – štát by mohol jednoduchšie monitorovať a regulovať obsah. Kritici tvrdia, že ide o zásah do občianskych slobôd občanov a ohrozenie slobody prejavu. Aktivistické skupiny organizovali demonštrácie, aby vyjadrili odpor voči návrhu zákona."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 4 – návrh zákona"
             },
             {
@@ -2945,11 +3076,12 @@
                 "Všetky tieto titulky sú vhodné. Žiaden z nich nerobí unáhlené alebo definitívne závery."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 5 – archeologický objav"
             },
             {
@@ -2968,11 +3100,12 @@
                 "V tomto úryvku bolo dôležité pochopiť, že súd nerozhodoval o vine a nevine, ale o tom, či bude obžalovaný stíhaný na slobode alebo väzobne stíhaný. Súd v tomto prípade len rozhodol, že Radovan bude väzobne stíhaný, ale stále platí, že je považovaný za nevinného pokiaľ mu nebola dokázaná vina"
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Vyberte všetky nadpisy, ktoré sú vhodné a nie sú zavádzajúce.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Nadpis 6 – trestné stíhanie"
             }            
                                     
@@ -2999,7 +3132,7 @@
                 "K starým médiám zaraďujeme tie, ktoré tradične nepotrebujú na svoje fungovanie internet a naopak nové médiá sú tie, ktoré svoj obsah šíria digitálne, cez internet."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Tlačené noviny",
                 "Rádio",
@@ -3011,6 +3144,7 @@
               "matches": ["Staré médium", "Nové médium"],
               "question": "Rozhodnite či dané médium kategorizujeme ako staré alebo nové.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Technológia prenosu informácií sa vyvíja skrz históriu a spolu s tým pretvára spoločnosť. Najväčšia revolúcia však prichádza z rozšírením internetu, ktoréj bude venovaná samostatná sekcia v tejto kapitole. Tým pádom, médiá možno na základe použitej technológie rozdeliť do dvoch základných skupín."
             },
             {
@@ -3025,7 +3159,7 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "ch úlohou je zhromažďovať tvrdé fakty a informácie, ktoré sú podané nespracovane a objektívne. Ostatné médiá si následne od nich môžu odkúpiť obsah a použiť ho ako podklad pre vlastné články.",
                 "Médiá, ktorých cieľom je pravdivo informovať verejnosť o dôležitých spoločenských témach. O znakoch serióznych médií bude celá sekcia v tejto kapitole, ale medzi základné znaky patria tieto: tvoria dôveryhodný obsah, dodržiavajú žurnalistický etický kódex, uvádzajú autorov a členov redakcie, uvádzajú zdroje a opravujú prípadné chyby.",
@@ -3040,6 +3174,7 @@
               ],
               "question": "Na základe definície rozhodnite o aký typ médií ide.",
               "subQuestion": "",
+              "conclusion": "",
               "title": " Popri forme média netreba zabúdať aj na samotný obsah správ. Médiá možno rozdeliť do štyroch základných kategórií na základe obsahu. "
             },
             {
@@ -3053,7 +3188,7 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Sú financované hlavne z tzv. koncesionárskych poplatkov, ktoré platí každý občan, ktorý je odberateľom elektriny. Ich hlavnou úlohou je informovať verejnosť objektívne, vyvážene a nestranne a môžu si ju napĺňať, práve kvôli stabilnému príjmu.",
                 "Sú vlastnené jednotlivcami alebo firmami. Tieto médiá si musia zarobiť na vlastné fungovanie. Najčastejšie spôsoby financovania sú buď skrz predplatiteľov alebo predaj reklamného priestoru.",
@@ -3066,6 +3201,7 @@
               ],
               "question": "Priradťe pojmy k definíciam.",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Posledným typom delenia je na základe financovania. Rozumieť spôsobu financovania médií je dôležité, keďže financie často ovplyvňujú ich vnútorné mechanizmy fungovania."
             }
                               
@@ -3108,11 +3244,12 @@
                 "Pri overovaní obrázkov je najlepšie použiť niekoľko vrstiev overovania: Spoliehajme sa aj na vlastnú hlavu a všímajme si, či nie sú v obrázku nápovede o tom, že by mohol byť falošný alebo vytrhnutý z kontextu. Následne sa pokús nájsť pôvod obrázku skrz vyhľadanie vizuálnych zhôd cez TinEye, Google Image Search alebo iné. V nasledujúcich úlohách budete musieť tieto zručnosti využiť!"
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Aké stratégie môžeme použiť, keď chceme overiť pôvod obrázku? Zaškrtnite všetky možnosti, ktoré sa hodia:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Stratégie overovania obrázkov"
             },
             {
@@ -3131,11 +3268,12 @@
                 "V tomto prípade je kontext fotografie veľmi dôležitý. V skutočnosti ide o protest z roku 2004 v Chicagu, ktorý sa snažil poukázať na mučenie a kruté zaobchádzanie čínskej vlády s členmi spirituálneho hnutia Falun Gong. Žena na obrázku je len aktivistka-herečka, nejde o záber reálneho mučenia. Podobné obrázky sa šírili Twitterom, kde ho zdieľali ľudia s dobrým zámerom informovať o stave Ujgurskej menšiny v Číne. Podľa všetkého sú Ujguri naozaj nespravodlivo prenasledovaní a utláčaní vládou. Avšak aj ľudia s dobrým zámerom môžu šíriť misinformácie."
               ],
               "images": ["assets/pictures/picture25.png"],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku. Pri riešení úloh si pomôžte internetom. (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Ujgurská menšina je v Číne brutálne utláčaná! Pozri si fotografie toho, v akých nehumánnych podmienkach žijú.",
+              "conclusion": "",
               "title": "Over obrázok 1 - Ujguri"
             },
             {
@@ -3154,11 +3292,11 @@
                 "Ide o obrázok vygenerovaný programom Midjourney, ktorý je schopný generovať vysoko kvalitné obrázky. Uverejnil ho instagramový účet Arteficialismo, ktorý sa netají tým, že ide o výtvor umelej inteligencie."
               ],
               "images": ["assets/pictures/picture26.png"],
-              "division": [],
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Vedeli ste o tom, že Lionel Messi sa narodil do veľmi chudobnej rodiny? Napriek tomu sa sám vypracoval až na vrchol!",
+              "conclusion": "",
               "title": "Over obrázok 2 – Lionel Messi"
             },
             {
@@ -3177,11 +3315,12 @@
                 "Ide o fotomontáž zo stretnutia senátorov USA s bývalým prezidentom Afganistanu. Tvár známeho teroristu Osamu Bin Ladena je vystrihnutá a vložená na tvár afganského prezidenta. Autor tejto fotomontáže využil fakt, že afganský prezident má oblečenie typické pre moslimov. Udalosť sa v skutočnosti nestala, ale fotomontáž sa ako hoax šírila internetom po úmrtí senátora Johna McCaina."
               ],
               "images": ["assets/pictures/picture27.png"],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Hanebné tajomstvo republikánskeho senátora a údajného „hrdinu“ Johna McCaina. Na verejnosti obhajoval záujmy USA, za zatvorenými dverami sa paktoval s teroristom Bin Ladenom!",
+              "conclusion": "",
               "title": "Over obrázok 3 – Bin Laden"
             },
             {
@@ -3200,11 +3339,12 @@
                 "Ide o fotografiu z roku 2006, na ktorej naozaj bojovníci z Brigády mučeníkov al-Aksá dávajú karafiáty mníškam. Na odhalenie pôvodu fotografie ste mohli zvoliť dva spôsoby: Za prvé, mohli ste zadať kľúčové slová zo statusu do vyhľadávača (napr. „Brigáda mučeníkov Al-Aksá“, „karafiáty“, „mníšky“, ideálne v anglickom jazyku). Za druhé, mohli ste vyhľadať rovno samotný obrázok cez Google Search Images alebo TinEye."
               ],
               "images": ["assets/pictures/picture28.png"],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Dojímavé fotografie: Je dôležité nezabúdať na ľudskosť, aj keď máme rozličné názory a vierovyznania. Pozrite si, ako maskovaní palestínski ozbrojenci z Brigády mučeníkov al-Aksá kedysi rozdávali karafiáty mníškam!",
+              "conclusion": "",
               "title": "Over obrázok 4 – Palestínski bojovníci"
             },
             {
@@ -3223,11 +3363,12 @@
                 "Ide o obrázok vygenerovaný v programe Bing Image Creator. Mohli ste zistiť, že nejde o skutočnú udalosť, keďže žiadne podobné obrázky sa na internete nenachádzajú. Taktiež neexistujú správy o takomto rozsiahlom požiari na Kriváni."
               ],
               "images": ["assets/pictures/picture29.png"],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Mladé generácie už zabudli, keď pýcha našich Tatier vzbĺkla v plameňoch. Pripomeňme si požiar Kriváňa fotografiami.",
+              "conclusion": "",
               "title": "Over obrázok 5 – Požiar na Kriváni"
             },
             {
@@ -3246,11 +3387,12 @@
                 "Je pravda, že ide o konflikt medzi migrantmi a maďarskou políciou na vlakovej stanici v Budapešti. V pozadí sú vlaky, takže určite ide o vlakovú stanicu. Polícia má na uniformách maďarskú vlajku. Protestujúci majú tmavšiu pleť, typickú skôr pre Blízky východ než pre strednú Európu. Na prvý pohľad sa preto môže zdať, že obrázok naozaj zachytáva udalosť z titulku. Avšak v skutočnosti ide o udalosť z roku 2015, nie z roku 2021, ako uvádza titulok. Na odhalenie kontextu bolo potrebné použiť Google Search Images alebo TinEye."
               ],
               "images": ["assets/pictures/picture30.png"],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
               "subQuestion": "Migranti zo Sýrie zaplavili vlakovú stanicu v Budapešti, nastali konflikty s políciou. Takto vyzerala migračná kríza v lete 2023!",
+              "conclusion": "",
               "title": "Over obrázok 6 – Imigranti v Maďarsku"
             }                        
           ]
@@ -3284,11 +3426,12 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Zo zoznamu vyberte všetky znaky dôveryhodného média:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Pri vyhodnocovaní dôveryhodnosti média je nutné pozrieť sa na objektívne prvky, ktoré musí každé dôveryhodné médium spĺňať."
             },
             {
@@ -3301,7 +3444,7 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Médium nemá uvedeného jasného vlastníka, kamennú redakciu ani počet zamestnancov. Ako spôsob financovania má uvedenú jednu firmu, ktorú však nevieme nikde na internete dohľadať. Na stránke síce médium uvádza 6 rôznych mien redaktorov, avšak chýbajú bližšie informácie o kvalifikáciách a zamestnaneckom statuse. Nevieme nájsť kontakt ani na jedného z týchto redaktorov.",
                 "Dajú sa dohľadať potrebné informácie o médiu: má profesionálnu redakciu, je to registrovaná firma, vieme dokonca aj dátum vzniku a meno šéfredaktora, ktorý má dlhoročnú prax. V jednom z článkov autor rozpráva o úspechoch jednej z politických strán. Ku koncu článku autor prechádza do roviny vlastnej interpretácie a článok naberie mierne ideologiké zafarbenie. Autor však na to upozorní slovami ako „zrejme“ alebo „je možné sa domnievať“ a vyhýba sa definitívnemu hodnoteniu danej politickej strany."
@@ -3309,6 +3452,7 @@
               "matches": ["Skôr dôveryhodné", "Skôr nedôveryhodné"],
               "question": "Pri opísanej situácií rozhodnite, či považujete opisované (fiktívne) médium za skôr dôveryhodné alebo skôr nedôveryhodné",
               "subQuestion": "",
+              "conclusion": "",
               "title": ""
             }                        
           ]
@@ -3342,7 +3486,7 @@
               "definition": "",
               "explanation": [],
               "images": [],
-              "division": [],
+              
               "matchmaking": [
                 "Nedôveryhodná platforma na uverejňovanie a šírenie správ, ktoré obsahujú konšpiračné teórie",
                 "Ide o jav, pri ktorom je človek všeobecne skeptický voči autoritám a nedôveruje systému či oficiálnym verziám udalostí",
@@ -3359,6 +3503,7 @@
               ],
               "question": "Spojte pojem so správnou definíciou",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Definície pojmov"
             },
             {
@@ -3379,11 +3524,12 @@
                 "Zatiaľ čo hoaxy a dezinformácie sú nepravdivé, konšpiračná teória môže byť pravdivá. Aj keď väčšina konšpiračných teórií sú nepravdivé (napr. že Zem je plochá), občas sa ukáže, že niektoré teórie sú podložené. Problém je, že konšpiračné teórie sú zväčša podložené neoverenými „dôkazmi“ z nedôveryhodných zdrojov. Konšpiračné teórie sú často založené na hoaxoch a dezinformáciách, ale to neznamená, že každá dezinformácia musí byť súčasťou nejakej konšpiračnej teórie."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Označ všetky pravdivé tvrdenia o konšpiračných teóriách:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Vlastnosti konšpiračných teórií"
             },
             {
@@ -3407,11 +3553,12 @@
                 "Všetky tieto argumentačné fauly patria medzi najčastejšie manipulatívne stratégie konšpirátorov. Všetky stratégie majú spoločné to, že sa snažia apelovať na emócie čitateľa, vyvolať strach a hnev."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Ktoré z nasledujúcich argumentačných stratégií a naratívov sú často využívané konšpiračnými teoretikmi:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Stratégie konšpirátorov"
             },
             {
@@ -3429,11 +3576,12 @@
                 "Ide o typický príklad komplexnej konšpiračnej teórie, ktorá vznikla počas pandémie Covid-19. Konšpiračne zmýšľajúci ľudia hľadali nejaké tajné vysvetlenie tejto udalosti, za ktorú by boli zodpovedné „zlé“ globálne elity. Následne boli misinterpretované a prekrútené slová zo samitu Svetového ekonomického fóra 2020 o „Veľkom resete“. Tento pojem mal popisovať plán ekonomických reforiem, avšak konšpirátori z toho vytvorili plán na „zotročenie ľudstva“."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Prečítaj si nasledujúci úryvok textu a urči, či ide o nepodloženú konšpiračnú teóriu:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Over konšpiračnú teóriu 1 – Veľký Reset"
             },
             {
@@ -3451,11 +3599,12 @@
                 "Napriek tomu, že tieto udalosti znejú neuveriteľne, táto konšpirácia je skutočná. Experimenty sa reálne odohrávali počas studenej vojny v USA. Projekt MK-Ultra bol oficiálne schválený v roku 1953 a oficiálne zastavený v roku 1973. Následne v 1975 vytvoril prezident Ford komisiu, ktorá oficiálne odhalila MK-Ultra, avšak niektoré podrobnosti projektu zostávajú utajené."
               ],
               "images": [],
-              "division": [],
+              
               "matchmaking": [],
               "matches": [],
               "question": "Prečítaj si nasledujúci úryvok textu a urči, či ide o nepodloženú konšpiračnú teóriu:",
               "subQuestion": "",
+              "conclusion": "",
               "title": "Over konšpiračnú teóriu 2 – MK-Ultra"
             }
           ]
