@@ -30,8 +30,6 @@ class _SchoolFormState extends State<SchoolForm> {
    final NonSwipeablePageController _pageController = NonSwipeablePageController();
    final PageController _pageClassesController = PageController();
   int currentStep = 1;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _textEditingController = TextEditingController();
   String? resultMessage;
   bool isMobile = false;
   bool isDesktop = false;

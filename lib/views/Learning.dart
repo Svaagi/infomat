@@ -31,22 +31,18 @@ class _LearningState extends State<Learning> {
   bool showAll = true;
    ClassData? currentClassData ;
    final PageController _pageController = PageController();
-   int _selectedIndex = 0;
    bool _loading = true;
    bool isMobile = false;
   bool isDesktop = false;
   bool _add = false;
   List<String> favouriteMaterials = [];
-  final List<Future<void>> _databaseUpdateQueue = [];
-  bool _isDatabaseUpdateInProgress = false;
   UserData? userData;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   fetchCurrentClass() async {
     try {
-        ClassData classData = await fetchClass(widget.currentUserData!.schoolClass!);
-    if (classData != null) {
+        ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
         // Fetch the user data using the fetchUser function
         if (mounted) {
           setState(() {
@@ -56,9 +52,7 @@ class _LearningState extends State<Learning> {
             favouriteMaterials = widget.currentUserData!.materials;
           });
         }
-      } else {
-        print('User is not logged in.');
-      }
+      
     } catch (e) {
       print('Error fetching user data: $e');
     }
@@ -162,7 +156,6 @@ class _LearningState extends State<Learning> {
                       text: '+ PRIDAŤ OBSAH',
                       onTap: () {
                         _onNavigationItemSelected(1);
-                        _selectedIndex = 1;
                         _add = true;
                       },
                     ) : null,
@@ -226,7 +219,6 @@ class _LearningState extends State<Learning> {
                       text: '+ PRIDAŤ OBSAH',  
                       onTap: () {
                         _onNavigationItemSelected(1);
-                        _selectedIndex = 1;
                         _add = true;
                       },
                     ) : null,
@@ -290,13 +282,11 @@ class _LearningState extends State<Learning> {
   }
    void _onPageChanged(int index) {
     setState(() {
-      _selectedIndex = index;
     });
   }
 
   void _onNavigationItemSelected(int index) {
     setState(() {
-      _selectedIndex = index;
       _pageController.animateToPage(
         index,
         duration: Duration(milliseconds: 300),

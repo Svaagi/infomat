@@ -9,13 +9,13 @@ import 'package:infomat/models/UserModel.dart';
 class MobileClasses extends StatefulWidget {
   final UserData? currentUserData;
   void Function(int) onNavigationItemSelected;
-  String? selectedClass;
-  void Function(bool) teacher;
-  TextEditingController editClassNameController;
-  ClassDataWithId? currentClass;
-  List<String>? classes;
-  TextEditingController editUserNameController;
-  TextEditingController editUserEmailController;
+  final String? selectedClass;
+  final void Function(bool) teacher;
+  final TextEditingController editClassNameController;
+  final ClassDataWithId? currentClass;
+  final List<String>? classes;
+  final TextEditingController editUserNameController;
+  final TextEditingController editUserEmailController;
   void Function(String, UserData) currentUser;
   bool admin;
 

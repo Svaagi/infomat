@@ -17,7 +17,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  bool _loading = false;
   Color _emailBorderColor = Colors.white;
   Color _passwordBorderColor = Colors.white;
   String? _errorMessage;
@@ -44,7 +43,7 @@ class _LoginState extends State<Login> {
   }
 
   int _loginAttempts = 0;
-  bool _showCaptcha = false;
+//  bool _showCaptcha = false;
 
   toggleVisibility() {
     setState(() {
@@ -76,7 +75,6 @@ class _LoginState extends State<Login> {
     // Perform validation
     if (_formKey.currentState!.validate()) {
       setState(() {
-        _loading = true;
         _errorMessage = null;
         _emailBorderColor = Colors.white;
         _passwordBorderColor = Colors.white;
@@ -88,7 +86,6 @@ class _LoginState extends State<Login> {
         await Auth().signIn(email, password);
       } catch (error) {
         setState(() {
-          _loading = false;
           _errorMessage = 'Nesprávne prihlasovacie meno alebo heslo';
           _emailBorderColor = Theme.of(context).colorScheme.error;
           _passwordBorderColor = Theme.of(context).colorScheme.error;
@@ -99,7 +96,7 @@ class _LoginState extends State<Login> {
         if (_loginAttempts >= 10) {
           // Show the CAPTCHA
           setState(() {
-            _showCaptcha = true;
+           // _showCaptcha = true;
           });
         }
       }

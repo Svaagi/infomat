@@ -42,7 +42,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
   String? adminId;
   bool _teacher = false;
   bool _admin = false;
-  final PageController _pageController = PageController();
   int _selectedIndex = 0;
   TextEditingController _classNameController = TextEditingController();
   TextEditingController _userNameController = TextEditingController();
@@ -260,10 +259,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                     spacing: 20, // Adjust spacing between items horizontally
                     runSpacing: 20, // Adjust spacing between items vertically
                     children: classDataList.map((classData) {
-                      if (classData == null) {
-                        // Show loading indicator for classes that are still being fetched
-                        return CircularProgressIndicator();
-                      }
                       return MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child:GestureDetector(
@@ -674,7 +669,7 @@ Future<Map<String, String>> fetchClassNames(List<String> classIds) async {
 
   for (final classId in classIds) {
     final classData = await fetchClass(classId); // Replace with your fetchClass implementation
-    classNames[classId] = classData?.name ?? 'Unknown Class';
+    classNames[classId] = classData.name;
   }
 
   return classNames;

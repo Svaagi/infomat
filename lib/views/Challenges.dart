@@ -86,7 +86,7 @@ Future<void> refreshList() async {
 
     if (isOverlayVisible) {
       overlayEntry = createOverlayEntry(context, index, capitolId);
-      Overlay.of(context)!.insert(overlayEntry);
+      Overlay.of(context).insert(overlayEntry);
     } else {
       overlayEntry.remove();
     }
@@ -238,7 +238,7 @@ Widget build(BuildContext context) {
                       // First page - ListView
                      ListView.builder(
                             reverse: true,
-                            itemCount: 135 + 1, // Add 1 for the dummy item
+                            itemCount: 27 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
@@ -278,10 +278,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -304,7 +304,7 @@ Widget build(BuildContext context) {
                                                       height: 170.0,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                             ? AppColors.getColor( 'blue').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
@@ -341,7 +341,7 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: ListView.builder(
                             reverse: true,
-                            itemCount: 135 + 1, // Add 1 for the dummy item
+                            itemCount: 27 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
@@ -381,10 +381,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -407,7 +407,7 @@ Widget build(BuildContext context) {
                                                       height: 170.0,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols?[capitolIndex].tests[testIndex]?.completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
                                                             ? AppColors.getColor( 'blue').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),

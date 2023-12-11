@@ -9,17 +9,17 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
 class UpdateUser extends StatefulWidget {
-  void Function(int) onNavigationItemSelected;
-  bool teacher;
-  bool admin;
-  void Function() setAdmin;
-  TextEditingController editUserNameController;
-  TextEditingController editUserEmailController;
-  TextEditingController editUserPasswordController;
-  ClassDataWithId? currentClass;
-  UserDataWithId? currentUser;
-  void Function(String) changeName;
-  void Function(String) changeEmail;
+  final void Function(int) onNavigationItemSelected;
+  final bool teacher;
+  final bool admin;
+  final void Function() setAdmin;
+  final TextEditingController editUserNameController;
+  final TextEditingController editUserEmailController;
+  final TextEditingController editUserPasswordController;
+  final ClassDataWithId? currentClass;
+  final UserDataWithId? currentUser;
+  final void Function(String) changeName;
+  final void Function(String) changeEmail;
 
   UpdateUser(
     {
@@ -107,38 +107,38 @@ bool isValidEmail(String email) {
                     ),
                   ),
                 ),
-                SizedBox(width: 100,)
+                const SizedBox(width: 100,)
               ],
             ),
-            SizedBox(height: 40,),
+            const SizedBox(height: 40,),
             Text(
               'Napíšte triedu, meno a email ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: AppColors.getColor('mono').black,
                   ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Po kliknutí na “ULOŽIŤ” sa učiteľovi odošle email s prihlasovacími údajmi',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: AppColors.getColor('mono').grey,
                 ),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Text(
               'Meno a priezvisko ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: AppColors.getColor('mono').grey,
                   ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             reTextField(
               'Jožko Mrkvička',
               false,
               widget.editUserNameController,
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Email ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -152,7 +152,7 @@ bool isValidEmail(String email) {
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
               errorText: _emailErrorText
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Heslo ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -164,8 +164,9 @@ bool isValidEmail(String email) {
               false,
               widget.editUserPasswordController,
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
+              errorText: _passwordErrorText
             ),
-            Spacer(),
+            const Spacer(),
             Align(
               alignment: Alignment.center,
               child: Column(
@@ -319,9 +320,9 @@ Future<void> saveUserDataToFirestore(
 
     // Update the user document in Firestore with the new userDataMap
     await userRef.update(userDataMap);
-    reShowToast(userData!.teacher ? 'Učiteľ úspešne upravený' : 'Žiak úspešne upravený', false, context);
+    reShowToast(userData.teacher ? 'Učiteľ úspešne upravený' : 'Žiak úspešne upravený', false, context);
   } catch (e) {
-    reShowToast(userData!.teacher ? 'Učiteľ sa nepodarilo upraviť' : 'Žiaka sa nepodarilo upraviť', true, context);
+    reShowToast(userData.teacher ? 'Učiteľ sa nepodarilo upraviť' : 'Žiaka sa nepodarilo upraviť', true, context);
     rethrow;
   }
 }

@@ -55,7 +55,7 @@ void initState() {
 
 Future<void> fetchOptions() async {
   try {
-    if (widget.currentUserData != null && widget.currentUserData!.classes != null) {
+    if (widget.currentUserData != null) {
           dropdownValue = widget.currentUserData!.schoolClass;
       options = await Future.wait(widget.currentUserData!.classes.map((id) async {
         ClassData classData = await fetchClass(id);
@@ -112,7 +112,7 @@ Widget build(BuildContext context) {
                 child: Row(
                   children: [
                     Text(
-                      dropdownValue != null ? 'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue)!.data.name}' : '',
+                      dropdownValue != null ? 'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue).data.name}' : '',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       color:  AppColors.getColor('primary').main ,
                     ),

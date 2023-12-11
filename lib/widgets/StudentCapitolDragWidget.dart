@@ -9,8 +9,8 @@ import 'package:infomat/models/UserModel.dart';
 
 class StudentCapitolDragWidget extends StatefulWidget {
   final UserData? currentUserData;
-  List<int> numbers;
-  Future<void> Function()  refreshData;
+  final List<int> numbers;
+  final Future<void> Function()  refreshData;
 
   StudentCapitolDragWidget({
     Key? key,
@@ -33,11 +33,9 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
 
   int countTrueValues(List<UserQuestionsData> questionList) {
     int count = 0;
-    if (questionList != null) {
-      for (UserQuestionsData question in questionList) {
-        if (question.completed == true) {
-          count++;
-        }
+    for (UserQuestionsData question in questionList) {
+      if (question.completed == true) {
+        count++;
       }
     }
     return count;
@@ -45,17 +43,13 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
 
   fetchCurrentClass() async {
     try {
-      ClassData classData = await fetchClass(widget.currentUserData!.schoolClass!);
-      if (classData != null) {
+      ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
         if (mounted) {
           setState(() {
             currentClassData = classData;
             _loadingCurrentClass = false;
           });
         }
-      } else {
-        print('User is not logged in.');
-      }
     } catch (e) {
       print('Error fetching user data: $e');
     }
@@ -128,7 +122,7 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
               itemCount: localResults.length,
               itemBuilder: (ctx, index) {
                 bool isExpanded = index == expandedTileIndex;
-                dynamic? capitol = localResults[index];
+                dynamic capitol = localResults[index];
 
                 if (capitol == null) {
                   // If capitol data is null, return an empty Container or another widget indicating no data

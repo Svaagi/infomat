@@ -29,7 +29,6 @@ class MobileDiscussions extends StatefulWidget {
 
 class _MobileDiscussionsState extends State<MobileDiscussions> {
   final PageController _pageController = PageController();
-  int _selectedIndex = 0;
   List<PostsData> _posts = [];
   PostsData? _selectedPost;
   CommentsData? _selectedComment;
@@ -1355,13 +1354,11 @@ Widget _buildLibraryCheckbox(String title) {
 
   void _onPageChanged(int index) {
     setState(() {
-      _selectedIndex = index;
     });
   }
 
   void _onNavigationCommentSelected(int index, [CommentsData? comment, int? commentIndex]) {
     setState(() {
-        _selectedIndex = index;
         _selectedComment = comment;
         _selectedCommentIndex = commentIndex;
         _pageController.animateToPage(
@@ -1374,7 +1371,6 @@ Widget _buildLibraryCheckbox(String title) {
 
   void _onNavigationItemSelected(int index, [PostsData? post, CommentsData? comment, int? commentIndex]) {
     setState(() {
-        _selectedIndex = index;
         _selectedPost = post;
         _selectedComment = comment;
         _selectedCommentIndex = commentIndex;

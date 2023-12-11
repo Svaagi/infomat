@@ -9,14 +9,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DesktopClasses extends StatefulWidget {
   final UserData? currentUserData;
   void Function(int) onNavigationItemSelected;
-  String? selectedClass;
-  void Function(bool) teacher;
-  TextEditingController editClassNameController;
-  ClassDataWithId? currentClass;
-  List<String>? classes;
-  TextEditingController editUserNameController;
-  TextEditingController editUserEmailController;
-  void Function(String, UserData) currentUser;
+  final String? selectedClass;
+  final void Function(bool) teacher;
+  final TextEditingController editClassNameController;
+  final ClassDataWithId? currentClass;
+  final List<String>? classes;
+  final TextEditingController editUserNameController;
+  final TextEditingController editUserEmailController;
+  final void Function(String, UserData) currentUser;
   bool admin;
 
   DesktopClasses(

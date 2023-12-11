@@ -10,12 +10,8 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/SchoolModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:infomat/Colors.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:infomat/views/admin/MobileClasses.dart';
 import 'package:infomat/views/admin/AddUser.dart';
@@ -46,7 +42,6 @@ class _MobileAdminState extends State<MobileAdmin> {
   String? adminId;
   bool _teacher = false;
   bool _admin = false;
-  final PageController _pageController = PageController();
   int _selectedIndex = 0;
   TextEditingController _classNameController = TextEditingController();
   TextEditingController _userNameController = TextEditingController();
@@ -692,7 +687,7 @@ Future<Map<String, String>> fetchClassNames(List<String> classIds) async {
 
   for (final classId in classIds) {
     final classData = await fetchClass(classId); // Replace with your fetchClass implementation
-    classNames[classId] = classData?.name ?? 'Unknown Class';
+    classNames[classId] = classData.name;
   }
 
   return classNames;

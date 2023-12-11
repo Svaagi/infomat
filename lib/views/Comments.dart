@@ -15,7 +15,7 @@ class Comments extends StatefulWidget {
   final UserData currentUserData;
   final PostsData? post;
   final String postId;
-  void Function(bool, int, String) setEdit;
+  final void Function(bool, int, String) setEdit;
   Comments({
     Key? key,
     required this.setEdit,
@@ -276,7 +276,7 @@ class _CommentsState extends State<Comments> {
                                                             iconColor: AppColors.getColor('mono').black, 
                                                             text: 'VYMAZAŤ',  
                                                             onTap: () {
-                                                              deleteComment(widget.currentUserData!.schoolClass, widget.postId ,index);
+                                                              deleteComment(widget.currentUserData.schoolClass, widget.postId ,index);
                                                               comments.removeAt(index);
                                                               Navigator.of(context).pop();
                                                             }
@@ -353,7 +353,7 @@ class _CommentsState extends State<Comments> {
                                                           iconColor: AppColors.getColor('mono').black,
                                                           text: 'VYMAZAŤ',  
                                                           onTap: () {
-                                                            deleteComment(widget.currentUserData!.schoolClass, widget.postId ,index);
+                                                            deleteComment(widget.currentUserData.schoolClass, widget.postId ,index);
                                                               comments.removeAt(index);
                                                               Navigator.of(context).pop();
                                                           }
@@ -374,7 +374,7 @@ class _CommentsState extends State<Comments> {
                             SizedBox(height: 10.0),
                             Text(comment.value),
                             SizedBox(height: 10.0),
-                            ((comment.award || widget.currentUserData!.teacher)&& !comment.teacher) ? Row(
+                            ((comment.award || widget.currentUserData.teacher)&& !comment.teacher) ? Row(
                               children: [
                                 Row(
                                   children: [

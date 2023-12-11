@@ -11,12 +11,12 @@ class AddUser extends StatefulWidget {
   final UserData? currentUserData;
   void Function(int) onNavigationItemSelected;
   String? selectedClass;
-  bool teacher;
-  TextEditingController userNameController;
-  TextEditingController userEmailController;
-  TextEditingController userPasswordController;
-  ClassDataWithId? currentClass;
-  List<String>? classes;
+  final bool teacher;
+  final TextEditingController userNameController;
+  final TextEditingController userEmailController;
+  final TextEditingController userPasswordController;
+  final ClassDataWithId? currentClass;
+  final List<String>? classes;
 
   AddUser(
     {

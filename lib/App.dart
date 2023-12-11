@@ -44,7 +44,7 @@ class _AppState extends State<App> {
   UserData? currentUserData;
   int? capitolLength;
   int capitolsId = 1;
-  dynamic? capitol;
+  dynamic capitol;
   int weeklyChallenge = 0;
   String? weeklyTitle;
   String? futureWeeklyTitle;

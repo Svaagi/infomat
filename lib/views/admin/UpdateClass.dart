@@ -9,14 +9,14 @@ import 'package:infomat/models/UserModel.dart';
 
 class UpdateClass extends StatefulWidget {
   final UserData? currentUserData;
-  void Function(int) onNavigationItemSelected;
-  String? selectedClass;
-  bool teacher;
-  TextEditingController editClassNameController;
-  ClassDataWithId? currentClass;
-  UserDataWithId? currentUser;
-  void Function(String) removeSchoolData;
-  List<String> classes;
+  final void Function(int) onNavigationItemSelected;
+  final String? selectedClass;
+  final bool teacher;
+  final TextEditingController editClassNameController;
+  final ClassDataWithId? currentClass;
+  final UserDataWithId? currentUser;
+  final void Function(String) removeSchoolData;
+  final List<String> classes;
   
   
 

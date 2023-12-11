@@ -7,11 +7,11 @@ import 'package:infomat/models/ClassModel.dart';
 
 class AddClass extends StatefulWidget {
   final UserData? currentUserData;
-  void Function(int) onNavigationItemSelected;
-  bool teacher;
-  TextEditingController classNameController;
-  void Function(ClassDataWithId) addSchoolData;
-  List<String> classes;
+  final void Function(int) onNavigationItemSelected;
+  final bool teacher;
+  final TextEditingController classNameController;
+  final void Function(ClassDataWithId) addSchoolData;
+  final List<String> classes;
   
 
   AddClass(

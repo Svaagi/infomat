@@ -43,7 +43,6 @@ class _ProfileState extends State<Profile> {
   CancelableOperation<List<UserData>>? fetchStudentsOperation;
   int? studentIndex;
   String? className;
-  int _selectedIndex = 0;
   bool _loading = true;
   int percentage = 0;
   bool hide = true;
@@ -156,8 +155,8 @@ class _ProfileState extends State<Profile> {
     try {
       User? user = FirebaseAuth.instance.currentUser;
 
-      if (user != null && currentUserData != null && currentUserData!.schoolClass != null) {
-        final classData = await fetchClass(currentUserData!.schoolClass!);
+      if (user != null && currentUserData != null ) {
+        final classData = await fetchClass(currentUserData!.schoolClass);
         final studentIds = classData.students;
         List<UserData> fetchedStudents = [];
 
@@ -1319,13 +1318,11 @@ class _ProfileState extends State<Profile> {
 
   void _onPageChanged(int index) {
     setState(() {
-      _selectedIndex = index;
     });
   }
 
   void _onNavigationItemSelected(int index) {
     setState(() {
-      _selectedIndex = index;
       _pageController.animateToPage(
         index,
         duration: Duration(milliseconds: 300),

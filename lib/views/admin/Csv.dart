@@ -13,10 +13,10 @@ import 'package:path_provider/path_provider.dart';
 
 class Csv extends StatefulWidget {
   final UserData? currentUserData;
-  void Function(int) onNavigationItemSelected;
+  final void Function(int) onNavigationItemSelected;
   String? selectedClass;
-  ClassDataWithId? currentClass;
-  List<String> classes;
+  final ClassDataWithId? currentClass;
+  final List<String> classes;
 
   Csv(
     {

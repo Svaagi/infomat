@@ -116,7 +116,7 @@ class ReButton extends StatefulWidget {
 class _ReButtonState extends State<ReButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       height: 50,
       child: ElevatedButton(
@@ -305,7 +305,7 @@ Container reTileMatchmaking(
               color: borderColor,
             )
           ),  // replace with your desired icon
-            title: Text(matches[_answer ?? 0],
+            title: Text(matches[_answer],
             style: Theme.of(context)
               .textTheme
               .headlineSmall!

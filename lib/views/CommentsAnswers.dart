@@ -17,8 +17,8 @@ class CommentsAnswers extends StatefulWidget {
   final PostsData? post;
   final CommentsData? comment;
   final int? commentIndex;
-  void Function(bool, int, String) setEdit;
-  TextEditingController controller;
+  final void Function(bool, int, String) setEdit;
+  final TextEditingController controller;
 
   CommentsAnswers({
     Key? key,
@@ -291,7 +291,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                                                             iconColor: AppColors.getColor('mono').black, 
                                                             text: 'VYMAZAŤ',  
                                                             onTap: () {
-                                                              deleteAnswer(widget.currentUserData!.schoolClass, widget.postId ,widget.commentIndex! ,index);
+                                                              deleteAnswer(widget.currentUserData.schoolClass, widget.postId ,widget.commentIndex! ,index);
                                                               answers.removeAt(index);
                                                               Navigator.of(context).pop();
                                                             }
@@ -368,7 +368,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                                                           iconColor: AppColors.getColor('mono').black,
                                                           text: 'VYMAZAŤ',  
                                                           onTap: () {
-                                                            deleteAnswer(widget.currentUserData!.schoolClass, widget.postId ,widget.commentIndex! ,index);
+                                                            deleteAnswer(widget.currentUserData.schoolClass, widget.postId ,widget.commentIndex! ,index);
                                                             answers.removeAt(index);
                                                             Navigator.of(context).pop();
                                                           }
@@ -389,7 +389,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                             ),
                             SizedBox(height: 10.0),
                             Text(answer.value),
-                            if((answer.award || widget.currentUserData!.teacher) && !answer.teacher)Row(
+                            if((answer.award || widget.currentUserData.teacher) && !answer.teacher)Row(
                               children: [
                                 Spacer(),
                                 InkWell(

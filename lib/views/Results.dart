@@ -14,10 +14,8 @@ class Results extends StatefulWidget {
 }
 
 class _ResultsState extends State<Results> {
-  final PageController _pageController = PageController();
  UserData? currentUserData;
   int capitolOne = 0;
-  bool _isDisposed = false;
   List<String> badges = [];
   List<UserData>? students;
   CancelableOperation<UserData>? fetchUserDataOperation;
@@ -39,7 +37,6 @@ class _ResultsState extends State<Results> {
   @override
   void initState() {
     super.initState();
-    _isDisposed = false; // Resetting _isDisposed state
 
     // Fetch the current user data.
     _fetchCurrentUserData().then((_) {
@@ -98,8 +95,8 @@ class _ResultsState extends State<Results> {
     try {
       User? user = FirebaseAuth.instance.currentUser;
 
-      if (user != null && currentUserData != null && currentUserData!.schoolClass != null) {
-        final classData = await fetchClass(currentUserData!.schoolClass!);
+      if (user != null && currentUserData != null ) {
+        final classData = await fetchClass(currentUserData!.schoolClass);
         final studentIds = classData.students;
         List<UserData> fetchedStudents = [];
 

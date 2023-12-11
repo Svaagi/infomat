@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/Colors.dart';
@@ -52,7 +50,6 @@ class _DesktopTestState extends State<DesktopTest> {
   String subQuestion = '';
   String title = '';
   int? questionsPoint;
-  bool _disposed = false;
   bool pressed = false;
   List<dynamic>? percentages;
   double? percentagesAll;
@@ -82,7 +79,7 @@ class _DesktopTestState extends State<DesktopTest> {
         question = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
         subQuestion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subQuestion"] ?? '';
         title = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
-        questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
+        questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"];
         introduction =  widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
             _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
@@ -91,12 +88,12 @@ class _DesktopTestState extends State<DesktopTest> {
         }
 
         if (matchmaking.length > 0) {
-            allCorrects = correct!.map((e) {
+            allCorrects = correct.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';
             }).join(', ');
         } else {
-            allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
+            allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
         checkTitle = false;
@@ -143,7 +140,6 @@ class _DesktopTestState extends State<DesktopTest> {
 
   @override
   void dispose() {
-    _disposed = true; // Set the disposed flag to true
     super.dispose();
   }
 
@@ -185,7 +181,7 @@ class _DesktopTestState extends State<DesktopTest> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                        questionsPoint ?? 0,
+                        questionsPoint!,
                         (index) {
                           final maxCellWidth = 50.0; // Specify the maximum cell width
                           final minWidth = 40.0; // Specify the minimum cell width
@@ -193,7 +189,7 @@ class _DesktopTestState extends State<DesktopTest> {
                               maxCellWidth * (questionsPoint ?? 1);
                           final availableWidth =
                               MediaQuery.of(context).size.width -
-                                  (questionsPoint ?? 0 - 1) * 2.0 * 2.0;
+                                  (questionsPoint! - 1) * 2.0 * 2.0;
 
                           final width = (availableWidth / totalWidth * maxCellWidth)
                               .clamp(minWidth, maxCellWidth);
@@ -273,7 +269,7 @@ class _DesktopTestState extends State<DesktopTest> {
                         margin: EdgeInsets.all(8),
                         padding: EdgeInsets.all(4),
                         child: Text(
-                          title ?? '',
+                          title,
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
@@ -284,8 +280,8 @@ class _DesktopTestState extends State<DesktopTest> {
                       ),
                     Column(
                           children: [
-                            if (division != null && division!.isNotEmpty)
-                              ...division!.map((dvs) => Container(
+                            if (division.isNotEmpty)
+                              ...division.map((dvs) => Container(
                                     margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
@@ -333,8 +329,8 @@ class _DesktopTestState extends State<DesktopTest> {
                                   )).toList()
                             else 
                               Container(), // Plac
-                            if (images != null && images!.isNotEmpty)
-                              ...images!.map((img) => Container(
+                            if (images.isNotEmpty)
+                              ...images.map((img) => Container(
                                     margin: EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
@@ -359,7 +355,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                 ),
                               padding: EdgeInsets.all(12),
                               child: Text(
-                                definition ?? '',
+                                definition,
                                 style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
@@ -387,7 +383,7 @@ class _DesktopTestState extends State<DesktopTest> {
                            if(checkTitle)Container(
                             padding: EdgeInsets.all(4),
                             child: Text(
-                              title ?? '',
+                              title,
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineLarge!
@@ -425,36 +421,35 @@ class _DesktopTestState extends State<DesktopTest> {
                             ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: (answersImage?.length ?? 0) + (answers?.length ?? 0) + (matchmaking?.length ?? 0),
+                            itemCount: (answersImage.length) + (answers.length) + (matchmaking.length),
                             itemBuilder: (BuildContext context, index) {
                               Widget? tile;
                               String? itemText;
 
                               if (pressed) {
-                                if (correct!.any((item) => item["index"] == index)) {
+                                if (correct.any((item) => item["index"] == index)) {
                                   // Show the tile in green if index matches correct
-                                  if (answersImage.isNotEmpty && index < answersImage!.length) {
-                                    String? item = answersImage?[index];
+                                  if (answersImage.isNotEmpty && index < answersImage.length) {
+                                    String? item = answersImage[index];
                                     tile = reTileImage(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
-                                    itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                                  } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                                    String? item = answers?[(index - (answersImage?.length ?? 0))];
+                                    itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index] : null;
+                                  } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
+                                    String? item = answers[(index - (answersImage.length))];
                                     tile = reTile(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
-                                    itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
+                                    itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index - answersImage.length] : null;
                                   } else  {
-                                    String? item = matchmaking?[(index - (answersImage?.length ?? 0) + (answers?.length ?? 0))];
-                                    List<dynamic> item2 = matches ?? [];
+                                    String? item = matchmaking[(index - (answersImage.length) + (answers.length))];
+                                    List<dynamic> item2 = matches;
 
-                                    if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
-                                      tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
+                                    if (_answer.any((answerItem) => answerItem.index == index) && correct.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
+                                      tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length - answers.length].isNotEmpty  ? explanation[index - answersImage.length - answers.length] : null;
                                     } else {
-                                      tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;;
+                                      tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length - answers.length].isNotEmpty  ? explanation[index - answersImage.length - answers.length] : null;;
                                     }
                                   } 
-                                  if (tile != null) {
-                                    return Column(
+                                  Column(
                                       children: [
                                         tile,
                                         if(itemText != null) Container(
@@ -475,7 +470,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                                 SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                                 Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                                   child: Text(
-                                                    itemText ?? '',
+                                                    itemText,
                                                     style: Theme.of(context)
                                                           .textTheme
                                                           .bodyLarge!
@@ -489,16 +484,15 @@ class _DesktopTestState extends State<DesktopTest> {
                                           )
                                       ],
                                     );
-                                  }
-                                } else if (correct!.any((item) => item["index"] != index) && _answer!.any((item) => item.index == index)) {
-                                    if (answersImage.isNotEmpty && index < answersImage!.length) {
-                                      String? item = answersImage?[index];
+                                } else if (correct.any((item) => item["index"] != index) && _answer.any((item) => item.index == index)) {
+                                    if (answersImage.isNotEmpty && index < answersImage.length) {
+                                      String? item = answersImage[index];
                                       tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('red').main, index, item, context, correct: false);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                                    } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                                      String? item = answers?[(index - (answersImage?.length ?? 0))];
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index] : null;;
+                                    } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
+                                      String? item = answers[(index - (answersImage.length))];
                                       tile =  reTile(AppColors.getColor('red').lighter, AppColors.getColor('red').main, index, item, context,correct: false);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index - answersImage.length] : null;
                                     }
                                     if (tile != null) {
                                     return Column(
@@ -522,7 +516,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                                 SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                                 Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                                   child: Text(
-                                                    itemText ?? '',
+                                                    itemText,
                                                     style: Theme.of(context)
                                                           .textTheme
                                                           .bodyLarge!
@@ -538,14 +532,14 @@ class _DesktopTestState extends State<DesktopTest> {
                                     );
                                   }
                                   } else {
-                                    if (answersImage.isNotEmpty && index < answersImage!.length) {
-                                      String? item = answersImage?[index];
+                                    if (answersImage.isNotEmpty && index < answersImage.length) {
+                                      String? item = answersImage[index];
                                       tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                                    } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                                      String? item = answers?[(index - (answersImage?.length ?? 0))];
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index] : null;;
+                                    } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
+                                      String? item = answers[(index - (answersImage.length))];
                                       tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
+                                      itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index - answersImage.length] : null;
                                     }
                                     if (tile != null) {
                                     return Column(
@@ -569,7 +563,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                                 SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                                 Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                                   child: Text(
-                                                    itemText ?? '',
+                                                    itemText,
                                                     style: Theme.of(context)
                                                           .textTheme
                                                           .bodyLarge!
@@ -587,8 +581,8 @@ class _DesktopTestState extends State<DesktopTest> {
                                   }
                               } else {
                           // Show all items when boolPressed is false
-                          if (answersImage.isNotEmpty && index < answersImage!.length) {
-                            String? item = answersImage?[index];
+                          if (answersImage.isNotEmpty && index < answersImage.length) {
+                            String? item = answersImage[index];
                           return MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
@@ -659,7 +653,7 @@ class _DesktopTestState extends State<DesktopTest> {
                             )
 
                             );
-                          } else if (answers.isNotEmpty && (index - answersImage.length) < answers!.length) {
+                          } else if (answers.isNotEmpty && (index - answersImage.length) < answers.length) {
                             String? item = answers[(index - answersImage.length)];
                           return  MouseRegion(
                               cursor: SystemMouseCursors.click,
@@ -807,7 +801,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                       ),
                               ),
                          ),
-                        if(explanation!.length < 2 && pressed && explanation!.length > 0 )Container(
+                        if(explanation.length < 2 && pressed && explanation.length > 0 )Container(
                           margin: EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -825,7 +819,7 @@ class _DesktopTestState extends State<DesktopTest> {
                               SizedBox(width: 12),  // Give some spacing between the SVG and the text
                               Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                 child: Text(
-                                  'Správna je odpoveď ${allCorrects ?? ''}: ${explanation?[0] ?? ''}',
+                                  'Správna je odpoveď ${allCorrects ?? ''}: ${explanation[0] ?? ''}',
                                   style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!
@@ -949,7 +943,7 @@ class _DesktopTestState extends State<DesktopTest> {
             Image.asset('assets/star.png', height: 100,),
             SizedBox(height: 10),
             Text(
-              getResultBasedOnPercentage(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points, questionsPoint ?? 0),
+              getResultBasedOnPercentage(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points, questionsPoint!),
               style:  Theme.of(context)
                 .textTheme
                 .headlineLarge!
@@ -1082,7 +1076,7 @@ class _DesktopTestState extends State<DesktopTest> {
 
 
 // Define a utility function for firstWhereOrNull behavior
-dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
+dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     for (dynamic element in list) {
         if (test(element)) return element;
     }
@@ -1097,14 +1091,14 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     // Initialize points to 0 for this specific run
     double points = 0.0;
 
-   List<bool> correctnessList = List<bool>.filled(correct!.length, false);
+   List<bool> correctnessList = List<bool>.filled(correct.length, false);
 
       for (var userAnswer in _answer) {
         // Try to find a matching correct answer based on index
-        dynamic? matchingCorrectItem;
+        dynamic matchingCorrectItem;
 
           try {
-              matchingCorrectItem = correct!.firstWhere((c) => c["index"] == userAnswer.index);
+              matchingCorrectItem = correct.firstWhere((c) => c["index"] == userAnswer.index);
           } catch (e) {
               matchingCorrectItem = null;
           }
@@ -1112,7 +1106,7 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
         // If found and answers match, update points and correctnessList
         if (matchingCorrectItem != null && userAnswer.answer == matchingCorrectItem["correct"]) {
-          int correctListIndex = correct!.indexOf(matchingCorrectItem);
+          int correctListIndex = correct.indexOf(matchingCorrectItem);
           if (correctListIndex != -1 && correctListIndex < correctnessList.length) {
             correctnessList[correctListIndex] = true;
           }
@@ -1123,8 +1117,8 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
       }
 
 
-    for (int i = 0; i < correct!.length; i++) {
-        if (!_answer.any((item) => item.index == correct![i]["index"])) {
+    for (int i = 0; i < correct.length; i++) {
+        if (!_answer.any((item) => item.index == correct[i]["index"])) {
             points -= partialPoints; // Decrement points by partialPoints for every missing answer
         }
     }
@@ -1145,7 +1139,7 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
 
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
-        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer ?? [];
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
 
         if (areAllCompleted(widget.userData!)) {
           widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
@@ -1161,7 +1155,7 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
   }
 
   void onNextButtonPressed() {
-    if (questionIndex + 1 < (questionsPoint ?? 0)) {
+    if (questionIndex + 1 < (questionsPoint!)) {
       setState(() {
         questionIndex++;
         pressed = false;

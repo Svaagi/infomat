@@ -79,7 +79,7 @@ class _MaterialFormState extends State<MaterialForm> {
 
   Future<void> fetchOptions() async {
   try {
-    if (widget.currentUserData != null && widget.currentUserData!.classes != null) {
+    if (widget.currentUserData != null) {
       _class = widget.currentUserData!.schoolClass;
       classes = await Future.wait(widget.currentUserData!.classes.map((id) async {
         ClassData classData = await fetchClass(id);
@@ -572,7 +572,7 @@ class _MaterialFormState extends State<MaterialForm> {
                               link: _linkController.text,
                               subject: _subjectController.text,
                               title: _titleController.text,
-                              type: _type!,
+                              type: _type,
                               video: _videoController.text,
                             );
                             // TODO: Handle data as needed
@@ -607,8 +607,7 @@ class _MaterialFormState extends State<MaterialForm> {
     return
         _associationController.text.isNotEmpty &&
         _linkController.text.isNotEmpty &&
-        _titleController.text.isNotEmpty &&
-        _type != null;
+        _titleController.text.isNotEmpty;
 }
 
 Future<void> addMaterialToFirestore(MaterialData material) async {
@@ -617,8 +616,6 @@ Future<void> addMaterialToFirestore(MaterialData material) async {
         FirebaseFirestore.instance.collection('materials');
 
       if(_imageBytes != null) {
-      CollectionReference materialsRef =
-        FirebaseFirestore.instance.collection('materials');
 
       final storageRef = FirebaseStorage.instance.ref().child('images/${DateTime.now()}.jpg');
       final uploadTask = storageRef.putData(_imageBytes!);

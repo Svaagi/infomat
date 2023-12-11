@@ -13,7 +13,7 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   final List<List<double>> percentages;
   final UserData? currentUserData;
   List<int> numbers;
-  Future<void> Function()  refreshData;
+  final Future<void> Function()  refreshData;
 
   TeacherCapitolDragWidget({
     Key? key,
@@ -38,18 +38,15 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
 
   fetchCurrentClass() async {
     try {
-      ClassData classData = await fetchClass(widget.currentUserData!.schoolClass!);
-      if (classData != null) {
+      ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
         if (mounted) {
           setState(() {
             currentClassData = classData;
             _loadingCurrentClass = false;
           });
         }
-      } else {
-        print('User is not logged in.');
       }
-    } catch (e) {
+    catch (e) {
       print('Error fetching user data: $e');
     }
   }

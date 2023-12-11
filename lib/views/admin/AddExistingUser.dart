@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
-import 'package:infomat/controllers/SchoolController.dart';
-import 'package:infomat/views/admin/MobileAdmin.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/models/ClassModel.dart';
@@ -10,11 +8,11 @@ import 'package:infomat/controllers/UserController.dart';
 
 class AddExistingUser extends StatefulWidget {
   final UserData? currentUserData;
-  void Function(int) onNavigationItemSelected;
+  final void Function(int) onNavigationItemSelected;
   String? selectedClass;
-  ClassDataWithId? currentClass;
-  List<String>? classes;
-  List<String>? teachers;
+  final ClassDataWithId? currentClass;
+  final List<String>? classes;
+  final List<String>? teachers;
 
 
   AddExistingUser(
