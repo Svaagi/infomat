@@ -105,7 +105,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isEnterScreen)
+    if (_isEnterScreen) {
       return Container(
         color: Theme.of(context).primaryColor,
         child: Column(
@@ -117,7 +117,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: SvgPicture.asset('assets/logo.svg', width: 500),
                   ),
                 ],
@@ -141,19 +141,21 @@ class _LoginState extends State<Login> {
                 },
               ),
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
           ],
         ),
       );
-
-    if (isSchool) return SchoolForm(isSchool: () {setState(() {
+    }
+    if (isSchool){ 
+      return SchoolForm(isSchool: () {setState(() {
       isSchool = false;
     }); });
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height <= 700
           ? 700
           : MediaQuery.of(context).size.height >= 900
@@ -162,19 +164,19 @@ class _LoginState extends State<Login> {
           child: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 child: SvgPicture.asset(
                   'assets/logo.svg',
                   width:  isMobile ? 132 : 172,
                 ),
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
               ),
               Expanded(
                 child: Center(
                   child: Form(
                     key: _formKey,
                     child: Container(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       width: 300,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -189,7 +191,7 @@ class _LoginState extends State<Login> {
                                 ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 100, bottom: 4, right: 4, left: 4),
+                            margin: const EdgeInsets.only(top: 100, bottom: 4, right: 4, left: 4),
                               child:reTextField(
                               "Email",
                               false,
@@ -198,7 +200,7 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(4),
+                            margin: const EdgeInsets.all(4),
                             child:  reTextField(
                               "Heslo",
                               true,
@@ -210,7 +212,7 @@ class _LoginState extends State<Login> {
                           ),
                           _errorMessage != null
                             ? Container(
-                                margin: EdgeInsets.only(top: 22),
+                                margin: const EdgeInsets.only(top: 22),
                                 width: 300,
                                 height: 60,
                                 decoration: BoxDecoration(
@@ -220,11 +222,11 @@ class _LoginState extends State<Login> {
                                 child: Center(
                                   child: Row(
                                     children: [
-                                      SizedBox(width: 20,),
+                                      const SizedBox(width: 20,),
                                        SvgPicture.asset('assets/icons/smallErrorIcon.svg', color: Theme.of(context).colorScheme.error, height: 16,),
                                       Flexible( // Use Flexible to allow text wrapping
                                         child: Container(
-                                          margin: EdgeInsets.all(12),
+                                          margin: const EdgeInsets.all(12),
                                           child: Text(
                                           _errorMessage!,
                                           style: Theme.of(context)
@@ -236,7 +238,7 @@ class _LoginState extends State<Login> {
                                           )
                                         ),
                                       ),
-                                        SizedBox(width: 8,)
+                                        const SizedBox(width: 8,)
                                     ],
                                   ),
                                 ),
@@ -257,7 +259,7 @@ class _LoginState extends State<Login> {
                               },
                             ),*/
                           Container(
-                            margin: EdgeInsets.only(top: 50),
+                            margin: const EdgeInsets.only(top: 50),
                             child: Text(
                               'Ak prihlasovacie údaje nemáš, vypýtaj ',
                               style: Theme.of(context)
@@ -305,7 +307,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 60),
+                margin: const EdgeInsets.only(bottom: 60),
                 child: ReButton(
                   activeColor: AppColors.getColor('green').main,
                   defaultColor: AppColors.getColor('green').light,

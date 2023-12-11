@@ -14,7 +14,7 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
+    options: const FirebaseOptions(
       apiKey: "AIzaSyDDQ-UETB03fLb52hdDToOWbhihWlYopMU",
       authDomain: "infomat-39565.firebaseapp.com",
       projectId: "infomat-39565",
@@ -39,7 +39,7 @@ class MainApp extends StatelessWidget {
         // Define the default brightness and colors.
         brightness: Brightness.light,
         primaryColor: AppColors.getColor('primary').light,
-        colorScheme: ColorScheme.light().copyWith(
+        colorScheme: const ColorScheme.light().copyWith(
           primary: AppColors.getColor('primary').light,
           primaryContainer: AppColors.getColor('primary').light,
           onPrimaryContainer: AppColors.getColor('mono').white,
@@ -56,25 +56,25 @@ class MainApp extends StatelessWidget {
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           displayLarge: TextStyle(fontSize: 32, fontFamily: GoogleFonts.poppins(fontWeight: FontWeight.w700).fontFamily),
-          displayMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-          displaySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+          displayMedium: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          displaySmall: const TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
           
-          titleLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
-          titleMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
-          titleSmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w900),
+          titleLarge: const TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+          titleMedium: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
+          titleSmall: const TextStyle(fontSize: 12, fontWeight: FontWeight.w900),
 
 
           headlineLarge: TextStyle(fontSize: 24, fontFamily: GoogleFonts.poppins(fontWeight: FontWeight.w700).fontFamily),
           headlineMedium: TextStyle(fontSize: 20, fontFamily: GoogleFonts.poppins(fontWeight: FontWeight.w700).fontFamily),
           headlineSmall: TextStyle(fontSize: 16, fontFamily: GoogleFonts.poppins(fontWeight: FontWeight.w700).fontFamily),
 
-          labelLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
-          labelMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
-          labelSmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w900),
+          labelLarge: const TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+          labelMedium: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
+          labelSmall: const TextStyle(fontSize: 12, fontWeight: FontWeight.w900),
 
-          bodyLarge: TextStyle(fontSize: 16),
-          bodyMedium: TextStyle(fontSize: 14),
-          bodySmall: TextStyle(fontSize: 12),
+          bodyLarge: const TextStyle(fontSize: 16),
+          bodyMedium: const TextStyle(fontSize: 14),
+          bodySmall: const TextStyle(fontSize: 12),
           
         ),
       ), // Apply your custom theme
@@ -83,14 +83,14 @@ class MainApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Display a loading indicator if the authentication state is still loading
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else {
             if (snapshot.hasData) {
               // User is logged in, navigate to the specified screen
-              return App();
+              return const App();
             } else {
               // User is not logged in, navigate to Login
-              return Login();
+              return const Login();
             }
           }
         },
