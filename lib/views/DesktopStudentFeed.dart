@@ -65,15 +65,14 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    return  Container(
-            child: SingleChildScrollView(
+    return  SingleChildScrollView(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 50,),
+                    const SizedBox(height: 50,),
                     Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -83,8 +82,8 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         color: isMobile ?  null : Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      padding: EdgeInsets.all(16),
-                      margin: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.all(16),
                       child: Center(
                         child: !widget.weeklyBool ? Column(
                           mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
@@ -105,9 +104,9 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Center(
-                                child: Container(
+                                child: SizedBox(
                                   width: 400, // Set your desired maximum width here
                                   child: Text(
                                     widget.weeklyTitle ?? '',
@@ -119,17 +118,17 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
                             Text(
                                 "Kapitola: ${widget.capitolTitle}",
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
-                              SizedBox(height: 5,),
+                              const SizedBox(height: 5,),
                             Text(
                                 "Čas na dokončenie: 1 týždeň",
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
-                            SizedBox(height: 20,),
+                            const SizedBox(height: 20,),
                             ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text: 'ZAČAŤ', onTap:
                               () {
                                   widget.onNavigationItemSelected(1);
@@ -155,7 +154,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 40),
+                            const SizedBox(height: 40),
                             Text(
                               "budúci týždeň ťa čaká",
                               style: Theme.of(context)
@@ -185,7 +184,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                     ),
                   ),
 
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   !widget.weeklyBool ? Container(
                     height: 320,
                     width: 804,
@@ -197,7 +196,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         width: 2,
                       ),
                     ),
-                    margin: EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(16),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                         crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
@@ -207,9 +206,9 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               height: 100,
                             ),
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Center(
-                                child: Container(
+                                child: SizedBox(
                                   width: 400, // Set your desired maximum width here
                                   child: Text(
                                     widget.weeklyTitle ?? '',
@@ -242,7 +241,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                           ],
                         )
                   ) :  ConstrainedBox(
-                        constraints: BoxConstraints(minHeight: 350),
+                        constraints: const BoxConstraints(minHeight: 350),
                         child:Container(
                           width: 804,
                           decoration: BoxDecoration(
@@ -252,10 +251,10 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               width: 2,
                             ),
                           ),
-                          margin: EdgeInsets.all(16),
-                          padding: EdgeInsets.all(16),
+                          margin: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Column(children: [
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -267,10 +266,10 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                         color: AppColors.getColor('mono').black,
                                       ),
                                   ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: [
-                                  Container(
+                                  SizedBox(
                                     width:  630,
                                     height: 18,
                                     child: ClipRRect(
@@ -296,19 +295,18 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 ,) 
                                 ],
                               ),
-                            SizedBox(height: 20),
-                            Container(
-                              child: SingleChildScrollView(
+                            const SizedBox(height: 20),
+                           SingleChildScrollView(
                                 child: Column(
                                   children: (widget.capitolData?.tests ?? []).where((test) => test.completed == true).map((test) {
                                     return Container(
                                       height: 56,
-                                      margin: EdgeInsets.symmetric(vertical: 2),
+                                      margin: const EdgeInsets.symmetric(vertical: 2),
                                       decoration: BoxDecoration(
                                         color: widget.capitolData?.tests[widget.weeklyChallenge] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
                                         borderRadius: BorderRadius.circular(10.0), // Rounded borders
                                       ),
-                                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                                       child:  Row(
                                         children: [
                                           Column(
@@ -324,14 +322,14 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                                       color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
                                                   ),
                                               ),
-                                              SizedBox(height: 5,),
+                                              const SizedBox(height: 5,),
                                                 Text(
                                                   '${test.points}/${test.questions.length} správných odpovedí',
                                                   style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                                 ),
                                               ],
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             Row(
                                               children: [
                                                 Text('+ ${test.points}',
@@ -342,7 +340,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                                           color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
                                                       ),
                                                   ),
-                                                  SizedBox(width: 8,),
+                                                  const SizedBox(width: 8,),
                                                 SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 20,)
                                               ],
                                             )
@@ -353,9 +351,8 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                   
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 10,),
-                            Container(
+                            const SizedBox(height: 10,),
+                            SizedBox(
                               width: 280,
                               height: 40,
                               child: ReButton(
@@ -380,7 +377,6 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                 ],
               ),
             ),
-          ),
         );
   }
 }

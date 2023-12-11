@@ -204,7 +204,7 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
 
   @override
 Widget build(BuildContext context) {
-  if(_loading) return  Center(child: CircularProgressIndicator());
+  if(_loading) return  const Center(child: CircularProgressIndicator());
   return PageView(
     controller: _pageController,
     onPageChanged: _onPageChanged,
@@ -217,11 +217,11 @@ Widget build(BuildContext context) {
           children: [
             if(widget.currentUserData!.teacher) Container(
               width: 900,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 Row(
                   children: [
                     Text(
@@ -233,8 +233,8 @@ Widget build(BuildContext context) {
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
                     ),
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       width: 320,
                       height: 40,
                       child: ReButton(
@@ -254,7 +254,7 @@ Widget build(BuildContext context) {
                     )
                   ],
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                TextField(
                   minLines: 5,
                   maxLines: 20,
@@ -278,7 +278,7 @@ Widget build(BuildContext context) {
                   ),
                 ),
 
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ReButton(
                     activeColor: AppColors.getColor('mono').white, 
                     defaultColor: AppColors.getColor('green').main, 
@@ -327,7 +327,7 @@ Widget build(BuildContext context) {
                     PostsData post = _posts[index];
                     return Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                         width: 900, // Set your maximum width here
                         child: 
                         MouseRegion(
@@ -335,13 +335,13 @@ Widget build(BuildContext context) {
                             child: GestureDetector(
                           onTap: () => _edit ? _onNavigationItemSelected(2, post) : _onNavigationItemSelected(1, post),
                           child: Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5.0),
                               border: Border.all(color: AppColors.getColor('mono').lightGrey),
                             ),
-                            padding: EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -349,7 +349,7 @@ Widget build(BuildContext context) {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(right: 16.0),
+                                      margin: const EdgeInsets.only(right: 16.0),
                                       child: CircularAvatar(name: post.user, width: 16, fontSize: 16,),
                                     ),
                                     Column(
@@ -372,7 +372,7 @@ Widget build(BuildContext context) {
                                         ),
                                       ],
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     if(FirebaseAuth.instance.currentUser!.uid == post.userId)SvgDropdownPopupMenuButton(
                                       onUpdateSelected: () {
                                         // Call your updateCommentValue function here
@@ -392,7 +392,7 @@ Widget build(BuildContext context) {
                                               ),
                                               content: Container(
                                                 height: 250,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   color: Colors.white,
                                                 ),
                                                 child: Column(
@@ -407,19 +407,19 @@ Widget build(BuildContext context) {
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(height: 15,),
-                                                    Align(
+                                                    const SizedBox(height: 15,),
+                                                    const Align(
                                                       alignment: Alignment.center,
                                                       child: Text(
                                                         'Chystáte sa vymazať váš príspevok z diskusného fóra. Zároveň tým vymažete všetky odpovede žiakov. Táto akcia je nevratná.',
                                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                                                       ),
                                                     ),
-                                                    SizedBox(height: 35,),
+                                                    const SizedBox(height: 35,),
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center, // Center-align the buttons horizontally
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           width: 270,
                                                           height: 48,
                                                           child: ReButton(
@@ -436,8 +436,8 @@ Widget build(BuildContext context) {
                                                             }
                                                           ),
                                                         ),
-                                                        SizedBox(width: 20,), // Add spacing between buttons
-                                                        Container(
+                                                        const SizedBox(width: 20,), // Add spacing between buttons
+                                                        SizedBox(
                                                           width: 150,
                                                           height: 48,
                                                           child: ReButton(
@@ -470,13 +470,13 @@ Widget build(BuildContext context) {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10.0),
+                                const SizedBox(height: 10.0),
                                   Text(post.value),
                                   Row(
                                     children: [
-                                      Spacer(),
+                                      const Spacer(),
                                       SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
-                                      SizedBox(width: 4.0),
+                                      const SizedBox(width: 4.0),
                                       Text(post.comments.length.toString(),
                                         style: Theme.of(context)
                                           .textTheme
@@ -485,7 +485,7 @@ Widget build(BuildContext context) {
                                             color: AppColors.getColor('mono').grey,
                                           ),
                                       ),
-                                      SizedBox(width: 4.0),
+                                      const SizedBox(width: 4.0),
                                       Text(
                                         sklon(post.comments.length),
                                         style: Theme.of(context)
@@ -512,11 +512,11 @@ Widget build(BuildContext context) {
         ),
       if (_edit) Container(
         width: 900,
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             Container(
               width: 900,
               alignment: Alignment.topLeft,
@@ -537,7 +537,7 @@ Widget build(BuildContext context) {
                               ),
                               content: Container(
                                 height: 250,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                 ),
                                 child: Column(
@@ -552,19 +552,19 @@ Widget build(BuildContext context) {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 15,),
-                                    Align(
+                                    const SizedBox(height: 15,),
+                                   const  Align(
                                       alignment: Alignment.center,
                                       child: Text(
                                         'Chystáte sa opustiť túto stránku. Vaše zmeny sa neuložia.',
                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                                       ),
                                     ),
-                                    SizedBox(height: 35,),
+                                    const SizedBox(height: 35,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center, // Center-align the buttons horizontally
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 270,
                                           height: 48,
                                           child: ReButton(
@@ -581,8 +581,8 @@ Widget build(BuildContext context) {
                                             }
                                           ),
                                         ),
-                                        SizedBox(width: 20,), // Add spacing between buttons
-                                        Container(
+                                        const SizedBox(width: 20,), // Add spacing between buttons
+                                        SizedBox(
                                           width: 186,
                                           height: 48,
                                           child: ReButton(
@@ -631,12 +631,12 @@ Widget build(BuildContext context) {
                       ),
                     ),
                   ),
-                  SizedBox(width: 100,)
+                  const SizedBox(width: 100,)
                 ],
               ),
             ),
-            SizedBox(height: 20,),
-            Container(
+            const SizedBox(height: 20,),
+            SizedBox(
               width: 900,
               child: TextField(
               minLines: 5,
@@ -661,13 +661,13 @@ Widget build(BuildContext context) {
               ),
             ),
             ),
-            SizedBox(height: 8),
-            Container(
+            const SizedBox(height: 8),
+            SizedBox(
               width: 900,
               child: Row(
               children: [
-                Spacer(),
-                Container(
+                const Spacer(),
+                SizedBox(
                   width: 230,
                   child: ReButton(
                 activeColor: AppColors.getColor('mono').white, 
@@ -750,7 +750,7 @@ Widget build(BuildContext context) {
                               ),
                               content: Container(
                                 height: 300,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                 ),
                                 child: Column(
@@ -765,19 +765,19 @@ Widget build(BuildContext context) {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 15,),
-                                    Align(
+                                    const SizedBox(height: 15,),
+                                    const Align(
                                       alignment: Alignment.center,
                                       child: Text(
                                         'Chystáte sa opustiť túto stránku. Vaše zmeny sa neuložia.',
                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                                       ),
                                     ),
-                                    SizedBox(height: 35,),
+                                    const SizedBox(height: 35,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center, // Center-align the buttons horizontally
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 270,
                                           height: 48,
                                           child: ReButton(
@@ -794,8 +794,8 @@ Widget build(BuildContext context) {
                                             }
                                           ),
                                         ),
-                                        SizedBox(width: 20,), // Add spacing between buttons
-                                        Container(
+                                        const SizedBox(width: 20,), // Add spacing between buttons
+                                        SizedBox(
                                           width: 186,
                                           height: 48,
                                           child: ReButton(
@@ -838,19 +838,19 @@ Widget build(BuildContext context) {
                           ),
                         ),
                       ),
-                      SizedBox(width: 100,),
+                      const SizedBox(width: 100,),
                     ],
                   ),
                 ),
-                SizedBox(height: 20), // Add spacing between the header and content
-                Container(
+                const SizedBox(height: 20), // Add spacing between the header and content
+                SizedBox(
                   width: 900,
                  child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(12),
                           width: 900,
                           height: 200,
                           child: ListView(
@@ -862,13 +862,13 @@ Widget build(BuildContext context) {
                             ],
                           ),
                         ),
-                        SizedBox(height: 20), // Add spacing between the ListView and ReButton
+                        const SizedBox(height: 20), // Add spacing between the ListView and ReButton
                         
                       ],
                   ),
                 ),
                 ),
-                Container(
+                SizedBox(
                   width: 151,
                   height: 40,
                   child: ReButton(
@@ -911,12 +911,12 @@ Widget build(BuildContext context) {
             ),
           ),
       if (_selectedPost != null)
-      Container(
+      SizedBox(
         width: 900,
         height: 1080,
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             Container(
               width: 900,
               alignment: Alignment.topLeft,
@@ -950,11 +950,11 @@ Widget build(BuildContext context) {
                       ),
                     ),
                   ),
-                  SizedBox(width: 100,)
+                  const SizedBox(width: 100,)
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Expanded(
               child: SingleChildScrollView( 
                 child: Comments(
@@ -973,12 +973,12 @@ Widget build(BuildContext context) {
                 ),
               ),
             ),
-            if(_editComment) Container(
+            if(_editComment) SizedBox(
               width: 900,
               child: Row(
                 children: [
-                  Text('Upraviť príspevok'),
-                  Spacer(),
+                  const Text('Upraviť príspevok'),
+                  const Spacer(),
                   IconButton(
                     icon: Icon(
                       Icons.cancel,
@@ -997,7 +997,7 @@ Widget build(BuildContext context) {
             ),
             Container(
               width: 900,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
@@ -1005,7 +1005,7 @@ Widget build(BuildContext context) {
                   color: textFieldIsFocused ? AppColors.getColor('primary').main : AppColors.getColor('mono').grey,
                 ),
               ),
-              padding: EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(right: 8),
               child: Focus(
                 onFocusChange: (hasFocus) {
                   setState(() {
@@ -1023,23 +1023,23 @@ Widget build(BuildContext context) {
                           hintText: _editComment ? 'Upraviť odpoveď' : 'Zapoj sa do diskusie',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.transparent),
+                            borderSide: const BorderSide(color: Colors.transparent),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.transparent),
+                            borderSide: const BorderSide(color: Colors.transparent),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.transparent),
+                            borderSide:const  BorderSide(color: Colors.transparent),
                           ),
                           filled: true,
                           fillColor: Colors.white,
                         ),
                       ),
                     ),
-                    SizedBox(width: 8),
-                    Container(
+                    const SizedBox(width: 8),
+                    SizedBox(
                       width: _editComment ? 152 : 136,
                       height: 40,
                       child: ReButton(
@@ -1131,12 +1131,12 @@ Widget build(BuildContext context) {
         ),
       ),
        if (_selectedComment != null)
-      Container(
+      SizedBox(
         width: 900,
         height: 1080,
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             Container(
               width: 900,
               alignment: Alignment.topLeft,
@@ -1170,11 +1170,11 @@ Widget build(BuildContext context) {
                       ),
                     ),
                   ),
-                  SizedBox(width: 100,)
+                  const SizedBox(width: 100,)
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Expanded(
               child: SingleChildScrollView(
                 child: CommentsAnswers(fetchAnswersStream: fetchAnswersStream(_selectedPost!.id, _selectedCommentIndex!), commentIndex: _selectedCommentIndex, currentUserData: widget.currentUserData!, postId: _selectedPost!.id,comment: _selectedComment,controller: answerController , post: _selectedPost,setEdit: (bool edit, int index, String value) {
@@ -1187,12 +1187,12 @@ Widget build(BuildContext context) {
                 ),
               ),
             ),
-            if(_editAnswer) Container(
+            if(_editAnswer) SizedBox(
               width: 900,
               child: Row(
                 children: [
-                  Text('Upraviť príspevok'),
-                  Spacer(),
+                  const Text('Upraviť príspevok'),
+                  const Spacer(),
                   IconButton(
                     icon: Icon(
                       Icons.cancel,
@@ -1211,7 +1211,7 @@ Widget build(BuildContext context) {
             ),
            Container(
               width: 900,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
@@ -1219,7 +1219,7 @@ Widget build(BuildContext context) {
                   color: textFieldTwoIsFocused ? AppColors.getColor('primary').main : AppColors.getColor('mono').grey,
                 ),
               ),
-              padding: EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(right: 8),
               child: Focus(
                 onFocusChange: (hasFocus) {
                   setState(() {
@@ -1237,22 +1237,22 @@ Widget build(BuildContext context) {
                         hintText: _editAnswer ? 'Upraviť odpoveď' : 'Zapoj sa do diskusie',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8), // Adjust the value for less rounded corners
-                          borderSide: BorderSide(color: Colors.transparent), // Light grey border color
+                          borderSide:const  BorderSide(color: Colors.transparent), // Light grey border color
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.transparent), // Light grey border color
+                          borderSide:const BorderSide(color: Colors.transparent), // Light grey border color
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.transparent), // Light grey border color
+                          borderSide:const  BorderSide(color: Colors.transparent), // Light grey border color
                         ),
                         filled: true,
                         fillColor: Colors.white,
                       ),
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Container(
                     alignment: Alignment.bottomRight,
                     width: _editAnswer ? 152 : 136,
@@ -1359,12 +1359,12 @@ Widget _buildLibraryCheckbox(String title) {
       border: Border.all(color: AppColors.getColor('mono').lightGrey), // Grey border
       borderRadius: BorderRadius.circular(10.0), // Rounded corners
     ),
-    margin: EdgeInsets.symmetric(vertical: 5.0), // Add margin for spacing
+    margin: const EdgeInsets.symmetric(vertical: 5.0), // Add margin for spacing
     child: CheckboxListTile(
       contentPadding: EdgeInsets.zero,
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black, // Purple when checked
         ),
       ),
@@ -1395,7 +1395,7 @@ Widget _buildLibraryCheckbox(String title) {
         _selectedCommentIndex = commentIndex;
         _pageController.animateToPage(
           index,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
     });
@@ -1408,7 +1408,7 @@ Widget _buildLibraryCheckbox(String title) {
         _selectedCommentIndex = commentIndex;
         _pageController.animateToPage(
           index,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
     });
