@@ -66,6 +66,20 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
 
+      checkTitle = false;
+
+        
+
+        if (title == '' && definition == '' && images.isEmpty && division.isEmpty) {
+          checkTitle = false;
+        } else if (title != '' && definition == '' && images.isEmpty && division.isEmpty) {
+          checkTitle = true;
+        } else {
+          checkTitle = true;
+        }
+
+        _loading = false;
+
       setState(() {
         conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
         division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
@@ -96,11 +110,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
             allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
-        checkTitle = false;
-
-        if(title != '' && definition == '' && images.isEmpty && division.isEmpty) checkTitle = true;
-
-        _loading = false;
+        
 
       });
 
@@ -126,8 +136,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
     super.initState();
     fetchQuestionData(questionIndex);
     fetchPercentages();
-    
-    
     
     if (countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions) == widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length) {
       questionIndex = 0;
@@ -327,7 +335,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
             alignment: WrapAlignment.spaceEvenly,
 
             children: [
-            if (!checkTitle ) Container(
+            if (checkTitle ) Container(
               width: 670,
               margin:  const EdgeInsets.only(bottom: 12, left: 12, right: 30, top: 50),
               padding: const EdgeInsets.all(12),
@@ -440,7 +448,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
               ),
             ),
             Container(
-               width: ((title != '' || definition != '' || images.isNotEmpty) && !checkTitle) ? 600 : 800,
+               width: ((title != '' || definition != '' || images.isNotEmpty) && checkTitle) ? 600 : 800,
                 margin: const EdgeInsets.all(12),
                 padding: const EdgeInsets.all(12),
               child: 
@@ -500,8 +508,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               ],
                             )
                         ),
-                        if(checkTitle)const SizedBox(height: 30,),
-                           if(checkTitle)Container(
+                        if(!checkTitle)const SizedBox(height: 30,),
+                           if(!checkTitle)Container(
                             padding: const EdgeInsets.all(4),
                             child: Text(
                               title,

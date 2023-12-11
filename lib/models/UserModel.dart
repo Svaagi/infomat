@@ -177,7 +177,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Časti debatného argumentu',
+                name: '1.1 Časti debatného argumentu',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false]),

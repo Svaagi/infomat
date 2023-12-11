@@ -2164,7 +2164,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [],
-                "images": ["assets/pictures/picture4.png", "assets/pictures/6.png"],
+                "images": ["assets/pictures/picture4.png", "assets/pictures/picture6.png"],
                 
                 "matchmaking": [],
                 "matches": [],
@@ -2187,7 +2187,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [],
-                "images": ["assets/pictures/7.png"],
+                "images": ["assets/pictures/picture7.png"],
                 
                 "matchmaking": [],
                 "matches": [],
@@ -2553,7 +2553,8 @@
               "definition": "",
               "explanation": [
                 "Tento graf má dve rôzne osi y, pričom ľavá os zobrazuje globálne HDP v rozsahu od 40 do 80 triliónov a pravá os zobrazuje HDP Nemecka v rozsahu od 2.5 do 4. Problémom je, že pomery týchto dvoch mierok sa v dvojosových grafoch líšia. Graf navodzuje nesprávny dojem, že HDP Nemecka a globálne HDP stúpajú  približne rovnakým tempom (aspoň teda do roku 2014), čo nie je pravda – globálne HDP vzrástlo do roku 2014 o cca 80%, zatiaľ čo HDP Nemecka len o 40%.",
-                "Pri tomto grafe je už jednoducho viditeľné, že globálne HDP vzrástlo viac ako HDP Nemecka. Problematické však je, že graf pôsobí, akoby v prvých rokoch bolo HDP Nemecka vyššie ako to svetové a následne, v 2011 boli tieto dve HDP približne rovnaké. Toto však na základe ponúkaných číselných údajov nie je pravdivý záver."
+                "Pri tomto grafe je už jednoducho viditeľné, že globálne HDP vzrástlo viac ako HDP Nemecka. Problematické však je, že graf pôsobí, akoby v prvých rokoch bolo HDP Nemecka vyššie ako to svetové a následne, v 2011 boli tieto dve HDP približne rovnaké. Toto však na základe ponúkaných číselných údajov nie je pravdivý záver.",
+                "To, že grafy sú dva a nie jeden problematické nie je. Dokonca, v tomto prípade je to priam žiadúce, keďže grafy s dvoma osami y boli zavádzajúce. "
               ],
               "images": [
                 "assets/pictures/picture16.png",
@@ -2904,7 +2905,7 @@
                 { "correct": 5, "index": 1 },
                 { "correct": 1, "index": 2 },
                 { "correct": 4, "index": 3 },
-                { "correct": 3, "index": 0 },
+                { "correct": 0, "index": 4 },
                 { "correct": 2, "index": 5 }
               ],
               "division": [],

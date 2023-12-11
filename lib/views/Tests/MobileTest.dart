@@ -436,7 +436,7 @@ class _MobileTestState extends State<MobileTest> {
                           String? item = answers[(index - (answersImage.length))];
                           tile = reTile(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
                           itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
-                        } else if (matchmaking.isNotEmpty && (matches.length) > 0 && index - (answersImage.length) + ((answers.length)) < (matchmaking.length )) {
+                        } else if (matchmaking.isNotEmpty && matches.isNotEmpty && index - (answersImage.length) + ((answers.length)) < (matchmaking.length )) {
                           String? item = matchmaking[(index - (answersImage.length) + (answers.length))];
                           List<dynamic> item2 = matches;
 
@@ -592,9 +592,7 @@ class _MobileTestState extends State<MobileTest> {
                         bool isSelected = _answer.any((e) => e.answer == index);
                         if (!isSelected) {
                           // If selected items are less than the limit, allow adding
-                            if (_answer.isEmpty) {
                               _answer.add(UserAnswerData(answer: index, index: index));
-                            }
                         } else {
                           // Always allow unchecking
                           _answer.removeWhere((element) => element.answer == index);
@@ -604,7 +602,7 @@ class _MobileTestState extends State<MobileTest> {
                     child: Material(
                       type: MaterialType.transparency,
                       child: Container(
-                        margin: EdgeInsets.all(8),
+                        margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           border: _answer.any((e) => e.answer == index)
                               ? Border.all(color: Theme.of(context).primaryColor)
@@ -635,7 +633,7 @@ class _MobileTestState extends State<MobileTest> {
                                             : Theme.of(context).colorScheme.onBackground,
                                       ),
                                   ),
-                                  SizedBox(width: 32),
+                                  const SizedBox(width: 32),
                                   Expanded(child: Text('Obrázok ${index + 1},',
                                     style: Theme.of(context)
                                   .textTheme
@@ -664,9 +662,7 @@ class _MobileTestState extends State<MobileTest> {
                           bool isSelected = _answer.any((e) => e.answer == index);
                           if (!isSelected) {
                             // If selected items are less than the limit, allow adding
-                              if (_answer.isEmpty) {
                                 _answer.add(UserAnswerData(answer: index, index: index));
-                              }
                           } else {
                             // Allow toggling off
                             _answer.removeWhere((element) => element.answer == index);
@@ -837,12 +833,74 @@ class _MobileTestState extends State<MobileTest> {
               ]
               )
             ),
-
             pressed ? ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'ĎALEJ',onTap:
               onNextButtonPressed,
             ) : ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main,isDisabled: _answer.length < 1  + (matchmaking.isNotEmpty ? matchmaking.length - 1 : 0),  text: 'HOTOVO', onTap:
               onAnswerPressed,
             ),
+            /*Row(
+                  children: [
+                    SizedBox(
+                      width: 53,
+                      height: 53,
+                      child:  ReButton(
+                        activeColor: AppColors.getColor('primary').light, 
+                        defaultColor: AppColors.getColor('mono').lighterGrey, 
+                        disabledColor: AppColors.getColor('mono').lightGrey, 
+                        focusedColor: AppColors.getColor('primary').light, 
+                        hoverColor: AppColors.getColor('primary').lighter, 
+                        textColor: AppColors.getColor('primary').main, 
+                        iconColor: AppColors.getColor('mono').black, 
+                        text: '', 
+                        leftIcon: 'assets/icons/arrowLeftIcon.svg',
+                        onTap: () {
+                          questionIndex > 0
+                        ? setState(() {
+                            questionIndex--;
+                            fetchQuestionData(questionIndex);
+                          })
+                        : widget.overlay();
+                        },
+                      ),
+                    ),
+                    const Spacer(),
+                    pressed ? ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'ĎALEJ',onTap:
+                      onNextButtonPressed,
+                    ) : ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main,isDisabled: _answer.length < 1  + (matchmaking.isNotEmpty ? matchmaking.length - 1 : 0),  text: 'HOTOVO', onTap:
+                      onAnswerPressed,
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      width: 53,
+                      height: 53,
+                      child:  ReButton(
+                        activeColor: AppColors.getColor('primary').light, 
+                        defaultColor: AppColors.getColor('mono').lighterGrey, 
+                        disabledColor: AppColors.getColor('mono').lightGrey, 
+                        focusedColor: AppColors.getColor('primary').light, 
+                        hoverColor: AppColors.getColor('primary').lighter, 
+                        textColor: AppColors.getColor('primary').main, 
+                        iconColor: AppColors.getColor('mono').black, 
+                        text: '', 
+                        rightIcon: 'assets/icons/arrowRightIcon.svg',
+                        onTap: () {
+                          if (questionIndex + 1 < (questionsPoint ?? 0)) {
+                            setState(() {
+                            questionIndex++;
+                            fetchQuestionData(questionIndex);
+                          });
+                          } else {
+                            setState(() {
+                              questionIndex = 0;
+                              pressed = false;
+                            });
+                            _showscreen();
+                          }
+                        },
+                      ),
+                    ),
+                  ]
+                )*/
           ],
         ),
           )
@@ -1079,7 +1137,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 }
 
  void onAnswerPressed() {
-    if (_answer.length > 0) {
+    if (_answer.isNotEmpty) {
       setState(() {
        double partialPoints = 1.00 / widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct.length;
 
