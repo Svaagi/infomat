@@ -283,7 +283,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${userData.name} ${userData.surname}',
+                                    '${userData.name}',
                                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                           color: AppColors.getColor('mono').black,
                                         ),
@@ -481,7 +481,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    '${userData.name} ${userData.surname}',
+                                    '${userData.name}',
                                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                           color: AppColors.getColor('mono').black,
                                         ),

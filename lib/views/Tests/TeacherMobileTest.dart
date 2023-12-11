@@ -48,6 +48,7 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
   List<UserAnswerData> _answer = [];
   bool? isCorrect;
   int questionIndex = 0;
+  String conclusion = '';
   List<dynamic> division = [];
   List<dynamic> answers = [];
   List<dynamic> answersImage = [];
@@ -82,6 +83,8 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
       if (_disposed) return; // Check if the widget has been disposed
 
       setState(() {
+        conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
+        division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
         answers = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
         answersImage = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
         matchmaking = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
@@ -394,7 +397,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                           ),
                                           child: Text(
-                                            dvs.title,
+                                            dvs["title"],
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .headlineMedium!
@@ -408,8 +411,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                           constraints: BoxConstraints( minHeight: 50, maxWidth: MediaQuery.of(context).size.width - 150),
                                           padding: EdgeInsets.all(16),
                                           child: Text(
+                                            dvs["text"],
                                             textAlign: TextAlign.center,
-                                            dvs.text,
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!
@@ -651,6 +654,18 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                             },
                             );
                           }
+                         ),
+                         if(conclusion != '') Container(
+                          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                              child: Text(
+                                "Záver: $conclusion",
+                                style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Theme.of(context).colorScheme.onBackground,
+                                      ),
+                              ),
                          ),
                       if(explanation!.length < 2 && explanation!.length > 0)Container(
                         margin: EdgeInsets.all(8),

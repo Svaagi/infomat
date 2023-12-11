@@ -1071,8 +1071,6 @@ class _SchoolFormState extends State<SchoolForm> {
           'classes': userData.classes,
           'school': _schoolIdController.text,
           'schoolClass': userData.schoolClass,
-          'image': userData.image,
-          'surname': userData.surname,
           'teacher': true,
           'points': userData.points,
           'capitols': userData.capitols.map((capitol) => {
@@ -1093,7 +1091,6 @@ class _SchoolFormState extends State<SchoolForm> {
           }).toList(),
           'notifications': userData.notifications,
           'materials': userData.materials,
-          'badges': userData.badges,
         });
 
         FirebaseFirestore firestore = FirebaseFirestore.instance; // Create an instance of FirebaseFirestore

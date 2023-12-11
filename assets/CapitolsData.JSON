@@ -47,6 +47,7 @@
                 "index": 7
               }
             ],
+            "division": [],
             "definition": "",
             "explanation": [
               "Kritické myslenie nie je o memorovaní faktov, čo je v dnešnom rýchlo sa meniacom svete zbytočné. Naopak, kritické myslenie podporuje nezávislé, inovatívne a analytické rozmýšľanie. Kriticky mysliaci človek sa pýta otázky a snaží sa nájsť pravdu, avšak nie je skeptický voči úplne všetkému. Takýto človek si uvedomuje, že niektoré fakty sú objektívne pravdivé a zohľadňuje ich vo svojom rozmýšľaní."
@@ -83,6 +84,7 @@
                   "index": 4
                 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Mediálna gramotnosť je v podstate aplikácia kritického myslenia na mediálne prostredie. Mediálny gramotný človek vie vyhodnotiť dôveryhodnosť informácií na základe objektívnych znakov a nerozhoduje sa len podľa svojho názoru. Mediálnou gramotnosťou neučíme ľudí čo si majú myslieť a ktoré médiá majú čítať."
@@ -110,6 +112,7 @@
               "index": 1
               }
           ],
+          "division": [],
           "definition": "",
           "explanation": [
               "Emócie sú neoddeliteľnou časťou ľudského života, a rovnako to platí pri kritickom rozmýšľaní. Úplne poprieť emócie je nemožné a snažiť sa o to nás vedie len k sebaklamu. Počas vypĺňania kvízov InfoMentor sa pokojne zamýšľajte nad tým, ako sa cítiš a prečo. S emóciami sa dá konštruktívne pracovať len vtedy, keď priznáme, že ich máme. Nie sme roboti."
@@ -156,6 +159,7 @@
                   "index": 6
                 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Faktické tvrdenie nemusí byť pravdivé (napríklad, že na Slovensku žije 7 miliónov ľudí), ale musí byť overiteľné na základe objektívnych kritérií. Naopak názory reflektujú osobné preferencie jednotlivca. Je dôležité vedieť ich rozlíšiť, lebo faktické tvrdenia overujeme („fact-checking“) a o názoroch môžeme diskutovať. Aj názory by mali byť založené na faktoch."
@@ -201,6 +205,7 @@
                       "index": 0
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [],
                   
@@ -226,6 +231,7 @@
                       "index": 2
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [
                     "Keď dostaneme prvú informáciu, že značkové tenisky stoja napr. 200 eur, „zakotvíme“ s touto informáciou. Následne kvôli kognitívnemu skresleniu kotvenia sa potešíme, keď zlacnia napr. na 100 eur, napriek tomu, že ich výrobná hodnota môže byť 10-20 eur."
@@ -253,6 +259,7 @@
                       "index": 3
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [],
                   
@@ -282,6 +289,7 @@
                       "index": 3
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [
                     "Ak vyhľadávam informácie, že prečo je X najlepšie, tak nájdem len také výsledky, ktoré potvrdzujú môj svetonázor. Kriticky mysliaci človek by zadal do vyhľadávača napr. „výhody a nevýhody X“ a až potom by si vytvoril názor. Rovnako pri čítaní statusov politikov – ak budem počúvať len tých, s ktorými súhlasím, tak si tým len potvrdím to, čo si už myslím."
@@ -309,6 +317,7 @@
                       "index": 0
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [],
                   
@@ -338,6 +347,7 @@
                       "index": 3
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [
                     "Viera v astrológiu je typický príklad apofénie – niektorí ľudia veria, že len na základe rozpoloženia hviezd pri našom narodení vieme predpokladať javy v našom živote. Rovnako, približne rovnaké výsledky troch volieb sú len náhodou a spolu nesúvisia – odohrali sa v iných časoch, iných krajinách a s iným počtom hlasov. Takáto konšpiračná teória sa šírila po prezidentských voľbách v Česku v roku 2023."
@@ -365,6 +375,7 @@
                       "index": 2
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [],
                   
@@ -394,6 +405,7 @@
                       "index": 1
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [
                     "Aby sa niekto stal profesionálnym basketbalistom, musí mať isté predispozície, ako napríklad nadpriemernú výšku. Ak vyvodíme všeobecné závery len na základe výšky už úspešných basketbalistov, dopúšťame sa skreslenia preživšieho – v tejto skupine budú chýbať ľudia, ktorí sú vysokí, ale nie sú dobrí v basketbale. Rovnako sa dopúšťame skreslenia preživšieho, ak na základe komentárov na sociálnych sieťach vyvodíme všeobecné závery. Dá sa predpokladať, že práve tí najviac nahnevaní ľudia budú chcieť písať agresívne komentáre, zatiaľ čo slušní ľudia si svoje myšlienky nechajú pre seba."
@@ -421,6 +433,7 @@
                       "index": 3
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [],
                   
@@ -454,6 +467,7 @@
                       "index": 3
                     }
                   ],
+                  "division": [],
                   "definition": "",
                   "explanation": [
                     "Kvôli heuristike dostupnosti často nadhodnocujeme individuálne živé spomienky na úkor objektívnych dát. V bežnom živote to môže byť jeden silný zážitok – napríklad, keď ti spolužiačka detailne opísala, ako ju na danej ulici okradli. Ale heuristika dostupnosti nastáva aj kvôli tomu, že niektoré udalosti sa častejšie dostanú do médií – napríklad havárie lietadiel alebo útoky medveďov. Oba javy sú síce veľmi zriedkavé, ale vždy keď sa stanú, ocitnú sa v médiách. Pritom podľa dát je cesta autom nebezpečnejšia a napr. kliešť spôsobí oveľa viac úmrtí ako medveď."
@@ -497,6 +511,7 @@
                           "index": 0
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -522,6 +537,7 @@
                           "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -548,6 +564,7 @@
                         }
                       ],
                       
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -573,6 +590,7 @@
                         }
                       ],
                       
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -598,6 +616,7 @@
                         }
                       ],
                       
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -623,6 +642,7 @@
                         }
                       ],
                       
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Tvrdenie má byť čo najjednoduchšie zhrnutie pointy argumentu, ktoré sa prezentuje hneď v jeho úvode. Dôkazy a vysvetlenia prichádzajú až v neskorších častiach argumentu."
@@ -649,6 +669,7 @@
                           "index": 2
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Toto nie je vysvetlenie, ale pravdepodobne len iná časť argumentu",
@@ -685,6 +706,7 @@
                           "index": 2
                         }
                       ],
+                      "division": [],
                       "definition": "Závery výskumu z University of Missouri z roku 2010 potvrdzujú, že základné školy, kde sú zavedené školské uniformy, zaznamenávajú nižší počet incidentov spojených s problémovým správaním svojich žiakov a žiačok ako školy, kde uniformná politika zavedená nie je.",
                       "explanation": [],
                       
@@ -709,6 +731,7 @@
                           "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "Nosenie uniformy ovplyvňuje to, ako sa človek vníma a ako sa správa. Rôzne typy uniforiem sú spojené s rôznymi očakávaniami a typmi úloh, ktoré ich nositelia zohrávajú. Pohľad na školskú uniformu prirodzene vyvoláva myšlienku na školské prostredie a vzdelávanie, preto sa v momente jej nasadenia žiak alebo žiačka začína mentálne pripravovať na pobyt v škole a myšlienky na iné prostredie či aktivity ustupujú. Zároveň nosenie školskej uniformy stavia svojho nositeľa do úlohy študenta, ktorá sa spája so zvedavosťou, hľadaním odpovedí na otázky, či nadobúdaním vedomostí. Túto úlohu sa žiaci a žiačky celkom podvedome snažia napĺňať, preto počas vyučovania menej vyrušujú a viac sa sústredia na predmet výučby.",
                       "explanation": [],
                       
@@ -733,6 +756,7 @@
                           "index": 0
                         }
                       ],
+                      "division": [],
                       "definition": "Žiaci a žiačky základných škôl by mali povinne nosiť školské uniformy, pretože to zlepšuje ich správanie v škole a zvyšuje sústredenie sa na vyučovanie.",
                       "explanation": [],
                       
@@ -754,6 +778,7 @@
                       "correct": [
                         { "correct": 0, "index": 0 }
                       ],
+                      "division": [],
                       "definition": "Aktivisti a aktivistky protestujú pred továrňou na spracovanie kuracieho mäsa. Aktivistka na pódiu má megafón a prednáša nasledujúci argument o tom, že konzumácia mäsa je nemorálna. Jesť mäso je nemorálne, lebo kvôli tomu spôsobujeme veľké utrpenie zvieratám. Pozrime sa napríklad na to, ako sa bežne zaobchádza s kurčatami. Každoročne je zavraždených približne 70 miliárd kurčiat. Medzi bežné praktiky sa považuje napríklad odsekávanie zobákov alebo odopieranie prístupu k jedlu, aby znášali viac vajec. Kvôli genetickým úpravám a šľachteniam pre maximalizáciu objemu mäsa až 30% kurčiat nevie poriadne chodiť. A prečo? Len pre naše potešenie. Takéto vedomé a nepotrebné spôsobovanie utrpenia inej cítiacej bytosti je nemorálne. Táto továreň na mäso by mala byť okamžite zatvorená.",
                       "explanation": [
                         "Rečníčka poukázala na mnoho nemorálnych praktík, ktoré sa využívajú pri klietkovom chove zvierat. Avšak nikdy nebolo vysvetlené, prečo je takýto prístup tak často používaný. Taktiež nebolo vysvetlené, ako tomu predídeme tým, keď prestaneme jesť mäso."
@@ -769,14 +794,15 @@
                     },
                     {
                       "answers": [
-                        "a) V argumente chýba vysvetlenie",
-                        "b) V argumente chýba dôkaz",
-                        "c) V argumente nič nechýba"
+                        "V argumente chýba vysvetlenie",
+                        "V argumente chýba dôkaz",
+                        "V argumente nič nechýba"
                       ],
                       "answersImage": [],
                       "correct": [
                         { "correct": 1, "index": 1 }
                       ],
+                      "division": [],
                       "definition": "Nachádzame sa na politologickej konferencii s názvom „Ako zlepšiť demokraciu?“. Prebieha panelová diskusia, kde akademici a akademičky riešia, či by mala byť volebná účasť povinná. Ozve sa akademička, ktorá prednesie nasledujúci argument: Povinná volebná účasť zaručuje, že politici lepšie zastupujú vôľu ľudu. Momentálne po celom svete klesá účasť na voľbách. Ľudia sú apatickí a často sa vôbec nezaujímajú o politiku. To je problematické, lebo čím ďalej tým menšia časť spoločnosti rozhoduje o politickom zložení vlády, ktorá má zastupovať všetkých občanov. To je však takmer nemožné, pokiaľ väčšina občanov ani nevyjadrí svoje preferencie pri volebnej urne. Tým pádom vznikajú nereprezentatívne vlády, ktoré nereflektujú názory občanov. Takže buď zavedieme povinné voľby, alebo sa môžeme rozlúčiť s demokraciou. Keby sa zaviedla povinnosť voliť, tak by výrazne stúpla volebná účasť. A keďže občania by vedeli, že musia ísť voliť, tak by si predtým naštudovali, komu hodia svoj hlas. Po voľbách by vznikla naozaj reprezentatívna vláda s omnoho vyššou legitimitou, lebo by naozaj zastupovala celý ľud. Mať reprezentatívnu vládu je veľmi dôležité, lebo potom je väčšina občanov spokojná. Politici totiž pri vládnutí zohľadňujú záujmy všetkých občanov a snažia sa vyhovieť väčšine. Tým stúpa dôvera v demokraciu.",
                       "explanation": [],
                       
@@ -812,6 +838,7 @@
                           "index": 2
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [],
                       
@@ -843,6 +870,7 @@
                           "index": 0
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [],
                       "images": [],
@@ -862,9 +890,10 @@
                       "correct": [
                         {
                           "correct": 1,
-                          "index": 0
+                          "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Argumenty musíme súdiť podľa ich kvality a presvedčivosti. Argumenty, ktoré sú vysvetlené do hĺbky, podložené dôkazmi a neobsahujú logické chyby, sú viac valídne ako krátke, povrchné a nepodložené tvrdenia."
@@ -890,6 +919,7 @@
                           "index": 0
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [],
                       
@@ -910,9 +940,10 @@
                       "correct": [
                         {
                           "correct": 1,
-                          "index": 0
+                          "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Argument sa skladá zo štyroch častí – tvrdenie, vysvetlenie a dôkaz. Ak má „argument“ jednu vetu, ide len o tvrdenie. Tvrdením oznámime svoj názor, ale nevysvetlíme ho, tým pádom to nemôžeme považovať za plnohodnotný argument."
@@ -938,6 +969,7 @@
                           "index": 0
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [],
                       
@@ -958,9 +990,10 @@
                       "correct": [
                         {
                           "correct": 1,
-                          "index": 0
+                          "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Nie je dobré, ak je argument rozvláčny, lebo sa stáva, že jeho pointa zanikne. Taktiež by sa nemali časti vysvetlenia opakovať."
@@ -983,9 +1016,10 @@
                       "correct": [
                         {
                           "correct": 1,
-                          "index": 0
+                          "index": 1
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [
                         "Cieľom argumentu je presvedčiť publikum o správnosti vašich názorov. Takže záverom argumentu by mala byť obhajoba istej názorovej pozície."
@@ -1016,6 +1050,7 @@
                           "index": 2
                         }
                       ],
+                      "division": [],
                       "definition": "",
                       "explanation": [],
                       
@@ -1062,6 +1097,7 @@
                     "index": 2
                   }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Osobná skúsenosť nie je dobrým dôkazom v argumente, keďže ju často nevieme zovšeobecniť a tým zosilniť. Internetové články sú oveľa lepšími dôkazmi, ale vždy treba dávať pozor na ich relevanciu a kredibilitu, keďže nie všetky spĺňajú štandardy dôveryhodného zdroja informácií."
@@ -1081,12 +1117,13 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 1
+                    "index": 0
                   }
                 ],
+                "division": [],
                 "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "explanation": [
-                  " Osobná skúsenosť nie je zovšeobecniteľná. Mohlo ísť o výnimku"
+                  "Osobná skúsenosť nie je zovšeobecniteľná. Mohlo ísť o výnimku"
                 ],
                 
                 "images": [],
@@ -1108,9 +1145,10 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 1
+                    "index": 0
                   }
                 ],
+                "division": [],
                 "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "explanation": [
                   "Anketa v tomto prípade nie je reprezentatívna - je málo respondentov a náchádza sa na (vymyslenej) stránke protizbraniam.sk, ktorá pravdepodobne nebude objektívna."
@@ -1138,6 +1176,7 @@
                     "index": 0
                   }
                 ],
+                "division": [],
                 "definition": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "explanation": [
                   "Ide o dôveryhodnú vedeckú štúdiu, ktorá je relevantná pre argument."
@@ -1162,9 +1201,10 @@
                 "correct": [
                   {
                     "correct": 1,
-                    "index": 1
+                    "index": 0
                   }
                 ],
+                "division": [],
                 "definition": "Tvrdenie: \"Zákaz strelných zbraní by viedol k vyššej bezpečnosti v domácnostiach.\"",
                 "explanation": [
                   "Dôkaz nesúvisí s vysvetlením. Vysvetlenie je o neopatrnom zaobchádzaní so zbraňami, dôkaz je o životnom prostredí."
@@ -1183,8 +1223,6 @@
                 "conclusion": "",
                 "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
               }
-              
-              
             ]
           },
           {
@@ -1204,6 +1242,7 @@
                     "index": 1
                   }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie pracuje s predpokladom, že ak budú vysoké školy zadarmo, viac ľudí získa titul. Avšak počet absolventov nesúvisí s cenou školného – aj školy zadarmo môžu mať limity na to, koľko študentov príjmu. Tvrdenie hovorí len o nadbytku kvalifikovaných ľudí, ale nevyjadruje sa k otázke ceny."
@@ -1223,6 +1262,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie sa priamo vyjadruje k položenej otázke a jasne pomenováva nevýhodu vyplývajúcu zo zavedenia opatrenia. Navyše, toto tvrdenie prináša aj dôkaz v podobe štúdii, ktoré robia jeho dopady uveriteľnejšie."
@@ -1242,6 +1282,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie vytvára ucelenú analýzu. Pomenuje problém, vysvetlí, ako tento problém operuje a je zakončené náčrtom dopadov na spoločnosť."
@@ -1268,6 +1309,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdeniu chýba vysvetlenie mechanizmu, prečo minimálna mzda zapríčiňuje prosperitu. Ten vzťah môže byť kľudne opačný (prosperujúce krajiny si môžu dovoliť navýšiť minimálnu mzdu) alebo dokonca náhodný, keďže veľa neprosperujúcich krajín má minimálnu mzdu."
@@ -1287,6 +1329,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie sa priamo vyjadruje k položenej otázke a veľmi jasne pomenúva nevýhodu fixnej minimálnej mzdy. Navyše obsahuje ucelený príčinno-následkový reťazec, teda nám presne vysvetľuje čo sa stane a aké to bude mať následky."
@@ -1306,6 +1349,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tvrdenie sa nevyjadruje priamo k téme, je len o tom, prečo by mali byť ľudia platení za svoju prácu a ako by to malo byť ich základné ľudské právo. Avšak zavedenie minimálnej mzdy neznamená, že každý človek bude mať prácu a zaručené dôstojné živobytie"
@@ -1336,6 +1380,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Vždy je potrebné zamyslieť sa, ako sa dá dosiahnuť potrebný záver; ako vytvoríme lepšiu kávu. Odpoveď b) je správna, pretože sa priamo vyjadruje k tomu, na základe akej charakteristiky posudzujeme kvalitu kávy – na základe množstva kofeínu. Ostatné dve odpovede hovoria len o velkostiach kávy, ktoré môžu zdanlivo súvisieť s predpokladom č.1, ale nedostanú nás k potrebnému záveru."
@@ -1359,6 +1404,7 @@
                 "correct": [
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Bolo treba porozmýšlať, ako dosiahneme, aby Košice boli krajšie ako Bardejov aj ako Svidník zároveň. Predpoklad a) sa nevyjadruje k Svidníku a teda z neho nedokážeme vyvodiť záver. Predpoklad b) je tiež nesprávny, pretože nám z neho síce vyplýva, že Svidník aj Košice sú obe krajšie ako Bardejov, nevieme určiť, ktoré mesto je krajšie. Predpoklad c) je jediný správny, pretože platí, že ak je Bardejov krajší ako Svidník, a zároveň sú Košice krajšie ako Bardejov, Svidník padá v rebríčku za Košice a záver platí."
@@ -1382,6 +1428,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Je potrebné doplniť predpoklad, v ktorom zovšeobecníme pravidlo natoľko, aby sme mohli povedať, že každý človek z určitej vzorky bude mať rovnakú vlastnosť. V tomto prípade je opisovaná vlastnosť nepoužívanie ťahákou a vzorkou sú všetci žiaci, ktorým ide matematika. Odpoveď a) ako jediná ponúka takéto zovšeobecnenie a preto je správna."
@@ -1405,6 +1452,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Bolo sa treba zamyslieť, ako sa dá prepojiť bohatstvo s indexom ľudského rozvoja. Odpoveď b) je správna, pretože ako jediná správne pomenováva vzťah medzi týmito dvoma veličinami a ako jediná nás dokáže doviesť k potrebnému záveru."
@@ -1428,6 +1476,7 @@
                 "correct": [
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Odpoveď c) je jediná správna, keďže ostatné dve odpovede pracujú s domnienkou, že predpoklad č.1 je limitovaný na „naše“ psy. Avšak, v tomto prepdoklade nie je použitý žiaden výraz, ktorý by nás k takémuto záveru doviedol – neboli použité žiadne slová ako len alebo iba. To, že naše psy štekali celú noc, ešte neznamená, že neštekali žiadne iné. Ak Dunčo v pondelok neštekal a naše psy štekali celú noc, neznamená to, že Dunčo nemôže byť susedov pes, ktorý taktiež štekal celú noc."
@@ -1454,6 +1503,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "V predpoklade sú spomenuté len súkromné podzemné knižnice. Predpoklad nevylučuje existenciu väčšej podzemnej knižnice, ktorá je vlastnená inak ako súkromne."
@@ -1473,6 +1523,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Predpoklad hovorí len o súkromne vlastnených podzemných knižniciach. Navyše, je tento záver vzájomne výlučný so záverom 1, čo znamená, že ak ste  odpovedali „áno“ pri prvom závere, odpoveď na druhý záver sa dala vydedukovať."
@@ -1492,6 +1543,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Predpoklad hovorí len o podzemných knižniciach a teda nevyulučuje existenciu iných, väčších knižníc (napr. univerzitných). Tento záver nešpecifikuje miesto, takže hovorí o všeobecnom výskyte súkromných knižníc. Keďže náš predpoklad presne špecifikuje miesto, záver, že nikde inde na svete nemôže existovať väčšia súkromná knižnica, je nesprávny"
@@ -1511,6 +1563,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Predpoklad nevylučuje možnosť, že predošlé roky, prichádzali do Poľska utečenci z Afganistanu. Predpoklad len vylučuje možnosť, že ich v predošlé roky bolo viac ako v roku 2015."
@@ -1530,6 +1583,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Predpoklad sa vyjadruje len k faktu, že utečencov prichádzajúcich z Afganistanu bolo najviac v roku 2015, pričom nehovorí, že z celkového počtu utečencov, ktorí v roku 2015 prišli do Poľska, bolo najviac tých z Afganistanu."
@@ -1549,6 +1603,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Predpoklad sa nevyjadruje o celkových číslach utečencov naprieč históriou, ale hovorí špecificky o Afganských utečencoch v 2015. Tých síce v 2015 bolo najviac, no to nie je výlučné so záverom, že v predošlých rokoch do Poľska prišlo celkovo viac utečencov."
@@ -1578,7 +1633,7 @@
           {
             "introduction": "Argumentačných chýb sa dopúšťajú ľudia v politike, mediálnom prostredí, ale aj v bežnom živote. Kriticky mysliaci človek by mal vedieť poukázať na tieto chyby a vyhnúť sa ich používaniu. V tejto lekcií sa naučíte základné delenie argumentačných chýb a faulov.",
             "name": "Úvod do argumentačných chýb",
-            "points": 6,
+            "points": 5,
             "questions": [
               {
                 "answers": [],
@@ -1587,6 +1642,20 @@
                   { "correct": 2, "index": 0 },
                   { "correct": 0, "index": 1 },
                   { "correct": 1, "index": 2 }
+                ],
+                "division": [
+                  {
+                    "title": "ÚSKOKY",
+                    "text": "Je to typ argumentačných faulov, ktoré sa snažia neférovo odkloniť diskusiu a odviesť pozornosť od pôvodnej témy. Rečník týmito faulami zámerne znižuje prehľadnosť diskusie a pokrivuje ju vo svoj prospech. Obsah takýchto faulov môže byť aj pravdivý, avšak je irelevantný pre diskusiu."
+                  },
+                  {
+                    "title": "LOGICKÉ CHYBY",
+                    "text": "Tieto argumenty sú síce relevantné k téme, ale ich vnútorná logika nesedí. Argumenty poznačené takýmito faulami pracujú s nesprávnymi predpokladmi alebo nekorektne vyvodzujú príčinno-následkové vzťahy medzi krokmi v argumente."
+                  },
+                  {
+                    "title": "FALOŠNÉ KRITÉRIÁ",
+                    "text": "Argumentačný faul, podľa ktorého si rečník stanoví nepodstatné meradlo, podľa ktorého by da údajne mala vyhodnocovať sila jeho argumentu alebo tvrdenia. Dôležitosť takéhoto meradla nie je vyvsetlená, a rečník sa pri ich používaní spolieha len na intuíciu publika. Takéto argumenty a tvrdenia sa nespoliehajú na silu dôkazov alebo logickú analýzu, ale iba na irelevantné faktory akými sú napríklad názor väčiny či tvrdenia autority."
+                  }
                 ],
                 "definition": "",
                 "explanation": [],
@@ -1604,6 +1673,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": [],
@@ -1620,6 +1690,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": [],
@@ -1636,6 +1707,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Tému diskusie sa pokúšajú zmeniť argumentačné úskoky."
@@ -1654,6 +1726,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Obsah úskokov môže byť aj pravdivý, avšak je irelevantný pre diskusiu."
@@ -1663,22 +1736,6 @@
                 "matches": [],
                 "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Obsah argumentačného úskoku je vždy nepravdivý.“",
-                "conclusion": "",
-                "title": ""
-              },
-              {
-                "answers": ["Pravda", "Nepravda"],
-                "answersImage": [],
-                "correct": [
-                  { "correct": 0, "index": 0 }
-                ],
-                "definition": "",
-                "explanation": [],
-                "images": [],
-                "matchmaking": [],
-                "matches": [],
-                "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
-                "subQuestion": "",
                 "conclusion": "",
                 "title": ""
               }
@@ -1703,6 +1760,7 @@
                   { "correct": 2, "index": 2 },
                   { "correct": 3, "index": 3 }
                 ],
+                "division": [],
                 "definition": "Ad hominem je faul, pri ktorom sa diskutér schyľuje k osobnému útoku na názorového oponenta. Odpútava sa tým pozornosť od samotnej sily argumentov. Vnútorná logika argumentu môžu zostať nepoškodená, rečník sa snaží len zdiskreditovať osobu súpera.",
                 "explanation": [
                   "Ad hominem útoky sú často vulgárne a podnecujú hnev. Publikum sa nedozvedá nové potrebné informácie, len je po diskusií viac polarizované. Kvalita takejto diskusie je veľmi nízka a riadená emóciami."
@@ -1728,6 +1786,7 @@
                   { "correct": 1, "index": 1 },
                   { "correct": 4, "index": 4 }
                 ],
+                "division": [],
                 "definition": "Slamený panák je úskok pri ktorom rečník prekrúti slová oponenta. Neférovo odprezentuje slabšiu verziu argumentu súpera, a následne reaguje na túto oslabenú verziu. Rečník vytvorí atrapu, „slameného panáka“, súperovho argumentu. Tento faul je efektívny, lebo ním diskutér vkladá slová do úst oponenta, a zároveň vytvára falošný dojem, že oponentov argument bol zdiskreditovaný.",
                 "explanation": [],
                 "images": [],
@@ -1742,14 +1801,16 @@
                 "answers": [
                   "Žiadne také. Vo Venezuele a na Kube vládnu diktátori už roky a nič s tým nerobíme. Či keď je diktátor ľavicový, už nám nevadí, že vládne nedemokraticky?",
                   "To nesmieme spraviť. Počas druhej svetovej vojny nám tiež vládol na Slovensku diktátor Tiso. To bol tak isto nedemokratický režim",
-                  "V Bielorusku k žiadnemu porušovaniu základných demokratických práv nedochádza. Však tam nedávno mali aj voľby. Voľby sú základom demokracie, však ich máme všade v Európskej Únii.",
+                  "V bielorusku k žiadnemu porušovaniu základných demokratických práv nedochádza. Však tam nedávno mali aj voľby. Voľby sú základom demokracie, však ich máme všade v Európskej Únii.",
                   "Samozrejme. To, že zlyhávame, či už histroicky alebo v súčastnosti odsúdiť takéto režimy, neznamená, že nemôžeme odsúdiť ten Bieloruský. Toto je správny krok a možno vďaka nemu budeme schopní odsúdiť aj iné totalitné režimy.",
                   "Tento režim nemôžeme verejne odsútiť. Pohneváme si Bielorusov a už nikdy s nami nebudú chcieť obchodovať. Pre udržanie dobrých ekonomických vzťahov by sme mali ich správanie tolerovať."
                 ],
                 "answersImage": [],
                 "correct": [
-                  { "correct": 0, "index": 0 }
+                  { "correct": 0, "index": 0 },
+                  { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "Whataboutizmus pochádza z anglického „what about...?“ (a čo ...?). Do slovenčiny to môžeme preložiť ako „ačohentízmus“. Keď je diskutujúci obvinený z nemorálneho konania, snaží sa poukázať na to, že aj iní ľudia alebo skupiny sa dopúšťali rovnakého správania. No to, že iní ľudia konali v minulosti nemorálne, neospravedlňuje daného človeka z jeho/jej nemorálneho správania.",
                 "explanation": [
                   "Prvé dve odpovede obviňujú niekoho iného z podobných praktík a tým sa snažia odvrátiť pozornosť od situácie v Bielorusku. Ostatné odpovede, aj keď sú možno fakticky nesprávne, sa takejto chyby nedopúšťajú."
@@ -1758,7 +1819,7 @@
                 
                 "matchmaking": [],
                 "matches": [],
-                "question": "Predstavte si situáciu, v ktorej politici a političky diskutujú o Bielorusku. Na začiatku debaty zaznie: „Mali by sme odsúdiť režim v Bielorusku! Ide o nedemokratický režim, ktorý odopiera svojim občanom základné práva a slobody.“ Ktoré z následujúcich reakcií sa dopúšťajú chyby whataboutizmu?",
+                "question": "Predstavte si situáciu, v ktorej politici a politický diskutujú o Bielorusku. Na začiatku debaty zaznie: Mali by sme odsúdiť režim v Bielorusku! Ide o nedemokratický režim, ktorý odopiera svojim občanom základné práva a slobody.“ Ktoré z nasledujúcich reakcií sa dopúšťajú chyby whataboutizmu?",
                 "subQuestion": "",
                 "conclusion": "",
                 "title": ""
@@ -1780,6 +1841,7 @@
                   { "correct": 0, "index": 2 },
                   { "correct": 0, "index": 3 }
                 ],
+                "division": [],
                 "definition": "Falošná dilema je založená na nesprávnom predpoklade, že existujú len dve možnosti – jedna, ktorá vyhovuje predkladateľovi takejto dilemy a druhá, ktorá je často veľmi radikálna alebo kontroverzná. V skutočnosti je možných riešení alebo výsledkov oveľa viac. Použitím falošnej dilemy rečník popiera celú škálu alternatívnych riešení, čím diskusiu neférovo zužuje.",
                 "explanation": [
                   "K trestu smrti existuje mnoho alternatív – napríklad zlepšenie socioekonomickej situácie, posilnenie prevencie kriminality či pomoc bývalým väzňom pri zaraďovaní sa späť do komunity.",
@@ -1812,6 +1874,7 @@
                   { "correct": 0, "index": 0 },
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "Klzký svah je logickou chybou, v ktorej je príčinno-následkový reťazec dotiahnutý do extrémnych a nepravdepodobných záverov. Argument s klzkým svahom začína s pravdepodobným východiskom, avšak každý ďalší krok v reťazci je menej a menej pravdepodobný, takže záver argumentu je takmer určite nerealistický.",
                 "explanation": [
                   "Prvé dve možnosti dotiahli svoje argumenty do veľmi nafúknutých a nerealistických záverov. Aby sme sa takejto chybe vyhli, mali by sme sa zamýšlať nad tým, ako realistické závery, ktoré opisujeme sú, resp. koľko veľa a ako pravdepodobných medzikrokov sa musí stať, na to aby platili."
@@ -1836,6 +1899,7 @@
                   { "correct": 1, "index": 1 },
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "Generalizácia je logická chyba, v ktorej na základe jedného príkladu vytvoríme všeobecný princíp. Problém je, že príklad opisovaný rečníkom je často skôr výnimka ako pravidlo. Táto logická je príčinou mnohých nepodložených stereotypov.",
                 "explanation": [
                   "Všetky tvrdenia sa dopustili chyby zovšeobecňovania a vytvorili tým neférové a škodlivé stereotypy o Rómskej menšine."
@@ -1868,6 +1932,7 @@
                   { "correct": 1, "index": 1 },
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Ak sa nechcete dopustiť chyby hlas ľudu musíte sa vyhnúť obhajobe istého opatrenia iba tým, že vo verejnosti žije veľká skupina ľudí, ktorá by si podobný zákrok priala – podobnú logiku aplikovali tvrdenia B a C a preto sú argumentačne nesprávne."
@@ -1894,6 +1959,7 @@
                   { "correct": 1, "index": 1 },
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Prvé dve odpovede sa odkazujú na „autority“, ktoré nemôžeme pokladať za relevantné v otázke zdravia a očkovania. Tretia odpoveď sa odkazuje na štúdiu z roku 1998 aj keď zväčša sú vedecké štúdie spoľahlivý zdroj informácií, táto bola mnohokrát vyvrátená a zdiskreditovaná. Posledná odpoveď je jediná, ktorá sa chyby falošnej autority nedopúsťa."
@@ -1921,6 +1987,7 @@
                   { "correct": 2, "index": 2 },
                   { "correct": 3, "index": 3 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "Všetkým týmto tvrdeniam chýba hlbšie vysvetlenie, keďže ani jedno nepoužilo pri analyzovaní niečo viac ako len odkaz na tradíciu. Bod s interupciami by bol napríklad vysvetlený lepšie, ak by sa tvrdenie pozrelo na benefity interpucií a tak ukázalo, prečo je táto praktika v aktuálnej dobe potrebná."
@@ -1952,6 +2019,7 @@
                   { "correct": 1, "index": 3 },
                   { "correct": 3, "index": 4 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": [],
@@ -1985,6 +2053,7 @@
                 "correct": [
                   { "correct": 0, "index": 0 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture1.png"],
@@ -2006,6 +2075,7 @@
                 "correct": [
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture2.png"],
@@ -2027,6 +2097,7 @@
                 "correct": [
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture3.png"],
@@ -2042,6 +2113,7 @@
                 "answers": ["Áno", "Nie"],
                 "answersImage": [],
                 "correct": [{ "correct": 1, "index": 1 }],
+                "division": [],
                 "definition": "Čína je nedemokratická krajina, v ktorej je všetka moc centralizovaná v rukách komunistickej strany. India je naopak demokraticky riadená, pravidelne sa tam odohrávajú slobodné voľby. Obe krajiny majú približne rovnakú populáciu (okolo 1,4 miliardy). Od začiatku pandémie Covid 19 v Číne nahlásili menej než 5 tisíc úmrtí na koronavírus, zatiaľ čo v Indii nahlásili takmer pol milióna obetí. Z toho vyplýva, že autokratické krajiny vedia byť oveľa efektívnejšie v boji s pandémiou, lebo nemusia myslieť na voličov a robiť populistické opatrenia.",
                 "explanation": ["Treba sa zamyslieť, či nemôže existovať alternatívna skrytá príčina tohto javu. Ak existuje alternatívne vysvetlenie, tak záver nevyplýva z údajov uvedených v texte. Navyše sa záver dopúšťa jednej argumentačnej chyby – generalizácie."],
                 "images": [],
@@ -2060,6 +2132,7 @@
                   { "correct": 1, "index": 1 },
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "Čína je nedemokratická krajina, v ktorej je všetka moc centralizovaná v rukách komunistickej strany. India je naopak demokraticky riadená, pravidelne sa tam odohrávajú slobodné voľby. Obe krajiny majú približne rovnakú populáciu (okolo 1,4 miliardy). Od začiatku pandémie Covid 19 v Číne nahlásili menej než 5 tisíc úmrtí na koronavírus, zatiaľ čo v Indii nahlásili takmer pol milióna obetí. Z toho vyplýva, že autokratické krajiny vedia byť oveľa efektívnejšie v boji s pandémiou, lebo nemusia myslieť na voličov a robiť populistické opatrenia.",
                 "explanation": [
                   "Táto skrytá príčina je nesprávna, lebo aj demokratické krajiny, napr. Slovensko, implementovali takéto opatrenia. Možnosť by mohla byť správna, keby spomínala rýchlosť takejto implementácie alebo jej efektivitu spojenú s kultúrnymi faktormi.",
@@ -2088,6 +2161,7 @@
                 "correct": [
                   { "correct": 3, "index": 3 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/picture4.png", "assets/pictures/6.png"],
@@ -2110,6 +2184,7 @@
                 "correct": [
                   { "correct": 2, "index": 2 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [],
                 "images": ["assets/pictures/7.png"],
@@ -2136,6 +2211,7 @@
                   { "correct": 3, "index": 3 },
                   { "correct": 4, "index": 4 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "M1 – vyberanie čerešní („cherry-picking“): Ide o argumentačný faul, kedy diskutujúci úmyselne vyberie dôkaz, ktorý podporuje jeho tvrdenie, aj keď nezodpovedá všeobecnému trendu. V tomto prípade sa Milan dopustil tejto chyby, keď si zámerne vybral jednu špecifickú situáciu, ktorá sedí do jeho analýzy. M3 – klzký svah: Chyba, pri ktorej diskutujúci nesprávne predpokladá, že drobná zmena na začiatku príčinno-následkového reťazca bude nutne viesť k následnej lavíne nežiadúcich, občas až nadrozmerných, dôsledkov. M4 – červený sleď: Neférová argumentácia, pri ktorej sa diskutér snaží odviesť pozornosť od pôvodnej témy. V tomto prípade sa Milan snažil odviesť pozornosť od diskusie o globálnom otepľovaní tým, že prihodil do diskusie inú, tiež veľmi komplexnú tému – medzinárodné vzťahy."
@@ -2163,6 +2239,7 @@
                   { "correct": 0, "index": 0 },
                   { "correct": 1, "index": 1 }
                 ],
+                "division": [],
                 "definition": "",
                 "explanation": [
                   "J1 – ad hominem: Chyba, pri ktorej diskutujúci namiesto útočenia na to, čo bolo povedané, zámerne útočí na osobu názorovej protistrany. V tomto prípade nebolo fér, že Jožo prirovnal kamaráta ku „americkému chmuľovi.“ J3 – odkaz na autoritu: Neférová stratégia, keď diskutér zakladá silu svojho argumentu výhradne na cudzej autorite. Len preto, že niečo zakázala Európska únia – teda nejaká vyššia autorita, ešte to nemusí byť správny krok."
@@ -2202,6 +2279,7 @@
                 { "correct": 2, "index": 1 },
                 { "correct": 0, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -2227,6 +2305,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Stĺpcový graf je na túto vizualizáciu možné použiť, keďže zreteľne vyzobrazuje medziročný nárast priemernej mzdy. Čiarový graf je však vhodnejšou alternatívou.",
@@ -2252,6 +2331,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Stĺpcový graf je v tomto prípade jediná vhodná vizualizácia, keďže zachytáva trend rastu minimálnej mzdy, a zároveň poukazuje na to, že minimálna mzda nerastie postupne, ale nárazovo.",
@@ -2278,6 +2358,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Toto je najprehľadnejšie zobrazenie dát. Výhodou je aj fakt, že táto infokrafika zobrazuje aj 5%-tnú hranicu, ktorú treba prekonať, aby sa strana dostala do parlamentu.",
@@ -2304,6 +2385,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Toto je správna odpoveď, pretože prehľadne zobrazuje rozdelenie mandátov, nezavádza čitateľa a nechýbajú v nej žiadne dáta.",
@@ -2336,6 +2418,7 @@
                 { "correct": 0, "index": 3 },
                 { "correct": 1, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Oba grafy pracujú s rovnakými dátami, no rast ziskov na prvom grafe pôsobí rýchlejšie. Skreslenie je spôsobené zmenou začínajúceho bodu vertikálnej osi. Graf, ktorý pôsobí ako rýchlejšie rastúci, nezačína na nule, pričom navodzuje dojem, že sa zisk zdvojnásobil, no reálne sa medzi rokmi 2009 a 2013 zvýšil iba o 6.316%."
@@ -2368,6 +2451,7 @@
                 { "correct": 0, "index": 3 },
                 { "correct": 0, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Oba grafy pracujú s rovnakými číselnými dátami, no hodnotové rozpätia sú rozdielne. Pri prvom grafe je hodnotové rozpätie na osi Y príliš veľké a navodzuje dojem, že zisk rástol pomalšie, hoci sa v skutočnosti zdvojnásobil."
@@ -2401,6 +2485,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Graf č.1 zobrazuje rovnaké údaje ako graf č.2, no opticky sa čitateľovi zdá, že podiel produktového segmentu B je v porovnaní so segmentom A polovičný, hoci v skutočnosti je podľa uvedených číselných údajov trojštvrtinový. Graf č.2 je inak priestorovo otočený, a tým navodzuje falošný dojem, že podiel segmentu A a B je približne rovnaký. Najvhodnejší je preto graf 3."
@@ -2438,6 +2523,7 @@
                 { "correct": 2, "index": 2 },
                 { "correct": 4, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Popis je zavádzajúci, keďže graf zobrazuje súčet všetkých vakcín, ktoré boli podané. Správna interpretácia grafu je, že stúpa počet dokopy podaných vakcín. Každým dňom sa práveže podá menej a menej vakcín, preto vidíme, že rast krivky kumulatívneho grafu sa výrazne spomaľuje."
@@ -2464,6 +2550,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Tento graf má dve rôzne osi y, pričom ľavá os zobrazuje globálne HDP v rozsahu od 40 do 80 triliónov a pravá os zobrazuje HDP Nemecka v rozsahu od 2.5 do 4. Problémom je, že pomery týchto dvoch mierok sa v dvojosových grafoch líšia. Graf navodzuje nesprávny dojem, že HDP Nemecka a globálne HDP stúpajú  približne rovnakým tempom (aspoň teda do roku 2014), čo nie je pravda – globálne HDP vzrástlo do roku 2014 o cca 80%, zatiaľ čo HDP Nemecka len o 40%.",
@@ -2495,6 +2582,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [
                 "Na Slovneksu v čase písania textu žilo približne 450 tisíc rómskych obyvateľov, ako sa píše v tretej vete textu. Číslo 417 tisíc opisuje len počet rómov žijúcich v obciach, ktorým sa venuje Atlas."
@@ -2514,6 +2602,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [
                 "V texte sa naozaj uvádza, že tretina Rómov býva integrovane medzi majoritnými obyvateľmi. Avšak hneď ďalšia veta vyjasňuje, že by bolo „omylom myslieť si, že všetky koncentrácie sú tzv. osady“. V chatrčiach a dreveniciach v skutočnosti býva asi 16% Rómov."
@@ -2533,6 +2622,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
@@ -2550,6 +2640,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
@@ -2567,6 +2658,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva in koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [
                 "V texte sa uvádza, že slovenčina je preferovaný jazyk pre 35% komunít. Preferovaný jazyk znamená, že tak komunikujú v domácnostiach. Keď má niekto preferovaný jazyk rómčinu ešte neznamená, že neovláda slovenčinu. Mnoho takýchto domácností sú práveže bilingválne."
@@ -2586,6 +2678,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [],
               "images": [],
@@ -2603,6 +2696,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
               "explanation": [
                 "V texte sa uvádza, že 6700 obyvateľov je v koncentrácii na okraji mesta Trebišov. Celé mesto má okolo 25 000 obyvateľov."
@@ -2645,6 +2739,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Hoax je nepravdivá informácia, ktorá sa virálne šíri. Slovom „hoax“ nemôžeme označovať informácie, ktoré sa nám nepáčia, očierňujú naše obľúbené verejné osoby alebo nesedia do nášho svetonázoru."
@@ -2669,6 +2764,7 @@
               "correct": [
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Misinformácia je nepravdivá alebo nepresná informácia, ktorá bola do mediálneho priestoru vypustená omylom. Misinformácie môže šíriť ktokoľvek z nás, ak nie sme dosť opatrní. Dezinformácia je tiež nepravdivá informácia, ale bola vypustená zámerne."
@@ -2693,6 +2789,7 @@
               "correct": [
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Falošné správy sa tvária ako dôveryhodné spravodajstvo. Napríklad sa nachádzajú na webových portáloch, ktoré majú logo a nejakú grafickú úpravu. Pre porovnanie, hoax môže byť aj vo forme statusu na sociálnych sieťach, ale falošná správa musí na prvý pohľad vyzerať ako legitímny článok."
@@ -2721,6 +2818,7 @@
                 { "correct": 4, "index": 4 },
                 { "correct": 5, "index": 5 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Clickbait nadpisy sú využívané bulvárnymi aj dezinformačnými médiami. Ich cieľom je prilákať pozornosť čitateľa. Seriózne médiá by sa mali takýmto praktikám vyhýbať a snažiť sa prilákať čitateľov kvalitou obsahu. Ich obsah je často zavádzajúci, ale nemusí byť automaticky nepravdivý. Hlavne bulvárne médiá sa snažia neklamať, ale manipulatívne naformulovať nadpis tak, aby znel šokujúco."
@@ -2745,6 +2843,7 @@
               "correct": [
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Cieľom propagandy je ovplyvniť verejnú mienku aj na úkor objektivity. Na dosiahnutie tohto cieľa často využíva nepravdivé informácie, ale môže používať aj pravdivé informácie, ktoré sú selektívne vybrané a jednostranne odprezentované. Propaganda je často použitá štátnou mocou na vykreslenie svojho štátu pozitívne alebo na očiernenie iných štátov."
@@ -2777,6 +2876,7 @@
                 { "correct": 3, "index": 4 },
                 { "correct": 1, "index": 5 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Na úvod sme si oprášili vedomosti z predošlého kvízu. Je dôležité vedieť, že tieto pojmy znamenajú rozdielne veci a treba ich používať opatrne a uvedomelo."
@@ -2818,6 +2918,7 @@
               "correct": [
                 { "correct": 5, "index": 5 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o clickbait nadpis, lebo autor zamlčiava pointu článku – nevieme, čo žena chovala na farme. Nadpis navodzuje pocit zvedavosti s cieľom zaujať čitateľov, aby klikli na článok. Samotný obsah článku je omnoho menej šokujúci: žena chovala hady."
@@ -2847,6 +2948,7 @@
               "correct": [
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o hoax, lebo je to nepravdivé informácia, ktorá sa virálne šíri. Na snímke obrazovky je vidieť, že status má 36 tisíc zdieľaní. Tento status sa vo veľkom šíril slovenským Facebookom napriek tomu, že bol niekoľkokrát vyvrátený. Rómovia nedostávajú lieky zadarmo, neexistuje prideľovanie dávok na etnickom princípe."
@@ -2876,6 +2978,7 @@
               "correct": [
                 { "correct": 6, "index": 6 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o pravdivú správu, ktorá sa nachádza na dôveryhodnom médiu. Aktuality.sk je načítanejší slovenský online mediálny portál. Správa je prevzatá od Tlačovej agentúry Slovenskej republiky. Nadpis nie je zavádzajúci a nepoužíva emočne zafarbený jazyk."
@@ -2905,6 +3008,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Nemôže ísť o misinformáciu, lebo túto fotomontáž musel niekto zámerne vytvoriť. Takže ide o zámerne nepravdivú informáciu, t. j. dezinformáciu."
@@ -2935,6 +3039,7 @@
               "correct": [
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Táto informácia je vizuálne spracovaná tak, že na prvý pohľad napodobňuje bežný internetový mediálny portál. Avšak jej obsah je nepravdivý a zavádzajúci, dáva čitateľom falošnú nádej a apeluje na emócie."
@@ -2968,6 +3073,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "Nový objav v oblasti astronómie vyvoláva vzrušenie medzi vedcami. Použitím pokročilých teleskopov sa výskumníkom podarilo identifikovať vzdialenú exoplanétu, ktorá má podobné podmienky ako Zem. Planéta s názvom Kepler-452b má skalnatý povrch a nachádza sa v zóne, kde by teoreticky mohol existovať život. Tento objav vyvoláva nádej, že sa raz podarí nájsť život mimo našej slnečnej sústavy.",
               "explanation": [
                 "Prvý nadpis je príklad clickbaitu. Druhý nadpis je vhodný a fakticky sedí s obsahom článku. Tretí a štvrtý nadpis obsahujú unáhlené závery – kontakt s planétou nebol nadviazaný a známky života tiež ešte neboli nájdené."
@@ -2993,6 +3099,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "Kontroverzný návrh jednej vedkyne vyvolal vášnivú diskusiu medzi odborníkmi. Profesorka Horváthová tvrdí, že vyvinula revolučnú metódu liečby všetkých typov rakoviny. Jej technika zahŕňa využitie nanorobotov na zacieľovanie a likvidáciu nádorových buniek v tele. Zatiaľ čo niektorí vedci sú optimistickí ohľadom tohto potenciálneho prelomu, iní vyjadrili obavy o jeho bezpečnosti a účinnosti.",
               "explanation": [
                 "Nadpisy a) a d) sú vhodné, lebo zohľadňujú fakt, že nejde o vedeckú zhodu. V nadpise a) je slovo „tvrdenie“, v nadpise d) je slovo „kontroverzia“. Naopak, nadpis b) znie, ako keby bol výskum v tejto oblasti definitívny. Nadpis c) zas úplne odmieta túto liečbu a označuje ju ako hoax, napriek tomu, že časť vedeckej komunity je ohľadom liečby optimistická."
@@ -3019,6 +3126,7 @@
                 { "correct": 1, "index": 1 },
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "Nová štúdia vedená poprednými psychologičkami poukazuje na vplyv sociálnych médií na duševné zdravie. Výskum dokazuje silnú súvislosť medzi nadmerným používaním sociálnych médií a príznakmi úzkosti a depresie u mladých ľudí. Štúdia tiež naznačuje, že keď mladí ľudia neustále vidia nerealistické a upravené fotografie ostatných ľudí na sociálnych platformách, môže to prispieť k pocitom nedostatočnosti a nízkej sebaúcte.",
               "explanation": [
                 "Jediný zavádzajúci nadpis je v tomto prípade nadpis d), ktorý pridáva k záverom štúdie aj hodnotiace stanovisko, že „je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam“. Toto tvrdenie nie je priamo v texte, ide o dodatočné názorové stanovisko autora."
@@ -3044,6 +3152,7 @@
                 { "correct": 0, "index": 0 },
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "Nadpis c) vyznieva, ako keby bol návrh zákona už schválený, takže je zavádzajúci. Nadpis d) zas pridáva prívlastok „masové“ k protestom, avšak samotný článok nehovorí nič o veľkosti protestov.",
               "explanation": [
                 "Vláda navrhla polarizujúci zákon, ktorý vyvolal vlnu protestov po celej krajine. Návrh zákona by viedol k zvýšeniu štátneho dohľadu nad dianím na internete – štát by mohol jednoduchšie monitorovať a regulovať obsah. Kritici tvrdia, že ide o zásah do občianskych slobôd občanov a ohrozenie slobody prejavu. Aktivistické skupiny organizovali demonštrácie, aby vyjadrili odpor voči návrhu zákona."
@@ -3071,6 +3180,7 @@
                 { "correct": 2, "index": 2 },
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "Prelomový archeologický objav prepisuje dejiny. Pri vykopávkach v odľahlom regióne boli objavené starodávne artefakty, ktoré idú proti predchádzajúcim teóriám o vývoji ľudskej civilizácie. Artefakty, vrátane sofistikovaných nástrojov a umeleckých diel, naznačujú existenciu vyspelého spoločenstva, ktoré je staršie než doposiaľ známe civilizácie. Tento objav má potenciál pretransformovať naše porozumenie ľudského vývoja a kultúrnej evolúcie.",
               "explanation": [
                 "Všetky tieto titulky sú vhodné. Žiaden z nich nerobí unáhlené alebo definitívne závery."
@@ -3095,6 +3205,7 @@
               "correct": [
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "Prednedávnom Polícia SR oznámila, že zadržala Radovana M. podozrivého z dvojitej úkladnej vraždy. Tento skutok sa odohral pred mesiacom a telá boli nájdené na brehu rieky Hron. Podľa všetkého boli obete násilne utopené. Následne na základe dôkazov vzniesol prokurátor obvinenie voči Radovanovi M. Dnes súd rozhodol, že Radovan M. nebude stíhaný na slobode – naopak, bude väzobne stíhaný. Niektorí ľudia v krajine s týmto rozhodnutím súhlasia, iní sa sťažujú na nespravodlivý proces.",
               "explanation": [
                 "V tomto úryvku bolo dôležité pochopiť, že súd nerozhodoval o vine a nevine, ale o tom, či bude obžalovaný stíhaný na slobode alebo väzobne stíhaný. Súd v tomto prípade len rozhodol, že Radovan bude väzobne stíhaný, ale stále platí, že je považovaný za nevinného pokiaľ mu nebola dokázaná vina"
@@ -3127,6 +3238,7 @@
                 { "correct": 0, "index": 4 },
                 { "correct": 1, "index": 5 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "K starým médiám zaraďujeme tie, ktoré tradične nepotrebujú na svoje fungovanie internet a naopak nové médiá sú tie, ktoré svoj obsah šíria digitálne, cez internet."
@@ -3156,6 +3268,7 @@
                 { "correct": 3, "index": 2 },
                 { "correct": 2, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -3185,6 +3298,7 @@
                 { "correct": 2, "index": 1 },
                 { "correct": 1, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -3239,6 +3353,7 @@
                 { "correct": 3, "index": 3 },
                 { "correct": 4, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Pri overovaní obrázkov je najlepšie použiť niekoľko vrstiev overovania: Spoliehajme sa aj na vlastnú hlavu a všímajme si, či nie sú v obrázku nápovede o tom, že by mohol byť falošný alebo vytrhnutý z kontextu. Následne sa pokús nájsť pôvod obrázku skrz vyhľadanie vizuálnych zhôd cez TinEye, Google Image Search alebo iné. V nasledujúcich úlohách budete musieť tieto zručnosti využiť!"
@@ -3263,6 +3378,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "V tomto prípade je kontext fotografie veľmi dôležitý. V skutočnosti ide o protest z roku 2004 v Chicagu, ktorý sa snažil poukázať na mučenie a kruté zaobchádzanie čínskej vlády s členmi spirituálneho hnutia Falun Gong. Žena na obrázku je len aktivistka-herečka, nejde o záber reálneho mučenia. Podobné obrázky sa šírili Twitterom, kde ho zdieľali ľudia s dobrým zámerom informovať o stave Ujgurskej menšiny v Číne. Podľa všetkého sú Ujguri naozaj nespravodlivo prenasledovaní a utláčaní vládou. Avšak aj ľudia s dobrým zámerom môžu šíriť misinformácie."
@@ -3287,6 +3403,7 @@
               "correct": [
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o obrázok vygenerovaný programom Midjourney, ktorý je schopný generovať vysoko kvalitné obrázky. Uverejnil ho instagramový účet Arteficialismo, ktorý sa netají tým, že ide o výtvor umelej inteligencie."
@@ -3310,6 +3427,7 @@
               "correct": [
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o fotomontáž zo stretnutia senátorov USA s bývalým prezidentom Afganistanu. Tvár známeho teroristu Osamu Bin Ladena je vystrihnutá a vložená na tvár afganského prezidenta. Autor tejto fotomontáže využil fakt, že afganský prezident má oblečenie typické pre moslimov. Udalosť sa v skutočnosti nestala, ale fotomontáž sa ako hoax šírila internetom po úmrtí senátora Johna McCaina."
@@ -3334,6 +3452,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o fotografiu z roku 2006, na ktorej naozaj bojovníci z Brigády mučeníkov al-Aksá dávajú karafiáty mníškam. Na odhalenie pôvodu fotografie ste mohli zvoliť dva spôsoby: Za prvé, mohli ste zadať kľúčové slová zo statusu do vyhľadávača (napr. „Brigáda mučeníkov Al-Aksá“, „karafiáty“, „mníšky“, ideálne v anglickom jazyku). Za druhé, mohli ste vyhľadať rovno samotný obrázok cez Google Search Images alebo TinEye."
@@ -3358,6 +3477,7 @@
               "correct": [
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Ide o obrázok vygenerovaný v programe Bing Image Creator. Mohli ste zistiť, že nejde o skutočnú udalosť, keďže žiadne podobné obrázky sa na internete nenachádzajú. Taktiež neexistujú správy o takomto rozsiahlom požiari na Kriváni."
@@ -3382,6 +3502,7 @@
               "correct": [
                 { "correct": 1, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Je pravda, že ide o konflikt medzi migrantmi a maďarskou políciou na vlakovej stanici v Budapešti. V pozadí sú vlaky, takže určite ide o vlakovú stanicu. Polícia má na uniformách maďarskú vlajku. Protestujúci majú tmavšiu pleť, typickú skôr pre Blízky východ než pre strednú Európu. Na prvý pohľad sa preto môže zdať, že obrázok naozaj zachytáva udalosť z titulku. Avšak v skutočnosti ide o udalosť z roku 2015, nie z roku 2021, ako uvádza titulok. Na odhalenie kontextu bolo potrebné použiť Google Search Images alebo TinEye."
@@ -3423,6 +3544,7 @@
                 { "correct": 5, "index": 5 },
                 { "correct": 7, "index": 7 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -3441,6 +3563,7 @@
                 { "correct": 1, "index": 0 },
                 { "correct": 0, "index": 1 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -3483,6 +3606,7 @@
                 { "correct": 4, "index": 3 },
                 { "correct": 1, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -3519,6 +3643,7 @@
                 { "correct": 2, "index": 2 },
                 { "correct": 3, "index": 3 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Zatiaľ čo hoaxy a dezinformácie sú nepravdivé, konšpiračná teória môže byť pravdivá. Aj keď väčšina konšpiračných teórií sú nepravdivé (napr. že Zem je plochá), občas sa ukáže, že niektoré teórie sú podložené. Problém je, že konšpiračné teórie sú zväčša podložené neoverenými „dôkazmi“ z nedôveryhodných zdrojov. Konšpiračné teórie sú často založené na hoaxoch a dezinformáciách, ale to neznamená, že každá dezinformácia musí byť súčasťou nejakej konšpiračnej teórie."
@@ -3548,6 +3673,7 @@
                 { "correct": 3, "index": 3 },
                 { "correct": 4, "index": 4 }
               ],
+              "division": [],
               "definition": "",
               "explanation": [
                 "Všetky tieto argumentačné fauly patria medzi najčastejšie manipulatívne stratégie konšpirátorov. Všetky stratégie majú spoločné to, že sa snažia apelovať na emócie čitateľa, vyvolať strach a hnev."
@@ -3571,6 +3697,7 @@
               "correct": [
                 { "correct": 0, "index": 0 }
               ],
+              "division": [],
               "definition": "Globálne elity plánujú urobiť tzv. Veľký Reset – zvrhnú nepohodlných politikov a nastolia celosvetovú totalitu. Začalo to tak, že tieto elity zorchestrovali pandémiu Covid-19. To im dalo zámienku „resetovať“ ekonomické a politické zriadenie a podmaniť si dianie vo svete pod svoju kontrolu. Za týmto cieľom využívajú aj rôzne technologické inovácie – 5G siete, mikročipy, umelú inteligenciu. Dohodli sa na tom na stretnutí World Economic Forum v lete 2020 a odvtedy postupne vykonávajú tento plán.",
               "explanation": [
                 "Ide o typický príklad komplexnej konšpiračnej teórie, ktorá vznikla počas pandémie Covid-19. Konšpiračne zmýšľajúci ľudia hľadali nejaké tajné vysvetlenie tejto udalosti, za ktorú by boli zodpovedné „zlé“ globálne elity. Následne boli misinterpretované a prekrútené slová zo samitu Svetového ekonomického fóra 2020 o „Veľkom resete“. Tento pojem mal popisovať plán ekonomických reforiem, avšak konšpirátori z toho vytvorili plán na „zotročenie ľudstva“."
@@ -3594,6 +3721,7 @@
               "correct": [
                 { "correct": 2, "index": 2 }
               ],
+              "division": [],
               "definition": "Vedeli ste, že americká CIA v minulosti robila tajný projekt, v ktorom robila nehumánne experimenty na nevinných ľuďoch? Tento projekt sa nazýval MK-Ultra. Zahŕňal napríklad aj využívanie drogy LSD s cieľom kontrolovať mysle ľudí. Taktiež dávali ľuďom elektrošoky a pokúšali sa ich hypnotizovať. Toto všetko, prosím pekne, robili v USA počas Studenej vojny! Cieľom bolo zneužiť tieto praktiky na špiónoch a vojakoch zo Sovietskeho zväzu.",
               "explanation": [
                 "Napriek tomu, že tieto udalosti znejú neuveriteľne, táto konšpirácia je skutočná. Experimenty sa reálne odohrávali počas studenej vojny v USA. Projekt MK-Ultra bol oficiálne schválený v roku 1953 a oficiálne zastavený v roku 1973. Následne v 1975 vytvoril prezident Ford komisiu, ktorá oficiálne odhalila MK-Ultra, avšak niektoré podrobnosti projektu zostávajú utajené."

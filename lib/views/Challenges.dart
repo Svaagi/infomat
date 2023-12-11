@@ -41,6 +41,7 @@ class _ChallengesState extends State<Challenges> {
   List<List<double>> percentages = [];
   bool isMobile = false;
   bool isDesktop = false;
+  List<dynamic> data = [];
 
 
 
@@ -184,7 +185,7 @@ Future<List<dynamic>> fetchQuestionData() async {
     capitolsIds = currentUserClass.capitolOrder;
 
     String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-    List<dynamic> data = json.decode(jsonData);
+    data = json.decode(jsonData);
     
 
     for (int order in [0,1,2,3,4,5,6]) {
@@ -213,7 +214,7 @@ Future<List<dynamic>> fetchQuestionData() async {
           child: Container(
             color: Colors.black.withOpacity(0.5),
             alignment: Alignment.center,
-            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) :  MobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?  TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : DesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData),
+            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) :  MobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?  TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : DesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
           ),
         ),
       ),

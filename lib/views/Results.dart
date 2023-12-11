@@ -331,7 +331,7 @@ List<TableRow> _buildRows(List<UserData> students) {
               ),
             ),
             padding: EdgeInsets.all(8),
-            child: Text('${student.name} ${student.surname}'),
+            child: Text(student.name),
           ),
           ...scores.map((score) => Container(
             decoration: BoxDecoration(

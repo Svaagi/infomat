@@ -130,7 +130,6 @@ class _ProfileState extends State<Profile> {
         if (mounted) {
           setState(() {
             currentUserData = userData;
-            badges = currentUserData!.badges;
           });
           
           fetchStudents();
@@ -251,10 +250,7 @@ class _ProfileState extends State<Profile> {
                               width: double.infinity,
                               child: Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
+                                  Text(
                                         currentUserData!.name,
                                         style: Theme.of(context)
                                             .textTheme
@@ -263,18 +259,6 @@ class _ProfileState extends State<Profile> {
                                           color: AppColors.getColor('mono').black,
                                         ),
                                       ),
-                                      SizedBox(width: 5,),
-                                      Text(
-                                        currentUserData!.surname,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineMedium!
-                                            .copyWith(
-                                          color: AppColors.getColor('mono').black,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                    SizedBox(height: 20),
                                   Text(
                                     className ?? '',
@@ -1141,11 +1125,6 @@ class _ProfileState extends State<Profile> {
                                                                 '${students![index].name}',
                                                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onBackground),
                                                               ),
-                                                              SizedBox(width: 5,),
-                                                              Text(
-                                                                '${students![index].surname}',
-                                                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onBackground),
-                                                              ),
                                                             ],
                                                           ),
                                                           Row(
@@ -1295,16 +1274,7 @@ class _ProfileState extends State<Profile> {
                                                           color: studentIndex == index ? AppColors.getColor('primary').main : AppColors.getColor('mono').black,
                                                         ),
                                                       ),
-                                                      SizedBox(width: 5,),
-                                                      Text(
-                                                        '${students![index].surname}',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headlineSmall!
-                                                            .copyWith(
-                                                          color: studentIndex == index ? AppColors.getColor('primary').main : AppColors.getColor('mono').black,
-                                                        ),
-                                                      ),
+                                                      
                                                     ],
                                                   ),
                                                   Row(

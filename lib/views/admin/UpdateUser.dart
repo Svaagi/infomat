@@ -274,7 +274,6 @@ Future<void> saveUserDataToFirestore(
 
     // Convert userData object to a Map
     Map<String, dynamic> userDataMap = {
-      'badges': userData.badges,
       'admin': userData.admin,
       'discussionPoints': userData.discussionPoints,
       'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
@@ -284,9 +283,7 @@ Future<void> saveUserDataToFirestore(
       'active': userData.active,
       'school': userData.school,
       'schoolClass': userData.schoolClass,
-      'image': userData.image,
       'notifications': userData.notifications,
-      'surname': userData.surname,
       'materials': userData.materials,
       'points': userData.points,
       'capitols': userData.capitols.map((userCapitolsData) {

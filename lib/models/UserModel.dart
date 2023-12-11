@@ -78,13 +78,10 @@ class UserData {
   String school;
   List<String> classes;
   String schoolClass;
-  String image;
-  String surname;
   bool teacher;
   int points;
   List<UserCapitolsData> capitols;
   List<String> materials;
-  List<String> badges;
   List<UserNotificationsData> notifications;
 
   UserData({
@@ -98,13 +95,10 @@ class UserData {
     required this.school,
     required this.classes,
     required this.schoolClass,
-    required this.image,
-    required this.surname,
     required this.teacher,
     required this.points,
     required this.capitols,
      required this.materials,
-    required this.badges,
     required this.notifications
   });
 }
@@ -122,8 +116,6 @@ UserData userData = UserData(
       classes: [
       ],
       schoolClass: '',
-      image: 'assets/profilePicture.svg',
-      surname: '',
       teacher: false,
       points: 0,
       capitols: [
@@ -185,7 +177,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: '1.1 Časti debatného argumentu',
+                name: 'Časti debatného argumentu',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -225,7 +217,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: '1.1  Silné a slabé argumenty',
+                name: 'Silné a slabé argumenty 1',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -235,7 +227,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: '1.2  Silné a slabé argumenty',
+                name: 'Silné a slabé argumenty 2',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -245,10 +237,9 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: '1. Závery (výroková logika I.)',
+                name: 'Výrokova logika - predpoklady',
                 points: 0,
                 questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -258,9 +249,10 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: '1. Predpoklady (výroková logika II.)',
+                name: 'Výrokova logika - závery',
                 points: 0,
                 questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -286,12 +278,11 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'ARGUMENTAČNÉ ÚSKOKY',
+                name: 'Argumentačné úskoky',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
@@ -311,7 +302,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'falošné kritériá',
+                name: 'Falošné kritériá',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false, false]),
@@ -366,7 +357,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'ZAVÁDZAJÚCE GRAFY',
+                name: 'Zavádzajúce grafy 1',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
@@ -376,7 +367,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'ZAVÁDZAJÚCE GRAFY 2',
+                name: 'Zavádzajúce grafy 2',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
@@ -386,7 +377,7 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'INTERPRETÁCIA DÁT V TEXTE',
+                name: 'Interpretácia dát v texte',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
@@ -404,7 +395,7 @@ UserData userData = UserData(
             completed: false,
             id: '4',
             image: '',
-            name: 'Mediálna Gramotnosť',
+            name: 'Mediálna gramotnosť',
             tests: [
               UserCapitolsTestData(
                 completed: false,
@@ -510,13 +501,4 @@ UserData userData = UserData(
       ],
       materials: [],
       notifications: [],
-      badges: [
-        'assets/badges/badgeArgDis.svg',
-        'assets/badges/badgeManDis.svg',
-        'assets/badges/badgeCritDis.svg',
-        'assets/badges/badgeDataDis.svg',
-        'assets/badges/badgeGramDis.svg',
-        'assets/badges/badgeMediaDis.svg',
-        'assets/badges/badgeSocialDis.svg',
-      ]
     );

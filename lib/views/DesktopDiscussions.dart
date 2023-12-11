@@ -128,7 +128,6 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
                         date: answerItem['date'] ?? Timestamp.now(),
                         user: answerItem['user'] ?? '',
                         userId: answerItem['userId'],
-                        pfp: answerItem['pfp'],
                         value: answerItem['value'] ?? '',
                       );
                     } else {
@@ -140,13 +139,11 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
                         edited: false,
                         user: '',
                         userId: '',
-                        pfp: '',
                         value: '',
                       );
                     }
                   }).toList(),
                   userId: commentItem['userId'],
-                  pfp: commentItem['pfp'],
                   date: commentItem['date'] ?? Timestamp.now(),
                   user: commentItem['user'] ?? '',
                   value: commentItem['value'] ?? '',
@@ -188,7 +185,6 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
                   user: answerItem['user'],
                   userId: answerItem['userId'],
                   edited: answerItem['edited'],
-                  pfp: answerItem['pfp'],
                   value: answerItem['value'],
                 );
               }).toList();
@@ -300,7 +296,6 @@ Widget build(BuildContext context) {
                           date: Timestamp.now(),
                           user: widget.currentUserData!.name,
                           edited: false,
-                          pfp: widget.currentUserData!.image,
                           userId: FirebaseAuth.instance.currentUser!.uid,
                           value: postController.text,
                           id: _posts.length.toString()
@@ -894,7 +889,6 @@ Widget build(BuildContext context) {
                         userId: FirebaseAuth.instance.currentUser!.uid,
                         user: widget.currentUserData!.name,
                         edited: false,
-                        pfp: widget.currentUserData!.image,
                         value: _selectedLibrary,
                         id: _posts.length.toString()
                       );
@@ -1103,7 +1097,6 @@ Widget build(BuildContext context) {
                               edited: false,
                               date: Timestamp.now(),
                               user: widget.currentUserData!.name,
-                              pfp: widget.currentUserData!.image,
                               userId: FirebaseAuth.instance.currentUser!.uid,
                               value: commentController.text,
                             );
@@ -1319,7 +1312,6 @@ Widget build(BuildContext context) {
                             date: Timestamp.now(),
                             user: widget.currentUserData!.name,
                             edited: false,
-                            pfp: widget.currentUserData!.image,
                             userId: FirebaseAuth.instance.currentUser!.uid,
                             value: answerController.text,
                           );

@@ -126,7 +126,6 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
                         date: answerItem['date'] ?? Timestamp.now(),
                         userId: answerItem['userId'],
                         edited: answerItem['edited'] ?? false,
-                        pfp: answerItem['pfp'],
                         user: answerItem['user'] ?? '',
                         value: answerItem['value'] ?? '',
                       );
@@ -137,7 +136,6 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
                         teacher: false,
                         edited: false,
                         userId: '',
-                        pfp: '',
                         date: Timestamp.now(),
                         user: '',
                         value: '',
@@ -145,7 +143,6 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
                     }
                   }).toList(),
                   userId: commentItem['userId'],
-                  pfp: commentItem['pfp'],
                   date: commentItem['date'] ?? Timestamp.now(),
                   user: commentItem['user'] ?? '',
                   value: commentItem['value'] ?? '',
@@ -186,7 +183,6 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
                   edited: answerItem['edited'],
                   date: answerItem['date'],
                   userId: answerItem['userId'],
-                  pfp: answerItem['pfp'],
                   user: answerItem['user'],
                   value: answerItem['value'],
                 );
@@ -577,7 +573,6 @@ Widget build(BuildContext context) {
                         date: Timestamp.now(),
                         userId: FirebaseAuth.instance.currentUser!.uid,
                         user: widget.currentUserData!.name,
-                        pfp: widget.currentUserData!.image,
                         edited: false,
                         value: postController.text,
                         id: _posts.length.toString()
@@ -758,7 +753,6 @@ Widget build(BuildContext context) {
                                 userId: FirebaseAuth.instance.currentUser!.uid,
                                 user: widget.currentUserData!.name,
                                 edited: false,
-                                pfp: widget.currentUserData!.image,
                                 value: _selectedLibrary,
                                 id: _posts.length.toString()
                               );
@@ -1109,7 +1103,6 @@ Widget build(BuildContext context) {
                               date: Timestamp.now(),
                               edited: false,
                               user: widget.currentUserData!.name,
-                              pfp: widget.currentUserData!.image,
                               userId: FirebaseAuth.instance.currentUser!.uid,
                               value: commentController.text,
                             );
@@ -1287,7 +1280,6 @@ Widget build(BuildContext context) {
                           date: Timestamp.now(),
                           user: widget.currentUserData!.name,
                           edited: false,
-                          pfp: widget.currentUserData!.image,
                           userId: FirebaseAuth.instance.currentUser!.uid,
                           value: answerController.text,
                         );

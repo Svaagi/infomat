@@ -5,26 +5,11 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:infomat/controllers/userController.dart'; // Import the UserData class and fetchUser function
-import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:infomat/models/UserModel.dart';
-import 'package:infomat/models/ClassModel.dart';
-
-
-List<String> badgePaths = [
-  'assets/badges/badgeArgActive.svg',
-  'assets/badges/badgeManActive.svg',
-  'assets/badges/badgeCritActive.svg',
-  'assets/badges/badgeDataActive.svg',
-  'assets/badges/badgeGramActive.svg',
-  'assets/badges/badgeMediaActive.svg',
-  'assets/badges/badgeSocialActive.svg'
-];
 
 
 class DesktopTest extends StatefulWidget {
@@ -32,13 +17,16 @@ class DesktopTest extends StatefulWidget {
   final Function overlay;
   final String capitolsId;
   final UserData? userData;
+  final List<dynamic> data;
 
   const DesktopTest(
       {Key? key,
       required this.testIndex,
       required this.overlay,
       required this.capitolsId,
-      required this.userData})
+      required this.userData,
+      required this.data,
+      })
       : super(key: key);
 
   @override
@@ -50,6 +38,7 @@ class _DesktopTestState extends State<DesktopTest> {
   bool? isCorrect;
   bool screen = true;
   int questionIndex = 0;
+  String conclusion = '';
   List<dynamic> division = [];
   List<dynamic> answers = [];
   List<dynamic> answersImage = [];
@@ -79,25 +68,22 @@ class _DesktopTestState extends State<DesktopTest> {
 
 
   Future<void> fetchQuestionData(int index) async {
-      String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-      List<dynamic> data = json.decode(jsonData);
-
-      if (_disposed) return; // Check if the widget has been disposed
-
       setState(() {
-        answers = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
-        answersImage = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
-        matchmaking = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
-        matches = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matches"] ?? [];
-        correct = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["correct"] ?? [];
-        definition = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["definition"] ?? '';
-        explanation = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
-        images = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
-        question = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
-        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
-        title = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
-        questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
-        introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
+        conclusion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
+        division = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
+        answers = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
+        answersImage = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
+        matchmaking = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
+        matches = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matches"] ?? [];
+        correct = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["correct"] ?? [];
+        definition = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["definition"] ?? '';
+        explanation = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
+        images = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
+        question = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
+        subQuestion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
+        title = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
+        questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
+        introduction =  widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
             _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
             pressed = true;
@@ -115,11 +101,9 @@ class _DesktopTestState extends State<DesktopTest> {
 
         if(title != '' && (definition == '' && images.length < 1 && division.length < 1)) checkTitle = true;
 
-        _loading = false;
 
       });
-
-      
+        _loading = false;
   }
 
 
@@ -317,7 +301,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                           ),
                                           child: Text(
-                                            dvs.title,
+                                            dvs["title"],
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .headlineMedium!
@@ -332,8 +316,8 @@ class _DesktopTestState extends State<DesktopTest> {
                                           height: 200,
                                           padding: EdgeInsets.all(16),
                                           child: Text(
+                                            dvs["text"],
                                             textAlign: TextAlign.center,
-                                            dvs.text,
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!
@@ -459,11 +443,11 @@ class _DesktopTestState extends State<DesktopTest> {
                                     String? item = matchmaking?[(index - (answersImage?.length ?? 0) + (answers?.length ?? 0))];
                                     List<dynamic> item2 = matches ?? [];
 
-                                    if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem.correct && answerItem.index == correctItem.index && answerItem.index == index))) {
-                                      tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item.index == index)["correct"], index, item, context, item2, true);
+                                    if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
+                                      tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
                                       itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                                     } else {
-                                      tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item.index == index)["correct"], index, item, context, item2, false);
+                                      tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
                                       itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;;
                                     }
                                   } 
@@ -817,6 +801,18 @@ class _DesktopTestState extends State<DesktopTest> {
                         return Container(); // Placeholder for empty answer fields or non-matching tiles
                       }
                     ),
+                    if(conclusion != '') Container(
+                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                              child: Text(
+                                "Záver: $conclusion",
+                                style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Theme.of(context).colorScheme.onBackground,
+                                      ),
+                              ),
+                         ),
                         if(explanation!.length < 2 && pressed && explanation!.length > 0 )Container(
                           margin: EdgeInsets.all(8),
                           decoration: BoxDecoration(
@@ -1157,12 +1153,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         if (areAllCompleted(widget.userData!)) {
           widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
 
-          // Ensure that badges list is long enough
-          while (widget.userData!.badges.length <= int.parse(widget.capitolsId)) {
-            widget.userData!.badges.add('');
-          }
-
-          widget.userData!.badges[int.parse(widget.capitolsId)] = badgePaths[int.parse(widget.capitolsId)];
         }
         
         _answer = _answer;
@@ -1179,7 +1169,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         questionIndex++;
         pressed = false;
         _answer = [];
-        _loading = true;
         checkTitle = false;
       });
       fetchQuestionData(questionIndex);
@@ -1233,7 +1222,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
       // Convert userData object to a Map
       Map<String, dynamic> userDataMap = {
-        'badges': userData.badges,
         'discussionPoints': userData.discussionPoints,
         'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
         'admin': userData.admin,
@@ -1242,8 +1230,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         'name': userData.name,
         'active': userData.active,
         'schoolClass': userData.schoolClass,
-        'image': userData.image,
-        'surname': userData.surname,
         'points': userData.points,
         'capitols': userData.capitols.map((userCapitolsData) {
           return {

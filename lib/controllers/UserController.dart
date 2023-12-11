@@ -26,14 +26,11 @@ Future<UserData> fetchUser(String userId) async {
         List<String> classes = List<String>.from(userSnapshot.get('classes') as List<dynamic>? ?? []);
         String school = userSnapshot.get('school') as String? ?? '';
         String schoolClass = userSnapshot.get('schoolClass') as String? ?? '';
-        String image = userSnapshot.get('image') as String? ?? '';
-        String surname = userSnapshot.get('surname') as String? ?? '';
         int points = userSnapshot.get('points') as int? ?? 0;
         int discussionPoints = userSnapshot.get('discussionPoints') as int? ?? 0;
         int weeklyDiscussionPoints = userSnapshot.get('weeklyDiscussionPoints') as int? ?? 0;
         List<Map<String, dynamic>> capitols = List<Map<String, dynamic>>.from(userSnapshot.get('capitols') as List<dynamic>? ?? []);
         List<String> materials = List<String>.from(userSnapshot.get('materials') as List<dynamic>? ?? []);
-        List<String> badges = List<String>.from(userSnapshot.get('badges') as List<dynamic>? ?? []);
         bool teacher = userSnapshot.get('teacher') as bool? ?? false;
         bool admin = userSnapshot.get('admin') as bool? ?? false;
 
@@ -63,13 +60,10 @@ Future<UserData> fetchUser(String userId) async {
           school: school,
           classes: classes,
           schoolClass: schoolClass,
-          image: image,
-          surname: surname,
           teacher: teacher,
           points: points,
           capitols: [],
           materials: materials,
-          badges: badges,
           notifications: notificationsList,
         );
 
@@ -229,7 +223,6 @@ Future<void> registerUser(String schoolId, String classId, String name, String e
       // Set user data
       transaction.set(userRef, {
         'id': userId,
-        'badges': userData.badges,
         'admin': userData.admin,
         'discussionPoints': userData.discussionPoints,
         'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
@@ -242,8 +235,6 @@ Future<void> registerUser(String schoolId, String classId, String name, String e
         'materials': userData.materials,
         'school': schoolId,
         'schoolClass': classId,
-        'image': userData.image,
-        'surname': userData.surname,
         'points': userData.points,
         'capitols': userData.capitols.map((userCapitolsData) {
           return {
@@ -323,7 +314,6 @@ Future<void> registerMultipleUsers(
 
                  // Set user data
                   transaction.set(userRef, {
-                    'badges': [],
                     'admin': false,
                     'discussionPoints': 0,
                     'weeklyDiscussionPoints': 0,
@@ -336,8 +326,6 @@ Future<void> registerMultipleUsers(
                     'materials': [],
                     'school': schoolId,
                     'schoolClass': user.classId,
-                    'image': '',
-                    'surname': '',
                     'points': 0,
                     'capitols': userData.capitols.map((userCapitolsData) {
                       return {

@@ -277,7 +277,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${userData.name} ${userData.surname}',
+                                    '${userData.name}',
                                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                           color: AppColors.getColor('mono').black,
                                         ),
@@ -471,7 +471,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${userData.name} ${userData.surname}',
+                                    '${userData.name}',
                                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                           color: AppColors.getColor('mono').black,
                                         ),

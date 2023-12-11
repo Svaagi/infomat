@@ -12,16 +12,6 @@ import 'dart:html' as html;
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
-class DivisionData {
-  String title;
-  String text;
-
-  DivisionData({
-    required this.title,
-    required this.text
-  });
-}
-
 
 class TeacherDesktopTest extends StatefulWidget {
   final int testIndex;
@@ -45,7 +35,8 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   List<UserAnswerData> _answer = [];
   bool? isCorrect;
   int questionIndex = 0;
-  List<DivisionData> division = [];
+  String conclusion = '';
+  List<dynamic> division = [];
   List<dynamic> answers = [];
   List<dynamic> answersImage = [];
   List<dynamic> matchmaking = [];
@@ -80,6 +71,8 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       if (_disposed) return; // Check if the widget has been disposed
 
       setState(() {
+        conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
+        division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
         answers = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
         answersImage = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
         matchmaking = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
@@ -89,7 +82,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
         explanation = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
         images = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
         question = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
-        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
+        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subQuestion"] ?? '';
         title = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
         questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
@@ -387,7 +380,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                           ),
                                           child: Text(
-                                            dvs.title,
+                                            dvs["title"],
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .headlineMedium!
@@ -402,8 +395,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                           height: 200,
                                           padding: EdgeInsets.all(16),
                                           child: Text(
+                                            dvs["text"],
                                             textAlign: TextAlign.center,
-                                            dvs.text,
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!
@@ -617,7 +610,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct!.firstWhere((cItem) => cItem["index"] == index).correct, index, item, context, item2, true);
+                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct!.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
                               }
 
                               // Return the main widget alongside the item text
@@ -660,6 +653,18 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                             },
                             );
                           }
+                         ),
+                         if(conclusion != '') Container(
+                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                              child: Text(
+                                "Záver: $conclusion",
+                                style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Theme.of(context).colorScheme.onBackground,
+                                      ),
+                              ),
                          ),
                       if(explanation!.length < 2 && explanation.length > 0)Container(
                         margin: EdgeInsets.all(8),

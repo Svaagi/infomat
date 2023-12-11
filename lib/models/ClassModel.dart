@@ -11,14 +11,12 @@ class CommentsAnswersData {
   Timestamp date;
   String user;
   String userId;
-  String pfp;
   String value;
   bool award;
   bool teacher;
   bool edited;
   CommentsAnswersData({
     required this.userId,
-    required this.pfp,
     required this.award,
     required this.date,
     required this.user,
@@ -33,7 +31,6 @@ class CommentsData {
   Timestamp date;
   String user;
   String userId;
-  String pfp;
   String value;
   bool award;
   bool teacher;
@@ -41,7 +38,6 @@ class CommentsData {
   CommentsData({
     required this.award,
     required this.userId,
-    required this.pfp,
     required this.edited,
     required this.answers,
     required this.date,
@@ -57,14 +53,12 @@ class PostsData {
   String id;
   String user;
   String userId;
-  String pfp;
   String value;
   bool edited;
   PostsData({
     required this.comments,
     required this.userId,
     required this.edited,
-    required this.pfp,
     required this.date,
     required this.id,
     required this.user,

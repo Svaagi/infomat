@@ -12,17 +12,6 @@ import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
 
 
-List<String> badgePaths = [
-  'assets/badges/badgeArgActive.svg',
-  'assets/badges/badgeManActive.svg',
-  'assets/badges/badgeCritActive.svg',
-  'assets/badges/badgeDataActive.svg',
-  'assets/badges/badgeGramActive.svg',
-  'assets/badges/badgeMediaActive.svg',
-  'assets/badges/badgeSocialActive.svg'
-];
-
-
 class MobileTest extends StatefulWidget {
   final int testIndex;
   final Function overlay;
@@ -46,6 +35,7 @@ class _MobileTestState extends State<MobileTest> {
   bool? isCorrect;
   bool screen = true;
   int questionIndex = 0;
+  String conclusion = '';
   List<dynamic> division = [];
   List<dynamic> answers = [];
   List<dynamic> answersImage = [];
@@ -81,6 +71,8 @@ class _MobileTestState extends State<MobileTest> {
       if (_disposed) return; // Check if the widget has been disposed
 
       setState(() {
+        conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
+        division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
         answers = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
         answersImage = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
         matchmaking = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
@@ -93,7 +85,6 @@ class _MobileTestState extends State<MobileTest> {
         subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
         title = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
         questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
-        print('questionsPoint: $questionsPoint' );
         introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
             _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
@@ -330,7 +321,7 @@ class _MobileTestState extends State<MobileTest> {
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                           ),
                                           child: Text(
-                                            dvs.title,
+                                            dvs["title"],
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .headlineMedium!
@@ -344,8 +335,8 @@ class _MobileTestState extends State<MobileTest> {
                                           constraints: BoxConstraints( minHeight: 50, maxWidth: MediaQuery.of(context).size.width - 150),
                                           padding: EdgeInsets.all(16),
                                           child: Text(
+                                            dvs["text"],
                                             textAlign: TextAlign.center,
-                                            dvs.text,
                                             style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!
@@ -453,11 +444,11 @@ class _MobileTestState extends State<MobileTest> {
                           String? item = matchmaking?[(index - (answersImage?.length ?? 0) + (answers?.length ?? 0))];
                           List<dynamic> item2 = matches ?? [];
 
-                          if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem.correct && answerItem.index == correctItem.index && answerItem.index == index))) {
+                          if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
                             tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item.index == index)["correct"], index, item, context, item2, true);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                           } else {
-                            tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item.index == index)["correct"], index, item, context, item2, false);
+                            tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;;
                           }
                         } 
@@ -810,6 +801,18 @@ class _MobileTestState extends State<MobileTest> {
               return Container(); // Placeholder for empty answer fields or non-matching tiles
             }
           ),
+          if(conclusion != '') Container(
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                  child: Text(
+                    "Záver: $conclusion",
+                    style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                  ),
+              ),
               if(explanation!.length < 2 && pressed && explanation!.length > 0 )Container(
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -1147,12 +1150,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         if (areAllCompleted(widget.userData!)) {
           widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
 
-          // Ensure that badges list is long enough
-          while (widget.userData!.badges.length <= int.parse(widget.capitolsId)) {
-            widget.userData!.badges.add('');
-          }
-
-          widget.userData!.badges[int.parse(widget.capitolsId)] = badgePaths[int.parse(widget.capitolsId)];
         }
         
         _answer = _answer;
@@ -1221,7 +1218,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
       // Convert userData object to a Map
       Map<String, dynamic> userDataMap = {
-        'badges': userData.badges,
         'discussionPoints': userData.discussionPoints,
         'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
         'admin': userData.admin,
@@ -1230,8 +1226,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         'name': userData.name,
         'active': userData.active,
         'schoolClass': userData.schoolClass,
-        'image': userData.image,
-        'surname': userData.surname,
         'points': userData.points,
         'capitols': userData.capitols.map((userCapitolsData) {
           return {

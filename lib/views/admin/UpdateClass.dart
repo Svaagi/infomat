@@ -137,7 +137,6 @@ class _UpdateClassState extends State<UpdateClass> {
                       return PostsData(
                         date: post.date,
                         id: post.id,
-                        pfp: post.pfp,
                         userId: post.userId,
                         edited: post.edited,
                         user: post.user,
@@ -148,14 +147,12 @@ class _UpdateClassState extends State<UpdateClass> {
                             award: comment.award,
                             edited: comment.edited,
                             userId: comment.userId,
-                            pfp: comment.pfp,
                             answers: comment.answers.map((answer) {
                               return CommentsAnswersData(
                                 award: answer.award,
                                 teacher: answer.teacher,
                                 date: answer.date,
                                 edited: answer.edited,
-                                pfp: answer.pfp,
                                 userId: answer.userId,
                                 user: answer.user,
                                 value: answer.value,

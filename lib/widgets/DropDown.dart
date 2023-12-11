@@ -165,8 +165,6 @@ Widget build(BuildContext context) {
         'active': userData.active,
         'school': userData.school,
         'schoolClass': userData.schoolClass,
-        'image': userData.image,
-        'surname': userData.surname,
         'teacher': userData.teacher,
         'points': userData.points,
         'capitols': userData.capitols.map((userCapitolsData) {
