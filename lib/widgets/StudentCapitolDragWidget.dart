@@ -95,122 +95,124 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
     if (_loadingCurrentClass || _loadingQuestionData) {
         return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    return Container(
-      width: 200,
-      padding: EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(height: 20,),
-          Container(
-            width: 600,
-            child: 
-              Text(
-                'Všetky Kapitoly',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+    return SingleChildScrollView(
+      child: Container(
+        width: 200,
+        padding: EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 20,),
+            Container(
+              width: 600,
+              child: 
+                Text(
+                  'Všetky Kapitoly',
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                 ),
-              ),
-          ),
-          SizedBox(height: 20,),
-          Container(
-            width: 600,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: localResults.length,
-              itemBuilder: (ctx, index) {
-                bool isExpanded = index == expandedTileIndex;
-                dynamic capitol = localResults[index];
+            ),
+            SizedBox(height: 20,),
+            Container(
+              width: 600,
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: localResults.length,
+                itemBuilder: (ctx, index) {
+                  bool isExpanded = index == expandedTileIndex;
+                  dynamic capitol = localResults[index];
 
-                if (capitol == null) {
-                  // If capitol data is null, return an empty Container or another widget indicating no data
-                  return Container();
-                }
+                  if (capitol == null) {
+                    // If capitol data is null, return an empty Container or another widget indicating no data
+                    return Container();
+                  }
 
-                return Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(0),
-                      margin: EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: isExpanded
-                            ? Theme.of(context).primaryColor
-                            : AppColors.getColor('mono').lighterGrey,
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          setState(() {
-                            if (isExpanded) {
-                              expandedTileIndex = null;
-                            } else {
-                              expandedTileIndex = index;
-                            }
-                          });
-                        },
-                        hoverColor: Colors.transparent,
-                        leading: CircleAvatar(
-                          radius: 8,
-                          backgroundColor: isExpanded
-                              ? AppColors.getColor('mono').white
-                              : AppColors.getColor(capitol["color"]).light,  // Update this to avoid out-of-bounds
+                  return Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(0),
+                        margin: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: isExpanded
+                              ? Theme.of(context).primaryColor
+                              : AppColors.getColor('mono').lighterGrey,
                         ),
-                        title: Text(
-                          capitol["name"],
-                          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                color: isExpanded
-                                    ? Theme.of(context).colorScheme.onPrimary
-                                    : Theme.of(context).primaryColor,
-                              ),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              if (isExpanded) {
+                                expandedTileIndex = null;
+                              } else {
+                                expandedTileIndex = index;
+                              }
+                            });
+                          },
+                          hoverColor: Colors.transparent,
+                          leading: CircleAvatar(
+                            radius: 8,
+                            backgroundColor: isExpanded
+                                ? AppColors.getColor('mono').white
+                                : AppColors.getColor(capitol["color"]).light,  // Update this to avoid out-of-bounds
+                          ),
+                          title: Text(
+                            capitol["name"],
+                            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                  color: isExpanded
+                                      ? Theme.of(context).colorScheme.onPrimary
+                                      : Theme.of(context).primaryColor,
+                                ),
+                          ),
+                          trailing: isExpanded
+                              ? SvgPicture.asset('assets/icons/upWhiteIcon.svg')
+                              : SvgPicture.asset('assets/icons/downPrimaryIcon.svg'),
                         ),
-                        trailing: isExpanded
-                            ? SvgPicture.asset('assets/icons/upWhiteIcon.svg')
-                            : SvgPicture.asset('assets/icons/downPrimaryIcon.svg'),
                       ),
-                    ),
-                    if (isExpanded)
-                      ...List.generate(
-                        capitol["tests"].length,
-                        (subIndex) => Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: AppColors.getColor('mono').lighterGrey,
-                                width: 1.0,
+                      if (isExpanded)
+                        ...List.generate(
+                          capitol["tests"].length,
+                          (subIndex) => Container(
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: AppColors.getColor('mono').lighterGrey,
+                                  width: 1.0,
+                                ),
                               ),
                             ),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              capitol["tests"][subIndex]["name"],
-                              style: TextStyle(fontSize: 14, decoration: subIndex == 0 && index == 0 ? TextDecoration.underline : null, ),
+                            child: ListTile(
+                              title: Text(
+                                capitol["tests"][subIndex]["name"],
+                                style: TextStyle(fontSize: 14, decoration: subIndex == 0 && index == 0 ? TextDecoration.underline : null, ),
+                              ),
+                              trailing: ((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
+                                  widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100) != 0 ? Row(
+                                mainAxisSize: MainAxisSize.min,  // To shrink-wrap the Row
+                                children: [
+                                  Text('${((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
+                                  widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100).toStringAsFixed(0)}%',
+                                    style: TextStyle(color: AppColors.getColor('mono').darkGrey)
+                                  ),  // Showing upto 2 decimal places
+                                  SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
+                                  SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
+                                ],
+                              ) : null,
+                              contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                              dense: true,
                             ),
-                            trailing: ((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
-                                widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100) != 0 ? Row(
-                              mainAxisSize: MainAxisSize.min,  // To shrink-wrap the Row
-                              children: [
-                                Text('${((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
-                                widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100).toStringAsFixed(0)}%',
-                                  style: TextStyle(color: AppColors.getColor('mono').darkGrey)
-                                ),  // Showing upto 2 decimal places
-                                SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
-                                SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
-                              ],
-                            ) : null,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
-                            dense: true,
                           ),
-                        ),
-                      )
-                  ],
-                );
-              },
+                        )
+                    ],
+                  );
+                },
+              )
             )
-          )
-        ],
-      ),
+          ],
+        ),
+      )
     );
   }
  
