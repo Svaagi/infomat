@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/Colors.dart';
@@ -94,13 +92,13 @@ class _MobileTestState extends State<MobileTest> {
 
         }
 
-        if (matchmaking.length > 0) {
-            allCorrects = correct!.map((e) {
+        if (matchmaking.isNotEmpty) {
+            allCorrects = correct.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';
             }).join(', ');
         } else {
-            allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
+            allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
 
@@ -171,7 +169,7 @@ class _MobileTestState extends State<MobileTest> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return Stack(
       children: [
@@ -198,13 +196,13 @@ class _MobileTestState extends State<MobileTest> {
       Scaffold(
       appBar: AppBar(
         backgroundColor: 
-                (definition != '' || images.length > 0) ||
+                (definition != '' || images.isNotEmpty) ||
             screen
             ? Theme.of(context).primaryColor
             : Theme.of(context).colorScheme.background,
         elevation: 0,
         flexibleSpace: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           height: 120, // adjust this to make the AppBar taller
           child: !screen
               ? Column(
@@ -215,8 +213,8 @@ class _MobileTestState extends State<MobileTest> {
                       children: List.generate(
                         questionsPoint ?? 0,
                         (index) {
-                          final maxCellWidth = 50.0; // Specify the maximum cell width
-                          final minWidth = 40.0; // Specify the minimum cell width
+                          const  maxCellWidth = 50.0; // Specify the maximum cell width
+                          const  minWidth = 40.0; // Specify the minimum cell width
                           final totalWidth =
                               maxCellWidth * (questionsPoint ?? 1);
                           final availableWidth =
@@ -228,7 +226,7 @@ class _MobileTestState extends State<MobileTest> {
 
                           return Flexible(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 2.0),
+                              margin: const EdgeInsets.symmetric(horizontal: 2.0),
                               width: width,
                               height: 10,
                               decoration: BoxDecoration(
@@ -250,7 +248,7 @@ class _MobileTestState extends State<MobileTest> {
           icon: Icon(
             Icons.arrow_back,
             color: (
-              (definition != '' || images.length > 0)) || screen
+              (definition != '' || images.isNotEmpty)) || screen
                 ? AppColors.getColor('mono').white
                 : AppColors.getColor('mono').black,
           ),
@@ -266,12 +264,12 @@ class _MobileTestState extends State<MobileTest> {
       ),
 
 
-      backgroundColor: (definition != '' || images.length > 0) || screen ? Colors.transparent : Theme.of(context).colorScheme.background,
+      backgroundColor: (definition != '' || images.isNotEmpty) || screen ? Colors.transparent : Theme.of(context).colorScheme.background,
       body: !screen ? 
         SingleChildScrollView(
          child: Container(
           width: double.infinity,
-          padding: EdgeInsets.only(bottom: 50),
+          padding: const EdgeInsets.only(bottom: 50),
           child:
           Align( 
             alignment: Alignment.topCenter, 
@@ -281,22 +279,22 @@ class _MobileTestState extends State<MobileTest> {
             alignment: WrapAlignment.spaceEvenly,
 
             children: [
-            if (title != '' || definition != '' || images.length > 0) Container(
+            if (title != '' || definition != '' || images.isNotEmpty) Container(
               width: 600,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(4),
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(4),
                     child: Text(
-                      title ?? '',
+                      title,
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium!
                           .copyWith(
-                            color: (definition != '' || images.length > 0)
+                            color: (definition != '' || images.isNotEmpty)
                                 ? Theme.of(context).colorScheme.onPrimary 
                                 : Theme.of(context).colorScheme.onBackground,
                           ),
@@ -304,9 +302,9 @@ class _MobileTestState extends State<MobileTest> {
                   ),
                   Column(
                     children: [
-                      if (division != null && division!.isNotEmpty)
-                              ...division!.map((dvs) => Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      if (division.isNotEmpty)
+                              ...division.map((dvs) => Container(
+                                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
@@ -317,8 +315,8 @@ class _MobileTestState extends State<MobileTest> {
                                       children: [
                                         Container(
                                           alignment: Alignment.center,
-                                          constraints: BoxConstraints(maxWidth: 100, minHeight: 50),
-                                          padding: EdgeInsets.all(16),
+                                          constraints: const BoxConstraints(maxWidth: 100, minHeight: 50),
+                                          padding: const EdgeInsets.all(16),
                                           decoration: BoxDecoration(
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                           ),
@@ -335,7 +333,7 @@ class _MobileTestState extends State<MobileTest> {
                                         Container(
                                           alignment: Alignment.center,
                                           constraints: BoxConstraints( minHeight: 50, maxWidth: MediaQuery.of(context).size.width - 150),
-                                          padding: EdgeInsets.all(16),
+                                          padding: const EdgeInsets.all(16),
                                           child: Text(
                                             dvs["text"],
                                             textAlign: TextAlign.center,
@@ -352,9 +350,9 @@ class _MobileTestState extends State<MobileTest> {
                                   )).toList()
                             else 
                               Container(), 
-                      if (images != null && images!.isNotEmpty)
-                        ...images!.map((img) => Container(
-                              margin: EdgeInsets.all(8),
+                      if (images.isNotEmpty)
+                        ...images.map((img) => Container(
+                              margin: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(color: AppColors.getColor('mono').grey),
@@ -370,15 +368,15 @@ class _MobileTestState extends State<MobileTest> {
                         Container(), // Placeholder for empty image field
                         
                       definition != '' ? Container(
-                        margin: EdgeInsets.all(8),
+                        margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.getColor('mono').grey),
                           color: Theme.of(context).colorScheme.background
                           ),
-                        padding: EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(12),
                         child: Text(
-                          definition ?? '',
+                          definition,
                           style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -394,12 +392,11 @@ class _MobileTestState extends State<MobileTest> {
             ),
             Container(
               color: Theme.of(context).colorScheme.background,
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                question != '' ? Container(
-                    child: Text(
+                question != '' ? Text(
                       question,
                       style: Theme.of(context)
                             .textTheme
@@ -407,12 +404,10 @@ class _MobileTestState extends State<MobileTest> {
                             .copyWith(
                               color: Theme.of(context).colorScheme.onBackground,
                             ),
-                    ),
-                  ) : Container(),
-                  SizedBox(height: 8,),
-                  if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
-                  subQuestion != '' ? Container(
-                    child: Text(
+                    ) : Container(),
+                  const SizedBox(height: 8,),
+                  if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
+                  subQuestion != '' ?  Text(
                       subQuestion,
                       style: Theme.of(context)
                             .textTheme
@@ -420,37 +415,36 @@ class _MobileTestState extends State<MobileTest> {
                             .copyWith(
                               color: Theme.of(context).colorScheme.onBackground,
                             ),
-                    ),
-                  ) : Container(),
-                  if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
+                    ): Container(),
+                  if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
                   ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: (answersImage?.length ?? 0) + (answers?.length ?? 0) + (matchmaking?.length ?? 0),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: (answersImage.length) + (answers.length) + (matchmaking.length),
                   itemBuilder: (BuildContext context, index) {
                     Widget? tile;
                     String? itemText;
 
                     if (pressed) {
-                      if (correct!.any((item) => item["index"] == index)) {
+                      if (correct.any((item) => item["index"] == index)) {
                         // Show the tile in green if index matches correct
-                        if (answersImage.isNotEmpty && index < answersImage!.length) {
-                          String? item = answersImage?[index];
+                        if (answersImage.isNotEmpty && index < answersImage.length) {
+                          String? item = answersImage[index];
                           tile = reTileImage(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
-                          itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                        } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                          String? item = answers?[(index - (answersImage?.length ?? 0))];
+                          itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                        } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
+                          String? item = answers[(index - (answersImage.length))];
                           tile = reTile(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
                           itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
-                        } else if ((matchmaking?.length ?? 0) > 1 && (matches?.length ?? 0) > 0 && index - (answersImage?.length ?? 0) + ((answers?.length ?? 0)) < (matchmaking?.length ?? 0)) {
-                          String? item = matchmaking?[(index - (answersImage?.length ?? 0) + (answers?.length ?? 0))];
-                          List<dynamic> item2 = matches ?? [];
+                        } else if (matchmaking.isNotEmpty && (matches.length) > 0 && index - (answersImage.length) + ((answers.length)) < (matchmaking.length )) {
+                          String? item = matchmaking[(index - (answersImage.length) + (answers.length))];
+                          List<dynamic> item2 = matches;
 
-                          if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
-                            tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
+                          if (_answer.any((answerItem) => answerItem.index == index) && correct.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
+                            tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                           } else {
-                            tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
+                            tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                           }
                         } 
@@ -459,12 +453,12 @@ class _MobileTestState extends State<MobileTest> {
                             children: [
                               tile,
                               if(itemText != null) Container(
-                                  margin: EdgeInsets.all(8),
+                                  margin: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColors.getColor('primary').lighter,
                                   ),
-                                  padding: EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(12),
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                                     children: [
@@ -473,10 +467,10 @@ class _MobileTestState extends State<MobileTest> {
                                         width: 30,  // Optional: You can adjust width & height as per your requirement
                                         height: 30,
                                       ),
-                                      SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                                      const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                       Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                         child: Text(
-                                          itemText ?? '',
+                                          itemText,
                                           style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
@@ -491,13 +485,13 @@ class _MobileTestState extends State<MobileTest> {
                             ],
                           );
                         }
-                      } else if (correct!.any((item) => item["index"] != index) && _answer!.any((item) => item.index == index)) {
-                          if (answersImage.isNotEmpty && index < answersImage!.length) {
-                            String? item = answersImage?[index];
+                      } else if (correct.any((item) => item["index"] != index) && _answer.any((item) => item.index == index)) {
+                          if (answersImage.isNotEmpty && index < answersImage.length) {
+                            String? item = answersImage[index];
                             tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('red').main, index, item, context, correct: false);
-                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                          } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                            String? item = answers?[(index - (answersImage?.length ?? 0))];
+                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                          } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
+                            String? item = answers[(index - (answersImage.length))];
                             tile =  reTile(AppColors.getColor('red').lighter, AppColors.getColor('red').main, index, item, context,correct: false);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
                           }
@@ -506,12 +500,12 @@ class _MobileTestState extends State<MobileTest> {
                             children: [
                               tile,
                               if(itemText != null) Container(
-                                  margin: EdgeInsets.all(8),
+                                  margin: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColors.getColor('primary').lighter,
                                   ),
-                                  padding: EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(12),
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                                     children: [
@@ -520,10 +514,10 @@ class _MobileTestState extends State<MobileTest> {
                                         width: 30,  // Optional: You can adjust width & height as per your requirement
                                         height: 30,
                                       ),
-                                      SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                                      const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                       Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                         child: Text(
-                                          itemText ?? '',
+                                          itemText,
                                           style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
@@ -539,12 +533,12 @@ class _MobileTestState extends State<MobileTest> {
                           );
                         }
                         } else {
-                            if (answersImage.isNotEmpty && index < answersImage!.length) {
-                            String? item = answersImage?[index];
+                            if (answersImage.isNotEmpty && index < answersImage.length) {
+                            String? item = answersImage[index];
                             tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
-                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                          } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                            String? item = answers?[(index - (answersImage?.length ?? 0))];
+                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                          } else if ((answers.length ) > 1 && index - (answersImage.length) < (answers.length)) {
+                            String? item = answers[(index - (answersImage.length))];
                             tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
                           }
@@ -553,12 +547,12 @@ class _MobileTestState extends State<MobileTest> {
                             children: [
                               tile,
                               if(itemText != null) Container(
-                                  margin: EdgeInsets.all(8),
+                                  margin: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColors.getColor('primary').lighter,
                                   ),
-                                  padding: EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(12),
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                                     children: [
@@ -567,10 +561,10 @@ class _MobileTestState extends State<MobileTest> {
                                         width: 30,  // Optional: You can adjust width & height as per your requirement
                                         height: 30,
                                       ),
-                                      SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                                      const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                       Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                         child: Text(
-                                          itemText ?? '',
+                                          itemText,
                                           style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
@@ -588,8 +582,8 @@ class _MobileTestState extends State<MobileTest> {
                         }
                     } else {
                 // Show all items when boolPressed is false
-                if (answersImage.isNotEmpty && index < answersImage!.length) {
-                  String? item = answersImage?[index];
+                if (answersImage.isNotEmpty && index < answersImage.length) {
+                  String? item = answersImage[index];
                   return MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
@@ -598,7 +592,7 @@ class _MobileTestState extends State<MobileTest> {
                         bool isSelected = _answer.any((e) => e.answer == index);
                         if (!isSelected) {
                           // If selected items are less than the limit, allow adding
-                            if (_answer.length < 1) {
+                            if (_answer.isEmpty) {
                               _answer.add(UserAnswerData(answer: index, index: index));
                             }
                         } else {
@@ -660,7 +654,7 @@ class _MobileTestState extends State<MobileTest> {
                   )
 
                   );
-                } else if (answers.isNotEmpty && (index - answersImage.length) < answers!.length) {
+                } else if (answers.isNotEmpty && (index - answersImage.length) < answers.length) {
                   String? item = answers[(index - answersImage.length)];
                   return  MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -670,7 +664,7 @@ class _MobileTestState extends State<MobileTest> {
                           bool isSelected = _answer.any((e) => e.answer == index);
                           if (!isSelected) {
                             // If selected items are less than the limit, allow adding
-                              if (_answer.length < 1) {
+                              if (_answer.isEmpty) {
                                 _answer.add(UserAnswerData(answer: index, index: index));
                               }
                           } else {
@@ -682,7 +676,7 @@ class _MobileTestState extends State<MobileTest> {
                       child: Material(
                         type: MaterialType.transparency,
                         child: Container(
-                          margin: EdgeInsets.all(8),
+                          margin: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             border: _answer.any((e) => e.index == index)
                                 ? Border.all(color: Theme.of(context).primaryColor)
@@ -706,7 +700,7 @@ class _MobileTestState extends State<MobileTest> {
                                           : Theme.of(context).colorScheme.onBackground,
                                     ),
                                 ),
-                                SizedBox(width: 32),
+                                const SizedBox(width: 32),
                                 Expanded(
                                   child: Text(
                                     item!,
@@ -731,8 +725,8 @@ class _MobileTestState extends State<MobileTest> {
                 } else if (matchmaking.isNotEmpty && matches.isNotEmpty && index - (answersImage.length) + ((answers.length)) < matchmaking.length) {
                   String? item = matchmaking[(index - (answersImage.length) - (answers.length))];
                   return Container(
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.getColor('mono').lightGrey),
                       borderRadius: BorderRadius.circular(10),
@@ -759,8 +753,8 @@ class _MobileTestState extends State<MobileTest> {
                               });
                             },
                             child: Container(
-                              margin: EdgeInsets.all(8),
-                              padding: EdgeInsets.all(12),
+                              margin: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(color: openDropdownIndex == index ? AppColors.getColor('primary').main : Colors.grey),
@@ -797,7 +791,7 @@ class _MobileTestState extends State<MobileTest> {
             }
           ),
           if(conclusion != '') Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                   child: Text(
                     "Záver: $conclusion",
                     style: Theme.of(context)
@@ -808,13 +802,13 @@ class _MobileTestState extends State<MobileTest> {
                           ),
                   ),
               ),
-              if(explanation!.length < 2 && pressed && explanation!.length > 0 )Container(
-                margin: EdgeInsets.all(8),
+              if(explanation!.length < 2 && pressed && explanation!.isNotEmpty )Container(
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.getColor('primary').lighter,
                 ),
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                   children: [
@@ -823,7 +817,7 @@ class _MobileTestState extends State<MobileTest> {
                       width: 30,  // Optional: You can adjust width & height as per your requirement
                       height: 30,
                     ),
-                    SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                    const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                     Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                       child: Text(
                         'Správna je odpoveď ${allCorrects ?? ''}: ${explanation?[0] ?? ''}',
@@ -846,7 +840,7 @@ class _MobileTestState extends State<MobileTest> {
 
             pressed ? ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'ĎALEJ',onTap:
               onNextButtonPressed,
-            ) : ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main,isDisabled: _answer.length < 1  + (matchmaking.length > 0 ? matchmaking.length - 1 : 0),  text: 'HOTOVO', onTap:
+            ) : ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main,isDisabled: _answer.length < 1  + (matchmaking.isNotEmpty ? matchmaking.length - 1 : 0),  text: 'HOTOVO', onTap:
               onAnswerPressed,
             ),
           ],
@@ -883,7 +877,7 @@ class _MobileTestState extends State<MobileTest> {
                         color: Theme.of(context).colorScheme.onPrimary,
                       ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Stack(
                     alignment: Alignment.center,
                     children: [
@@ -898,8 +892,8 @@ class _MobileTestState extends State<MobileTest> {
                       ),
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
-                  SizedBox(height: 10),
-                  Padding(padding: EdgeInsets.all(8),
+                  const SizedBox(height: 10),
+                  Padding(padding: const EdgeInsets.all(8),
                     child: Text(introduction ?? '',
                       textAlign: TextAlign.center,
                       style:  Theme.of(context)
@@ -919,7 +913,7 @@ class _MobileTestState extends State<MobileTest> {
               ),
               child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
             ),
-            Spacer(),
+            const Spacer(),
             ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'POKRAČOVAŤ', onTap:
               () {
                 setState(() {
@@ -928,7 +922,7 @@ class _MobileTestState extends State<MobileTest> {
                 });
               }
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
           ],
         ))) :  Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -942,9 +936,9 @@ class _MobileTestState extends State<MobileTest> {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Image.asset('assets/star.png', height: 100,),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               getResultBasedOnPercentage(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points, questionsPoint ?? 0),
               style:  Theme.of(context)
@@ -955,7 +949,7 @@ class _MobileTestState extends State<MobileTest> {
                 ),
             ),
             
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               "${widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points}/${questionsPoint} správnych odpovedí | ${((widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points / questionsPoint!) * 100).round()}%",
               style: Theme.of(context)
@@ -965,7 +959,7 @@ class _MobileTestState extends State<MobileTest> {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -978,11 +972,11 @@ class _MobileTestState extends State<MobileTest> {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 SvgPicture.asset('assets/icons/starYellowIcon.svg'),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text: 'ZAVRIEŤ', onTap:
               () => widget.overlay(),
             ),
@@ -1024,7 +1018,7 @@ class _MobileTestState extends State<MobileTest> {
       elevation: 5,
         borderRadius: BorderRadius.circular(10),
       child: Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.builder(
         itemCount: matches.length,
         shrinkWrap: true,
@@ -1042,7 +1036,7 @@ class _MobileTestState extends State<MobileTest> {
               // Handle selection here
               setState(() {
                 openDropdownIndex = null;
-                if (_answer.length > 0) {
+                if (_answer.isNotEmpty) {
                   bool exists = _answer.any((element) => element.index == index);
                   if (!exists) {
                     _answer.add(UserAnswerData(answer: idx, index: index));
@@ -1077,7 +1071,7 @@ class _MobileTestState extends State<MobileTest> {
 
 
 // Define a utility function for firstWhereOrNull behavior
-dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
+dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     for (dynamic element in list) {
         if (test(element)) return element;
     }
@@ -1092,14 +1086,14 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     // Initialize points to 0 for this specific run
     double points = 0.0;
 
-   List<bool> correctnessList = List<bool>.filled(correct!.length, false);
+   List<bool> correctnessList = List<bool>.filled(correct.length, false);
 
       for (var userAnswer in _answer) {
         // Try to find a matching correct answer based on index
-        dynamic? matchingCorrectItem;
+        dynamic matchingCorrectItem;
 
           try {
-              matchingCorrectItem = correct!.firstWhere((c) => c["index"] == userAnswer.index);
+              matchingCorrectItem = correct.firstWhere((c) => c["index"] == userAnswer.index);
           } catch (e) {
               matchingCorrectItem = null;
           }
@@ -1107,7 +1101,7 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
         // If found and answers match, update points and correctnessList
         if (matchingCorrectItem != null && userAnswer.answer == matchingCorrectItem["correct"]) {
-          int correctListIndex = correct!.indexOf(matchingCorrectItem);
+          int correctListIndex = correct.indexOf(matchingCorrectItem);
           if (correctListIndex != -1 && correctListIndex < correctnessList.length) {
             correctnessList[correctListIndex] = true;
           }
@@ -1118,8 +1112,8 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
       }
 
 
-    for (int i = 0; i < correct!.length; i++) {
-        if (!_answer.any((item) => item.index == correct![i]["index"])) {
+    for (int i = 0; i < correct.length; i++) {
+        if (!_answer.any((item) => item.index == correct[i]["index"])) {
             points -= partialPoints; // Decrement points by partialPoints for every missing answer
         }
     }
@@ -1143,7 +1137,7 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
 
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
-        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer ?? [];
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
 
         if (areAllCompleted(widget.userData!)) {
           widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;

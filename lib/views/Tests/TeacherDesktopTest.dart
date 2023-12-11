@@ -32,7 +32,6 @@ class TeacherDesktopTest extends StatefulWidget {
 }
 
 class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
-  List<UserAnswerData> _answer = [];
   bool? isCorrect;
   int questionIndex = 0;
   String conclusion = '';
@@ -49,7 +48,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   String subQuestion = '';
   String title = '';
   int? questionsPoint;
-  bool _disposed = false;
   bool pressed = false;
   List<dynamic>? percentages;
   double? percentagesAll;
@@ -85,23 +83,22 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
         questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
-            _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
             pressed = true;
 
         }
 
-        if (matchmaking.length > 0) {
-            allCorrects = correct!.map((e) {
+        if (matchmaking.isNotEmpty) {
+            allCorrects = correct.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';
             }).join(', ');
         } else {
-            allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
+            allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
         checkTitle = false;
 
-        if(title != '' && definition == '' && images.length == 0 && division.length == 0) checkTitle = true;
+        if(title != '' && definition == '' && images.isEmpty && division.isEmpty) checkTitle = true;
 
         _loading = false;
 
@@ -147,7 +144,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       // Test ID has changed, reset the state and fetch new data
       setState(() {
         questionIndex = 0;
-        _answer = [];
       });
       fetchQuestionData(questionIndex);
 
@@ -165,7 +161,6 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
     String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
     List<dynamic> data = json.decode(jsonData);
 
-    int totalStudents = usersSnapshot.docs.length;
     int completedStudents = 0; // new variable to keep track of students who have completed the test
     int correctResponses = 0;
 
@@ -229,14 +224,13 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
 
   @override
   void dispose() {
-    _disposed = true; // Set the disposed flag to true
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return Stack(
       children: [
@@ -262,7 +256,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
             : Theme.of(context).colorScheme.background,
         elevation: 0,
         flexibleSpace: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           height: 120, // adjust this to make the AppBar taller
           child: !firstScreen
               ? Column(
@@ -273,8 +267,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       children: List.generate(
                         questionsPoint ?? 0,
                         (index) {
-                          final maxCellWidth = 50.0; // Specify the maximum cell width
-                          final minWidth = 40.0; // Specify the minimum cell width
+                          const  maxCellWidth = 50.0; // Specify the maximum cell width
+                          const  minWidth = 40.0; // Specify the minimum cell width
                           final totalWidth =
                               maxCellWidth * (questionsPoint ?? 1);
                           final availableWidth =
@@ -286,7 +280,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
 
                           return Flexible(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 2.0),
+                              margin: const EdgeInsets.symmetric(horizontal: 2.0),
                               width: width,
                               height: 10,
                               decoration: BoxDecoration(
@@ -320,10 +314,9 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
       backgroundColor: firstScreen ?  Colors.transparent : Theme.of(context).colorScheme.background,
       body: !firstScreen ? SingleChildScrollView(
          child:
-         Container(
-          child: Column(
+          Column(
           children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             child:
           Align( 
@@ -336,8 +329,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
             children: [
             if (!checkTitle ) Container(
               width: 670,
-              margin:  EdgeInsets.only(bottom: 12, left: 12, right: 30, top: 50),
-              padding: EdgeInsets.all(12),
+              margin:  const EdgeInsets.only(bottom: 12, left: 12, right: 30, top: 50),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius:  BorderRadius.circular(10),
                     border: Border.all(color: AppColors.getColor('mono').grey),
@@ -346,10 +339,10 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                        margin: EdgeInsets.all(8),
-                        padding: EdgeInsets.all(4),
+                        margin: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(4),
                         child: Text(
-                          title ?? '',
+                          title,
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
@@ -360,9 +353,9 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       ),
                   Column(
                     children: [
-                      if (division != null && division!.isNotEmpty)
-                        ...division!.map((dvs) => Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      if ( division.isNotEmpty)
+                        ...division.map((dvs) => Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(color: AppColors.getColor('mono').grey),
@@ -374,7 +367,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                     alignment: Alignment.center,
                                     width: 200,
                                     height: 200,
-                                    padding: EdgeInsets.all(16),
+                                    padding: const EdgeInsets.all(16),
                                     decoration: BoxDecoration(
                                       border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                     ),
@@ -392,7 +385,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                     alignment: Alignment.center,
                                     width: 400,
                                     height: 200,
-                                    padding: EdgeInsets.all(16),
+                                    padding: const EdgeInsets.all(16),
                                     child: Text(
                                       dvs["text"],
                                       textAlign: TextAlign.center,
@@ -409,8 +402,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                             )).toList()
                       else 
                         Container(), // Pl
-                        ...images!.map((img) => Container(
-                              margin: EdgeInsets.all(8),
+                        ...images.map((img) => Container(
+                              margin: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(color: AppColors.getColor('mono').grey),
@@ -424,15 +417,15 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                     // Placeholder for empty image field
                         
                       definition != '' ? Container(
-                        margin: EdgeInsets.all(8),
+                        margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.getColor('mono').grey),
                           color: Theme.of(context).colorScheme.background
                           ),
-                        padding: EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(12),
                         child: Text(
-                          definition ?? '',
+                          definition,
                           style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -447,20 +440,20 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
               ),
             ),
             Container(
-               width: ((title != '' || definition != '' || images.length > 0) && !checkTitle) ? 600 : 800,
-                margin: EdgeInsets.all(12),
-                padding: EdgeInsets.all(12),
+               width: ((title != '' || definition != '' || images.isNotEmpty) && !checkTitle) ? 600 : 800,
+                margin: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
               child: 
                 Container(
-                  constraints: BoxConstraints(minHeight: 576,),
+                  constraints: const BoxConstraints(minHeight: 576,),
                     child:
                      Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (usersCompleted) Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           height: 60,
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
@@ -478,7 +471,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                             color: AppColors.getColor('primary').main,
                                           ),
                                 ),
-                                SizedBox(width: 8,),
+                                const SizedBox(width: 8,),
                                 FutureBuilder<Map<String, dynamic>>(
                                     future:  getQuestionStats(
                                     widget.userData!.schoolClass,
@@ -488,7 +481,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                   ),
                                 builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
                                   if (snapshot.connectionState == ConnectionState.waiting) {
-                                    return CircularProgressIndicator();
+                                    return const CircularProgressIndicator();
                                   } else if (snapshot.hasError) {
                                     return Text('Error: ${snapshot.error}');
                                   } else {
@@ -507,11 +500,11 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               ],
                             )
                         ),
-                        if(checkTitle)SizedBox(height: 30,),
+                        if(checkTitle)const SizedBox(height: 30,),
                            if(checkTitle)Container(
-                            padding: EdgeInsets.all(4),
+                            padding: const EdgeInsets.all(4),
                             child: Text(
-                              title ?? '',
+                              title,
                               style: Theme.of(context)
                                   .textTheme
                                   .headlineLarge!
@@ -520,9 +513,9 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                   ),
                             ),
                           ),
-                          if(question != '')SizedBox(height: 30,),
+                          if(question != '')const SizedBox(height: 30,),
                           question != '' ? Container(
-                              padding: EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(4),
                               child: Text(
                                 question,
                                 style: Theme.of(context)
@@ -533,9 +526,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                       ),
                               ),
                             ) : Container(),
-                            if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
-                            subQuestion != '' ? Container(
-                              child: Text(
+                            if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
+                            subQuestion != '' ?  Text(
                                 subQuestion,
                                 style: Theme.of(context)
                                       .textTheme
@@ -543,10 +535,9 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                       .copyWith(
                                         color: Theme.of(context).colorScheme.onBackground,
                                       ),
-                              ),
                             ) : Container(),
-                            if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
-                         SizedBox(height: 30,),
+                            if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
+                         const SizedBox(height: 30,),
                          FutureBuilder<Map<String, dynamic>>(
                               future:  getQuestionStats(
                               widget.userData!.schoolClass,
@@ -555,26 +546,26 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               questionIndex,
                             ),
                           builder: (context, snapshot) {
-                            if (!snapshot.hasData) return CircularProgressIndicator();
+                            if (!snapshot.hasData) return const CircularProgressIndicator();
                             final data = snapshot.data;
                             return ListView.builder(
                           
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: (answersImage!.length ?? 0) + (answers!.length ?? 0) + (matchmaking!.length ?? 0),
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: (answersImage.length) + (answers.length) + (matchmaking.length),
                             itemBuilder: (BuildContext context, index) {
                               String? itemText;
                               Color bgColor;
                               Color borderColor;
                               Color percentageColor;
-                              bool isCorrect = correct!.any((cItem) => cItem["index"] == index);
+                              bool isCorrect = correct.any((cItem) => cItem["index"] == index);
 
                               Widget mainWidget;
 
                               // Handle answersImage
                               if (index < answersImage.length &&  answersImage.isNotEmpty) {
                                 String item = answersImage[index];
-                                itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;
+                                itemText = explanation.length > 1 && explanation[index].isNotEmpty  ? explanation[index] : null;
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
@@ -587,7 +578,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               // Handle answers
                               else if ((index - answersImage.length) < answers.length &&  answers.isNotEmpty && answers[index - answersImage.length].isNotEmpty) {
                                 String? item = answers[index - answersImage.length].isNotEmpty ? answers[index - answersImage.length] : null;
-                                itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
+                                itemText = explanation.length > 1 && explanation[index - answersImage.length].isNotEmpty  ? explanation[index - answersImage.length] : null;
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
@@ -599,14 +590,14 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               }
                               // Handle matchmaking
                               else  {
-                                itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length ] : null;
+                                itemText = explanation.length > 1 && explanation[index - answersImage.length - answers.length].isNotEmpty  ? explanation[index - answersImage.length - answers.length ] : null;
                                 String? item = matchmaking[index  - answersImage.length  - answers.length];
                                 List<dynamic> item2 = matches;
-                                itemText = explanation!.length > 1 && explanation![index - answersImage.length  - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length ] : null;
+                                itemText = explanation.length > 1 && explanation[index - answersImage.length  - answers.length].isNotEmpty  ? explanation[index - answersImage.length - answers.length ] : null;
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct!.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
+                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
                               }
 
                               // Return the main widget alongside the item text
@@ -614,12 +605,12 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 children: [
                                   mainWidget,
                                   if(itemText != null)Container(
-                                    margin: EdgeInsets.all(8),
+                                    margin: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: AppColors.getColor('primary').lighter,
                                     ),
-                                    padding: EdgeInsets.all(12),
+                                    padding: const EdgeInsets.all(12),
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                                       children: [
@@ -628,7 +619,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                           width: 30,  // Optional: You can adjust width & height as per your requirement
                                           height: 30,
                                         ),
-                                        SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                                        const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                                         Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                                           child: Text(
                                             itemText,
@@ -651,7 +642,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                           }
                          ),
                          if(conclusion != '') Container(
-                          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                               child: Text(
                                 "Záver: $conclusion",
                                 style: Theme.of(context)
@@ -662,13 +653,13 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                       ),
                               ),
                          ),
-                      if(explanation!.length < 2 && explanation.length > 0)Container(
-                        margin: EdgeInsets.all(8),
+                      if(explanation.length < 2 && explanation.isNotEmpty)Container(
+                        margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: AppColors.getColor('primary').lighter,
                         ),
-                        padding: EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,  // aligns items to the top
                           children: [
@@ -677,10 +668,10 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               width: 30,  // Optional: You can adjust width & height as per your requirement
                               height: 30,
                             ),
-                            SizedBox(width: 12),  // Give some spacing between the SVG and the text
+                            const SizedBox(width: 12),  // Give some spacing between the SVG and the text
                             Expanded(  // To make sure the text takes the remaining available space and wraps if needed
                               child: Text(
-                                'Správna je odpoveď ${allCorrects ?? ''}: ${explanation?[0] ?? ''}',
+                                'Správna je odpoveď ${allCorrects ?? ''}: ${explanation[0] ?? ''}',
                                 style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
@@ -702,14 +693,13 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
         ),
           )
           ),
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             width: 900,
             child:  Row(
               children: [
-                Container(
-                  child:  ReButton(
+                 ReButton(
                     activeColor: AppColors.getColor('primary').light, 
                     defaultColor: AppColors.getColor('mono').lighterGrey, 
                     disabledColor: AppColors.getColor('mono').lightGrey, 
@@ -728,10 +718,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                     : widget.overlay();
                     },
                   ),
-                ),
-                Spacer(),
-                Container(
-                  child:  ReButton(
+                const Spacer(),
+               ReButton(
                     activeColor: AppColors.getColor('primary').light, 
                     defaultColor: AppColors.getColor('mono').lighterGrey, 
                     disabledColor: AppColors.getColor('mono').lightGrey, 
@@ -750,7 +738,6 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       } else {
                         setState(() {
                           questionIndex = 0;
-                          _answer = [];
                           pressed = false;
                           checkTitle = false;
                         });
@@ -760,16 +747,14 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       
                     },
                   ),
-                ),
               ],
             ),
           ),
          
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
          ]
       ),
-          )
-       ) :
+          ) :
       Container(
         decoration: BoxDecoration(
                   color: AppColors.getColor('mono').white
@@ -798,7 +783,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                         color: Theme.of(context).colorScheme.onPrimary,
                       ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Stack(
                     alignment: Alignment.center,
                     children: [
@@ -813,8 +798,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       ),
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
-                  SizedBox(height: 10),
-                  Padding(padding: EdgeInsets.all(8),
+                  const SizedBox(height: 10),
+                  Padding(padding: const EdgeInsets.all(8),
                     child: Text(introduction ?? '',
                       textAlign: TextAlign.center,
                       style:  Theme.of(context)
@@ -834,7 +819,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
               ),
               child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
             ),
-            Spacer(),
+            const Spacer(),
             ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'POKRAČOVAŤ', onTap:
               () {
                 setState(() {
@@ -842,7 +827,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                 });
               }
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
           ],
         ))))
       ]
@@ -863,7 +848,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
 
 
 // Define a utility function for firstWhereOrNull behavior
-dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
+dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     for (dynamic element in list) {
         if (test(element)) return element;
     }
@@ -875,7 +860,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
       setState(() {
         questionIndex++;
         pressed = false;
-        _answer = [];
         _loading = true;
         checkTitle = false;
       });
@@ -884,7 +868,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
       setState(() {
         questionIndex = 0;
-        _answer = [];
         pressed = false;
         checkTitle = false;
       });

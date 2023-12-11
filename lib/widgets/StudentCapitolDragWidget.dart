@@ -93,18 +93,18 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
   @override
   Widget build(BuildContext context) {
     if (_loadingCurrentClass || _loadingQuestionData) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return SingleChildScrollView(
       child: Container(
         width: 200,
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 20,),
-            Container(
+            const SizedBox(height: 20,),
+            SizedBox(
               width: 600,
               child: 
                 Text(
@@ -114,12 +114,12 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                   ),
                 ),
             ),
-            SizedBox(height: 20,),
-            Container(
+            const SizedBox(height: 20,),
+            SizedBox(
               width: 600,
               child: ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: localResults.length,
                 itemBuilder: (ctx, index) {
                   bool isExpanded = index == expandedTileIndex;
@@ -133,8 +133,8 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                   return Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(0),
-                        margin: EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(0),
+                        margin: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: isExpanded
@@ -196,11 +196,11 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                                   widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100).toStringAsFixed(0)}%',
                                     style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                   ),  // Showing upto 2 decimal places
-                                  SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
+                                  const SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
                                   SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
                                 ],
                               ) : null,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                               dense: true,
                             ),
                           ),

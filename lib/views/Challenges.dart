@@ -329,7 +329,7 @@ Widget build(BuildContext context) {
                             );
                           },
                         ),
-                        Container(
+                        SizedBox(
                           height: MediaQuery.of(context).size.height,
                           child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentages: percentages) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList),
                         ),
@@ -345,7 +345,7 @@ Widget build(BuildContext context) {
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
-                                return SizedBox(height: 300.0); // Adjust the height as needed
+                                return const SizedBox(height: 300.0); // Adjust the height as needed
                               }
                             int? capitolIndex;
                             int? testIndex;
@@ -434,7 +434,7 @@ Widget build(BuildContext context) {
                         ),
                       ),
                       
-                      if(MediaQuery.of(context).size.width > 1000) Container(
+                      if(MediaQuery.of(context).size.width > 1000) SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width / 2,
                         child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentages: percentages) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList),
@@ -492,7 +492,7 @@ Widget build(BuildContext context) {
                   child:Container(
                 width: double.infinity,
                 height: 98.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                 ),
@@ -551,7 +551,7 @@ Widget build(BuildContext context) {
               child:Container(
                 width: double.infinity, 
                   height: 98.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,
                   ),
@@ -582,7 +582,7 @@ Widget build(BuildContext context) {
 
 
 void showPopupMenu(BuildContext context, int direction, RenderBox button) {
-   final double menuWidth = 400.0; // Set your desired menu width
+  final double menuWidth = 400.0; // Set your desired menu width
   final double menuHeight = 200.0; // Set your desired menu height
 
   // Calculate the position of the button on the screen
@@ -609,8 +609,8 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
       PopupMenuItem<int>(
             child: Container(
               width: 400,
-              padding: EdgeInsets.only(bottom: 12, top: 12,),
-              constraints: BoxConstraints(maxWidth: 450), // Using constraints instead of a fixed width
+              padding: const EdgeInsets.only(bottom: 12, top: 12,),
+              constraints: const BoxConstraints(maxWidth: 450), // Using constraints instead of a fixed width
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -624,19 +624,19 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       if(userData!.teacher)SvgPicture.asset('assets/icons/correctIcon.svg', color: Colors.white,)
                     ],
                   ),
                   
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
                     overflow: TextOverflow.ellipsis, // Add this
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
                   ),
                     if (userData!.teacher) Container(
-                    padding: EdgeInsets.only(top: 12, bottom: 12),
+                    padding: const EdgeInsets.only(top: 12, bottom: 12),
                     child: Text(
                       'Priemerná úspešnosť ${percentages[int.parse(capitolsId)][number]*100}%',
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -753,8 +753,8 @@ class TooltipShape extends ShapeBorder {
     final Path path = Path();
     final RRect rrect = RRect.fromRectAndRadius(rect, Radius.circular(_borderRadius));
 
-    final double triangleWidth = 20.0;
-    final double triangleHeight = 20.0;
+    const  double triangleWidth = 20.0;
+    const  double triangleHeight = 20.0;
 
     double triangleTopCenterX = rrect.width / 2;
 

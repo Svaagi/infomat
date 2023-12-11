@@ -94,8 +94,8 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
           _showOverlay(context);
         },
         child: Container(
-          margin: EdgeInsets.all(12),
-          constraints: BoxConstraints(
+          margin: const EdgeInsets.all(12),
+          constraints: const BoxConstraints(
             minHeight: 150
           ),
           decoration: BoxDecoration(
@@ -110,7 +110,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
               if(widget.image != '') Container(
                 width: 170,
                 height: 140,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10)
                 ),
@@ -127,12 +127,12 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                 children: [
                   Container(
                     width: widget.image != '' ? 680 : double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 130,
                     ),
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     child: 
@@ -140,7 +140,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 20), // Adjust spacing from the top for the text
+                            const SizedBox(height: 20), // Adjust spacing from the top for the text
                             Text(
                               widget.title,
                               style: TextStyle(
@@ -149,7 +149,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 4),
+                            const SizedBox(height: 4),
                             Text(
                               widget.association,
                               style: TextStyle(
@@ -166,7 +166,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                 top: 8,
                 left: 8,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   decoration: BoxDecoration(
                     color: AppColors.getColor(getColor(widget.type)).lighter,
                     borderRadius: BorderRadius.circular(8),
@@ -191,7 +191,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                         toggleFavorite();
                       },
                     ),
-                    SizedBox(width: 4,),
+                    const SizedBox(width: 4,),
                     Container(
                       width: 40,
                       height: 40,
@@ -224,12 +224,12 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
         builder: (context) => Scaffold(
           backgroundColor: AppColors.getColor('mono').white, // Set the overlay background color
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56), // Set the preferred height of the AppBar
+            preferredSize: const Size.fromHeight(56), // Set the preferred height of the AppBar
             child: AppBar(
               backgroundColor: AppColors.getColor('mono').white,
               elevation: 0,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 color: AppColors.getColor('mono').darkGrey,
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -266,7 +266,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                             width: 900,
                               height: 200,
                               decoration: BoxDecoration(
@@ -283,21 +283,21 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                                       color: Theme.of(context).colorScheme.onPrimary,
                                     ),
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   Text(
                                     widget.title,
                                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                                       color: Theme.of(context).colorScheme.onPrimary,
                                     ),
                                   ),
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                 ],
                               ),
                         ),
 
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           decoration: BoxDecoration(
                             color: AppColors.getColor(getColor(widget.type)).lighter,
                             borderRadius: BorderRadius.circular(8),
@@ -309,15 +309,15 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           widget.description,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Row(
                           children: [
                             IconButton(

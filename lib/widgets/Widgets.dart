@@ -129,7 +129,7 @@ class _ReButtonState extends State<ReButton> {
                 widget.leftIcon ?? '',
                 color: widget.textColor,
               ), // Replace with your desired icon
-              if (widget.text != '')SizedBox(width: 10,),
+              if (widget.text != '')const SizedBox(width: 10,),
             if (widget.text != '')Text(
               widget.text!,
               style: TextStyle(
@@ -187,7 +187,7 @@ class _ReButtonState extends State<ReButton> {
 
 Container reTileImage(Color color, Color borderColor, int index, String? item, BuildContext context, {List<dynamic>? percentage, bool? correct, Color? percentageColor}) {
   return Container(
-    margin: EdgeInsets.all(8),
+    margin: const EdgeInsets.all(8),
     decoration: BoxDecoration(
       border: Border.all(color: borderColor),
       borderRadius: BorderRadius.circular(10),
@@ -250,7 +250,7 @@ Container reTileMatchmaking(
   {List<dynamic>? percentage}) {
 
   return Container(
-  margin: EdgeInsets.all(8),
+  margin: const EdgeInsets.all(8),
   decoration: BoxDecoration(
     border: Border.all(color: AppColors.getColor('mono').lightGrey),
     borderRadius: BorderRadius.circular(10),
@@ -271,8 +271,8 @@ Container reTileMatchmaking(
       MouseRegion(
         cursor: SystemMouseCursors.basic,  // This will prevent the cursor from changing on hover
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: borderColor),
@@ -428,8 +428,8 @@ class _reStateIconState extends State<reStateIcon> {
 
 Container reImageAnswer(String image) {
   return Container(
-    margin:  EdgeInsets.fromLTRB(0, 0, 0, 32),
-    padding:  EdgeInsets.fromLTRB(8, 8, 8, 8),
+    margin:  const EdgeInsets.fromLTRB(0, 0, 0, 32),
+    padding:  const EdgeInsets.fromLTRB(8, 8, 8, 8),
     width:  double.infinity,
     height:  247,
     decoration:  BoxDecoration (
@@ -463,7 +463,7 @@ class SvgDropdownPopupMenuButton extends StatelessWidget {
 
         if (showEditOption) { // Check if the edit option should be shown.
           menuItems.add(
-            PopupMenuItem(
+            const PopupMenuItem(
               value: 'update',
               child: Text('upraviť'),
             ),
@@ -471,7 +471,7 @@ class SvgDropdownPopupMenuButton extends StatelessWidget {
         }
 
         menuItems.add(
-          PopupMenuItem(
+          const PopupMenuItem(
             value: 'delete',
             child: Text('vymazať'),
           ),
@@ -487,11 +487,11 @@ class SvgDropdownPopupMenuButton extends StatelessWidget {
         }
       },
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
+            SizedBox(
               width: 24,
               height: 24,
               child: SvgPicture.asset('assets/icons/verticalDotsIcon.svg'),
@@ -502,7 +502,7 @@ class SvgDropdownPopupMenuButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
       ),
-      offset: Offset(-10, 30), // Adjust the vertical offset to move the popup slightly lower
+      offset: const Offset(-10, 30), // Adjust the vertical offset to move the popup slightly lower
     );
   }
 }
@@ -510,8 +510,8 @@ class SvgDropdownPopupMenuButton extends StatelessWidget {
 void reShowToast(String message, bool error, BuildContext context) {
   showToastWidget(
     Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
@@ -528,7 +528,7 @@ void reShowToast(String message, bool error, BuildContext context) {
             Flexible(
               child: Text(
                 message,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -540,7 +540,7 @@ void reShowToast(String message, bool error, BuildContext context) {
                     color: error ? AppColors.getColor('red').main : AppColors.getColor('green').main
                   ),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 SvgPicture.asset(
                   'assets/icons/xIcon.svg',
                   color: error ? AppColors.getColor('red').main : AppColors.getColor('green').main
@@ -553,8 +553,8 @@ void reShowToast(String message, bool error, BuildContext context) {
     ),
     context: context,
     isIgnoring: false,
-    duration: Duration(seconds: 5),
-    position: StyledToastPosition(align: Alignment.bottomRight)
+    duration: const Duration(seconds: 5),
+    position: const StyledToastPosition(align: Alignment.bottomRight)
   );
 }
 

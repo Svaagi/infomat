@@ -91,7 +91,7 @@ Widget build(BuildContext context) {
   bool isDropdownOpen = false; // Track the open state of the dropdown
 
   return options == null
-      ? CircularProgressIndicator()
+      ? const CircularProgressIndicator()
       : ClipRRect(
           borderRadius: BorderRadius.circular(30.0), // Rounded corners for the entire popup
           child: Container(
@@ -105,10 +105,10 @@ Widget build(BuildContext context) {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
               ),
-              offset: Offset(0, 40), 
+              offset: const Offset(0, 40), 
               tooltip: '', // Remove the tooltip
               icon: Padding(
-                padding: EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsets.only(right: 8.0),
                 child: Row(
                   children: [
                     Text(
@@ -117,7 +117,7 @@ Widget build(BuildContext context) {
                       color:  AppColors.getColor('primary').main ,
                     ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     SvgPicture.asset('assets/icons/downIcon.svg', color: AppColors.getColor('primary').main),
                   ],
                 ),
@@ -141,7 +141,7 @@ Widget build(BuildContext context) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8), // Add padding to make it rounded
+                          padding: const EdgeInsets.all(8), // Add padding to make it rounded
                           child: Text(value.data.name),
                         ),
                       ],

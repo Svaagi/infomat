@@ -33,31 +33,31 @@ class TeacherMobileAppBar extends StatelessWidget {
       backgroundColor: AppColors.getColor('primary').light,
       
       leading: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
       ),
       actions: [
-        Spacer(), // Pushes the following widgets to the middle
-        Container(
+        const Spacer(), // Pushes the following widgets to the middle
+        SizedBox(
           height: 20,
           child: DropDown(currentUserData: currentUserData, onUserDataChanged: onUserDataChanged,),
         ),
-        SizedBox(width:90 ,),
+        const SizedBox(width:90 ,),
         IconButton(
         icon: SvgPicture.asset('assets/icons/infoIcon.svg', color: Colors.white,),
         onPressed: () {
           tutorial();
         },
       ),
-      SizedBox(width: 8),
+      const SizedBox(width: 8),
         IconButton(
         icon: SvgPicture.asset('assets/icons/bellWhiteIcon.svg'),
         onPressed: () => 
           onNavigationItemSelected(5),
       ),
-      SizedBox(width: 10,)
+      const SizedBox(width: 10,)
       ],
     );
   }

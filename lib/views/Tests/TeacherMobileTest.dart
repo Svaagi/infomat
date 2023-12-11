@@ -45,7 +45,6 @@ class TeacherMobileTest extends StatefulWidget {
 }
 
 class _TeacherMobileTestState extends State<TeacherMobileTest> {
-  List<UserAnswerData> _answer = [];
   bool? isCorrect;
   int questionIndex = 0;
   String conclusion = '';
@@ -99,18 +98,17 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
         questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
-            _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
             pressed = true;
 
         }
 
         if (matchmaking.length > 0) {
-            allCorrects = correct!.map((e) {
+            allCorrects = correct.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';
             }).join(', ');
         } else {
-            allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
+            allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
 
@@ -161,7 +159,6 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
       // Test ID has changed, reset the state and fetch new data
       setState(() {
         questionIndex = 0;
-        _answer = [];
       });
       fetchQuestionData(questionIndex);
 
@@ -181,7 +178,6 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
     String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
     List<dynamic> data = json.decode(jsonData);
 
-    int totalStudents = usersSnapshot.docs.length;
     int completedStudents = 0; // new variable to keep track of students who have completed the test
     int correctResponses = 0;
 
@@ -378,8 +374,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                   ),
                   Column(
                     children: [
-                       if (division != null && division!.isNotEmpty)
-                              ...division!.map((dvs) => Container(
+                       if (division.isNotEmpty)
+                              ...division.map((dvs) => Container(
                                     margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
@@ -426,8 +422,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                   )).toList()
                             else 
                               Container(), 
-                      if (images != null && images!.isNotEmpty)
-                        ...images!.map((img) => Container(
+                      if (images.isNotEmpty)
+                        ...images.map((img) => Container(
                               margin: EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -452,7 +448,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                           ),
                         padding: EdgeInsets.all(12),
                         child: Text(
-                          definition ?? '',
+                          definition,
                           style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
@@ -566,13 +562,13 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                           
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: (answersImage!.length ?? 0) + (answers!.length ?? 0) + (matchmaking!.length ?? 0),
+                            itemCount: (answersImage.length) + (answers.length) + (matchmaking.length),
                             itemBuilder: (BuildContext context, index) {
                               String? itemText;
                               Color bgColor;
                               Color borderColor;
                               Color percentageColor;
-                              bool isCorrect = correct!.any((cItem) => cItem["index"] == index);
+                              bool isCorrect = correct.any((cItem) => cItem["index"] == index);
 
                               Widget mainWidget;
 
@@ -611,7 +607,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct!.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
+                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
                               }
 
                               // Return the main widget alongside the item text
@@ -753,7 +749,6 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                           } else {
                             setState(() {
                               questionIndex = 0;
-                              _answer = [];
                               pressed = false;
                             });
                             _showscreen();
@@ -887,7 +882,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
 
 
 // Define a utility function for firstWhereOrNull behavior
-dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
+dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     for (dynamic element in list) {
         if (test(element)) return element;
     }
@@ -900,7 +895,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
       setState(() {
         questionIndex++;
         pressed = false;
-        _answer = [];
         _loading = true;
       });
       fetchQuestionData(questionIndex);
@@ -909,7 +903,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
  
       setState(() {
         questionIndex = 0;
-        _answer = [];
         pressed = false;
       });
      

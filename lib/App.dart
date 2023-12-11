@@ -38,7 +38,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final NonSwipeablePageController _pageController = NonSwipeablePageController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
   UserData? currentUserData;
@@ -148,20 +147,17 @@ class _AppState extends State<App> {
     }
   }
 
-  void dispose() {
-    _pageController.dispose(); // Cancel the page controller
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    if(_tutorial) return Tutorial(check: () {
-      setState(() {
-        _tutorial = false;
+    if(_tutorial) {
+        return Tutorial(check: () {
+        setState(() {
+          _tutorial = false;
+        });
       });
-    });
+    }
     if (_loadingUser || _loadingCapitols) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return 
       Scaffold(
@@ -170,7 +166,7 @@ class _AppState extends State<App> {
         appBar: isMobile
       ? currentUserData!.teacher
           ? PreferredSize(
-              preferredSize: Size.fromHeight(kToolbarHeight),
+              preferredSize: const Size.fromHeight(kToolbarHeight),
               child: TeacherMobileAppBar(
                 tutorial: () {
                   setState(() {
@@ -186,7 +182,7 @@ class _AppState extends State<App> {
               ),
             )
           : PreferredSize(
-              preferredSize: Size.fromHeight(kToolbarHeight),
+              preferredSize: const Size.fromHeight(kToolbarHeight),
               child: MobileAppBar(
                 tutorial: () {
                   setState(() {
@@ -199,7 +195,7 @@ class _AppState extends State<App> {
               ),
             )
       : PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
+          preferredSize: const Size.fromHeight(kToolbarHeight),
           child: DesktopAppBar(
             tutorial: () {
                   setState(() {
@@ -217,7 +213,7 @@ class _AppState extends State<App> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(12),
+              margin: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -230,12 +226,12 @@ class _AppState extends State<App> {
                       },
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                   SvgPicture.asset('assets/logoFilled.svg',)
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             buildNavItem(0, "assets/icons/homeIcon.svg", "Domov", context),
             buildNavItem(1, "assets/icons/starIcon.svg", "Výzva", context),
             buildNavItem(2, "assets/icons/textBubblesIcon.svg", "Diskusia", context),
@@ -355,7 +351,7 @@ class _AppState extends State<App> {
           fetch: fetchUserData(),
         );
       case 4:
-        return  Results(); // Handle other cases
+        return  const Results(); // Handle other cases
       case 5:
         return Notifications(currentUserData: currentUserData, onNavigationItemSelected: _onNavigationItemSelected);
       case 6:
@@ -396,7 +392,7 @@ class _AppState extends State<App> {
     return Container(
       width: 260,
       height: 57,
-      margin: EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       child: InkWell(
         onTap: () {
           setState(() {
@@ -408,7 +404,7 @@ class _AppState extends State<App> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SvgPicture.asset(icon, color: isSelected ? AppColors.getColor('primary').main : AppColors.getColor('mono').black),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               text,
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
