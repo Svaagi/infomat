@@ -94,7 +94,7 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
         explanation = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
         images = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
         question = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
-        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
+        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subQuestion"] ?? '';
         title = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
         questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
@@ -814,13 +814,16 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   SizedBox(height: 10),
-                  Text(introduction ?? '',
-                    style:  Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                  Padding(padding: EdgeInsets.all(8),
+                    child: Text(introduction ?? '',
+                      textAlign: TextAlign.center,
+                      style:  Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                    ),
                   ),
                 ],
               ),

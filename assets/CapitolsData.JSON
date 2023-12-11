@@ -5,7 +5,7 @@
     "badgeActive": "assets/badges/badgeCritActive.svg",
     "badgeDis": "assets/badges/badgeCritDis.svg",
     "color": "primary",
-    "name": "Kritické Myslenie",
+    "name": "Kritické myslenie",
     "points": 14,
     "tests": [
       {
@@ -1846,7 +1846,7 @@
                 "explanation": [
                   "K trestu smrti existuje mnoho alternatív – napríklad zlepšenie socioekonomickej situácie, posilnenie prevencie kriminality či pomoc bývalým väzňom pri zaraďovaní sa späť do komunity.",
                   "Svetlo a tma, v ktorej nič nie je vidieť naozaj sú len dve možnosti, ktoré daný človek v tomto scenári má.",
-                  "Čítanie kníh nie je jediná cesta ktorou sa dajú nadobudnúť informácie alebo znalosti. Vieme ich nadobudnúť skrz všeliake náučné videá, workshop alebo školu.",
+                  "Čítanie kníh nie je jediná cesta ktorou sa dajú nadobudnúť informácie alebo znalosti. Vieme ich nadobudnúť prostredníctvom rôznych náučných videí, workshopov alebo školy.",
                   "Sloboda slova, aj keď určite dôležitým pilierom demokracie je stále proporcionálna k ostatným právam a slobodám. To znamená, že aj v demokratických štátoch môže byť do značnej miery obmedzená a to hlavne v záujme chránenia iných práv a slobôd."
                 ],
                 "images": [],
@@ -1922,7 +1922,7 @@
             "questions": [
               {
                 "answers": [
-                  "Voľby do žiackej školskej rady dopadli tak, že Tomáš Jalovička vyhral – žiaci veria, že je dobrý vodca. Na základe demokratckých princípov a fungovania volieb by mal teda byť predseda rady.",
+                  "Voľby do žiackej školskej rady dopadli tak, že Tomáš Jalovička vyhral – žiaci veria, že je dobrý vodca. Na základe demokratických princípov a fungovania volieb by mal teda byť predseda rady.",
                   "Väčšina Poliakov sú kresťania a chcú krajšie kostoly a lepšie omše, štát by mal preto dávať viac peňazí cirkvi. Keby bola väčšina neveriaca, rozmýšľal by som nad tým inak.",
                   "Posledné prieskumy verejnej mienky ukazujú, že prezidentka je najviac populárna a dôveryhodná politička. Ľudia jej veria, nemusíme robiť ani ďalšie voľby, len jej predĺžme mandát.",
                   "Väčšina mladých ľudí fajčí elektronické cigarety. Obchodné reťazce ich kvôli tejto náhlej zvýšenej konzumpcii začali viac predávať a vystavovať. Nemyslím si však, že je to správne."
@@ -1948,7 +1948,7 @@
               },
               {
                 "answers": [
-                  "Jedna módna influencerka tvrdí, že očkovanie je nebezpečné a nezdravé. Ona sa preto nedá zaočkovať. Písala o tom asi v 20 príspevkoch na Instagrame. Má tisíce followerov. V ostatných veciach má dobré názory, ľudia ju majú radi. Poslúcnhnime rozum a zakážme očkovania.",
+                  "Jedna módna influencerka tvrdí, že očkovanie je nebezpečné a nezdravé. Ona sa preto nedá zaočkovať. Písala o tom asi v 20 príspevkoch na Instagrame. Má tisíce followerov. V ostatných veciach má dobré názory, ľudia ju majú radi. Riaďme sa rozumom a zakážme očkovania.",
                   "Starosta mojej obce tvrdí, že vakcíny nefungujú. Rozdáva nám radšej liek Ivermektín, ten je bezpečnejší. A starosta predsa vie, čo robí! On mal na starosti aj zložitejšie veci ako nejakú chrípočku, napríklad postavil tri nové zastávky autobusu. Je to schopný muž a verím mu.",
                   "Britský vedec Andrew Wakefield už v roku 1998 vydal štúdiu, ktorá jasne dokazuje, že vakcíny spôsobujú autizmus. Takže by sme určite nemali očkovať! Britskí vedci sa predsa nemýlia.",
                   "Odborníci z Cambridge, ktorí vyvíjali vakcíny AstraZeneca hovoria, že dva až tri dni po zaočkovaní sa človek môže cítiť malátne, točí sa mu hlava a občas dokonca dostane aj teplotu. Ja toto teda nie som ochotná riskovať. Na to sa mám príliš rada."
@@ -2279,7 +2279,6 @@
                 { "correct": 2, "index": 1 },
                 { "correct": 0, "index": 2 }
               ],
-              "division": [],
               "definition": "",
               "explanation": [],
               "images": [],
@@ -2293,7 +2292,7 @@
               "question": "",
               "subQuestion": "",
               "conclusion": "",
-              "title": "Priraď pojmy k definíciam."
+              "title": "Priraďte pojmy k definíciam."
             },
             {
               "answers": [
@@ -2325,7 +2324,7 @@
               "answers": [
                 "assets/pictureAnswers/picture1.png",
                 "assets/pictureAnswers/picture2.png",
-                "assets/pictureAnswers/picture2.png"
+                "assets/pictureAnswers/picture3.png"
               ],
               "answersImage": [],
               "correct": [
@@ -2424,8 +2423,8 @@
                 "Oba grafy pracujú s rovnakými dátami, no rast ziskov na prvom grafe pôsobí rýchlejšie. Skreslenie je spôsobené zmenou začínajúceho bodu vertikálnej osi. Graf, ktorý pôsobí ako rýchlejšie rastúci, nezačína na nule, pričom navodzuje dojem, že sa zisk zdvojnásobil, no reálne sa medzi rokmi 2009 a 2013 zvýšil iba o 6.316%."
               ],
               "images": [
-                "assets/pictures/picture7.png",
-                "assets/pictures/picture8.png"
+                "assets/pictures/picture8.png",
+                "assets/pictures/picture9.png"
               ],
               
               "matchmaking": [
@@ -2457,8 +2456,8 @@
                 "Oba grafy pracujú s rovnakými číselnými dátami, no hodnotové rozpätia sú rozdielne. Pri prvom grafe je hodnotové rozpätie na osi Y príliš veľké a navodzuje dojem, že zisk rástol pomalšie, hoci sa v skutočnosti zdvojnásobil."
               ],
               "images": [
-                "assets/pictures/picture9.png",
-                "assets/pictures/picture10.png"
+                "assets/pictures/picture10.png",
+                "assets/pictures/picture11.png"
               ],
               
               "matchmaking": [
@@ -2477,9 +2476,9 @@
             {
               "answers": [],
               "answersImage": [
-                "assets/pictures/picture11.png",
                 "assets/pictures/picture12.png",
-                "assets/pictures/picture13.png"
+                "assets/pictures/picture13.png",
+                "assets/pictures/picture14.png"
               ],
               "correct": [
                 { "correct": 0, "index": 0 },
@@ -2529,7 +2528,7 @@
                 "Popis je zavádzajúci, keďže graf zobrazuje súčet všetkých vakcín, ktoré boli podané. Správna interpretácia grafu je, že stúpa počet dokopy podaných vakcín. Každým dňom sa práveže podá menej a menej vakcín, preto vidíme, že rast krivky kumulatívneho grafu sa výrazne spomaľuje."
               ],
               "images": [
-                "assets/pictures/picture14.png"
+                "assets/pictures/picture15.png"
               ],
               
               "matchmaking": [],
@@ -2537,11 +2536,11 @@
               "question": "",
               "subQuestion": "",
               "conclusion": "",
-              "title": "Predstavte si, že na internete uvidíte nasledujúci graf s popiskom: „Nové dáta prinášajú skvelé správy! Na Slovensku stále stúpa počet denne podaných vakcín.“ Označné všeky tvrdenia, ktoré vyplývajú z grafu s takýmto popiskom."
+              "title": " Predstavte si, že na internete uvidíte nasledujúci graf s popisom: „Nové dáta prinášajú skvelé správy! Na Slovensku stále stúpa počet denne podaných vakcín.“ Označte všetky tvrdenia, ktoré vyplývajú z grafu s takýmto popisom."
             },
             {
               "answers": [
-                "Možosť 1 je problematická, pretože pomer dvoch mierok znázornených v grafe sa zásadne líši a preto sa nesprávne čitateľovi zdá, že HDP Nemecka a globálne HDP stúpajú približne rovnakým tempom.",
+                "Možnosť 1 je problematická, pretože pomer dvoch mierok znázornených v grafe sa zásadne líši a preto sa nesprávne čitateľovi zdá, že HDP Nemecka a globálne HDP stúpajú približne rovnakým tempom.",
                 "Možnosť 2 je problematická, pretože čitateľa nesprávne navádza k záveru, že do roku 2011 bolo HDP Nemecka vyššie ako globálne HDP ako aj, že v roku 2011 boli obe HDP rovnaké.",
                 "Možnosť 3 je problematická, pretože vytvára dva rôzne grafy s dvomi separátnymi osami, a teda nenapĺňa rovnaký účel, ako grafy v predošlých možnostiach."
               ],
@@ -2557,9 +2556,9 @@
                 "Pri tomto grafe je už jednoducho viditeľné, že globálne HDP vzrástlo viac ako HDP Nemecka. Problematické však je, že graf pôsobí, akoby v prvých rokoch bolo HDP Nemecka vyššie ako to svetové a následne, v 2011 boli tieto dve HDP približne rovnaké. Toto však na základe ponúkaných číselných údajov nie je pravdivý záver."
               ],
               "images": [
-                "assets/pictures/picture15.png",
                 "assets/pictures/picture16.png",
-                "assets/pictures/picture17.png"
+                "assets/pictures/picture17.png",
+                "assets/pictures/picture18.png"
               ],
               
               "matchmaking": [],
@@ -2568,7 +2567,39 @@
               "subQuestion": "",
               "conclusion": "",
               "title": "V možnostiach sa nachádzajú tri verzie čiarového grafu, ktoré zobrazujú rovnaké údaje. Všetky grafy porovnávajú HDP Nemecka a celosvetové HDP (údaje sú fiktívne). Ktoré z týchto infografík považujete za vizuálne zavádzajúce alebo neprehľadné?"
-            }              
+            },
+            {
+              "answers": [],
+              "answersImage": [],
+              "correct": [
+                { "correct": 1, "index": 0 },
+                { "correct": 2, "index": 1 },
+                { "correct": 0, "index": 2 }
+              ],
+              "definition": "",
+              "explanation": [
+                "Z grafu vyplýva, že v roku 2006 sa uskutočnilo vyše 2 milióny kontrol, zatiaľ čo v roku 2013 menej než milión",
+                "V grafe sú uvedené len dáta z rokov 2006 a 2013. Keďže nie sú zobrazené údaje z rokov 2007-2012, nevieme porovnať rozdiely medzi jednotlivými rokmi. V skutočnosti sa v roku 2011 uskutočnilo 334 tisíc interrupcií, zatiaľ čo v roku 2012 len 327 tisíc, avšak táto informácia sa nedá vyčítať z grafu.",
+                "Aj keď vizuálne sa ružová a červená šípka pretínajú, v skutočnosti je aj v roku 2013 stále nižší počet vykonaných interrupcií (327 tisíc) než kontrol (936 tisíc)."
+              ],
+              "images": [
+                "assets/pictures/picture19.png"
+              ],
+              "division": [],
+              "matchmaking": [
+                "Tvrdenie 1: Počet kontrol medzi rokmi 2006 a 2013 klesol.",
+                "Tvrdenie 2: Počet interrupcií medzi rokmi 2011 a 2012 stúpol.",
+                "Tvrdenie 3: Od roku 2010 organizácia Plánované rodičovstvo vykonáva viac interrupcií ako kontrol."
+              ],
+              "matches": [
+                "určite nepravdivé",
+                "určite pravdivé",
+                "nemáme dostatok informácií"
+              ],
+              "question": "Pozrite si nasledujúci graf, ktorý porovnáva dve aktivity organizácie Plánové rodičovstvo v USA. Jednou aktivitou sú kontroly a „skríningy“ proti rakovine a druhou sú interrupcie. Následne vyberte, ktoré z tvrdení sú pravdivé.",
+              "subQuestion": "",
+              "title": "Pozrite si nasledujúci graf, ktorý porovnáva dve aktivity organizácie Plánové rodičovstvo v USA."
+            }
           ]
          },
          {
@@ -2869,12 +2900,12 @@
               "answers": [],
               "answersImage": [],
               "correct": [
-                { "correct": 4, "index": 0 },
-                { "correct": 2, "index": 1 },
-                { "correct": 5, "index": 2 },
-                { "correct": 0, "index": 3 },
-                { "correct": 3, "index": 4 },
-                { "correct": 1, "index": 5 }
+                { "correct": 3, "index": 0 },
+                { "correct": 5, "index": 1 },
+                { "correct": 1, "index": 2 },
+                { "correct": 4, "index": 3 },
+                { "correct": 3, "index": 0 },
+                { "correct": 2, "index": 5 }
               ],
               "division": [],
               "definition": "",
@@ -2924,7 +2955,7 @@
                 "Ide o clickbait nadpis, lebo autor zamlčiava pointu článku – nevieme, čo žena chovala na farme. Nadpis navodzuje pocit zvedavosti s cieľom zaujať čitateľov, aby klikli na článok. Samotný obsah článku je omnoho menej šokujúci: žena chovala hady."
               ],
               "images": [
-                "assets/pictures/picture19.png"
+                "assets/pictures/picture20.png"
               ],
               
               "matchmaking": [],
@@ -2954,7 +2985,7 @@
                 "Ide o hoax, lebo je to nepravdivé informácia, ktorá sa virálne šíri. Na snímke obrazovky je vidieť, že status má 36 tisíc zdieľaní. Tento status sa vo veľkom šíril slovenským Facebookom napriek tomu, že bol niekoľkokrát vyvrátený. Rómovia nedostávajú lieky zadarmo, neexistuje prideľovanie dávok na etnickom princípe."
               ],
               "images": [
-                "assets/pictures/picture20.png"
+                "assets/pictures/picture21.png"
               ],
               
               "matchmaking": [],
@@ -2984,7 +3015,7 @@
                 "Ide o pravdivú správu, ktorá sa nachádza na dôveryhodnom médiu. Aktuality.sk je načítanejší slovenský online mediálny portál. Správa je prevzatá od Tlačovej agentúry Slovenskej republiky. Nadpis nie je zavádzajúci a nepoužíva emočne zafarbený jazyk."
               ],
               "images": [
-                "assets/pictures/picture21.png"
+                "assets/pictures/picture22.png"
               ],
               
               "matchmaking": [],
@@ -3006,7 +3037,7 @@
               ],
               "answersImage": [],
               "correct": [
-                { "correct": 0, "index": 0 }
+                { "correct": 1, "index": 1 }
               ],
               "division": [],
               "definition": "",
@@ -3014,8 +3045,8 @@
                 "Nemôže ísť o misinformáciu, lebo túto fotomontáž musel niekto zámerne vytvoriť. Takže ide o zámerne nepravdivú informáciu, t. j. dezinformáciu."
               ],
               "images": [
-                "assets/pictures/picture22.png",
-                "assets/pictures/picture23.png"
+                "assets/pictures/picture23.png",
+                "assets/pictures/picture24.png"
               ],
               
               "matchmaking": [],
@@ -3045,7 +3076,7 @@
                 "Táto informácia je vizuálne spracovaná tak, že na prvý pohľad napodobňuje bežný internetový mediálny portál. Avšak jej obsah je nepravdivý a zavádzajúci, dáva čitateľom falošnú nádej a apeluje na emócie."
               ],
               "images": [
-                "assets/pictures/picture24.png"
+                "assets/pictures/picture25.png"
               ],
               
               "matchmaking": [],
@@ -3153,9 +3184,9 @@
                 { "correct": 1, "index": 1 }
               ],
               "division": [],
-              "definition": "Nadpis c) vyznieva, ako keby bol návrh zákona už schválený, takže je zavádzajúci. Nadpis d) zas pridáva prívlastok „masové“ k protestom, avšak samotný článok nehovorí nič o veľkosti protestov.",
+              "definition": "Vláda navrhla polarizujúci zákon, ktorý vyvolal vlnu protestov po celej krajine. Návrh zákona by viedol k zvýšeniu štátneho dohľadu nad dianím na internete – štát by mohol jednoduchšie monitorovať a regulovať obsah. Kritici tvrdia, že ide o zásah do občianskych slobôd občanov a ohrozenie slobody prejavu. Aktivistické skupiny organizovali demonštrácie, aby vyjadrili odpor voči návrhu zákona.",
               "explanation": [
-                "Vláda navrhla polarizujúci zákon, ktorý vyvolal vlnu protestov po celej krajine. Návrh zákona by viedol k zvýšeniu štátneho dohľadu nad dianím na internete – štát by mohol jednoduchšie monitorovať a regulovať obsah. Kritici tvrdia, že ide o zásah do občianskych slobôd občanov a ohrozenie slobody prejavu. Aktivistické skupiny organizovali demonštrácie, aby vyjadrili odpor voči návrhu zákona."
+                "Nadpis c) vyznieva, ako keby bol návrh zákona už schválený, takže je zavádzajúci. Nadpis d) zas pridáva prívlastok „masové“ k protestom, avšak samotný článok nehovorí nič o veľkosti protestov."
               ],
               "images": [],
               
@@ -3257,7 +3288,7 @@
               "question": "Rozhodnite či dané médium kategorizujeme ako staré alebo nové.",
               "subQuestion": "",
               "conclusion": "",
-              "title": "Technológia prenosu informácií sa vyvíja skrz históriu a spolu s tým pretvára spoločnosť. Najväčšia revolúcia však prichádza z rozšírením internetu, ktoréj bude venovaná samostatná sekcia v tejto kapitole. Tým pádom, médiá možno na základe použitej technológie rozdeliť do dvoch základných skupín."
+              "title": "Úvodný text: Technológia prenosu informácií sa vyvíja počas celej histórie, a má veľký vplyv na spoločnosť. Najväčšia revolúcia však prichádza s rozšírením internetu, ktorej bude venovaná samostatná sekcia v tejto kapitole. Týmto spôsobom možno médiá na základe použitej technológie rozdeliť do dvoch základných skupín."
             },
             {
               "answers": [],
@@ -3274,10 +3305,10 @@
               "images": [],
               
               "matchmaking": [
-                "ch úlohou je zhromažďovať tvrdé fakty a informácie, ktoré sú podané nespracovane a objektívne. Ostatné médiá si následne od nich môžu odkúpiť obsah a použiť ho ako podklad pre vlastné články.",
+                "Ich úlohou je zhromažďovať tvrdé fakty a informácie, ktoré sú podané nespracovane a objektívne. Ostatné médiá si následne od nich môžu odkúpiť obsah a použiť ho ako podklad pre vlastné články.",
                 "Médiá, ktorých cieľom je pravdivo informovať verejnosť o dôležitých spoločenských témach. O znakoch serióznych médií bude celá sekcia v tejto kapitole, ale medzi základné znaky patria tieto: tvoria dôveryhodný obsah, dodržiavajú žurnalistický etický kódex, uvádzajú autorov a členov redakcie, uvádzajú zdroje a opravujú prípadné chyby.",
                 "Ide o médiá, ktoré šíria nepodložené alebo nepravdivé informácie. Takéto médiá používajú rôzne stratégie a majú mnoho foriem, ale medzi základné znaky patrí napríklad: neuvádzajú autorov, nemajú stabilnú redakciu, nie je jasná vlastnícka štruktúra, neuvádzajú zdroje atď.",
-                "Tento typ médií produkuje obsah, ktorý je často zameraný na menej dôležité aspekty spoločenského diania, ako napríklad osobné životy celebrít či politikov. Aj keď sa venuje vážnym témam, podáva ich skôr povrchne a s cieľom vytvoriť senzáciu, či vyvolať silnú emočnú reakciu. Často šíry „škandály“ a „klebety“."
+                "Tento typ médií produkuje obsah, ktorý je často zameraný na menej dôležité aspekty spoločenského diania, ako napríklad osobné životy celebrít či politikov. Aj keď sa venuje vážnym témam, podáva ich skôr povrchne a s cieľom vytvoriť senzáciu, či vyvolať silnú emočnú reakciu. Často šíria „škandály“ a „klebety“."
               ],
               "matches": [
                 "Spravodajské agentúry",
@@ -3288,7 +3319,7 @@
               "question": "Na základe definície rozhodnite o aký typ médií ide.",
               "subQuestion": "",
               "conclusion": "",
-              "title": " Popri forme média netreba zabúdať aj na samotný obsah správ. Médiá možno rozdeliť do štyroch základných kategórií na základe obsahu. "
+              "title": "Úvodný text: Okrem formy média netreba zabúdať aj na samotný obsah správ. Médiá možno rozdeliť do štyroch základných kategórií na základe obsahu."
             },
             {
               "answers": [],
@@ -3356,9 +3387,11 @@
               "division": [],
               "definition": "",
               "explanation": [
-                "Pri overovaní obrázkov je najlepšie použiť niekoľko vrstiev overovania: Spoliehajme sa aj na vlastnú hlavu a všímajme si, či nie sú v obrázku nápovede o tom, že by mohol byť falošný alebo vytrhnutý z kontextu. Následne sa pokús nájsť pôvod obrázku skrz vyhľadanie vizuálnych zhôd cez TinEye, Google Image Search alebo iné. V nasledujúcich úlohách budete musieť tieto zručnosti využiť!"
+                "Pri overovaní obrázkov je najlepšie použiť niekoľko vrstiev overovania: Spoliehajme sa aj na vlastnú hlavu a všímajme si, či nie sú v obrázku nápovede o tom, že by mohol byť falošný alebo vytrhnutý z kontextu. Následne sa pokúste nájsť pôvod obrázku pomocou vyhľadávania vizuálnych zhôd cez TinEye, Google Image Search alebo iné. V nasledujúcich úlohách budete musieť tieto zručnosti využiť!"
               ],
-              "images": [],
+              "images": [
+
+              ],
               
               "matchmaking": [],
               "matches": [],
@@ -3383,7 +3416,7 @@
               "explanation": [
                 "V tomto prípade je kontext fotografie veľmi dôležitý. V skutočnosti ide o protest z roku 2004 v Chicagu, ktorý sa snažil poukázať na mučenie a kruté zaobchádzanie čínskej vlády s členmi spirituálneho hnutia Falun Gong. Žena na obrázku je len aktivistka-herečka, nejde o záber reálneho mučenia. Podobné obrázky sa šírili Twitterom, kde ho zdieľali ľudia s dobrým zámerom informovať o stave Ujgurskej menšiny v Číne. Podľa všetkého sú Ujguri naozaj nespravodlivo prenasledovaní a utláčaní vládou. Avšak aj ľudia s dobrým zámerom môžu šíriť misinformácie."
               ],
-              "images": ["assets/pictures/picture25.png"],
+              "images": ["assets/pictures/picture26.png"],
               
               "matchmaking": [],
               "matches": [],
@@ -3408,7 +3441,7 @@
               "explanation": [
                 "Ide o obrázok vygenerovaný programom Midjourney, ktorý je schopný generovať vysoko kvalitné obrázky. Uverejnil ho instagramový účet Arteficialismo, ktorý sa netají tým, že ide o výtvor umelej inteligencie."
               ],
-              "images": ["assets/pictures/picture26.png"],
+              "images": ["assets/pictures/picture27.png"],
               "matchmaking": [],
               "matches": [],
               "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
@@ -3432,7 +3465,7 @@
               "explanation": [
                 "Ide o fotomontáž zo stretnutia senátorov USA s bývalým prezidentom Afganistanu. Tvár známeho teroristu Osamu Bin Ladena je vystrihnutá a vložená na tvár afganského prezidenta. Autor tejto fotomontáže využil fakt, že afganský prezident má oblečenie typické pre moslimov. Udalosť sa v skutočnosti nestala, ale fotomontáž sa ako hoax šírila internetom po úmrtí senátora Johna McCaina."
               ],
-              "images": ["assets/pictures/picture27.png"],
+              "images": ["assets/pictures/picture28.png"],
               
               "matchmaking": [],
               "matches": [],
@@ -3457,7 +3490,7 @@
               "explanation": [
                 "Ide o fotografiu z roku 2006, na ktorej naozaj bojovníci z Brigády mučeníkov al-Aksá dávajú karafiáty mníškam. Na odhalenie pôvodu fotografie ste mohli zvoliť dva spôsoby: Za prvé, mohli ste zadať kľúčové slová zo statusu do vyhľadávača (napr. „Brigáda mučeníkov Al-Aksá“, „karafiáty“, „mníšky“, ideálne v anglickom jazyku). Za druhé, mohli ste vyhľadať rovno samotný obrázok cez Google Search Images alebo TinEye."
               ],
-              "images": ["assets/pictures/picture28.png"],
+              "images": ["assets/pictures/picture31.png"],
               
               "matchmaking": [],
               "matches": [],
@@ -3542,7 +3575,8 @@
                 { "correct": 2, "index": 2 },
                 { "correct": 4, "index": 4 },
                 { "correct": 5, "index": 5 },
-                { "correct": 7, "index": 7 }
+                { "correct": 7, "index": 7 },
+                { "correct": 9, "index": 9 }
               ],
               "division": [],
               "definition": "",

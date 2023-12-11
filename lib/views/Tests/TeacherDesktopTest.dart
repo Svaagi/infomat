@@ -68,8 +68,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
 
-      if (_disposed) return; // Check if the widget has been disposed
-
       setState(() {
         conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
         division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
@@ -101,8 +99,9 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
             allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
-        if(title != '' && (definition == '' && images.length < 1 && division.length < 1)) checkTitle = true;
+        checkTitle = false;
 
+        if(title != '' && definition == '' && images.length == 0 && division.length == 0) checkTitle = true;
 
         _loading = false;
 
@@ -335,7 +334,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
             alignment: WrapAlignment.spaceEvenly,
 
             children: [
-            if (!checkTitle && (title != '' || definition != '' || images.length > 0)) Container(
+            if (!checkTitle ) Container(
               width: 670,
               margin:  EdgeInsets.only(bottom: 12, left: 12, right: 30, top: 50),
               padding: EdgeInsets.all(12),
@@ -362,55 +361,54 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                   Column(
                     children: [
                       if (division != null && division!.isNotEmpty)
-                              ...division!.map((dvs) => Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        ...division!.map((dvs) => Container(
+                              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: AppColors.getColor('mono').grey),
+                                color: Theme.of(context).colorScheme.background,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 200,
+                                    height: 200,
+                                    padding: EdgeInsets.all(16),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColors.getColor('mono').grey),
-                                      color: Theme.of(context).colorScheme.background,
+                                      border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
                                     ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          alignment: Alignment.center,
-                                          width: 200,
-                                          height: 200,
-                                          padding: EdgeInsets.all(16),
-                                          decoration: BoxDecoration(
-                                            border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
-                                          ),
-                                          child: Text(
-                                            dvs["title"],
-                                            style: Theme.of(context)
-                                                  .textTheme
-                                                  .headlineMedium!
-                                                  .copyWith(
-                                                    color: Theme.of(context).colorScheme.onBackground,
-                                                  ),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          width: 400,
-                                          height: 200,
-                                          padding: EdgeInsets.all(16),
-                                          child: Text(
-                                            dvs["text"],
-                                            textAlign: TextAlign.center,
-                                            style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge!
-                                                  .copyWith(
-                                                    color: Theme.of(context).colorScheme.onBackground,
-                                                  ),
-                                          ),
-                                        )
-                                      ],
+                                    child: Text(
+                                      dvs["title"],
+                                      style: Theme.of(context)
+                                            .textTheme
+                                            .headlineMedium!
+                                            .copyWith(
+                                              color: Theme.of(context).colorScheme.onBackground,
+                                            ),
                                     ),
-                                  )).toList()
-                            else 
-                              Container(), // Pl
-                      if (images != null && images!.isNotEmpty)
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 400,
+                                    height: 200,
+                                    padding: EdgeInsets.all(16),
+                                    child: Text(
+                                      dvs["text"],
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(
+                                              color: Theme.of(context).colorScheme.onBackground,
+                                            ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )).toList()
+                      else 
+                        Container(), // Pl
                         ...images!.map((img) => Container(
                               margin: EdgeInsets.all(8),
                               decoration: BoxDecoration(
@@ -420,12 +418,10 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               ),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
-                                  child: Image.asset(img!,
-                                ),
+                                  child: Image.asset(img!,),
                               ),
-                            )).toList()
-                      else 
-                        Container(), // Placeholder for empty image field
+                            )).toList(),
+                    // Placeholder for empty image field
                         
                       definition != '' ? Container(
                         margin: EdgeInsets.all(8),
@@ -818,13 +814,16 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   SizedBox(height: 10),
-                  Text(introduction ?? '',
-                    style:  Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                  Padding(padding: EdgeInsets.all(8),
+                    child: Text(introduction ?? '',
+                      textAlign: TextAlign.center,
+                      style:  Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                    ),
                   ),
                 ],
               ),

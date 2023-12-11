@@ -214,21 +214,12 @@ Future<List<dynamic>> fetchQuestionData() async {
           child: Container(
             color: Colors.black.withOpacity(0.5),
             alignment: Alignment.center,
-            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) :  MobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?  TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : DesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
+            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) :  MobileTest(testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?  TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : DesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
           ),
         ),
       ),
     );
   }
-
-  int totalTests() {
-    int total = 0;
-    for (int i = 0; i < widget.data.length; i++) {
-      total += (widget.data[i]["tests"]["questions"].length as int);
-    }
-    print('total $total');
-    return total;
-}
 
   @override
 Widget build(BuildContext context) {
@@ -247,7 +238,7 @@ Widget build(BuildContext context) {
                       // First page - ListView
                      ListView.builder(
                             reverse: true,
-                            itemCount: 25 + 1, // Add 1 for the dummy item
+                            itemCount: 135 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
@@ -350,7 +341,7 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: ListView.builder(
                             reverse: true,
-                            itemCount: 25 + 1, // Add 1 for the dummy item
+                            itemCount: 135 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height

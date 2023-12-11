@@ -80,7 +80,7 @@ class _DesktopTestState extends State<DesktopTest> {
         explanation = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
         images = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
         question = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
-        subQuestion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
+        subQuestion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subQuestion"] ?? '';
         title = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
         questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
@@ -99,7 +99,9 @@ class _DesktopTestState extends State<DesktopTest> {
             allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
-        if(title != '' && (definition == '' && images.length < 1 && division.length < 1)) checkTitle = true;
+        checkTitle = false;
+
+        if(title != '' && definition == '' && images.length == 0 && division.length == 0) checkTitle = true;
 
 
       });
@@ -595,11 +597,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                   bool isSelected = _answer.any((e) => e.answer == index);
                                   if (!isSelected) {
                                     // If selected items are less than the limit, allow adding
-                                    if ((answers.length + answersImage.length) <= 3) {
-                                      if (_answer.length < 1) {
-                                        _answer.add(UserAnswerData(answer: index, index: index));
-                                      }
-                                    } else {
+                                    if (_answer.length < 1) {
                                       _answer.add(UserAnswerData(answer: index, index: index));
                                     }
                                   } else {
@@ -671,13 +669,9 @@ class _DesktopTestState extends State<DesktopTest> {
                                     bool isSelected = _answer.any((e) => e.answer == index);
                                     if (!isSelected) {
                                       // If selected items are less than the limit, allow adding
-                                      if ((answers.length + answersImage.length) <= 3) {
                                         if (_answer.length < 1) {
                                           _answer.add(UserAnswerData(answer: index, index: index));
                                         }
-                                      } else {
-                                        _answer.add(UserAnswerData(answer: index, index: index));
-                                      }
                                     } else {
                                       // Allow toggling off
                                       _answer.removeWhere((element) => element.answer == index);
@@ -908,13 +902,16 @@ class _DesktopTestState extends State<DesktopTest> {
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   SizedBox(height: 10),
-                  Text(introduction ?? '',
-                    style:  Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                  Padding(padding: EdgeInsets.all(8),
+                    child: Text(introduction ?? '',
+                      textAlign: TextAlign.center,
+                      style:  Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                    ),
                   ),
                 ],
               ),
@@ -1171,6 +1168,8 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         _answer = [];
         checkTitle = false;
       });
+    saveUserDataToFirestore(widget.userData!);
+
       fetchQuestionData(questionIndex);
     } else {
 
@@ -1181,10 +1180,10 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         pressed = false;
         checkTitle = false;
       });
-     
+      saveUserDataToFirestore(widget.userData!);
+    
       _showscreen();
     }
-    saveUserDataToFirestore(widget.userData!);
   }
 
 

@@ -254,6 +254,7 @@ Container reTileMatchmaking(
   decoration: BoxDecoration(
     border: Border.all(color: AppColors.getColor('mono').lightGrey),
     borderRadius: BorderRadius.circular(10),
+    color: Theme.of(context).colorScheme.background
   ),
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,

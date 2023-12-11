@@ -29,6 +29,7 @@ class TeacherCapitolDragWidget extends StatefulWidget {
 
 class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
   int? expandedTileIndex;
+  List<int> numbers = [];
   ClassData? currentClassData;
   List<dynamic> localResults = [];
   List<dynamic> localResultsDrag = [];
@@ -53,11 +54,14 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     }
   }
 
-  fetchQuestionData() async {
+  fetchQuestionData(List<int> num) async {
     try {
+      setState(() {
+        localResults = [];
+      });
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
-      for (int order in widget.numbers) {
+      for (int order in num) {
         localResults.add(data[order]);
       }
 
@@ -80,7 +84,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     super.initState();
 
     fetchCurrentClass();
-    fetchQuestionData();
+    fetchQuestionData(widget.numbers);
   }
 
   @override
@@ -244,15 +248,15 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     
  Future<List<int>?> reorderListOverlay(BuildContext context, ClassData currentClass) async {
   List<int> reorderedNumbers = List.from(widget.numbers); // Create a deep copy
-  List<int> normalOrder = [0,1,2,3,4,5,6];
+  List<int> normalOrder = [0, 1, 2, 3, 4, 5, 6];
 
   return await showDialog<List<int>>(
     context: context,
     builder: (ctx) => StatefulBuilder( // Using StatefulBuilder for local state management
       builder: (context, setState) => Dialog(
         shape: RoundedRectangleBorder(  // Add this line
-        borderRadius: BorderRadius.circular(20),
-      ),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Container(
           width: 1300,
           height: 900,
@@ -260,48 +264,46 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
 
           child: Container(
             width: 600,
-            child:Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Zmena poradia kapitol',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Zmena poradia kapitol',
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                 ),
-              ),
-              SizedBox(height: 20,),
-              Text(
-                'Presuňte poradie nezačatých kapitol. Túto zmenu uvidia študenti okamžite.',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 16
+                SizedBox(height: 20,),
+                Text(
+                  'Presuňte poradie nezačatých kapitol. Túto zmenu uvidia študenti okamžite.',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 16
+                  ),
                 ),
-              ),
-              SizedBox(height: 50,),
-             Expanded(
-              child: Container(
-                width: 600,
-                child: ReorderableListView(
-                  onReorder: (oldIndex, newIndex) {
-                    if (newIndex > oldIndex) {
-                      newIndex -= 1;
-                    }
-                    final item = reorderedNumbers.removeAt(oldIndex);
-                    reorderedNumbers.insert(newIndex, item);
-                    setState(() {});
-                  },
-                  buildDefaultDragHandles: false, // Remove default drag handles
-                  children: normalOrder.map((number) {
-                    dynamic capitol = localResultsDrag[reorderedNumbers[number]];
-                    if (capitol == null) {
-                      return Container();
-                    }
-                    return Row(
-                      key: ValueKey(number),
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                SizedBox(height: 50,),
+                Expanded(
+                  child: Container(
+                    width: 600,
+                    child: ReorderableListView(
+                      onReorder: (oldIndex, newIndex) {
+                        if (newIndex > oldIndex) {
+                          newIndex -= 1;
+                        }
+                        if (newIndex != 0) { // Check if it's not the first item
+                          final item = reorderedNumbers.removeAt(oldIndex);
+                          reorderedNumbers.insert(newIndex, item);
+                          setState(() {});
+                        }
+                      },
+                      buildDefaultDragHandles: false, // Remove default drag handles
+                      children: normalOrder.map((number) {
+                      dynamic capitol = localResultsDrag[reorderedNumbers[number]];
+                      if (capitol == null) {
+                        return Container();
+                      }
+                      List<Widget> rowChildren = [
                         Expanded(
                           child: Container(
                             padding: EdgeInsets.all(0),
@@ -325,98 +327,111 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                             ),
                           ),
                         ),
-                        ReorderableDragStartListener(
+                      ];
+                      if (number != 0) {
+                        rowChildren.add(ReorderableDragStartListener(
                           index: number,
                           child: MouseRegion(
                             cursor: SystemMouseCursors.click,
                             child: SvgPicture.asset('assets/icons/dragIcon.svg'),
                           ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
+                        ));
+                      }
+                      return Row(
+                        key: ValueKey(number),
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: rowChildren,
+                      );
+                    }).toList(),
+
+                    ),
+                  ),
                 ),
-              ),
+                MediaQuery.of(context).size.width < 1000 ? 
+                  Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('green').main, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('green').light, 
+                      hoverColor: AppColors.getColor('green').light, 
+                      textColor: Theme.of(context).colorScheme.onPrimary, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: 'ULOŽIŤ ZMENY', 
+                      onTap: () async {
+                        await updateClassToFirestore(reorderedNumbers);
+                        await fetchQuestionData(reorderedNumbers); 
+                        fetchCurrentClass(); 
+                        Navigator.pop(context, reorderedNumbers);
+
+                      },
+                    ),
+                    SizedBox(width: 20,),
+                    ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('mono').white, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('mono').lightGrey, 
+                      hoverColor: AppColors.getColor('mono').lighterGrey, 
+                      textColor: Theme.of(context).colorScheme.onBackground, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: 'ZRUŠIŤ ZMENY', 
+                      onTap: () async {
+                        Navigator.pop(context, reorderedNumbers);
+                      },
+                    ),
+                  ],
+                )
+                : Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('mono').white, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('mono').lightGrey, 
+                      hoverColor: AppColors.getColor('mono').lighterGrey, 
+                      textColor: Theme.of(context).colorScheme.onBackground, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: 'ZRUŠIŤ ZMENY', 
+                      onTap: () async {
+                        Navigator.pop(context, reorderedNumbers);
+                      },
+                    ),
+                    SizedBox(width: 20,),
+                    ReButton(
+                      activeColor: AppColors.getColor('mono').white, 
+                      defaultColor: AppColors.getColor('green').main, 
+                      disabledColor: AppColors.getColor('mono').lightGrey, 
+                      focusedColor: AppColors.getColor('green').light, 
+                      hoverColor: AppColors.getColor('green').light, 
+                      textColor: Theme.of(context).colorScheme.onPrimary, 
+                      iconColor: AppColors.getColor('mono').black, 
+                      text: 'ULOŽIŤ ZMENY', 
+                      onTap: () async {
+                        await fetchQuestionData(reorderedNumbers); 
+                        await updateClassToFirestore(reorderedNumbers);
+                        fetchCurrentClass(); 
+
+                        Navigator.pop(context, reorderedNumbers);
+                      },
+                    ),
+                  ],
+                )
+              ],
             ),
-              MediaQuery.of(context).size.width < 1000 ? 
-                Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
-                    text: 'ULOŽIŤ ZMENY', 
-                    onTap: () async {
-                      Navigator.pop(context, reorderedNumbers);
-                      await updateClassToFirestore(reorderedNumbers);
-                      fetchCurrentClass(); 
-                    },
-                  ),
-                  SizedBox(width: 20,),
-                  ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('mono').white, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('mono').lightGrey, 
-                    hoverColor: AppColors.getColor('mono').lighterGrey, 
-                    textColor: Theme.of(context).colorScheme.onBackground, 
-                    iconColor: AppColors.getColor('mono').black, 
-                    text: 'ZRUŠIŤ ZMENY', 
-                    onTap: () async {
-                      Navigator.pop(context, reorderedNumbers);
-                    },
-                  ),
-                ],
-              )
-              : Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('mono').white, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('mono').lightGrey, 
-                    hoverColor: AppColors.getColor('mono').lighterGrey, 
-                    textColor: Theme.of(context).colorScheme.onBackground, 
-                    iconColor: AppColors.getColor('mono').black, 
-                    text: 'ZRUŠIŤ ZMENY', 
-                    onTap: () async {
-                      Navigator.pop(context, reorderedNumbers);
-                    },
-                  ),
-                  SizedBox(width: 20,),
-                  ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
-                    text: 'ULOŽIŤ ZMENY', 
-                    onTap: () async {
-                      Navigator.pop(context, reorderedNumbers);
-                      await updateClassToFirestore(reorderedNumbers);
-                      fetchCurrentClass(); 
-                    },
-                  ),
-                ],
-              )
-            ],
-          ),
           ),
         ),
       ),
     ),
   );
 }
+
 
 
   Future<void> updateClassToFirestore(List<int> capitolOrder) async {
@@ -428,6 +443,8 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     await classRef.update({
       'capitolOrder': capitolOrder
     });
+
+
 
     widget.refreshData();
 

@@ -17,13 +17,16 @@ class MobileTest extends StatefulWidget {
   final Function overlay;
   final String capitolsId;
   final UserData? userData;
+  final List<dynamic> data;
 
   const MobileTest(
       {Key? key,
       required this.testIndex,
       required this.overlay,
       required this.capitolsId,
-      required this.userData})
+      required this.userData,
+      required this.data
+      })
       : super(key: key);
 
   @override
@@ -65,27 +68,26 @@ class _MobileTestState extends State<MobileTest> {
 
 
   Future<void> fetchQuestionData(int index) async {
-      String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-      List<dynamic> data = json.decode(jsonData);
+      
 
       if (_disposed) return; // Check if the widget has been disposed
 
       setState(() {
-        conclusion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
-        division = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
-        answers = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
-        answersImage = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
-        matchmaking = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
-        matches = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matches"] ?? [];
-        correct = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["correct"] ?? [];
-        definition = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["definition"] ?? '';
-        explanation = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
-        images = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
-        question = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
-        subQuestion = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subquestion"] ?? '';
-        title = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
-        questionsPoint = data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
-        introduction =  data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
+        conclusion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["conclusion"] ?? '';
+        division = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["division"] ?? [];
+        answers = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answers"] ?? [];
+        answersImage = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["answersImage"] ?? [];
+        matchmaking = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matchmaking"] ?? [];
+        matches = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["matches"] ?? [];
+        correct = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["correct"] ?? [];
+        definition = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["definition"] ?? '';
+        explanation = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["explanation"] ?? [];
+        images = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["images"] ?? [];
+        question = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["question"] ?? '';
+        subQuestion = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["subQuestion"] ?? '';
+        title = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
+        questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
+        introduction =  widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
             _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
             pressed = true;
@@ -391,8 +393,8 @@ class _MobileTestState extends State<MobileTest> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(12),
-              padding: EdgeInsets.all(12),
+              color: Theme.of(context).colorScheme.background,
+              padding: EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -445,11 +447,11 @@ class _MobileTestState extends State<MobileTest> {
                           List<dynamic> item2 = matches ?? [];
 
                           if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
-                            tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item.index == index)["correct"], index, item, context, item2, true);
+                            tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
                             itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                           } else {
                             tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
-                            itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;;
+                            itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                           }
                         } 
                         if (tile != null) {
@@ -596,13 +598,9 @@ class _MobileTestState extends State<MobileTest> {
                         bool isSelected = _answer.any((e) => e.answer == index);
                         if (!isSelected) {
                           // If selected items are less than the limit, allow adding
-                          if ((answers.length + answersImage.length) <= 3) {
                             if (_answer.length < 1) {
                               _answer.add(UserAnswerData(answer: index, index: index));
                             }
-                          } else {
-                            _answer.add(UserAnswerData(answer: index, index: index));
-                          }
                         } else {
                           // Always allow unchecking
                           _answer.removeWhere((element) => element.answer == index);
@@ -672,13 +670,9 @@ class _MobileTestState extends State<MobileTest> {
                           bool isSelected = _answer.any((e) => e.answer == index);
                           if (!isSelected) {
                             // If selected items are less than the limit, allow adding
-                            if ((answers.length + answersImage.length) <= 3) {
                               if (_answer.length < 1) {
                                 _answer.add(UserAnswerData(answer: index, index: index));
                               }
-                            } else {
-                              _answer.add(UserAnswerData(answer: index, index: index));
-                            }
                           } else {
                             // Allow toggling off
                             _answer.removeWhere((element) => element.answer == index);
@@ -742,6 +736,7 @@ class _MobileTestState extends State<MobileTest> {
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.getColor('mono').lightGrey),
                       borderRadius: BorderRadius.circular(10),
+                      color: Theme.of(context).colorScheme.background
                     ),
                     child: Column(
                       children: [
@@ -904,13 +899,16 @@ class _MobileTestState extends State<MobileTest> {
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   SizedBox(height: 10),
-                  Text(introduction ?? '',
-                    style:  Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                  Padding(padding: EdgeInsets.all(8),
+                    child: Text(introduction ?? '',
+                      textAlign: TextAlign.center,
+                      style:  Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                    ),
                   ),
                 ],
               ),
@@ -1166,7 +1164,6 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         questionIndex++;
         pressed = false;
         _answer = [];
-        _loading = true;
       });
       fetchQuestionData(questionIndex);
     } else {
@@ -1177,10 +1174,9 @@ dynamic? firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         _answer = [];
         pressed = false;
       });
-     
+      fetchQuestionData(questionIndex);
       _showscreen();
     }
-    saveUserDataToFirestore(widget.userData!);
   }
 
 
