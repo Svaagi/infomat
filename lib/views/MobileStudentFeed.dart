@@ -67,8 +67,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
     if (_loading) {
         return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    return  Container(
-      child: SingleChildScrollView(
+    return  SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -84,12 +83,12 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                     mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                     crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                     children: [
-                      SizedBox(height: 30,),
+                      const SizedBox(height: 30,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                         children: [
                           SvgPicture.asset('assets/icons/smallStarIcon.svg', color: AppColors.getColor('primary').lighter),
-                          SizedBox(width: 8,),
+                          const SizedBox(width: 8,),
                           Text(
                             "Týždenná výzva #${widget.weeklyChallenge + 1}",
                             style: Theme.of(context)
@@ -102,9 +101,9 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Center(
-                          child: Container(
+                          child: SizedBox(
                             width: 400, // Set your desired maximum width here
                             child: Text(
                               widget.weeklyTitle ?? '',
@@ -120,7 +119,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           "Čas na dokončenie: 1 týždeň",
                           style: TextStyle(color: AppColors.getColor('primary').lighter,),
                         ),
-                      SizedBox(height: 16,),
+                      const SizedBox(height: 16,),
                       ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text: 'ZAČAŤ', onTap:
                         () {
                             widget.onNavigationItemSelected(1);
@@ -130,7 +129,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                   ) : Column(
                     crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                     children: [
-                      SizedBox(height: 30,),
+                      const SizedBox(height: 30,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                         children: [
@@ -146,7 +145,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 40), // Add some spacing between the items
+                      const SizedBox(height: 40), // Add some spacing between the items
                       Text(
                         "budúci týždeň ťa čaká",
                         style: Theme.of(context)
@@ -166,7 +165,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),
-                      SizedBox(height: 30,)
+                      const SizedBox(height: 30,)
                     ],
                   ),
                 ),
@@ -189,7 +188,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                   width: 2,
                 ),
               ),
-              margin: EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                   crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
@@ -199,9 +198,9 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                         height: 100,
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Center(
-                          child: Container(
+                          child: SizedBox(
                             width: 400, // Set your desired maximum width here
                             child: Text(
                               widget.weeklyTitle ?? '',
@@ -234,7 +233,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                     ],
                   )
             ) :  ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: 350),
+                  constraints: const  BoxConstraints(minHeight: 350),
                   child:Container(
                     width: 700,
                     decoration: BoxDecoration(
@@ -244,8 +243,8 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                         width: 2,
                       ),
                     ),
-                    margin: EdgeInsets.all(16),
-                    padding: EdgeInsets.all(16),
+                    margin: const  EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -262,11 +261,11 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                     color: AppColors.getColor('mono').black,
                                   ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                            Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                               width:  300,
                               height: 10,
                               child: ClipRRect(
@@ -278,7 +277,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                 ),
                               )
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
                             Text(
                               "${widget.completedCount}/10 výziev hotových",
                               style: Theme.of(context)
@@ -288,23 +287,22 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                             color: AppColors.getColor('mono').black,
                                         ),
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
                             ],
                           )
                           ],
                         ),
-                      Container(
-                        child: SingleChildScrollView(
+                       SingleChildScrollView(
                           child: Column(
                             children: (widget.capitolData?.tests ?? []).where((test) => test.completed == true).map((test) {
                               return Container(
                                 height: 56,
-                                margin: EdgeInsets.symmetric(vertical: 2), // Add margin for spacing
+                                margin: const EdgeInsets.symmetric(vertical: 2), // Add margin for spacing
                                 decoration: BoxDecoration(
                                   color: widget.capitolData?.tests[widget.weeklyChallenge] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
                                   borderRadius: BorderRadius.circular(10.0), // Rounded borders
                                 ),
-                                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                                 child:  Row(
                                   children: [
                                     Column(
@@ -320,14 +318,14 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                                 color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
                                             ),
                                         ),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                           Text(
                                             '${test.points}/${test.questions.length} správných odpovedí',
                                             style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                           ),
                                         ],
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       Row(
                                         children: [
                                           Text('+ ${test.points}',
@@ -338,7 +336,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                                     color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
                                                 ),
                                             ),
-                                            SizedBox(width: 8,),
+                                            const SizedBox(width: 8,),
                                           SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 20,)
                                         ],
                                       )
@@ -348,10 +346,9 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                             }).toList(),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Center(
-                        child: Container(
+                        child: SizedBox(
                         width: 280,
                         height: 40,
                         child: ReButton(
@@ -378,7 +375,6 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
           ],
         ),
       ),
-    ),
   );
   }
 }
