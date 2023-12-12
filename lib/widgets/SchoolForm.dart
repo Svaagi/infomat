@@ -781,7 +781,7 @@ class _SchoolFormState extends State<SchoolForm> {
                             ),
                             SizedBox(height: 40,),
                             Text(
-                              'Subheadline kód svojej školy si môžete vypýtať na vedení, zvyčajne ma 9 cifier.',
+                              'Kód svojej školy si môžete vypýtať na vedení, zvyčajne ma 9 cifier.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
@@ -916,7 +916,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                         Align(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            'Kód školy je neplatný. Skontrolujte jeho správnosť, alebo sa obráťte na xxx@xxx.sk.',
+                                            'Kód školy je neplatný. Skontrolujte jeho správnosť, alebo sa obráťte na support@info-mat.sk.',
                                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                                             textAlign: TextAlign.center,
                                           ),

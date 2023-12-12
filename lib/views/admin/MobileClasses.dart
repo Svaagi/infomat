@@ -414,7 +414,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                               hoverColor: AppColors.getColor('green').light, 
                                               textColor: Theme.of(context).colorScheme.onPrimary, 
                                               iconColor: AppColors.getColor('mono').black, 
-                                              text: 'NAHRAŤ .CSV/.XLSX SÚBOR',
+                                              text: 'NAHRAŤ .XLSX SÚBOR',
                                               onTap: () {
                                                 Navigator.of(context).pop();
                                                 widget.onNavigationItemSelected(7);

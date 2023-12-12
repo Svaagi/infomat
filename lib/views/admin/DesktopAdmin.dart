@@ -17,9 +17,11 @@ import 'package:infomat/views/admin/DesktopClasses.dart';
 import 'package:infomat/views/admin/AddUser.dart';
 import 'package:infomat/views/admin/AddExistingUser.dart';
 import 'package:infomat/views/admin/UpdateUser.dart';
-import 'package:infomat/views/admin/AddClass.dart';
+import 'package:infomat/providers/AddClassProvider.dart';
 import 'package:infomat/views/admin/UpdateClass.dart';
-import 'package:infomat/views/admin/Csv.dart';
+import 'package:infomat/views/admin/Xlsx.dart';
+import 'package:infomat/providers/ContactProvider.dart';
+
 
 
 
@@ -43,7 +45,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
   bool _teacher = false;
   bool _admin = false;
   int _selectedIndex = 0;
-  TextEditingController _classNameController = TextEditingController();
   TextEditingController _userNameController = TextEditingController();
   TextEditingController _userEmailController = TextEditingController();
   TextEditingController _userPasswordController = TextEditingController();
@@ -51,12 +52,10 @@ class _DesktopAdminState extends State<DesktopAdmin> {
   TextEditingController _editUserEmailController = TextEditingController();
   TextEditingController _editUserPasswordController = TextEditingController();
   TextEditingController _editClassNameController = TextEditingController();
-  TextEditingController _messageController = TextEditingController();
   bool _loading = true;
   ClassDataWithId? currentClass;
   UserDataWithId? currentUser;
   String? _selectedClass;
-  String _type = 'Nahlásenie problému';
   FileProcessingResult? table;
 
   Future<File?> pickFile() async {
@@ -297,164 +296,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 190,
-                        height: 40,
-                        child: ReButton(
-                          activeColor: AppColors.getColor('primary').light, 
-                          defaultColor: AppColors.getColor('mono').lighterGrey, 
-                          disabledColor: AppColors.getColor('mono').lightGrey, 
-                          focusedColor: AppColors.getColor('primary').light, 
-                          hoverColor: AppColors.getColor('primary').lighter, 
-                          textColor: AppColors.getColor('primary').main, 
-                          iconColor: AppColors.getColor('mono').black, 
-                          text: 'Kontaktuje nás',
-                          rightIcon: 'assets/icons/messageIcon.svg',
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return StatefulBuilder(
-                                  builder: (BuildContext context, StateSetter setState) {
-                                    return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  content: Container(
-                                    width: 500,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min, // Ensure the dialog takes up minimum height
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Spacer(),
-                                            MouseRegion(
-                                              cursor: SystemMouseCursors.click,
-                                              child: GestureDetector(
-                                                child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
-                                                onTap: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(height: 30,),
-                                          Text(
-                                            'Moja správa je',
-                                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          SizedBox(height: 10,),
-                                          Container(
-                                            padding: EdgeInsets.only(right: 8),
-                                            height: 30,
-                                            width: 200,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(8),
-                                              color: _type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Radio(
-                                                  value: 'Nahlásenie problému',
-                                                    groupValue: _type,
-                                                    onChanged: (newValue) {
-                                                      setState(() {
-                                                        if (newValue != null) _type = newValue;
-                                                      });
-                                                    },
-                                                    activeColor: AppColors.getColor('primary').main,
-                                                  ),
-                                                Text(
-                                                  'Nahlásenie problému',
-                                                  style: TextStyle(
-                                                    color:  _type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 10,),
-                                          Container(
-                                            padding: EdgeInsets.only(right: 8),
-                                            height: 30,
-                                            width: 100,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(8),
-                                              color: _type == 'Otázka' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                  Radio(
-                                                  value: 'Otázka',
-                                                    groupValue: _type,
-                                                    onChanged: (newValue) {
-                                                      setState(() {
-                                                        if (newValue != null) _type = newValue;
-                                                      });
-                                                    },
-                                                    activeColor: AppColors.getColor('primary').main,
-                                                  ),
-                                                Text(
-                                                  'Otázka',
-                                                  style: TextStyle(
-                                                    color: _type == 'Otázka' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 10,),
-                                          Text(
-                                            'Správa',
-                                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          SizedBox(height: 10,),
-                                          reTextField(
-                                            'Popíš svoj problém s aplikáciou alebo nám napíš otázku.',
-                                            false,
-                                            _messageController,
-                                            AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
-                                          ),
-                                        SizedBox(height: 30,),
-                                          Center(
-                                            child: ReButton(
-                                            activeColor: AppColors.getColor('mono').white, 
-                                            defaultColor: AppColors.getColor('green').main, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('green').light, 
-                                            hoverColor: AppColors.getColor('green').light, 
-                                            textColor: Theme.of(context).colorScheme.onPrimary, 
-                                            iconColor: AppColors.getColor('mono').black, 
-                                            text: 'ODOSLAŤ',
-                                            onTap: () {
-                                              if(_messageController.text != '') {
-                                                sendMessage(_messageController.text, _type);
-                                                Navigator.of(context).pop();
-                                                _messageController.text = '';
-                                              }
-                                            },
-                                          ),
-                                        ),
-                                        
-                                        SizedBox(height: 30,),
-                                      ],
-                                    ),
-                                  )
-                                );
-                                  }
-                                );
-                              },
-                            );
-                        }
-                      )
-                    ),
-                                
+                      const Contact(),       
                   SizedBox(width: 5,),
                   Container(
                     width: 160,
@@ -625,7 +467,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
           currentUserData: widget.currentUserData,
           onNavigationItemSelected: _onNavigationItemSelected,
           teacher: _teacher,
-          classNameController: _classNameController, 
           addSchoolData: (ClassDataWithId classData) {
             classDataList.add(classData);
           }
@@ -645,7 +486,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         },
       );
       case 7:
-        return Csv(
+        return Xlsx(
         currentUserData: widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 

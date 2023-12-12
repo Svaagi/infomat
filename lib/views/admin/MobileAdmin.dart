@@ -17,9 +17,10 @@ import 'package:infomat/views/admin/MobileClasses.dart';
 import 'package:infomat/views/admin/AddUser.dart';
 import 'package:infomat/views/admin/AddExistingUser.dart';
 import 'package:infomat/views/admin/UpdateUser.dart';
-import 'package:infomat/views/admin/AddClass.dart';
+import 'package:infomat/providers/AddClassProvider.dart';
 import 'package:infomat/views/admin/UpdateClass.dart';
-import 'package:infomat/views/admin/Csv.dart';
+import 'package:infomat/views/admin/Xlsx.dart';
+import 'package:infomat/providers/ContactProvider.dart';
 
 
 
@@ -43,7 +44,6 @@ class _MobileAdminState extends State<MobileAdmin> {
   bool _teacher = false;
   bool _admin = false;
   int _selectedIndex = 0;
-  TextEditingController _classNameController = TextEditingController();
   TextEditingController _userNameController = TextEditingController();
   TextEditingController _userEmailController = TextEditingController();
   TextEditingController _userPasswordController = TextEditingController();
@@ -51,12 +51,10 @@ class _MobileAdminState extends State<MobileAdmin> {
   TextEditingController _editUserEmailController = TextEditingController();
   TextEditingController _editUserPasswordController = TextEditingController();
   TextEditingController _editClassNameController = TextEditingController();
-  TextEditingController _messageController = TextEditingController();
   bool _loading = true;
   ClassDataWithId? currentClass;
   UserDataWithId? currentUser;
   String? _selectedClass;
-  String _type = 'Nahlásenie problému';
   FileProcessingResult? table;
 
   Future<File?> pickFile() async {
@@ -130,7 +128,7 @@ class _MobileAdminState extends State<MobileAdmin> {
 
   @override
   Widget build(BuildContext context) {
-    if (_loading) return Center(child: CircularProgressIndicator());
+    if (_loading) return const Center(child: CircularProgressIndicator());
     return _buildScreen(_selectedIndex);
   }
 
@@ -138,17 +136,17 @@ class _MobileAdminState extends State<MobileAdmin> {
     switch (index) {
       case 0:
         return SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
               width: 900,
               height: MediaQuery.of(context).size.height - 60,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                   Container(
                     width: 900,
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Theme.of(context).primaryColor
@@ -162,7 +160,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                             color: Theme.of(context).colorScheme.onPrimary
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Text(
                           '${widget.currentUserData!.name}  {meno učiteľa prihlaseného v účte}',
                           style: Theme.of(context).textTheme.displaySmall!.copyWith(
@@ -177,8 +175,8 @@ class _MobileAdminState extends State<MobileAdmin> {
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                       child: Container(
-                            margin: EdgeInsets.all(12),
-                            padding: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10.0),
@@ -197,7 +195,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                                             color: AppColors.getColor('mono').black,
                                           ),
                                     ),
-                                    SizedBox(height: 10,),
+                                    const SizedBox(height: 10,),
                                     Text(
                                       'Správa účtu',
                                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -206,7 +204,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                               ],
                             ),
@@ -223,7 +221,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                       }
                     ),
                   ),
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
                   Container(
                     child: Row(
                       children: [
@@ -233,8 +231,8 @@ class _MobileAdminState extends State<MobileAdmin> {
                                 color: AppColors.getColor('mono').darkGrey,
                               ),
                         ),
-                        Spacer(),
-                        Container(
+                        const Spacer(),
+                        SizedBox(
                           width: 53,
                           height: 36,
                           child:  ReButton(
@@ -254,18 +252,14 @@ class _MobileAdminState extends State<MobileAdmin> {
                         ),
                       ],
                     ),
-                    margin: EdgeInsets.all(12),
+                    margin: const EdgeInsets.all(12),
                   ),
-                  SizedBox(height: 5,),
+                  const SizedBox(height: 5,),
                   Expanded(
                    child: ListView.builder(
                       itemCount: classDataList.length,
                       itemBuilder: (context, index) {
                         final classData = classDataList[index];
-                        if (classData == null) {
-                          // Show loading indicator for classes that are still being fetched
-                          return CircularProgressIndicator();
-                        }
 
                         return MouseRegion(
                           cursor: SystemMouseCursors.click,
@@ -279,7 +273,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                               });
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                               height: 56,
                               decoration: BoxDecoration(
                                 border: Border(
@@ -307,173 +301,15 @@ class _MobileAdminState extends State<MobileAdmin> {
                       },
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Center(
                     child: Wrap(
                         alignment: WrapAlignment.center,
                         children: [
+                          const Contact(),
+                          const SizedBox(width: 5,),
                           Container(
-                            margin: EdgeInsets.only(top: 10),
-                              width: 190,
-                              height: 40,
-                              child: ReButton(
-                                activeColor: AppColors.getColor('primary').light, 
-                                defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                disabledColor: AppColors.getColor('mono').lightGrey, 
-                                focusedColor: AppColors.getColor('primary').light, 
-                                hoverColor: AppColors.getColor('primary').lighter, 
-                                textColor: AppColors.getColor('primary').main, 
-                                iconColor: AppColors.getColor('mono').black, 
-                                text: 'Kontaktuje nás',
-                                rightIcon: 'assets/icons/messageIcon.svg',
-                                onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return StatefulBuilder(
-                                          builder: (BuildContext context, StateSetter setState) {
-                                            return AlertDialog(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(20.0),
-                                          ),
-                                          content: Container(
-                                            width: 500,
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.min, // Ensure the dialog takes up minimum height
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Spacer(),
-                                                    MouseRegion(
-                                                      cursor: SystemMouseCursors.click,
-                                                      child: GestureDetector(
-                                                        child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
-                                                        onTap: () {
-                                                          Navigator.of(context).pop();
-                                                        },
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                SizedBox(height: 30,),
-                                                  Text(
-                                                    'Moja správa je',
-                                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                  SizedBox(height: 10,),
-                                                  Container(
-                                                    padding: EdgeInsets.only(right: 8),
-                                                    height: 30,
-                                                    width: 200,
-                                                    alignment: Alignment.center,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(8),
-                                                      color: _type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        Radio(
-                                                          value: 'Nahlásenie problému',
-                                                            groupValue: _type,
-                                                            onChanged: (newValue) {
-                                                              setState(() {
-                                                                if (newValue != null) _type = newValue;
-                                                              });
-                                                            },
-                                                            activeColor: AppColors.getColor('primary').main,
-                                                          ),
-                                                        Text(
-                                                          'Nahlásenie problému',
-                                                          style: TextStyle(
-                                                            color:  _type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(height: 10,),
-                                                  Container(
-                                                    padding: EdgeInsets.only(right: 8),
-                                                    height: 30,
-                                                    width: 100,
-                                                    alignment: Alignment.center,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(8),
-                                                      color: _type == 'Otázka' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                          Radio(
-                                                          value: 'Otázka',
-                                                            groupValue: _type,
-                                                            onChanged: (newValue) {
-                                                              setState(() {
-                                                                if (newValue != null) _type = newValue;
-                                                              });
-                                                            },
-                                                            activeColor: AppColors.getColor('primary').main,
-                                                          ),
-                                                        Text(
-                                                          'Otázka',
-                                                          style: TextStyle(
-                                                            color: _type == 'Otázka' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(height: 10,),
-                                                  Text(
-                                                    'Správa',
-                                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                  SizedBox(height: 10,),
-                                                  reTextField(
-                                                    'Popíš svoj problém s aplikáciou alebo nám napíš otázku.',
-                                                    false,
-                                                    _messageController,
-                                                    AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
-                                                  ),
-                                                SizedBox(height: 30,),
-                                                  Center(
-                                                    child: ReButton(
-                                                    activeColor: AppColors.getColor('mono').white, 
-                                                    defaultColor: AppColors.getColor('green').main, 
-                                                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                    focusedColor: AppColors.getColor('green').light, 
-                                                    hoverColor: AppColors.getColor('green').light, 
-                                                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                                                    iconColor: AppColors.getColor('mono').black, 
-                                                    text: 'ODOSLAŤ',
-                                                    onTap: () {
-                                                      if(_messageController.text != '') {
-                                                        sendMessage(_messageController.text, _type);
-                                                        Navigator.of(context).pop();
-                                                        _messageController.text = '';
-                                                      }
-                                                    },
-                                                  ),
-                                                ),
-                                                
-                                                SizedBox(height: 30,),
-                                              ],
-                                            ),
-                                          )
-                                        );
-                                          }
-                                        );
-                                      },
-                                    );
-                                }
-                              )
-                            ),
-                            
-                          SizedBox(width: 5,),
-                          Container(
-                            margin: EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10),
 
                           width: 160,
                           height: 40,
@@ -643,7 +479,6 @@ class _MobileAdminState extends State<MobileAdmin> {
           currentUserData: widget.currentUserData,
           onNavigationItemSelected: _onNavigationItemSelected,
           teacher: _teacher,
-          classNameController: _classNameController, 
           addSchoolData: (ClassDataWithId classData) {
             classDataList.add(classData);
           }
@@ -663,7 +498,7 @@ class _MobileAdminState extends State<MobileAdmin> {
         },
       );
       case 7:
-        return Csv(
+        return Xlsx(
         currentUserData: widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 

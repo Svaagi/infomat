@@ -11,14 +11,14 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
-class Csv extends StatefulWidget {
+class Xlsx extends StatefulWidget {
   final UserData? currentUserData;
   final void Function(int) onNavigationItemSelected;
   String? selectedClass;
   final ClassDataWithId? currentClass;
   final List<String> classes;
 
-  Csv(
+  Xlsx(
     {
       Key? key, 
       required this.currentUserData,
@@ -30,10 +30,10 @@ class Csv extends StatefulWidget {
   );
 
   @override
-  State<Csv> createState() => _CsvState();
+  State<Xlsx> createState() => _XlsxState();
 }
 
-class _CsvState extends State<Csv> {
+class _XlsxState extends State<Xlsx> {
   FileProcessingResult? table;
   bool showTable = true;
 
@@ -129,7 +129,7 @@ class _CsvState extends State<Csv> {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                  'Údaje nahrajte prostredníctvom .csv súboru. Aplikácia každému žiakovi vygeneruje a pošle prihlasovacie údaje.',
+                  'Údaje nahrajte prostredníctvom .xlsx súboru. Aplikácia každému žiakovi vygeneruje a pošle prihlasovacie údaje.',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: AppColors.getColor('mono').grey,
                     ),
@@ -281,7 +281,7 @@ class _CsvState extends State<Csv> {
                     hoverColor: AppColors.getColor('green').light, 
                     textColor: Theme.of(context).colorScheme.onPrimary, 
                     iconColor: AppColors.getColor('mono').black, 
-                    text: 'NAHRAŤ .CSV / .XLSX SÚBOR', 
+                    text: '.XLSX SÚBOR', 
                     onTap: () async {
                       FileProcessingResult? result = await pickFile();
                       if (result != null) {

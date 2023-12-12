@@ -369,7 +369,7 @@ Future<void> registerMultipleUsers(
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
         // Error handling
-        reShowToast('Failed to register users', true, context);
+        reShowToast('Nepodarilo sa zaregistrovať používateľov', true, context);
     }
 }
 
