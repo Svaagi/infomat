@@ -86,34 +86,34 @@ class _AddUserState extends State<AddUser> {
                     ),
                   ),
                 ),
-                SizedBox(width: 100,)
+                const SizedBox(width: 100,)
               ],
             ),
-            SizedBox(height: 40,),
+            const SizedBox(height: 40,),
             Text(
               'Napíšte triedu, meno a email ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: AppColors.getColor('mono').black,
                   ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Po kliknutí na “ULOŽIŤ” sa učiteľovi odošle email s prihlasovacími údajmi',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: AppColors.getColor('mono').grey,
                 ),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Text(
               'Vybrať triedu',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: AppColors.getColor('mono').grey,
                   ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             DropdownButton<String>(
               value: widget.selectedClass,
-              hint: Text('Select a class'),
+              hint: const Text('Select a class'),
               items: widget.classes!.map<DropdownMenuItem<String>>((String classId) {
                 return DropdownMenuItem<String>(
                   value: classId,
@@ -131,14 +131,14 @@ class _AddUserState extends State<AddUser> {
                 });
               },
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Meno a priezvisko ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: AppColors.getColor('mono').grey,
                   ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             reTextField(
               'Jožko Mrkvička',
               false,
@@ -146,7 +146,7 @@ class _AddUserState extends State<AddUser> {
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
               errorText: _nameErrorText
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Email ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -160,7 +160,7 @@ class _AddUserState extends State<AddUser> {
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
               errorText: _emailErrorText
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Text(
               'Heslo ${widget.teacher ? 'učiteľa' : 'žiaka'}',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -174,7 +174,7 @@ class _AddUserState extends State<AddUser> {
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
               errorText: _passwordErrorText
             ),
-            Spacer(),
+            const Spacer(),
             Align(
               alignment: Alignment.center,
               child: Column(
@@ -218,7 +218,7 @@ class _AddUserState extends State<AddUser> {
               )
               
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
           ],
         ),
       ),

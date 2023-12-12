@@ -391,7 +391,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                             Text(answer.value),
                             if((answer.award || widget.currentUserData.teacher) && !answer.teacher)Row(
                               children: [
-                                Spacer(),
+                                const Spacer(),
                                 InkWell(
                                   onTap: () {
                                     setState(() {

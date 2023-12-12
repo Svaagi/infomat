@@ -14,6 +14,7 @@ class AddClassView extends StatelessWidget {
   final List<String> classes;
   final void Function(String, String) errorEdit;
   final String errorText;
+  final Function(String) addToList;
   
 
   const AddClassView(
@@ -26,6 +27,7 @@ class AddClassView extends StatelessWidget {
       required this.classes,
       required this.errorEdit,
       required this.errorText,
+      required this.addToList
     }
   );
 
@@ -119,7 +121,8 @@ class AddClassView extends StatelessWidget {
                           bool exists = await doesClassNameExist(classNameController.text, classes);
                           if(classNameController.text != '' && !exists) {
                             errorEdit(errorText, '');
-                            addClass(classNameController.text, currentUserData!.school, addSchoolData, null);
+                            addClass(classNameController.text, currentUserData!.school, addSchoolData, null, addToList);
+                            
                             classNameController.text = '';
                             onNavigationItemSelected(0);
                             reShowToast('Trieda úspešne pridaná', false, context);

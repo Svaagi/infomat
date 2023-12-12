@@ -99,7 +99,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
       }
     }
 
-    return completeNotifications;
+    return completeNotifications.reversed.toList();
 }
 
  String formatTimestamp(Timestamp timestamp) {

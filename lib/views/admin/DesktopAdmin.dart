@@ -37,7 +37,7 @@ class DesktopAdmin extends StatefulWidget {
 
 class _DesktopAdminState extends State<DesktopAdmin> {
   
-  List<String>? classes;
+  List<String> classes = [];
   List<String>? teachers;
   String? schoolName;
   UserData? admin;
@@ -111,7 +111,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
       });
 
       // Fetch class data once and store it in classDataList with IDs
-      for (String classId in classes!) {
+      for (String classId in classes) {
         ClassData classData = await fetchClass(classId);
         classDataList.add(ClassDataWithId(classId, classData));
       }
@@ -140,14 +140,14 @@ class _DesktopAdminState extends State<DesktopAdmin> {
           alignment: Alignment.center,
           child: Container(
             alignment: Alignment.center,
-            width: 900,
+            width: 950,
             height: 1080,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 30,),
                 Container(
-                  width: 900,
+                  width: 950,
                   padding: EdgeInsets.all(30),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -250,9 +250,9 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20,),
-               Container(
-                  width: 900,
+                const SizedBox(height: 20,),
+               SizedBox(
+                  width: 950,
                   height: 300, // Set a fixed height for your Wrap
                   child: Wrap(
                     spacing: 20, // Adjust spacing between items horizontally
@@ -262,6 +262,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                         cursor: SystemMouseCursors.click,
                         child:GestureDetector(
                           onTap: () {
+                            fetchSchoolData();
                             setState(() {
                               // Update the currentClass when a class is tapped
                               currentClass = classData;
@@ -272,7 +273,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                           child: Container(
                             height: 72,
                             width: 172,
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColors.getColor('mono').lightGrey, width: 2),
                               borderRadius: BorderRadius.circular(15.0),
@@ -463,17 +464,20 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         );
       case 5:
         return AddClass(
-          classes: classes!,
+          classes: classes,
           currentUserData: widget.currentUserData,
           onNavigationItemSelected: _onNavigationItemSelected,
           teacher: _teacher,
           addSchoolData: (ClassDataWithId classData) {
             classDataList.add(classData);
-          }
+          },
+          addToList: (String value) {
+            classes.add(value);
+          },
         );
       case 6:
         return UpdateClass(
-        classes: classes!,
+        classes: classes,
         currentUserData: widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 

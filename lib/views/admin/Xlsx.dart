@@ -36,17 +36,19 @@ class Xlsx extends StatefulWidget {
 class _XlsxState extends State<Xlsx> {
   FileProcessingResult? table;
   bool showTable = true;
+  bool loading = false;
 
   Future<FileProcessingResult?> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(withData: true);
 
     if (result != null) {
+      loading = true;
       PlatformFile pickedFile = result.files.single;
       Uint8List fileBytes = pickedFile.bytes!;
       String fileName = pickedFile.name;
       String extension = fileName.split('.').last;
 
-      return processFile(fileBytes, extension, widget.classes);
+      return processFile(fileBytes, extension, widget.classes, loading);
     } else {
       // User canceled the picker
       return null;
@@ -57,6 +59,9 @@ class _XlsxState extends State<Xlsx> {
 
   @override
   Widget build(BuildContext context) {
+    if (loading) return Center(
+      child: CircularProgressIndicator(),
+    ); 
     return Align(
       alignment: Alignment.center,
       child: Container(
@@ -135,9 +140,39 @@ class _XlsxState extends State<Xlsx> {
                     ),
                 ),
                 SizedBox(height: 30,),
-                Row(
-                  children: [
-                    MouseRegion(
+              
+                  Text(
+                  'Súbor musí byť formátovaný nasledovne: ',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: AppColors.getColor('mono').black,
+                      ),
+                ),
+                
+                Text(
+                  '3 stĺplce pomenované ako:',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: AppColors.getColor('mono').grey,
+                      ),
+                ),
+                Text(
+                  '- “Meno Priezvisko”',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: AppColors.getColor('mono').grey,
+                      ),
+                ),
+                Text(
+                  '- “Email”',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: AppColors.getColor('mono').grey,
+                      ),
+                ),
+                Text(
+                  '- “Trieda”',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: AppColors.getColor('mono').grey,
+                      ),
+                ),
+                MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () async {
@@ -156,7 +191,7 @@ class _XlsxState extends State<Xlsx> {
                           );
                         },
                         child: Text(
-                          'Súbor ',
+                          'Stiahnuť vzorový súbor na import žiakov',
                           style: TextStyle(
                             color: Colors.blue,
                             decoration: TextDecoration.underline,
@@ -164,40 +199,6 @@ class _XlsxState extends State<Xlsx> {
                         ),
                       ),
                     ),
-                    
-                    Text(
-                    'musí byť formátovaný nasledovne: ',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.getColor('mono').grey,
-                        ),
-                  ),
-                  ],
-                ),
-                
-                Text(
-                  '3 stĺplce pomenované ako:',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
-                      ),
-                ),
-                Text(
-                  '“Meno Priezvisko”',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
-                      ),
-                ),
-                Text(
-                  '“Email”',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
-                      ),
-                ),
-                Text(
-                  '“Trieda”',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
-                      ),
-                ),
                 SizedBox(height: 30,),
                   Text(
                   'Názvy tried v súbore sa musia zhodovať s názvami, ktoré ste zadali v aplikácii.',
@@ -208,7 +209,7 @@ class _XlsxState extends State<Xlsx> {
               ],
             ),
             
-            SizedBox(height: 50,),
+            const SizedBox(height: 10,),
             showTable && table != null
           ? Expanded( 
             child: ListView.separated(
@@ -220,12 +221,12 @@ class _XlsxState extends State<Xlsx> {
                     textColor: table!.incorrectRows[index].index == index ? Colors.red : Colors.black,
                   );
                 },
-                separatorBuilder: (context, index) => Divider(),
+                separatorBuilder: (context, index) => const Divider(),
               )
             ) : Center(
               child: Image.asset('assets/import.png', width: 700, height: 300,),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Align(
               alignment: Alignment.center,
               child: showTable && table != null ? 
@@ -244,6 +245,9 @@ class _XlsxState extends State<Xlsx> {
                         text: 'SKÚSIŤ ZNOVA',
                         onTap: () async {
                           FileProcessingResult? result = await pickFile();
+                          setState(() {
+                            loading = false;
+                          });
                           if (result != null) {
                             setState(() {
                               table = result;
@@ -252,25 +256,31 @@ class _XlsxState extends State<Xlsx> {
                           }
                         }
                       ),
-                      SizedBox(width: 5,),
-                    ReButton(
-                      activeColor: AppColors.getColor('mono').white, 
-                      defaultColor: AppColors.getColor('green').main, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('green').light, 
-                      hoverColor: AppColors.getColor('green').light, 
-                      textColor: Theme.of(context).colorScheme.onPrimary, 
-                      iconColor: AppColors.getColor('mono').black, 
-                      text: 'ULOŽIŤ', 
-                      onTap: () {
-                          if (table!.errNum == 0) {
-                            registerMultipleUsers(table!.data, widget.currentUserData!.school, false, context);
+                      const SizedBox(width: 5,),
+                      ReButton(
+                        activeColor: AppColors.getColor('mono').white, 
+                        defaultColor: AppColors.getColor('green').main, 
+                        disabledColor: AppColors.getColor('mono').lightGrey, 
+                        focusedColor: AppColors.getColor('green').light, 
+                        hoverColor: AppColors.getColor('green').light, 
+                        textColor: Theme.of(context).colorScheme.onPrimary, 
+                        iconColor: AppColors.getColor('mono').black, 
+                        text: 'ULOŽIŤ', 
+                        onTap: () {
+                            if (table!.errNum == 0) {
+                              setState(() {
+                                loading = true;
+                              });
+                              registerMultipleUsers(table!.data, widget.currentUserData!.school, false, context);
+                              setState(() {
+                                loading = false;
+                              });
+                            }
                           }
-                        }
-                    ),
-                  ],
-                )
-              : Container(
+                      ),
+                    ],
+                  )
+                : Container(
                 width: 277,
                 child: 
                     ReButton(
@@ -281,9 +291,13 @@ class _XlsxState extends State<Xlsx> {
                     hoverColor: AppColors.getColor('green').light, 
                     textColor: Theme.of(context).colorScheme.onPrimary, 
                     iconColor: AppColors.getColor('mono').black, 
-                    text: '.XLSX SÚBOR', 
+                    text: 'XLSX SÚBOR', 
                     onTap: () async {
+
                       FileProcessingResult? result = await pickFile();
+                      setState(() {
+                        loading = false;
+                      });
                       if (result != null) {
                         setState(() {
                           table = result;

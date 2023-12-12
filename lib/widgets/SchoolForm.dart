@@ -147,15 +147,16 @@ class _SchoolFormState extends State<SchoolForm> {
   }
   
 
-  Future<void> sendVerificationCode(String recipientEmail, String verificationCode) async {
+  Future<void> sendVerificationCode( String recipientEmail, String verificationCode) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance; // Create an instance of FirebaseFirestore
+
 
     await firestore.collection('mail').add(
       {
         'to': [recipientEmail],
         'message': {
           'subject': 'Verifikácia',
-          'text': 'Váš kód je ${verificationCode}'
+          'text': 'Dobrý deň,\n váš overovací kód je $verificationCode\n Na túto správu neodpovedajte, bola odoslaná automaticky.'
         },
       },
     ).then(
@@ -300,7 +301,7 @@ class _SchoolFormState extends State<SchoolForm> {
                             setState(() {
                               generatedCode = generateRandomInt().toString();
                             });
-                            sendVerificationCode(_adminEmailController.text, generatedCode!);
+                            sendVerificationCode( _adminEmailController.text, generatedCode!);
                           } else {
 
                             setState(() {
@@ -1110,7 +1111,7 @@ class _SchoolFormState extends State<SchoolForm> {
 
 
           for (String name in combinedList) {
-            addClass(name, _schoolIdController.text, null, userData.id);
+            addClass(name, _schoolIdController.text, null, userData.id, (String) {});
           }
         _onNavigationItemSelected(_selectedIndex + 1);
         

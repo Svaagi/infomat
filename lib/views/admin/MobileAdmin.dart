@@ -36,7 +36,7 @@ class MobileAdmin extends StatefulWidget {
 
 class _MobileAdminState extends State<MobileAdmin> {
   
-  List<String>? classes;
+  List<String> classes = [];
   List<String>? teachers;
   String? schoolName;
   UserData? admin;
@@ -256,6 +256,9 @@ class _MobileAdminState extends State<MobileAdmin> {
                   ),
                   const SizedBox(height: 5,),
                   Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
                    child: ListView.builder(
                       itemCount: classDataList.length,
                       itemBuilder: (context, index) {
@@ -301,7 +304,9 @@ class _MobileAdminState extends State<MobileAdmin> {
                       },
                     ),
                   ),
-                  const Spacer(),
+                    ],
+                  )
+                  ),
                   Center(
                     child: Wrap(
                         alignment: WrapAlignment.center,
@@ -481,7 +486,10 @@ class _MobileAdminState extends State<MobileAdmin> {
           teacher: _teacher,
           addSchoolData: (ClassDataWithId classData) {
             classDataList.add(classData);
-          }
+          },
+          addToList: (String value) {
+            classes.add(value);
+          },
         );
       case 6:
         return UpdateClass(

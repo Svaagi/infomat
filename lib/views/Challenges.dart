@@ -7,10 +7,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/Colors.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/UserController.dart';
-import 'package:infomat/views/Tests/DesktopTest.dart';
-import 'package:infomat/views/Tests/TeacherDesktopTest.dart';
-import 'package:infomat/views/Tests/MobileTest.dart';
-import 'package:infomat/views/Tests/TeacherMobileTest.dart';
+import 'package:infomat/views/tests/DesktopTest.dart';
+import 'package:infomat/views/tests/TeacherDesktopTest.dart';
+import 'package:infomat/views/tests/MobileTest.dart';
+import 'package:infomat/views/tests/TeacherMobileTest.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/widgets/TeacherCapitolDragWidget.dart';
 import 'package:infomat/widgets/StudentCapitolDragWidget.dart';
@@ -42,6 +42,7 @@ class _ChallengesState extends State<Challenges> {
   bool isMobile = false;
   bool isDesktop = false;
   List<dynamic> data = [];
+  final PageController _pageController = PageController();
 
 
 
@@ -70,6 +71,16 @@ Future<void> refreshList() async {
   Future<void> refreshData() async {
     await _dataFuture;
     await widget.fetch;
+  }
+
+  void _onNavigationItemSelected(int index) {
+    setState(() {
+      _pageController.animateToPage(
+        index,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
   }
 
   void toggleIndex(int index, int capitolIndex) {
@@ -230,13 +241,62 @@ Widget build(BuildContext context) {
     backgroundColor: Theme.of(context).colorScheme.background,
     body: Column(
             children: <Widget>[
+              
               // Your FractionallySizedBox here (not modified for brevity)
               MediaQuery.of(context).size.width < 1000 ?
                 Expanded(
                   child: PageView(
+                    controller: _pageController,
                     children: [
                       // First page - ListView
-                     ListView.builder(
+                      Column(
+                        children: [
+                          FractionallySizedBox(
+                            widthFactor: 1.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const SizedBox(width: 30,),
+                                      const Spacer(),
+                                      Text(
+                                        data[0]["name"],
+                                        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                              color: Theme.of(context).colorScheme.onPrimary,
+                                            ),
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                        onPressed: () => _onNavigationItemSelected(1), 
+                                        icon: SvgPicture.asset('assets/icons/arrowRightIcon.svg', color: Colors.white,
+                                      ))
+                                    ],
+                                  ),
+                                  
+                                  const SizedBox(height: 16),
+                                  SizedBox(
+                                    height: 10,
+                                    child: LinearProgressIndicator(
+                                      value: countTrueTests(
+                                                  widget.currentUserData!.capitols[capitolsIds[0]].tests) /
+                                              widget.currentUserData!.capitols[capitolsIds[0]].tests.length,
+                                      backgroundColor: AppColors.getColor('blue').lighter,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          AppColors.getColor('green').main),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: ListView.builder(
                             reverse: true,
                             itemCount: 27 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
@@ -329,6 +389,10 @@ Widget build(BuildContext context) {
                             );
                           },
                         ),
+                          )
+                        
+                        ],
+                      ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height,
                           child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentages: percentages) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList),
@@ -786,4 +850,6 @@ class TooltipShape extends ShapeBorder {
     side: _side.scale(t),
     borderRadius: BorderRadius.circular(_borderRadius * t),
   );
+
+  
 }

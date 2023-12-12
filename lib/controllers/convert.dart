@@ -1,7 +1,4 @@
-import 'dart:io';
-import 'package:csv/csv.dart';
 import 'package:excel/excel.dart';
-import 'dart:convert';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/auth.dart';
 import 'dart:typed_data';
@@ -33,15 +30,12 @@ class FileProcessingResult {
 
 
 
-Future<FileProcessingResult?> processFile(Uint8List fileBytes, String extension, List<String> classIds) async {
+Future<FileProcessingResult?> processFile(Uint8List fileBytes, String extension, List<String> classIds, bool loading) async {
   FileProcessingResult? result;
 
   switch (extension) {
-    case 'csv':
-      result = await processCSV(fileBytes, classIds);
-      break;
     case 'xlsx':
-      result = await processXLSX(fileBytes, classIds);
+      result = await processXLSX(fileBytes, classIds, loading);
       break;
     default:
       print('Unsupported file type');
@@ -64,61 +58,9 @@ Future<bool> isValidAndUnusedEmail(String email) async {
   return isValidEmail(email) && !(await isEmailAlreadyUsed(email));
 }
 
-Future<FileProcessingResult> processCSV(Uint8List fileBytes, List<String> classIds) async {
-  final classes = await fetchClasses(classIds);
-  Stream<List<dynamic>> csvStream = Stream.value(utf8.decode(fileBytes))
-                                           .transform(LineSplitter())
-                                           .transform(CsvToListConverter());
-
-  final fields = await csvStream.toList();
-  List<IncorrectRow> incorrectRows = [];
-  List<ConvertTable> processedData = [];
-  Set<String> seenEmails = Set<String>(); // Set to track seen emails
-  int errNum = 0;
-
-  for (int i = 0; i < fields.length; i++) {
-    var row = fields[i];
-    String name = row[0];
-    String email = row[1];
-    String classValue = row[2];
-
-    bool classExists = false;
-    String classId = '';
-
-    for (int j = 0; j < classes.length; j++) {
-      if (classes[j].name == classValue) {
-        classExists = true;
-        classId = classIds[j];
-      }
-    }
-    bool emailIsValid = isValidEmail(email);
-    bool emailAlreadySeen = !seenEmails.add(email); // Returns false if email is new
-
-    List<String> errors = [];
-    if (!classExists) {
-        errors.add('Trieda neexistuje');
-    }
-    if (!emailIsValid || !await isEmailAlreadyUsed(email) || emailAlreadySeen) {
-        errors.add(emailAlreadySeen ? 'Email sa už vyskytol v zozname' : 'Email je používaný alebo v zlom formáte');
-    }
-
-    if (errors.isNotEmpty) {
-        incorrectRows.add(IncorrectRow(index: i, error: errors.join(' a ')));
-        processedData.add(ConvertTable(name: name, email: email, classValue: classValue, classId: classId));
-        errNum++;
-    } else {
-        incorrectRows.add(IncorrectRow(index: -1, error: errors.join(' a ')));
-        processedData.add(ConvertTable(name: name, email: email, classValue: classValue, classId: classId));
-    }
-  }
-
-  return FileProcessingResult(incorrectRows: incorrectRows, data: processedData, errNum: errNum);
-}
 
 
-
-
-Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> classIds) async {
+Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> classIds, bool loading) async {
   var excel = Excel.decodeBytes(fileBytes);
   final classes = await fetchClasses(classIds);
   List<IncorrectRow> incorrectRows = [];
@@ -168,6 +110,8 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
       }
     }
   }
+
+  loading = false;
 
   return FileProcessingResult(incorrectRows: incorrectRows, data: processedData, errNum: errNum);
 }

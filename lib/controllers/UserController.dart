@@ -289,89 +289,102 @@ Future<void> registerUser(String schoolId, String classId, String name, String e
 }
 
 Future<void> registerMultipleUsers(
-    List<ConvertTable> users, // List of Table objects
+    List<ConvertTable> users,
     String schoolId,
     bool teacher,
     BuildContext context
 ) async {
+    final functions = FirebaseFunctions.instance;
+    final firestore = FirebaseFirestore.instance;
+    WriteBatch batch = firestore.batch();
+
     try {
-        final functions = FirebaseFunctions.instance;
-        final firestore = FirebaseFirestore.instance;
+        List<Future<Map<String, dynamic>>> accountCreationFutures = [];
 
-        await firestore.runTransaction((Transaction transaction) async {
-            for (var user in users) {
-                // Create an account for each user
-                final result = await functions.httpsCallable('createAccount').call({
-                    'email': user.email,
-                    'password': 'test1234',
-                });
+        // Parallelize account creation and keep track of the user
+        for (var user in users) {
+            var future = functions.httpsCallable('createAccount').call({
+                'email': user.email,
+                'password': 'test1234',
+            }).then((result) => {'user': user, 'result': result});
 
-                String userId = result.data['uid'];
+            accountCreationFutures.add(future);
+        }
 
-                // Prepare user and class document references
-                DocumentReference userRef = firestore.collection('users').doc(userId);
-                DocumentReference classRef = firestore.collection('classes').doc(user.classId);
+        List<Map<String, dynamic>> results = await Future.wait(accountCreationFutures);
 
-                 // Set user data
-                  transaction.set(userRef, {
-                    'admin': false,
-                    'discussionPoints': 0,
-                    'weeklyDiscussionPoints': 0,
-                    'teacher': teacher,
-                    'email': user.email, // Update the email in Firestore to the new email
-                    'name': user.name,
-                    'active': userData.active,
-                    'classes': [user.classId],
-                    'notifications': [],
-                    'materials': [],
-                    'school': schoolId,
-                    'schoolClass': user.classId,
-                    'points': 0,
-                    'capitols': userData.capitols.map((userCapitolsData) {
-                      return {
-                        'id': userCapitolsData.id,
-                        'name': userCapitolsData.name,
-                        'image': userCapitolsData.image,
-                        'completed': userCapitolsData.completed,
-                        'tests': userCapitolsData.tests.map((userCapitolsTestData) {
-                          return {
-                            'name': userCapitolsTestData.name,
-                            'completed': userCapitolsTestData.completed,
-                            'points': userCapitolsTestData.points,
-                            'questions': userCapitolsTestData.questions.map((userQuestionsData) {
-                              return {
-                                'answer': userQuestionsData.answer.map((userAnswerData) {
-                                  return {
-                                    'answer': userAnswerData.answer,
-                                    'index': userAnswerData.index,
-                                  };
-                                }).toList(),
-                                'completed': userQuestionsData.completed,
-                                'correct': userQuestionsData.correct,
-                              };
-                            }).toList(),
-                          };
-                        }).toList(),
-                      };
-                    }).toList(),
-                  });
+        for (var data in results) {
+            var user = data['user'] as ConvertTable;
+            var result = data['result'];
+            String userId = result.data['uid'];
+            DocumentReference userRef = firestore.collection('users').doc(userId);
+            DocumentReference classRef = firestore.collection('classes').doc(user.classId);
 
-                // Update class data
-                Map<String, dynamic> updateData = teacher
-                    ? {'teachers': FieldValue.arrayUnion([userId])}
-                    : {'students': FieldValue.arrayUnion([userId])};
+            // Add user data to batch
+            batch.set(userRef, {
+              'admin': false,
+              'discussionPoints': 0,
+              'weeklyDiscussionPoints': 0,
+              'teacher': teacher,
+              'email': user.email, // Update the email in Firestore to the new email
+              'name': user.name,
+              'active': userData.active,
+              'classes': [user.classId],
+              'notifications': [],
+              'materials': [],
+              'school': schoolId,
+              'schoolClass': user.classId,
+              'points': 0,
+              'capitols': userData.capitols.map((userCapitolsData) {
+                return {
+                  'id': userCapitolsData.id,
+                  'name': userCapitolsData.name,
+                  'image': userCapitolsData.image,
+                  'completed': userCapitolsData.completed,
+                  'tests': userCapitolsData.tests.map((userCapitolsTestData) {
+                    return {
+                      'name': userCapitolsTestData.name,
+                      'completed': userCapitolsTestData.completed,
+                      'points': userCapitolsTestData.points,
+                      'questions': userCapitolsTestData.questions.map((userQuestionsData) {
+                        return {
+                          'answer': userQuestionsData.answer.map((userAnswerData) {
+                            return {
+                              'answer': userAnswerData.answer,
+                              'index': userAnswerData.index,
+                            };
+                          }).toList(),
+                          'completed': userQuestionsData.completed,
+                          'correct': userQuestionsData.correct,
+                        };
+                      }).toList(),
+                    };
+                  }).toList(),
+                };
+              }).toList(),
+            });
 
-                transaction.update(classRef, updateData);
-            }
-        });
+            // Prepare class data update
+            Map<String, dynamic> updateData = teacher
+                ? {'teachers': FieldValue.arrayUnion([userId])}
+                : {'students': FieldValue.arrayUnion([userId])};
+
+            batch.update(classRef, updateData);
+
+        }
+
+        // Commit the batch
+        await batch.commit();
 
         // Success toast
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
         // Error handling
-        reShowToast('Nepodarilo sa zaregistrovať používateľov', true, context);
+        reShowToast('Nepodarilo sa zaregistrovať používateľov ', true, context);
     }
 }
+
+
 
 
 
@@ -428,7 +441,7 @@ Future<void> deleteUserFunction(List<String> userIds, UserData currentUser, Buil
       }
 
         currentClass!.data.teachers.removeWhere((id) => id == userId);
-        currentClass!.data.students.removeWhere((id) => id == userId);
+        currentClass.data.students.removeWhere((id) => id == userId);
 
       // Call deleteUser(userId) to delete the user document
       await deleteUser(userId);

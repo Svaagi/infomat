@@ -162,8 +162,8 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 15,),
-                                    Container(
+                                    const SizedBox(height: 15,),
+                                    const SizedBox(
                                       width: 250,
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,13 +176,13 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                         ],
                                       ),
                                     ),
-                                    SizedBox(height: 35,),
+                                    const SizedBox(height: 35,),
                                     Align(
                                       alignment: Alignment.center,
                                       child:  Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: 270,
                                             height: 48,
                                             child:  ReButton(
@@ -200,8 +200,8 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                               }
                                             ),
                                           ),
-                                          SizedBox(width: 20,),
-                                          Container(
+                                          const SizedBox(width: 20,),
+                                          SizedBox(
                                             width: 270,
                                             height: 48,
                                             child: ReButton(
@@ -234,7 +234,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                   )
                 ],
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: widget.currentClass!.data.teachers.length,
@@ -247,7 +247,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                         print('Error fetching user data: ${userSnapshot.error}');
                         return Text('Error: ${userSnapshot.error}');
                       } else if (!userSnapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       } else {
                         UserData userData = userSnapshot.data!;
                         return MouseRegion(
@@ -264,8 +264,8 @@ class _DesktopClassesState extends State<DesktopClasses> {
                               widget.onNavigationItemSelected(4);
                             },
                             child: Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
+                              margin: const EdgeInsets.all(10),
                               height: 60,
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -282,7 +282,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                           color: AppColors.getColor('mono').black,
                                         ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                                 ],
                               ),
@@ -294,14 +294,14 @@ class _DesktopClassesState extends State<DesktopClasses> {
                   );
                 },
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Row(
                 children: [
                   Text(
                     'Žiaci',
                     style: TextStyle(color: AppColors.getColor('mono').darkGrey),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     height: 40,
                     width: 150,
@@ -407,7 +407,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                               hoverColor: AppColors.getColor('green').light, 
                                               textColor: Theme.of(context).colorScheme.onPrimary, 
                                               iconColor: AppColors.getColor('mono').black, 
-                                              text: 'NAHRAŤ .CSV/.XLSX SÚBOR',
+                                              text: 'NAHRAŤ .XLSX SÚBOR',
                                               onTap: () {
                                                 Navigator.of(context).pop();
                                                 widget.onNavigationItemSelected(7);

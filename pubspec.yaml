@@ -20,7 +20,6 @@ dev_dependencies:
   flutter_svg: ^2.0.9
   flutter_styled_toast: ^2.2.1
   cloud_firestore: ^4.13.5
-  csv: ^5.1.1
   excel: ^4.0.0
   cloud_functions: ^4.5.8
   file_picker: ^6.1.1

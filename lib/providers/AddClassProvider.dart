@@ -11,6 +11,7 @@ class AddClass extends StatefulWidget {
   final bool teacher;
   final void Function(ClassDataWithId) addSchoolData;
   final List<String> classes;
+  final Function(String) addToList;
   
 
   const AddClass(
@@ -20,6 +21,7 @@ class AddClass extends StatefulWidget {
       required this.teacher,
       required this.addSchoolData,
       required this.classes,
+      required this.addToList
     }
   );
 
@@ -48,6 +50,7 @@ class _AddClassState extends State<AddClass> {
       errorText: errorText,
       onNavigationItemSelected: widget.onNavigationItemSelected,
       teacher: widget.teacher,
+      addToList: widget.addToList,
     );
   }
 }

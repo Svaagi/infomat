@@ -19,6 +19,7 @@ class ContactButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 10),
       width: 190,
       height: 40,
       child: ReButton(

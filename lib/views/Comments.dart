@@ -394,7 +394,7 @@ class _CommentsState extends State<Comments> {
                                   onTap: () {
                                     setState(() {
                                        if(widget.currentUserData.teacher) {
-                                          toggleCommentAward(widget.currentUserData.schoolClass, widget.postId, index, comment.userId);
+                                          toggleCommentAward(widget.currentUserData.schoolClass, widget.postId, index, comment.userId, comment);
                                        }
                                     });
                                   },
