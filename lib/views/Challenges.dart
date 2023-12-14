@@ -22,9 +22,8 @@ import 'package:infomat/models/UserModel.dart';
 class Challenges extends StatefulWidget {
   final Future<void> fetch;
   final UserData? currentUserData;
-  final List<dynamic> data;
 
-  const Challenges({Key? key, required this.fetch, required this.currentUserData, required this.data});
+  const Challenges({Key? key, required this.fetch, required this.currentUserData});
 
   @override
   State<Challenges> createState() => _ChallengesState();
