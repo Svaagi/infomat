@@ -169,13 +169,7 @@ class _AddExistingUserState extends State<AddExistingUser> {
               child: Column(
                 children: [
                     ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "green", 
                     text: 'ULOŽIŤ', 
                     onTap: () {
                         setState(() {

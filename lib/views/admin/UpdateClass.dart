@@ -95,13 +95,7 @@ class _UpdateClassState extends State<UpdateClass> {
                 alignment: WrapAlignment.center,
               children: [
                 ReButton(
-                  activeColor: AppColors.getColor('mono').white, 
-                  defaultColor: AppColors.getColor('mono').white, 
-                  disabledColor: AppColors.getColor('mono').lightGrey, 
-                  focusedColor: AppColors.getColor('mono').white, 
-                  hoverColor: AppColors.getColor('mono').white, 
-                  textColor: Theme.of(context).colorScheme.error, 
-                  iconColor: Theme.of(context).colorScheme.error,
+                  color: "white", 
                   leftIcon: 'assets/icons/binIcon.svg',
                   text: 'Vymazať triedu', 
                   onTap: () {
@@ -113,13 +107,7 @@ class _UpdateClassState extends State<UpdateClass> {
                     }
                 ),
               ReButton(
-                activeColor: AppColors.getColor('mono').white, 
-                defaultColor: AppColors.getColor('green').main, 
-                disabledColor: AppColors.getColor('mono').lightGrey, 
-                focusedColor: AppColors.getColor('green').light, 
-                hoverColor: AppColors.getColor('green').light, 
-                textColor: Theme.of(context).colorScheme.onPrimary, 
-                iconColor: AppColors.getColor('mono').black, 
+                color: "green", 
                 text: 'ULOŽIŤ', 
                 onTap: () async {
                   bool exists = await doesClassNameExist(widget.editClassNameController.text, widget.classes);

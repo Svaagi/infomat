@@ -125,13 +125,7 @@ class _LoginState extends State<Login> {
             ),
             Center(
               child: ReButton(
-                activeColor: AppColors.getColor('mono').white,
-                defaultColor: AppColors.getColor('mono').white,
-                disabledColor: AppColors.getColor('mono').lightGrey,
-                focusedColor: AppColors.getColor('primary').light,
-                hoverColor: AppColors.getColor('mono').lighterGrey,
-                textColor: AppColors.getColor('mono').black,
-                iconColor: AppColors.getColor('mono').black,
+                color: "white", 
                 text: 'PRIHLÁSENIE',
                 bold: true,
                 onTap: () {
@@ -309,11 +303,7 @@ class _LoginState extends State<Login> {
               Container(
                 margin: const EdgeInsets.only(bottom: 60),
                 child: ReButton(
-                  activeColor: AppColors.getColor('green').main,
-                  defaultColor: AppColors.getColor('green').light,
-                  disabledColor: AppColors.getColor('mono').lightGrey,
-                  focusedColor: AppColors.getColor('primary').lighter,
-                  hoverColor: AppColors.getColor('green').main,
+                  color: "green", 
                   text: 'PRIHLÁSIŤ SA',
                   onTap: handleLogin,
                 ),

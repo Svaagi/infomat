@@ -842,9 +842,9 @@ class _DesktopTestState extends State<DesktopTest> {
             )
               ),
               SizedBox(height: 50,),
-              pressed ? ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'ĎALEJ',onTap:
+              pressed ? ReButton(color: "green",  text: 'ĎALEJ',onTap:
                 onNextButtonPressed,
-              ) : ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main,isDisabled: _answer.length < 1 + (matchmaking.length > 0 ? matchmaking.length - 1 : 0) , text: 'HOTOVO', onTap:
+              ) : ReButton(color: "green", isDisabled: _answer.length < 1 + (matchmaking.length > 0 ? matchmaking.length - 1 : 0) , text: 'HOTOVO', onTap:
                 onAnswerPressed,
               ),
               SizedBox(height: 50,)
@@ -917,7 +917,7 @@ class _DesktopTestState extends State<DesktopTest> {
               child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.cover, width:  MediaQuery.of(context).size.width,),
             ),
             Spacer(),
-            ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'POKRAČOVAŤ', onTap:
+            ReButton(color: "green", text: 'POKRAČOVAŤ', onTap:
               () {
                 setState(() {
                   screen = false;
@@ -980,7 +980,7 @@ class _DesktopTestState extends State<DesktopTest> {
               ],
             ),
             SizedBox(height: 20),
-            ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text: 'ZAVRIEŤ', onTap:
+            ReButton(color: "white",  text: 'ZAVRIEŤ', onTap:
               () => widget.overlay(),
             ),
           ],

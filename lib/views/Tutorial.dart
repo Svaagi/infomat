@@ -608,13 +608,7 @@ return Scaffold(
                 MediaQuery.of(context).size.width < 1000 ? SizedBox(height: 30) : SizedBox(height: 60),
                 Center(
                   child: ReButton(
-                    activeColor: AppColors.getColor('mono').white,
-                    defaultColor: AppColors.getColor('mono').white,
-                    disabledColor: AppColors.getColor('mono').lightGrey,
-                    focusedColor: AppColors.getColor('primary').light,
-                    hoverColor: AppColors.getColor('mono').lighterGrey,
-                    textColor: AppColors.getColor('mono').black,
-                    iconColor: AppColors.getColor('mono').black,
+                    color: "white", 
                     text: 'DOMOV',
                     rightIcon: 'assets/icons/arrowRightIcon.svg',
                     onTap: () {

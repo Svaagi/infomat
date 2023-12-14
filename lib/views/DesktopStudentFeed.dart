@@ -129,7 +129,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
                             const SizedBox(height: 20,),
-                            ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text: 'ZAČAŤ', onTap:
+                            ReButton(color: "white" , text: 'ZAČAŤ', onTap:
                               () {
                                   widget.onNavigationItemSelected(1);
                               },
@@ -356,13 +356,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               width: 280,
                               height: 40,
                               child: ReButton(
-                                activeColor: AppColors.getColor('primary').light, 
-                                defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                disabledColor: AppColors.getColor('mono').lightGrey, 
-                                focusedColor: AppColors.getColor('primary').light, 
-                                hoverColor: AppColors.getColor('primary').lighter, 
-                                textColor: AppColors.getColor('primary').main, 
-                                iconColor: AppColors.getColor('mono').black,
+                                color: "grey", 
                                 text: 'Zobraziť všetky výsledky',
                                 rightIcon: 'assets/icons/arrowRightIcon.svg',
                                 onTap: () {

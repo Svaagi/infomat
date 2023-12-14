@@ -235,13 +235,7 @@ class _XlsxState extends State<Xlsx> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ReButton(
-                        activeColor: AppColors.getColor('primary').light, 
-                        defaultColor: AppColors.getColor('mono').lighterGrey, 
-                        disabledColor: AppColors.getColor('mono').lightGrey, 
-                        focusedColor: AppColors.getColor('primary').light, 
-                        hoverColor: AppColors.getColor('primary').lighter, 
-                        textColor: AppColors.getColor('primary').main, 
-                        iconColor: AppColors.getColor('mono').black, 
+                        color: "grey", 
                         text: 'SKÚSIŤ ZNOVA',
                         onTap: () async {
                           FileProcessingResult? result = await pickFile();
@@ -258,13 +252,7 @@ class _XlsxState extends State<Xlsx> {
                       ),
                       const SizedBox(width: 5,),
                       ReButton(
-                        activeColor: AppColors.getColor('mono').white, 
-                        defaultColor: AppColors.getColor('green').main, 
-                        disabledColor: AppColors.getColor('mono').lightGrey, 
-                        focusedColor: AppColors.getColor('green').light, 
-                        hoverColor: AppColors.getColor('green').light, 
-                        textColor: Theme.of(context).colorScheme.onPrimary, 
-                        iconColor: AppColors.getColor('mono').black, 
+                        color: "green",  
                         text: 'ULOŽIŤ', 
                         onTap: () {
                             if (table!.errNum == 0) {
@@ -284,13 +272,7 @@ class _XlsxState extends State<Xlsx> {
                 width: 277,
                 child: 
                     ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "green", 
                     text: 'XLSX SÚBOR', 
                     onTap: () async {
 

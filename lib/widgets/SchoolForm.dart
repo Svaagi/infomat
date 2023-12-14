@@ -283,11 +283,7 @@ class _SchoolFormState extends State<SchoolForm> {
                         )
                       ),
                       ReButton(
-                        activeColor: AppColors.getColor('green').main,
-                        defaultColor: AppColors.getColor('green').light,
-                        disabledColor: AppColors.getColor('mono').lightGrey,
-                        focusedColor: AppColors.getColor('primary').lighter,
-                        hoverColor: AppColors.getColor('green').main,
+                        color: "green", 
                         text: 'ĎALEJ',
                         onTap: () async {
                           bool isUsed = await isEmailAlreadyUsed(_adminEmailController.text);
@@ -383,11 +379,7 @@ class _SchoolFormState extends State<SchoolForm> {
                         )
                       ),
                       ReButton(
-                        activeColor: AppColors.getColor('green').main,
-                        defaultColor: AppColors.getColor('green').light,
-                        disabledColor: AppColors.getColor('mono').lightGrey,
-                        focusedColor: AppColors.getColor('primary').lighter,
-                        hoverColor: AppColors.getColor('green').main,
+                        color: "green", 
                         text: 'ĎALEJ',
                         onTap: () {
                           if (generatedCode == _codeController.text) {
@@ -462,11 +454,7 @@ class _SchoolFormState extends State<SchoolForm> {
                               ),
                           ),
                         ReButton(
-                          activeColor: AppColors.getColor('green').main,
-                          defaultColor: AppColors.getColor('green').light,
-                          disabledColor: AppColors.getColor('mono').lightGrey,
-                          focusedColor: AppColors.getColor('primary').lighter,
-                          hoverColor: AppColors.getColor('green').main,
+                          color: "green", 
                           text: 'ĎALEJ',
                           onTap: () {
                              bool containsNonNegativeOne = false;
@@ -569,13 +557,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                               width: 314,
                                               height: 50,
                                               child: ReButton(
-                                                activeColor: AppColors.getColor('primary').light, 
-                                                defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                                disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                focusedColor: AppColors.getColor('mono').lightGrey, 
-                                                hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                                textColor: AppColors.getColor('primary').main,
-                                                iconColor: AppColors.getColor('primary').main, 
+                                                color: "grey", 
                                                 text: 'Pridať ďalšiu triedu pre ${selectedYears[index] + 1}. ročník ', 
                                                 leftIcon: 'assets/icons/plusIcon.svg',
                                                 onTap: () {
@@ -608,13 +590,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                           width: 60,
                                           height: 60,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('primary').light, 
-                                            defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                            textColor: AppColors.getColor('primary').main,
-                                            iconColor: AppColors.getColor('primary').main, 
+                                            color: "grey", 
                                             text: '', 
                                             leftIcon: 'assets/icons/arrowLeftIcon.svg',
                                             isDisabled: _selectedIndexClasses - 1 < 0,
@@ -632,13 +608,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                           width: 61,
                                           height: 61,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('primary').light, 
-                                            defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                            textColor: AppColors.getColor('primary').main,
-                                            iconColor: AppColors.getColor('primary').main, 
+                                            color: "grey",  
                                             text: '', 
                                             leftIcon: 'assets/icons/arrowRightIcon.svg',
                                             isDisabled: _selectedIndexClasses + 1 == selectedYears.length,
@@ -653,11 +623,7 @@ class _SchoolFormState extends State<SchoolForm> {
                               ),
                           ),
                         ReButton(
-                          activeColor: AppColors.getColor('green').main,
-                          defaultColor: AppColors.getColor('green').light,
-                          disabledColor: AppColors.getColor('mono').lightGrey,
-                          focusedColor: AppColors.getColor('primary').lighter,
-                          hoverColor: AppColors.getColor('green').main,
+                          color: "green", 
                           text: 'ĎALEJ',
                           onTap: () {
                             for(int i = 0; i < selectedYears.length; i++) {
@@ -723,11 +689,7 @@ class _SchoolFormState extends State<SchoolForm> {
                       Container(
                         width: 300,
                         child: ReButton(
-                          activeColor: AppColors.getColor('green').main,
-                          defaultColor: AppColors.getColor('green').light,
-                          disabledColor: AppColors.getColor('mono').lightGrey,
-                          focusedColor: AppColors.getColor('primary').lighter,
-                          hoverColor: AppColors.getColor('green').main,
+                          color: "green", 
                           text: 'POKRAČOVAŤ DO APLIKÁCIE',
                           onTap: () {
                             widget.isSchool();
@@ -795,11 +757,7 @@ class _SchoolFormState extends State<SchoolForm> {
                         ),
                       ),
                       ReButton(
-                        activeColor: AppColors.getColor('green').main,
-                        defaultColor: AppColors.getColor('green').light,
-                        disabledColor: AppColors.getColor('mono').lightGrey,
-                        focusedColor: AppColors.getColor('primary').lighter,
-                        hoverColor: AppColors.getColor('green').main,
+                        color: "green", 
                         text: 'VYTVORIŤ ÚČET',
                         onTap: () async {
                           bool appExist = await doesSchoolExist(_schoolIdController.text);
@@ -846,13 +804,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                             width: 270,
                                             height: 48,
                                             child: ReButton(
-                                              activeColor: AppColors.getColor('green').main,
-                                              defaultColor: AppColors.getColor('green').light,
-                                              disabledColor: AppColors.getColor('mono').lightGrey,
-                                              focusedColor: AppColors.getColor('primary').lighter,
-                                              hoverColor: AppColors.getColor('green').main, 
-                                              textColor: AppColors.getColor('mono').white,
-                                              iconColor: AppColors.getColor('mono').white, 
+                                              color: "green", 
                                               text: 'POKRAČOVAŤ',  
                                               onTap: () {
                                                 setState(() {

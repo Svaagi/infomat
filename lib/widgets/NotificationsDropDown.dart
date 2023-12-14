@@ -181,13 +181,7 @@ Widget build(BuildContext context) {
                                 width: 200,
                                 height: 40,
                                 child: ReButton(
-                                  activeColor: AppColors.getColor('primary').light, 
-                                  defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                  disabledColor: AppColors.getColor('mono').lightGrey, 
-                                  focusedColor: AppColors.getColor('primary').light, 
-                                  hoverColor: AppColors.getColor('primary').lighter, 
-                                  textColor: AppColors.getColor('primary').main, 
-                                  iconColor: AppColors.getColor('mono').black,
+                                  color: "grey", 
                                   text: 'Zobraziť všetko',
                                   rightIcon: 'assets/icons/arrowRightIcon.svg',
                                     onTap: () {

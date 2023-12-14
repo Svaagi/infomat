@@ -36,7 +36,7 @@ class MobileAppBar extends StatelessWidget implements PreferredSizeWidget {
                     SizedBox(width: 8),
                     Spacer(),
                     Text(
-                        '${currentUserData!.points}/135',
+                        '${currentUserData!.points}/165',
                         style: Theme.of(context).textTheme.labelMedium!.copyWith(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),

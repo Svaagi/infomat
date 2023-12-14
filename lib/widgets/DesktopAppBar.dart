@@ -62,7 +62,7 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           if(!widget.currentUserData!.teacher) Text(
-                            '${widget.currentUserData!.points}/135',
+                            '${widget.currentUserData!.points}/165',
                             style: Theme.of(context).textTheme.labelMedium!.copyWith(
                                   color: AppColors.getColor('yellow').light,
                                 ),

@@ -258,13 +258,7 @@ class _ProfileState extends State<Profile> {
                                     width: 160,
                                     height: 40,
                                     child: ReButton(
-                                      activeColor: AppColors.getColor('red').light, 
-                                      defaultColor: AppColors.getColor('red').main, 
-                                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                                      focusedColor: AppColors.getColor('red').light, 
-                                      hoverColor: AppColors.getColor('red').lighter, 
-                                      textColor: AppColors.getColor('mono').white, 
-                                      iconColor: AppColors.getColor('mono').white, 
+                                      color: "red",  
                                       text: 'Odhlásiť sa',
                                       rightIcon: 'assets/icons/logoutIcon.svg',
                                       onTap: () {
@@ -316,13 +310,7 @@ class _ProfileState extends State<Profile> {
                                                     ),
                                                     SizedBox(height: 30,),
                                                      ReButton(
-                                                      activeColor: AppColors.getColor('mono').white, 
-                                                      defaultColor: AppColors.getColor('red').main, 
-                                                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                      focusedColor: AppColors.getColor('red').light, 
-                                                      hoverColor: AppColors.getColor('red').light, 
-                                                      textColor: Theme.of(context).colorScheme.onPrimary, 
-                                                      iconColor: AppColors.getColor('mono').black, 
+                                                      color: "red",  
                                                       text: 'ODHLÁSIŤ SA',
                                                       onTap: () {
                                                         widget.logOut();
@@ -771,13 +759,7 @@ class _ProfileState extends State<Profile> {
                                             width: 181,
                                             height: 40,
                                             child: ReButton(
-                                              activeColor: AppColors.getColor('primary').light, 
-                                              defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                              disabledColor: AppColors.getColor('mono').lightGrey, 
-                                              focusedColor: AppColors.getColor('primary').light, 
-                                              hoverColor: AppColors.getColor('primary').lighter, 
-                                              textColor: AppColors.getColor('primary').main, 
-                                              iconColor: AppColors.getColor('mono').black, 
+                                              color: "grey", 
                                               text: hide ? 'Zobraziť viac' : 'Zobraziť menej',
                                               rightIcon: hide ? 'assets/icons/downIcon.svg' : 'assets/icons/upIcon.svg',
                                               onTap: () {
@@ -900,13 +882,7 @@ class _ProfileState extends State<Profile> {
                                               width: 200,
                                               height: 40,
                                               child: ReButton(
-                                                activeColor: AppColors.getColor('primary').light, 
-                                                defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                                disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                focusedColor: AppColors.getColor('primary').light, 
-                                                hoverColor: AppColors.getColor('primary').lighter, 
-                                                textColor: AppColors.getColor('primary').main, 
-                                                iconColor: AppColors.getColor('mono').black, 
+                                                color: "grey", 
                                                 text: 'Zobraziť rebríček',
                                                 rightIcon: 'assets/icons/arrowRightIcon.svg',
                                                 onTap: () {

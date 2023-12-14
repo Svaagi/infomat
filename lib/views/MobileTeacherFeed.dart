@@ -167,13 +167,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   height: 40,
                                   width:  170,
                                   child:  ReButton(
-                                    activeColor: AppColors.getColor('primary').light, 
-                                    defaultColor: Color(0xff989BDD), 
-                                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                                    focusedColor: AppColors.getColor('primary').light, 
-                                    hoverColor: AppColors.getColor('primary').light, 
-                                    textColor: AppColors.getColor('mono').white, 
-                                    iconColor: AppColors.getColor('mono').black, 
+                                    color: "primary", 
                                     text: 'Zobraziť test',
                                     rightIcon: 'assets/icons/arrowRightIcon.svg',
                                     onTap: () {

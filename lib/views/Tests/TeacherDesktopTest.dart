@@ -708,13 +708,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
             child:  Row(
               children: [
                  ReButton(
-                    activeColor: AppColors.getColor('primary').light, 
-                    defaultColor: AppColors.getColor('mono').lighterGrey, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('primary').light, 
-                    hoverColor: AppColors.getColor('primary').lighter, 
-                    textColor: AppColors.getColor('primary').main, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "grey",
                     text: 'Predchádzajúca', 
                     leftIcon: 'assets/icons/arrowLeftIcon.svg',
                     onTap: () {
@@ -728,13 +722,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                   ),
                 const Spacer(),
                ReButton(
-                    activeColor: AppColors.getColor('primary').light, 
-                    defaultColor: AppColors.getColor('mono').lighterGrey, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('primary').light, 
-                    hoverColor: AppColors.getColor('primary').lighter, 
-                    textColor: AppColors.getColor('primary').main, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "grey",
                     text: 'Následujúca', 
                     rightIcon: 'assets/icons/arrowRightIcon.svg',
                     onTap: () {
@@ -828,7 +816,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
               child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
             ),
             const Spacer(),
-            ReButton(activeColor: AppColors.getColor('green').main, defaultColor:  AppColors.getColor('green').light, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').lighter, hoverColor: AppColors.getColor('green').main, text: 'POKRAČOVAŤ', onTap:
+            ReButton(color: "green", text: 'POKRAČOVAŤ', onTap:
               () {
                 setState(() {
                   firstScreen = false;

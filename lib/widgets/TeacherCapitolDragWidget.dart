@@ -117,13 +117,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                   child: Container(),
                 ),
                  ReButton(
-                  activeColor: AppColors.getColor('primary').light, 
-                  defaultColor: AppColors.getColor('mono').lighterGrey, 
-                  disabledColor: AppColors.getColor('mono').lightGrey, 
-                  focusedColor: AppColors.getColor('primary').light, 
-                  hoverColor: AppColors.getColor('primary').lighter, 
-                  textColor: AppColors.getColor('primary').main, 
-                  iconColor: AppColors.getColor('primary').main,
+                  color: "grey",
                   rightIcon: 'assets/icons/editIcon.svg',
                   text: 'Upraviť poradie', 
                   onTap: () async {
@@ -353,13 +347,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ReButton(
-                      activeColor: AppColors.getColor('mono').white, 
-                      defaultColor: AppColors.getColor('green').main, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('green').light, 
-                      hoverColor: AppColors.getColor('green').light, 
-                      textColor: Theme.of(context).colorScheme.onPrimary, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "green", 
                       text: 'ULOŽIŤ ZMENY', 
                       onTap: () async {
                         await updateClassToFirestore(reorderedNumbers);
@@ -371,13 +359,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                     ),
                     const SizedBox(width: 20,),
                     ReButton(
-                      activeColor: AppColors.getColor('mono').white, 
-                      defaultColor: AppColors.getColor('mono').white, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('mono').lightGrey, 
-                      hoverColor: AppColors.getColor('mono').lighterGrey, 
-                      textColor: Theme.of(context).colorScheme.onBackground, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "white",  
                       text: 'ZRUŠIŤ ZMENY', 
                       onTap: () async {
                         Navigator.pop(context, reorderedNumbers);
@@ -390,13 +372,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ReButton(
-                      activeColor: AppColors.getColor('mono').white, 
-                      defaultColor: AppColors.getColor('mono').white, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('mono').lightGrey, 
-                      hoverColor: AppColors.getColor('mono').lighterGrey, 
-                      textColor: Theme.of(context).colorScheme.onBackground, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "white",  
                       text: 'ZRUŠIŤ ZMENY', 
                       onTap: () async {
                         Navigator.pop(context, reorderedNumbers);
@@ -404,13 +380,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                     ),
                     const SizedBox(width: 20,),
                     ReButton(
-                      activeColor: AppColors.getColor('mono').white, 
-                      defaultColor: AppColors.getColor('green').main, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('green').light, 
-                      hoverColor: AppColors.getColor('green').light, 
-                      textColor: Theme.of(context).colorScheme.onPrimary, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "green",
                       text: 'ULOŽIŤ ZMENY', 
                       onTap: () async {
                         await fetchQuestionData(reorderedNumbers); 

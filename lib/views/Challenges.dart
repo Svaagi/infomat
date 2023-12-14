@@ -709,7 +709,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                   ),
                   Center(
                       child: 
-                      ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor(userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue').lighter, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor(userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue').light, hoverColor: AppColors.getColor(userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue').main, textColor: AppColors.getColor('mono').white, iconColor: AppColors.getColor('mono').white, text: 'ZAČAŤ' , onTap: () {
+                      ReButton( color: userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue', text: 'ZAČAŤ' , onTap: () {
                       onPressed(number);
                       Navigator.of(context).pop();
                     }),
@@ -770,7 +770,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                    ),
                   if (userData != null && userData!.capitols[int.parse(capitolsId)].tests[number].completed &&  userData!.capitols[int.parse(capitolsId)].completed)
                     Center(
-                      child: ReButton(activeColor: AppColors.getColor('mono').white, defaultColor:  AppColors.getColor('mono').white, disabledColor: AppColors.getColor('mono').lightGrey, focusedColor: AppColors.getColor('primary').light, hoverColor: AppColors.getColor('mono').lighterGrey, textColor: AppColors.getColor('mono').black, iconColor: AppColors.getColor('mono').black, text:  'ZOBRAZIŤ', onTap: () {
+                      child: ReButton(color: "white",  text:  'ZOBRAZIŤ', onTap: () {
                         onPressed(number);
                         Navigator.of(context).pop();
                       }),

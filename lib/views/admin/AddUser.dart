@@ -180,13 +180,7 @@ class _AddUserState extends State<AddUser> {
               child: Column(
                 children: [
                     ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "green" , 
                     text: 'ULOŽIŤ', 
                     onTap: () async {
                       bool isUsed = await isEmailAlreadyUsed(widget.userEmailController.text);

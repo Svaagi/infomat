@@ -238,13 +238,7 @@ Widget build(BuildContext context) {
                       width: 320,
                       height: 40,
                       child: ReButton(
-                        activeColor: AppColors.getColor('primary').light, 
-                        defaultColor: AppColors.getColor('mono').lighterGrey, 
-                        disabledColor: AppColors.getColor('mono').lightGrey, 
-                        focusedColor: AppColors.getColor('primary').light, 
-                        hoverColor: AppColors.getColor('primary').lighter, 
-                        textColor: AppColors.getColor('primary').main, 
-                        iconColor: AppColors.getColor('mono').black, 
+                        color: "grey", 
                         text: 'Vybrať z pripravených príspevkov',
                         onTap: () {
                             _library = true;
@@ -280,13 +274,7 @@ Widget build(BuildContext context) {
 
                 const SizedBox(height: 8),
                 ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black,
+                    color: "green", 
                     text: 'UVEREJNIŤ', 
                     onTap: () async {
                       if (postController.text != '') {
@@ -423,13 +411,7 @@ Widget build(BuildContext context) {
                                                           width: 270,
                                                           height: 48,
                                                           child: ReButton(
-                                                            activeColor: AppColors.getColor('primary').light, 
-                                                            defaultColor: AppColors.getColor('mono').white, 
-                                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                                            textColor: AppColors.getColor('mono').black,
-                                                            iconColor: AppColors.getColor('mono').black, 
+                                                            color: "white", 
                                                             text: 'POKRAČOVAŤ V ÚPRAVÁCH',  
                                                             onTap: () {
                                                               Navigator.of(context).pop();
@@ -441,13 +423,7 @@ Widget build(BuildContext context) {
                                                           width: 150,
                                                           height: 48,
                                                           child: ReButton(
-                                                            activeColor: AppColors.getColor('red').light, 
-                                                            defaultColor: AppColors.getColor('red').main, 
-                                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                            focusedColor: AppColors.getColor('red').light, 
-                                                            hoverColor: AppColors.getColor('red').lighter, 
-                                                            textColor: AppColors.getColor('mono').white, 
-                                                            iconColor: AppColors.getColor('mono').black, 
+                                                            color: "red", 
                                                             text: 'VYMAZAŤ',  
                                                             onTap: () {
                                                               deletePost(widget.currentUserData!.schoolClass, post.id);
@@ -568,13 +544,7 @@ Widget build(BuildContext context) {
                                           width: 270,
                                           height: 48,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('primary').light, 
-                                            defaultColor: AppColors.getColor('mono').white, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                            textColor: AppColors.getColor('mono').black,
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "white", 
                                             text: 'POKRAČOVAŤ V ÚPRAVÁCH',  
                                             onTap: () {
                                               Navigator.of(context).pop();
@@ -586,13 +556,7 @@ Widget build(BuildContext context) {
                                           width: 186,
                                           height: 48,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('red').light, 
-                                            defaultColor: AppColors.getColor('red').main, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('red').light, 
-                                            hoverColor: AppColors.getColor('red').lighter, 
-                                            textColor: AppColors.getColor('mono').white, 
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "red", 
                                             text: 'ZAHODIŤ ZMENY',  
                                             onTap: () {
                                               _edit = false;
@@ -670,13 +634,7 @@ Widget build(BuildContext context) {
                 SizedBox(
                   width: 230,
                   child: ReButton(
-                activeColor: AppColors.getColor('mono').white, 
-                defaultColor: AppColors.getColor('green').main, 
-                disabledColor: AppColors.getColor('mono').lightGrey, 
-                focusedColor: AppColors.getColor('green').light, 
-                hoverColor: AppColors.getColor('green').light, 
-                textColor: Theme.of(context).colorScheme.onPrimary, 
-                iconColor: AppColors.getColor('mono').black,
+                color: "green", 
                 isDisabled: editPostController.text == '',
                 text: 'UVEREJNIŤ ZMENY', 
                 onTap: () async {
@@ -781,13 +739,7 @@ Widget build(BuildContext context) {
                                           width: 270,
                                           height: 48,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('primary').light, 
-                                            defaultColor: AppColors.getColor('mono').white, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                            textColor: AppColors.getColor('mono').black,
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "white", 
                                             text: 'POKRAČOVAŤ V ÚPRAVÁCH',  
                                             onTap: () {
                                               Navigator.of(context).pop();
@@ -799,13 +751,7 @@ Widget build(BuildContext context) {
                                           width: 186,
                                           height: 48,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('red').light, 
-                                            defaultColor: AppColors.getColor('red').main, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('red').light, 
-                                            hoverColor: AppColors.getColor('red').lighter, 
-                                            textColor: AppColors.getColor('mono').white, 
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "red",  
                                             text: 'ZAHODIŤ ZMENY',  
                                             onTap: () {
                                               _onNavigationItemSelected(0);
@@ -872,13 +818,7 @@ Widget build(BuildContext context) {
                   width: 151,
                   height: 40,
                   child: ReButton(
-                    activeColor: AppColors.getColor('mono').white, 
-                    defaultColor: AppColors.getColor('green').main, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('green').light, 
-                    hoverColor: AppColors.getColor('green').light, 
-                    textColor: Theme.of(context).colorScheme.onPrimary, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "green", 
                     isDisabled: _selectedLibrary == '',
                     text: 'UVEREJNIŤ', 
                     onTap: () async {
@@ -1043,13 +983,7 @@ Widget build(BuildContext context) {
                       width: _editComment ? 152 : 136,
                       height: 40,
                       child: ReButton(
-                        activeColor: AppColors.getColor('mono').white, 
-                        defaultColor: AppColors.getColor('primary').main, 
-                        disabledColor: AppColors.getColor('mono').lightGrey, 
-                        focusedColor: AppColors.getColor('primary').light, 
-                        hoverColor: AppColors.getColor('primary').lighter, 
-                        textColor: Theme.of(context).colorScheme.onPrimary, 
-                        iconColor: AppColors.getColor('mono').black, 
+                        color: "primary", 
                         text: _editComment ? 'Uložiť úpravy' : 'Odpovedať',
                         onTap: () async {
                           if(_editComment ? editCommentController.text != '' : commentController.text != '') {
@@ -1258,13 +1192,7 @@ Widget build(BuildContext context) {
                     width: _editAnswer ? 152 : 136,
                     height: 40,
                     child: ReButton(
-                      activeColor: AppColors.getColor('mono').white,
-                      defaultColor: AppColors.getColor('primary').main,
-                      disabledColor: AppColors.getColor('mono').lightGrey,
-                      focusedColor: AppColors.getColor('primary').light,
-                      hoverColor: AppColors.getColor('primary').lighter,
-                      textColor: Theme.of(context).colorScheme.onPrimary,
-                      iconColor: AppColors.getColor('mono').black,
+                      color: "primary", 
                       text: _editAnswer ? 'Uložiť úpravy' : 'Odpovedať',
                       onTap: () async {
                         if(_editAnswer ? editAnswerController != '' : answerController.text != '') {

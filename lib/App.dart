@@ -57,6 +57,7 @@ class _AppState extends State<App> {
   bool isMobile = false;
   bool isDesktop = false;
   bool _tutorial = false;
+  List<dynamic> data = [];
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -71,6 +72,8 @@ class _AppState extends State<App> {
         userAgent.contains('windows') ||
         userAgent.contains('linux');
     fetchUserData(); // Fetch the user data when the app starts
+        fetchCapitolsData();
+
     
   }
 
@@ -118,9 +121,35 @@ class _AppState extends State<App> {
     }
   }
 
+   Future<void> fetchCapitolsData() async {
+    try {
+      String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
+      data = json.decode(jsonData);
+
+      setState(() {
+          capitol = data[capitolsId];
+          capitolLength = data[0]["points"] + data[1]["points"] ?? 0;
+          weeklyChallenge = data[capitolsId]["weeklyChallenge"] ?? '';
+          weeklyTitle = data[capitolsId]["tests"][weeklyChallenge]["name"] ?? '';
+          futureWeeklyTitle =
+              data[capitolsId]["tests"][weeklyChallenge + 1]["name"] ?? '';
+          
+          weeklyCapitolLength = data[capitolsId]["tests"].length ?? 0;
+          
+          capitolTitle = data[capitolsId]["name"] ?? '';
+          capitolColor = data[0]["color"] ?? 'blue';
+
+    });
+          _loadingCapitols = false;
+
+  } catch (e) {
+    print('Error with loading capitols: $e');
+    _loadingCapitols = false;
+  }
+  }
+
   @override
   Widget build(BuildContext context) {
-    if(_loadingUser) return const Center(child: CircularProgressIndicator(),);
     if(_tutorial) {
         return Tutorial(check: () {
         setState(() {

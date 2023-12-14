@@ -75,17 +75,9 @@ Container reTextField(
   );
 }
 
-
 class ReButton extends StatefulWidget {
   final String? text;
-  final Color? defaultColor;
-  final Color? hoverColor;
-  final Color? focusedColor;
-  final Color? disabledColor;
-  final Color? activeColor;
-  final Color? textColor;
-  final Color? backgroundColor;
-  final Color? iconColor;
+  final String color;
   final Function? onTap;
   final String? leftIcon;
   final String? rightIcon;
@@ -94,14 +86,7 @@ class ReButton extends StatefulWidget {
 
   ReButton({
     this.text = '',
-    this.defaultColor = Colors.green,
-    this.hoverColor = Colors.green,
-    this.focusedColor = Colors.green,
-    this.disabledColor = Colors.grey,
-    this.activeColor = Colors.green,
-    this.textColor = Colors.white,
-    this.backgroundColor = Colors.green,
-    this.iconColor = Colors.white,
+    required this.color,
     this.onTap,
     this.leftIcon,
     this.rightIcon,
@@ -127,30 +112,30 @@ class _ReButtonState extends State<ReButton> {
             if (widget.leftIcon != null && widget.text != '')
               SvgPicture.asset(
                 widget.leftIcon ?? '',
-                color: widget.textColor,
+                color: (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ? AppColors.getColor("primary").main : AppColors.getColor("mono").black : AppColors.getColor("mono").white,
               ), // Replace with your desired icon
               if (widget.text != '')const SizedBox(width: 10,),
             if (widget.text != '')Text(
               widget.text!,
               style: TextStyle(
-                color: widget.textColor,
+                color: (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ? AppColors.getColor("primary").main : AppColors.getColor("mono").black : AppColors.getColor("mono").white,
                 fontFamily: widget.bold ? GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily : GoogleFonts.inter(fontWeight: FontWeight.w400).fontFamily
               ),
               textAlign: TextAlign.center,
             ),
             if (widget.text == '' && widget.leftIcon != null)SvgPicture.asset(
                 widget.leftIcon ?? '',
-                color: widget.textColor,
+                color: (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ? AppColors.getColor("primary").main : AppColors.getColor("mono").black : AppColors.getColor("mono").white,
               ),
             if (widget.text == '' && widget.rightIcon != null)SvgPicture.asset(
                 widget.rightIcon ?? '',
-                color: widget.textColor,
+                color: (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ? AppColors.getColor("primary").main : AppColors.getColor("mono").black : AppColors.getColor("mono").white,
               ),
             if (widget.text != '')SizedBox(width: 10,),
             if (widget.rightIcon != null && widget.text != '')
               SvgPicture.asset(
                 widget.rightIcon ?? '',
-                color: widget.textColor,
+                color: (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ? AppColors.getColor("primary").main : AppColors.getColor("mono").black : AppColors.getColor("mono").white,
               ), // Replace with your desired icon
           ],
         ),
@@ -158,18 +143,18 @@ class _ReButtonState extends State<ReButton> {
           elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
-              return widget.disabledColor!;
+              return AppColors.getColor("mono").lightGrey;
             } else if (states.contains(MaterialState.pressed)) {
-              return widget.activeColor!;
+              return (widget.color == "grey" || widget.color == "white") ? AppColors.getColor("mono").lighterGrey : AppColors.getColor(widget.color).main;
             } else if (states.contains(MaterialState.hovered)) {
-              return widget.hoverColor!;
+              return (widget.color == "grey" || widget.color == "white") ? AppColors.getColor("mono").lighterGrey : AppColors.getColor(widget.color).main;
             } else {
-              return widget.defaultColor!;
+              return (widget.color == "grey" || widget.color == "white") ? widget.color == "grey" ?  AppColors.getColor("mono").lighterGrey : AppColors.getColor("mono").white : AppColors.getColor(widget.color).main;
             }
           }),
           side: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.pressed)) {
-              return BorderSide(color: widget.focusedColor!, width: 2);
+              return BorderSide(color: (widget.color == "grey" || widget.color == "white") ? AppColors.getColor("mono").lighterGrey : AppColors.getColor(widget.color).lighter, width: 2);
             } else {
               return BorderSide.none;
             }

@@ -389,13 +389,7 @@ class _MaterialFormState extends State<MaterialForm> {
                   width: 200,
                   height: 40,
                   child: ReButton(
-                    activeColor: AppColors.getColor('primary').light, 
-                    defaultColor: AppColors.getColor('mono').lighterGrey, 
-                    disabledColor: AppColors.getColor('mono').lightGrey, 
-                    focusedColor: AppColors.getColor('primary').light, 
-                    hoverColor: AppColors.getColor('primary').lighter, 
-                    textColor: AppColors.getColor('primary').main, 
-                    iconColor: AppColors.getColor('mono').black, 
+                    color: "grey", 
                     text: 'Nahrať obrázok',
                     leftIcon: 'assets/icons/plusIcon.svg',
                     onTap: () {
@@ -552,13 +546,7 @@ class _MaterialFormState extends State<MaterialForm> {
                     width: 225,
                     height: 50,
                     child: ReButton(
-                      activeColor: AppColors.getColor('green').light, 
-                      defaultColor: AppColors.getColor('green').main, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('green').light, 
-                      hoverColor: AppColors.getColor('green').lighter, 
-                      textColor: AppColors.getColor('mono').white, 
-                      iconColor: AppColors.getColor('mono').black,
+                      color: "green", 
                       isDisabled: !_allFieldsCompleted(),
                       text: 'PRIDAŤ DO APLIKÁCIE',
                       onTap: () {

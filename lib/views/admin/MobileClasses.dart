@@ -114,13 +114,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     height: 40,
                     width: 150,
                     child: ReButton(
-                      activeColor: AppColors.getColor('primary').light, 
-                      defaultColor: AppColors.getColor('mono').lighterGrey, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('primary').light, 
-                      hoverColor: AppColors.getColor('primary').lighter, 
-                      textColor: AppColors.getColor('primary').main, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "grey", 
                       text: '+ Pridať',  
                       onTap: () {
                         showDialog(
@@ -188,13 +182,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                           width: 291,
                                           height: 48,
                                           child:  ReButton(
-                                            activeColor: AppColors.getColor('primary').light, 
-                                            defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('primary').light, 
-                                            hoverColor: AppColors.getColor('primary').lighter, 
-                                            textColor: AppColors.getColor('primary').main, 
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "grey", 
                                             text: 'PRIRADIŤ EXISTUJÚCI PROFILE',  
                                             onTap: () async {
                                                 widget.onNavigationItemSelected(3);
@@ -207,13 +195,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                           width: 270,
                                           height: 48,
                                           child: ReButton(
-                                            activeColor: AppColors.getColor('mono').white, 
-                                            defaultColor: AppColors.getColor('green').main, 
-                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                            focusedColor: AppColors.getColor('green').light, 
-                                            hoverColor: AppColors.getColor('green').light, 
-                                            textColor: Theme.of(context).colorScheme.onPrimary, 
-                                            iconColor: AppColors.getColor('mono').black, 
+                                            color: "green", 
                                             text: 'VYTVORIŤ NOVÝ PROFIL',
                                             onTap: () {
                                                 Navigator.of(context).pop();
@@ -313,13 +295,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     height: 40,
                     width: 150,
                     child:ReButton(
-                      activeColor: AppColors.getColor('primary').light, 
-                      defaultColor: AppColors.getColor('mono').lighterGrey, 
-                      disabledColor: AppColors.getColor('mono').lightGrey, 
-                      focusedColor: AppColors.getColor('primary').light, 
-                      hoverColor: AppColors.getColor('primary').lighter, 
-                      textColor: AppColors.getColor('primary').main, 
-                      iconColor: AppColors.getColor('mono').black, 
+                      color: "grey",  
                       text: '+ Pridať',  
                       onTap: () {
                         showDialog(
@@ -387,13 +363,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                             width: 270,
                                             height: 48,
                                             child:  ReButton(
-                                              activeColor: AppColors.getColor('primary').light, 
-                                              defaultColor: AppColors.getColor('mono').lighterGrey, 
-                                              disabledColor: AppColors.getColor('mono').lightGrey, 
-                                              focusedColor: AppColors.getColor('primary').light, 
-                                              hoverColor: AppColors.getColor('primary').lighter, 
-                                              textColor: AppColors.getColor('primary').main, 
-                                              iconColor: AppColors.getColor('mono').black, 
+                                              color: "grey", 
                                               text: 'PRIDAŤ MANUÁLNE',  
                                               onTap: () async {
                                                 Navigator.of(context).pop();
@@ -407,13 +377,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                             width: 270,
                                             height: 48,
                                             child: ReButton(
-                                              activeColor: AppColors.getColor('mono').white, 
-                                              defaultColor: AppColors.getColor('green').main, 
-                                              disabledColor: AppColors.getColor('mono').lightGrey, 
-                                              focusedColor: AppColors.getColor('green').light, 
-                                              hoverColor: AppColors.getColor('green').light, 
-                                              textColor: Theme.of(context).colorScheme.onPrimary, 
-                                              iconColor: AppColors.getColor('mono').black, 
+                                              color: "green",  
                                               text: 'NAHRAŤ .XLSX SÚBOR',
                                               onTap: () {
                                                 Navigator.of(context).pop();

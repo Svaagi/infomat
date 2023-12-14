@@ -249,13 +249,7 @@ class _CommentsState extends State<Comments> {
                                                           width: 270,
                                                           height: 48,
                                                           child: ReButton(
-                                                            activeColor: AppColors.getColor('primary').light, 
-                                                            defaultColor: AppColors.getColor('mono').white, 
-                                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                            focusedColor: AppColors.getColor('mono').lightGrey, 
-                                                            hoverColor: AppColors.getColor('mono').lighterGrey, 
-                                                            textColor: AppColors.getColor('mono').black,
-                                                            iconColor: AppColors.getColor('mono').black, 
+                                                            color: "white",  
                                                             text: 'POKRAČOVAŤ V ÚPRAVÁCH',  
                                                             onTap: () {
                                                               Navigator.of(context).pop();
@@ -267,13 +261,7 @@ class _CommentsState extends State<Comments> {
                                                           width: 150,
                                                           height: 48,
                                                           child: ReButton(
-                                                            activeColor: AppColors.getColor('red').light, 
-                                                            defaultColor: AppColors.getColor('red').main, 
-                                                            disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                            focusedColor: AppColors.getColor('red').light, 
-                                                            hoverColor: AppColors.getColor('red').lighter, 
-                                                            textColor: AppColors.getColor('mono').white, 
-                                                            iconColor: AppColors.getColor('mono').black, 
+                                                            color: "red",  
                                                             text: 'VYMAZAŤ',  
                                                             onTap: () {
                                                               deleteComment(widget.currentUserData.schoolClass, widget.postId ,index);
@@ -344,13 +332,7 @@ class _CommentsState extends State<Comments> {
                                                         width: 150,
                                                         height: 48,
                                                         child:  ReButton(
-                                                          activeColor: AppColors.getColor('red').light, 
-                                                          defaultColor: AppColors.getColor('red').main, 
-                                                          disabledColor: AppColors.getColor('mono').lightGrey, 
-                                                          focusedColor: AppColors.getColor('red').light, 
-                                                          hoverColor: AppColors.getColor('red').lighter, 
-                                                          textColor: AppColors.getColor('mono').white,
-                                                          iconColor: AppColors.getColor('mono').black,
+                                                          color: "red", 
                                                           text: 'VYMAZAŤ',  
                                                           onTap: () {
                                                             deleteComment(widget.currentUserData.schoolClass, widget.postId ,index);
