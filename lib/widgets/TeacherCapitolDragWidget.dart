@@ -142,8 +142,6 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
               itemBuilder: (ctx, index) {
                 bool isExpanded = index == expandedTileIndex;
                 dynamic capitol = localResults[index];
-                print('LENGTH ${capitol["tests"].length}');
-                print('LENGTH USER ${widget.currentUserData!.capitols[index].tests.length}');
 
                 if (capitol == null) {
                   // If capitol data is null, return an empty SizedBox or another widget indicating no data

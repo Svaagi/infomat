@@ -177,7 +177,8 @@ bool isValidEmail(String email) {
                     alignment: WrapAlignment.center,
                     children: [
                       if(!widget.admin)ReButton(
-                        color: "white", 
+                        color: "white",
+                        delete: true,
                         leftIcon: 'assets/icons/binIcon.svg',
                         text: widget.teacher ? 'Vymazať učiteľa' : 'Vymazať žiaka', 
                         onTap: () {

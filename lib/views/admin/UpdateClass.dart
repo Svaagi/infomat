@@ -98,13 +98,15 @@ class _UpdateClassState extends State<UpdateClass> {
                   color: "white", 
                   leftIcon: 'assets/icons/binIcon.svg',
                   text: 'Vymazať triedu', 
+                  delete: true,
                   onTap: () {
                       widget.onNavigationItemSelected(0);
                       deleteClass(widget.currentClass!.id, widget.currentUserData!.school, widget.removeSchoolData);
                       removeClassFromSchool(widget.currentClass!.id, widget.currentUserData!.school);
                       reShowToast('Trieda úspešne vymazaná', false, context);
                       deleteUserFunction(widget.currentClass!.data.students, widget.currentUser!.data, context, widget.currentClass);
-                    }
+                    },
+                    
                 ),
               ReButton(
                 color: "green", 
