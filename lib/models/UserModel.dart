@@ -120,23 +120,23 @@ UserData userData = UserData(
       points: 0,
       capitols: [
         UserCapitolsData(
-      completed: false,
-      id: '0',
-      image: '',
-      name: 'Kritické Myslenie',
-      tests: [
-        UserCapitolsTestData(
-          completed: false,
-          name: 'Úvod do kritického myslenia',
-          points: 0,
-          questions: [
-            UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false, false, false]),
-          ],
-        ),
-        UserCapitolsTestData(
+            completed: false,
+            id: '0',
+            image: '',
+            name: 'Kritické Myslenie',
+            tests: [
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Úvod do kritického myslenia',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false, false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
           completed: false,
           name: 'Kognitívne skreslenia',
           points: 0,
@@ -237,18 +237,6 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Výrokova logika - predpoklady',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
                 name: 'Výrokova logika - závery',
                 points: 0,
                 questions: [
@@ -260,14 +248,38 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Výrokova logika - predpoklady',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              
             ],
           ),
           UserCapitolsData(
             completed: false,
             id: '2',
             image: '',
-            name: 'Manipulácia',
+            name: 'Argumentačné chyby',
             tests: [
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Argumentačné chyby v praxi',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                ],
+              ),
               UserCapitolsTestData(
                 completed: false,
                 name: 'Úvod do argumentačných chýb',
@@ -312,91 +324,61 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Korelácia  vs Kauzalita',
+                name: 'Konštruktívny dialóg',
                 points: 0,
                 questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
                 ],
               ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Argumentačné chyby v praxi',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                ],
-              ),
-              
             ]
           ),
           UserCapitolsData(
             completed: false,
             id: '3',
             image: '',
-            name: 'Práca s dátami',
-            tests: [
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Vhodná vizualizácia',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Zavádzajúce grafy 1',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Zavádzajúce grafy 2',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Interpretácia dát v texte',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-            ]
-          ),
-          UserCapitolsData(
-            completed: false,
-            id: '4',
-            image: '',
             name: 'Mediálna gramotnosť',
             tests: [
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Typológia médií',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false,false,false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Formálne znaky médií',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false,false,false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false,false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Znaky nedôveryhodných médií v praxi',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
               UserCapitolsTestData(
                 completed: false,
                 name: 'Pojmový aparát',
@@ -437,22 +419,30 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Typológia médií',
+                name: 'Komentár a Správa',
                 points: 0,
                 questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false,false,false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
-            ]
-          ),
-          UserCapitolsData(
-            completed: false,
-            id: '5',
-            image: '',
-            name: 'Dôveryhodnoť Médií',
-            tests: [
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Sociálne siete - overovanie statusov',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
               UserCapitolsTestData(
                 completed: false,
                 name: 'Overovanie obrázkov',
@@ -469,23 +459,6 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Formálne znaky médií',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false,false,false,false,false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false,false]),
-                ],
-              ),
-            ]
-          ),
-          UserCapitolsData(
-            completed: false,
-            id: '6',
-            image: '',
-            name: 'Socialne siete',
-            tests: [
-              UserCapitolsTestData(
-                completed: false,
                 name: 'Konšpiračné teórie',
                 points: 0,
                 questions: [
@@ -496,8 +469,91 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
+              
             ]
-          )
+          ),
+          UserCapitolsData(
+            completed: false,
+            id: '4',
+            image: '',
+            name: 'Práca s dátami',
+            tests: [
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Vhodná vizualizácia',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Zavádzajúce grafy 1',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Zavádzajúce grafy 2',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Korelácia  vs Kauzalita',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Interpretácia dát v texte',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Interpretácia tabuliek',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+            ]
+          ),
       ],
       materials: [],
       notifications: [],

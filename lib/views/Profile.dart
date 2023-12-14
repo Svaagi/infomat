@@ -34,8 +34,7 @@ class _ProfileState extends State<Profile> {
   int capitolThree = 0;
   int capitolFour = 0;
   int capitolFive = 0;
-  int capitolSix = 0;
-  int capitolSeven = 0;
+
   bool _isDisposed = false;
   List<String> badges = [];
   List<UserData>? students;
@@ -186,9 +185,7 @@ class _ProfileState extends State<Profile> {
           capitolThree = data[2]["points"];
           capitolFour = data[3]["points"];
           capitolFive = data[4]["points"];
-          capitolSix = data[5]["points"];
-          capitolSeven = data[6]["points"];
-          percentage = ((currentUserData!.points / (capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive + capitolSix + capitolSeven)) * 100).round();
+          percentage = ((currentUserData!.points / (capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive )) * 100).round();
         });
       }
     } catch (e) {
@@ -405,7 +402,7 @@ class _ProfileState extends State<Profile> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      '${currentUserData!.points}/${capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive + capitolSix + capitolSeven}',
+                                                      '${currentUserData!.points}/${capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive }',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .titleLarge!
@@ -655,7 +652,7 @@ class _ProfileState extends State<Profile> {
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Manipulácia',
+                                                    'Argumentačné chyby:',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyLarge!
@@ -694,7 +691,7 @@ class _ProfileState extends State<Profile> {
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Práca s dátami:',
+                                                    'Mediálna Gramotnosť:',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyLarge!
@@ -733,7 +730,7 @@ class _ProfileState extends State<Profile> {
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Dôveryhodnosť Médií:',
+                                                    'Práca s dátami:',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyLarge!
@@ -765,84 +762,7 @@ class _ProfileState extends State<Profile> {
                                                 ],
                                               ),
                                             ),
-                                            Container(
-                                              padding: EdgeInsets.all(12),
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Mediálna Gramotnosť:',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge!
-                                                        .copyWith(
-                                                      color: AppColors.getColor('mono').darkGrey,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      Text(
-                                                        '${calculateTotalPointsForCapitol(5)}/${capitolSix}',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                          color: AppColors.getColor('yellow').light,
-                                                        ),
-                                                      ),
-                                                      SizedBox(width: 5,),
-                                                      Column(
-                                                        children: [
-                                                          SvgPicture.asset('assets/icons/starYellowIcon.svg'),
-                                                          SizedBox(height: 2,)
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.all(12),
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Sociálne Siete:',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge!
-                                                        .copyWith(
-                                                      color: AppColors.getColor('mono').darkGrey,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      Text(
-                                                        '${calculateTotalPointsForCapitol(6)}/${capitolSeven}',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                          color: AppColors.getColor('yellow').light,
-                                                        ),
-                                                      ),
-                                                      SizedBox(width: 5,),
-                                                      Column(
-                                                        children: [
-                                                          SvgPicture.asset('assets/icons/starYellowIcon.svg'),
-                                                          SizedBox(height: 2,)
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            ),
+                                            
                                             ],
                                           ),
                                           if(isMobile)Center(

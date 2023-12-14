@@ -199,7 +199,7 @@ Future<List<dynamic>> fetchQuestionData() async {
     data = json.decode(jsonData);
     
 
-    for (int order in [0,1,2,3,4,5,6]) {
+    for (int order in [0,1,2,3,4]) {
       localResults.add(data[order]);
     }
 
@@ -298,7 +298,7 @@ Widget build(BuildContext context) {
                           Expanded(
                             child: ListView.builder(
                             reverse: true,
-                            itemCount: 27 + 1, // Add 1 for the dummy item
+                            itemCount: 32 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
@@ -310,7 +310,7 @@ Widget build(BuildContext context) {
                             int prevTestsSum = 0;
                             for (int i = 0; i < capitolsIds.length; i++) {
                               int currentCapitolId = capitolsIds[i]; // make sure to get the id correctly
-                              int currentCapitolTestCount = widget.data[currentCapitolId]["tests"].length;
+                              int currentCapitolTestCount = data[currentCapitolId]["tests"].length;
 
                               if (globalIndex - 1 < (prevTestsSum + currentCapitolTestCount)) {
                                 capitolIndex = currentCapitolId;
@@ -405,7 +405,7 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: ListView.builder(
                             reverse: true,
-                            itemCount: 27 + 1, // Add 1 for the dummy item
+                            itemCount: 32 + 1, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
@@ -417,7 +417,7 @@ Widget build(BuildContext context) {
                             int prevTestsSum = 0;
                             for (int i = 0; i < capitolsIds.length; i++) {
                               int currentCapitolId = capitolsIds[i]; // make sure to get the id correctly
-                              int currentCapitolTestCount = widget.data[currentCapitolId]["tests"].length;
+                              int currentCapitolTestCount = data[currentCapitolId]["tests"].length;
 
                               if (globalIndex - 1 < (prevTestsSum + currentCapitolTestCount)) {
                                 capitolIndex = currentCapitolId;

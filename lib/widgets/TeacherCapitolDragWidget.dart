@@ -148,6 +148,8 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
               itemBuilder: (ctx, index) {
                 bool isExpanded = index == expandedTileIndex;
                 dynamic capitol = localResults[index];
+                print('LENGTH ${capitol["tests"].length}');
+                print('LENGTH USER ${widget.currentUserData!.capitols[index].tests.length}');
 
                 if (capitol == null) {
                   // If capitol data is null, return an empty SizedBox or another widget indicating no data
@@ -245,7 +247,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     
  Future<List<int>?> reorderListOverlay(BuildContext context, ClassData currentClass) async {
   List<int> reorderedNumbers = List.from(widget.numbers); // Create a deep copy
-  List<int> normalOrder = [0, 1, 2, 3, 4, 5, 6];
+  List<int> normalOrder = [0, 1, 2, 3, 4];
 
   return await showDialog<List<int>>(
     context: context,
