@@ -120,6 +120,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    if(_loadingUser) return const Center(child: CircularProgressIndicator(),);
     if(_tutorial) {
         return Tutorial(check: () {
         setState(() {
