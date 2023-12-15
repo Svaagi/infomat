@@ -211,7 +211,11 @@ bool isValidEmail(String email) {
                             widget.editUserEmailController.text = '';
                             widget.editUserPasswordController.text = '';
 
-                            widget.onNavigationItemSelected(1);
+                            if(widget.admin) {
+                              widget.onNavigationItemSelected(0);
+                            } else {
+                              widget.onNavigationItemSelected(1);
+                            }
 
                             widget.setAdmin();
                             

@@ -14,7 +14,7 @@ class UpdateClass extends StatefulWidget {
   final String? selectedClass;
   final bool teacher;
   final TextEditingController editClassNameController;
-  final ClassDataWithId currentClass;
+  ClassDataWithId currentClass;
   final UserDataWithId? currentUser;
   final void Function(String) removeSchoolData;
   final List<String> classes;

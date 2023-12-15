@@ -15,7 +15,7 @@ class Xlsx extends StatefulWidget {
   final UserData? currentUserData;
   final void Function(int) onNavigationItemSelected;
   String? selectedClass;
-  final ClassDataWithId currentClass;
+  ClassDataWithId currentClass;
   final List<String> classes;
 
   Xlsx(
@@ -78,7 +78,7 @@ class _XlsxState extends State<Xlsx> {
                     color: AppColors.getColor('mono').darkGrey,
                   ),
                   onPressed: () { 
-                    widget.onNavigationItemSelected(0);
+                    widget.onNavigationItemSelected(1);
                     widget.selectedClass = null;
                   },
                 ),
@@ -261,8 +261,11 @@ class _XlsxState extends State<Xlsx> {
                               });
                               await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass,  context, );
                               setState(() {
+                                widget.currentClass.data.students = widget.currentClass.data.students;
                                 loading = false;
                               });
+                              widget.onNavigationItemSelected(1);
+                              widget.selectedClass = null;
                             }
                           }
                       ),

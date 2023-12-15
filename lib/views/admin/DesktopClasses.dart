@@ -59,6 +59,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                       color: AppColors.getColor('mono').darkGrey,
                     ),
                     onPressed: () {
+                      widget.currentClass == null;
                       widget.onNavigationItemSelected(0);
                     },
                   ),

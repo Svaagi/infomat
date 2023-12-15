@@ -370,7 +370,7 @@ Future<void> registerMultipleUsers(
                     'students': FieldValue.arrayUnion([userId])
                 };
 
-                currentClass!.data.students.add(userId);
+                if(currentClass.id == user.classId) currentClass.data.students.add(userId);
 
                 batch.update(classRef, updateData);
             } else {
@@ -385,6 +385,7 @@ Future<void> registerMultipleUsers(
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
         // Error handling
+        print(e);
         reShowToast('Nepodarilo sa zaregistrovať používateľov ', true, context);
     }
 }
