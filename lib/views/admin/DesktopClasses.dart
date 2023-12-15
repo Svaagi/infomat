@@ -101,15 +101,15 @@ class _DesktopClassesState extends State<DesktopClasses> {
                   ),
                 ],
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
               Row(
                 children: [
                   Text(
                     'Učitelia',
                     style: TextStyle(color: AppColors.getColor('mono').darkGrey),
                   ),
-                  Spacer(),
-                  Container(
+                  const Spacer(),
+                  SizedBox(
                     height: 40,
                     width: 150,
                     child: ReButton(

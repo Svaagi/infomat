@@ -33,9 +33,9 @@ class _AddClassState extends State<AddClass> {
   TextEditingController _classNameController = TextEditingController();
   String errorText = '';
 
-  void errorEdit (String error, String value) {
+  void errorEdit (String value) {
     setState(() {
-      error = value;
+      errorText = value;
     });
   }
 

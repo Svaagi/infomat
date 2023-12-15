@@ -266,7 +266,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                           },
                           child: Container(
                             height: 72,
-                            width: 172,
+                            width: 174,
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColors.getColor('mono').lightGrey, width: 2),

@@ -12,12 +12,12 @@ class AddClassView extends StatelessWidget {
   final TextEditingController classNameController;
   final void Function(ClassDataWithId) addSchoolData;
   final List<String> classes;
-  final void Function(String, String) errorEdit;
-  final String errorText;
+  final void Function(String) errorEdit;
+  String errorText;
   final Function(String) addToList;
   
 
-  const AddClassView(
+  AddClassView(
     {
       Key? key, required this.currentUserData,
       required this.onNavigationItemSelected,
@@ -114,15 +114,19 @@ class AddClassView extends StatelessWidget {
                         onTap: () async {
                           bool exists = await doesClassNameExist(classNameController.text, classes);
                           if(classNameController.text != '' && !exists) {
-                            errorEdit(errorText, '');
+                            errorEdit('');
+
                             addClass(classNameController.text, currentUserData!.school, addSchoolData, null, addToList);
                             
                             classNameController.text = '';
                             onNavigationItemSelected(0);
                             reShowToast('Trieda úspešne pridaná', false, context);
                           } else {
-                              if(exists)errorEdit(errorText, 'Meno už existuje');
-                              if(classNameController.text == '') errorEdit(errorText, 'Pole je povinné') ;
+                              if(exists)errorEdit('Meno už existuje');
+                              if(classNameController.text == '') errorEdit('Pole je povinné') ;
+                              print('nic');
+
+                              print(errorText);
                           }
                         },
                       ),
