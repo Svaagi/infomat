@@ -301,91 +301,6 @@ class _MobileAdminState extends State<MobileAdmin> {
                     ],
                   )
                   ),
-                  Center(
-                    child: Wrap(
-                        alignment: WrapAlignment.center,
-                        children: [
-                          const Contact(),
-                          const SizedBox(width: 5,),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-
-                          width: 160,
-                          height: 40,
-                          child: ReButton(
-                            color: "red",  
-                            text: 'Odhlásiť sa',
-                            rightIcon: 'assets/icons/logoutIcon.svg',
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    content: Container(
-                                      width: 328,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        mainAxisSize: MainAxisSize.min, // Ensure the dialog takes up minimum height
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Spacer(),
-                                              MouseRegion(
-                                                cursor: SystemMouseCursors.click,
-                                                child: GestureDetector(
-                                                  child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
-                                                  onTap: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              'Odhlásiť sa',
-                                              textAlign: TextAlign.center,
-                                              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                                    color: AppColors.getColor('mono').black,
-                                                  ),
-                                            ),
-                                          ),
-                                          SizedBox(height: 30,),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              'Po odhlásení sa z aplikácie budeš musieť znovu zadať svoje používeteľské meno a heslo.',
-                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                          SizedBox(height: 30,),
-                                            ReButton(
-                                            color: "red", 
-                                            text: 'ODHLÁSIŤ SA',
-                                            onTap: () {
-                                              widget.logOut();
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                          SizedBox(height: 30,),
-                                        ],
-                                      ),
-                                    )
-                                  );
-                                },
-                              );
-                            }
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
                 ],
               ),
             ),
@@ -481,7 +396,7 @@ class _MobileAdminState extends State<MobileAdmin> {
         selectedClass: _selectedClass, 
         teacher: _teacher, 
         editClassNameController: _editClassNameController, 
-        currentClass: currentClass, 
+        currentClass: currentClass!, 
         currentUser: currentUser,
         removeSchoolData: (String classId) {
           classDataList.removeWhere((element) => element.id == classId);
@@ -492,8 +407,8 @@ class _MobileAdminState extends State<MobileAdmin> {
         currentUserData: widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 
-        currentClass: currentClass,
-        classes: classes!,
+        currentClass: currentClass!,
+        classes: classes,
       );
       default:
         return Container();

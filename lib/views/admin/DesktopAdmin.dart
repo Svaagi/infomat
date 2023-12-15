@@ -466,7 +466,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         selectedClass: _selectedClass, 
         teacher: _teacher, 
         editClassNameController: _editClassNameController, 
-        currentClass: currentClass, 
+        currentClass: currentClass!, 
         currentUser: currentUser,
         removeSchoolData: (String classId) {
           classDataList.removeWhere((element) => element.id == classId);
@@ -477,7 +477,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         currentUserData: widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 
-        currentClass: currentClass,
+        currentClass: currentClass!,
         classes: classes!,
       );
       default:

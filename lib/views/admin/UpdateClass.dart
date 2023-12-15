@@ -5,6 +5,7 @@ import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 
 class UpdateClass extends StatefulWidget {
@@ -13,7 +14,7 @@ class UpdateClass extends StatefulWidget {
   final String? selectedClass;
   final bool teacher;
   final TextEditingController editClassNameController;
-  final ClassDataWithId? currentClass;
+  final ClassDataWithId currentClass;
   final UserDataWithId? currentUser;
   final void Function(String) removeSchoolData;
   final List<String> classes;
@@ -40,8 +41,10 @@ class UpdateClass extends StatefulWidget {
 
 class _UpdateClassState extends State<UpdateClass> {
   String _textError = '';
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
+    if(loading) return Center(child: CircularProgressIndicator(),);
     return Align(
       alignment: Alignment.center,
       child: Container(
@@ -70,7 +73,7 @@ class _UpdateClassState extends State<UpdateClass> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                        '${widget.currentClass!.data.name}/ Upraviť triedu',
+                        '${widget.currentClass.data.name}/ Upraviť triedu',
                       style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
@@ -99,12 +102,21 @@ class _UpdateClassState extends State<UpdateClass> {
                   leftIcon: 'assets/icons/binIcon.svg',
                   text: 'Vymazať triedu', 
                   delete: true,
-                  onTap: () {
+                  onTap: () async {
+                      setState(() {
+                        loading = true;
+                      });
+                      List<String> tmp = widget.currentClass.data.students + widget.currentClass.data.teachers;
+                      final functions = FirebaseFunctions.instance;
+                      final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
+                      if(tmp.isNotEmpty) await deleteBulkAccountsCallable({'userIds': tmp});
+                      await deleteClass(widget.currentClass.id, widget.currentUserData!.school, widget.removeSchoolData);
+                      await removeClassFromSchool(widget.currentClass.id, widget.currentUserData!.school);
+                      setState(() {
+                        loading = false;
+                      });
                       widget.onNavigationItemSelected(0);
-                      deleteClass(widget.currentClass!.id, widget.currentUserData!.school, widget.removeSchoolData);
-                      removeClassFromSchool(widget.currentClass!.id, widget.currentUserData!.school);
                       reShowToast('Trieda úspešne vymazaná', false, context);
-                      deleteUserFunction(widget.currentClass!.data.students, widget.currentUser!.data, context, widget.currentClass);
                     },
                     
                 ),
@@ -114,16 +126,16 @@ class _UpdateClassState extends State<UpdateClass> {
                 onTap: () async {
                   bool exists = await doesClassNameExist(widget.editClassNameController.text, widget.classes);
                   if(widget.editClassNameController.text != '' && !exists) {
-                    widget.currentClass!.data.name = widget.editClassNameController.text;
-                  editClass(widget.currentClass!.id,
+                    widget.currentClass.data.name = widget.editClassNameController.text;
+                  editClass(widget.currentClass.id,
                   ClassData(
                     name: widget.editClassNameController.text,
-                    school: widget.currentClass!.data.school,
-                    students: List<String>.from(widget.currentClass!.data.students),
-                    teachers: List<String>.from(widget.currentClass!.data.teachers),
-                    materials: List<String>.from(widget.currentClass!.data.materials),
-                    capitolOrder: List<int>.from(widget.currentClass!.data.capitolOrder),
-                    posts: widget.currentClass!.data.posts.map((post) {
+                    school: widget.currentClass.data.school,
+                    students: List<String>.from(widget.currentClass.data.students),
+                    teachers: List<String>.from(widget.currentClass.data.teachers),
+                    materials: List<String>.from(widget.currentClass.data.materials),
+                    capitolOrder: List<int>.from(widget.currentClass.data.capitolOrder),
+                    posts: widget.currentClass.data.posts.map((post) {
                       return PostsData(
                         date: post.date,
                         id: post.id,

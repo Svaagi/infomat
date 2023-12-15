@@ -15,7 +15,7 @@ class Xlsx extends StatefulWidget {
   final UserData? currentUserData;
   final void Function(int) onNavigationItemSelected;
   String? selectedClass;
-  final ClassDataWithId? currentClass;
+  final ClassDataWithId currentClass;
   final List<String> classes;
 
   Xlsx(
@@ -254,12 +254,12 @@ class _XlsxState extends State<Xlsx> {
                       ReButton(
                         color: "green",  
                         text: 'ULOŽIŤ', 
-                        onTap: () {
+                        onTap: () async {
                             if (table!.errNum == 0) {
                               setState(() {
                                 loading = true;
                               });
-                              registerMultipleUsers(table!.data, widget.currentUserData!.school, false, context);
+                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass,  context, );
                               setState(() {
                                 loading = false;
                               });

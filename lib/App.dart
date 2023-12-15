@@ -24,6 +24,8 @@ import 'package:infomat/widgets/MobileBottomNavigation.dart';
 import 'package:infomat/widgets/TeacherMobileAppBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/widgets/Widgets.dart';
+import 'package:infomat/providers/ContactProvider.dart';
 
 class NonSwipeablePageController extends PageController {
   @override
@@ -239,6 +241,93 @@ class _AppState extends State<App> {
             buildNavItem(3, "assets/icons/bookIcon.svg", "Vzdelávanie", context),
             buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
             buildNavItem(6, "assets/icons/adminIcon.svg", "Moja škola", context),
+            const Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Contact(),
+                const SizedBox(height: 5,),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+
+                width: 160,
+                height: 40,
+                child: ReButton(
+                  color: "red",  
+                  text: 'Odhlásiť sa',
+                  rightIcon: 'assets/icons/logoutIcon.svg',
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          content: Container(
+                            width: 328,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min, // Ensure the dialog takes up minimum height
+                              children: [
+                                Row(
+                                  children: [
+                                    Spacer(),
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: GestureDetector(
+                                        child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
+                                        onTap: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Odhlásiť sa',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                          color: AppColors.getColor('mono').black,
+                                        ),
+                                  ),
+                                ),
+                                SizedBox(height: 30,),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Po odhlásení sa z aplikácie budeš musieť znovu zadať svoje používeteľské meno a heslo.',
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(height: 30,),
+                                  ReButton(
+                                  color: "red", 
+                                  text: 'ODHLÁSIŤ SA',
+                                  onTap: () {
+                                    FirebaseAuth.instance.signOut();
+                                    setState(() {
+                                      fetchUserData();
+                                    });
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                SizedBox(height: 30,),
+                              ],
+                            ),
+                          )
+                        );
+                      },
+                    );
+                  }
+                ),
+              )
+            ],
+          ),
             // Add more ListTile widgets for additional menu items
           ],
         ),

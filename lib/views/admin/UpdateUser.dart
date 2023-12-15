@@ -264,6 +264,7 @@ Future<void> saveUserDataToFirestore(
 
     // Convert userData object to a Map
     Map<String, dynamic> userDataMap = {
+      'id': userId,
       'admin': userData.admin,
       'discussionPoints': userData.discussionPoints,
       'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
@@ -271,10 +272,11 @@ Future<void> saveUserDataToFirestore(
       'email': newEmail, // Update the email in Firestore to the new email
       'name': userData.name,
       'active': userData.active,
-      'school': userData.school,
-      'schoolClass': userData.schoolClass,
+      'classes': userData.classes,
       'notifications': userData.notifications,
       'materials': userData.materials,
+      'school': userData.school,
+      'schoolClass': userData.schoolClass,
       'points': userData.points,
       'capitols': userData.capitols.map((userCapitolsData) {
         return {
