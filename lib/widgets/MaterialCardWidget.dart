@@ -116,7 +116,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                 ),
                 child: ClipRRect(
                 borderRadius: BorderRadius.circular(10), // Apply rounded corners
-                child: /* Image.network( widget.image)*/ Container(),
+                child: Image.network( widget.image),
                 )
               ),
               Stack(
