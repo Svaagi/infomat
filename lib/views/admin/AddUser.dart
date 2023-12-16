@@ -6,6 +6,7 @@ import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/controllers/auth.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:flutter/gestures.dart';
 
 class AddUser extends StatefulWidget {
   final UserData? currentUserData;
@@ -202,11 +203,36 @@ class _AddUserState extends State<AddUser> {
                         if(!validEmail) _emailErrorText = 'Nesprávny formát E-mailu';
                       }
                   ),
-                  if (widget.teacher)Text(
-                    'Ak učiteľ, ktorého chcete pridať, už má účet v aplikácií, pridáte ho tu.',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
+                  const SizedBox(height: 30,),
+                  if (widget.teacher) Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                       Text(
+                        'Ak učiteľ, ktorého chcete pridať, už má účet v aplikácií, ',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: AppColors.getColor('mono').grey,
+                          ),
                       ),
+                      Text.rich(
+                        TextSpan(
+                          text: 'pridáte ho tu.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                                color: AppColors.getColor('mono').grey,
+                              decoration: TextDecoration.underline,
+                          ),
+                          // You can also add onTap to make it clickable
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // Handle the tap event here, e.g., open a URL
+                              // You can use packages like url_launcher to launch URLs.
+                              widget.onNavigationItemSelected(3);
+                            },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               )
