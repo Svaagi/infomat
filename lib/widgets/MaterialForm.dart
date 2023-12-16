@@ -56,7 +56,7 @@ class _MaterialFormState extends State<MaterialForm> {
 
 
   // Variables to hold state
-  String _type = '';
+  String _type = 'Textový materiál';
   String? _class;
   String? _imageUrl;
 
