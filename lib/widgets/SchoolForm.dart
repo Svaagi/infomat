@@ -147,7 +147,7 @@ class _SchoolFormState extends State<SchoolForm> {
   }
   
 
-  Future<void> sendVerificationCode( String recipientEmail, String verificationCode) async {
+  Future<void> sendVerificationCode( String recipientEmail, String name, String verificationCode) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance; // Create an instance of FirebaseFirestore
 
 
@@ -156,7 +156,7 @@ class _SchoolFormState extends State<SchoolForm> {
         'to': [recipientEmail],
         'message': {
           'subject': 'Verifikácia',
-          'text': 'Dobrý deň,\n váš overovací kód je $verificationCode\n Na túto správu neodpovedajte, bola odoslaná automaticky.'
+          'text': 'Dobrý deň  $name,\nVáš overovací kód je $verificationCode.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
         },
       },
     ).then(
@@ -297,7 +297,7 @@ class _SchoolFormState extends State<SchoolForm> {
                             setState(() {
                               generatedCode = generateRandomInt().toString();
                             });
-                            sendVerificationCode( _adminEmailController.text, generatedCode!);
+                            sendVerificationCode( _adminEmailController.text, _adminNameController.text, generatedCode!);
                           } else {
 
                             setState(() {
@@ -1050,7 +1050,7 @@ class _SchoolFormState extends State<SchoolForm> {
               'to': [email],
               'message': {
                 'subject': 'Heslo',
-                'text': 'Vaše heslo je $generatePassword'
+                'text': 'Dobrý deň  $name,\nVáš overovací kód je $generatePassword.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
               },
             },
           ).then(
