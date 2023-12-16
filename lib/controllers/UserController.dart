@@ -7,6 +7,7 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/controllers/convert.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:math';
 
 Future<UserData> fetchUser(String userId) async {
   try {
@@ -169,6 +170,7 @@ Future<UserData> fetchUser(String userId) async {
   }
 }
 
+
 Future<void> updateClasses(String userId, String classId) async {
   try {
     // Get a reference to the user's document in Firestore
@@ -288,21 +290,65 @@ Future<void> registerUser(String schoolId, String classId, String name, String e
   }
 }
 
+String generateRandomPassword({int length = 12}) {
+    // Define character sets for different types of characters
+    final String uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    final String lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    final String numericChars = '0123456789';
+
+    // Combine all character sets
+    final String allChars =
+        uppercaseChars + lowercaseChars + numericChars;
+
+    final Random random = Random();
+
+    // Initialize an empty password string
+    String password = '';
+
+    // Ensure the password contains at least one character from each character set
+    password += uppercaseChars[random.nextInt(uppercaseChars.length)];
+    password += lowercaseChars[random.nextInt(lowercaseChars.length)];
+    password += numericChars[random.nextInt(numericChars.length)];
+
+    // Generate the remaining characters randomly
+    for (int i = 4; i < length; i++) {
+      password += allChars[random.nextInt(allChars.length)];
+    }
+
+    // Shuffle the password to make it more random
+    List<String> passwordCharacters = password.split('');
+    passwordCharacters.shuffle();
+    password = passwordCharacters.join('');
+
+    return password;
+}
+
 Future<void> registerMultipleUsers(
     List<ConvertTable> users,
     String schoolId,
     ClassDataWithId currentClass,
+    String email,
+    String name,
     BuildContext context
 ) async {
     final functions = FirebaseFunctions.instance;
     final firestore = FirebaseFirestore.instance;
     WriteBatch batch = firestore.batch();
+    List<Map<String, String>> userDetails = [];
 
     try {
         // Prepare user data for bulk account creation
-        var bulkUserData = users.map((user) => {
-            'email': user.email,
-            'password': 'test1234', // Consider using unique passwords or a secure method to generate them
+        var bulkUserData = users.map((user) {
+            String password = generateRandomPassword();
+            userDetails.add({
+              'name': user.name,
+              'email': user.email,
+              'password': password
+            });
+            return {
+              'email': user.email,
+              'password': password,
+            };
         }).toList();
 
         // Call the modified Firebase function for bulk account creation
@@ -382,6 +428,8 @@ Future<void> registerMultipleUsers(
         // Commit the batch
         await batch.commit();
 
+        sendUserDetailsEmail(userDetails, email, name);
+
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
         // Error handling
@@ -391,7 +439,23 @@ Future<void> registerMultipleUsers(
 }
 
 
+Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String recipientEmail, String name) async {
+    final firestore = FirebaseFirestore.instance;
 
+    String userDetailsText = userDetails.map((user) {
+        return 'meno: ${user['name']}, e-mail: ${user['email']}, heslo: ${user['password']}';
+    }).join('\n');
+
+    await firestore.collection('mail').add({
+        'to': [recipientEmail],
+        'message': {
+            'subject': 'Prihlasovacie údaje žiakov',
+            'text':'Dobrý deň  $name,\nnásledujúce údaje sú prihlasovacie údaje novo registrovaných žiakov:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+        },
+    }).then((value) {
+        print('Queued email with user details for delivery!');
+    });
+}
 
 
 

@@ -267,7 +267,7 @@ class _XlsxState extends State<Xlsx> {
                               setState(() {
                                 loading = true;
                               });
-                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass,  context, );
+                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass, widget.currentUserData!.email, widget.currentUserData!.name,  context, );
                               setState(() {
                                 widget.currentClass.data.students = widget.currentClass.data.students;
                                 loading = false;
