@@ -91,7 +91,7 @@ Widget build(BuildContext context) {
   bool isDropdownOpen = false; // Track the open state of the dropdown
 
   return options == null
-      ? const CircularProgressIndicator()
+      ? Container()
       : ClipRRect(
           borderRadius: BorderRadius.circular(30.0), // Rounded corners for the entire popup
           child: Container(
