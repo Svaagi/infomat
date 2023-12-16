@@ -5,11 +5,11 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/controllers/convert.dart';
 import 'package:infomat/controllers/userController.dart';
-import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:path_provider/path_provider.dart';
+import 'dart:html' as html;
+
 
 class Xlsx extends StatefulWidget {
   final UserData? currentUserData;
@@ -173,32 +173,26 @@ class _XlsxState extends State<Xlsx> {
                       ),
                 ),
                 MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        onTap: () async {
-                          // Load the file
-                          final byteData = await rootBundle.load('assets/Žiaci.xlsx');
-                          final directory = await getApplicationDocumentsDirectory();
-                          final file = File('${directory.path}/Žiaci.xlsx');
-
-                          // Write the file
-                          await file.writeAsBytes(
-                              byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-
-                          // Notify user
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('File downloaded successfully!')),
-                          );
-                        },
-                        child: Text(
-                          'Stiahnuť vzorový súbor na import žiakov',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () async {
+                      final byteData = await rootBundle.load('assets/ziaci-vzor.xlsx');
+                      final blob = html.Blob([byteData.buffer.asUint8List()], 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                      final url = html.Url.createObjectUrlFromBlob(blob);
+                      html.AnchorElement anchor = html.AnchorElement(href: url)
+                        ..setAttribute("download", "ziaci-vzor.xlsx")
+                        ..click();
+                      html.Url.revokeObjectUrl(url);
+                    },
+                    child: Text(
+                      'Stiahnuť vzorový súbor na import žiakov',
+                      style: TextStyle(
+                        color: Colors.blue[900],
+                        decoration: TextDecoration.underline,
                       ),
                     ),
+                  ),
+                ),
                 SizedBox(height: 30,),
                   Text(
                   'Názvy tried v súbore sa musia zhodovať s názvami, ktoré ste zadali v aplikácii.',
@@ -224,7 +218,21 @@ class _XlsxState extends State<Xlsx> {
                 separatorBuilder: (context, index) => const Divider(),
               )
             ) : Center(
-              child: Image.asset('assets/import.png', width: 700, height: 300,),
+              child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () async {
+                      final byteData = await rootBundle.load('assets/ziaci-vzor.xlsx');
+                      final blob = html.Blob([byteData.buffer.asUint8List()], 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                      final url = html.Url.createObjectUrlFromBlob(blob);
+                      html.AnchorElement anchor = html.AnchorElement(href: url)
+                        ..setAttribute("download", "ziaci-vzor.xlsx")
+                        ..click();
+                      html.Url.revokeObjectUrl(url);
+                    },
+                    child: Image.asset('assets/import.png', width: 700, height: 300,),
+                  ),
+                ),
             ),
             const SizedBox(height: 30,),
             Align(

@@ -52,5 +52,5 @@ flutter:
     - assets/bottomBackground.svg
     - assets/notifications/
     - assets/learningCards/
-    - assets/Žiaci.xlsx
+    - assets/ziaci-vzor.xlsx
     - assets/CapitolsData.json
