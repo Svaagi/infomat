@@ -965,11 +965,10 @@ class _SchoolFormState extends State<SchoolForm> {
     final String uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     final String lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     final String numericChars = '0123456789';
-    final String specialChars = '!@#\$%^&*()_-+=<>?/[]{},.:';
 
     // Combine all character sets
     final String allChars =
-        uppercaseChars + lowercaseChars + numericChars + specialChars;
+        uppercaseChars + lowercaseChars + numericChars;
 
     final Random random = Random();
 
@@ -980,7 +979,6 @@ class _SchoolFormState extends State<SchoolForm> {
     password += uppercaseChars[random.nextInt(uppercaseChars.length)];
     password += lowercaseChars[random.nextInt(lowercaseChars.length)];
     password += numericChars[random.nextInt(numericChars.length)];
-    password += specialChars[random.nextInt(specialChars.length)];
 
     // Generate the remaining characters randomly
     for (int i = 4; i < length; i++) {
