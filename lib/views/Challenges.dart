@@ -297,11 +297,13 @@ Widget build(BuildContext context) {
                           Expanded(
                             child: ListView.builder(
                             reverse: true,
-                            itemCount: 32 + 1, // Add 1 for the dummy item
+                            itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
-                                return SizedBox(height: 300.0); // Adjust the height as needed
+                                return SizedBox(height: 150.0); // Adjust the height as needed
+                              } else if (globalIndex == 34) {
+                                return SizedBox(height: 100.0);
                               }
                             int? capitolIndex;
                             int? testIndex;
@@ -404,11 +406,13 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: ListView.builder(
                             reverse: true,
-                            itemCount: 32 + 1, // Add 1 for the dummy item
+                            itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
                                 // This is the dummy item, you can control its height
-                                return const SizedBox(height: 300.0); // Adjust the height as needed
+                                return SizedBox(height: 150.0); // Adjust the height as needed
+                              } else if (globalIndex == 34) {
+                                return SizedBox(height: 100.0);
                               }
                             int? capitolIndex;
                             int? testIndex;
