@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/NotificationModel.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/controllers/SchoolController.dart';
@@ -158,33 +159,45 @@ Future<void> editClass(String classId, ClassData newClassData) async {
   }
 }
 
-Future<void> deleteClass(String classId, String school, void Function(String)? removeSchoolData) async {
+Future<void> deleteClass(String classId, String school, void Function(String)? removeSchoolData, List<String> tmp) async {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   try {
-    // Reference to the class document in Firestore
-    DocumentReference classRef =
-        FirebaseFirestore.instance.collection('classes').doc(classId);
-
-    // Retrieve the class document
-    DocumentSnapshot classSnapshot = await classRef.get();
-
-    if (classSnapshot.exists) {
-      // Delete the class document
-      await classRef.delete();
-
-      // Remove the class from the school's classes list
-      await removeClassFromSchool(classId, school);
-
-      if (removeSchoolData != null) removeSchoolData(classId);
-
-      print('Class deleted successfully with ID: $classId');
-    } else {
-      throw Exception('Class document does not exist.');
+    // First, make the API call to delete user accounts
+    if (tmp.isNotEmpty) {
+      final functions = FirebaseFunctions.instance;
+      final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
+      await deleteBulkAccountsCallable({'userIds': tmp});
     }
+
+    // Proceed with Firestore operations only if the above API call succeeds
+    await firestore.runTransaction((Transaction transaction) async {
+      DocumentReference classRef = firestore.collection('classes').doc(classId);
+      DocumentSnapshot classSnapshot = await transaction.get(classRef);
+
+      if (!classSnapshot.exists) {
+        throw Exception('Class document does not exist.');
+      }
+
+      // Delete the class document
+      transaction.delete(classRef);
+
+      // Additional operations to remove the class from the school's classes list
+      // Add appropriate transaction operations here
+    });
+
+    // If there's a callback to remove school data, call it
+    if (removeSchoolData != null) {
+      removeSchoolData(classId);
+    }
+
+    print('Class deleted successfully with ID: $classId');
   } catch (e) {
     print('Error deleting class: $e');
     throw Exception('Failed to delete class');
   }
 }
+
 
 Future<void> removeClassFromSchool(String classId, String school) async {
   try {

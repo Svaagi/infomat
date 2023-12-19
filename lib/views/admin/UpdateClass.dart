@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/ClassController.dart';
-import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 
 
 class UpdateClass extends StatefulWidget {
@@ -106,11 +104,7 @@ class _UpdateClassState extends State<UpdateClass> {
                       setState(() {
                         loading = true;
                       });
-                      List<String> tmp = widget.currentClass.data.students + widget.currentClass.data.teachers;
-                      final functions = FirebaseFunctions.instance;
-                      final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
-                      if(tmp.isNotEmpty) await deleteBulkAccountsCallable({'userIds': tmp});
-                      await deleteClass(widget.currentClass.id, widget.currentUserData!.school, widget.removeSchoolData);
+                      await deleteClass(widget.currentClass.id, widget.currentUserData!.school, widget.removeSchoolData, widget.currentClass.data.students);
                       await removeClassFromSchool(widget.currentClass.id, widget.currentUserData!.school);
                       setState(() {
                         loading = false;
