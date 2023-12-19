@@ -536,6 +536,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 ) : Container(),
                                 if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
                                 subQuestion != '' ? Container(
+                                  padding: EdgeInsets.all(4),
                                   child: Text(
                                     subQuestion,
                                     style: Theme.of(context)

@@ -407,7 +407,9 @@ class _MobileTestState extends State<MobileTest> {
                     ) : Container(),
                   const SizedBox(height: 8,),
                   if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
-                  subQuestion != '' ?  Text(
+                  subQuestion != '' ?  Container(
+                    padding: EdgeInsets.all(4),
+                  child: Text(
                       subQuestion,
                       style: Theme.of(context)
                             .textTheme
@@ -415,6 +417,7 @@ class _MobileTestState extends State<MobileTest> {
                             .copyWith(
                               color: Theme.of(context).colorScheme.onBackground,
                             ),
+                        )
                     ): Container(),
                   if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
                   ListView.builder(

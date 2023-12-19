@@ -535,7 +535,9 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               ),
                             ) : Container(),
                             if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
-                            subQuestion != '' ?  Text(
+                            subQuestion != '' ?  Container(
+                            padding: EdgeInsets.all(4),
+                            child: Text(
                                 subQuestion,
                                 style: Theme.of(context)
                                       .textTheme
@@ -543,6 +545,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                       .copyWith(
                                         color: Theme.of(context).colorScheme.onBackground,
                                       ),
+                              )
                             ) : Container(),
                             if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
                          const SizedBox(height: 30,),

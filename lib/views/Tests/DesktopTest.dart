@@ -409,6 +409,7 @@ class _DesktopTestState extends State<DesktopTest> {
                             ) : Container(),
                             if (!(title != '' || definition != '' || images.length > 0)) SizedBox(height: 20,),
                             subQuestion != '' ? Container(
+                              padding: EdgeInsets.all(4),
                               child: Text(
                                 subQuestion,
                                 style: Theme.of(context)

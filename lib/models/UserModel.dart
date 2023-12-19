@@ -163,32 +163,6 @@ UserData userData = UserData(
             tests: [
               UserCapitolsTestData(
                 completed: false,
-                name: 'Analýza a Tvrdenie',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
-                name: '1.1 Časti debatného argumentu',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
                 name: 'Čo je argument (úvod do argumentu)',
                 points: 0,
                 questions: [
@@ -205,7 +179,58 @@ UserData userData = UserData(
               ),
               UserCapitolsTestData(
                 completed: false,
-                name: 'Dôkaz',
+                name: 'Výrokova logika - závery',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Výrokova logika - predpoklady',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Časti debatného argumentu',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Analýza a Tvrdenie',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Dôkazy v argumentoch',
                 points: 0,
                 questions: [
                   UserQuestionsData(answer: [], completed: false, correct: [false, false]),
@@ -235,32 +260,6 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Výrokova logika - závery',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Výrokova logika - predpoklady',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                ],
-              ),
-              
             ],
           ),
           UserCapitolsData(
@@ -269,17 +268,6 @@ UserData userData = UserData(
             image: '',
             name: 'Argumentačné chyby',
             tests: [
-              UserCapitolsTestData(
-                completed: false,
-                name: 'Argumentačné chyby v praxi',
-                points: 0,
-                questions: [
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-                ],
-              ),
               UserCapitolsTestData(
                 completed: false,
                 name: 'Úvod do argumentačných chýb',
@@ -320,6 +308,17 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false, false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false, false, false, false]),
+                ],
+              ),
+              UserCapitolsTestData(
+                completed: false,
+                name: 'Argumentačné chyby v praxi',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
                 ],
               ),
               UserCapitolsTestData(
