@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +14,7 @@ class OptionsData {
 
   OptionsData({
     required this.id,
-    required this.data
+    required this.data,
   });
 }
 
@@ -33,6 +32,20 @@ class DropDown extends StatefulWidget {
   _DropDownState createState() => _DropDownState();
 }
 
+// Create a global variable for 'No Class' option
+final OptionsData noClassOption = OptionsData(
+  id: 'Žiadna',
+  data: ClassData(
+    name: 'Žiadna',
+    capitolOrder: [0,1,2,3,4],
+    materials: [],
+    posts: [],
+    school: '',
+    students: [],
+    teachers: [],
+  ),
+);
+
 class _DropDownState extends State<DropDown> {
   String? dropdownValue;
   List<OptionsData>? options;
@@ -42,35 +55,44 @@ class _DropDownState extends State<DropDown> {
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   @override
-void initState() {
-  super.initState();
-  final userAgent = html.window.navigator.userAgent.toLowerCase();
+  void initState() {
+    super.initState();
     isMobile = userAgent.contains('mobile');
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
-  fetchOptions();
-}
-
-
-Future<void> fetchOptions() async {
-  try {
-    if (widget.currentUserData != null) {
-          dropdownValue = widget.currentUserData!.schoolClass;
-      options = await Future.wait(widget.currentUserData!.classes.map((id) async {
-        ClassData classData = await fetchClass(id);
-        return OptionsData(id: id, data: classData);
-      }).toList());
-      setState(() {});
-    } else {
-      print('Error: Current user data or classes is null');
-    }
-  } catch (e) {
-    print('Error while fetching options: $e');
+    fetchOptions();
   }
-}
 
+  Future<void> fetchOptions() async {
+    try {
+      if (widget.currentUserData != null) {
+        dropdownValue = widget.currentUserData!.schoolClass;
+        if (dropdownValue == null || dropdownValue!.isEmpty) {
+          dropdownValue = noClassOption.id; // Set to 'No Class' if null or empty
+        }
 
+        options = [noClassOption]; // Start with 'No Class' option
+
+        // Fetch the rest of the classes
+        for (var classId in widget.currentUserData!.classes) {
+          try {
+            ClassData classData = await fetchClass(classId);
+            options!.add(OptionsData(id: classId, data: classData));
+          } catch (e) {
+            // Log error or handle invalid classId
+            print('Invalid classId $classId: $e');
+          }
+        }
+
+        setState(() {});
+      } else {
+        print('Error: Current user data is null');
+      }
+    } catch (e) {
+      print('Error while fetching options: $e');
+    }
+  }
 
   void handleSelection(String selectedId) {
     setState(() {
@@ -78,81 +100,75 @@ Future<void> fetchOptions() async {
     });
     myFunction(selectedId);
   }
+
   void myFunction(String parameter) {
     widget.currentUserData!.schoolClass = parameter;
     saveUserDataToFirestore(widget.currentUserData!).then((_) {
       if (widget.onUserDataChanged != null) {
-        widget.onUserDataChanged!(); // Call the callback when the data has been saved
+        widget.onUserDataChanged!();
       }
     });
   }
-@override
-Widget build(BuildContext context) {
-  bool isDropdownOpen = false; // Track the open state of the dropdown
 
-  return options == null
-      ? Container()
-      : ClipRRect(
-          borderRadius: BorderRadius.circular(30.0), // Rounded corners for the entire popup
-          child: Container(
-            width: 138,
-            height: isMobile ? 20 : 40,
-            decoration: BoxDecoration(
-              color: AppColors.getColor('mono').lighterGrey, // Set the background color to grey or transparent
-              borderRadius: BorderRadius.circular(0.0), // Rounded corners for the button
-            ),
-            child: PopupMenuButton<String>(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
+  @override
+  Widget build(BuildContext context) {
+    bool isDropdownOpen = false;
+
+    return options == null || options!.isEmpty
+        ? Container()
+        : ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: Container(
+              width: 138,
+              height: isMobile ? 20 : 40,
+              decoration: BoxDecoration(
+                color: AppColors.getColor('mono').lighterGrey,
+                borderRadius: BorderRadius.circular(0.0),
               ),
-              offset: const Offset(0, 40), 
-              tooltip: '', // Remove the tooltip
-              icon: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Row(
-                  children: [
-                    Text(
-                      dropdownValue != null ? 'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue).data.name}' : '',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color:  AppColors.getColor('primary').main ,
-                    ),
-                    ),
-                    const Spacer(),
-                    SvgPicture.asset('assets/icons/downIcon.svg', color: AppColors.getColor('primary').main),
-                  ],
+              child: PopupMenuButton<String>(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-              ),
-              onSelected: (String? newValue) {
-                handleSelection(newValue!);
-                setState(() {
-                  isDropdownOpen = !isDropdownOpen; // Toggle the dropdown open state
-                });
-              },
-              onCanceled: () {
-                setState(() {
-                  isDropdownOpen = !isDropdownOpen; // Toggle the dropdown open state when canceled
-                });
-              },
-              itemBuilder: (BuildContext context) {
-                return options!.map((OptionsData value) {
-                  return PopupMenuItem<String>(
-                    value: value.id,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8), // Add padding to make it rounded
-                          child: Text(value.data.name),
+                offset: const Offset(0, 40),
+                tooltip: '',
+                icon: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue, orElse: () => noClassOption).data.name}',
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: AppColors.getColor('primary').main,
                         ),
-                      ],
-                    ),
-                  );
-                }).toList();
-              },
+                      ),
+                      const Spacer(),
+                      SvgPicture.asset('assets/icons/downIcon.svg', color: AppColors.getColor('primary').main),
+                    ],
+                  ),
+                ),
+                onSelected: (String? newValue) {
+                  handleSelection(newValue!);
+                  setState(() {
+                    isDropdownOpen = !isDropdownOpen;
+                  });
+                },
+                onCanceled: () {
+                  setState(() {
+                    isDropdownOpen = !isDropdownOpen;
+                  });
+                },
+                itemBuilder: (BuildContext context) {
+                  return options!.map((OptionsData value) {
+                      return PopupMenuItem<String>(
+                        value: value.id,
+                        child: Text(value.data.name),
+                      );
+                    }).toList();
+                },
+              ),
             ),
-          ),
-        );
-}
+          );
+  }
 
   Future<void> saveUserDataToFirestore(UserData userData) async {
     try {
