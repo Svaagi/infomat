@@ -65,34 +65,40 @@ class _DropDownState extends State<DropDown> {
   }
 
   Future<void> fetchOptions() async {
-    try {
-      if (widget.currentUserData != null) {
-        dropdownValue = widget.currentUserData!.schoolClass;
-        if (dropdownValue == null || dropdownValue!.isEmpty) {
-          dropdownValue = noClassOption.id; // Set to 'No Class' if null or empty
+  try {
+    if (widget.currentUserData != null) {
+      // Initialize options with the 'No Class' option
+      options = [noClassOption];
+
+      // Fetch the classes and add them to the options
+      for (var classId in widget.currentUserData!.classes) {
+        try {
+          ClassData classData = await fetchClass(classId);
+          options!.add(OptionsData(id: classId, data: classData));
+        } catch (e) {
+          print('Invalid classId $classId: $e');
         }
-
-        options = [noClassOption]; // Start with 'No Class' option
-
-        // Fetch the rest of the classes
-        for (var classId in widget.currentUserData!.classes) {
-          try {
-            ClassData classData = await fetchClass(classId);
-            options!.add(OptionsData(id: classId, data: classData));
-          } catch (e) {
-            // Log error or handle invalid classId
-            print('Invalid classId $classId: $e');
-          }
-        }
-
-        setState(() {});
-      } else {
-        print('Error: Current user data is null');
       }
-    } catch (e) {
-      print('Error while fetching options: $e');
+
+      // Check if current schoolClass is in the fetched classes
+      bool schoolClassExists = options!.any((option) => option.id == widget.currentUserData!.schoolClass);
+
+      // Set the dropdownValue to 'No Class' if schoolClass is invalid, null, or empty
+      dropdownValue = (widget.currentUserData!.schoolClass != null &&
+              widget.currentUserData!.schoolClass!.isNotEmpty &&
+              schoolClassExists)
+          ? widget.currentUserData!.schoolClass
+          : noClassOption.id;
+
+      setState(() {});
+    } else {
+      print('Error: Current user data is null');
     }
+  } catch (e) {
+    print('Error while fetching options: $e');
   }
+}
+
 
   void handleSelection(String selectedId) {
     setState(() {

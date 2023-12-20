@@ -183,7 +183,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                           height: 48,
                                           child:  ReButton(
                                             color: "grey", 
-                                            text: 'PRIRADIŤ EXISTUJÚCI PROFILE',  
+                                            text: 'PRIRADIŤ EXISTUJÚCI PROFIL',  
                                             onTap: () async {
                                                 widget.onNavigationItemSelected(3);
                                                 Navigator.of(context).pop();

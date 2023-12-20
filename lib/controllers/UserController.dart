@@ -527,7 +527,7 @@ Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String 
         'to': [recipientEmail],
         'message': {
             'subject': Xlsx ? 'Prihlasovacie údaje žiakov' : 'Prihlasovacie údaje',
-            'text':'Dobrý deň  $name,\n${Xlsx ? 'následujúce údaje sú prihlasovacie údaje novo registrovaných žiakov': 'toto sú nové prihlasovacie údaje pre email ${userDetails[0]['email']}'}:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+            'text':'Dobrý deň,  $name,\n${Xlsx ? 'následujúce údaje sú prihlasovacie údaje novo registrovaných žiakov': 'toto sú nové prihlasovacie údaje pre email ${userDetails[0]['email']}'}:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
         },
     }).then((value) {
         print('Queued email with user details for delivery!');
