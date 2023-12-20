@@ -104,7 +104,7 @@ class _AddExistingUserState extends State<AddExistingUser> {
             ),
             SizedBox(height: 40,),
             Text(
-              'Vyberte, ktorého učiteľa chcete priradiť k triede}',
+              'Vyberte, ktorého učiteľa chcete priradiť k triede',
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: AppColors.getColor('mono').black,
                   ),

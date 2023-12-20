@@ -82,7 +82,7 @@ Future<void> addTeacherToSchool(String newTeacher, String schoolId) async {
   }
 }
 
-Future<void> addSchool(String schoolId, String name, String admin, List<String> classes) async {
+Future<void> addSchool(String schoolId, String name, String admin, List<String> classes, bool setTeacher) async {
   try {
     // Reference to the schools collection in Firestore
     CollectionReference schoolsCollection = FirebaseFirestore.instance.collection('schools');
@@ -92,7 +92,7 @@ Future<void> addSchool(String schoolId, String name, String admin, List<String> 
       'name': name,
       'admin': admin,
       'classes': classes,
-      'teachers': [admin]
+      'teachers': setTeacher ? [admin] : []
     });
   } catch (e) {
     print('Error adding school: $e');

@@ -50,6 +50,7 @@ class _SchoolFormState extends State<SchoolForm> {
   List<int> selectedNumbers = [-1,-1,-1,-1,-1];
   List<int> selectedYears = [];
   bool _class = false;
+  bool setTeacher = false;
 
   TextEditingController _one = TextEditingController();
   TextEditingController _two = TextEditingController();
@@ -277,6 +278,19 @@ class _SchoolFormState extends State<SchoolForm> {
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                         color: AppColors.getColor('mono').grey,
                                       ),
+                                ),
+                                SizedBox(height: 10,),
+                                Row(
+                                  children: [
+                                    Checkbox(value: setTeacher, onChanged: (bool? newValue) {
+                                    setState(() {
+                                      setTeacher = newValue!;
+                                    });
+                                  },),
+                                    Text('Použiť profil správcu školy zároveň ako učiteľský profil.', style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                        color: AppColors.getColor('mono').grey,
+                                  ),),
+                                  ],
                                 ),
                               ],
                             ),
@@ -1056,7 +1070,7 @@ class _SchoolFormState extends State<SchoolForm> {
               print('Queued email for delivery!');
             },
           );
-          addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , []);
+          addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , [], setTeacher);
 
           for (String name in combinedList) {
             addClass(name, _schoolIdController.text, null, userData.id, (String) {});
