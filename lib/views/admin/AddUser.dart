@@ -40,7 +40,6 @@ class AddUser extends StatefulWidget {
 class _AddUserState extends State<AddUser> {
   String _nameErrorText = '';
   String _emailErrorText = '';
-  String _passwordErrorText = '';
 
   // Existing isValidEmail function
   bool isValidEmail(String email) {
@@ -161,20 +160,6 @@ class _AddUserState extends State<AddUser> {
               AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
               errorText: _emailErrorText
             ),
-            const SizedBox(height: 10,),
-            Text(
-              'Heslo ${widget.teacher ? 'učiteľa' : 'žiaka'}',
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: AppColors.getColor('mono').grey,
-                  ),
-            ),
-            reTextField(
-              'Heslo',
-              false,
-              widget.userPasswordController,
-              AppColors.getColor('mono').lightGrey, // assuming white is the default border color you want
-              errorText: _passwordErrorText
-            ),
             const Spacer(),
             Align(
               alignment: Alignment.center,
@@ -190,15 +175,14 @@ class _AddUserState extends State<AddUser> {
                         if(validEmail) _emailErrorText = '';
                         if(!isUsed) _emailErrorText = '';
                       });
-                      if(widget.userNameController.text != '' && widget.userEmailController.text != '' &&widget.userPasswordController.text != '' && widget.selectedClass != null) {
-                        registerUser(widget.currentUserData!.school, widget.selectedClass!, widget.userNameController.text, widget.userEmailController.text, widget.userPasswordController.text, widget.teacher,context, widget.currentClass);
+                      if(widget.userNameController.text != '' && widget.userEmailController.text != '' && widget.selectedClass != null) {
+                        registerUser(widget.currentUserData!.school, widget.selectedClass!,widget.currentUserData!.email , widget.currentUserData!.name,  widget.userNameController.text, widget.userEmailController.text,widget.teacher, false,context, widget.currentClass);
                         widget.userNameController.text = '';
                         widget.userEmailController.text = '';
                         widget.userPasswordController.text = '';
                       }
                       if(widget.userNameController.text == '') _nameErrorText = 'Pole je povinné';
                         if(widget.userEmailController.text == '') _emailErrorText = 'Pole je povinné';
-                        if(widget.userPasswordController.text == '') _passwordErrorText = 'Pole je povinné';
                         if(isUsed) _emailErrorText = 'Účet s daným E-mailom už existuje';
                         if(!validEmail) _emailErrorText = 'Nesprávny formát E-mailu';
                       }

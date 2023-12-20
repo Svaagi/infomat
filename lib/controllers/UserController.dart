@@ -204,10 +204,17 @@ Future<void> deleteUser(String userId) async {
   }
 }
 
-Future<void> registerUser(String schoolId, String classId, String name, String email, String password, bool teacher, BuildContext context, ClassDataWithId? currentClass) async {
+Future<void> registerUser(String schoolId, String classId, String recipient, String recipientName ,String name, String email, bool teacher, bool admin, BuildContext context, ClassDataWithId? currentClass) async {
   String? userId;
+  String password = generateRandomPassword();
+  List<Map<String, String>> userDetails = [];
   try {
     final functions = FirebaseFunctions.instance;
+      userDetails.add({
+        'name': name,
+        'email': email,
+        'password': password
+      });
     final result = await functions.httpsCallable('createAccount').call({
       'email': email,
       'password': password,
@@ -266,6 +273,8 @@ Future<void> registerUser(String schoolId, String classId, String name, String e
           };
         }).toList(),
       });
+
+      sendUserDetailsEmail(userDetails, recipient, recipientName, false);
 
       // Update class data
       Map<String, dynamic> updateData = teacher
@@ -369,6 +378,7 @@ Future<void> registerMultipleUsers(
 
                  // Add user data to batch
                 batch.set(userRef, {
+                  'id': userId,
                   'admin': false,
                   'discussionPoints': 0,
                   'weeklyDiscussionPoints': 0,
@@ -428,7 +438,7 @@ Future<void> registerMultipleUsers(
         // Commit the batch
         await batch.commit();
 
-        sendUserDetailsEmail(userDetails, email, name);
+        sendUserDetailsEmail(userDetails, email, name, true);
 
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
@@ -439,7 +449,7 @@ Future<void> registerMultipleUsers(
 }
 
 
-Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String recipientEmail, String name) async {
+Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String recipientEmail, String name, bool Xlsx) async {
     final firestore = FirebaseFirestore.instance;
 
     String userDetailsText = userDetails.map((user) {
@@ -449,8 +459,8 @@ Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String 
     await firestore.collection('mail').add({
         'to': [recipientEmail],
         'message': {
-            'subject': 'Prihlasovacie údaje žiakov',
-            'text':'Dobrý deň  $name,\nnásledujúce údaje sú prihlasovacie údaje novo registrovaných žiakov:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+            'subject': Xlsx ? 'Prihlasovacie údaje žiakov' : 'Prihlasovacie údaje',
+            'text':'Dobrý deň  $name,\n${Xlsx ? 'následujúce údaje sú prihlasovacie údaje novo registrovaných žiakov': 'toto sú nové prihlasovacie údaje pre email ${userDetails[0]['email']}'}:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
         },
     }).then((value) {
         print('Queued email with user details for delivery!');

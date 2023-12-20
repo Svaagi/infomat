@@ -1011,7 +1011,7 @@ class _SchoolFormState extends State<SchoolForm> {
 
         // Once the user is created in Firebase Auth, add their data to Firestore
         await FirebaseFirestore.instance.collection('users').doc(userData.id).set({
-          'admin': userData.admin,
+          'admin': true,
           'email': email,
           'name': name,
           'discussionPoints': userData.discussionPoints,
@@ -1048,7 +1048,7 @@ class _SchoolFormState extends State<SchoolForm> {
               'to': [email],
               'message': {
                 'subject': 'Heslo',
-                'text': 'Dobrý deň, $name,\nváš overovací kód je $generatePassword.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+                'text': 'Dobrý deň, $name,\nvaše heslo je $generatePassword.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
               },
             },
           ).then(
@@ -1058,8 +1058,6 @@ class _SchoolFormState extends State<SchoolForm> {
           );
           addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , []);
 
-
-
           for (String name in combinedList) {
             addClass(name, _schoolIdController.text, null, userData.id, (String) {});
           }
@@ -1068,9 +1066,5 @@ class _SchoolFormState extends State<SchoolForm> {
       } catch (e) {
         reShowToast('Správcu sa nepodarilo pridať', true, context);
       }
-
-      
     }
-
-    
 }

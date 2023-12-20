@@ -172,7 +172,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                     ),
                   ),
                    MouseRegion(
-                    cursor: SystemMouseCursors.click,
+                    cursor: widget.currentUserData!.admin ? SystemMouseCursors.click : SystemMouseCursors.basic,
                     child: GestureDetector(
                       child: Container(
                             margin: const EdgeInsets.all(12),
@@ -205,19 +205,21 @@ class _MobileAdminState extends State<MobileAdmin> {
                                   ],
                                 ),
                                 const Spacer(),
-                                SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
+                                if(widget.currentUserData!.admin) SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                               ],
                             ),
                           ),
                       onTap:  () async {
+                        if(widget.currentUserData!.admin) {
                         setState(() {
-                          currentUser = UserDataWithId(adminId!, admin!);
-                          _teacher = true;
-                          _admin = true;
-                          _editUserEmailController.text = admin!.email;
-                          _editUserNameController.text = admin!.name;
-                          _onNavigationItemSelected(4);
-                        });
+                        currentUser = UserDataWithId(adminId!, admin!);
+                        _teacher = true;
+                        _admin = true;
+                        _editUserEmailController.text = admin!.email;
+                        _editUserNameController.text = admin!.name;
+                        _onNavigationItemSelected(4);
+                      });
+                      }
                       }
                     ),
                   ),
@@ -232,7 +234,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                               ),
                         ),
                         const Spacer(),
-                        SizedBox(
+                        if(widget.currentUserData!.admin)SizedBox(
                           width: 53,
                           height: 36,
                           child:  ReButton(
@@ -391,7 +393,7 @@ class _MobileAdminState extends State<MobileAdmin> {
       case 6:
         return UpdateClass(
         classes: classes!,  
-        currentUserData: widget.currentUserData, 
+        currentUserData:  widget.currentUserData, 
         onNavigationItemSelected: _onNavigationItemSelected, 
         selectedClass: _selectedClass, 
         teacher: _teacher, 

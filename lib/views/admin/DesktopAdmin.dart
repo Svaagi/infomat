@@ -175,10 +175,10 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                 ),
                 SizedBox(height: 30,),
                 MouseRegion(
-                  cursor: SystemMouseCursors.click,
+                  cursor: widget.currentUserData!.admin ? SystemMouseCursors.click : SystemMouseCursors.basic,
                   child: GestureDetector(
                     child: admin != null ?Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10.0),
@@ -207,12 +207,13 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                             ],
                           ),
                           Spacer(),
-                          SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
+                          if(widget.currentUserData!.admin)SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                         ],
                       ),
                     ) : Container(),
                     onTap:  () async {
-                      setState(() {
+                      if(widget.currentUserData!.admin) {
+                        setState(() {
                         currentUser = UserDataWithId(adminId!, admin!);
                         _teacher = true;
                         _admin = true;
@@ -220,6 +221,8 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                         _editUserNameController.text = admin!.name;
                         _onNavigationItemSelected(4);
                       });
+                      }
+                      
                     }
                   ),
                 ),
@@ -233,7 +236,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
                           ),
                     ),
                     Spacer(),
-                    Container(
+                    if(widget.currentUserData!.admin)Container(
                       child:  ReButton(
                         color: "grey", 
                         text: '+ Pridať triedu', 

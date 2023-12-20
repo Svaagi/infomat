@@ -78,7 +78,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     ),
                   ),
                   SizedBox(width: 100,),
-                  MouseRegion(
+                  if (widget.currentUserData!.admin)MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                       onTap: () {
@@ -237,10 +237,10 @@ class _MobileClassesState extends State<MobileClasses> {
                       } else {
                         UserData userData = userSnapshot.data!;
                         return MouseRegion(
-                          cursor: SystemMouseCursors.click,
+                          cursor: (widget.currentUserData!.id == userData.id || widget.currentUserData!.admin) ? SystemMouseCursors.click : SystemMouseCursors.basic,
                           child: GestureDetector(
                             onTap: () {
-                              setState(() {
+                              if (widget.currentUserData!.id == userData.id || widget.currentUserData!.admin) {
                                 setState(() {
                                 widget.currentUser(userId, userData);
                                 widget.teacher(true);
@@ -249,7 +249,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                 widget.editUserNameController.text = userData.name;
                               });
                               widget.onNavigationItemSelected(4);
-                              });
+                              }
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),
@@ -271,7 +271,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                         ),
                                   ),
                                   Spacer(),
-                                  SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
+                                  (widget.currentUserData!.id == userData.id || widget.currentUserData!.admin) ? SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12) : Container(),
                                 ],
                               ),
                             ),
