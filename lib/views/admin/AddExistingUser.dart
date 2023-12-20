@@ -162,7 +162,6 @@ class _AddExistingUserState extends State<AddExistingUser> {
                       },
                     ),
             ),
-            
             Spacer(),
             Align(
               alignment: Alignment.center,
@@ -176,6 +175,7 @@ class _AddExistingUserState extends State<AddExistingUser> {
                           widget.currentClass!.data.teachers.add(_selectedTeacher);
                         });
                         editClass(widget.selectedClass!, widget.currentClass!.data);
+                        updateUserSchoolClass(_selectedTeacher, widget.selectedClass!);
                         updateClasses(_selectedTeacher, widget.selectedClass!);
                       }
                   ),

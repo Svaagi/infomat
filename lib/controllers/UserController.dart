@@ -299,6 +299,73 @@ Future<void> registerUser(String schoolId, String classId, String recipient, Str
   }
 }
 
+Future<void> updateUserSchoolClass(String userId, String newSchoolClassId) async {
+  try {
+    // Get a reference to the user's document in Firestore
+    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Update the 'schoolClass' field with the new class ID
+    await userRef.update({
+      'schoolClass': newSchoolClassId
+    });
+
+    print('School class updated to $newSchoolClassId for user $userId successfully.');
+  } catch (error) {
+    print('Error updating school class: $error');
+    throw error;
+  }
+}
+
+Future<void> bulkRemoveClassFromUsers(List<String> userIds, String classIdToRemove) async {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  WriteBatch batch = firestore.batch();
+
+  try {
+    for (String userId in userIds) {
+      // Reference to the user's document
+      DocumentReference userRef = firestore.collection('users').doc(userId);
+
+      // Retrieve the user's document
+      DocumentSnapshot userSnapshot = await userRef.get();
+
+      if (!userSnapshot.exists) {
+        print('User document does not exist for user ID: $userId');
+        continue;
+      }
+
+      Map<String, dynamic> userData = userSnapshot.data() as Map<String, dynamic>;
+      List<String> userClasses = List<String>.from(userData['classes'] as List<dynamic> ?? []);
+      String userSchoolClass = userData['schoolClass'] as String? ?? '';
+
+      Map<String, dynamic> updates = {};
+
+      // Remove classId from classes array if it exists
+      if (userClasses.contains(classIdToRemove)) {
+        updates['classes'] = FieldValue.arrayRemove([classIdToRemove]);
+      }
+
+      // Check if schoolClass matches classIdToRemove and set it to an empty string if it does
+      if (userSchoolClass == classIdToRemove) {
+        updates['schoolClass'] = '';
+      }
+
+      // Add updates to batch if there are any
+      if (updates.isNotEmpty) {
+        batch.update(userRef, updates);
+      }
+    }
+
+    // Commit the batch
+    await batch.commit();
+    print('Bulk update completed successfully.');
+  } catch (error) {
+    print('Error during bulk update: $error');
+    throw error;
+  }
+}
+
+
+
 String generateRandomPassword({int length = 12}) {
     // Define character sets for different types of characters
     final String uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

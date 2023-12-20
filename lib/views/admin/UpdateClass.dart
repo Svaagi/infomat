@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
+import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/models/ClassModel.dart';
@@ -104,8 +105,9 @@ class _UpdateClassState extends State<UpdateClass> {
                       setState(() {
                         loading = true;
                       });
-                      await deleteClass(widget.currentClass.id, widget.currentUserData!.school, widget.removeSchoolData, widget.currentClass.data.students);
+                      await bulkRemoveClassFromUsers(widget.currentClass.data.teachers, widget.currentClass.id);
                       await removeClassFromSchool(widget.currentClass.id, widget.currentUserData!.school);
+                      await deleteClass(widget.currentClass.id, widget.currentUserData!.school, widget.removeSchoolData, widget.currentClass.data.students);
                       setState(() {
                         loading = false;
                       });

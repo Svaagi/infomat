@@ -215,11 +215,11 @@ Widget build(BuildContext context) {
         child: Column(
           children: [
             SizedBox(height: 10.0),
-            if(widget.currentUserData!.teacher)Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+            if(widget.currentUserData!.teacher)Wrap(
               children: [
-                ReButton(
+                Container(
+                  margin: const EdgeInsets.all(5),
+                  child: ReButton(
                     color: "green", 
                     text: 'Pridať príspevok', 
                     onTap: () {
@@ -229,8 +229,10 @@ Widget build(BuildContext context) {
                       });
                     }
                   ),
-                  SizedBox(width: 5,),
-                  ReButton(
+                ),
+                Container(
+                  margin: const EdgeInsets.all(5),
+                  child:  ReButton(
                     color: "grey", 
                     text: 'Vybrať z knižnice', 
                     onTap: () {
@@ -240,6 +242,7 @@ Widget build(BuildContext context) {
                       });
                     }
                   ),
+                ),
               ],
             ),
             Expanded( 

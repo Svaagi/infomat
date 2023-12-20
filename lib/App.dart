@@ -217,9 +217,11 @@ class _AppState extends State<App> {
           children: <Widget>[
             Container(
               margin: const EdgeInsets.all(12),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SvgPicture.asset('assets/logoFilled.svg',),
+                  const Spacer(),
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
@@ -229,8 +231,6 @@ class _AppState extends State<App> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 30,),
-                  SvgPicture.asset('assets/logoFilled.svg',)
                 ],
               ),
             ),
@@ -241,7 +241,6 @@ class _AppState extends State<App> {
             buildNavItem(3, "assets/icons/bookIcon.svg", "Vzdelávanie", context),
             buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
             buildNavItem(6, "assets/icons/adminIcon.svg", "Moja škola", context),
-            const Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -487,6 +486,7 @@ class _AppState extends State<App> {
             _selectedIndex = index;
           });
           _onNavigationItemSelected(index);
+          _scaffoldKey.currentState?.openEndDrawer();
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
