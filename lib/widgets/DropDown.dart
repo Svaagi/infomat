@@ -164,12 +164,14 @@ class _DropDownState extends State<DropDown> {
                   });
                 },
                 itemBuilder: (BuildContext context) {
-                  return options!.map((OptionsData value) {
-                      return PopupMenuItem<String>(
-                        value: value.id,
-                        child: Text(value.data.name),
-                      );
-                    }).toList();
+                  return options!
+                      .where((OptionsData value) => value.id != "Žiadna") // Exclude "Žiadna" from the list
+                      .map<PopupMenuItem<String>>((OptionsData value) {
+                        return PopupMenuItem<String>(
+                          value: value.id,
+                          child: Text(value.data.name),
+                        );
+                      }).toList();
                 },
               ),
             ),

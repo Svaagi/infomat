@@ -101,7 +101,11 @@ class _DesktopAdminState extends State<DesktopAdmin> {
 
       setState(() {
         if (mounted) {
-          classes = school.classes;
+          if (widget.currentUserData!.admin) {
+            classes = school.classes;
+          } else {
+            classes = widget.currentUserData!.classes;
+          }
           teachers = school.teachers;
           adminId = school.admin;
           schoolName = school.name;
