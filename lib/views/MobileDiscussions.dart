@@ -47,6 +47,7 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
   bool _library = false;
   int? _editIndex;
   String _selectedLibrary = '';
+  String _valueId = '';
 
 
   @override
@@ -1101,11 +1102,12 @@ Widget build(BuildContext context) {
             ),
             Expanded(
               child: SingleChildScrollView(
-                child: CommentsAnswers(fetchAnswersStream: fetchAnswersStream(_selectedPost!.id, _selectedCommentIndex!), commentIndex: _selectedCommentIndex, currentUserData: widget.currentUserData!,post: _selectedPost, comment: _selectedComment , postId: _selectedPost!.id, controller: answerController,  setEdit: (bool edit, int index, String value) {
+                child: CommentsAnswers(fetchAnswersStream: fetchAnswersStream(_selectedPost!.id, _selectedCommentIndex!), commentIndex: _selectedCommentIndex, currentUserData: widget.currentUserData!,post: _selectedPost, comment: _selectedComment , postId: _selectedPost!.id, controller: answerController,  setEdit: (bool edit, int index, String value, String valueId) {
                     setState(() {
                       _editAnswer = edit;
                       _editIndex = index;
                       editAnswerController.text = value;
+                      _valueId = valueId;
                     });
                   },),
               ),
@@ -1228,8 +1230,7 @@ Widget build(BuildContext context) {
                             _selectedPost!.id,
                             _selectedCommentIndex!,
                             newAnswer,
-                            _selectedPost!.userId,
-                            widget.currentUserData!.id
+                            _valueId != '' ? _valueId : widget.currentUserData!.id
                           );
 
                           setState(() {

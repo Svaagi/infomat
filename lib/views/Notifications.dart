@@ -124,7 +124,7 @@ Widget build(BuildContext context) {
                   return Center(child: Text("Error: ${snapshot.error}"));
                 }
                 if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text("Žiadne dostupné notifikácie"));
+                  return Center(child: Text("Žiadne dostupné upozornenia"));
                 }
 
                 // Assuming 'CompleteNotification' has a DateTime property called 'date'

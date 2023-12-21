@@ -291,11 +291,11 @@ Future<void> addComment(String classId, String postId, CommentsData comment,Stri
           await classRef.update(classData);
 
           if (userId != currentId) {
-            sendNotification([comment.userId] , 'Na váš príspevok niekto odpovedal.', 'Diskusia', TypeData(
+            sendNotification([userId] , 'Na váš príspevok niekto odpovedal.', 'Diskusia', TypeData(
             id: postId,
               commentIndex: (posts[postIndex]['comments'].length-1).toString(),
               answerIndex: '',
-              type: 'post'
+              type: 'comment'
             ));
           }
 
@@ -315,7 +315,7 @@ Future<void> addComment(String classId, String postId, CommentsData comment,Stri
   }
 }
 
-Future<void> addAnswer(String classId, String postId, int commentIndex, CommentsAnswersData answer, String userId , String currentId) async {
+Future<void> addAnswer(String classId, String postId, int commentIndex, CommentsAnswersData answer, String currentId) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(classId);
@@ -365,9 +365,9 @@ Future<void> addAnswer(String classId, String postId, int commentIndex, Comments
             await classRef.update(classData);
 
             // Send the notification with the correct answerIndex
-            if (userId != currentId) {
+            if (comments[commentIndex]['userId'] != currentId) {
               sendNotification(
-                [answer.userId],
+                [comments[commentIndex]['userId']],
                 'Na váš komentár niekto odpovedal.',
                 'Diskusia',
                 TypeData(

@@ -48,6 +48,7 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
   String _selectedLibrary = '';
   bool textFieldIsFocused = false;
   bool textFieldTwoIsFocused = false;
+  String _valueId = '';
 
 
   String sklon(int length) {
@@ -1113,11 +1114,12 @@ Widget build(BuildContext context) {
             const SizedBox(height: 30,),
             Expanded(
               child: SingleChildScrollView(
-                child: CommentsAnswers(fetchAnswersStream: fetchAnswersStream(_selectedPost!.id, _selectedCommentIndex!), commentIndex: _selectedCommentIndex, currentUserData: widget.currentUserData!, postId: _selectedPost!.id,comment: _selectedComment,controller: answerController , post: _selectedPost,setEdit: (bool edit, int index, String value) {
+                child: CommentsAnswers(fetchAnswersStream: fetchAnswersStream(_selectedPost!.id, _selectedCommentIndex!), commentIndex: _selectedCommentIndex, currentUserData: widget.currentUserData!, postId: _selectedPost!.id,comment: _selectedComment,controller: answerController , post: _selectedPost,setEdit: (bool edit, int index, String value, String valueId) {
                     setState(() {
                       _editAnswer = edit;
                       _editIndex = index;
                       editAnswerController.text = value;
+                      if(valueId != _selectedComment!.userId) _valueId = valueId;
                     });
                   },
                 ),
@@ -1251,8 +1253,7 @@ Widget build(BuildContext context) {
                               _selectedPost!.id,
                               _selectedCommentIndex!,
                               newAnswer,
-                              _selectedPost!.userId,
-                              widget.currentUserData!.id
+                              _valueId != '' ? _valueId : widget.currentUserData!.id
                             );
 
                             setState(() {

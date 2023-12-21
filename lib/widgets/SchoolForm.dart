@@ -157,7 +157,7 @@ class _SchoolFormState extends State<SchoolForm> {
         'to': [recipientEmail],
         'message': {
           'subject': 'Verifikácia',
-          'text': 'Dobrý deň  $name,\nváš overovací kód je $verificationCode.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+          'text': 'Dobrý deň,  $name,\nváš overovací kód je $verificationCode.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
         },
       },
     ).then(

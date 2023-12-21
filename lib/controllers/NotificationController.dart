@@ -69,19 +69,39 @@ Future<void> sendNotification(List<String> userIds, String content, String title
     for (String userId in userIds) {
       UserData userData = await fetchUser(userId);
       
-      // Here we are casting each notification entry to <String, Object> to satisfy Firestore
-      List<Map<String, Object>> notificationsList = userData.notifications.map((notification) {
+      // Convert notifications to list of maps
+      List<Map<String, Object?>> notificationsList = userData.notifications.map((notification) {
         return {
           'id': notification.id,
           'seen': notification.seen,
-        } as Map<String, Object>; // Explicitly cast as <String, Object>
+          'date': notification.date, // Assuming each notification has a date field
+        };
       }).toList();
 
-      // Add the new notification also as <String, Object>
+      // Add the new notification
       notificationsList.add({
         'id': notificationId,
         'seen': false,
-      } as Map<String, Object>);
+        'date': Timestamp.now(),
+      });
+
+      // If the list size exceeds 20, remove the oldest notification
+      if (notificationsList.length > 20) {
+        // Sort the list by date, oldest first
+        notificationsList.sort((a, b) {
+          Timestamp? dateA = a['date'] as Timestamp?;
+          Timestamp? dateB = b['date'] as Timestamp?;
+          if (dateA != null && dateB != null) {
+            return dateA.compareTo(dateB);
+          } else if (dateA != null) {
+            return -1; // Keep A if B is null
+          } else if (dateB != null) {
+            return 1; // Keep B if A is null
+          }
+          return 0; // Both are null
+        });
+        notificationsList.removeAt(0); // Remove the oldest notification
+      }
 
       // Update the user's notifications list in the database
       await usersRef.doc(userId).update({
@@ -93,4 +113,5 @@ Future<void> sendNotification(List<String> userIds, String content, String title
     throw Exception('Failed to send notifications');
   }
 }
+
 

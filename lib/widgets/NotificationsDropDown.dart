@@ -84,7 +84,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
             String answerIndex = notif.type.answerIndex;
             CommentsAnswersData? answerData = await _fetchAnswerById(userData.schoolClass, postId, commentIndex, answerIndex);
             completeNotifications.add(CompleteNotification(notification: notif, answerData: answerData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
-          }
+          } 
           break;
         case 'learning':
           {
@@ -99,6 +99,8 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
       }
     }
 
+    completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
+    
     return completeNotifications.reversed.toList();
 }
 
@@ -172,6 +174,7 @@ Widget build(BuildContext context) {
                             Column(
                             children: snapshot.data!
                               .sublist(max(0, snapshot.data!.length - 3)) // Take the last three items
+                              .reversed
                               .map((notification) {
                                 return _buildNotificationItem(notification);
                               }).toList(),
@@ -256,18 +259,34 @@ Widget _buildNotificationItem(CompleteNotification completeNotification) {
 
 Widget _getTypeContainer(CompleteNotification completeNotification) {
   if (completeNotification.notification.type.type == 'post' && completeNotification.postData != null) {
-    return  _getPostOrCommentContainer(
-      completeNotification.postData!.user,
-      completeNotification.postData!.date,
-      completeNotification.postData!.value,
+    return  GestureDetector(
+      onTap: () {
+        widget.onNavigationItemSelected(2);
+      },
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child:_getPostOrCommentContainer(
+          completeNotification.postData!.user,
+          completeNotification.postData!.date,
+          completeNotification.postData!.value,
+        )
+      )
     );
   }
 
   if (completeNotification.notification.type.type == 'comment' && completeNotification.commentData != null) {
-    return  _getPostOrCommentContainer(
-      completeNotification.commentData!.user,
-      completeNotification.commentData!.date,
-      completeNotification.commentData!.value,
+    return  GestureDetector(
+        onTap: () {
+          widget.onNavigationItemSelected(2);
+        },
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child:_getPostOrCommentContainer(
+        completeNotification.commentData!.user,
+        completeNotification.commentData!.date,
+        completeNotification.commentData!.value,
+          )
+      )
     );
   }
 

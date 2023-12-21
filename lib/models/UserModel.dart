@@ -1,3 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+
 class UserDataWithId {
   final String id;
   final UserData data;
@@ -8,10 +12,12 @@ class UserDataWithId {
 class UserNotificationsData {
   String id;
   bool seen;
+  Timestamp? date;
 
   UserNotificationsData({
     required this.id,
     required this.seen,
+    this.date
   });
 }
 

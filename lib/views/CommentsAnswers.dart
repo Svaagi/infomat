@@ -17,7 +17,7 @@ class CommentsAnswers extends StatefulWidget {
   final PostsData? post;
   final CommentsData? comment;
   final int? commentIndex;
-  final void Function(bool, int, String) setEdit;
+  final void Function(bool, int, String, String) setEdit;
   final TextEditingController controller;
 
   CommentsAnswers({
@@ -220,7 +220,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                               if(answer.userId == FirebaseAuth.instance.currentUser!.uid || widget.currentUserData.teacher)SvgDropdownPopupMenuButton(
                                     onUpdateSelected: () {
                                       // Call your updateanswerValue function here
-                                      widget.setEdit(true, index, answer.value);
+                                      widget.setEdit(true, index, answer.value, answer.userId);
                                     },
                                     onDeleteSelected: () {
                                         // Call your deleteComment function here

@@ -255,6 +255,7 @@ class _ProfileState extends State<Profile> {
                                       const Contact(),
                                       SizedBox(width: 5,),
                                       Container(
+                                        margin: const EdgeInsets.only(top: 10),
                                     width: 160,
                                     height: 40,
                                     child: ReButton(

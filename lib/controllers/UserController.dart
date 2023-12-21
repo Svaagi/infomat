@@ -41,10 +41,12 @@ Future<UserData> fetchUser(String userId) async {
         for (var notificationData in rawNotifications) {
           String notificationId = notificationData['id'] as String? ?? '';
           bool notificationSeen = notificationData['seen'] as bool? ?? false;
+          Timestamp? notificationDate = notificationData['date'] as Timestamp?;
 
           UserNotificationsData notification = UserNotificationsData(
             id: notificationId,
             seen: notificationSeen,
+            date: notificationDate
           );
 
           notificationsList.add(notification);
