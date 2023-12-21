@@ -51,6 +51,7 @@ class _DropDownState extends State<DropDown> {
   List<OptionsData>? options;
   bool isMobile = false;
   bool isDesktop = false;
+  bool _loading = true;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -67,30 +68,33 @@ class _DropDownState extends State<DropDown> {
   Future<void> fetchOptions() async {
   try {
     if (widget.currentUserData != null) {
-      // Initialize options with the 'No Class' option
-      options = [noClassOption];
+      List<OptionsData> fetchedOptions = [];
 
       // Fetch the classes and add them to the options
       for (var classId in widget.currentUserData!.classes) {
         try {
           ClassData classData = await fetchClass(classId);
-          options!.add(OptionsData(id: classId, data: classData));
+          fetchedOptions.add(OptionsData(id: classId, data: classData));
         } catch (e) {
           print('Invalid classId $classId: $e');
         }
       }
 
+      // Sort the fetched options in alphabetical and numerical order based on the class name
+      fetchedOptions.sort((a, b) => a.data.name.compareTo(b.data.name));
+
       // Check if current schoolClass is in the fetched classes
-      bool schoolClassExists = options!.any((option) => option.id == widget.currentUserData!.schoolClass);
+      bool schoolClassExists = fetchedOptions.any((option) => option.id == widget.currentUserData!.schoolClass);
 
-      // Set the dropdownValue to 'No Class' if schoolClass is invalid, null, or empty
-      dropdownValue = (widget.currentUserData!.schoolClass != null &&
-              widget.currentUserData!.schoolClass!.isNotEmpty &&
-              schoolClassExists)
-          ? widget.currentUserData!.schoolClass
-          : noClassOption.id;
-
-      setState(() {});
+      setState(() {
+        options = fetchedOptions;
+        dropdownValue = (widget.currentUserData!.schoolClass != null &&
+                widget.currentUserData!.schoolClass!.isNotEmpty &&
+                schoolClassExists)
+            ? widget.currentUserData!.schoolClass
+            : 'Žiadna'; // Default to 'Žiadna' if schoolClass is invalid, null, or empty
+        _loading = false;
+      });
     } else {
       print('Error: Current user data is null');
     }
@@ -98,6 +102,7 @@ class _DropDownState extends State<DropDown> {
     print('Error while fetching options: $e');
   }
 }
+
 
 
   void handleSelection(String selectedId) {
@@ -119,10 +124,8 @@ class _DropDownState extends State<DropDown> {
   @override
   Widget build(BuildContext context) {
     bool isDropdownOpen = false;
-
-    return options == null || options!.isEmpty
-        ? Container()
-        : ClipRRect(
+    if (_loading) return Center(child: CircularProgressIndicator(),);
+    return  ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
             child: Container(
               width: 138,
