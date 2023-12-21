@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
+import 'package:infomat/views/ContactView.dart';
 import 'package:infomat/views/Learning.dart';
 import 'package:infomat/views/Challenges.dart';
 import 'package:infomat/views/Results.dart';
@@ -242,17 +243,13 @@ class _AppState extends State<App> {
             buildNavItem(3, "assets/icons/bookIcon.svg", "Vzdelávanie", context),
             buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
             buildNavItem(6, "assets/icons/adminIcon.svg", "Moja škola", context),
+            buildNavItem(7, "assets/icons/messageIcon.svg", "Kontaktuje nás", context),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Contact(),
-
-                
-                const SizedBox(height: 5,),
                 Container(
                   margin: const EdgeInsets.only(top: 10),
-
                 width: 160,
                 height: 40,
                 child: ReButton(
@@ -465,7 +462,9 @@ class _AppState extends State<App> {
                   fetchUserData();
                 });
               },
-            ); // Handle other cases
+            );
+      case 7:
+        return ContactView();
       default:
         return Container(); // Handle other cases
     }
@@ -509,3 +508,4 @@ class _AppState extends State<App> {
     );
   }
 }
+
