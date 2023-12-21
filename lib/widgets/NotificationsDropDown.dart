@@ -185,7 +185,6 @@ Widget build(BuildContext context) {
                               Column(
                                 children: snapshot.data!
                                   .sublist(max(0, snapshot.data!.length - 3))
-                                  .reversed
                                   .map((notification) {
                                     return _buildNotificationItem(notification);
                                   }).toList(),
