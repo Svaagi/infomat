@@ -212,6 +212,7 @@ class _AppState extends State<App> {
           ),
         ),
       drawer: (currentUserData!.teacher && isMobile) ? Drawer(
+        backgroundColor:  AppColors.getColor('mono').white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -246,6 +247,8 @@ class _AppState extends State<App> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Contact(),
+
+                
                 const SizedBox(height: 5,),
                 Container(
                   margin: const EdgeInsets.only(top: 10),
@@ -480,6 +483,7 @@ class _AppState extends State<App> {
       width: 260,
       height: 57,
       margin: const EdgeInsets.symmetric(horizontal: 12),
+      color:  isSelected ? AppColors.getColor('mono').lighterGrey : AppColors.getColor('mono').white,
       child: InkWell(
         onTap: () {
           setState(() {

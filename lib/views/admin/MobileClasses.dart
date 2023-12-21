@@ -110,7 +110,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     style: TextStyle(color: AppColors.getColor('mono').darkGrey),
                   ),
                   Spacer(),
-                  Container(
+                  if(widget.currentUserData!.admin)Container(
                     height: 40,
                     width: 150,
                     child: ReButton(

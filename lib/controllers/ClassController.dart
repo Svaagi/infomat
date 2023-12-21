@@ -240,7 +240,7 @@ Future<void> removeClassFromSchool(String classId, String school) async {
 
 
 
-Future<void> addComment(String classId, String postId, CommentsData comment, ) async {
+Future<void> addComment(String classId, String postId, CommentsData comment,String userId , String currentId) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef =
@@ -290,12 +290,14 @@ Future<void> addComment(String classId, String postId, CommentsData comment, ) a
           // Update the class document in Firestore
           await classRef.update(classData);
 
-          sendNotification([comment.userId] , 'Na váš príspevok niekto odpovedal.', 'Diskusia', TypeData(
-          id: postId,
-            commentIndex: (posts[postIndex]['comments'].length-1).toString(),
-            answerIndex: '',
-            type: 'post'
-          ));
+          if (userId != currentId) {
+            sendNotification([comment.userId] , 'Na váš príspevok niekto odpovedal.', 'Diskusia', TypeData(
+            id: postId,
+              commentIndex: (posts[postIndex]['comments'].length-1).toString(),
+              answerIndex: '',
+              type: 'post'
+            ));
+          }
 
           return;
         } else {
@@ -313,7 +315,7 @@ Future<void> addComment(String classId, String postId, CommentsData comment, ) a
   }
 }
 
-Future<void> addAnswer(String classId, String postId, int commentIndex, CommentsAnswersData answer) async {
+Future<void> addAnswer(String classId, String postId, int commentIndex, CommentsAnswersData answer, String userId , String currentId) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(classId);
@@ -363,17 +365,19 @@ Future<void> addAnswer(String classId, String postId, int commentIndex, Comments
             await classRef.update(classData);
 
             // Send the notification with the correct answerIndex
-            sendNotification(
-              [answer.userId],
-              'Na váš komentár niekto odpovedal.',
-              'Diskusia',
-              TypeData(
-                id: postId,
-                commentIndex: commentIndex.toString(),
-                answerIndex: newAnswerIndex.toString(), // Correct index
-                type: 'answer'
-              )
-            );
+            if (userId != currentId) {
+              sendNotification(
+                [answer.userId],
+                'Na váš komentár niekto odpovedal.',
+                'Diskusia',
+                TypeData(
+                  id: postId,
+                  commentIndex: commentIndex.toString(),
+                  answerIndex: newAnswerIndex.toString(), // Correct index
+                  type: 'answer'
+                )
+              );
+            }
 
             return;
           } else {
@@ -809,7 +813,7 @@ Future<void> deleteAnswer(String classId, String postId, int commentIndex, int a
   }
 }
 
-Future<void> toggleCommentAward(String classId, String postId, int commentIndex, String userId, CommentsData comment) async {
+Future<void> toggleCommentAward(String classId, String postId, int commentIndex, String userId, CommentsData comment, String currentId) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(classId);
@@ -849,21 +853,14 @@ Future<void> toggleCommentAward(String classId, String postId, int commentIndex,
             await classRef.update(classData);
             await incrementDiscussionPoints(userId, 1, comments[commentIndex]['award']);
             
-
-            sendNotification([comment.userId] , 'Na váš príspevok niekto odpovedal.', 'Diskusia', TypeData(
+            if (userId != currentId) {
+            sendNotification([comment.userId] , 'Tvoj komentár bol ocenený učiteľom.', 'Diskusia', TypeData(
               id: postId,
                 commentIndex: (posts[postIndex]['comments'].length-1).toString(),
                 answerIndex: '',
                 type: 'post'
               ));
-
-            sendNotification([comment.userId] , 'Tvoj komentár bol ocenený učiteľom.', 'Diskusia', TypeData(
-            id: postId,
-              commentIndex: (posts[postIndex]['comments'].length-1).toString(),
-              answerIndex: '',
-              type: 'post'
-            ));
-
+            }
             return;
           } else {
             throw Exception('Invalid comment index.');
@@ -883,7 +880,7 @@ Future<void> toggleCommentAward(String classId, String postId, int commentIndex,
   }
 }
 
-Future<void> toggleAnswerAward(String classId, String postId, int commentIndex, int answerIndex, String userId) async {
+Future<void> toggleAnswerAward(String classId, String postId, int commentIndex, int answerIndex, String userId, String currentId) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(classId);
@@ -926,18 +923,21 @@ Future<void> toggleAnswerAward(String classId, String postId, int commentIndex, 
               
 
                 await incrementDiscussionPoints(userId, -1, answers[answerIndex]['award']);
+              
 
-              sendNotification(
-                [userId],
-                'Na váš komentár niekto odpovedal.',
-                'Diskusia',
-                TypeData(
-                  id: postId,
-                  commentIndex: commentIndex.toString(),
-                  answerIndex: newAnswerIndex.toString(), // Correct index
-                  type: 'answer'
-                )
-              );
+              if (userId != currentId) {
+                sendNotification(
+                  [userId],
+                  'Tvoj komentár bol ocenený učiteľom.',
+                  'Diskusia',
+                  TypeData(
+                    id: postId,
+                    commentIndex: commentIndex.toString(),
+                    answerIndex: newAnswerIndex.toString(), // Correct index
+                    type: 'answer'
+                  )
+                );
+              }
 
               // Update the class document in Firestore
               await classRef.update(classData);

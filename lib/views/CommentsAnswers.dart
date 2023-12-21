@@ -378,7 +378,7 @@ class _CommentsAnswersState extends State<CommentsAnswers> {
                                   onTap: () {
                                     setState(() {
                                       if(widget.currentUserData.teacher) {
-                                        toggleAnswerAward(widget.currentUserData.schoolClass, widget.postId, widget.commentIndex!, index, answer.userId);
+                                        toggleAnswerAward(widget.currentUserData.schoolClass, widget.postId, widget.commentIndex!, index, answer.userId, widget.currentUserData.id);
                                       }
                                     });
                                   },

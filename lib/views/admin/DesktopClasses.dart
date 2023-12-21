@@ -110,7 +110,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                     style: TextStyle(color: AppColors.getColor('mono').darkGrey),
                   ),
                   const Spacer(),
-                  SizedBox(
+                  if(widget.currentUserData!.admin)SizedBox(
                     height: 40,
                     width: 150,
                     child: ReButton(

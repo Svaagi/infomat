@@ -1039,6 +1039,8 @@ Widget build(BuildContext context) {
                                 widget.currentUserData!.schoolClass,
                                 _selectedPost!.id,
                                 newComment,
+                                _selectedPost!.userId,
+                                widget.currentUserData!.id
                               );
 
                               setState(() {
@@ -1249,6 +1251,8 @@ Widget build(BuildContext context) {
                               _selectedPost!.id,
                               _selectedCommentIndex!,
                               newAnswer,
+                              _selectedPost!.userId,
+                              widget.currentUserData!.id
                             );
 
                             setState(() {
