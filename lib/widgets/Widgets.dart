@@ -9,10 +9,13 @@ Container reTextField(
   bool isPasswordType,
   TextEditingController controller,
   Color borderColor,
-  {bool? visibility, Function()? toggle, String? errorText}
+  {bool? visibility, Function()? toggle, String? errorText, double? size}
 ) {
+  // Default size if not provided
+  double containerHeight = size ?? 60.0; // You can adjust the default size as needed
+
   return Container(
-    
+    height: containerHeight, // Use the specified height for the container
     child: TextField(
       controller: controller,
       obscureText: visibility ?? false,
@@ -48,32 +51,31 @@ Container reTextField(
             width: 2.0,
           ),
         ),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 20.0,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: (containerHeight - 40) / 2, // Adjust padding based on the container height
           horizontal: 20.0,
         ),
-        // Add a suffix icon (eye) to toggle password visibility when isPasswordType is true
-         suffixIcon: isPasswordType
-        ? StatefulBuilder(
-            builder: (context, setState) {
-
-              return Padding(
-                padding: EdgeInsets.only(left: 20.0), // Adjust the left padding as needed
-                child: IconButton(
-                  icon: Icon(
-                    visibility ?? false ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                    color: AppColors.getColor('mono').darkGrey,
+        suffixIcon: isPasswordType
+          ? StatefulBuilder(
+              builder: (context, setState) {
+                return Padding(
+                  padding: EdgeInsets.only(left: 20.0), 
+                  child: IconButton(
+                    icon: Icon(
+                      visibility ?? false ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                      color: AppColors.getColor('mono').darkGrey,
+                    ),
+                    onPressed: toggle,
                   ),
-                  onPressed: toggle,
-            ),
-              );
-            },
-          )
-        : null,
+                );
+              },
+            )
+          : null,
       ),
     ),
   );
 }
+
 
 class ReButton extends StatefulWidget {
   final String? text;

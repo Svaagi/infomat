@@ -13,8 +13,9 @@ class Contact extends StatefulWidget {
 class _ContactState extends State<Contact> {
   final String _type = 'Nahlásenie problému';
   final TextEditingController _messageController = TextEditingController();
+  final TextEditingController _contactController = TextEditingController();
 
-  Future<void> sendMessage(String message, String type) async {
+  Future<void> sendMessage(String message, String contact, String type) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance; // Create an instance of FirebaseFirestore
 
     await firestore.collection('mail').add(
@@ -22,7 +23,7 @@ class _ContactState extends State<Contact> {
         'to': ['support@info-mat.sk'],
         'message': {
           'subject': type,
-          'text': message
+          'text': 'Správa: $message\n Kontakt: $contact'
         },
       },
     ).then(
@@ -36,6 +37,6 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
-    return ContactButton(type: _type, messageController: _messageController, sendMessage: sendMessage,);
+    return ContactButton(type: _type, messageController: _messageController, contactController: _contactController, sendMessage: sendMessage,);
   }
 }

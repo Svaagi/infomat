@@ -6,12 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ContactButton extends StatelessWidget {
   String type;
   TextEditingController messageController;
-  Future Function(String, String) sendMessage;
+  TextEditingController contactController;
+  Future Function(String, String, String) sendMessage;
 
   ContactButton({
     Key? key,
     required this.type,
     required this.messageController,
+    required this.contactController,
     required this.sendMessage
     
   }) : super(key: key);
@@ -37,7 +39,7 @@ class ContactButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   content: Container(
-                    width: 500,
+                    width: 700,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min, // Ensure the dialog takes up minimum height
@@ -57,12 +59,15 @@ class ContactButton extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 30,),
-                          Text(
-                            'Moja správa je',
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                            'Moja správa je:',
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(width: 10,),
                           Container(
                             padding: EdgeInsets.only(right: 8),
                             height: 30,
@@ -93,7 +98,7 @@ class ContactButton extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10,),
+                           SizedBox(width: 10,),
                           Container(
                             padding: EdgeInsets.only(right: 8),
                             height: 30,
@@ -124,18 +129,63 @@ class ContactButton extends StatelessWidget {
                               ],
                             ),
                           ),
+                          ],
+                        ),
+                         SizedBox(height: 20,),
+                          Text(
+                            'E-mail/Telefónne číslo',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 20,),
+                          TextField(
+                            controller: contactController,
+                            decoration: InputDecoration(
+                              hintText: 'Prosím, uveďte kontakt, prostredníctvom ktorého vás môžeme spätne kontaktovať.',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8), // Adjust the value for less rounded corners
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                            ),
+                          ),
                           SizedBox(height: 10,),
                           Text(
                             'Správa',
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 10,),
-                          reTextField(
-                            'Popíš svoj problém s aplikáciou alebo nám napíš otázku.',
-                            false,
-                            messageController,
-                            AppColors.getColor('mono').white, // assuming white is the default border color you want
+                          SizedBox(height: 20,),
+                          TextField(
+                            minLines: 5,
+                            maxLines: 20,
+                            controller: messageController,
+                            decoration: InputDecoration(
+                              hintText: 'Popíšte svoj problém s aplikáciou alebo nám napíš otázku.',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8), // Adjust the value for less rounded corners
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                            ),
                           ),
                         SizedBox(height: 30,),
                           Center(
@@ -144,7 +194,7 @@ class ContactButton extends StatelessWidget {
                             text: 'ODOSLAŤ',
                             onTap: () {
                               if(messageController.text != '') {
-                                sendMessage(messageController.text, type);
+                                sendMessage(messageController.text, contactController.text, type);
                                 Navigator.of(context).pop();
                                 messageController.text = '';
                               }
