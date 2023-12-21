@@ -30,19 +30,19 @@ class TeacherMobileAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+
       backgroundColor: AppColors.getColor('primary').light,
       actions: [
         IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-      ),
-        const Spacer(), // Pushes the following widgets to the middle
-        SizedBox(
-          height: 20,
-          child: DropDown(currentUserData: currentUserData, onUserDataChanged: onUserDataChanged,),
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
+        SizedBox(width: 50,), // Pushes the following widgets to the middle
+
+        const Spacer(),
+         DropDown(currentUserData: currentUserData, onUserDataChanged: onUserDataChanged,),
         const Spacer(),
         IconButton(
         icon: SvgPicture.asset('assets/icons/infoIcon.svg', color: Colors.white,),

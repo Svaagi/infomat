@@ -125,14 +125,13 @@ class _DropDownState extends State<DropDown> {
   Widget build(BuildContext context) {
     bool isDropdownOpen = false;
     if (_loading) return Center(child: CircularProgressIndicator(),);
-    return  ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
-            child: Container(
+    return   Container(
               width: 138,
-              height: isMobile ? 20 : 40,
+              margin: EdgeInsets.symmetric(vertical: 8),
+              
               decoration: BoxDecoration(
-                color: AppColors.getColor('mono').lighterGrey,
-                borderRadius: BorderRadius.circular(0.0),
+                color: isMobile ? Color(0xff989BDD) : AppColors.getColor('mono').lighterGrey,
+                borderRadius: BorderRadius.circular(30.0),
               ),
               child: PopupMenuButton<String>(
                 shape: RoundedRectangleBorder(
@@ -144,14 +143,15 @@ class _DropDownState extends State<DropDown> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Row(
                     children: [
+                      SizedBox(width: 5,),
                       Text(
                         'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue, orElse: () => noClassOption).data.name}',
                         style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: AppColors.getColor('primary').main,
+                          color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main,
                         ),
                       ),
                       const Spacer(),
-                      SvgPicture.asset('assets/icons/downIcon.svg', color: AppColors.getColor('primary').main),
+                      SvgPicture.asset('assets/icons/downIcon.svg', color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main),
                     ],
                   ),
                 ),
@@ -177,8 +177,7 @@ class _DropDownState extends State<DropDown> {
                       }).toList();
                 },
               ),
-            ),
-          );
+            );
   }
 
   Future<void> saveUserDataToFirestore(UserData userData) async {
