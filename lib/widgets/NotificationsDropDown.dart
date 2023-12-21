@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:infomat/controllers/ClassController.dart';
-import 'package:infomat/controllers/NotificationController.dart';
-import 'package:infomat/controllers/MaterialController.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/Colors.dart';
@@ -11,7 +8,10 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/NotificationModel.dart';
 import 'package:infomat/models/MaterialModel.dart';
-
+import 'package:infomat/controllers/NotificationController.dart';
+import 'package:infomat/controllers/ClassController.dart';
+import 'package:infomat/controllers/MaterialController.dart';
+// Import other necessary packages and controllers
 
 class CompleteNotification {
   final NotificationsData notification;
@@ -47,18 +47,21 @@ class NotificationsDropDown extends StatefulWidget {
 }
 
 class _NotificationsDropDownState extends State<NotificationsDropDown> {
-  late Future<List<CompleteNotification>> _notificationsData;
+  late Stream<List<CompleteNotification>> _notificationsDataStream;
   
-
   @override
   void initState() {
     super.initState();
-    _notificationsData = _fetchCompleteNotifications(widget.currentUserData!);
+    _notificationsDataStream = _fetchCompleteNotificationsStream(widget.currentUserData!);
   }
 
-  Future<List<CompleteNotification>> _fetchCompleteNotifications(UserData userData) async {
-    List<NotificationsData> notifications = await fetchNotifications(userData);
-    List<CompleteNotification> completeNotifications = [];
+  Stream<List<CompleteNotification>> _fetchCompleteNotificationsStream(UserData userData) async* {
+    // Implementation to yield a stream of List<CompleteNotification>
+    // Placeholder implementation with simulated data fetch delay
+    while(true) {
+      await Future.delayed(Duration(seconds: 1)); 
+      List<NotificationsData> notifications = await fetchNotifications(userData);
+      List<CompleteNotification> completeNotifications = [];
 
     for (var notif in notifications) {
       switch (notif.type.type) {
@@ -101,16 +104,17 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
 
     completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
     
-    return completeNotifications.reversed.toList();
-}
-
- String formatTimestamp(Timestamp timestamp) {
-    DateTime date = timestamp.toDate();
-    return "${date.day}.${date.month}.${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
-
+    completeNotifications.reversed.toList();
+      yield completeNotifications;
+    }
   }
 
-@override
+  String formatTimestamp(Timestamp timestamp) {
+    DateTime date = timestamp.toDate();
+    return "${date.day}.${date.month}.${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
+  }
+
+  @override
 Widget build(BuildContext context) {
   return SingleChildScrollView(
     child: Column(
@@ -119,6 +123,9 @@ Widget build(BuildContext context) {
         IconButton(
           icon: SvgPicture.asset('assets/icons/bellIcon.svg'),
           onPressed: () {
+            // Creating a new stream each time the button is pressed
+            Stream<List<CompleteNotification>> notificationsStream = _fetchCompleteNotificationsStream(widget.currentUserData!).asBroadcastStream();
+
             final RenderBox button = context.findRenderObject() as RenderBox;
             final RenderBox overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
             final RelativeRect position = RelativeRect.fromRect(
@@ -130,77 +137,82 @@ Widget build(BuildContext context) {
             );
 
             showMenu(
-              constraints: BoxConstraints(maxWidth: 500, minWidth: 390),
               context: context,
-              position: position, // Adjusted the position
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)), // Rounded corners
+              position: position,
+              constraints: BoxConstraints(maxWidth: 500, minWidth: 390),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               items: [
                 MyCustomPopupMenuItem(
-                  child: FutureBuilder<List<CompleteNotification>>(
-                    future: _notificationsData,
+                  child: StreamBuilder<List<CompleteNotification>>(
+                    stream: notificationsStream,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CircularProgressIndicator();
+                        return  Center(child: CircularProgressIndicator());
                       } else if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}');
                       } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                        return Padding( padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8), child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Text(
                                 'Upozornenia',
                                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                  color:  AppColors.getColor('mono').black,
+                                  color: AppColors.getColor('mono').black,
                                 ),
                               ),
                               SizedBox(height: 5,),
                               Text('Žiadne dostupné upozornenia'),
-                            ]
-                          )
+                            ],
+                          ),
                         );
                       } else {
-                        return Padding( padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8), child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
                                 'Upozornenia',
                                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                  color:  AppColors.getColor('mono').black,
+                                  color: AppColors.getColor('mono').black,
                                 ),
                               ),
                               SizedBox(height: 5,),
-                            Column(
-                            children: snapshot.data!
-                              .sublist(max(0, snapshot.data!.length - 3)) // Take the last three items
-                              .reversed
-                              .map((notification) {
-                                return _buildNotificationItem(notification);
-                              }).toList(),
-                            ),
-                            Center(
-                              child: Container(
-                                width: 200,
-                                height: 40,
-                                child: ReButton(
-                                  color: "grey", 
-                                  text: 'Zobraziť všetko',
-                                  rightIcon: 'assets/icons/arrowRightIcon.svg',
+                              Column(
+                                children: snapshot.data!
+                                  .sublist(max(0, snapshot.data!.length - 3))
+                                  .reversed
+                                  .map((notification) {
+                                    return _buildNotificationItem(notification);
+                                  }).toList(),
+                              ),
+                              Center(
+                                child: Container(
+                                  width: 200,
+                                  height: 40,
+                                  child: ReButton(
+                                    color: "grey", 
+                                    text: 'Zobraziť všetko',
+                                    rightIcon: 'assets/icons/arrowRightIcon.svg',
                                     onTap: () {
                                       if (widget.currentUserData!.teacher) {
                                         widget.onNavigationItemSelected(5);
                                       } else {
                                         widget.onNavigationItemSelected(4);
                                       }
-                                    widget.selectedIndex = -1;
-                                    Navigator.of(context).pop();
-                                  },
+                                      widget.selectedIndex = -1;
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
                                 ),
-                              ),
-                            )
-                          ]
-                        ));
+                              )
+                            ],
+                          ),
+                        );
                       }
                     },
                   ),
@@ -213,6 +225,7 @@ Widget build(BuildContext context) {
     ),
   );
 }
+
 
 Widget _buildNotificationItem(CompleteNotification completeNotification) {
   return Container(
