@@ -235,7 +235,7 @@ Widget build(BuildContext context) {
                           ),
                     ),
                     const Spacer(),
-                    SizedBox(
+                    /*SizedBox(
                       width: 320,
                       height: 40,
                       child: ReButton(
@@ -246,7 +246,7 @@ Widget build(BuildContext context) {
                             _onNavigationItemSelected(1);
                         }
                       ),
-                    )
+                    )*/
                   ],
                 ),
                 const SizedBox(height: 20,),

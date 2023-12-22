@@ -897,7 +897,7 @@ class _DesktopTestState extends State<DesktopTest> {
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   SizedBox(height: 10),
-                  Padding(padding: EdgeInsets.all(8),
+                  Container(width: 800 ,padding: EdgeInsets.all(8),
                     child: Text(introduction ?? '',
                       textAlign: TextAlign.center,
                       style:  Theme.of(context)
@@ -911,11 +911,13 @@ class _DesktopTestState extends State<DesktopTest> {
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Theme.of(context).primaryColor))
+             Transform.translate(
+              offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
+              child: SvgPicture.asset(
+                'assets/bottomBackground.svg',
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
               ),
-              child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.cover, width:  MediaQuery.of(context).size.width,),
             ),
             Spacer(),
             ReButton(color: "green", text: 'POKRAČOVAŤ', onTap:

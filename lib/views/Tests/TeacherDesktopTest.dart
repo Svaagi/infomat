@@ -768,7 +768,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
               width: double.infinity,
               height: MediaQuery.of(context).size.height * (1/2),
               decoration: BoxDecoration(
-                  color: AppColors.getColor('primary').light
+                  color: AppColors.getColor('primary').light,
                 ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -798,7 +798,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                     SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,),
                   ],),
                   const SizedBox(height: 10),
-                  Padding(padding: const EdgeInsets.all(8),
+                  Container(width: 800 ,padding: const EdgeInsets.all(8),
                     child: Text(introduction ?? '',
                       textAlign: TextAlign.center,
                       style:  Theme.of(context)
@@ -809,14 +809,18 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                         ),
                     ),
                   ),
+
                 ],
+                
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Theme.of(context).primaryColor))
+            Transform.translate(
+              offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
+              child: SvgPicture.asset(
+                'assets/bottomBackground.svg',
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
               ),
-              child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
             ),
             const Spacer(),
             ReButton(color: "green", text: 'POKRAČOVAŤ', onTap:

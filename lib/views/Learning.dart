@@ -231,12 +231,7 @@ class _LearningState extends State<Learning> {
                       Icons.arrow_back,
                       color: AppColors.getColor('mono').darkGrey,
                     ),
-                    onPressed: () {
-                      _onNavigationItemSelected(0);
-                      setState(() {
-                        _add = false;
-                      });  
-                    },
+                    onPressed: back,
                   ),
                   Text(
                     'Späť',
@@ -260,13 +255,20 @@ class _LearningState extends State<Learning> {
                 ],
               ),
             ),
-            MaterialForm(currentUserData: widget.currentUserData, fetch: fetchCurrentClass()),
+            MaterialForm(currentUserData: widget.currentUserData, fetch: fetchCurrentClass(), back: back),
           ]
         )
       ),
         ]
       )
     );
+  }
+
+  void back () {
+    _onNavigationItemSelected(0);
+    setState(() {
+      _add = false;
+    });  
   }
    void _onPageChanged(int index) {
     setState(() {

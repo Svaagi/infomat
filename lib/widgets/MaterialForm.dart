@@ -29,12 +29,14 @@ class OptionsData {
 class MaterialForm extends StatefulWidget {
   final UserData? currentUserData;
   final Future<void> fetch;
+  final void Function() back;
 
 
   MaterialForm({
     Key? key,
     required this.fetch,
     required this.currentUserData,
+    required this.back
   }) : super(key: key);
 
   @override
@@ -549,7 +551,7 @@ class _MaterialFormState extends State<MaterialForm> {
                       color: "green", 
                       isDisabled: !_allFieldsCompleted(),
                       text: 'PRIDAŤ DO APLIKÁCIE',
-                      onTap: () {
+                      onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             // Handle submission of form
                             MaterialData data = MaterialData(
@@ -564,8 +566,9 @@ class _MaterialFormState extends State<MaterialForm> {
                               video: _videoController.text,
                             );
                             // TODO: Handle data as needed
-                            addMaterialToFirestore(data);
+                            await addMaterialToFirestore(data);
                             widget.fetch;
+                            widget.back();
                             reShowToast('Obsah pridaný', false, context);
                           }
                       }

@@ -180,12 +180,14 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                           ),
                         ),
                       ),
-                      Container(
-                    decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Theme.of(context).primaryColor))
-                    ),
-                    child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
-                  ),
+                       Transform.translate(
+              offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
+              child: SvgPicture.asset(
+                'assets/bottomBackground.svg',
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
                   Container(
                     padding: EdgeInsets.all(16),
                     alignment: Alignment.center,

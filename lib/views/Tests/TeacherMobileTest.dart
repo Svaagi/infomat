@@ -812,11 +812,13 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(top: BorderSide(color: Theme.of(context).primaryColor))
+             Transform.translate(
+              offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
+              child: SvgPicture.asset(
+                'assets/bottomBackground.svg',
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
               ),
-              child: SvgPicture.asset('assets/bottomBackground.svg', fit: BoxFit.fill, width:  MediaQuery.of(context).size.width,),
             ),
             Spacer(),
             ReButton(color: "green", text: 'POKRAČOVAŤ', onTap:
