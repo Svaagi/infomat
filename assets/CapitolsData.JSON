@@ -4050,9 +4050,7 @@
           },
           {
             "answers": [
-              "assets/pictureAnswers/picture4.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              
             ],
             "answersImage": [],
             "correct": [
@@ -4066,7 +4064,11 @@
               "Čiarový graf nie je vhodný, keďže takéto grafy sa používajú na spojité dáta. Dáta, ktoré vám boli prezentované však na seba nenadväzujú.",
               "Toto je správna odpoveď, keďže plný počet poslaneckých mandátov je 150 a súčet mandátov jednotlivých strán je dokopy 150, takže v koláčovom grafe nechýbajú žiadne dáta."
             ],
-            "images": [],
+            "images": [
+              "assets/pictureAnswers/picture4.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
+            ],
             
             "matchmaking": [],
             "matches": [],

@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/NotificationModel.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/controllers/SchoolController.dart';
 import 'package:infomat/controllers/NotificationController.dart';
+import 'package:infomat/widgets/Widgets.dart';
 
 Future<ClassData> fetchClass(String classId) async {
   try {
@@ -105,7 +107,7 @@ Future<List<ClassData>> fetchClasses(List<String> classIds) async {
   return classes;
 }
 
-Future<void> editClass(String classId, ClassData newClassData) async {
+Future<void> editClass(String classId, ClassData newClassData, BuildContext context,) async {
   try {
     // Reference to the class document in Firestore
     DocumentReference classRef =
@@ -152,6 +154,7 @@ Future<void> editClass(String classId, ClassData newClassData) async {
     };
 
     // Update the class document with the new data
+    reShowToast('Zmeny uložené', false, context);
     await classRef.update(classDataMap);
   } catch (e) {
     print('Error editing class: $e');
@@ -1001,7 +1004,7 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
 
     addToList(newClassRef.id);
 
-    if(adminId != null) updateClasses(adminId, newClassRef.id);
+    if(adminId != null) updateClasses([adminId], newClassRef.id);
     
     if (addSchoolData != null) addSchoolData(ClassDataWithId(newClassRef.id, newClass));
     print('Class added successfully with ID: ${newClassRef.id}');

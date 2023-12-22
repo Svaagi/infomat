@@ -31,7 +31,7 @@ class AddExistingUser extends StatefulWidget {
 }
 
 class _AddExistingUserState extends State<AddExistingUser> {
-  String _selectedTeacher = '';
+  List<String> _selectedTeachers = [];
   List<UserData> teacherDataList = [];
   bool isLoading = true;
 
@@ -48,6 +48,7 @@ class _AddExistingUserState extends State<AddExistingUser> {
         print(teacherId);
         UserData teacherData = await fetchUser(teacherId);
         fetchedTeachers.add(teacherData);
+        _selectedTeachers = widget.currentClass!.data.teachers;
 
         print(fetchedTeachers);
       } catch (e) {
@@ -152,13 +153,8 @@ class _AddExistingUserState extends State<AddExistingUser> {
                       itemCount: teacherDataList.length,
                       itemBuilder: (BuildContext context, int index) {
                         UserData userData = teacherDataList[index];
-
-
-                        if (widget.currentClass!.data.teachers.any((element) => element == userData.id)) {
-                          return Container();
-                        } else {
                           return _buildTeacherCheckbox(userData.name, userData.id);
-                        }
+                        
                       },
                     ),
             ),
@@ -170,13 +166,19 @@ class _AddExistingUserState extends State<AddExistingUser> {
                     ReButton(
                     color: "green", 
                     text: 'ULOŽIŤ', 
-                    onTap: () {
+                    onTap: () async {
                         setState(() {
-                          widget.currentClass!.data.teachers.add(_selectedTeacher);
+                          isLoading = true;
+                          widget.currentClass!.data.teachers = _selectedTeachers;
                         });
-                        editClass(widget.selectedClass!, widget.currentClass!.data);
-                        updateUserSchoolClass(_selectedTeacher, widget.selectedClass!);
-                        updateClasses(_selectedTeacher, widget.selectedClass!);
+                        await editClass(widget.selectedClass!, widget.currentClass!.data, context);
+                        await updateUserSchoolClass(_selectedTeachers, widget.selectedClass!);
+                        await updateClasses(_selectedTeachers, widget.selectedClass!);
+                        setState(() {
+                          isLoading = false;
+                        });
+                        widget.onNavigationItemSelected(1);
+                        widget.selectedClass = null;
                       }
                   ),
                 ],
@@ -205,13 +207,14 @@ class _AddExistingUserState extends State<AddExistingUser> {
             color: Colors.black, // Purple when checked
           ),
         ),
-        value: _selectedTeacher == id,
+        value: _selectedTeachers.contains(id),
         onChanged: (value) {
           setState(() {
             if (value!) {
-              _selectedTeacher = id;
+              _selectedTeachers.add(id);
             } else {
-              _selectedTeacher = '';
+              print('remove');
+              _selectedTeachers.remove(id);
             }
           });
         },

@@ -163,7 +163,7 @@ class _UpdateClassState extends State<UpdateClass> {
                         }).toList(),
                       );
                     }).toList(),
-                  ));
+                  ),context);
                   widget.editClassNameController.text = '';
                   reShowToast('Trieda úspešne upravená', false, context);
                   } else {

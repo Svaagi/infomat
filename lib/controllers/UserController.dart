@@ -173,18 +173,20 @@ Future<UserData> fetchUser(String userId) async {
 }
 
 
-Future<void> updateClasses(String userId, String classId) async {
+Future<void> updateClasses(List<String> userIds, String classId) async {
   try {
-    // Get a reference to the user's document in Firestore
-    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+    for (String userId in userIds) {
+      // Get a reference to the user's document in Firestore
+      DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
 
-    // Update the classes array by adding the new classId
-    await userRef.update({
-      'classes': FieldValue.arrayUnion([classId]),
-      'schoolClass': classId
-    });
+      // Update the classes array by adding the new classId
+      await userRef.update({
+        'classes': FieldValue.arrayUnion([classId]),
+        'schoolClass': classId
+      });
 
-    print('Class ID $classId added to user $userId successfully.');
+      print('Class ID $classId added to user $userId successfully.');
+    }
   } catch (error) {
     print('Error updating classes: $error');
     throw error;
@@ -301,22 +303,25 @@ Future<void> registerUser(String schoolId, String classId, String recipient, Str
   }
 }
 
-Future<void> updateUserSchoolClass(String userId, String newSchoolClassId) async {
+Future<void> updateUserSchoolClass(List<String> userIds, String newSchoolClassId) async {
   try {
-    // Get a reference to the user's document in Firestore
-    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+    for (String userId in userIds) {
+      // Get a reference to the user's document in Firestore
+      DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
 
-    // Update the 'schoolClass' field with the new class ID
-    await userRef.update({
-      'schoolClass': newSchoolClassId
-    });
+      // Update the 'schoolClass' field with the new class ID
+      await userRef.update({
+        'schoolClass': newSchoolClassId
+      });
 
-    print('School class updated to $newSchoolClassId for user $userId successfully.');
+      print('School class updated to $newSchoolClassId for user $userId successfully.');
+    }
   } catch (error) {
     print('Error updating school class: $error');
     throw error;
   }
 }
+
 
 Future<void> bulkRemoveClassFromUsers(List<String> userIds, String classIdToRemove) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;

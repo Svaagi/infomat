@@ -109,7 +109,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
           teachers = school.teachers;
           adminId = school.admin;
           schoolName = school.name;
-          _loading = false;
         }
         classDataList = [];
       });
@@ -119,6 +118,11 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         ClassData classData = await fetchClass(classId);
         classDataList.add(ClassDataWithId(classId, classData));
       }
+
+       classDataList.sort((a, b) => a.data.name.compareTo(b.data.name));
+
+          _loading = false;
+
     } catch (e) {
       print('Error fetching school data: $e');
     }

@@ -248,7 +248,7 @@ class _AppState extends State<App> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: const EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10, left: 14),
                 width: 160,
                 height: 40,
                 child: ReButton(

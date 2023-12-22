@@ -53,28 +53,31 @@ class _ContactViewState extends State<ContactView> {
             ),
           ),
           const SizedBox(height: 30,),
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
               Text(
               'Moja správa je:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
             ),
             SizedBox(width: 10,),
-            Container(
-              padding: EdgeInsets.only(right: 8),
-              height: 30,
-              width: 200,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: _type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-              ),
-              child: Row(
-                children: [
-                  Radio(
-                    value: 'Nahlásenie problému',
+            InkWell(
+              onTap: () {
+                setState(() {
+                  _type = 'Nahlásenie problému';
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.only(right: 8),
+                height: 30,
+                width: 200,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: _type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
+                ),
+                child: Row(
+                  children: [
+                    Radio(
+                      value: 'Nahlásenie problému',
                       groupValue: _type,
                       onChanged: (newValue) {
                         setState(() {
@@ -83,16 +86,17 @@ class _ContactViewState extends State<ContactView> {
                       },
                       activeColor: AppColors.getColor('primary').main,
                     ),
-                  Text(
-                    'Nahlásenie problému',
-                    style: TextStyle(
-                      color:  _type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
+                    Text(
+                      'Nahlásenie problému',
+                      style: TextStyle(
+                        color:  _type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-              SizedBox(width: 10,),
+            SizedBox(width: 10,),
             Container(
               padding: EdgeInsets.only(right: 8),
               height: 30,
@@ -123,8 +127,7 @@ class _ContactViewState extends State<ContactView> {
                 ],
               ),
             ),
-            ],
-          ),
+
             SizedBox(height: 20,),
             Text(
               'E-mail/Telefónne číslo',

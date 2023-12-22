@@ -114,7 +114,7 @@ class _XlsxState extends State<Xlsx> {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                  'Skontrolujte prosím správnosť údajov. Ak v údajoch nie sú chyby, stlačte “ULOŽIŤ”.',
+                  'Prosím, skontrolujte správnosť údajov. Ak v údajoch nie sú chyby, stlačte tlačidlo “ULOŽIŤ”.',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: AppColors.getColor('mono').grey,
                     ),
@@ -134,7 +134,7 @@ class _XlsxState extends State<Xlsx> {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                  'Údaje nahrajte prostredníctvom .xlsx súboru. Aplikácia každému žiakovi vygeneruje a pošle prihlasovacie údaje.',
+                  'Údaje nahrajte prostredníctvom .xlsx súboru. Aplikácia vygeneruje pre študentov prihlasovacie údaje, ktoré vám budú zaslané na vašu e-mailovú adresu. Následne tieto údaje môžete môžete distribuovať študentom v triede.',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: AppColors.getColor('mono').grey,
                     ),
