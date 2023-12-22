@@ -108,7 +108,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
         }
       }
 
-
+        completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
         yield completeNotifications.reversed.toList();
       }
     } else {
@@ -131,7 +131,7 @@ Widget build(BuildContext context) {
         IconButton(
           icon: SvgPicture.asset('assets/icons/bellIcon.svg'),
           onPressed: () {
-            // Creating a new stream each time the button is pressed
+            _notificationsDataStream = _fetchCompleteNotificationsStream();
 
             final RenderBox button = context.findRenderObject() as RenderBox;
             final RenderBox overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
