@@ -104,8 +104,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
 
     completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
     
-    completeNotifications.reversed.toList();
-      yield completeNotifications;
+      yield completeNotifications.reversed.toList();;
     }
   }
 
@@ -185,6 +184,7 @@ Widget build(BuildContext context) {
                               Column(
                                 children: snapshot.data!
                                   .sublist(max(0, snapshot.data!.length - 3))
+                                  .reversed
                                   .map((notification) {
                                     return _buildNotificationItem(notification);
                                   }).toList(),
