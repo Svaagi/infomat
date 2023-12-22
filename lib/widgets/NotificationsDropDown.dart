@@ -11,6 +11,8 @@ import 'package:infomat/models/MaterialModel.dart';
 import 'package:infomat/controllers/NotificationController.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/MaterialController.dart';
+import 'package:infomat/controllers/UserController.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // Import other necessary packages and controllers
 
 class CompleteNotification {
@@ -52,59 +54,66 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
   @override
   void initState() {
     super.initState();
-    _notificationsDataStream = _fetchCompleteNotificationsStream(widget.currentUserData!);
+    _notificationsDataStream = _fetchCompleteNotificationsStream();
   }
 
-  Stream<List<CompleteNotification>> _fetchCompleteNotificationsStream(UserData userData) async* {
-    // Implementation to yield a stream of List<CompleteNotification>
-    // Placeholder implementation with simulated data fetch delay
-    while(true) {
-      await Future.delayed(Duration(seconds: 1)); 
-      List<NotificationsData> notifications = await fetchNotifications(userData);
-      List<CompleteNotification> completeNotifications = [];
+  Stream<List<CompleteNotification>> _fetchCompleteNotificationsStream() async* {
+    // First, fetch user data
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      UserData userData = await fetchUser(user.uid); // Assuming fetchUser is defined
 
-    for (var notif in notifications) {
-      switch (notif.type.type) {
-        case 'post':
-          {
-            PostsData? postData = await _fetchPostById(userData.schoolClass, notif.type.id);
-            completeNotifications.add(CompleteNotification(notification: notif, postData: postData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
-          }
-          break;
-        case 'comment':
-          {
-            String postId = notif.type.id;
-            String commentIndex = notif.type.commentIndex;
-            CommentsData? commentData = await _fetchCommentById(userData.schoolClass, postId, commentIndex);
-            completeNotifications.add(CompleteNotification(notification: notif, commentData: commentData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
-          }
-          break;
+      // Now, fetch notifications based on user data
+      while (true) {
+        await Future.delayed(Duration(seconds: 1)); 
+        List<NotificationsData> notifications = await fetchNotifications(userData);
+        List<CompleteNotification> completeNotifications = [];
 
-        case 'answer':
-          {
-            String postId = notif.type.id;
-            String commentIndex = notif.type.commentIndex;
-            String answerIndex = notif.type.answerIndex;
-            CommentsAnswersData? answerData = await _fetchAnswerById(userData.schoolClass, postId, commentIndex, answerIndex);
-            completeNotifications.add(CompleteNotification(notification: notif, answerData: answerData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
-          } 
-          break;
-        case 'learning':
-          {
-            MaterialData? materialData = await _fetchMaterialById(userData.schoolClass, notif.type.id);
-            completeNotifications.add(CompleteNotification(notification: notif, materialData: materialData, avatar: 'assets/avatars/LearningAvatar.svg'));
-          }
-          break;
-        default:
-          {
-            completeNotifications.add(CompleteNotification(notification: notif, avatar: 'assets/avatars/ChallengesAvatar.svg'));
-          }
+      for (var notif in notifications) {
+        switch (notif.type.type) {
+          case 'post':
+            {
+              PostsData? postData = await _fetchPostById(userData.schoolClass, notif.type.id);
+              completeNotifications.add(CompleteNotification(notification: notif, postData: postData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
+            }
+            break;
+          case 'comment':
+            {
+              String postId = notif.type.id;
+              String commentIndex = notif.type.commentIndex;
+              CommentsData? commentData = await _fetchCommentById(userData.schoolClass, postId, commentIndex);
+              completeNotifications.add(CompleteNotification(notification: notif, commentData: commentData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
+            }
+            break;
+
+          case 'answer':
+            {
+              String postId = notif.type.id;
+              String commentIndex = notif.type.commentIndex;
+              String answerIndex = notif.type.answerIndex;
+              CommentsAnswersData? answerData = await _fetchAnswerById(userData.schoolClass, postId, commentIndex, answerIndex);
+              completeNotifications.add(CompleteNotification(notification: notif, answerData: answerData, avatar: 'assets/avatars/DiscussionAvatar.svg'));
+            } 
+            break;
+          case 'learning':
+            {
+              MaterialData? materialData = await _fetchMaterialById(userData.schoolClass, notif.type.id);
+              completeNotifications.add(CompleteNotification(notification: notif, materialData: materialData, avatar: 'assets/avatars/LearningAvatar.svg'));
+            }
+            break;
+          default:
+            {
+              completeNotifications.add(CompleteNotification(notification: notif, avatar: 'assets/avatars/ChallengesAvatar.svg'));
+            }
+        }
       }
-    }
 
-    completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
-    
-      yield completeNotifications.reversed.toList();;
+
+        yield completeNotifications.reversed.toList();
+      }
+    } else {
+      print('User is not logged in.');
+      yield []; // Return an empty list if the user is not logged in
     }
   }
 
@@ -123,7 +132,6 @@ Widget build(BuildContext context) {
           icon: SvgPicture.asset('assets/icons/bellIcon.svg'),
           onPressed: () {
             // Creating a new stream each time the button is pressed
-            Stream<List<CompleteNotification>> notificationsStream = _fetchCompleteNotificationsStream(widget.currentUserData!).asBroadcastStream();
 
             final RenderBox button = context.findRenderObject() as RenderBox;
             final RenderBox overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
@@ -143,7 +151,7 @@ Widget build(BuildContext context) {
               items: [
                 MyCustomPopupMenuItem(
                   child: StreamBuilder<List<CompleteNotification>>(
-                    stream: notificationsStream,
+                    stream: _notificationsDataStream,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return  Center(child: CircularProgressIndicator());

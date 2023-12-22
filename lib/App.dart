@@ -26,7 +26,6 @@ import 'package:infomat/widgets/TeacherMobileAppBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
-import 'package:infomat/providers/ContactProvider.dart';
 
 class NonSwipeablePageController extends PageController {
   @override
