@@ -16,7 +16,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   google_fonts: ^6.1.0
-  firebase_auth: ^4.15.0
+  firebase_auth: ^4.15.3
   flutter_svg: ^2.0.9
   flutter_styled_toast: ^2.2.1
   cloud_firestore: ^4.13.5

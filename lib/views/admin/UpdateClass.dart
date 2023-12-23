@@ -17,6 +17,7 @@ class UpdateClass extends StatefulWidget {
   final UserDataWithId? currentUser;
   final void Function(String) removeSchoolData;
   final List<String> classes;
+  final Future Function() update;
   
   
 
@@ -30,7 +31,8 @@ class UpdateClass extends StatefulWidget {
       required this.currentClass,
       required this.currentUser,
       required this.removeSchoolData,
-      required this.classes
+      required this.classes,
+      required this.update
     }
   );
 
@@ -165,6 +167,8 @@ class _UpdateClassState extends State<UpdateClass> {
                     }).toList(),
                   ),context);
                   widget.editClassNameController.text = '';
+                  widget.currentUserData!.classes = widget.currentUserData!.classes;
+                  widget.update();
                   reShowToast('Trieda úspešne upravená', false, context);
                   } else {
                     if(widget.editClassNameController.text == '') _textError = 'Pole je povinné';

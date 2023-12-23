@@ -11,7 +11,8 @@ class Auth {
 // New function to check if email is already in use
 Future<bool> isEmailAlreadyUsed(String email) async {
   try {
-    final list = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+    List list = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+    
     // If list is empty, email is not used yet
     return list.isNotEmpty;
   } on FirebaseAuthException catch (e) {

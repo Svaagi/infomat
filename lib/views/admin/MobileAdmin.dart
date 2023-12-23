@@ -28,7 +28,8 @@ class MobileAdmin extends StatefulWidget {
   final Future<void> fetch;
   final UserData? currentUserData;
   final void Function() logOut;
-  const MobileAdmin({Key? key, required this.fetch, required this.currentUserData, required this.logOut});
+  final void Function() onUserChanged;
+  const MobileAdmin({Key? key, required this.fetch, required this.currentUserData, required this.logOut, required this.onUserChanged});
 
   @override
   State<MobileAdmin> createState() => _MobileAdminState();
@@ -403,6 +404,7 @@ class _MobileAdminState extends State<MobileAdmin> {
         removeSchoolData: (String classId) {
           classDataList.removeWhere((element) => element.id == classId);
         },
+        update: fetchSchoolData,
       );
       case 7:
         return Xlsx(

@@ -96,6 +96,7 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
       if (!classExists) {
         errors.add('Trieda neexistuje');
       }
+      print('HERE${await isEmailAlreadyUsed(email)}');
       if (!emailIsValid || await isEmailAlreadyUsed(email) || emailAlreadySeen) {
         errors.add(emailAlreadySeen ? 'Email sa už vyskytol v zozname' : 'Email je používaný alebo v zlom formáte');
       }

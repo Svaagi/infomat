@@ -122,6 +122,21 @@ class _DropDownState extends State<DropDown> {
   }
 
   @override
+  void didUpdateWidget(DropDown oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    // Check if currentUserData has changed
+    if (widget.currentUserData != oldWidget.currentUserData) {
+      fetchOptions(); // Call fetchOptions to update the dropdown
+
+      // If there is a callback defined, call it
+      if (widget.onUserDataChanged != null) {
+        widget.onUserDataChanged!();
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     bool isDropdownOpen = false;
     if (_loading) return Center(child: CircularProgressIndicator(),);

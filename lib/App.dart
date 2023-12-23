@@ -451,6 +451,7 @@ class _AppState extends State<App> {
                   fetchUserData();
                 });
               },
+              onUserChanged: _onUserDataChanged,
             )
           : DesktopAdmin(
               fetch: fetchUserData(),
@@ -461,6 +462,7 @@ class _AppState extends State<App> {
                   fetchUserData();
                 });
               },
+              onUserChanged: _onUserDataChanged,
             );
       case 7:
         return ContactView();

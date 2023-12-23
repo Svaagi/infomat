@@ -29,7 +29,8 @@ class DesktopAdmin extends StatefulWidget {
   final Future<void> fetch;
   final UserData? currentUserData;
   final void Function() logOut;
-  const DesktopAdmin({Key? key, required this.fetch, required this.currentUserData, required this.logOut});
+  final void Function() onUserChanged;
+  const DesktopAdmin({Key? key, required this.fetch, required this.currentUserData, required this.logOut, required this.onUserChanged});
 
   @override
   State<DesktopAdmin> createState() => _DesktopAdminState();
@@ -97,6 +98,8 @@ class _DesktopAdminState extends State<DesktopAdmin> {
     try {
       SchoolData school = await fetchSchool(widget.currentUserData!.school);
       admin = await fetchUser(school.admin);
+      List<ClassDataWithId> tmp = [];
+
 
 
       setState(() {
@@ -110,16 +113,19 @@ class _DesktopAdminState extends State<DesktopAdmin> {
           adminId = school.admin;
           schoolName = school.name;
         }
-        classDataList = [];
       });
 
       // Fetch class data once and store it in classDataList with IDs
       for (String classId in classes) {
         ClassData classData = await fetchClass(classId);
-        classDataList.add(ClassDataWithId(classId, classData));
+        tmp.add(ClassDataWithId(classId, classData));
       }
 
-       classDataList.sort((a, b) => a.data.name.compareTo(b.data.name));
+       tmp.sort((a, b) => a.data.name.compareTo(b.data.name));
+
+      setState(() {
+       classDataList = tmp;
+      });
 
           _loading = false;
 
@@ -482,6 +488,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         removeSchoolData: (String classId) {
           classDataList.removeWhere((element) => element.id == classId);
         },
+        update: fetchSchoolData,
       );
       case 7:
         return Xlsx(

@@ -1,5 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+class OptionsData {
+  String id;
+  ClassData data;
+
+  OptionsData({
+    required this.id,
+    required this.data,
+  });
+}
+
 class ClassDataWithId {
   final String id;
   final ClassData data;
