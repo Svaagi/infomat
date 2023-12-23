@@ -70,7 +70,6 @@ class _DesktopAdminState extends State<DesktopAdmin> {
     }
   }
 
-
   // Create a list to store class data
   List<ClassDataWithId> classDataList = [];
 

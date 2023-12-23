@@ -77,7 +77,6 @@ class _MobileClassesState extends State<MobileClasses> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 100,),
                   if (widget.currentUserData!.admin)MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
@@ -99,6 +98,8 @@ class _MobileClassesState extends State<MobileClasses> {
                       ),
                     ),
                   ),
+                  SizedBox(width: 10,),
+
                 ],
               ),
               SizedBox(height: 40,),

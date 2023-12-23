@@ -40,6 +40,8 @@ class DesktopClasses extends StatefulWidget {
 }
 
 class _DesktopClassesState extends State<DesktopClasses> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -444,6 +446,23 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                         ),
                                   ),
                                   Spacer(),
+                                  /*Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: AppColors.getColor('blue').lighter
+                                    ),
+                                    child: Text(
+                                        'Neprihlásený/á',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .copyWith(
+                                              color: AppColors.getColor('blue').main,
+                                            ),
+                                      ),
+                                  ),*/
+                                  SizedBox(width: 10,),
                                   SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                                 ],
                               ),

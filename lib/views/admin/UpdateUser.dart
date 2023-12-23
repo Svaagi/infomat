@@ -7,6 +7,9 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:infomat/controllers/auth.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:flutter/gestures.dart';
+
+
 
 class UpdateUser extends StatefulWidget {
   final void Function(int) onNavigationItemSelected;
@@ -96,10 +99,12 @@ bool isValidEmail(String email) {
                   'Späť',
                   style: TextStyle(color: AppColors.getColor('mono').darkGrey),
                 ),
+                SizedBox(width: 10,),
                 Expanded(
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
+                      textAlign: TextAlign.center,
                       widget.admin ? 'Upraviť správcu' : widget.teacher ? '${widget.currentClass!.data.name} / Upraviť učiteľa' : '${widget.currentClass!.data.name} / Upraviť žiaka',
                       style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                             color: Theme.of(context).colorScheme.onBackground,
@@ -230,12 +235,38 @@ bool isValidEmail(String email) {
                       ),
                     ],
                   ),
-                  if (widget.teacher && !widget.admin)Text(
-                    'Ak učiteľ, ktorého chcete pridať, už má účet v aplikácií, pridáte ho tu.',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.getColor('mono').grey,
+                  if (widget.teacher && !widget.admin)Wrap(
+                    alignment: WrapAlignment.center,
+                    children: [
+                      Text(
+                        textAlign: TextAlign.center,
+                        'Ak učiteľ, ktorého chcete pridať, už má účet v aplikácií, ',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: AppColors.getColor('mono').grey,
+                          ),
                       ),
+                      Text.rich(
+                        TextSpan(
+                          text: 'pridáte ho tu.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                              decoration: TextDecoration.underline,
+                              color: AppColors.getColor('mono').grey,
+                          ),
+                          // You can also add onTap to make it clickable
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // Handle the tap event here, e.g., open a URL
+                              // You can use packages like url_launcher to launch URLs.
+                              widget.onNavigationItemSelected(3);
+                            },
+                        ),
+                      ),
+                    ],
                   ),
+                  
                 ],
               )
             ),

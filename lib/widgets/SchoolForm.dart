@@ -156,15 +156,16 @@ class _SchoolFormState extends State<SchoolForm> {
       {
         'to': [recipientEmail],
         'message': {
+          'from': 'Infomat', // Specify sender name here
           'subject': 'Verifikácia',
-          'text': 'Dobrý deň,  $name,\nváš overovací kód je $verificationCode.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+          'html': 'Dobrý deň, $name,<br>váš overovací kód je <b>$verificationCode</b>.<br><br>Na túto správu neodpovedajte, bola odoslaná automaticky.'
         },
       },
     ).then(
       (value) {
         print('Queued email for delivery!');
       },
-    );
+);
     
     print('done');
   }
@@ -1062,7 +1063,7 @@ class _SchoolFormState extends State<SchoolForm> {
               'to': [email],
               'message': {
                 'subject': 'Heslo',
-                'text': 'Dobrý deň, $name,\nvaše heslo je $generatePassword.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+                'html': 'Dobrý deň, $name,<br>vaše heslo je <b>$generatePassword</b>.<br><br>Na túto správu neodpovedajte, bola odoslaná automaticky.'
               },
             },
           ).then(
@@ -1070,6 +1071,7 @@ class _SchoolFormState extends State<SchoolForm> {
               print('Queued email for delivery!');
             },
           );
+
           addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , [], setTeacher);
 
           for (String name in combinedList) {
