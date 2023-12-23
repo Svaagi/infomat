@@ -107,6 +107,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
   void initState() {
     super.initState();
     User? currentUser = FirebaseAuth.instance.currentUser;
+    isHeartFilledNotifier = ValueNotifier(widget.favoriteMaterialIds.contains(widget.materialId));
     if (currentUser != null) {
       userId = currentUser.uid;
       fetchUser(userId!).then((user) {
