@@ -283,7 +283,6 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                           children: [
                             if(MediaQuery.of(context).size.width > 1000) SizedBox(height: 50,),
                             Container(
-                              color: MediaQuery.of(context).size.width > 1000 ? null : AppColors.getColor('mono').white ,
                               child: Row(
                                 children: [
                                   IconButton(
