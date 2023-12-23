@@ -255,7 +255,7 @@ class _LearningState extends State<Learning> {
                 ],
               ),
             ),
-            MaterialForm(currentUserData: widget.currentUserData, fetch: fetchCurrentClass(), back: back),
+            MaterialForm(currentUserData: widget.currentUserData, materials: currentClassData!.materials, back: back),
           ]
         )
       ),

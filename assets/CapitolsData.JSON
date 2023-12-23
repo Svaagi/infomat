@@ -4052,7 +4052,11 @@
             "answers": [
               
             ],
-            "answersImage": [],
+            "answersImage": [
+              "assets/pictureAnswers/picture4.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
+            ],
             "correct": [
               { "correct": 0, "index": 0 },
               { "correct": 2, "index": 2 }
@@ -4065,9 +4069,7 @@
               "Toto je správna odpoveď, keďže plný počet poslaneckých mandátov je 150 a súčet mandátov jednotlivých strán je dokopy 150, takže v koláčovom grafe nechýbajú žiadne dáta."
             ],
             "images": [
-              "assets/pictureAnswers/picture4.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              
             ],
             
             "matchmaking": [],

@@ -6,6 +6,8 @@ import 'package:infomat/controllers/userController.dart'; // Import the UserData
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/widgets/Widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class MaterialCardWidget extends StatefulWidget {
@@ -43,8 +45,46 @@ class MaterialCardWidget extends StatefulWidget {
 
 class _MaterialCardWidgetState extends State<MaterialCardWidget> {
   bool isHeartFilled = false;
+  bool isHeartFilledOverlay = false;
   String? userId;
+  late ValueNotifier<bool> isHeartFilledNotifier;
   
+  String getPreview (String type) {
+    switch (type) {
+      case 'Video': {
+        return 'assets/learningCards/redPreview.png';
+      }
+      case 'Projekt': {
+        return 'assets/learningCards/greenPreview.png';
+      }
+      case 'Podujatie': {
+        return 'assets/learningCards/primaryPreview.png';
+      }
+      case 'Textový materiál': {
+        return 'assets/learningCards/bluePreview.png';
+      }
+    }
+    return 'assets/learningCards/primaryPreview.png';
+  }
+
+  String getBackground (String type) {
+    switch (type) {
+      case 'Video': {
+        return 'assets/learningCards/redBackground.png';
+      }
+      case 'Projekt': {
+        return 'assets/learningCards/greenBackground.png';
+      }
+      case 'Podujatie': {
+        return 'assets/learningCards/primaryBackground.png';
+      }
+      case 'Textový materiál': {
+        return 'assets/learningCards/blueBackground.png';
+      }
+    }
+    return 'assets/learningCards/primaryBackground.png';
+  }
+
   String getColor (String type) {
     switch (type) {
       case 'Video': {
@@ -72,6 +112,8 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
       fetchUser(userId!).then((user) {
         setState(() {
           isHeartFilled = widget.favoriteMaterialIds.contains(widget.materialId);
+          isHeartFilledOverlay = widget.favoriteMaterialIds.contains(widget.materialId);
+          isHeartFilledNotifier = ValueNotifier(widget.favoriteMaterialIds.contains(widget.materialId));
         });
       });
     }
@@ -217,128 +259,170 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
       )
     );
   }
-
   void _showOverlay(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => Scaffold(
           backgroundColor: AppColors.getColor('mono').white, // Set the overlay background color
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(56), // Set the preferred height of the AppBar
-            child: AppBar(
-              backgroundColor: AppColors.getColor('mono').white,
-              elevation: 0,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                color: AppColors.getColor('mono').darkGrey,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-               titleSpacing: 0,
-                centerTitle: true, // Center the title horizontally
-                title: Text(
-                  'Vzdelávacia aktivita',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
-                ),
-            ),
-          ),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Container(
-                    width: 900,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(
-                        color: AppColors.getColor('mono').lighterGrey
-                      ))
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                            width: 900,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
-                                mainAxisAlignment: MainAxisAlignment.end,
+                  child:  Container(
+                      width: 900,
+                      padding: MediaQuery.of(context).size.width > 1000 ? EdgeInsets.all(16) : EdgeInsets.all(0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: 
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if(MediaQuery.of(context).size.width > 1000) SizedBox(height: 50,),
+                            Container(
+                              color: AppColors.getColor('mono').white ,
+                              child: Row(
                                 children: [
-                                  Text(
-                                    widget.association,
-                                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimary,
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.arrow_back,
+                                      color:  AppColors.getColor('mono').black,
+                                    ),
+                                    onPressed: () => Navigator.of(context).pop(),
+                                  ),
+                                  if(MediaQuery.of(context).size.width > 1000)Text(
+                                    'Späť',
+                                    style: TextStyle(color: AppColors.getColor('mono').darkGrey),
+                                  ),
+                                  if(MediaQuery.of(context).size.width > 1000)Expanded(
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Vzdelávacia aktivita',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineMedium!
+                                            .copyWith(
+                                              color: Theme.of(context).colorScheme.onBackground,
+                                            ),
+                                      ),
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    widget.title,
-                                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimary,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
+                                  SizedBox(width: 80,)
                                 ],
                               ),
-                        ),
-
-                        const SizedBox(height: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: AppColors.getColor(getColor(widget.type)).lighter,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            widget.type,
-                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: AppColors.getColor(getColor(widget.type)).main,
                             ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          widget.description,
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: (isHeartFilled ? SvgPicture.asset('assets/icons/smallHeartFilledIcon.svg') : SvgPicture.asset('assets/icons/smallHeartIcon.svg')),
-                                color: AppColors.getColor('mono').white,
-                              onPressed: () {
-                                toggleFavorite();
-                              },
+                          if(MediaQuery.of(context).size.width > 1000)SizedBox(height: 30,),
+                            Container(
+                              padding: EdgeInsets.all(15) ,
+                                width: MediaQuery.of(context).size.width > 1000 ? 900 : MediaQuery.of(context).size.width,
+                                constraints: BoxConstraints(minHeight: 200),
+                                  decoration: BoxDecoration(
+                                    borderRadius: MediaQuery.of(context).size.width > 1000 ? BorderRadius.circular(5) : BorderRadius.circular(0),
+                                    image: DecorationImage(
+                                      image: AssetImage(getPreview(widget.type)),
+                                      fit: BoxFit.cover, // BoxFit can be changed based on your needs
+                                    ),
+                                  ),
+                                  child: Wrap(
+                                  children: [
+                                      if(widget.image != '') Container(
+                                        constraints: BoxConstraints(
+                                          maxHeight: 200,
+                                          maxWidth: 300
+                                        ),
+                                        padding: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10)
+                                        ),
+                                        child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(10), // Apply rounded corners
+                                              child:Image.network( widget.image, fit: BoxFit.cover),
+                                            ),
+                                      ),
+                                      Container(
+                                        height: 190,
+                                        padding: EdgeInsets.all(15),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              widget.association,
+                                              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                                color: Theme.of(context).colorScheme.onPrimary,
+                                              ),
+                                            ),
+                                            SizedBox(height: 5),
+                                            Text(
+                                              widget.title,
+                                              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                                color: Theme.of(context).colorScheme.onPrimary,
+                                              ),
+                                            ),
+                                            SizedBox(height: 20),
+                                          ],
+                                        ),
+                                      )
+                                  ]
+                                  )
                             ),
-                            IconButton(
-                              icon: SvgPicture.asset('assets/icons/linkIcon.svg'),
-                              onPressed: () {
-                                _launchURL(widget.link);
-                              },
+                            SizedBox(height:MediaQuery.of(context).size.width > 1000 ?  20 : 10),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                                    decoration: BoxDecoration(
+                                      color: AppColors.getColor(getColor(widget.type)).lighter,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text(
+                                      widget.type,
+                                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                        color: AppColors.getColor(getColor(widget.type)).main,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    widget.description,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                       SaveButton(
+                                      isHeartFilledNotifier: isHeartFilledNotifier,
+                                      onToggleHeart: toggleFavorite,
+                                    ),
+                                      SizedBox(width: 10,),
+                                    SizedBox(
+                                        height: 40,
+                                        child: ReButton(
+                                          color: "grey", 
+                                          text: 'Navštíviť odkaz',
+                                          leftIcon: 'assets/icons/linkIcon.svg',
+                                          onTap: () {
+                                            _launchURL(widget.link);
+                                          }
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                  
+                                ],
+                              ),
                             ),
                           ],
                         ),
-                        
-                      ],
                     ),
-                  ),
                 )
               ],
             ),
@@ -360,6 +444,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
 
     try {
     final String materialId = widget.materialId;
+    
 
     setState(() {
       if (isHeartFilled) {
@@ -367,8 +452,9 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
       } else if (!widget.userData!.materials.contains(materialId)) {
         widget.userData!.materials.add(materialId);
       }
-
+       isHeartFilledNotifier.value = !isHeartFilledNotifier.value; // Update ValueNotifier
       isHeartFilled = !isHeartFilled;
+      isHeartFilledOverlay = !isHeartFilledOverlay;
     });
     saveUserDataToFirestore(widget.userData!);
     } catch (e) {
@@ -432,5 +518,31 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
       print('Error saving user data to Firestore: $e');
       rethrow;
     }
+  }
+}
+
+class SaveButton extends StatelessWidget {
+  final ValueNotifier<bool> isHeartFilledNotifier;
+  final VoidCallback onToggleHeart;
+
+  SaveButton({required this.isHeartFilledNotifier, required this.onToggleHeart});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<bool>(
+      valueListenable: isHeartFilledNotifier,
+      builder: (context, isHeartFilled, child) {
+        return SizedBox(
+          height: 40,
+          width: 150,
+          child: ReButton(
+            color: isHeartFilled ? "primary" : "grey", 
+            text: 'Uložiť',
+            leftIcon: isHeartFilled ? 'assets/icons/whiteFilledHeartIcon.svg' : 'assets/icons/primaryHeartIcon.svg',
+            onTap: onToggleHeart,
+          ),
+        );
+      },
+    );
   }
 }

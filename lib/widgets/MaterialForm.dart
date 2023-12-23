@@ -28,15 +28,15 @@ class OptionsData {
 
 class MaterialForm extends StatefulWidget {
   final UserData? currentUserData;
-  final Future<void> fetch;
   final void Function() back;
+  List<String> materials;
 
 
   MaterialForm({
     Key? key,
-    required this.fetch,
     required this.currentUserData,
-    required this.back
+    required this.back,
+    required this.materials
   }) : super(key: key);
 
   @override
@@ -423,11 +423,11 @@ class _MaterialFormState extends State<MaterialForm> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(15),
                                 width: 900,
                                 constraints: BoxConstraints(minHeight: 200),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(5),
                                     image: DecorationImage(
                                       image: AssetImage(getPreview(_type)),
                                       fit: BoxFit.cover, // BoxFit can be changed based on your needs
@@ -567,7 +567,6 @@ class _MaterialFormState extends State<MaterialForm> {
                             );
                             // TODO: Handle data as needed
                             await addMaterialToFirestore(data);
-                            widget.fetch;
                             widget.back();
                             reShowToast('Obsah pridaný', false, context);
                           }
@@ -636,6 +635,8 @@ Future<void> addMaterialToFirestore(MaterialData material) async {
 
     // Update the materialId field with the Firestore-generated ID
     material.materialId = docRef.id;
+
+    widget.materials.add(docRef.id);
 
 
     updateClassToFirestore(_class!, docRef.id);
