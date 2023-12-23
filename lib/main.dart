@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infomat/App.dart';
 import 'package:infomat/views/Login.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 void main() async {
   ui.bootstrapEngine();
@@ -31,6 +32,17 @@ void main() async {
 
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendLoginEvent() async {
+    await analytics.logEvent(
+      name: 'login',
+      parameters: {
+        'method': 'email', // or 'google', 'facebook', etc., depending on your auth methods
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +99,7 @@ class MainApp extends StatelessWidget {
           } else {
             if (snapshot.hasData) {
               // User is logged in, navigate to the specified screen
+              sendLoginEvent();
               return const App();
             } else {
               // User is not logged in, navigate to Login
