@@ -116,14 +116,16 @@ class _MobileTestState extends State<MobileTest> {
   void initState() {
     super.initState();
 
-    fetchQuestionData(questionIndex);
-    
-    
     if (countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions) == widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length) {
       questionIndex = 0;
     } else {
       questionIndex = countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions);
     } 
+
+    fetchQuestionData(questionIndex);
+    
+    
+
     
   }
 
@@ -434,7 +436,7 @@ class _MobileTestState extends State<MobileTest> {
                         if (answersImage.isNotEmpty && index < answersImage.length) {
                           String? item = answersImage[index];
                           tile = reTileImage(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
-                          itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                          itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;
                         } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
                           String? item = answers[(index - (answersImage.length))];
                           tile = reTile(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
@@ -492,7 +494,7 @@ class _MobileTestState extends State<MobileTest> {
                           if (answersImage.isNotEmpty && index < answersImage.length) {
                             String? item = answersImage[index];
                             tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('red').main, index, item, context, correct: false);
-                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                            itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;
                           } else if ((answers.length) > 1 && index - (answersImage.length) < (answers.length)) {
                             String? item = answers[(index - (answersImage.length))];
                             tile =  reTile(AppColors.getColor('red').lighter, AppColors.getColor('red').main, index, item, context,correct: false);
@@ -539,7 +541,7 @@ class _MobileTestState extends State<MobileTest> {
                             if (answersImage.isNotEmpty && index < answersImage.length) {
                             String? item = answersImage[index];
                             tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
-                            itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;
+                            itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;
                           } else if ((answers.length ) > 1 && index - (answersImage.length) < (answers.length)) {
                             String? item = answers[(index - (answersImage.length))];
                             tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 

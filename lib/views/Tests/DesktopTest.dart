@@ -111,16 +111,18 @@ class _DesktopTestState extends State<DesktopTest> {
   void initState() {
     super.initState();
 
-    fetchQuestionData(questionIndex);
-
-
-
-    
+        
     if (countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions) == widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length) {
       questionIndex = 0;
     } else {
       questionIndex = countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions);
     } 
+
+    fetchQuestionData(questionIndex);
+
+
+
+
     
   }
 
@@ -432,10 +434,10 @@ class _DesktopTestState extends State<DesktopTest> {
                               if (pressed) {
                                 if (correct!.any((item) => item["index"] == index)) {
                                   // Show the tile in green if index matches correct
-                                  if (answersImage.isNotEmpty && index < answersImage!.length) {
+                                  if (answersImage.length > 0 && index < answersImage!.length) {
                                     String? item = answersImage?[index];
                                     tile = reTileImage(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
-                                    itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
+                                    itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;;
                                   } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
                                     String? item = answers?[(index - (answersImage?.length ?? 0))];
                                     tile = reTile(AppColors.getColor('green').lighter, AppColors.getColor('green').main, index, item, context, correct: true);
@@ -446,10 +448,8 @@ class _DesktopTestState extends State<DesktopTest> {
 
                                     if (_answer.any((answerItem) => answerItem.index == index) && correct!.any((correctItem) => _answer.any((answerItem) => answerItem.answer == correctItem["correct"] && answerItem.index == correctItem["index"] && answerItem.index == index))) {
                                       tile = reTileMatchmaking(AppColors.getColor('green').lighter, AppColors.getColor('green').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, true);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;
                                     } else {
                                       tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length - answers.length].isNotEmpty  ? explanation![index - answersImage.length - answers.length] : null;;
                                     }
                                   } 
                                   if (tile != null) {
@@ -493,7 +493,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                     if (answersImage.isNotEmpty && index < answersImage!.length) {
                                       String? item = answersImage?[index];
                                       tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('red').main, index, item, context, correct: false);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
+                                      itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;;
                                     } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
                                       String? item = answers?[(index - (answersImage?.length ?? 0))];
                                       tile =  reTile(AppColors.getColor('red').lighter, AppColors.getColor('red').main, index, item, context,correct: false);
@@ -537,15 +537,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                     );
                                   }
                                   } else {
-                                    if (answersImage.isNotEmpty && index < answersImage!.length) {
-                                      String? item = answersImage?[index];
-                                      tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
-                                    } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
-                                      String? item = answers?[(index - (answersImage?.length ?? 0))];
-                                      tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
-                                    }
+                                    
                                     if (tile != null) {
                                     return Column(
                                       children: [
@@ -597,6 +589,8 @@ class _DesktopTestState extends State<DesktopTest> {
                                   if (!isSelected) {
                                     // If selected items are less than the limit, allow adding
                                       _answer.add(UserAnswerData(answer: index, index: index));
+                                      print(_answer[0].answer);
+                                      print(_answer[0].index);
                                   } else {
                                     // Always allow unchecking
                                     _answer.removeWhere((element) => element.answer == index);
@@ -638,7 +632,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                               ),
                                           ),
                                             SizedBox(width: 32),
-                                            Expanded(child: Text('Obrázok ${index + 1},',
+                                            Expanded(child: Text('Obrázok ${index + 1}.',
                                               style: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
