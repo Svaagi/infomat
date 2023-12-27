@@ -102,7 +102,7 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
 
         }
 
-        if (matchmaking.length > 0) {
+        if (matchmaking.length > 1) {
             allCorrects = correct.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';

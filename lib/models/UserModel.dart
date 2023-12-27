@@ -539,7 +539,6 @@ UserData userData = UserData(
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
                   UserQuestionsData(answer: [], completed: false, correct: [false]),
-                  UserQuestionsData(answer: [], completed: false, correct: [false]),
                 ],
               ),
               UserCapitolsTestData(

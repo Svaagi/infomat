@@ -15,14 +15,14 @@
         "questions": [
           {
             "answers": [
-              "Znalosť veľkého počtu informácií a schopnosť naučiť sa veľa faktov naraz",
-              "Stav, kedy je človek skeptický voči absolútne všetkému",
-              "Schopnosť analyticky a systematicky rozmýšľať",
-              "Ochotu zmeniť názor, ak fakty stoja proti nemu",
-              "Intelektuálnu poctivosť a úprimný záujem zistiť pravdu",
-              "Schopnosť intuitívne vycítiť, čo je pravda",
-              "Intelektuálnu pokoru a uvedomovanie si vlastných nedokonalostí",
-              "Schopnosť rozlíšiť názory od faktov"
+              "Znalosť veľkého počtu informácií a schopnosť naučiť sa veľa faktov naraz.",
+              "Stav, kedy je človek skeptický voči absolútne všetkému.",
+              "Schopnosť analyticky a systematicky rozmýšľať.",
+              "Ochotu zmeniť názor, ak fakty stoja proti nemu.",
+              "Intelektuálnu poctivosť a úprimný záujem zistiť pravdu.",
+              "Schopnosť intuitívne vycítiť, čo je pravda.",
+              "Intelektuálnu pokoru a uvedomovanie si vlastných nedokonalostí.",
+              "Schopnosť rozlíšiť názory od faktov."
             ],
             "answersImage": [],
             "correct": [
@@ -63,11 +63,11 @@
           },
           {
               "answers": [
-                "Využitie kritického myslenia v mediálnom priestore",
-                "Pravidelné čítanie médií, ktoré podporujú môj svetonázor",
-                "Kritické porozumenie toho, ako funguje mediálny svet",
-                "Snaha naučiť žiakov, čo si majú myslieť a ktoré konkrétne médiá majú čítať",
-                "Schopnosť rozlíšiť dôveryhodné správy od nedôveryhodných, overovať informácie a odhaľovať hoaxy"
+                "Využitie kritického myslenia v mediálnom priestore.",
+                "Pravidelné čítanie médií, ktoré podporujú môj svetonázor.",
+                "Kritické porozumenie toho, ako funguje mediálny svet.",
+                "Snaha naučiť žiakov, čo si majú myslieť a ktoré konkrétne médiá majú čítať.",
+                "Schopnosť rozlíšiť dôveryhodné správy od nedôveryhodných, overovať informácie a odhaľovať hoaxy."
               ],
               "answersImage": [],
               "correct": [
@@ -87,7 +87,7 @@
               "division": [],
               "definition": "",
               "explanation": [
-                "Mediálna gramotnosť je v podstate aplikácia kritického myslenia na mediálne prostredie. Mediálny gramotný človek vie vyhodnotiť dôveryhodnosť informácií na základe objektívnych znakov a nerozhoduje sa len podľa svojho názoru. Mediálnou gramotnosťou neučíme ľudí čo si majú myslieť a ktoré médiá majú čítať."
+                "Mediálna gramotnosť je v podstate aplikácia kritického myslenia na mediálne prostredie. Mediálny gramotný človek vie vyhodnotiť dôveryhodnosť informácií na základe objektívnych znakov a nerozhoduje sa len podľa svojho názoru. Mediálnou gramotnosťou neučíme ľudí, čo si majú myslieť a ktoré médiá majú čítať."
               ],
               
               "images": [],
@@ -100,10 +100,10 @@
           },
           {
           "answers": [
-              "Emócie do kritického myslenia vôbec nepatria, v tejto téme by sa malo venovať len objektívnym racionálnym faktom",
-              "Emócie majú svoje miesto v kritickom myslení, ale mali by byť zvážené spolu s objektívnymi faktami",
-              "Emócie sú dôležitejšie ako fakty, aj tak ľudia robia rozhodnutia len na základe emócií",
-              "Ku kritickému mysleniu patria len pozitívne emócie ako radosť, negatívne emócie ako hnev a strach nemajú miesto"
+              "Emócie do kritického myslenia vôbec nepatria, v tejto téme by sa malo venovať len objektívnym racionálnym faktom.",
+              "Emócie majú svoje miesto v kritickom myslení, ale mali by byť zvážené spolu s objektívnymi faktami.",
+              "Emócie sú dôležitejšie ako fakty, aj tak ľudia robia rozhodnutia len na základe emócií.",
+              "Ku kritickému mysleniu patria len pozitívne emócie ako radosť, negatívne emócie ako hnev a strach nemajú miesto."
           ],
           "answersImage": [],
           "correct": [
@@ -115,7 +115,7 @@
           "division": [],
           "definition": "",
           "explanation": [
-              "Emócie sú neoddeliteľnou časťou ľudského života, a rovnako to platí pri kritickom rozmýšľaní. Úplne poprieť emócie je nemožné a snažiť sa o to nás vedie len k sebaklamu. Počas vypĺňania kvízov InfoMentor sa pokojne zamýšľajte nad tým, ako sa cítiš a prečo. S emóciami sa dá konštruktívne pracovať len vtedy, keď priznáme, že ich máme. Nie sme roboti."
+              "Emócie sú neoddeliteľnou časťou ľudského života, a rovnako to platí pri kritickom rozmýšľaní. Úplne poprieť emócie je nemožné a snažiť sa o to nás vedie len k sebaklamu. Počas vypĺňania kvízov Infomat sa pokojne zamýšľaj nad tým, ako sa cítiš a prečo. S emóciami sa dá konštruktívne pracovať len vtedy, keď priznáme, že ich máme. Nie sme roboti."
           ],
           
           "images": [],
@@ -193,10 +193,10 @@
           "questions": [
               {
                   "answers": [
-                    "Tendencia prisudzovať priveľkú dôležitosť prvej informácii, ktorá je dostupná pri tvorbe názoru",
-                    "Tendencia vyberať si iba tie fakty, ktoré zapadajú do nášho svetonázoru",
-                    "Tendencia domýšľať si spojenia a vzorce medzi javmi, ktoré spolu vôbec nesúvisia",
-                    "Tendencia báť sa rizika, že niečo krátkodobo stratíme, aj keď dlhodobo môžeme získať viac"
+                    "Tendencia prisudzovať priveľkú dôležitosť prvej informácii, ktorá je dostupná pri tvorbe názoru.",
+                    "Tendencia vyberať si iba tie fakty, ktoré zapadajú do nášho svetonázoru.",
+                    "Tendencia domýšľať si spojenia a vzorce medzi javmi, ktoré spolu vôbec nesúvisia.",
+                    "Tendencia báť sa rizika, že niečo krátkodobo stratíme, aj keď dlhodobo môžeme získať viac."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -219,10 +219,10 @@
                 },
                 {
                   "answers": [
-                    "Keď zmením názor len na základe toho, že mi niekto ukázal nové fakty, ktoré som predtým nepoznal/-a",
-                    "Keď v mojej obci žijú Rómovia v segregovanej osade a na základe toho usúdim, že všetci Rómovia žijú v chudobnom prostredí",
-                    "Keď sa poteším z kúpy nových tenisiek, ktoré boli v zľave, aj keď pôvodná cena bola veľmi vysoká a predražená",
-                    "Keď si nezapnem bezpečnostný pás v aute, lebo štatistická pravdepodobnosť havárie je mizivá"
+                    "Keď zmením názor len na základe toho, že mi niekto ukázal nové fakty, ktoré som predtým nepoznal/-a.",
+                    "Keď v mojej obci žijú Rómovia v segregovanej osade a na základe toho usúdim, že všetci Rómovia žijú v chudobnom prostredí.",
+                    "Keď sa poteším z kúpy nových tenisiek, ktoré boli v zľave, aj keď pôvodná cena bola veľmi vysoká a predražená.",
+                    "Keď si nezapnem bezpečnostný pás v aute, lebo štatistická pravdepodobnosť havárie je mizivá."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -247,10 +247,10 @@
                 },
                 {
                   "answers": [
-                    "Tendencia dávať väčšiu váhu informáciám, ktoré sú v prospech súkromných firiem a podnikateľov",
-                    "Tendencia spoliehať sa na informácie, ktoré sú najviac aktuálne",
-                    "Tendencia potvrdzovať a overovať si informácie, ktoré sa nám subjektívne nepozdávajú",
-                    "Tendencia vyhľadávať len tie informácie, ktoré potvrdzujú náš svetonázor"
+                    "Tendencia dávať väčšiu váhu informáciám, ktoré sú v prospech súkromných firiem a podnikateľov.",
+                    "Tendencia spoliehať sa na informácie, ktoré sú najviac aktuálne.",
+                    "Tendencia potvrdzovať a overovať si informácie, ktoré sa nám subjektívne nepozdávajú.",
+                    "Tendencia vyhľadávať len tie informácie, ktoré potvrdzujú náš svetonázor."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -274,9 +274,9 @@
                 {
                   "answers": [
                     "Keď sa pripravujem na referát o kapitalizme a zadám do vyhľadávača Google otázku: „Prečo je kapitalizmus najlepší ekonomický systém na svete?“",
-                    "Keď si kúpim noviny, ktoré majú skôr liberálne ideologické zafarbenie. Napriek tomu, že moje zmýšľanie je skôr konzervatívne, zaujíma ma, čo si myslia iné názorové skupiny",
-                    "Keď uverím šokujúcej klebete o mojej spolužiačke, napriek tomu, že klebeta je neoverená a nepodložená",
-                    "Keď si na Facebooku čítam statusy len tých politikov a političiek, ktorých názory sa mi páčia"
+                    "Keď si kúpim noviny, ktoré majú skôr liberálne ideologické zafarbenie. Napriek tomu, že moje zmýšľanie je skôr konzervatívne, zaujíma ma, čo si myslia iné názorové skupiny.",
+                    "Keď uverím šokujúcej klebete o mojej spolužiačke, napriek tomu, že klebeta je neoverená a nepodložená.",
+                    "Keď si na Facebooku čítam statusy len tých politikov a političiek, ktorých názory sa mi páčia."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -305,10 +305,10 @@
                 },
                 {
                   "answers": [
-                    "Tendencia hľadať vzorce a prepojenia v javoch, ktoré sú náhodné alebo spolu nesúvisia",
-                    "Tendencia prikrášľovať spomienky a pozerať sa na minulosť priveľmi optimisticky",
-                    "Tendencia neodpovedať na otázky v diskusii a namiesto toho obviňovať iných ľudí",
-                    "Tendencia opätovne si vybrať možnosť, ktorú sme si vybrali v minulosti, pretože máme dostupných priveľa možností a nevieme sa rozhodnúť"
+                    "Tendencia hľadať vzorce a prepojenia v javoch, ktoré sú náhodné alebo spolu nesúvisia.",
+                    "Tendencia prikrášľovať spomienky a pozerať sa na minulosť priveľmi optimisticky.",
+                    "Tendencia neodpovedať na otázky v diskusii a namiesto toho obviňovať iných ľudí.",
+                    "Tendencia opätovne si vybrať možnosť, ktorú sme si vybrali v minulosti, pretože máme dostupných priveľa možností a nevieme sa rozhodnúť."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -331,10 +331,10 @@
                 },
                 {
                   "answers": [
-                    "Keď uverím nepravdivej správe na internete, lebo je v texte použitých veľa odborných slov a nachádzajú sa tam grafy a štatistiky",
+                    "Keď uverím nepravdivej správe na internete, lebo je v texte použitých veľa odborných slov a nachádzajú sa tam grafy a štatistiky.",
                     "Keď uverím v konšpiračnú teóriu, že prezidentské voľby vo všetkých krajinách sú falšované,  lebo vo Francúzsku, Česku aj na Slovensku skončilo druhé kolo volieb s výsledkom približne 58 % pre víťaza a 42 % pre porazeného.",
-                    "Keď zostanem v kine 3 hodiny a dopozerám celý film, ktorý ma vôbec nebavil, len kvôli tomu, že už som zaplatil/-a za lístok",
-                    "Keď si prečítam horoskop a som presvedčený/-á, že na základe môjho znamenia v zverokruhu sa mi bude vyvíjať deň"
+                    "Keď zostanem v kine 3 hodiny a dopozerám celý film, ktorý ma vôbec nebavil, len kvôli tomu, že už som zaplatil/-a za lístok.",
+                    "Keď si prečítam horoskop a som presvedčený/-á, že na základe môjho znamenia v zverokruhu sa mi bude vyvíjať deň."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -363,10 +363,10 @@
                 },
                 {
                   "answers": [
-                    "Tendencia pripisovať si zásluhu za úspech, ktorý sme dosiahli len vďaka šťastiu",
-                    "Tendencia rozmýšľať len nad živými bytosťami, ako napríklad ľuďmi a zvieratami, ale ignorovať záujmy rastlín a životného prostredia",
-                    "Tendencia sústrediť sa len na úspešné príklady alebo výnimočné príklady a na základe toho vyvodiť všeobecné závery",
-                    "Tendencia veriť osobným príbehom ľudí, ktorí zažili danú udalosť, viac, než vedcom/vedkyniam alebo odborníkom/odborníčkam"
+                    "Tendencia pripisovať si zásluhu za úspech, ktorý sme dosiahli len vďaka šťastiu.",
+                    "Tendencia rozmýšľať len nad živými bytosťami, ako napríklad ľuďmi a zvieratami, ale ignorovať záujmy rastlín a životného prostredia.",
+                    "Tendencia sústrediť sa len na úspešné príklady alebo výnimočné príklady a na základe toho vyvodiť všeobecné závery.",
+                    "Tendencia veriť osobným príbehom ľudí, ktorí zažili danú udalosť, viac, než vedcom/vedkyniam alebo odborníkom/odborníčkam."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -389,10 +389,10 @@
                 },
                 {
                   "answers": [
-                    "Keď vyvodím záver, že vysokí ľudia sú dobrí v basketbale, pretože všetci profesionálni basketbalisti sú nadpriemerne vysokí",
-                    "Keď vyvodím záver, že väčšina ľudí na Slovensku sú nahnevaní, agresívni a vulgárni na základe diskusií v komentároch na sociálnych sieťach",
-                    "Keď vyvodím záver, že väčšina ľudí na Slovensku nedôveruje polícii na základe prieskumu verejnej mienky od renomovanej prieskumnej agentúry",
-                    "Keď vyvodím záver, že všetky konšpiračné teórie sú pravdivé, pretože jedna konšpiračná teória sa potvrdila a ukázala ako pravdivá"
+                    "Keď vyvodím záver, že vysokí ľudia sú dobrí v basketbale, pretože všetci profesionálni basketbalisti sú nadpriemerne vysokí.",
+                    "Keď vyvodím záver, že väčšina ľudí na Slovensku sú nahnevaní, agresívni a vulgárni na základe diskusií v komentároch na sociálnych sieťach.",
+                    "Keď vyvodím záver, že väčšina ľudí na Slovensku nedôveruje polícii na základe prieskumu verejnej mienky od renomovanej prieskumnej agentúry.",
+                    "Keď vyvodím záver, že všetky konšpiračné teórie sú pravdivé, pretože jedna konšpiračná teória sa potvrdila a ukázala ako pravdivá."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -421,10 +421,10 @@
                 },
                 {
                   "answers": [
-                    "Tendencia prijímať len tie najľahšie dostupné informácie a vyhýbať sa napríklad článkom, ktoré sú spoplatnené",
-                    "Tendencia vyhýbať sa náročným veciam, fyzicky či mentálne ťažkým úkonom",
-                    "Tendencia očakávať pozitívne výsledky, kvôli čomu stratíme schopnosť premýšľať v kľude a objektívne – niekedy nazývané aj „heuréka efekt“",
-                    "Tendencia spoliehať sa na informácie, ktoré sa nám ľahko vybavia alebo si na nich ľahko spomenieme"
+                    "Tendencia prijímať len tie najľahšie dostupné informácie a vyhýbať sa napríklad článkom, ktoré sú spoplatnené.",
+                    "Tendencia vyhýbať sa náročným veciam, fyzicky či mentálne ťažkým úkonom.",
+                    "Tendencia očakávať pozitívne výsledky, kvôli čomu stratíme schopnosť premýšľať v kľude a objektívne – niekedy nazývané aj „heuréka efekt“.",
+                    "Tendencia spoliehať sa na informácie, ktoré sa nám ľahko vybavia alebo si na nich ľahko spomenieme."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -447,10 +447,10 @@
                 },
                 {
                   "answers": [
-                    "Keď nechcem ísť lietadlom na dovolenku do Talianska, lebo sa bojím havárie lietadla, tak radšej idem autom",
-                    "Keď odmietam ísť najkratšou cestou zo školy domov, pretože na tej ulici okradli moju spolužiačku. Napriek tomu, že ma učiteľ informuje, že ide o prvý takýto incident za posledných 50 rokov, naďalej obchádzam danú ulicu",
-                    "Keď pri prezeraní sociálnej siete kliknem hneď na prvý článok, ktorý sa mi ukázal vo „feede“, prečítam si ho a uverím mu",
-                    "Keď tvrdím, že medveď je najnebezpečnejšie slovenské zviera, lebo má na svedomí najviac ľudských životov"
+                    "Keď nechcem ísť lietadlom na dovolenku do Talianska, lebo sa bojím havárie lietadla, tak radšej idem autom.",
+                    "Keď odmietam ísť najkratšou cestou zo školy domov, pretože na tej ulici okradli moju spolužiačku. Napriek tomu, že ma učiteľ informuje, že ide o prvý takýto incident za posledných 50 rokov, naďalej obchádzam danú ulicu.",
+                    "Keď pri prezeraní sociálnej siete kliknem hneď na prvý článok, ktorý sa mi ukázal vo „feede“, prečítam si ho a uverím mu.",
+                    "Keď tvrdím, že medveď je najnebezpečnejšie slovenské zviera, lebo má na svedomí najviac ľudských životov."
                   ],
                   "answersImage": [],
                   "correct": [
@@ -735,7 +735,7 @@
                     "images": [],
                     "matchmaking": [
                       "Ide o jednoduché zhrnutie hlavnej myšlienky argumentu. Býva spravidla formulované ako zrozumiteľná a stručná veta, vďaka ktorej si poslucháč už na začiatku argumentu vie predstaviť, kam bude argument smerovať a čo sa bude snažiť dokázať.",
-                      "Je to zvyčajne najrozsiahlejšia časť argumentu a to práve preto, že podrobne vysvetľuje jeho logiku. Popisuje príčinnonásledkový reťazec javov, ktoré vedú k záveru. Úlohou tejto časti argumentu je rozvíjať tvrdenie, aby bol argument presvedčivejší. Tvorí sa tak, že si po každom výroku otázku zodpovieme otázku „Prečo?“ (aspoň päťkrát).",
+                      "Je to zvyčajne najrozsiahlejšia časť argumentu a to práve preto, že podrobne vysvetľuje jeho logiku. Popisuje príčinnonásledkový reťazec javov, ktoré vedú k záveru. Úlohou tejto časti argumentu je rozvíjať tvrdenie, aby bol argument presvedčivejší. Tvorí sa tak, že si po každom výroku otázku zodpovieme otázkou „Prečo?“ (aspoň päťkrát).",
                       "Táto časť argumentu znázorňuje, ako naše zatiaľ iba teoretické vysvetlenie funguje aj v realite. Jeho účelom je podporiť uveriteľnosť záverov, ktoré sme sa snažili vysvetliť v predchádzajúcej časti argumentu. Väčšinou ide o najrôznorodejšie typy dát, popis opakujúceho sa vzorca správania, či analógie (obdobné javy)."
                     ],
                     "matches": [
@@ -805,7 +805,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [
-                  "Predpoklad hovorí len o podzemných knižniciach a teda nevyulučuje existenciu iných, väčších knižníc (napr. univerzitných). Tento záver nešpecifikuje miesto, takže hovorí o všeobecnom výskyte súkromných knižníc. Keďže náš predpoklad presne špecifikuje miesto, záver, že nikde inde na svete nemôže existovať väčšia súkromná knižnica, je nesprávny"
+                  "Predpoklad hovorí len o podzemných knižniciach a teda nevyulučuje existenciu iných, väčších knižníc (napr. univerzitných). Tento záver nešpecifikuje miesto, takže hovorí o všeobecnom výskyte súkromných knižníc. Keďže náš predpoklad presne špecifikuje miesto, záver, že nikde inde na svete nemôže existovať väčšia súkromná knižnica, je nesprávny."
                 ],
                 
                 "images": [],
@@ -887,7 +887,7 @@
                 "answers": [
                   "Vo väších kávach je viac kofeínu.",
                   "Čím viac kofeínu je v káve, tým je káva lepšia.",
-                  "Tvoja káva je menšia ako moja"
+                  "Tvoja káva je menšia ako moja."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -909,9 +909,9 @@
               },
               {
                 "answers": [
-                  "Bardejov je veľmi šakredé mesto",
-                  "Svidník je krajší ako Bardejov",
-                  "Bardejov je krajší ako Svidník"
+                  "Bardejov je veľmi šakredé mesto.",
+                  "Svidník je krajší ako Bardejov.",
+                  "Bardejov je krajší ako Svidník."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -933,8 +933,8 @@
               },
               {
                 "answers": [
-                  "Žiaden žiak, ktorý je dobrý v matematike nepoužíva ťaháky.",
-                  "Žiaci, ktorí nie sú dobrí v matematike používajú ťaháky.",
+                  "Žiaden žiak, ktorý je dobrý v matematike, nepoužíva ťaháky.",
+                  "Žiaci, ktorí nie sú dobrí v matematike, používajú ťaháky.",
                   "Jakub, pretože je zlý v matematike, potrebuje používať ťaháky."
                 ],
                 "answersImage": [],
@@ -957,7 +957,7 @@
               },
               {
                 "answers": [
-                  "Čím má krajina nižší index ľudského rozvoja, tým je bohatšia",
+                  "Čím má krajina nižší index ľudského rozvoja, tým je bohatšia.",
                   "Bohatstvo krajiny priamoúmerne súvisí s výškou indexu ľudského rozvoja v nej.",
                   "Turecko má nízky index ľudského rozvoja."
                 ],
@@ -981,7 +981,7 @@
               },
               {
                 "answers": [
-                  "Dunčo je susedov pes",
+                  "Dunčo je susedov pes.",
                   "Dunčo nie je náš.",
                   "Dunčo nie je pes."
                 ],
@@ -992,7 +992,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [
-                  "Odpoveď c) je jediná správna, keďže ostatné dve odpovede pracujú s domnienkou, že predpoklad č.1 je limitovaný na „naše“ psy. Avšak, v tomto prepdoklade nie je použitý žiaden výraz, ktorý by nás k takémuto záveru doviedol – neboli použité žiadne slová ako len alebo iba. To, že naše psy štekali celú noc, ešte neznamená, že neštekali žiadne iné. Ak Dunčo v pondelok neštekal a naše psy štekali celú noc, neznamená to, že Dunčo nemôže byť susedov pes, ktorý taktiež štekal celú noc."
+                  "Odpoveď c) je jediná správna, keďže ostatné dve odpovede pracujú s domnienkou, že predpoklad č.1 je limitovaný na „naše“ psy. Avšak, v tomto predpoklade nie je použitý žiaden výraz, ktorý by nás k takémuto záveru doviedol – neboli použité žiadne slová ako len alebo iba. To, že naše psy štekali celú noc, ešte neznamená, že neštekali žiadne iné. Ak Dunčo v pondelok neštekal a naše psy štekali celú noc, neznamená to, že Dunčo nemôže byť susedov pes, ktorý taktiež štekal celú noc."
                 ],
                 
                 "images": [],
@@ -1087,9 +1087,9 @@
                   },
                   {
                     "answers": [
-                      "V argumente chýba vysvetlenie",
-                      "V argumente chýba dôkaz",
-                      "V argumente nič nechýba"
+                      "V argumente chýba vysvetlenie.",
+                      "V argumente chýba dôkaz.",
+                      "V argumente nič nechýba."
                     ],
                     "answersImage": [],
                     "correct": [
@@ -1111,9 +1111,9 @@
                   },
                   {
                     "answers": [
-                      "V argumente chýba vysvetlenie",
-                      "V argumente chýba dôkaz",
-                      "V argumente nič nechýba"
+                      "V argumente chýba vysvetlenie.",
+                      "V argumente chýba dôkaz.",
+                      "V argumente nič nechýba."
                     ],
                     "answersImage": [],
                     "correct": [
@@ -1134,7 +1134,7 @@
             ]
           },
           {
-              "introduction": " Tvrdenie a vysvetlenie sú dve separátne časti debatného argumentu. Avšak často sa stáva, že ľudia sa mylne domnievajú, že ich argument obsahuje vysvetlenia, aj keď v skutočnosti ide len o tvrdenia. V tejto lekcií sa naučíte zásadné rozdiely medzi týmito dvoma pojmami.",
+              "introduction": " Tvrdenie a vysvetlenie sú dve separátne časti debatného argumentu. Avšak často sa stáva, že ľudia sa mylne domnievajú, že ich argument obsahuje vysvetlenia, aj keď v skutočnosti ide len o tvrdenia. V tejto lekcii sa naučíte zásadné rozdiely medzi týmito dvoma pojmami.",
               "name": "Analýza a Tvrdenie",
               "points": 7,
               "questions": [
@@ -1311,10 +1311,10 @@
                       "division": [],
                       "definition": "",
                       "explanation": [
-                        "Toto nie je vysvetlenie, ale pravdepodobne len iná časť argumentu",
-                        "Toto vysvetlenie je príliš krátke a nepostačujúce keďže nevieme prečo si autor myslí, že sú zbrane efektívnejšie ako polícia.",
+                        "Toto nie je vysvetlenie, ale pravdepodobne len iná časť argumentu.",
+                        "Toto vysvetlenie je príliš krátke a nepostačujúce, keďže nevieme prečo si autor myslí, že sú zbrane efektívnejšie ako polícia.",
                         "Toto vysvetlenie má jasný príčinno-následkový reťazec.",
-                        "argument nesúvisí s témou, takže je irelevantný. Alarmy a kamery si môžu ľudia kúpiť, aj keď nevlastnia zbrane."
+                        "Argument nesúvisí s témou, takže je irelevantný. Alarmy a kamery si môžu ľudia kúpiť, aj keď nevlastnia zbrane."
                       ],
                       
                       "images": [],
@@ -1328,7 +1328,7 @@
               ]
           },
           {
-            "introduction": "Dôkaz je dôležitou časťou debatného argumentu, keďže znázorňuje, ako naše teoretické vysvetlenie funguje v realite. Jeho účelom je podporiť uveriteľnosť záverov, ktoré sme sa snažili vysvetliť v predchádzajúcej časti argumentu. V tejto lekcií sa naučíte nie len čo je to dôkaz, ale ako aj vhodný dôkaz v argumente vyzerá.",
+            "introduction": "Dôkaz je dôležitou časťou debatného argumentu, keďže znázorňuje, ako naše teoretické vysvetlenie funguje v realite. Jeho účelom je podporiť uveriteľnosť záverov, ktoré sme sa snažili vysvetliť v predchádzajúcej časti argumentu. V tejto lekcii sa naučíte nie len čo je to dôkaz, ale ako aj vhodný dôkaz v argumente vyzerá.",
             "name": "Dôkazy v argumentoch",
             "points": 5,
             "questions":[
@@ -1338,7 +1338,7 @@
                   "Silným dôkazom často býva príklad osobnej skúsenosti.",
                   "Dôkaz je časť argumentu, ktorá slúži na to, aby ukázala ako argument funguje v praxi. ",
                   "Zvyčajne má dôkaz jednu vetu a zhŕňa cieľ argumentu.",
-                  "Všetky články, ktoré nájdeme na internete môžeme použiť ako dôkaz."
+                  "Všetky články, ktoré nájdeme na internete, môžeme použiť ako dôkaz."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -1438,7 +1438,7 @@
                 
                 "images": [],
                 "matchmaking": [
-                  "V USA je držba zbraní legálna. Štúdia z Annals of Internal Medicine z 2014 porovnávala americké domácnosti ktoré vlastnili zbrane s tými, ktoré nevlastnili. Ukázalo sa, že prítomnosť zbrane v domácnosti zdvojnásobila šancu zomrieť na zastrelenie a strojnásobila nebezpečenstvo samovraždy."
+                  "V USA je držba zbraní legálna. Štúdia z Annals of Internal Medicine z 2014 porovnávala americké domácnosti, ktoré vlastnili zbrane s tými, ktoré nevlastnili. Ukázalo sa, že prítomnosť zbrane v domácnosti zdvojnásobila šancu zomrieť na zastrelenie a strojnásobila nebezpečenstvo samovraždy."
                 ],
                 "matches": [
                   "Vhodný",
@@ -1475,12 +1475,12 @@
                 "question": "Téma: Držba strelných zbraní pre osobné účely by mala byť zakázaná.",
                 "subQuestion": "Vysvetlenie: \"Pocit bezpečia a moci, ktorý ľuďom dávajú zbrane, je klamlivý.  V skutočnosti ľudia vlastniaci zbrane čelia väčšiemu nebezpečenstvu. Príčinou je napríklad neopatrnosť a neschopnosť narábať so zbraňami, čo sa prejavuje pri nezaistených zbraniach v domácnosti alebo že sa zbrane dostanú do rúk detí.  To znamená, že pre bežných občanov je nebezpečné vlastniť zbraň. Ak by sme zakázali vlastnenie zbraní, ľudia by si vyberali iné, efektívnejšie spôsoby, ako ochrániť svoje domácnosti.\"",
                 "conclusion": "",
-                "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite ktoré z dôkazov sú vhodné pre potenciálny argument."
+                "title": "Prečítajte si tému, tvrdenie a vysvetlenie a následne rozhodnite, ktoré z dôkazov sú vhodné pre potenciálny argument."
               }
             ]
           },
           {
-            "introduction": "V predošlých lekciach ste sa naučili podstatné informácie o tom, ako majú argumenty vyzerať a ako ich viete čo najefektívnejšie vytvoriť. V tejto lekcií musíte všetky tieto znalosti zužitkovať aby ste dokázali rozoznať silné argumenty od slabých. Táto schopnosť je veľmi dôležitá. Nevšímavosť voči kvalite argumentov nás môže spraviť náchylnými k manipulácii. Vedieť rozpoznať slabé argumenty nám umožňuje byť menej ovplyvniteľnými nepravdivými alebo zavádzajúcimi tvrdeniami.",
+            "introduction": "V predošlých lekciách ste sa naučili, podstatné informácie o tom, ako majú argumenty vyzerať a ako ich viete čo najefektívnejšie vytvoriť. V tejto lekcii musíte všetky tieto znalosti zužitkovať, aby ste dokázali rozoznať silné argumenty od slabých. Táto schopnosť je veľmi dôležitá. Nevšímavosť voči kvalite argumentov nás môže spraviť náchylnými k manipulácii. Vedieť rozpoznať slabé argumenty nám umožňuje byť menej ovplyvniteľnými nepravdivými alebo zavádzajúcimi tvrdeniami.",
             "name": "Silné a slabé argumenty 1",
             "points": 3,
             "questions":[
@@ -1506,9 +1506,9 @@
                 "matchmaking": [],
                 "matches": [],
                 "question": "Tvrdenie 1: Nie. Priveľmi jednoducho získané vzdelanie vedie k priveľa kvalifikovaným ľuďom a potom k nezamestnanosti.",
-                "subQuestion": "Nie. Priveľmi jednoducho získané vzdelanie vedie k priveľa kvalifikovaným ľuďom a potom k nezamestnanosti.",
+                "subQuestion": "",
                 "conclusion": "",
-                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mali by byť vysoké školy zadarmo?"
+                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na otázku: Mali by byť vysoké školy zadarmo?"
               },
               {
                 "answers": ["silné", "slabé"],
@@ -1548,7 +1548,7 @@
                 "question": "Tvrdenie 3: Áno, lebo školné vie byť pre veľa študentov príliš vysoké. Potom si veľa ľudí nevie dovoliť chodiť na univerzity, hlavne študenti zo sociálne slabších rodín. Toto nie je spravodlivé a len to prehlbuje rozdiely medzi bohatými a chudobnými.",
                 "subQuestion": "",
                 "conclusion": "",
-                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mali by byť vysoké školy zadarmo?"
+                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami? 1) Nasledujúce tvrdenia boli vytvorené ako odpovede na otázku: Mali by byť vysoké školy zadarmo?"
               }
             ]
           },
@@ -1586,7 +1586,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [
-                  "Tvrdenie sa priamo vyjadruje k položenej otázke a veľmi jasne pomenúva nevýhodu fixnej minimálnej mzdy. Navyše obsahuje ucelený príčinno-následkový reťazec, teda nám presne vysvetľuje čo sa stane a aké to bude mať následky."
+                  "Tvrdenie sa priamo vyjadruje k položenej otázke a veľmi jasne pomenúva nevýhodu fixnej minimálnej mzdy. Navyše obsahuje ucelený príčinno-následkový reťazec, teda nám presne vysvetľuje, čo sa stane a aké to bude mať následky."
                 ],
                 
                 "images": [],
@@ -1595,7 +1595,7 @@
                 "question": "Tvrdenie 2: Nie, minimálna mzda vedie k chudobe tým, že tlačí podniky k tomu, aby prijímali zamestnancov len na polovičný alebo čiastočný úväzok, pretože si nemôžu dovoliť platiť zamestnancov na plný úväzok.",
                 "subQuestion": "",
                 "conclusion": "",
-                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
+                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
               },
               {
                 "answers": ["silné", "slabé"],
@@ -1615,7 +1615,7 @@
                 "question": "Tvrdenie 3: Áno, stabilný príjem, aj keď len minimálnej hodnoty, by mal byť základným ľudským právom. Každý človek by mal mať zaručené dôstojné živobytie.",
                 "subQuestion": "",
                 "conclusion": "",
-                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
+                "title": "Majú podľa vás tieto tvrdenia potenciál byť dobrými argumentami?  2) Nasledujúce tvrdenia boli vytvorené ako odpovede na otázku: Mala by byť vo všetkých krajinách zavedená minimálna mzda?"
               }
             ]
           }
@@ -1631,7 +1631,7 @@
       "weeklyChallenge": 0,
       "tests": [
           {
-            "introduction": "Argumentačných chýb sa dopúšťajú ľudia v politike, mediálnom prostredí, ale aj v bežnom živote. Kriticky mysliaci človek by mal vedieť poukázať na tieto chyby a vyhnúť sa ich používaniu. V tejto lekcií sa naučíte základné delenie argumentačných chýb a faulov.",
+            "introduction": "Argumentačných chýb sa dopúšťajú ľudia v politike, mediálnom prostredí, ale aj v bežnom živote. Kriticky mysliaci človek by mal vedieť poukázať na tieto chyby a vyhnúť sa ich používaniu. V tejto lekcii sa naučíte základné delenie argumentačných chýb a faulov.",
             "name": "Úvod do argumentačných chýb",
             "points": 5,
             "questions": [
@@ -1679,7 +1679,7 @@
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
+                "question": "Rozhodnite o tom, či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Úskoky sú spravidla irelevatné pre diskusiu.“",
                 "conclusion": "",
                 "title": ""
@@ -1696,7 +1696,7 @@
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
+                "question": "Rozhodnite o tom, či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Argumenty postavené na logických chybách môžu byť tématicky relevantné“",
                 "conclusion": "",
                 "title": ""
@@ -1715,7 +1715,7 @@
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
+                "question": "Rozhodnite o tom, či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Rečník sa falošnými kritériami snaží zmeniť tému diskusie, aby sa nedostal do nepríjemnej situácie.“",
                 "conclusion": "",
                 "title": ""
@@ -1734,7 +1734,7 @@
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "Rozhodnite o či sú tieto tvrdenia pravdivé alebo nepravdivé.",
+                "question": "Rozhodnite o tom, či sú tieto tvrdenia pravdivé alebo nepravdivé.",
                 "subQuestion": "„Obsah argumentačného úskoku je vždy nepravdivý.“",
                 "conclusion": "",
                 "title": ""
@@ -1742,14 +1742,14 @@
             ]
           },
           {
-            "introduction": "V tejto lekcií si priblížime jeden z typov argumentačných chýb - argumentačné úskoky. V tejto kategórií spoznáme tri argumentačné úskoky – ad hominem (osobný útok), slamený panák a whataboutizmus.",
+            "introduction": "V tejto lekcii si priblížime jeden z typov argumentačných chýb - argumentačné úskoky. V tejto kategórií spoznáme tri argumentačné úskoky – ad hominem (osobný útok), slamený panák a whataboutizmus.",
             "name": "Argumentačné úskoky",
             "points": 3,
             "questions": [
               {
                 "answers": [
                   "Vy ste totálny blázon, priam psychopat. Ako môžete predkladať zákon, keď to nemáte v hlave v poriadku?",
-                  "Nemyslím si, že by tento zákon je predložený so správnym zámerom v srdci – po finančnom prepočte vidíme, že rodinám reálne nepomôže, len výrazne uškodí rozpočtu. Je to hnusný populistický ťah.",
+                  "Nemyslím si, že tento zákon je predložený so správnym zámerom v srdci – po finančnom prepočte vidíme, že rodinám reálne nepomôže, len výrazne uškodí rozpočtu. Je to hnusný populistický ťah.",
                   "Všetci si musíte uvedomiť, že tento zákon navrhoval bezdetný štyridsiatnik. Ten by sa k rodinnej problematike vôbec nemal vyjadrovať, však čo on už len môže vedieť, čo je pre rodiny s deťmi dobré a prospešné?",
                   "Celej strane neverím, lebo sú podvodníci a majú mafiánsku históriu. Zákon ma nezaujíma, nič od nich nepodporím.",
                   "Zákon nepodporím, lebo je zle napísaný. Keď ho schvália odborníci na financie a prepíšu výšku dávky, tak dostanete môj hlas."
@@ -1787,7 +1787,7 @@
                   { "correct": 4, "index": 4 }
                 ],
                 "division": [],
-                "definition": "Slamený panák je úskok pri ktorom rečník prekrúti slová oponenta. Neférovo odprezentuje slabšiu verziu argumentu súpera, a následne reaguje na túto oslabenú verziu. Rečník vytvorí atrapu, „slameného panáka“, súperovho argumentu. Tento faul je efektívny, lebo ním diskutér vkladá slová do úst oponenta, a zároveň vytvára falošný dojem, že oponentov argument bol zdiskreditovaný.",
+                "definition": "Slamený panák je úskok, pri ktorom rečník prekrúti slová oponenta. Neférovo odprezentuje slabšiu verziu argumentu súpera, a následne reaguje na túto oslabenú verziu. Rečník vytvorí atrapu, „slameného panáka“, súperovho argumentu. Tento faul je efektívny, lebo ním diskutér vkladá slová do úst oponenta, a zároveň vytvára falošný dojem, že oponentov argument bol zdiskreditovaný.",
                 "explanation": [],
                 "images": [],
                 "matchmaking": [],
@@ -1800,9 +1800,9 @@
               {
                 "answers": [
                   "Žiadne také. Vo Venezuele a na Kube vládnu diktátori už roky a nič s tým nerobíme. Či keď je diktátor ľavicový, už nám nevadí, že vládne nedemokraticky?",
-                  "To nesmieme spraviť. Počas druhej svetovej vojny nám tiež vládol na Slovensku diktátor Tiso. To bol tak isto nedemokratický režim",
-                  "V bielorusku k žiadnemu porušovaniu základných demokratických práv nedochádza. Však tam nedávno mali aj voľby. Voľby sú základom demokracie, však ich máme všade v Európskej Únii.",
-                  "Samozrejme. To, že zlyhávame, či už histroicky alebo v súčastnosti odsúdiť takéto režimy, neznamená, že nemôžeme odsúdiť ten Bieloruský. Toto je správny krok a možno vďaka nemu budeme schopní odsúdiť aj iné totalitné režimy.",
+                  "To nesmieme spraviť. Počas druhej svetovej vojny nám tiež vládol na Slovensku diktátor Tiso. To bol tak isto nedemokratický režim.",
+                  "V Bielorusku k žiadnemu porušovaniu základných demokratických práv nedochádza. Však tam nedávno mali aj voľby. Voľby sú základom demokracie, však ich máme všade v Európskej únii.",
+                  "Samozrejme. To, že zlyhávame, či už historicky alebo v súčastnosti odsúdiť takéto režimy, neznamená, že nemôžeme odsúdiť ten Bieloruský. Toto je správny krok a možno vďaka nemu budeme schopní odsúdiť aj iné totalitné režimy.",
                   "Tento režim nemôžeme verejne odsútiť. Pohneváme si Bielorusov a už nikdy s nami nebudú chcieť obchodovať. Pre udržanie dobrých ekonomických vzťahov by sme mali ich správanie tolerovať."
                 ],
                 "answersImage": [],
@@ -1828,7 +1828,7 @@
             ]
           },
           {
-            "introduction": "V tejto lekcií vás oboznámie s ďalším z typov argumentačných chýb - logickými chybami. V tejto kategórií spoznáme tri takéto chyby - falošnú dilemu, klzký svah a generalizáciu.",
+            "introduction": "V tejto lekcii vás oboznámie s ďalším z typov argumentačných chýb - logickými chybami. V tejto kategórií spoznáme tri takéto chyby - falošnú dilemu, klzký svah a generalizáciu.",
             "name": "Logické chyby",
             "points": 3,
             "questions": [
@@ -1847,7 +1847,7 @@
                   "K trestu smrti existuje mnoho alternatív – napríklad zlepšenie socioekonomickej situácie, posilnenie prevencie kriminality či pomoc bývalým väzňom pri zaraďovaní sa späť do komunity.",
                   "Svetlo a tma, v ktorej nič nie je vidieť naozaj sú len dve možnosti, ktoré daný človek v tomto scenári má.",
                   "Čítanie kníh nie je jediná cesta ktorou sa dajú nadobudnúť informácie alebo znalosti. Vieme ich nadobudnúť prostredníctvom rôznych náučných videí, workshopov alebo školy.",
-                  "Sloboda slova, aj keď určite dôležitým pilierom demokracie je stále proporcionálna k ostatným právam a slobodám. To znamená, že aj v demokratických štátoch môže byť do značnej miery obmedzená a to hlavne v záujme chránenia iných práv a slobôd."
+                  "Sloboda slova, aj keď je určite dôležitým pilierom demokracie, je stále proporcionálna k ostatným právam a slobodám. To znamená, že aj v demokratických štátoch môže byť do značnej miery obmedzená a to hlavne v záujme chránenia iných práv a slobôd."
                 ],
                 "images": [],
                 "matchmaking": [
@@ -1900,7 +1900,7 @@
                   { "correct": 2, "index": 2 }
                 ],
                 "division": [],
-                "definition": "Generalizácia je logická chyba, v ktorej na základe jedného príkladu vytvoríme všeobecný princíp. Problém je, že príklad opisovaný rečníkom je často skôr výnimka ako pravidlo. Táto logická je príčinou mnohých nepodložených stereotypov.",
+                "definition": "Generalizácia je logická chyba, v ktorej na základe jedného príkladu vytvoríme všeobecný princíp. Problém je, že príklad opisovaný rečníkom je často skôr výnimka ako pravidlo. Táto logická chyba je príčinou mnohých nepodložených stereotypov.",
                 "explanation": [
                   "Všetky tvrdenia sa dopustili chyby zovšeobecňovania a vytvorili tým neférové a škodlivé stereotypy o Rómskej menšine."
                 ],
@@ -1916,7 +1916,7 @@
             ]
           },
           {
-            "introduction": "V tejto lekcií sa naučíte pracovať s posledným typom argumentačných chýb - falošnými kritériami. Do tejto skupiny patria tri argumentačné chyby - hlas ľudu, odkaz na falošnú autoritu a odkaz na tradíciu.",
+            "introduction": "V tejto lekcii sa naučíte pracovať s posledným typom argumentačných chýb - falošnými kritériami. Do tejto skupiny patria tri argumentačné chyby - hlas ľudu, odkaz na falošnú autoritu a odkaz na tradíciu.",
             "name": "Falošné kritériá",
             "points": 3,
             "questions": [
@@ -1999,18 +1999,18 @@
                 "question": "Ktorým z týchto tvrdení odvolávajúcim sa na tradíciu chýba hlbšie vysvetlenie?",
                 "subQuestion": "",
                 "conclusion": "",
-                "title": "Odkaz na tradíciu je argumentačná chyba, ktorá vychádza z predpokladu, že ak niečo sa robilo v minulosti, musí sa to robiť aj teraz. No pravdou je, že minulosťou sa oháňať nestačí, lebo v minulosti ľudstvo robilo mnoho chýb. Zároveň však toto neznamená, že každá tradícia je automaticky zlá. Každé odvolávanie sa na tradíciu treba kriticky vyhodnocovať a používať logické analýzy o tom prečo sú jednotlivé tradície správne. Táto chyba preto nie nutne robí všetky argumenty automaticky nepoužiteľné, skôr len poukazuje na nutnosť hlbšieho vysvetlenia."
+                "title": "Odkaz na tradíciu je argumentačná chyba, ktorá vychádza z predpokladu, že ak niečo sa robilo v minulosti, musí sa to robiť aj teraz. No pravdou je, že minulosťou sa oháňať nestačí, lebo v minulosti ľudstvo robilo mnoho chýb. Zároveň však toto neznamená, že každá tradícia je automaticky zlá. Každé odvolávanie sa na tradíciu treba kriticky vyhodnocovať a používať logické analýzy o tom, prečo sú jednotlivé tradície správne. Táto chyba preto nie nutne robí všetky argumenty automaticky nepoužiteľné, skôr len poukazuje na nutnosť hlbšieho vysvetlenia."
               }
                             
             ]
           },
           {
-            "introduction": "V predošlých lekciach ste sa naučili ako delíme argumentačné chyby. Teória je síce podstatná, ale dôležitejšie je vedieť tieto chyby rozoznať v praxi. Preto si predstavíme ako tieto argumentačné chyby fungujú v reálnom živote.",
+            "introduction": "V predošlých lekciach ste sa naučili ako delíme argumentačné chyby. Teória je síce podstatná, ale dôležitejšie je vedieť tieto chyby rozoznať v praxi. Preto si predstavíme, ako tieto argumentačné chyby fungujú v reálnom živote.",
             "name": "Argumentačné chyby v praxi",
             "points": 4,
             "questions": [
               {
-                "answers": ["ad hominem", "apel na emócie", "bezdôvodné odvolávanie sa na autoritu", "argument väčšiny"],
+                "answers": ["Ad hominem.", "Apel na emócie.", "Bezdôvodné odvolávanie sa na autoritu.", "Argument väčšiny."],
                 "answersImage": [],
                 "correct": [
                   { "correct": 3, "index": 3 }
@@ -2022,17 +2022,17 @@
                 
                 "matchmaking": [],
                 "matches": [],
-                "question": "Elion Minsk uverejnil na Twitteri tieto príspevky ohľadom jedného používteľa, volajme ho Donald Duck, ktorému bol v minulosti zablokovaný účet:",
+                "question": "Elion Minsk uverejnil na Twitteri tieto príspevky ohľadom jedného používateľa, volajme ho Donald Duck, ktorému bol v minulosti zablokovaný účet:",
                 "subQuestion": "",
                 "conclusion": "",
                 "title": "Vyberte z možností jeden argumentačný faul, ktorý je najviac viditeľný v nasledujúcich príspevkoch."
               },
               {
                 "answers": [
-                  "slamenný panák",
-                  "klzký svah",
-                  "falošná dilema",
-                  "odvolávanie sa na falošnú autoritu"
+                  "Slamenný panák.",
+                  "Klzký svah.",
+                  "Falošná dilema.",
+                  "Odvolávanie sa na falošnú autoritu."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -2052,12 +2052,12 @@
               },
               {
                 "answers": [
-                  "Ad hominem",
-                  "Apel na autoritu",
-                  "Červený sleď",
-                  "Klzký svah",
-                  "Cherry-Picking",
-                  "Vox populi"
+                  "Ad hominem.",
+                  "Apel na autoritu.",
+                  "Červený sleď.",
+                  "Klzký svah.",
+                  "Cherry-Picking.",
+                  "Vox populi."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -2077,16 +2077,16 @@
                 "question": "Časť 1:  Milan",
                 "subQuestion": "",
                 "conclusion": "",
-                "title": " Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď akých argumetačných faulov sa obaja dopustili v tejto konverzácii."
+                "title": " Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď, akých argumentačných faulov sa obaja dopustili v tejto konverzácii."
               },
               {
                 "answers": [
-                  "Ad hominem",
-                  "Apel na autoritu",
-                  "Červený sleď",
-                  "Klzký svah",
-                  "Cherry-Picking",
-                  "Vox populi"
+                  "Ad hominem.",
+                  "Apel na autoritu.",
+                  "Červený sleď.",
+                  "Klzký svah.",
+                  "Cherry-Picking.",
+                  "Vox populi."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -2105,7 +2105,7 @@
                 "question": "Časť 2: Jožo",
                 "subQuestion": "",
                 "conclusion": "",
-                "title":"Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď akých argumetačných faulov sa obaja dopustili v tejto konverzácii."
+                "title":"Prečítaj si ostrú výmenu medzi Milanom a Jožom o globálnom otepľovaní. Posúď, akých argumentačných faulov sa obaja dopustili v tejto konverzácii."
               }                                              
             ]
           },
@@ -2116,13 +2116,13 @@
             "questions": [
               {
                 "answers": [
-                  "Počúvanie druhého človeka a snaha o porozumenie",
-                  "Dohodnúť na začiatku diskusie spoločné pravidlá, ktorými sa budete riadiť",
-                  "Domýšľať si ďalšie názory druhého človeka na základe jeho predošlých názorov",
-                  "Pýtať sa na pôvod informácií, s ktorými druhý človek pracuje",
-                  "Zvyšovať hlas len v prípade, keď aj druhý človek zvýši hlas",
-                  "Nezačínať diskusiu s človekom, ktorý má úplne odlišný svetonázor",
-                  "Spoznanie podmienok a životnej situácie druhého človeka"
+                  "Počúvanie druhého človeka a snaha o porozumenie.",
+                  "Dohodnúť na začiatku diskusie spoločné pravidlá, ktorými sa budete riadiť.",
+                  "Domýšľať si ďalšie názory druhého človeka na základe jeho predošlých názorov.",
+                  "Pýtať sa na pôvod informácií, s ktorými druhý človek pracuje.",
+                  "Zvyšovať hlas len v prípade, keď aj druhý človek zvýši hlas.",
+                  "Nezačínať diskusiu s človekom, ktorý má úplne odlišný svetonázor.",
+                  "Spoznanie podmienok a životnej situácie druhého človeka."
                 ],
                 "answersImage": [],
                 "correct": [
@@ -2134,14 +2134,14 @@
                 "division": [],
                 "definition": "",
                 "explanation": [
-                  " Základom konštruktívneho dialógu je úprimná snaha porozumieť druhému človeku, jeho názorom a jeho životnej situácii. Tým dokážeme lepšie pochopiť jeho hodnotovým pozíciám. Ak sa s niekým nezhodneme na faktoch, je dobre pýtať sa na zdroje týchto informácií a spoločne overiť ich dôveryhodnosť."
+                  "Základom konštruktívneho dialógu je úprimná snaha porozumieť druhému človeku, jeho názorom a jeho životnej situácii. Tým dokážeme lepšie pochopiť jeho hodnotovým pozíciám. Ak sa s niekým nezhodneme na faktoch, je dobre pýtať sa na zdroje týchto informácií a spoločne overiť ich dôveryhodnosť."
                 ],
                 "images": [],
                 
                 "matchmaking": [],
                 "matches": [],
                 "question": "",
-                "subQuestion": "Zaznačte všetky komunikačné stratégie, ktoré podporujú konštruktívny dialóg",
+                "subQuestion": "Zaznačte všetky komunikačné stratégie, ktoré podporujú konštruktívny dialóg.",
                 "conclusion": "",
                 "title": "Úloha 1"
               },
@@ -2162,7 +2162,7 @@
                 "images": [],
                 
                 "matchmaking": [
-                  "Keď predpokladáte, že vnútorná motivácie druhého človeka sú zlé alebo sebecké",
+                  "Keď predpokladáte, že vnútorné motivácie druhého človeka sú zlé alebo sebecké",
                   "Keď v snahe poukázať na absurdnosť výrokov osoby ich začnete zosmiešňovať",
                   "Keď pripíšeme človeku iné názory na základe jedného názoru, ktorý vyjadril",
                   "Keď nereagujete na argumenty druhého človeka, ale na základe jeho názoru označíte celú jeho osobnosť negatívnou charakteristikou"
@@ -2174,7 +2174,7 @@
                   "Generalizácia"
                 ],
                 "question": "",
-                "subQuestion": "Spojte negatívne komunikačné javy s ich definíciami",
+                "subQuestion": "Spojte negatívne komunikačné javy s ich definíciami.",
                 "conclusion": "",
                 "title": "Úloha 2"
               },
@@ -2190,7 +2190,7 @@
                   { "correct": 0, "index": 0 }
                 ],
                 "division": [],
-                "definition": "A: „Ja som niekde čítal, že zem je v skutočnosti plochá.“ B: „Ty len odmietaš, že je zem guľatá, lebo sa snažíš byť zaujímavý. Sám tomu reálne neveríš!“",
+                "definition": "A: „Ja som niekde čítal, že Zem je v skutočnosti plochá.“ B: „Ty len odmietaš, že je Zem guľatá, lebo sa snažíš byť zaujímavý. Sám tomu reálne neveríš!“",
                 "explanation": [
                   "Ide o jav pripisovania úmyslov – človek B predpokladá, že človek A sa len snaží byť zaujímavý. Takéto obvinenie povedie k tomu, že človek A sa utvrdí vo svojich nepodložených názoroch."
                 ],
@@ -2391,22 +2391,22 @@
         ]
       },
       {
-      "introduction": "Zorientovať sa v mediálnom priestore sa stáva stále náročnejším. Slepo veriť všetkému, čo prečítame na internete, je neprípustné, keďže tam môže ktokoľvek uverejniť (takmer) akékoľvek informácie. Spoliehať sa na intuíciu a vizuál stránky taktiež nestačí, keďže stratégie dezinformačných webov sú často komplexné. Na druhú stranu, veriť len tým informáciám, ktoré nenarúšajú náš svetonázor, znamená prepadnutie konfirmačnému skresleniu a uzatváranie sa do názorových bublín. V tejto lekcií sa naučíme základy k tomu, ako rozpoznávať dôveryhodné médiá.",
+      "introduction": "Zorientovať sa v mediálnom priestore sa stáva stále náročnejším. Slepo veriť všetkému, čo prečítame na internete, je neprípustné, keďže tam môže ktokoľvek uverejniť (takmer) akékoľvek informácie. Spoliehať sa na intuíciu a vizuál stránky taktiež nestačí, keďže stratégie dezinformačných webov sú často komplexné. Na druhú stranu, veriť len tým informáciám, ktoré nenarúšajú náš svetonázor, znamená prepadnutie konfirmačnému skresleniu a uzatváranie sa do názorových bublín. V tejto lekcii sa naučíme základy k tomu, ako rozpoznávať dôveryhodné médiá.",
       "name": "Formálne znaky médií",
       "points": 2,
       "questions":[
         {
           "answers": [
-            "v nadpisoch občas využíva emočné slová ako „škandál“ aby zaujal čitateľa",
-            "uvádza zdroj informácií",
-            "uvádza meno autora alebo autorky správy / článku",
-            "je ideologicky motivovaný a v jeho často článkoch vidieť silné názorové zafarbenie",
-            "jasne oddelené spravodajstvo od názorovej sekcie",
-            "informácie o redakcii a vlastníkovi sa dajú dohľadať na stránke",
-            "na svojej stránke neuvádza spôsob financovania",
-            "má dohľadateľný etický/redakčný kódex",
-            "neuverejňuje opravy chýb alebo ospravedlnenia",
-            "uvádza varovania o potenciálnych stretoch záujmov"
+            "v nadpisoch občas využíva emočné slová ako „škandál“ aby zaujal čitateľa.",
+            "uvádza zdroj informácií.",
+            "uvádza meno autora alebo autorky správy / článku.",
+            "je ideologicky motivovaný a v jeho často článkoch vidieť silné názorové zafarbenie.",
+            "jasne oddelené spravodajstvo od názorovej sekcie.",
+            "informácie o redakcii a vlastníkovi sa dajú dohľadať na stránke.",
+            "na svojej stránke neuvádza spôsob financovania.",
+            "má dohľadateľný etický/redakčný kódex.",
+            "neuverejňuje opravy chýb alebo ospravedlnenia.",
+            "uvádza varovania o potenciálnych stretoch záujmov."
           ],
           "answersImage": [],
           "correct": [
@@ -2460,8 +2460,8 @@
       "questions":[
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2487,8 +2487,8 @@
         },
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2542,8 +2542,8 @@
         },
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2597,8 +2597,8 @@
         },
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2624,8 +2624,8 @@
         },
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2679,8 +2679,8 @@
         },
         {
           "answers": [
-            "Áno, v článku sú znaky nedôveryhodnosti",
-            "Nie, článok pôsobí dôveryhodne"
+            "Áno, v článku sú znaky nedôveryhodnosti.",
+            "Nie, článok pôsobí dôveryhodne."
           ],
           "answersImage": [],
           "correct": [
@@ -2741,10 +2741,10 @@
         "questions":[
           {
             "answers": [
-              "Nepravdivá informácia, ktorá sa virálne šíri, hlavne sociálnymi sieťami",
-              "Zavádzajúca satirická informácia šírená s cieľom pobaviť čitateľov",
-              "Informácia, ktorej účelom je očierniť povesť politikov alebo iných verejných osôb",
-              "Konšpiračná informácia, ktorá tvrdí, že existujú tajné sprisahanecké skupiny mocných ľudí"
+              "Nepravdivá informácia, ktorá sa virálne šíri, hlavne sociálnymi sieťami.",
+              "Zavádzajúca satirická informácia šírená s cieľom pobaviť čitateľov.",
+              "Informácia, ktorej účelom je očierniť povesť politikov alebo iných verejných osôb.",
+              "Konšpiračná informácia, ktorá tvrdí, že existujú tajné sprisahanecké skupiny mocných ľudí."
             ],
             "answersImage": [],
             "correct": [
@@ -2766,10 +2766,10 @@
           },
           {
             "answers": [
-              "Misinformácia je nepresná informácia, zatiaľ čo dezinformácia je vyslovene nepravdivá",
-              "Misinformácia je irelevantná informácia, ktorá nesúvisí s témou, zatiaľ čo dezinformácia môže súvisieť s témou, ale jej obsah je nepravdivý alebo nepresný",
-              "Oba pojmy popisujú nepravdivú informáciu, ale misinformácia bola vypustená omylom, zatiaľ čo dezinformácia bola vypustená zámerne",
-              "Misinformácia a dezinformácia sú synonymá"
+              "Misinformácia je nepresná informácia, zatiaľ čo dezinformácia je vyslovene nepravdivá.",
+              "Misinformácia je irelevantná informácia, ktorá nesúvisí s témou, zatiaľ čo dezinformácia môže súvisieť s témou, ale jej obsah je nepravdivý alebo nepresný.",
+              "Oba pojmy popisujú nepravdivú informáciu, ale misinformácia bola vypustená omylom, zatiaľ čo dezinformácia bola vypustená zámerne.",
+              "Misinformácia a dezinformácia sú synonymá."
             ],
             "answersImage": [],
             "correct": [
@@ -2791,10 +2791,10 @@
           },
           {
             "answers": [
-              "Označenie správ, ktoré odporujú môjmu svetonázoru",
-              "Správy a médiá, ktoré nepokrývajú všetko dianie vo svete, ale len niektoré udalosti",
-              "Zavádzajúce a manipulatívne informácie, ktoré sú ale založené na kúsku pravdy",
-              "Nepravdivé informácie, ktoré vizuálne napodobňujú štandardné spravodajstvo"
+              "Označenie správ, ktoré odporujú môjmu svetonázoru.",
+              "Správy a médiá, ktoré nepokrývajú všetko dianie vo svete, ale len niektoré udalosti.",
+              "Zavádzajúce a manipulatívne informácie, ktoré sú ale založené na kúsku pravdy.",
+              "Nepravdivé informácie, ktoré vizuálne napodobňujú štandardné spravodajstvo.d"
             ],
             "answersImage": [],
             "correct": [
@@ -2816,12 +2816,12 @@
           },
           {
             "answers": [
-              "Sú využívané iba bulvárnymi médiami",
-              "Sú využívané iba dezinformačnými médiami",
-              "Seriózne médiá by ich nemali používať",
-              "Ich obsah je nepravdivý",
-              "Často zamlčiavajú a skrývajú pointu článku",
-              "Používajú emočne nabité slová ako „šok“ a „škandál“"
+              "Sú využívané iba bulvárnymi médiami.",
+              "Sú využívané iba dezinformačnými médiami.",
+              "Seriózne médiá by ich nemali používať.",
+              "Ich obsah je nepravdivý.",
+              "Často zamlčiavajú a skrývajú pointu článku.",
+              "Používajú emočne nabité slová ako „šok“ a „škandál“."
             ],
             "answersImage": [],
             "correct": [
@@ -2845,10 +2845,10 @@
           },
           {
             "answers": [
-              "Úmyselné šírenie nepravdivých informácií",
-              "Šírenie konšpiračných tvrdení o tom, že existujú tajné sprisahanecké skupiny mocných ľudí",
-              "Systematická kampaň s cieľom ovplyvniť názory ľudí, hlavne v politických témach",
-              "Potláčanie slobody slova a mediálnej slobody"
+              "Úmyselné šírenie nepravdivých informácií.",
+              "Šírenie konšpiračných tvrdení o tom, že existujú tajné sprisahanecké skupiny mocných ľudí.",
+              "Systematická kampaň s cieľom ovplyvniť názory ľudí, hlavne v politických témach.",
+              "Potláčanie slobody slova a mediálnej slobody."
             ],
             "answersImage": [],
             "correct": [
@@ -2868,11 +2868,10 @@
             "conclusion": "",
             "title": "Propaganda"
           }            
-
         ]
       },
       {
-        "introduction": "V dnešnom kvíze si zopakujeme pojmový aparát z predošlého kvízu a naučíme sa ho používať v praxi. Poznať definície slov ako „hoax“ či „dezinformácia“ je dôležité, ale ešte dôležitejšie je vedieť ich aplikovať na príklady z reálneho života",
+        "introduction": "V dnešnom kvíze si zopakujeme pojmový aparát z predošlého kvízu a naučíme sa ho používať v praxi. Poznať definície slov ako „hoax“ či „dezinformácia“ je dôležité, ale ešte dôležitejšie je vedieť ich aplikovať na príklady z reálneho života.",
         "name": "Hoaxy a dezinformácie v praxi",
         "points": 6,
         "questions":[
@@ -2898,7 +2897,7 @@
               "Bulvárny nadpis, ktorý sa snaží čitateľa zaujať a naviesť ku kliknutiu na článok.",
               "Nepravdivé informácie, ktoré zámerne vizuálne napodobňujú štandardné spravodajstvo. ",
               "Nepravdivá informácia, ktorá bola zámerne vypustená do mediálneho priestoru.",
-              "Systematická kampaň vytvorená za účelom ovplyvniť názory ľudí., cieľom môže byť napríklad vykreslenie nejakého štátu v dobrom svetle.",
+              "Systematická kampaň vytvorená za účelom ovplyvniť názory ľudí. Cieľom môže byť napríklad vykreslenie nejakého štátu v dobrom svetle.",
               "Nepravdivá informácia, ktorá sa šíri virálne, väčšinou sociálnymi sieťami.",
               "Nepravdivá alebo nepresná informácia, ktorá bola do mediálneho priestoru vypustená omylom."
             ],
@@ -3069,16 +3068,16 @@
         ]
       },
       {
-        "introduction": "Keď sa pohybujeme v mediálnom priestore, je dôležité vedieť čítať s porozumením a odhaľovať manipulatívne formulácie. V tomto kvíze si vyskúšate nájsť vhodné nadpisy k článku a naučíš sa rozpoznať zavádzajúce a clickbait nadpisy. Články sú vymyslené pre účely tejto úlohy.",
+        "introduction": "Keď sa pohybujeme v mediálnom priestore, je dôležité vedieť čítať s porozumením a odhaľovať manipulatívne formulácie. V tomto kvíze si vyskúšate nájsť vhodné nadpisy k článku a naučíte sa rozpoznať zavádzajúce a clickbait nadpisy. Články sú vymyslené pre účely tejto úlohy.",
         "name": "Zavádzajúce nadpisy",
         "points": 6,
         "questions":[
           {
             "answers": [
-              "Neuveríte, čo objavili vedci! TOTO sa skrýva na vzdialenej planéte",
-              "Vedci objavili exoplanétu s podmienkami vhodnými na život",
-              "Astronómom sa podarilo nadviazať kontakt s planétou Kepler-452b, ktorá má podobné podmienky ako Zem",
-              "Vedecký objav: známky života na skalnatej planéte mimo našej slnečnej sústavy"
+              "Neuveríte, čo objavili vedci! TOTO sa skrýva na vzdialenej planéte.",
+              "Vedci objavili exoplanétu s podmienkami vhodnými na život.",
+              "Astronómom sa podarilo nadviazať kontakt s planétou Kepler-452b, ktorá má podobné podmienky ako Zem.",
+              "Vedecký objav: známky života na skalnatej planéte mimo našej slnečnej sústavy."
             ],
             "answersImage": [],
             "correct": [
@@ -3100,9 +3099,9 @@
           },
           {
             "answers": [
-              "Odvážne tvrdenie vedkyne: Nanoroboty ponúkajú liek na rakovinu",
-              "Nanoroboty menia liečbu rakoviny: Odvážna inovácia profesorky Horváthovej",
-              "Internetom sa šíri ďalší hoax o rakovine: Nanoroboty majú liečiť rakovinu, vedecká komunita to odmieta",
+              "Odvážne tvrdenie vedkyne: Nanoroboty ponúkajú liek na rakovinu.",
+              "Nanoroboty menia liečbu rakoviny: Odvážna inovácia profesorky Horváthovej.",
+              "Internetom sa šíri ďalší hoax o rakovine: Nanoroboty majú liečiť rakovinu, vedecká komunita to odmieta.",
               "Kontroverzia v liečbe rakoviny: Prinesie terapia pomocou nanorobotov revolučné výsledky?"
             ],
             "answersImage": [],
@@ -3126,10 +3125,10 @@
           },
           {
             "answers": [
-              "Odhaľovanie temnej strany sociálnych médií: Štúdia spája ich nadmerné používanie s duševnými problémami",
-              "Psychologická daň sociálnych médií: Výskum odhaľuje negatívne vplyvy na mládež",
-              "Možná príčina nárastu depresií medzi mladými ľuďmi: priveľa času na sociálnych sieťach",
-              "Vedecká štúdia potvrdzuje, že je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam: Ničia im mentálne zdravie, tvrdí tím psychologičiek"
+              "Odhaľovanie temnej strany sociálnych médií: Štúdia spája ich nadmerné používanie s duševnými problémami.",
+              "Psychologická daň sociálnych médií: Výskum odhaľuje negatívne vplyvy na mládež.",
+              "Možná príčina nárastu depresií medzi mladými ľuďmi: priveľa času na sociálnych sieťach.",
+              "Vedecká štúdia potvrdzuje, že je potrebné obmedziť prístup mladých ľudí k sociálnym sieťam: Ničia im mentálne zdravie, tvrdí tím psychologičiek."
             ],
             "answersImage": [],
             "correct": [
@@ -3153,10 +3152,10 @@
           },
           {
             "answers": [
-              "Návrh zákona o slobode prejavu na internete vyvoláva protesty a obavy o občianske slobody",
-              "Boj za online slobodu: Občania sa zhromažďujú proti kontroverznému návrhu zákona",
-              "Nový zákon obmedzuje súkromie na internete: Sloboda prejavu je ohrozená, tvrdia kritici",
-              "Zákon o štátnom monitorovaní internetového obsahu čelí kritike: Masové protesty zaplavili krajinu"
+              "Návrh zákona o slobode prejavu na internete vyvoláva protesty a obavy o občianske slobody.",
+              "Boj za online slobodu: Občania sa zhromažďujú proti kontroverznému návrhu zákona.",
+              "Nový zákon obmedzuje súkromie na internete: Sloboda prejavu je ohrozená, tvrdia kritici.",
+              "Zákon o štátnom monitorovaní internetového obsahu čelí kritike: Masové protesty zaplavili krajinu."
             ],
             "answersImage": [],
             "correct": [
@@ -3179,10 +3178,10 @@
           },
           {
             "answers": [
-              "Odhalenie stratenej civilizácie: Archeologický objav má potenciál zmeniť dejiny ľudstva",
+              "Odhalenie stratenej civilizácie: Archeologický objav má potenciál zmeniť dejiny ľudstva.",
               "Starodávne artefakty odkrývajú zabudnutú civilizáciu: Paradigmatická zmena v archeológii?",
-              "Nové archeologické nálezy prepisujú príbeh ľudstva: vyzerá to tak, že komplexné spoločnosti sme tvorili skôr, než sme si mysleli",
-              "Enigma skorej civilizácie: Vykopávky odhaľujú neznámu starovekú spoločnosť"
+              "Nové archeologické nálezy prepisujú príbeh ľudstva: vyzerá to tak, že komplexné spoločnosti sme tvorili skôr, než sme si mysleli.",
+              "Enigma skorej civilizácie: Vykopávky odhaľujú neznámu starovekú spoločnosť."
             ],
             "answersImage": [],
             "correct": [
@@ -3208,7 +3207,7 @@
           {
             "answers": [
               "Súd rozhodol: dvojnásobný vrah Radovan je vinný!",
-              "Súd vyslovil verdikt o vine: Radovan M., podozrivý z dvojitej vraždy, bude väzobne stíhaný",
+              "Súd vyslovil verdikt o vine: Radovan M., podozrivý z dvojitej vraždy, bude väzobne stíhaný.",
               "Rozpoltené názory: Mal súd oslobodiť podozrivého Radovana M.?",
               "Novinka ohľadom dvojitej vraždy v Hrone: podozrivý Radovan M. bude väzobne stíhaný!"
             ],
@@ -3470,10 +3469,10 @@
           },
           {
             "answers": [
-              "Áno, a citát je správne preložený aj zasadený v kontexte",
-              "Áno, ale nesedí miesto a čas vyslovenia citátu",
-              "Nie, takýto citát nikdy nepovedal",
-              "Citát je zavádzajúco preložený do slovenčiny"
+              "Áno, a citát je správne preložený aj zasadený v kontexte.",
+              "Áno, ale nesedí miesto a čas vyslovenia citátu.",
+              "Nie, takýto citát nikdy nepovedal.",
+              "Citát je zavádzajúco preložený do slovenčiny."
             ],
             "answersImage": [],
             "correct": [
@@ -3498,9 +3497,9 @@
           },
           {
             "answers": [
-              "Áno, p. Turánek je naozaj profesor a expert v tejto oblasti",
-              "P. Turánek je síce naozaj profesor, ale na Výskumnom ústave veterinárskeho lekárstva",
-              "Nie, p. Turánek nie je skutočný profesor a akademik"
+              "Áno, p. Turánek je naozaj profesor a expert v tejto oblasti.",
+              "P. Turánek je síce naozaj profesor, ale na Výskumnom ústave veterinárskeho lekárstva.",
+              "Nie, p. Turánek nie je skutočný profesor a akademik."
             ],
             "answersImage": [],
             "correct": [
@@ -3528,9 +3527,9 @@
           },
           {
             "answers": [
-              "Príspevok pravdivo a jasne opisuje skutočnosť, ktorá sa stala",
-              "Príspevok síce nie je nepravdivý, ale kvôli stručnosti navádza čitateľa k nesprávnym záverom",
-              "Príspevok je dezinformačný a stránka zámerne klame svojich čitateľov"
+              "Príspevok pravdivo a jasne opisuje skutočnosť, ktorá sa stala.",
+              "Príspevok síce nie je nepravdivý, ale kvôli stručnosti navádza čitateľa k nesprávnym záverom.",
+              "Príspevok je dezinformačný a stránka zámerne klame svojich čitateľov."
 
             ],
             "answersImage": [],
@@ -3559,9 +3558,9 @@
           },
           {
             "answers": [
-              "Skutočný a korektne interpretovaný",
-              "Skutočný, ale je vytrhnutý z kontextu, a tým pádom zavádzajúci/manipulatívny", 
-              "Hoax, takýto prieskum nikdy nebol vyhotovený"
+              "Skutočný a korektne interpretovaný.",
+              "Skutočný, ale je vytrhnutý z kontextu, a tým pádom zavádzajúci/manipulatívny.", 
+              "Hoax, takýto prieskum nikdy nebol vyhotovený."
 
 
             ],
@@ -3598,12 +3597,12 @@
         "questions":[
           {
             "answers": [
-              "Použiť webstránku TinEye",
-              "Použiť aplikáciu MidJourney",
-              "Použiť funkciu Google Search Images",
+              "Použiť webstránku TinEye.",
+              "Použiť aplikáciu MidJourney.",
+              "Použiť funkciu Google Search Images.",
               "Sústrediť sa na detaily v obrázku – oblečenie, nápisy, javy v pozadí...",
-              "Sústrediť sa na viditeľné znaky fotomontáže – chýbajúce tiene, ostré obrysy objektov",
-              "Sústrediť sa na pôvod obrázku – ak je v online médiách, bude pravdivý, ak je v náhodnom statuse na sociálnych sieťach, bude asi nepravdivý"
+              "Sústrediť sa na viditeľné znaky fotomontáže – chýbajúce tiene, ostré obrysy objektov.",
+              "Sústrediť sa na pôvod obrázku – ak je v online médiách, bude pravdivý, ak je v náhodnom statuse na sociálnych sieťach, bude asi nepravdivý."
             ],
             "answersImage": [],
             "correct": [
@@ -3630,10 +3629,10 @@
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3648,17 +3647,17 @@
             
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku. Pri riešení úloh si pomôžte internetom. (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku. Pri riešení úloh si pomôžte internetom. (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Ujgurská menšina je v Číne brutálne utláčaná! Pozri si fotografie toho, v akých nehumánnych podmienkach žijú.",
             "conclusion": "",
             "title": "Over obrázok 1 - Ujguri"
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3672,17 +3671,17 @@
             "images": ["assets/pictures/picture27.png"],
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Vedeli ste o tom, že Lionel Messi sa narodil do veľmi chudobnej rodiny? Napriek tomu sa sám vypracoval až na vrchol!",
             "conclusion": "",
             "title": "Over obrázok 2 – Lionel Messi"
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3697,17 +3696,17 @@
             
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Hanebné tajomstvo republikánskeho senátora a údajného „hrdinu“ Johna McCaina. Na verejnosti obhajoval záujmy USA, za zatvorenými dverami sa paktoval s teroristom Bin Ladenom!",
             "conclusion": "",
             "title": "Over obrázok 3 – Bin Laden"
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3722,17 +3721,17 @@
             
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Dojímavé fotografie: Je dôležité nezabúdať na ľudskosť, aj keď máme rozličné názory a vierovyznania. Pozrite si, ako maskovaní palestínski ozbrojenci z Brigády mučeníkov al-Aksá kedysi rozdávali karafiáty mníškam!",
             "conclusion": "",
             "title": "Over obrázok 4 – Palestínski bojovníci"
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3747,17 +3746,17 @@
             
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Mladé generácie už zabudli, keď pýcha našich Tatier vzbĺkla v plameňoch. Pripomeňme si požiar Kriváňa fotografiami.",
             "conclusion": "",
             "title": "Over obrázok 5 – Požiar na Kriváni"
           },
           {
             "answers": [
-              "Obrázok je reálny a sedí k nadpisu článku",
-              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci",
-              "Obrázok je falošný, ide o fotomontáž",
-              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou"
+              "Obrázok je reálny a sedí k nadpisu článku.",
+              "Obrázok je reálny, ale nesedí k nadpisu článku, takže je zavádzajúci.",
+              "Obrázok je falošný, ide o fotomontáž.",
+              "Obrázok je falošný, bol vygenerovaný umelou inteligenciou."
             ],
             "answersImage": [],
             "correct": [
@@ -3772,7 +3771,7 @@
             
             "matchmaking": [],
             "matches": [],
-            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy)",
+            "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
             "subQuestion": "Migranti zo Sýrie zaplavili vlakovú stanicu v Budapešti, nastali konflikty s políciou. Takto vyzerala migračná kríza v lete 2023!",
             "conclusion": "",
             "title": "Over obrázok 6 – Imigranti v Maďarsku"
@@ -3800,11 +3799,11 @@
             "images": [],
             
             "matchmaking": [
-              "Nedôveryhodná platforma na uverejňovanie a šírenie správ, ktoré obsahujú konšpiračné teórie",
-              "Ide o jav, pri ktorom je človek všeobecne skeptický voči autoritám a nedôveruje systému či oficiálnym verziám udalostí",
+              "Nedôveryhodná platforma na uverejňovanie a šírenie správ, ktoré obsahujú konšpiračné teórie.",
+              "Ide o jav, pri ktorom je človek všeobecne skeptický voči autoritám a nedôveruje systému či oficiálnym verziám udalostí.",
               "Tajné sprisahanie skupiny mocných ľudí, ktoré reálne existuje/existovalo.",
-              "Nedostatočne podložená domnienka o existencii tajnej sprisahaneckej skupiny so zlými úmyslami",
-              "Osoba, ktorá verejne a profesionálne šíri konšpiračné teórie"
+              "Nedostatočne podložená domnienka o existencii tajnej sprisahaneckej skupiny so zlými úmyslami.",
+              "Osoba, ktorá verejne a profesionálne šíri konšpiračné teórie."
             ],
             "matches": [
               "Konšpirácia",
@@ -3822,7 +3821,7 @@
             "answers": [
               "Konšpiračné teórie sú vždy nepravdivé.",
               "Každý hoax alebo dezinformácia je súčasťou nejakej väčšej konšpiračnej teórie.",
-              "Konšpiračné teórie sú založené na domnienke, že nič nie je náhoda a všetko je spolu prepojené",
+              "Konšpiračné teórie sú založené na domnienke, že nič nie je náhoda a všetko je spolu prepojené.",
               "Konšpiračné teórie sú komplexnejšie ako hoaxy a často svojmu publiku poskytujú ucelený logický systém.",
               "Konšpiračné teórie sú vždy podložené dôveryhodnými dôkazmi, preto máme problém s ich vyvracaním."
             ],
@@ -3847,11 +3846,11 @@
           },
           {
             "answers": [
-              "Čierno biele delenie sveta – zjednodušenie reality na dobro verzus zlo",
-              "Odkazovanie na falošné autority – vyjadrenia údajných „expertov“, nedôveryhodné zdroje",
-              "Apel na intuíciu – vyzývanie čitateľov, nech sa „zobudia“ a použijú „zdravý rozum“",
-              "Vyberanie čerešní („cherry-picking“) – zameranie sa na zopár náhodných faktov, ktoré sú skôr výnimky z pravidla",
-              "Hľadanie obetného baránka – vždy je nejaká skupina ľudí, ktorí sú údajne zodpovední za všetko zlo"
+              "Čierno biele delenie sveta – zjednodušenie reality na dobro verzus zlo.",
+              "Odkazovanie na falošné autority – vyjadrenia údajných „expertov“, nedôveryhodné zdroje.",
+              "Apel na intuíciu – vyzývanie čitateľov, nech sa „zobudia“ a použijú „zdravý rozum“.",
+              "Vyberanie čerešní („cherry-picking“) – zameranie sa na zopár náhodných faktov, ktoré sú skôr výnimky z pravidla.",
+              "Hľadanie obetného baránka – vždy je nejaká skupina ľudí, ktorí sú údajne zodpovední za všetko zlo."
             ],
             "answersImage": [],
             "correct": [
@@ -3877,9 +3876,9 @@
           },
           {
             "answers": [
-              "Ide o nepodloženú konšpiračnú teóriu",
-              "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi",
-              "Ide o konšpiráciu, ktorá sa naozaj odohrala"
+              "Ide o nepodloženú konšpiračnú teóriu.",
+              "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi.",
+              "Ide o konšpiráciu, ktorá sa naozaj odohrala."
             ],
             "answersImage": [],
             "correct": [
@@ -3901,9 +3900,9 @@
           },
           {
             "answers": [
-              "Ide o nepodloženú konšpiračnú teóriu",
-              "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi",
-              "Ide o konšpiráciu, ktorá sa naozaj odohrala"
+              "Ide o nepodloženú konšpiračnú teóriu.",
+              "Ide o konšpiračnú teóriu, ktorá nie je potvrdená, ale je podložená presvedčivými dôkazmi.",
+              "Ide o konšpiráciu, ktorá sa naozaj odohrala."
             ],
             "answersImage": [],
             "correct": [
@@ -3937,7 +3936,7 @@
     "weeklyChallenge": 0,
     "tests": [
         {
-        "introduction": "Je potrebné rozumieť tomu, aký typ grafu sa hodí na vizualizáciu dát v konkrétnych situáciach, keďže každý typ infografiky má svoje silné a slabé stránky. V najbližších lekciách sa budeme učiť porozumieť týmto rozdielom",
+        "introduction": "Je potrebné rozumieť tomu, aký typ grafu sa hodí na vizualizáciu dát v konkrétnych situáciach, keďže každý typ infografiky má svoje silné a slabé stránky. V najbližších lekciách sa budeme učiť porozumieť týmto rozdielom.",
         "name": "Vhodná vizualizácia",
         "points": 5,
         "questions": [
@@ -4082,7 +4081,7 @@
         ]
         },
         {
-        "introduction": "V tejto lekcií si ukážeme ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
+        "introduction": "V tejto lekcii si ukážeme, ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
         "name": "Zavádzajúce grafy 1",
         "points": 3,
         "questions": [
@@ -4154,8 +4153,8 @@
           },
           {
             "answers": [
-              "Graf 1 je problematický, pretože sa čitateľovi opticky môže zdať, že podiel segmentu B je v porovnaní so segmentom A polovičný, čo sa nezhoduje s číselnými dátami. ",
-              "Graf 2 je problematický, pretože navodzuje falošný dojem, že podiel segmentu A a B je približne rovnaký, čo nevyplýva z číselných dát. ",
+              "Graf 1 je problematický, pretože sa čitateľovi opticky môže zdať, že podiel segmentu B je v porovnaní so segmentom A polovičný, čo sa nezhoduje s číselnými dátami.",
+              "Graf 2 je problematický, pretože navodzuje falošný dojem, že podiel segmentu A a B je približne rovnaký, čo nevyplýva z číselných dát.",
               "Možnosť 3 je problematická, pretože pri rozdelení celku na viac ako 3 časti, by sa dáta mali kvôli prehľadnosti znázorňovať trojrozmerným koláčovými grafmi."
             ],
             "answersImage": [
@@ -4187,7 +4186,7 @@
         ]
         },
         {
-        "introduction": "Ako aj v predošlej lekcií, aj dnes si ukážeme ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
+        "introduction": "Ako aj v predošlej lekcií, aj dnes si, ukážeme ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
         "name": "Zavádzajúce grafy 2",
         "points": 3,
         "questions":[
@@ -4262,7 +4261,7 @@
             ],
             "definition": "",
             "explanation": [
-              "Z grafu vyplýva, že v roku 2006 sa uskutočnilo vyše 2 milióny kontrol, zatiaľ čo v roku 2013 menej než milión",
+              "Z grafu vyplýva, že v roku 2006 sa uskutočnilo vyše 2 milióny kontrol, zatiaľ čo v roku 2013 menej než milión.",
               "V grafe sú uvedené len dáta z rokov 2006 a 2013. Keďže nie sú zobrazené údaje z rokov 2007-2012, nevieme porovnať rozdiely medzi jednotlivými rokmi. V skutočnosti sa v roku 2011 uskutočnilo 334 tisíc interrupcií, zatiaľ čo v roku 2012 len 327 tisíc, avšak táto informácia sa nedá vyčítať z grafu.",
               "Aj keď vizuálne sa ružová a červená šípka pretínajú, v skutočnosti je aj v roku 2013 stále nižší počet vykonaných interrupcií (327 tisíc) než kontrol (936 tisíc)."
             ],
@@ -4287,7 +4286,7 @@
         ]
         },
         {
-        "introduction": "Rozoznávanie medzi koreláciou a kauzalitou je kľúčové pre presné chápanie vzťahov medzi premennými a pre racionálne rozhodovanie.Prijatie kauzality tam, kde iba existuje korelácia, môže viesť k nesprávnym záverom. To môže mať vážne dôsledky, napríklad pri prijímaní politických alebo ekonomických opatrení.V tejto lekcií si vysvetlíme tieto dva pojmy a naučíme sa ich rozoznávať ako na grafoch, tak v písanom texte.",
+        "introduction": "Rozoznávanie medzi koreláciou a kauzalitou je kľúčové pre presné chápanie vzťahov medzi premennými a pre racionálne rozhodovanie. Prijatie kauzality tam, kde iba existuje korelácia, môže viesť k nesprávnym záverom. To môže mať vážne dôsledky, napríklad pri prijímaní politických alebo ekonomických opatrení. V tejto lekcii si vysvetlíme tieto dva pojmy a naučíme sa ich rozoznávať ako na grafoch, tak v písanom texte.",
         "name": "Korelácia  vs kauzalita",
         "points": 6,
         "questions": [
@@ -4310,7 +4309,7 @@
               "Popisuje vzťah medzi jednou udalosťou (príčinou) a druhou udalosťou (následkom), kde druhá udalosť je priamy dôsledok prvej. Napríklad, ak dáme vodu do mínusových teplôt (príčina), premení sa na ľad (následok).",
               "Vzťah medzi dvoma javmi, ktoré medzi sebou zdanlivo súvisia, aj keď jeden nezapríčiňuje ten druhý. Napríklad, ak žiaci veria, že použitie ich “šťastného pera” pri písomke im prinesie lepšiu známku. Ak aj dobrú známku dostanú, nezapríčinilo ju ich šťastné pero – dosiahli ju pravdepodobne kvôli svojim dobrým vedomostiam.",
               "Vzťah medzi dvoma premennými, kde keď jedna premenná rastie, druhá premenná klesá. Malý mestský antikvariát s knihami má pravdepodobne takýto vzťah s akciami knižného veľkopredajcu Martinus.sk.",
-              "Vzťah medzi dvoma premennými, kde sa obe premenné pohybujú v tandeme, teda keď jedna premenná rastie, druhá premenná rastie tiež. Napríklad, ak stúpnu ceny akcií automobilového priemyslu, budú stúpať aj ceny akcií gumárenského priemyslu",
+              "Vzťah medzi dvoma premennými, kde sa obe premenné pohybujú v tandeme, teda keď jedna premenná rastie, druhá premenná rastie tiež. Napríklad, ak stúpnu ceny akcií automobilového priemyslu, budú stúpať aj ceny akcií gumárenského priemyslu.",
               "Premenná, ktorá nie je okamžite viditeľná alebo zrejmá, ale ktorá môže mať významný vplyv na vzťah medzi dvoma inými premennými."
             ],
             "matches": [
@@ -4327,9 +4326,9 @@
           },
           {
             "answers": [
-              "Náhodná korelácia - tieto javy spolu nesúvisia",
-              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou",
-              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý"
+              "Náhodná korelácia - tieto javy spolu nesúvisia.",
+              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou.",
+              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý."
             ],
             "answersImage": [],
             "correct": [
@@ -4349,9 +4348,9 @@
           },
           {
             "answers": [
-              "Náhodná korelácia - tieto javy spolu nesúvisia",
-              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou",
-              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý"
+              "Náhodná korelácia - tieto javy spolu nesúvisia.",
+              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou.",
+              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý."
             ],
             "answersImage": [],
             "correct": [
@@ -4371,9 +4370,9 @@
           },
           {
             "answers": [
-              "Náhodná korelácia - tieto javy spolu nesúvisia",
-              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou",
-              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý"
+              "Náhodná korelácia - tieto javy spolu nesúvisia.",
+              "Korelácia so skrytou príčinou - tieto javy spolu súvisia, ale jeden nezapríčiňuje druhý, obe sú zapríčinené skrytou príčinou.",
+              "Kauzalita - tieto javy spolu súvisia, jeden jav pravdepodobne zapríčiňuje druhý."
             ],
             "answersImage": [],
             "correct": [
@@ -4435,7 +4434,7 @@
         {
         "introduction": "Vedomosť a schopnosť interpretovať dáta v texte je dôležitá pre celý rad dôvodov, ktoré súvisia s informovanosťou, kritickým myslením a schopnosťou urobiť informované rozhodnutia. Z argumentačného hľadiska vieme povedať, že dáta v texte často poskytujú informácie na podporu určitých postojov alebo tvrdení. Schopnosť vedieť ich interpretovať nám umožňuje skutočne pochopiť, či sú tieto informácie relevantné, spoľahlivé a pravdivé.",
         "name": "Interperácia dát v texte",
-        "points": 7,
+        "points": 6,
         "questions":[
           {
             "answers": ["PRAVDA", "NEPRAVDA"],
@@ -4446,7 +4445,7 @@
             "division": [],
             "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
             "explanation": [
-              "Na Slovneksu v čase písania textu žilo približne 450 tisíc rómskych obyvateľov, ako sa píše v tretej vete textu. Číslo 417 tisíc opisuje len počet rómov žijúcich v obciach, ktorým sa venuje Atlas."
+              "Na Slovensku v čase písania textu žilo približne 450 tisíc rómskych obyvateľov, ako sa píše v tretej vete textu. Číslo 417 tisíc opisuje len počet rómov žijúcich v obciach, ktorým sa venuje Atlas."
             ],
             "images": [],
             
@@ -4495,24 +4494,6 @@
             "conclusion": "",
             "title": ""
           },            
-          {
-            "answers": ["PRAVDA", "NEPRAVDA"],
-            "answersImage": [],
-            "correct": [
-              { "correct": 0, "index": 0 }
-            ],
-            "division": [],
-            "definition": "ATLAS RÓMSKYCH KOMUNÍT V KOCKE\nDo Atlasu rómskych komunít 2019 bolo zaradených 825 obcí. V týchto obciach žije 417 tisíc rómskych obyvateľov. To predstavuje zhruba 7,6% celkového obyvateľstva Slovenska. Korešponduje to so všeobecným odhadom 450 tisíc obyvateľov rómskeho pôvodu na Slovensku (keďže nie všetci Rómovia žijú v obciach Atlasu). V porovnaní s údajmi z roku 2013 je to rast o niečo menej ako 13%. Samosprávou s najvyšším počtom rómskych obyvateľov je košická mestská časť Luník IX (približne 6 900 obyvateľov). V počte obyvateľov nasleduje koncentrácia na okraji mesta Trebišov (6 700) a obec Jarovnice (6 000). V obciach Atlasu rómskych komunít evidujeme 1 102 tzv. koncentrácií. Žije v nich 300 tisíc Rómov. 56 tisíc Rómov býva v koncentráciách mimo obce, 151 tisíc na okraji obce a 92 tisíc vo vnútri obce. Zvyšných 117 tisíc Rómov z Atlasu býva integrovane spolu s majoritnou populáciou. S pripočítaním cca. 33 tisíc odhadovaných Rómov mimo Atlasu rómskych komunít môžeme povedať, že dve tretiny Rómov na Slovensku bývajú koncentrovane a zvyšná tretina býva integrovane medzi majoritnými obyvateľmi. Bolo by však omylom myslieť si, že všetky koncentrácie sú tzv. osady – do tejto kategórie patria aj obce s rómskou majoritou, „rómske susedstvá“ či „rómske ulice“. Najviac preferovaným komunikačným jazykom v takmer polovici (47 %) rómskych komunít je rómčina, a to prevažne v komunitách na strednom a východnom Slovensku. V 35% komunít je to slovenčina a v 18% maďarčina, prevažne na juhu krajiny. Okrem výrazne horších životných podmienok v porovnaní s majoritnou populáciou sa jednotlivé koncentrácie v tomto ohľade líšia aj medzi sebou navzájom. Vo všeobecnosti sa potvrdzuje, že s rastúcou vzdialenosťou osídlenia od jadra obce klesá kvalita bývania, pokrytie inžinierskymi sieťami, dostupnosť služieb, či úroveň infraštruktúry. Tieto faktory zásadným spôsobom negatívne ovplyvňujú všetky aspekty života rómskych komunít a prispievajú k udržiavaniu a prehlbovaniu generačnej chudoby.  Dve tretiny obyvateľov z rómskych komunít bývajú legálne, t.j. v bytoch alebo skolaudovaných rodinných domoch na vysporiadaných pozemkoch. Čím je koncentrácia od obce vzdialenejšia, tým častejší je aj výskyt neštandardných obydlí s horším vybavením a značne zníženou kvalitou bývania. Infraštruktúrne vybavenie obydlí v rómskych komunitách je výrazne horšie v porovnaní s obydliami majoritnej populácie. Verejný vodovod využíva 64 % obyvateľov z rómskych komunít, kým v prípade majority to je 93%. Z neštandardného, nezabezpečeného zdroja čerpá vodu približne 33 tisíc ľudí – ide o najzávažnejšiu formu materiálnej deprivácie. Kanalizáciu využíva 40% obyvateľov z rómskych komunít, kým majorita v rovnakých obciach ju využíva na 83%. Situácia sa však v porovnaní so zisteniami predošlých Atlasov zlepšuje. Keď porovnáme obce, ktoré boli prítomné vo všetkých troch Atlasoch, v roku 2004 v nich využívalo verejný vodovod 49% obyvateľov, v roku 2013 to bolo 57% a v roku 2019 je to 64% ľudí. Vo využívaní verejnej kanalizácie je možné badať podobný trend – 20% v roku 2004, 30% v roku 2013 a 37% v roku 2019.",
-            "explanation": [],
-            "images": [],
-            
-            "matchmaking": [],
-            "matches": [],
-            "question": "Samospráva s najvyšším počtom rómskych obyvateľov sa nachádza v Košickom kraji.",
-            "subQuestion": "",
-            "conclusion": "",
-            "title": ""
-          },
           {
             "answers": ["PRAVDA", "NEPRAVDA"],
             "answersImage": [],
@@ -4683,8 +4664,8 @@
           },
           {
             "answers": [
-              "Áno, nadpis je korektný",
-              "Nie, nadpis je zavádzajúci"
+              "Áno, nadpis je korektný.",
+              "Nie, nadpis je zavádzajúci."
             ],
             "answersImage": [],
             "correct": [
@@ -4712,8 +4693,8 @@
           },
           {
             "answers": [
-              "Áno, nadpis je korektný",
-              "Nie, nadpis je zavádzajúci"
+              "Áno, nadpis je korektný.",
+              "Nie, nadpis je zavádzajúci."
             ],
             "answersImage": [],
             "correct": [
@@ -4741,8 +4722,8 @@
           },
           {
             "answers": [
-              "Áno, nadpis je korektný",
-              "Nie, nadpis je zavádzajúci"
+              "Áno, nadpis je korektný.",
+              "Nie, nadpis je zavádzajúci."
             ],
             "answersImage": [],
             "correct": [
@@ -4770,8 +4751,8 @@
           },
           {
             "answers": [
-              "Áno, nadpis je korektný",
-              "Nie, nadpis je zavádzajúci"
+              "Áno, nadpis je korektný.",
+              "Nie, nadpis je zavádzajúci."
             ],
             "answersImage": [],
             "correct": [
@@ -4801,7 +4782,7 @@
             "answers": [
               "Škola A",
               "Škola B",
-              "Pravdepodobnosť pri oboch školách je rovnaká "
+              "Pravdepodobnosť pri oboch školách je rovnaká."
             ],
             "answersImage": [],
             "correct": [

@@ -88,7 +88,7 @@ class _DesktopTestState extends State<DesktopTest> {
 
         }
 
-        if (matchmaking.length > 0) {
+        if (matchmaking.length > 1) {
             allCorrects = correct!.map((e) {
                 String letter = String.fromCharCode(97 + int.parse(e["correct"]));
                 return 'pri otázke ${int.parse(e["index"]) + 1}. je odpoveď $letter)';
@@ -297,7 +297,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                         Container(
                                           alignment: Alignment.center,
                                           width: 200,
-                                          height: 200,
+                                          height: 210,
                                           padding: EdgeInsets.all(16),
                                           decoration: BoxDecoration(
                                             border: Border(right: BorderSide(color: AppColors.getColor('mono').grey) ,),
