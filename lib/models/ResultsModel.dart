@@ -41,26 +41,26 @@ List<ResultCapitolsData> data = [
         name: 'Úvod do kritického myslenia',
         points: 0,
         questions: [
-          ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
-          ResultQuestionsData(answers: [0,0,0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
           ResultQuestionsData(answers: [0,0,0,0,0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
         ],
       ),
       ResultTestData(
         name: 'Kognitívne skreslenia',
         points: 0,
         questions: [
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0,0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0,0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0,0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
         ],
       ),
     ],
@@ -70,52 +70,72 @@ List<ResultCapitolsData> data = [
     points: 0,
     tests: [
       ResultTestData(
-        name: 'Analýza a Tvrdenie',
-        points: 0,
-        questions: [
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-        ],
-      ),
-      ResultTestData(
-      
-        name: 'Časti debatného argumentu',
-        points: 0,
-        questions: [
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-        ],
-      ),
-      ResultTestData(
-      
         name: 'Čo je argument (úvod do argumentu)',
         points: 0,
         questions: [
           ResultQuestionsData(answers: [0,0,0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
-          ResultQuestionsData(answers: [0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
           ResultQuestionsData(answers: [0,0,0], points: 0),
         ],
       ),
       ResultTestData(
-      
-        name: 'Dôkaz',
+        name: 'Výrokova logika - závery',
         points: 0,
         questions: [
           ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+        ],
+      ),
+      ResultTestData(
+        name: 'Výrokova logika - predpoklady',
+        points: 0,
+        questions: [
+          ResultQuestionsData(answers: [0,0,0], points:0),
+          ResultQuestionsData(answers: [0,0,0], points:0),
+          ResultQuestionsData(answers: [0,0,0], points:0),
+          ResultQuestionsData(answers: [0,0,0], points:0),
+          ResultQuestionsData(answers: [0,0,0], points:0),
+        ],
+      ),
+      ResultTestData(
+        name: 'Časti debatného argumentu',
+        points: 0,
+        questions: [
+          ResultQuestionsData(answers: [0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0], points: 0),
+        ],
+      ),
+      ResultTestData(
+        name: 'Analýza a Tvrdenie',
+        points: 0,
+        questions: [
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0], points: 0),
+          ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ],
+      ),
+      ResultTestData(
+        name: 'Dôkazy v argumentoch',
+        points: 0,
+        questions: [
+          ResultQuestionsData(answers: [0,0,0,0,0], points:0),
           ResultQuestionsData(answers: [0], points:0),
           ResultQuestionsData(answers: [0], points:0),
           ResultQuestionsData(answers: [0], points:0),
@@ -126,9 +146,9 @@ List<ResultCapitolsData> data = [
         name: 'Silné a slabé argumenty 1',
         points: 0,
         questions: [
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
         ],
       ),
       ResultTestData(
@@ -136,41 +156,17 @@ List<ResultCapitolsData> data = [
         name: 'Silné a slabé argumenty 2',
         points: 0,
         questions: [
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
+          ResultQuestionsData(answers: [0,0], points:0),
         ],
       ),
-      ResultTestData(
-      
-        name: 'Výrokova logika - predpoklady',
-        points: 0,
-        questions: [
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-        ],
-      ),
-      ResultTestData(
-      
-        name: 'Výrokova logika - závery',
-        points: 0,
-        questions: [
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-          ResultQuestionsData(answers: [0], points:0),
-        ],
-      ),
+
     ],
   ),
  ResultCapitolsData(
   points: 0,
-  name: 'Manipulácia',
+  name: 'Argumentačné chyby',
   tests: [
     ResultTestData(
       name: 'Úvod do argumentačných chýb',
@@ -211,7 +207,17 @@ List<ResultCapitolsData> data = [
       ],
     ),
     ResultTestData(
-      name: 'Korelácia  vs Kauzalita',
+      name: 'Argumentačné chyby v praxi',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0], points: 0),
+        ResultQuestionsData(answers: [0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Konštruktívny dialóg',
       points: 0,
       questions: [
         ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
@@ -222,14 +228,132 @@ List<ResultCapitolsData> data = [
         ResultQuestionsData(answers: [0,0], points: 0),
       ],
     ),
+
+    
+    
+  ]
+),
+
+ ResultCapitolsData(
+  points: 0,
+  name: 'Mediálna gramotnosť',
+  tests: [
     ResultTestData(
-      name: 'Argumentačné chyby v praxi',
+      name: 'Typológia médií',
       points: 0,
       questions: [
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
         ResultQuestionsData(answers: [0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Formálne znaky médií',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0,0,0,0], points: 0),
         ResultQuestionsData(answers: [0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Znaky nedôveryhodných médií v praxi',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Pojmový aparát',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+    
+      name: 'Hoaxy a dezinformácie v praxi',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Zavádzajúce nadpisy',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Komentár a Správa',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Sociálne siete - overovanie statusov',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+    
+      name: 'Overovanie obrázkov',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Konšpiračné teórie',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
       ],
     ),
     
@@ -240,15 +364,14 @@ List<ResultCapitolsData> data = [
   name: 'Práca s dátami',
   tests: [
     ResultTestData(
-    
       name: 'Vhodná vizualizácia',
       points: 0,
       questions: [
         ResultQuestionsData(answers: [0,0,0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0,0], points:0),
-        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
       ],
     ),
     ResultTestData(
@@ -257,130 +380,58 @@ List<ResultCapitolsData> data = [
       questions: [
         ResultQuestionsData(answers: [0,0,0,0,0], points:0),
         ResultQuestionsData(answers: [0,0,0,0,0], points:0),
-        ResultQuestionsData(answers: [0,0], points:0 ),
+        ResultQuestionsData(answers: [0,0,0], points:0 ),
       ],
     ),
     ResultTestData(
       name: 'Zavádzajúce grafy 2',
       points: 0,
       questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0 ),
         ResultQuestionsData(answers: [0,0,0], points:0),
-        ResultQuestionsData(answers: [0,0], points:0 ),
-        ResultQuestionsData(answers: [0,0,0], points:0),
+      ],
+    ),
+        ResultTestData(
+      name: 'Korelácia  vs Kauzalita',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0], points: 0),
       ],
     ),
     ResultTestData(
       name: 'Interpretácia dát v texte',
       points: 0,
       questions: [
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+      ],
+    ),
+    ResultTestData(
+      name: 'Interpretácia tabuliek',
+      points: 0,
+      questions: [
+        ResultQuestionsData(answers: [0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0], points:0),
+        ResultQuestionsData(answers: [0,0,0], points:0),
       ],
     ),
   ]
 ),
- ResultCapitolsData(
-  points: 0,
-  name: 'Mediálna gramotnosť',
-  tests: [
-    ResultTestData(
-      name: 'Pojmový aparát',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-      ],
-    ),
-    ResultTestData(
-    
-      name: 'Hoaxy a dezinformácie v praxi',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-      ],
-    ),
-    ResultTestData(
-    
-      name: 'Zavádzajúce nadpisy',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-      ],
-    ),
-    ResultTestData(
-    
-      name: 'Typológia médií',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0], points: 0),
-      ],
-    ),
-  ]
-),
- ResultCapitolsData(
-  points: 0,
-  name: 'Dôveryhodnoť Médií',
-  tests: [
-    ResultTestData(
-    
-      name: 'Overovanie obrázkov',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-      ],
-    ),
-    ResultTestData(
-      name: 'Formálne znaky médií',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-      ],
-    ),
-  ]
-),
- ResultCapitolsData(
-  points: 0,
-  name: 'Socialne siete',
-  tests: [
-    ResultTestData(
-      name: 'Konšpiračné teórie',
-      points: 0,
-      questions: [
-        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points:0),
-        ResultQuestionsData(answers: [0], points:0),
-      ],
-    ),
-  ]
-  )                              
 ];
 

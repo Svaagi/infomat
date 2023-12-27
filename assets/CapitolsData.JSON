@@ -2397,16 +2397,16 @@
       "questions":[
         {
           "answers": [
-            "v nadpisoch občas využíva emočné slová ako „škandál“ aby zaujal čitateľa.",
-            "uvádza zdroj informácií.",
-            "uvádza meno autora alebo autorky správy / článku.",
-            "je ideologicky motivovaný a v jeho často článkoch vidieť silné názorové zafarbenie.",
-            "jasne oddelené spravodajstvo od názorovej sekcie.",
-            "informácie o redakcii a vlastníkovi sa dajú dohľadať na stránke.",
-            "na svojej stránke neuvádza spôsob financovania.",
-            "má dohľadateľný etický/redakčný kódex.",
-            "neuverejňuje opravy chýb alebo ospravedlnenia.",
-            "uvádza varovania o potenciálnych stretoch záujmov."
+            "V nadpisoch občas využíva emočné slová ako „škandál“ aby zaujal čitateľa.",
+            "Uvádza zdroj informácií.",
+            "Uvádza meno autora alebo autorky správy / článku.",
+            "Je ideologicky motivovaný a v jeho často článkoch vidieť silné názorové zafarbenie.",
+            "Jasne oddelené spravodajstvo od názorovej sekcie.",
+            "Informácie o redakcii a vlastníkovi sa dajú dohľadať na stránke.",
+            "Na svojej stránke neuvádza spôsob financovania.",
+            "Má dohľadateľný etický/redakčný kódex.",
+            "Neuverejňuje opravy chýb alebo ospravedlnenia.",
+            "Uvádza varovania o potenciálnych stretoch záujmov."
           ],
           "answersImage": [],
           "correct": [
@@ -3446,7 +3446,7 @@
             "explanation": [
               "Volebná účasť v druhom kole dosiahla 41,7% a z toho získala Z. Čaputová 58.4%. Z toho vychádza, že 41,7 / 100 * 58,4 = 24,35%.",
               "Z. Čaputová získala 1 056 528 hlasov, A. Kiska získal 1 307 065 hlasov. 1 307 065 - 1 056 528 = 250 537, čo je takmer presne štvrť milióna",
-              " Tvrdenie je vágne, lebo autor nešpecifikuje, aké voľby má na mysli. Ak ide len o prezidentské voľby, je to pravda. Avšak k volebným urnám celkovo už prišlo menej voličov, napríklad voľby do VÚC 2017 mali účasť 29,95%."
+              "Tvrdenie je vágne, lebo autor nešpecifikuje, aké voľby má na mysli. Ak ide len o prezidentské voľby, je to pravda. Avšak k volebným urnám celkovo už prišlo menej voličov, napríklad voľby do VÚC 2017 mali účasť 29,95%."
             ],
             "images": [
               "assets/pictures/picture36.png"
@@ -3561,8 +3561,6 @@
               "Skutočný a korektne interpretovaný.",
               "Skutočný, ale je vytrhnutý z kontextu, a tým pádom zavádzajúci/manipulatívny.", 
               "Hoax, takýto prieskum nikdy nebol vyhotovený."
-
-
             ],
             "answersImage": [],
             "correct": [
@@ -3968,9 +3966,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureAnswers/picture1.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              "assets/pictureanswers/picture1.png",
+              "assets/pictureanswers/picture2.png",
+              "assets/pictureanswers/picture3.png"
             ],
             "correct": [
               { "correct": 1, "index": 1 }
@@ -3996,9 +3994,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureAnswers/picture1.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              "assets/pictureanswers/picture1.png",
+              "assets/pictureanswers/picture2.png",
+              "assets/pictureanswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 }
@@ -4024,9 +4022,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureAnswers/picture4.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              "assets/pictureanswers/picture4.png",
+              "assets/pictureanswers/picture2.png",
+              "assets/pictureanswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 }
@@ -4052,9 +4050,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureAnswers/picture4.png",
-              "assets/pictureAnswers/picture2.png",
-              "assets/pictureAnswers/picture3.png"
+              "assets/pictureanswers/picture4.png",
+              "assets/pictureanswers/picture2.png",
+              "assets/pictureanswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 },
