@@ -1035,6 +1035,7 @@ class _SchoolFormState extends State<SchoolForm> {
           'classes': userData.classes,
           'school': _schoolIdController.text,
           'schoolClass': userData.schoolClass,
+          'signed': userData.signed,
           'teacher': true,
           'points': userData.points,
           'capitols': userData.capitols.map((capitol) => {
