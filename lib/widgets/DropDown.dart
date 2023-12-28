@@ -43,6 +43,7 @@ final OptionsData noClassOption = OptionsData(
     school: '',
     students: [],
     teachers: [],
+    results: ''
   ),
 );
 

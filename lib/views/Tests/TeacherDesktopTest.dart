@@ -3,13 +3,11 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
-import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
 
@@ -18,12 +16,18 @@ class TeacherDesktopTest extends StatefulWidget {
   final Function overlay;
   final String capitolsId;
   final UserData? userData;
+  final ResultTestData results;
+  final int studentsSum;
+  final bool usersCompleted;
 
   const TeacherDesktopTest(
       {Key? key,
       required this.testIndex,
       required this.overlay,
       required this.capitolsId,
+      required this.results,
+      required this.studentsSum,
+      required this.usersCompleted,
       required this.userData})
       : super(key: key);
 
@@ -54,7 +58,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   bool _loading = true; // Add this line
   int? openDropdownIndex;
   String? allCorrects;
-  bool usersCompleted = false;
   bool firstScreen = true;
   String? introduction;
   bool checkTitle = false;
@@ -62,7 +65,8 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
 
-  Future<void> fetchQuestionData(int index) async {
+
+  Future<void> fetchQuestionData() async {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
 
@@ -109,42 +113,9 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
         } else {
             allCorrects = correct.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
-
-        
-
       });
 
-      
   }
-
-  Future <void> fetchPercentages() async{
-    Map<String, dynamic> questionStats = await getQuestionStats(
-      widget.userData!.schoolClass,
-      int.parse(widget.capitolsId),
-      widget.testIndex,
-      questionIndex,
-    );
-
-    // Extracting the results from the map
-    usersCompleted = await questionStats['userCompleted'];
-    percentagesAll = await questionStats['correctPercentage'];
-    percentages = await questionStats['answerPercentages'];
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchQuestionData(questionIndex);
-    fetchPercentages();
-    
-    if (countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions) == widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length) {
-      questionIndex = 0;
-    } else {
-      questionIndex = countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions);
-    } 
-    
-  }
-
   @override
   void didUpdateWidget(TeacherDesktopTest oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -153,83 +124,20 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       setState(() {
         questionIndex = 0;
       });
-      fetchQuestionData(questionIndex);
+      fetchQuestionData();
 
     }
         _loading = false;
 
   }
-  
-Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, int testIndex, int questionIndex) async {
-  try {
-    ClassData classData = await fetchClass(classId);
 
-    CollectionReference usersRef = FirebaseFirestore.instance.collection('users');
-    QuerySnapshot usersSnapshot = await usersRef.where(FieldPath.documentId, whereIn: classData.students).get();
-    String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-    List<dynamic> data = json.decode(jsonData);
-
-    int completedStudents = 0; // new variable to keep track of students who have completed the test
-    int correctResponses = 0;
-
-    List<int> answerCounts = List.filled(
-      
-      data[capitolIndex]["tests"][testIndex]["questions"][questionIndex]["answersImage"].length +
-      data[capitolIndex]["tests"][testIndex]["questions"][questionIndex]["answers"].length +
-      data[capitolIndex]["tests"][testIndex]["questions"][questionIndex]["matchmaking"].length,
-      0
-    );
-
-    for (var userDoc in usersSnapshot.docs) {
-      var userData = userDoc.data();
-      if (userData == null) continue;
-
-      Map<String, dynamic> userMap = userData as Map<String, dynamic>;
-      var userTest = userMap['capitols'][capitolIndex]['tests'][testIndex];
-      var userQuestion = userTest?['questions'][questionIndex];
-
-      if (userTest != null && userTest['completed'] == true) {
-        completedStudents++;  // increment if the student has completed the test
-
-        if (userQuestion != null) {
-          List<dynamic> correctList = userQuestion['correct'];
-          if (correctList.every((e) => e == true)) {
-            correctResponses++;
-          }
-
-          var userAnswers = userQuestion['answer'] as List?;
-          if (userAnswers != null) {
-            for (var userAnswer in userAnswers) {
-              int? index = userAnswer['index'];
-              if (index != null && index >= 0 && index < answerCounts.length) {
-                answerCounts[index]++;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    // Use 'completedStudents' instead of 'totalStudents' for percentage calculation
-    List<double> percentages = answerCounts.map((count) => (count / (completedStudents != 0 ? completedStudents : 1)) * 100).toList();
-
-      percentages.asMap().forEach((index, value) {
-        percentages[index] = double.parse(value.toStringAsFixed(2));
-      });
-
-
-      return {
-        'userCompleted': completedStudents > 0,
-        'completedStudents': completedStudents,
-        'correctPercentage': double.parse(((correctResponses / (completedStudents != 0 ? completedStudents : 1)) * 100).toStringAsFixed(2)),
-        'answerPercentages': percentages
-      };
-    } catch (e) {
-      print('Error getting question statistics: $e');
-      rethrow;
-    }
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchQuestionData();
+    super.initState();
   }
-
+  
   @override
   void dispose() {
     super.dispose();
@@ -458,7 +366,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                      Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (usersCompleted) Container(
+                        if(widget.usersCompleted)Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           height: 60,
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -473,38 +381,21 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               children: [
                                 Text('Otázka ${questionIndex + 1}: ',
                                   style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium!
-                                          .copyWith(
-                                            color: AppColors.getColor('primary').main,
-                                          ),
+                                    .textTheme
+                                    .displayMedium!
+                                    .copyWith(
+                                      color: AppColors.getColor('primary').main,
+                                    ),
                                 ),
                                 const SizedBox(width: 8,),
-                                FutureBuilder<Map<String, dynamic>>(
-                                    future:  getQuestionStats(
-                                    widget.userData!.schoolClass,
-                                    int.parse(widget.capitolsId),
-                                    widget.testIndex,
-                                    questionIndex,
-                                  ),
-                                builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
-                                  if (snapshot.connectionState == ConnectionState.waiting) {
-                                    return const CircularProgressIndicator();
-                                  } else if (snapshot.hasError) {
-                                    return Text('Error: ${snapshot.error}');
-                                  } else {
-                                    int? correctPercentage = snapshot.data?['correctPercentage'].round();
-                                    return Text('Úspešnosť: ${correctPercentage?.toString() ?? "N/A"}%',
-                                        style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium!
-                                          .copyWith(
-                                            color: Theme.of(context).colorScheme.onBackground,
-                                          ),
-                                      );
-                                  }
-                                },
-                              )
+                                Text('Úspešnosť: ${ (widget.studentsSum != 0 ? (widget.results.questions[questionIndex].points/widget.studentsSum).round()*100 : 0)}%',
+                                  style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium!
+                                    .copyWith(
+                                      color: Theme.of(context).colorScheme.onBackground,
+                                    ),
+                                )
                               ],
                             )
                         ),
@@ -549,18 +440,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                             ) : Container(),
                             if (!(title != '' || definition != '' || images.isNotEmpty)) const SizedBox(height: 20,),
                          const SizedBox(height: 30,),
-                         FutureBuilder<Map<String, dynamic>>(
-                              future:  getQuestionStats(
-                              widget.userData!.schoolClass,
-                              int.parse(widget.capitolsId),
-                              widget.testIndex,
-                              questionIndex,
-                            ),
-                          builder: (context, snapshot) {
-                            if (!snapshot.hasData) return const CircularProgressIndicator();
-                            final data = snapshot.data;
-                            return ListView.builder(
-                          
+                         ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: (answersImage.length) + (answers.length) + (matchmaking.length),
@@ -570,9 +450,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                               Color borderColor;
                               Color percentageColor;
                               bool isCorrect = correct.any((cItem) => cItem["index"] == index);
-
                               Widget mainWidget;
-
                               // Handle answersImage
                               if (index < answersImage.length &&  answersImage.isNotEmpty) {
                                 String item = answersImage[index];
@@ -580,8 +458,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                if (usersCompleted) {
-                                  mainWidget = reTileImage(bgColor, borderColor, index, item, context, percentage: data!['answerPercentages'], correct: isCorrect, percentageColor: percentageColor);
+                                if (widget.usersCompleted) {
+                                  mainWidget = reTileImage(bgColor, borderColor, index, item, context, percentage: (widget.studentsSum != 0 ? widget.results.questions[questionIndex].answers[index]/widget.studentsSum : 0.0), correct: isCorrect, percentageColor: percentageColor);
                                 } else {
                                   mainWidget = reTileImage(bgColor, borderColor, index, item, context, correct: isCorrect);
                                 }
@@ -593,8 +471,8 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                if (usersCompleted) {
-                                  mainWidget = reTile(bgColor, borderColor, index, item, context, percentage: data!['answerPercentages'], correct: isCorrect, percentageColor: percentageColor);
+                                if (widget.usersCompleted) {
+                                  mainWidget = reTile(bgColor, borderColor, index, item, context, percentage: (widget.results.questions[questionIndex].answers[index]/widget.studentsSum)*100, correct: isCorrect, percentageColor: percentageColor);
                                 } else {
                                   mainWidget = reTile(bgColor, borderColor, index, item, context, correct: isCorrect);
                                 }
@@ -649,9 +527,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                                 ],
                               );
                             },
-                            );
-                          }
-                         ),
+                            ),
                          if(conclusion != '') Container(
                           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                               child: Text(
@@ -718,7 +594,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       questionIndex > 0
                     ? setState(() {
                         questionIndex--;
-                        fetchQuestionData(questionIndex);
+                        fetchQuestionData();
                       })
                     : widget.overlay();
                     },
@@ -732,7 +608,7 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
                       if (questionIndex + 1 < (questionsPoint ?? 0)) {
                         setState(() {
                         questionIndex++;
-                        fetchQuestionData(questionIndex);
+                        fetchQuestionData();
                       });
                       } else {
                         setState(() {
@@ -837,18 +713,6 @@ Future<Map<String, dynamic>> getQuestionStats(String classId, int capitolIndex, 
     );
   }
 
-  int countTrueValues(List<UserQuestionsData>? questionList) {
-    int count = 0;
-    if (questionList != null) {
-      for (UserQuestionsData question in questionList) {
-        if (question.completed == true) {
-          count++;
-        }
-      }
-    }
-    return count;
-}
-
 
 // Define a utility function for firstWhereOrNull behavior
 dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
@@ -866,7 +730,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         _loading = true;
         checkTitle = false;
       });
-      fetchQuestionData(questionIndex);
+      fetchQuestionData();
     } else {
 
       setState(() {

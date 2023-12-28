@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/Colors.dart';
+import 'package:infomat/controllers/ResultsController.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/UserController.dart';
 import 'package:infomat/views/tests/DesktopTest.dart';
@@ -17,17 +18,24 @@ import 'package:infomat/widgets/StudentCapitolDragWidget.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
 class Challenges extends StatefulWidget {
   final Future<void> fetch;
   final UserData? currentUserData;
+  final int weeklyCapitolIndex;
+  final int weeklyTestIndex;
 
-  const Challenges({Key? key, required this.fetch, required this.currentUserData});
+  const Challenges({Key? key, required this.fetch, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex});
 
   @override
   State<Challenges> createState() => _ChallengesState();
 }
+
+
+
+
 
 class _ChallengesState extends State<Challenges> {
   bool _loading = true;
@@ -37,13 +45,30 @@ class _ChallengesState extends State<Challenges> {
   int _visibleContainerCapitol = -1;
   Future<List<dynamic>>? _dataFuture;
   List<int> capitolsIds = [];
-  List<List<double>> percentages = [];
   bool isMobile = false;
   bool isDesktop = false;
   List<dynamic> data = [];
   final PageController _pageController = PageController();
+  List<ResultCapitolsData>? currentResults;
+  int studentsSum = 0;
+  String resultsId = '';
 
+  double percentage(int capitolIndex, int testIndex) {
+    if (currentResults![capitolIndex].tests[testIndex].points == 0 || studentsSum == 0) return 0;
+    return  currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
+  }
 
+  bool isBehind(int capitol, int test) {
+    if (userData.teacher) {
+      return false;
+    } else if (widget.weeklyCapitolIndex > capitol) {
+      return true;
+    } else if (widget.weeklyCapitolIndex == capitol && widget.weeklyTestIndex > test) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   void initState() {
@@ -120,56 +145,6 @@ Future<void> refreshList() async {
     isOverlayVisible = false;
   }
 
-List<List<double>> computeCompletionPercentages(ClassData? classData, List<UserData>? userDataList) {
-  // Initialize a 2D list (matrix) for storing percentages.
-
-  try {
-    // Get the list of student ids in the class
-    List<String> studentIds = classData!.students;
-
-    // Loop through each student
-    for (UserData userData in userDataList!) {
-      // Loop through each capitol
-      for (int i = 0; i < userData.capitols.length; i++) {
-        // Ensure the list is big enough to hold this capitol.
-        while (percentages.length <= i) {
-          percentages.add([]);
-        }
-
-        UserCapitolsData capitol = userData.capitols[i];
-
-        // Loop through each test in the current capitol
-        for (int j = 0; j < capitol.tests.length; j++) {
-          // Ensure the list is big enough to hold this test.
-          while (percentages[i].length <= j) {
-            percentages[i].add(0.0);
-          }
-
-          int completedCount = 0;
-
-          // Loop through each student
-          for (UserData studentData in userDataList) {
-            // Check if the student has completed the test
-            if (i < studentData.capitols.length &&
-                j < studentData.capitols[i].tests.length &&
-                studentData.capitols[i].tests[j].completed) {
-              completedCount++;
-            }
-          }
-
-          // Compute and store the percentage.
-          percentages[i][j] = (completedCount / studentIds.length);
-        }
-      }
-    }
-  } catch (e) {
-    print('Error computing completion percentage: $e');
-    throw Exception('Failed to compute completion percentage');
-  }
-
-  return percentages;
-}
-
 
 Future<ClassData> fetchCurrentUserClass() async {
   // Assuming you know how to retrieve the currentUser's classId
@@ -184,13 +159,17 @@ Future<List<dynamic>> fetchQuestionData() async {
 
   try {
     ClassData currentUserClass = await fetchCurrentUserClass();
-    
+    currentResults = await fetchResults(currentUserClass.results);
+
     for (String userId in currentUserClass.students) {
       UserData userData = await fetchUser(userId);
       userDataList.add(userData);
     }
 
-    computeCompletionPercentages(currentUserClass,userDataList);
+    setState(() {
+      resultsId = currentUserClass.results;
+      studentsSum = currentUserClass.students.length;
+    });
 
     capitolsIds = currentUserClass.capitolOrder;
 
@@ -224,7 +203,9 @@ Future<List<dynamic>> fetchQuestionData() async {
           child: Container(
             color: Colors.black.withOpacity(0.5),
             alignment: Alignment.center,
-            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) :  MobileTest(testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?  TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : DesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
+            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData) :  MobileTest(resultsId: resultsId,testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?
+              TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData)
+               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
           ),
         ),
       ),
@@ -339,10 +320,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -365,7 +346,7 @@ Widget build(BuildContext context) {
                                                       height: 170.0,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                             ? AppColors.getColor( 'blue').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
@@ -377,7 +358,10 @@ Widget build(BuildContext context) {
                                                 onPressed: (int number) => toggleOverlayVisibility(number, capitolIndex ?? 0),
                                                 capitolsId: capitolIndex.toString(),
                                                 visibleContainerIndex: (int number) => toggleIndex(number, capitolIndex ?? 0),
-                                                percentages: percentages
+                                                percentage: percentage,
+                                                weeklyCapitolIndex: widget.weeklyCapitolIndex,
+                                                weeklyTestIndex: widget.weeklyTestIndex,
+                                                isBehind: isBehind,
                                               ),
                                             ],
                                           ),
@@ -396,7 +380,7 @@ Widget build(BuildContext context) {
                       ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height,
-                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentages: percentages) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList),
+                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                         ),
                     ],
                   ),
@@ -448,10 +432,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                 ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -474,7 +458,7 @@ Widget build(BuildContext context) {
                                                       height: 170.0,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentages[capitolIndex][testIndex] == 1.0))
+                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
                                                             ? AppColors.getColor( 'blue').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
@@ -486,7 +470,10 @@ Widget build(BuildContext context) {
                                                 onPressed: (int number) => toggleOverlayVisibility(number, capitolIndex ?? 0),
                                                 capitolsId: capitolIndex.toString(),
                                                 visibleContainerIndex: (int number) => toggleIndex(number, capitolIndex ?? 0),
-                                                percentages: percentages
+                                                percentage: percentage,
+                                                weeklyCapitolIndex: widget.weeklyCapitolIndex,
+                                                weeklyTestIndex: widget.weeklyTestIndex,
+                                                isBehind: isBehind,
                                               ),
                                             ],
                                           ),
@@ -504,7 +491,7 @@ Widget build(BuildContext context) {
                       if(MediaQuery.of(context).size.width > 1000) SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width / 2,
-                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentages: percentages) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList),
+                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                       ),
                     ],
                   ),
@@ -518,20 +505,26 @@ Widget build(BuildContext context) {
 
 
 class StarButton extends StatelessWidget {
-  final List<List<double>> percentages;
   final int number;
   final UserData? userData;
   final void Function(int) onPressed;
   final String capitolsId;
   final void Function(int) visibleContainerIndex;
+  double Function(int, int) percentage;
+  int weeklyCapitolIndex; 
+  int weeklyTestIndex;
+  bool Function(int, int) isBehind;
 
   StarButton({
-    required this.percentages,
     required this.number,
     required this.onPressed,
     required this.capitolsId,
     this.userData,
-    required this.visibleContainerIndex
+    required this.visibleContainerIndex,
+    required this.percentage,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
+    required this.isBehind
   });
 
  int countTrueValues(List<UserQuestionsData>? questionList) {
@@ -550,9 +543,13 @@ class StarButton extends StatelessWidget {
   @override
 Widget build(BuildContext context) {
   return SizedBox(
-    child: userData != null &&
-            (userData!.teacher ? percentages[int.parse(capitolsId)][number] != 1.0 : !userData!.capitols[int.parse(capitolsId)].tests[number].completed)
-        ?  Stack(
+    child: 
+    userData != null &&
+      (userData!.teacher ? percentage(int.parse(capitolsId) , number) != 1.0 : !userData!.capitols[int.parse(capitolsId)].tests[number].completed)
+        ? 
+      (!isBehind(int.parse(capitolsId), number)) ?
+
+         Stack(
           alignment: Alignment.center,
             children: [
               OverflowBox(
@@ -580,7 +577,7 @@ Widget build(BuildContext context) {
                     radius: 45.0,  // Adjust as needed
                     lineWidth: 8.0,
                     animation: true,
-                    percent: userData!.teacher ? percentages[int.parse(capitolsId)][number] : countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) /
+                    percent: userData!.teacher ? percentage(int.parse(capitolsId) , number) : countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) /
                             userData!.capitols[int.parse(capitolsId)].tests[number].questions.length,
                     circularStrokeCap: CircularStrokeCap.round,
                     progressColor: AppColors.getColor('yellow').light,
@@ -598,13 +595,22 @@ Widget build(BuildContext context) {
                 child: GestureDetector(
                  onTap: () {
                     final RenderBox button = context.findRenderObject() as RenderBox;
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button);
+                    if (userData!.teacher) {
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                    } else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) == 0) {
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 1);
+                    } 
+                    else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) > 0) {
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 2);
+                    }  else {
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 0);
+                    }
                     visibleContainerIndex(number);
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: Center(
-                      child: (userData!.teacher ? (percentages[int.parse(capitolsId)][number] > 0.0) : (countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) > 0)) ? SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,) : SvgPicture.asset('assets/icons/starGreyIcon.svg', height: 30,),
+                      child: (userData!.teacher ? (percentage(int.parse(capitolsId) , number) > 0.0) : (countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) > 0)) ? SvgPicture.asset('assets/icons/starYellowIcon.svg', height: 30,) : SvgPicture.asset('assets/icons/starGreyIcon.svg', height: 30,),
                     ),
                   ),
                 ),
@@ -628,7 +634,49 @@ Widget build(BuildContext context) {
                 child: GestureDetector(
                 onTap: () {
                   final RenderBox button = context.findRenderObject() as RenderBox;
-                  showPopupMenu(context, number % 2 == 0 ? 0 : 1, button);
+                  if (userData!.teacher) {
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                  } else {
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 5);
+                  }
+                  visibleContainerIndex(number);
+                },
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Image.asset(
+                    'assets/failedStar.png',
+                    width: 90.0,
+                    height: 90.0,
+                  ),
+                ),
+              ),
+          ),
+        ]
+      ) :
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            OverflowBox(
+              child:Container(
+                width: double.infinity, 
+                  height: 98.0,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                ),
+              ), 
+              Container(
+                child: GestureDetector(
+                onTap: () {
+                  final RenderBox button = context.findRenderObject() as RenderBox;
+                  if (userData!.teacher) {
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                  } else if (userData!.capitols[int.parse(capitolsId)].completed) {
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4);
+                  } else {
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 3);
+                  }
                   visibleContainerIndex(number);
                 },
                 child: MouseRegion(
@@ -648,7 +696,7 @@ Widget build(BuildContext context) {
 
 
 
-void showPopupMenu(BuildContext context, int direction, RenderBox button) {
+void showPopupMenu(BuildContext context, int direction, RenderBox button, int columnId) {
   final double menuWidth = 400.0; // Set your desired menu width
   final double menuHeight = 200.0; // Set your desired menu height
 
@@ -664,21 +712,109 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
     offsetX + menuWidth,
     offsetY + menuHeight,
   );
-
-  showMenu<int>(
-    context: context,
-    position: position,
-    constraints: BoxConstraints(maxWidth: 400, minWidth: 0),
-
-    color: AppColors.getColor(userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue').light,
-    shape: TooltipShape(context: context, direction: direction % 2 == 0 ? 0 : 1),
-    items: <PopupMenuEntry<int>>[
-      PopupMenuItem<int>(
-            child: Container(
-              width: 400,
-              padding: const EdgeInsets.only(bottom: 12, top: 12,),
-              constraints: const BoxConstraints(maxWidth: 450), // Using constraints instead of a fixed width
-              child: Column(
+         Widget _buildSwitchableColumn(int index) {
+        switch (index) {
+          case 0:
+            return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset('assets/icons/lockIcon.svg', color: Colors.white,),
+                      SizedBox(width: 4,),
+                      Text(
+                        userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                        overflow: TextOverflow.ellipsis, // Add this
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                      ),
+                    ],
+                  ),
+                  
+                    const SizedBox(height: 10),
+                   Text(
+                      'Táto výzva je nateraz zamknutá',
+                      overflow: TextOverflow.ellipsis, // Add this
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
+                ],
+              );
+          case 1:
+            return  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Týždenná výzva',
+                        overflow: TextOverflow.ellipsis, // Add this
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                      const Spacer(),
+                      if(userData!.teacher)SvgPicture.asset('assets/icons/correctIcon.svg', color: Colors.white,)
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                    overflow: TextOverflow.ellipsis, // Add this
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                  ),
+                    const SizedBox(height: 10),
+                  Center(
+                      child: SizedBox(
+                        width: 300,
+                        child: ReButton( color: 'white', text: 'ZAČAŤ' , onTap: () {
+                          onPressed(number);
+                          Navigator.of(context).pop();
+                        }),
+                      )
+                  ),
+                ],
+              );
+              case 2:
+            return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Týždenná výzva',
+                        overflow: TextOverflow.ellipsis, // Add this
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                      const Spacer(),
+                      if(userData!.teacher)SvgPicture.asset('assets/icons/correctIcon.svg', color: Colors.white,)
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                    overflow: TextOverflow.ellipsis, // Add this
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                  ),
+                    const SizedBox(height: 10),
+                  Center(
+                      child: SizedBox(
+                        width: 300,
+                        child: ReButton( color: 'blue', text: 'POKRAČOVAŤ' , onTap: () {
+                          onPressed(number);
+                          Navigator.of(context).pop();
+                        }),
+                      )
+                  ),
+                ],
+              );
+          case 3:
+            return  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -700,31 +836,15 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                   Text(
                     userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
                     overflow: TextOverflow.ellipsis, // Add this
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
                   ),
-                    if (userData!.teacher) Container(
-                    padding: const EdgeInsets.only(top: 12, bottom: 12),
-                    child: Text(
-                      'Priemerná úspešnosť ${percentages[int.parse(capitolsId)][number]*100}%',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                    ),
-                  ),
-                  Center(
-                      child: 
-                      ReButton( color: userData!.capitols[int.parse(capitolsId)].tests[number].completed ? 'yellow' : 'blue', text: 'ZAČAŤ' , onTap: () {
-                      onPressed(number);
-                      Navigator.of(context).pop();
-                    }),
-                  ),
-                  /* if (userData != null && userData!.capitols[int.parse(capitolsId)].tests[number].completed && !userData!.capitols[int.parse(capitolsId)].completed)
+                  SizedBox(height: 10,),
                   Container(
                     width: 400,
                     height: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: AppColors.getColor(color ?? '').main,
+                      color: AppColors.getColor( 'blue').main,
                       ),
                     padding: EdgeInsets.all(12),
                     child: Column(
@@ -739,7 +859,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                         ),
                         Text(
                           "${userData!.capitols[int.parse(capitolsId)].tests[number].points}/${userData!.capitols[int.parse(capitolsId)].tests[number].questions.length} správnych odpovedí",
-                          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: Theme.of(context).colorScheme.onPrimary,
                           ), // Set text color to white
                         ),
@@ -762,25 +882,235 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button) {
                         ),
                       ],
                     ),
-                  ),*/
-                   if (userData != null && userData!.capitols[int.parse(capitolsId)].tests[number].completed && !userData!.capitols[int.parse(capitolsId)].completed) Text(
-                              "Test si môžeš znovu otvoriť po skončení kapitoly",
-                              style:  Theme.of(context)
-                            .textTheme
-                            .bodySmall!
-                            .copyWith(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
+                  ),
+                  SizedBox(height: 10,),
+                  Center(
+                    child: Text(
+                      "Test si môžeš znovu otvoriť po skončení kapitoly",
+                      style:  Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                    ),
-                  if (userData != null && userData!.capitols[int.parse(capitolsId)].tests[number].completed &&  userData!.capitols[int.parse(capitolsId)].completed)
-                    Center(
-                      child: ReButton(color: "white",  text:  'ZOBRAZIŤ', onTap: () {
-                        onPressed(number);
-                        Navigator.of(context).pop();
-                      }),
-                    ),
+                  ),
+                  
                 ],
-              ),
+              );
+          case 4:
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                          overflow: TextOverflow.ellipsis, // Add this
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          '${userData!.capitols[int.parse(capitolsId)].tests[number].points}/${userData!.capitols[int.parse(capitolsId)].tests[number].questions.length} správnych odpovedí',
+                          overflow: TextOverflow.ellipsis, // Add this
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "+ ${userData!.capitols[int.parse(capitolsId)].tests[number].points}",
+                          style:  Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                        ),
+                        SizedBox(width: 5),
+                        SvgPicture.asset('assets/icons/starYellowIcon.svg'),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10,),
+                 Center(
+                      child: SizedBox(
+                        width: 300,
+                        child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
+                          onPressed(number);
+                          Navigator.of(context).pop();
+                        }),
+                      )
+                  ),
+                
+              ],
+            );
+          case 5:
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                          overflow: TextOverflow.ellipsis, // Add this
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                        ),
+                        const SizedBox(height: 5),
+                        Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/smallErrorIcon.svg', color: Colors.white),
+                            SizedBox(width: 2,),
+                            Text(
+                              'Túto výzvu si nestihol urobiť.',
+                              overflow: TextOverflow.ellipsis, // Add this
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
+                            ),
+                          ],
+                        ),
+                        
+                      ],
+                    ),
+                    Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${userData!.capitols[int.parse(capitolsId)].tests[number].points}/${userData!.capitols[int.parse(capitolsId)].tests[number].questions.length}",
+                          style:  Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                        ),
+                        SizedBox(width: 5),
+                        SvgPicture.asset('assets/icons/starYellowIcon.svg'),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10,),
+                 Center(
+                      child: SizedBox(
+                        width: 300,
+                        child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
+                          onPressed(number);
+                          Navigator.of(context).pop();
+                        }),
+                      )
+                  ),
+                
+              ],
+            );
+            case 6:
+            return  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Týždenná výzva',
+                        overflow: TextOverflow.ellipsis, // Add this
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                      const Spacer(),
+                      if(userData!.teacher)SvgPicture.asset('assets/icons/correctIcon.svg', color: Colors.white,)
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                    overflow: TextOverflow.ellipsis, // Add this
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                  ),
+                    const SizedBox(height: 10),
+                  Center(
+                      child: SizedBox(
+                        width: 300,
+                        child: ReButton( color: 'white', text: 'ZOBRAZIŤ' , onTap: () {
+                          onPressed(number);
+                          Navigator.of(context).pop();
+                        }),
+                      )
+                  ),
+                ],
+              );
+          default:
+            return  Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Týždenná výzva',
+                      overflow: TextOverflow.ellipsis, // Add this
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
+                    const Spacer(),
+                    if(userData!.teacher)SvgPicture.asset('assets/icons/correctIcon.svg', color: Colors.white,)
+                  ],
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  userData?.capitols[int.parse(capitolsId)].tests[number].name ?? '',
+                  overflow: TextOverflow.ellipsis, // Add this
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onPrimary),
+                ),
+               Center(
+                  child: ReButton(color: "white",  text:  'ZOBRAZIŤ', onTap: () {
+                    onPressed(number);
+                    Navigator.of(context).pop();
+                  }),
+                ),
+              ],
+            );
+        }
+      }
+
+  showMenu<int>(
+    context: context,
+    position: position,
+    constraints: BoxConstraints(maxWidth: 400, minWidth: 0),
+
+    color: AppColors.getColor('blue').light,
+    shape: TooltipShape(context: context, direction: direction % 2 == 0 ? 0 : 1),
+    items: <PopupMenuEntry<int>>[
+      PopupMenuItem<int>(
+            child: Container(
+              width: 400,
+              padding: const EdgeInsets.all(12),
+              constraints: const BoxConstraints(maxWidth: 450), // Using constraints instead of a fixed width
+              child: Column(
+                children: [
+                  _buildSwitchableColumn(columnId)
+                ],
+              ) 
+              
             ),
           ),
         ]
@@ -856,3 +1186,5 @@ class TooltipShape extends ShapeBorder {
 
   
 }
+
+

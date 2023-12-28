@@ -5,6 +5,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:infomat/controllers/UserController.dart';
+import 'package:infomat/controllers/ResultsController.dart';
 import 'package:infomat/controllers/SchoolController.dart';
 import 'package:infomat/controllers/NotificationController.dart';
 import 'package:infomat/widgets/Widgets.dart';
@@ -76,6 +77,7 @@ Future<ClassData> fetchClass(String classId) async {
         return ClassData(
           name: data['name'] as String? ?? '',
           school: data['school'] as String? ?? '',
+          results: data['results'] as String? ?? '',
           students: List<String>.from(data['students'] as List<dynamic>? ?? []),
           teachers: List<String>.from(data['teachers'] as List<dynamic>? ?? []),
           posts: postsDataList,
@@ -167,16 +169,22 @@ Future<void> deleteClass(String classId, String school, void Function(String)? r
 
   try {
     // First, make the API call to delete user accounts
-    if (tmp.isNotEmpty) {
-      final functions = FirebaseFunctions.instance;
-      final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
-      await deleteBulkAccountsCallable({'userIds': tmp});
-    }
+    
+
 
     // Proceed with Firestore operations only if the above API call succeeds
     await firestore.runTransaction((Transaction transaction) async {
       DocumentReference classRef = firestore.collection('classes').doc(classId);
       DocumentSnapshot classSnapshot = await transaction.get(classRef);
+
+      if (tmp.isNotEmpty) {
+        final functions = FirebaseFunctions.instance;
+        final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
+        await deleteBulkAccountsCallable({'userIds': tmp});
+        await deleteUsers(tmp);
+      }
+
+      await deleteResults(classSnapshot.get('results'));
 
       if (!classSnapshot.exists) {
         throw Exception('Class document does not exist.');
@@ -972,10 +980,13 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
     // Reference to the Firestore collection where classes are stored
     CollectionReference classCollection = FirebaseFirestore.instance.collection('classes');
 
+    // Create results first and get the ID
+    String resultsId = await createResults(); // Assuming createResults() returns the ID of the created results
+
     // Create a new document with a generated ID
     DocumentReference newClassRef = classCollection.doc();
 
-    // Create a ClassData instance with the provided name
+    // Create a ClassData instance with the provided name and results ID
     ClassData newClass = ClassData(
       name: className,
       capitolOrder: [0,1,2,3,4],
@@ -984,6 +995,7 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
       school: school,
       students: [],
       teachers: [],
+      results: resultsId // Use the results ID
     );
 
     // Convert the ClassData instance to a Map
@@ -995,24 +1007,24 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
       'school': newClass.school,
       'students': newClass.students,
       'teachers': newClass.teachers,
+      'results': newClass.results // Include the results ID
     };
 
     // Add the class data to Firestore
     await newClassRef.set(classData);
 
     addClassToSchool(newClassRef.id, school);
-
     addToList(newClassRef.id);
-
-    if(adminId != null) updateClasses([adminId], newClassRef.id);
-    
+    if (adminId != null) updateClasses([adminId], newClassRef.id);
     if (addSchoolData != null) addSchoolData(ClassDataWithId(newClassRef.id, newClass));
+    
     print('Class added successfully with ID: ${newClassRef.id}');
   } catch (e) {
     print('Error adding class: $e');
     throw Exception('Failed to add class');
   }
 }
+
 
 Future<bool> doesClassNameExist(String className, List<String> classIds) async {
   for (String classId in classIds) {

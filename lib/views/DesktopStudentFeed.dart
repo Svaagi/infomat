@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/models/ResultsModel.dart';
 
 
 class DesktopStudentFeed extends StatefulWidget {
@@ -19,6 +20,14 @@ class DesktopStudentFeed extends StatefulWidget {
   final String? capitolTitle;
   final UserCapitolsData? capitolData;
   final String? capitolColor;
+  void Function(void Function() start, void Function() end) init;
+  List<dynamic> orderedData;
+  void Function() addWeek;
+  void Function() removeWeek;
+    List<ResultCapitolsData>? results;
+      int weeklyCapitolIndex;
+  int weeklyTestIndex;
+    int studentsSum;
 
   DesktopStudentFeed({
     Key? key,
@@ -33,7 +42,15 @@ class DesktopStudentFeed extends StatefulWidget {
     required this.weeklyBool,
     required this.weeklyCapitolLength,
     required this.weeklyChallenge,
-    required this.weeklyTitle
+    required this.weeklyTitle,
+    required this.orderedData,
+    required this.init,
+    required this.addWeek,
+    required this.removeWeek,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
+    this.results,
+     required this.studentsSum
   }) : super(key: key);
 
   @override
@@ -57,9 +74,15 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
           userAgent.contains('windows') ||
           userAgent.contains('linux');
 
-      setState(() {
-        _loading = false;
-      });
+        widget.init(() {
+          setState(() {
+          _loading = true;
+          });
+          }, () {
+          setState(() {
+            _loading = false;
+          });
+        });
     }
    
   @override
@@ -90,6 +113,42 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                           crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                           children: [
                             Row(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                                width: 153,
+                                child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
+                                  widget.addWeek();
+                                  widget.init(() {
+                                    setState(() {
+                                    _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                  });
+                                }),
+                              ),
+                              SizedBox(
+                                height: 40,
+                                width: 168,
+                                child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
+                                  widget.removeWeek();
+                                  widget.init(() {
+                                    setState(() {
+                                    _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                  });
+                                }),
+                              ),
+                            ],
+                          ),
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                               children: [
                                 Text(
@@ -109,7 +168,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 child: SizedBox(
                                   width: 400, // Set your desired maximum width here
                                   child: Text(
-                                    widget.weeklyTitle ?? '',
+                                    widget.orderedData[widget.weeklyCapitolIndex]['tests'][widget.weeklyTestIndex]['name'] ?? '',
                                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                       color: Theme.of(context).colorScheme.onPrimary,
                                     ),
@@ -120,7 +179,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                             ),
                             const SizedBox(height: 5,),
                             Text(
-                                "Kapitola: ${widget.capitolTitle}",
+                                "Kapitola: ${widget.orderedData[widget.weeklyCapitolIndex]['name']}",
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
                               const SizedBox(height: 5,),
@@ -367,7 +426,8 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         ],
                       )
                     ),
-                  )
+                  ),
+                  
                 ],
               ),
             ),

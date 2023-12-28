@@ -122,6 +122,7 @@ class _MobileClassesState extends State<MobileClasses> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
+                            
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
@@ -168,7 +169,6 @@ class _MobileClassesState extends State<MobileClasses> {
                                         Text(' 1. Trieda', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                         Text(' 2. Meno a Priezvisko', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                         Text(' 3. Emailová adresa', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
-                                        Text(' 4. Heslo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                       ],
                                     ),
                                   ),
@@ -180,11 +180,11 @@ class _MobileClassesState extends State<MobileClasses> {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Container(
-                                          width: 291,
+                                          width: 270,
                                           height: 48,
                                           child:  ReButton(
                                             color: "grey", 
-                                            text: 'PRIRADIŤ EXISTUJÚCI PROFIL',  
+                                            text: 'PRIRADIŤ PROFIL',  
                                             onTap: () async {
                                                 widget.onNavigationItemSelected(3);
                                                 Navigator.of(context).pop();
@@ -272,6 +272,23 @@ class _MobileClassesState extends State<MobileClasses> {
                                         ),
                                   ),
                                   Spacer(),
+                                  if(!userData.signed) Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: AppColors.getColor('blue').lighter
+                                    ),
+                                    child: Text(
+                                        'Neprihlásený/á',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .copyWith(
+                                              color: AppColors.getColor('blue').main,
+                                            ),
+                                      ),
+                                  ),
+                                  SizedBox(width: 5,),
                                   (widget.currentUserData!.id == userData.id || widget.currentUserData!.admin) ? SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12) : Container(),
                                 ],
                               ),
@@ -349,7 +366,6 @@ class _MobileClassesState extends State<MobileClasses> {
                                           Text(' 1. Trieda', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 2. Meno a Priezvisko', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 3. Emailová adresa', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
-                                          Text(' 4. Heslo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                         ],
                                       ),
                                     ),
@@ -443,7 +459,6 @@ class _MobileClassesState extends State<MobileClasses> {
                                 ),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '${userData.name}',
@@ -451,6 +466,24 @@ class _MobileClassesState extends State<MobileClasses> {
                                           color: AppColors.getColor('mono').black,
                                         ),
                                   ),
+                                  const Spacer(),
+                                  if(!userData.signed) Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: AppColors.getColor('blue').lighter
+                                    ),
+                                    child: Text(
+                                        'Neprihlásený/á',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .copyWith(
+                                              color: AppColors.getColor('blue').main,
+                                            ),
+                                      ),
+                                  ),
+                                  SizedBox(width: 5,),
                                   SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12),
                                 ],
                               ),

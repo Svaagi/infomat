@@ -7,20 +7,26 @@ import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
 class TeacherCapitolDragWidget extends StatefulWidget {
-  final List<List<double>> percentages;
   final UserData? currentUserData;
   List<int> numbers;
   final Future<void> Function()  refreshData;
+  double Function(int, int) percentage;
+  int weeklyCapitolIndex;
+  int weeklyTestIndex;
+
 
   TeacherCapitolDragWidget({
     Key? key,
-    required this.percentages,
     required this.numbers,
     required this.currentUserData,
-    required this.refreshData
+    required this.refreshData,
+    required this.percentage,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex
   }) : super(key: key);
 
   @override
@@ -204,12 +210,12 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                           child: ListTile(
                             title: Text(
                               capitol["tests"][subIndex]["name"],
-                              style: TextStyle(fontSize: 14, decoration: subIndex == 0 && index == 0  ? TextDecoration.underline : null,),
+                              style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && index == widget.weeklyCapitolIndex  ? TextDecoration.underline : null,),
                             ),
-                            trailing: Row(
+                            trailing:  Row(
                               mainAxisSize: MainAxisSize.min,  // To shrink-wrap the Row
                               children: [
-                                Text('Úspešnosť: ${(widget.percentages[widget.numbers[index]][subIndex]*100).toStringAsFixed(0)}%',
+                                Text('Úspešnosť: ${(widget.percentage(widget.numbers[index], subIndex)*100).toStringAsFixed(0)}%',
                                   style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                 ),  // Showing upto 2 decimal places
                                 const SizedBox(width: 5),

@@ -169,7 +169,6 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                           Text(' 1. Trieda', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 2. Meno a Priezvisko', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 3. Emailová adresa', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
-                                          Text(' 4. Heslo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                         ],
                                       ),
                                     ),
@@ -270,6 +269,23 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                         ),
                                   ),
                                   const Spacer(),
+                                  if(!userData.signed) Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: AppColors.getColor('blue').lighter
+                                    ),
+                                    child: Text(
+                                        'Neprihlásený/á',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .copyWith(
+                                              color: AppColors.getColor('blue').main,
+                                            ),
+                                      ),
+                                  ),
+                                  SizedBox(width: 10,),
                                   (widget.currentUserData!.id == userData.id || widget.currentUserData!.admin) ? SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12) : Container(),
                                 ],
                               ),
@@ -346,7 +362,6 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                           Text(' 1. Trieda', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 2. Meno a Priezvisko', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                           Text(' 3. Emailová adresa', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
-                                          Text(' 4. Heslo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),),
                                         ],
                                       ),
                                     ),
@@ -446,7 +461,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                         ),
                                   ),
                                   Spacer(),
-                                  /*Container(
+                                  if(!userData.signed) Container(
                                     padding: EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
@@ -461,7 +476,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                                               color: AppColors.getColor('blue').main,
                                             ),
                                       ),
-                                  ),*/
+                                  ),
                                   SizedBox(width: 10,),
                                   SvgPicture.asset('assets/icons/rightIcon.svg', color: AppColors.getColor('mono').grey, height: 12)
                                 ],

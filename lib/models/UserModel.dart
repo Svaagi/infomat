@@ -85,6 +85,7 @@ class UserData {
   List<String> classes;
   String schoolClass;
   bool teacher;
+  bool signed;
   int points;
   List<UserCapitolsData> capitols;
   List<String> materials;
@@ -98,6 +99,7 @@ class UserData {
     required this.email,
     required this.name,
     required this.active,
+    required this.signed,
     required this.school,
     required this.classes,
     required this.schoolClass,
@@ -119,6 +121,7 @@ UserData userData = UserData(
       name: '',
       school: '',
       active: false,
+      signed: false,
       classes: [
       ],
       schoolClass: '',
@@ -143,20 +146,20 @@ UserData userData = UserData(
                 ],
               ),
               UserCapitolsTestData(
-          completed: false,
-          name: 'Kognitívne skreslenia',
-          points: 0,
-          questions: [
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false]),
-            UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
+                completed: false,
+                name: 'Kognitívne skreslenia',
+                points: 0,
+                questions: [
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false]),
+                  UserQuestionsData(answer: [], completed: false, correct: [false, false, false]),
                 ],
               ),
             ],

@@ -11,12 +11,16 @@ class StudentCapitolDragWidget extends StatefulWidget {
   final UserData? currentUserData;
   final List<int> numbers;
   final Future<void> Function()  refreshData;
+  int weeklyCapitolIndex;
+  int weeklyTestIndex;
 
   StudentCapitolDragWidget({
     Key? key,
     required this.numbers,
     required this.currentUserData,
-    required this.refreshData
+    required this.refreshData,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex
   }) : super(key: key);
 
   @override
@@ -186,7 +190,7 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                             child: ListTile(
                               title: Text(
                                 capitol["tests"][subIndex]["name"],
-                                style: TextStyle(fontSize: 14, decoration: subIndex == 0 && index == 0 ? TextDecoration.underline : null, ),
+                                style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && index == widget.weeklyCapitolIndex  ? TextDecoration.underline : null, ),
                               ),
                               trailing: ((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
                                   widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100) != 0 ? Row(

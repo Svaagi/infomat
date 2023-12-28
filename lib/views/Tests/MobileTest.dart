@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/controllers/ResultsController.dart';
 
 
 class MobileTest extends StatefulWidget {
@@ -16,6 +17,7 @@ class MobileTest extends StatefulWidget {
   final String capitolsId;
   final UserData? userData;
   final List<dynamic> data;
+  final String resultsId;
 
   const MobileTest(
       {Key? key,
@@ -23,7 +25,8 @@ class MobileTest extends StatefulWidget {
       required this.overlay,
       required this.capitolsId,
       required this.userData,
-      required this.data
+      required this.data,
+      required this.resultsId
       })
       : super(key: key);
 
@@ -1190,6 +1193,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     if (points < 0) {
         points = 0.0;
     }
+    updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
 
     // Update points, round it as per your instructions
     widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points += points.round();
@@ -1199,7 +1203,10 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
 
 
-        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
+          updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
+          widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+        } 
 
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
@@ -1279,6 +1286,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         'teacher': userData.teacher,
         'email': userData.email,
         'name': userData.name,
+        'signed': userData.signed,
         'active': userData.active,
         'schoolClass': userData.schoolClass,
         'points': userData.points,

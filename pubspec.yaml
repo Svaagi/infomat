@@ -43,6 +43,7 @@ flutter:
     - assets/background.svg
     - assets/lastScreenBackground.svg
     - assets/star.png
+    - assets/failedStar.png
     - assets/badges/
     - assets/pictures/
     - assets/pictureAnswers/

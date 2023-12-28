@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
-import 'package:flutter/gestures.dart'; // Import this line
+import 'package:flutter/gestures.dart'; 
+import 'package:infomat/models/ResultsModel.dart';
 
 
 import 'dart:html' as html;
@@ -10,28 +11,31 @@ import 'dart:html' as html;
 
 class DesktopTeacherFeed extends StatefulWidget {
   final Function(int) onNavigationItemSelected;
-  final int? capitolLength;
-  final int? capitolsId;
-  final int? weeklyChallenge;
-  final String? weeklyTitle;
-  final String? futureWeeklyTitle;
-  final bool? weeklyBool;
-  final int? weeklyCapitolLength ;
-  final int? completedCount;
-  final String? capitolTitle;
+  int? capitolLength;
+  int weeklyChallenge;
+  int weeklyCapitolIndex;
+  int weeklyTestIndex;
+  void Function(void Function() start, void Function() end) init;
+  List<dynamic> orderedData;
+  void Function() addWeek;
+  void Function() removeWeek;
+  List<ResultCapitolsData>? results;
+  int studentsSum;
+
 
   DesktopTeacherFeed({
     Key? key,
     required this.onNavigationItemSelected,
     this.capitolLength,
-    this.capitolTitle,
-    this.capitolsId,
-    this.completedCount,
-    this.futureWeeklyTitle,
-    this.weeklyBool,
-    this.weeklyCapitolLength,
-    this.weeklyChallenge,
-    this.weeklyTitle
+    required this.weeklyChallenge,
+    required this.init,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
+    required this.orderedData,
+    required this.addWeek,
+    required this.removeWeek,
+    this.results,
+    required this.studentsSum
   }) : super(key: key);
 
   @override
@@ -53,9 +57,18 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
+
+
+    widget.init(() {
+      setState(() {
+      _loading = true;
+    });
+    }, () {
     setState(() {
       _loading = false;
     });
+    });
+
   }
 
   @override
@@ -87,12 +100,44 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 30,),
-                            Text(
-                                'Hotové týždenné výzvy ',
-                                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                  color: Theme.of(context).colorScheme.onPrimary,
+                            Row(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  width: 153,
+                                  child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
+                                    widget.addWeek();
+                                    widget.init(() {
+                                      setState(() {
+                                      _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                    });
+                                  }),
                                 ),
+                                
+                                SizedBox(
+                                  height: 40,
+                                  width: 168,
+                                  child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
+                                    widget.removeWeek();
+                                    widget.init(() {
+                                        setState(() {
+                                        _loading = true;
+                                      });
+                                      }, () {
+                                      setState(() {
+                                        _loading = false;
+                                      });
+                                      });
+                                  }),
+                                ),
+                              ],
                             ),
+                            
                             SizedBox(height: 40,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +155,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     SvgPicture.asset('assets/icons/smallStarIcon.svg', color: AppColors.getColor('primary').lighter),
                                     SizedBox(width: 8,),
                                     Text(
-                                      "Týždenná výzva #${widget.weeklyChallenge ?? 0 + 1}",
+                                      "Týždenná výzva #${widget.weeklyChallenge + 1}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
@@ -124,7 +169,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                   Container(
                                       width: 400, // Set your desired maximum width here
                                       child: Text(
-                                        widget.weeklyTitle ?? '',
+                                        widget.orderedData[widget.weeklyCapitolIndex]['tests'][widget.weeklyTestIndex]['name'] ?? '',
                                         style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                           color: Theme.of(context).colorScheme.onPrimary,
                                         ),
@@ -133,7 +178,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
 
                                     SizedBox(height: 5,),
                                     Text(
-                                        "Kapitola: ${widget.capitolTitle}",
+                                        "Kapitola: ${widget.orderedData[widget.weeklyCapitolIndex]['name']}",
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                     ),
                                     SizedBox(height: 5,),
@@ -161,27 +206,47 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                                 crossAxisAlignment: CrossAxisAlignment.start, 
                                   children: [
-                                    Container(
+                                    (widget.results == null || widget.studentsSum == 0) ? Container(
                                       width: 60,
                                       height: 30,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                      color: AppColors.getColor('primary').light,
+                                      color: AppColors.getColor('primary').lighter,
                                       ),
+                                    ) : Row(
+                                      children: [
+                                        Text(
+                                          "${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}",
+                                          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                            color: Theme.of(context).colorScheme.onPrimary,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10,),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 10),
+                                          child: SvgPicture.asset('assets/icons/starYellowIcon.svg', width: 30,),
+                                        )
+                                      ],
                                     ),
+                                    
+                                    
                                       Text('priemerné skóre',
                                         style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)
                                       ),
                                       SizedBox(height: 20,),
-                                      Container(
+                                      (widget.results == null || widget.studentsSum == 0) ? Container(
                                       width: 60,
                                       height: 30,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
-                                      color: AppColors.getColor('primary').light,
-
+                                      color: AppColors.getColor('primary').lighter,
                                       ),
-                                    ),
+                                    ) : Text(
+                                        "${widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed}/${widget.studentsSum}",
+                                       style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                          color: Theme.of(context).colorScheme.onPrimary,
+                                        ),
+                                      ),
                                       Text('študentov dokončilo',
                                         style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)
                                       )

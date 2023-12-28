@@ -18,6 +18,8 @@ import 'package:infomat/views/Discussions.dart';
 import 'package:infomat/views/admin/DesktopAdmin.dart';
 import 'package:infomat/views/admin/MobileAdmin.dart';
 import 'package:infomat/controllers/UserController.dart'; // Import the UserData class and fetchUser function
+import 'package:infomat/controllers/ClassController.dart';
+import 'package:infomat/controllers/ResultsController.dart'; 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:infomat/widgets/MobileAppBar.dart';
 import 'package:infomat/widgets/DesktopAppBar.dart';
@@ -25,7 +27,11 @@ import 'package:infomat/widgets/MobileBottomNavigation.dart';
 import 'package:infomat/widgets/TeacherMobileAppBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
+import 'dart:async';
+
 
 class NonSwipeablePageController extends PageController {
   @override
@@ -44,9 +50,7 @@ class _AppState extends State<App> {
   int _selectedIndex = 0;
   UserData? currentUserData;
   int? capitolLength;
-  int capitolsId = 1;
   dynamic capitol;
-  int weeklyChallenge = 0;
   String? weeklyTitle;
   String? futureWeeklyTitle;
   bool weeklyBool = false;
@@ -59,25 +63,149 @@ class _AppState extends State<App> {
   bool isMobile = false;
   bool isDesktop = false;
   bool _tutorial = false;
+  bool _loadingChallenge = true;
   List<dynamic> data = [];
+  List<dynamic> orderedData = [];
+  int weeklyChallenge = 0;
+  int weeklyCapitolIndex = 0;
+  int weeklyTestIndex = 0;
+  List<int> order = [0,1,2,3,4];
+  List<ResultCapitolsData>? currentResults;
+  int studentsSum = 0;
+
+  List<DateTime> _activeWeeks = [
+  ];
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  void addWeek () {
+    _activeWeeks.add(DateTime(2023, 12, 27));
+  }
+
+  void removeWeek () {
+    _activeWeeks.removeLast();
+  }
+
+
+
+ int getPoint (int i) {
+    switch (i) {
+      case 0:
+        return 2;
+      case 1:
+        return 8;
+      case 2:
+        return 6;
+      case 3:
+        return 10;
+      case 4:
+        return 6;
+      default:
+        return 0;
+    }
+ }
+
+ void getWeeklyIndexes (int i) {
+     if (i < getPoint(order[0])) {
+        setState(() {
+          weeklyCapitolIndex = 0;
+          weeklyTestIndex = i;
+        });
+      } else if ( i >= getPoint(order[0]) && i < getPoint(order[1])) {
+        setState(() {
+          weeklyCapitolIndex = 1;
+          weeklyTestIndex = i-getPoint(order[0]);
+        });
+      } else if ( i >= getPoint(order[0])+getPoint(order[1]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2])) {
+        setState(() {
+          weeklyCapitolIndex = 2;
+          weeklyTestIndex = i-(getPoint(order[0])+getPoint(order[1]));
+        });
+      } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3])) {
+        setState(() {
+          weeklyCapitolIndex = 3;
+          weeklyTestIndex = i-(getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]));
+        });
+      } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) + getPoint(order[4])) {
+        setState(() {
+          weeklyCapitolIndex = 4;
+          weeklyTestIndex = i- (getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]));
+        });
+      }
+
+ }
+
+  void init (void Function() start, void Function() end ) async {
+    start();
+     final userAgent = html.window.navigator.userAgent.toLowerCase();
+    isMobile = userAgent.contains('mobile');
+    isDesktop = userAgent.contains('macintosh') ||
+        userAgent.contains('windows') ||
+        userAgent.contains('linux');
+
+      // Initialize the weekly challenge count based on the active weeks
+
+       // Calculate the time until the next midnight
+      DateTime now = DateTime.now();
+      DateTime nextMidnight = DateTime(now.year, now.month, now.day + 1);
+      Duration initialDelay = nextMidnight.difference(now);
+
+      // Set up a timer to first trigger at the next midnight
+      Timer(initialDelay, () {
+        // Update the weekly challenge at midnight
+        updateWeeklyChallenge();
+
+        // Then set up a periodic timer to trigger every 24 hours after the first execution
+        Timer.periodic(Duration(days: 1), (Timer timer) {
+          updateWeeklyChallenge();
+        });
+      });
+
+    await fetchUserData();
+
+    end();
+  }
 
 
   @override
   void initState() {
     super.initState();
-    final userAgent = html.window.navigator.userAgent.toLowerCase();
-    isMobile = userAgent.contains('mobile');
-    isDesktop = userAgent.contains('macintosh') ||
-        userAgent.contains('windows') ||
-        userAgent.contains('linux');
-    fetchUserData(); // Fetch the user data when the app starts
-        fetchCapitolsData();
-
-    
+    // Fetch the user data when the app starts
+    init(() {}, () {});
   }
+
+void updateWeeklyChallenge() {
+  // Calculate the new weekly challenge count
+    int newWeeklyChallenge = calculatePassedActiveWeeks(DateTime.now(), _activeWeeks);
+
+    // Check if the weekly challenge count has changed
+    if (weeklyChallenge != newWeeklyChallenge) {
+      setState(() {
+        weeklyChallenge = newWeeklyChallenge;
+      });
+  }
+
+  _loadingChallenge = false;
+
+  
+
+  getWeeklyIndexes(weeklyChallenge);
+}
+
+
+
+
+
+int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDates) {
+  // Normalize the current date to remove hours, minutes, and seconds
+  currentDate = DateTime(currentDate.year, currentDate.month, currentDate.day);
+
+  // Count the number of active weeks that have already passed
+  int passedWeeksCount = activeWeekDates.where((activeDate) =>
+    activeDate.isBefore(currentDate)).length;
+
+  return passedWeeksCount;
+}
 
    void _onUserDataChanged() {
     fetchUserData();
@@ -104,42 +232,80 @@ class _AppState extends State<App> {
 
 
   Future<void> fetchUserData() async {
-    try {
-      // Retrieve the Firebase Auth user
-      User? user = FirebaseAuth.instance.currentUser;
+  try {
+    // Retrieve the Firebase Auth user
+    User? user = FirebaseAuth.instance.currentUser;
 
-      if (user != null) {
-        // Fetch the user data using the fetchUser function
-        UserData userData = await fetchUser(user.uid);
-        setState(() {
-          currentUserData = userData;
-          _loadingUser = false;
-        });
-      } else {
-        print('User is not logged in.');
+    if (user != null) {
+      // Fetch the user data using the fetchUser function
+      UserData userData = await fetchUser(user.uid);
+      
+      // Attempt to fetch class data
+      ClassData? classData;
+      try {
+        classData = await fetchClass(userData.schoolClass);
+      } catch (e) {
+        print('Error fetching class data: $e');
       }
-    } catch (e) {
-      print('Error fetching user data: $e');
+
+      // Proceed with fetching results if class data is available
+      if (classData != null) {
+        try {
+          currentResults = await fetchResults(classData.results);
+        } catch (e) {
+          print('Error fetching results data: $e');
+        }
+      }
+
+      if (!userData.signed) {
+        setUserSigned(user.uid);
+      }
+
+      // Update state with user data, and class data if available
+      setState(() {
+        currentUserData = userData;
+        if (classData != null) {
+          order = classData.capitolOrder;
+          studentsSum = classData.students.length;
+        }
+        _loadingUser = false;
+      });
+
+      await fetchCapitolsData();
+    } else {
+      print('User is not logged in.');
     }
+  } catch (e) {
+    print('Error fetching user data: $e');
+    setState(() {
+      _loadingUser = false;
+    });
   }
+}
+
 
    Future<void> fetchCapitolsData() async {
     try {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       data = json.decode(jsonData);
 
+      for (int num in order) {
+        orderedData.add(data[num]);
+      }
+
+      updateWeeklyChallenge();
+
       setState(() {
-          capitol = data[capitolsId];
-          capitolLength = data[0]["points"] + data[1]["points"] ?? 0;
-          weeklyChallenge = data[capitolsId]["weeklyChallenge"] ?? '';
-          weeklyTitle = data[capitolsId]["tests"][weeklyChallenge]["name"] ?? '';
+          capitol = orderedData[weeklyCapitolIndex];
+          capitolLength = 32;
+          weeklyTitle = orderedData[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
           futureWeeklyTitle =
-              data[capitolsId]["tests"][weeklyChallenge + 1]["name"] ?? '';
+              orderedData[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
           
-          weeklyCapitolLength = data[capitolsId]["tests"].length ?? 0;
+          weeklyCapitolLength = orderedData[weeklyCapitolIndex]["tests"].length ?? 0;
           
-          capitolTitle = data[capitolsId]["name"] ?? '';
-          capitolColor = data[0]["color"] ?? 'blue';
+          capitolTitle = orderedData[weeklyCapitolIndex]["name"] ?? '';
+          capitolColor = orderedData[0]["color"] ?? 'blue';
 
     });
           _loadingCapitols = false;
@@ -159,7 +325,7 @@ class _AppState extends State<App> {
         });
       });
     }
-    if (_loadingUser || _loadingCapitols) {
+    if (_loadingUser || _loadingCapitols || _loadingChallenge) {
         return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return 
@@ -343,11 +509,11 @@ class _AppState extends State<App> {
       case 0:
         return isMobile ? MobileStudentFeed(
             capitolColor: capitolColor,
-            capitolData: currentUserData!.capitols[capitolsId],
+            capitolData: currentUserData!.capitols[weeklyCapitolIndex],
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
             capitolTitle: capitolTitle,
-            capitolsId: capitolsId,
+            capitolsId: weeklyCapitolIndex,
             completedCount: completedCount,
             futureWeeklyTitle: futureWeeklyTitle,
             weeklyBool: weeklyBool,
@@ -356,22 +522,33 @@ class _AppState extends State<App> {
             weeklyTitle: weeklyTitle,
           ) : DesktopStudentFeed(
             capitolColor: capitolColor,
-            capitolData: currentUserData!.capitols[capitolsId],
+            capitolData: currentUserData!.capitols[weeklyCapitolIndex],
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
             capitolTitle: capitolTitle,
-            capitolsId: capitolsId,
+            capitolsId: weeklyCapitolIndex,
             completedCount: completedCount,
             futureWeeklyTitle: futureWeeklyTitle,
             weeklyBool: weeklyBool,
             weeklyCapitolLength: weeklyCapitolLength,
             weeklyChallenge: weeklyChallenge,
             weeklyTitle: weeklyTitle,
+            weeklyTestIndex: weeklyTestIndex,
+            addWeek: addWeek,
+            removeWeek: removeWeek,
+            init: init,
+            results: currentResults,
+            studentsSum: studentsSum,
+            orderedData: orderedData,
+            weeklyCapitolIndex: weeklyCapitolIndex,
           );
       case 1:
         return Challenges(
           fetch: fetchUserData(),
           currentUserData: currentUserData,
+          weeklyCapitolIndex: weeklyCapitolIndex,
+          weeklyTestIndex: weeklyTestIndex,
+          
         );
       case 2:
         return Discussions(
@@ -400,32 +577,36 @@ class _AppState extends State<App> {
     switch (index) {
       case 0:
         return isMobile ? MobileTeacherFeed(
-            onNavigationItemSelected: _onNavigationItemSelected,
+             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
-            capitolTitle: capitolTitle,
-            capitolsId: capitolsId,
-            completedCount: completedCount,
-            futureWeeklyTitle: futureWeeklyTitle,
-            weeklyBool: weeklyBool,
-            weeklyCapitolLength: weeklyCapitolLength,
+            orderedData: orderedData,
+            weeklyCapitolIndex: weeklyCapitolIndex,
+            weeklyTestIndex: weeklyTestIndex,
             weeklyChallenge: weeklyChallenge,
-            weeklyTitle: weeklyTitle,
+            addWeek: addWeek,
+            removeWeek: removeWeek,
+            init: init,
+            results: currentResults,
+            studentsSum: studentsSum,
           ) : DesktopTeacherFeed(
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
-            capitolTitle: capitolTitle,
-            capitolsId: capitolsId,
-            completedCount: completedCount,
-            futureWeeklyTitle: futureWeeklyTitle,
-            weeklyBool: weeklyBool,
-            weeklyCapitolLength: weeklyCapitolLength,
+            orderedData: orderedData,
+            weeklyCapitolIndex: weeklyCapitolIndex,
+            weeklyTestIndex: weeklyTestIndex,
             weeklyChallenge: weeklyChallenge,
-            weeklyTitle: weeklyTitle,
+            addWeek: addWeek,
+            removeWeek: removeWeek,
+            init: init,
+            results: currentResults,
+            studentsSum: studentsSum,
           );
       case 1:
         return Challenges(
           fetch: fetchUserData(),
           currentUserData: currentUserData,
+          weeklyCapitolIndex: weeklyCapitolIndex,
+          weeklyTestIndex: weeklyTestIndex,
         );
       case 2:
         return Discussions(

@@ -181,7 +181,7 @@ bool isValidEmail(String email) {
                   Wrap(
                     alignment: WrapAlignment.center,
                     children: [
-                      if(!widget.admin)ReButton(
+                      if(!widget.admin && !widget.currentUser!.data.admin)ReButton(
                         color: "white",
                         delete: true,
                         leftIcon: 'assets/icons/binIcon.svg',

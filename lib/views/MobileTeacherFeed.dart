@@ -2,35 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
-import 'package:flutter/gestures.dart'; // Import this line
+import 'package:flutter/gestures.dart';
+import 'package:infomat/models/ResultsModel.dart';
 
 import 'dart:html' as html;
 
 
 class MobileTeacherFeed extends StatefulWidget {
   final Function(int) onNavigationItemSelected;
-  final int? capitolLength;
-  final int capitolsId;
-  final int weeklyChallenge;
-  final String? weeklyTitle;
-  final String? futureWeeklyTitle;
-  final bool weeklyBool;
-  final int weeklyCapitolLength ;
-  final int completedCount;
-  final String? capitolTitle;
+  int? capitolLength;
+  int weeklyChallenge;
+  int weeklyCapitolIndex;
+  int weeklyTestIndex;
+  void Function(void Function() start, void Function() end) init;
+  List<dynamic> orderedData;
+  void Function() addWeek;
+  void Function() removeWeek;
+  List<ResultCapitolsData>? results;
+  int studentsSum;
 
   MobileTeacherFeed({
     Key? key,
     required this.onNavigationItemSelected,
-    required this.capitolLength,
-    required this.capitolTitle,
-    required this.capitolsId,
-    required this.completedCount,
-    required this.futureWeeklyTitle,
-    required this.weeklyBool,
-    required this.weeklyCapitolLength,
+    this.capitolLength,
     required this.weeklyChallenge,
-    required this.weeklyTitle
+    required this.init,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
+    required this.orderedData,
+    required this.addWeek,
+    required this.removeWeek,
+    this.results,
+    required this.studentsSum
   }) : super(key: key);
 
   @override
@@ -40,6 +43,7 @@ class MobileTeacherFeed extends StatefulWidget {
 class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
   bool isMobile = false;
   bool isDesktop = false;
+  bool _loading = true;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -51,10 +55,23 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
+
+    widget.init(() {
+      setState(() {
+      _loading = true;
+    });
+    }, () {
+    setState(() {
+      _loading = false;
+    });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+    }
     return  Container(
             width: 900,
             child: SingleChildScrollView(
@@ -97,7 +114,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                     child: Container(
                                       width: 400, // Set your desired maximum width here
                                       child: Text(
-                                        widget.weeklyTitle ?? '',
+                                        widget.orderedData[widget.weeklyCapitolIndex]['tests'][widget.weeklyTestIndex]['name'] ?? '',
                                         style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                           color: Theme.of(context).colorScheme.onPrimary,
                                         ),
@@ -113,9 +130,11 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                 SizedBox(height: 16,),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
-                                crossAxisAlignment: CrossAxisAlignment.start, 
+                                  crossAxisAlignment: CrossAxisAlignment.center, 
                                   children: [
                                     Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Container(
                                           width: 60,
@@ -126,11 +145,12 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ),
                                           child: Row(
                                           children: [
-                                            Text('/', style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                            Text("${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}", style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                               color: Theme.of(context).colorScheme.onPrimary,
                                             ),),
                                             SizedBox(width: 4,),
-                                            SvgPicture.asset('assets/icons/starYellowIcon.svg')
+                                            Padding(padding: EdgeInsets.only(bottom: 5), child: SvgPicture.asset('assets/icons/starYellowIcon.svg'),)
+                                            
                                           ],
                                         )
                                         ),
@@ -150,7 +170,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                             borderRadius: BorderRadius.circular(30),
                                           color: AppColors.getColor('primary').light,
                                           ),
-                                          child: Text('/',style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                          child: Text("${widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed}/${widget.studentsSum}",style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                           color: Theme.of(context).colorScheme.onPrimary,
                                         ),),
                                         ),
@@ -194,6 +214,28 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 40,
+                            width: 153,
+                            child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
+                              widget.addWeek();
+                              widget.init;
+                            }),
+                          ),
+                          
+                          SizedBox(
+                            height: 40,
+                            width: 168,
+                            child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
+                              widget.removeWeek();
+                              widget.init;
+                            }),
+                          ),
+                        ],
+                      ),
                       Text(
                         'Výsledky',
                         textAlign: TextAlign.start,

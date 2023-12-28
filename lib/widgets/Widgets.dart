@@ -174,7 +174,7 @@ class _ReButtonState extends State<ReButton> {
   }
 }
 
-Container reTileImage(Color color, Color borderColor, int index, String? item, BuildContext context, {List<dynamic>? percentage, bool? correct, Color? percentageColor}) {
+Container reTileImage(Color color, Color borderColor, int index, String? item, BuildContext context, {double? percentage, bool? correct, Color? percentageColor}) {
   return Container(
     margin: const EdgeInsets.all(8),
     decoration: BoxDecoration(
@@ -194,7 +194,7 @@ Container reTileImage(Color color, Color borderColor, int index, String? item, B
               color: borderColor,
             )
           ),
-          leading: percentage == [] || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+          leading:  percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
                 style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
@@ -213,7 +213,7 @@ Container reTileImage(Color color, Color borderColor, int index, String? item, B
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage[index]}%', style:Theme.of(context)
+                  ) : Text('${percentage}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(
@@ -236,7 +236,7 @@ Container reTileMatchmaking(
   BuildContext context,
   List<dynamic> matches,
   bool? correct,
-  {List<dynamic>? percentage}) {
+  {double? percentage}) {
 
   return Container(
   margin: const EdgeInsets.all(8),
@@ -268,7 +268,7 @@ Container reTileMatchmaking(
             color: color,
           ),
           child: ListTile(
-             leading: percentage == [] || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+             leading: percentage == 0 || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
                 style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
@@ -287,7 +287,7 @@ Container reTileMatchmaking(
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage[index]}%', style:Theme.of(context)
+                  ) : Text('${percentage}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(
@@ -315,7 +315,7 @@ Container reTileMatchmaking(
 }
 
 
-Container reTile(Color color, Color borderColor, int index, String? item, BuildContext context, {List<dynamic>? percentage, bool? correct, Color? percentageColor}) {
+Container reTile(Color color, Color borderColor, int index, String? item, BuildContext context, {double? percentage, bool? correct, Color? percentageColor}) {
   return Container(
     margin: EdgeInsets.all(8),
     decoration: BoxDecoration(
@@ -339,7 +339,7 @@ Container reTile(Color color, Color borderColor, int index, String? item, BuildC
             color: borderColor,
         ),
       ), 
-      leading: percentage == [] || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+      leading:  percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
                 style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
@@ -358,7 +358,7 @@ Container reTile(Color color, Color borderColor, int index, String? item, BuildC
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage[index]}%', style:Theme.of(context)
+                  ) : Text('${percentage}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(

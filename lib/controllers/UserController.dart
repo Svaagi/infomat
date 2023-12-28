@@ -33,6 +33,7 @@ Future<UserData> fetchUser(String userId) async {
         List<Map<String, dynamic>> capitols = List<Map<String, dynamic>>.from(userSnapshot.get('capitols') as List<dynamic>? ?? []);
         List<String> materials = List<String>.from(userSnapshot.get('materials') as List<dynamic>? ?? []);
         bool teacher = userSnapshot.get('teacher') as bool? ?? false;
+        bool signed = userSnapshot.get('signed') as bool? ?? false;
         bool admin = userSnapshot.get('admin') as bool? ?? false;
 
         // Extracting notifications data
@@ -62,6 +63,7 @@ Future<UserData> fetchUser(String userId) async {
           active: active,
           school: school,
           classes: classes,
+          signed: signed,
           schoolClass: schoolClass,
           teacher: teacher,
           points: points,
@@ -194,19 +196,36 @@ Future<void> updateClasses(List<String> userIds, String classId) async {
 }
 
 
-Future<void> deleteUser(String userId) async {
+Future<void> deleteUsers(List<String> userIds) async {
+  // Split the userIds list into chunks of 500
+  List<List<String>> chunks = [];
+  for (var i = 0; i < userIds.length; i += 500) {
+    var end = (i + 500 < userIds.length) ? i + 500 : userIds.length;
+    chunks.add(userIds.sublist(i, end));
+  }
+
   try {
-    // Next, delete the user document from Firestore
-    await FirebaseFirestore.instance.collection('users').doc(userId).delete();
+    // Process each chunk
+    for (List<String> chunk in chunks) {
+      WriteBatch batch = FirebaseFirestore.instance.batch();
 
-    // You may also want to clean up any other related data or documents here
+      for (String userId in chunk) {
+        DocumentReference userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+        batch.delete(userDoc);
+      }
 
-    print('User with ID $userId has been deleted successfully.');
+      // Commit the batch
+      await batch.commit();
+      print('Batch of users deleted successfully.');
+    }
+
+    print('All users have been deleted successfully.');
   } catch (error) {
-    print('Error deleting user: $error');
+    print('Error deleting users: $error');
     throw error;
   }
 }
+
 
 Future<void> registerUser(String schoolId, String classId, String recipient, String recipientName ,String name, String email, bool teacher, bool admin, BuildContext context, ClassDataWithId? currentClass) async {
   String? userId;
@@ -242,6 +261,7 @@ Future<void> registerUser(String schoolId, String classId, String recipient, Str
         'teacher': teacher,
         'email': email, // Update the email in Firestore to the new email
         'name': name,
+        'signed': userData.signed,
         'active': userData.active,
         'classes': [classId],
         'notifications': userData.notifications,
@@ -463,6 +483,7 @@ Future<void> registerMultipleUsers(
                   'classes': [user.classId],
                   'notifications': [],
                   'materials': [],
+                  'signed': false,
                   'school': schoolId,
                   'schoolClass': user.classId,
                   'points': 0,
@@ -599,7 +620,7 @@ Future<void> deleteUserFunction(List<String> userIds, UserData currentUser, Buil
         currentClass.data.students.removeWhere((id) => id == userId);
 
       // Call deleteUser(userId) to delete the user document
-      await deleteUser(userId);
+      await deleteUsers([userId]);
     }
 
     // Step 3: Call the deleteAccount cloud function
@@ -612,6 +633,21 @@ Future<void> deleteUserFunction(List<String> userIds, UserData currentUser, Buil
 
   } catch (error) {
     reShowToast(currentUser.teacher ? 'Učiteľa sa nepodarilo vymazať' : 'Žiaka sa nepodarilo vymazať', true, context);
+    throw error;
+  }
+}
+
+Future<void> setUserSigned(String userId) async {
+  try {
+    // Get a reference to the user's document in Firestore
+    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+
+    // Update the 'signed' field to true
+    await userRef.update({'signed': true});
+
+    print('User $userId signed status updated to true successfully.');
+  } catch (error) {
+    print('Error updating signed status: $error');
     throw error;
   }
 }
