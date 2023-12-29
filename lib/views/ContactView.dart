@@ -97,34 +97,41 @@ class _ContactViewState extends State<ContactView> {
               ),
             ),
             SizedBox(width: 10,),
-            Container(
-              padding: EdgeInsets.only(right: 8),
-              height: 30,
-              width: 100,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: _type == 'Otázka' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-              ),
-              child: Row(
-                children: [
-                    Radio(
-                    value: 'Otázka',
-                      groupValue: _type,
-                      onChanged: (newValue) {
-                        setState(() {
-                          if (newValue != null) _type = newValue;
-                        });
-                      },
-                      activeColor: AppColors.getColor('primary').main,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  _type = 'Otázka';
+                });
+              },
+              child:Container(
+                padding: EdgeInsets.only(right: 8),
+                height: 30,
+                width: 100,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: _type == 'Otázka' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
+                ),
+                child: Row(
+                  children: [
+                      Radio(
+                      value: 'Otázka',
+                        groupValue: _type,
+                        onChanged: (newValue) {
+                          setState(() {
+                            if (newValue != null) _type = newValue;
+                          });
+                        },
+                        activeColor: AppColors.getColor('primary').main,
+                      ),
+                    Text(
+                      'Otázka',
+                      style: TextStyle(
+                        color: _type == 'Otázka' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
+                      ),
                     ),
-                  Text(
-                    'Otázka',
-                    style: TextStyle(
-                      color: _type == 'Otázka' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
 
@@ -167,7 +174,7 @@ class _ContactViewState extends State<ContactView> {
               maxLines: 20,
               controller: _messageController,
               decoration: InputDecoration(
-                hintText: 'Popíšte svoj problém s aplikáciou alebo nám napíš otázku.',
+                hintText: 'Popíšte svoj problém s aplikáciou alebo nám napíšte otázku.',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8), // Adjust the value for less rounded corners
                   borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color

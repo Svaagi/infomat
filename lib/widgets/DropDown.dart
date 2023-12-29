@@ -21,11 +21,18 @@ class OptionsData {
 class DropDown extends StatefulWidget {
   final UserData? currentUserData;
   final VoidCallback? onUserDataChanged;
+  void Function() fetch;
+  final Function(int) onNavigationItemSelected;
+  int selectedIndex;
+
 
   DropDown({
     Key? key,
     required this.currentUserData,
     this.onUserDataChanged,
+    required this.fetch,
+    required this.onNavigationItemSelected,
+    required this.selectedIndex
   }) : super(key: key);
 
   @override
@@ -113,13 +120,18 @@ class _DropDownState extends State<DropDown> {
     myFunction(selectedId);
   }
 
-  void myFunction(String parameter) {
+  void myFunction(String parameter) async {
     widget.currentUserData!.schoolClass = parameter;
-    saveUserDataToFirestore(widget.currentUserData!).then((_) {
+    await saveUserDataToFirestore(widget.currentUserData!).then((_) {
       if (widget.onUserDataChanged != null) {
         widget.onUserDataChanged!();
       }
     });
+    widget.fetch;
+    setState(() {
+      widget.selectedIndex = 0;
+    });
+    widget.onNavigationItemSelected(0);
   }
 
   @override

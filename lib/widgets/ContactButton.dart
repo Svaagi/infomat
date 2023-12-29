@@ -68,38 +68,51 @@ class ContactButton extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(width: 10,),
-                          Container(
-                            padding: EdgeInsets.only(right: 8),
-                            height: 30,
-                            width: 200,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
-                            ),
-                            child: Row(
-                              children: [
-                                Radio(
-                                  value: 'Nahlásenie problému',
-                                    groupValue: type,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        if (newValue != null) type = newValue;
-                                      });
-                                    },
-                                    activeColor: AppColors.getColor('primary').main,
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                type = 'Nahlásenie problému';
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.only(right: 8),
+                              height: 30,
+                              width: 200,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: type == 'Nahlásenie problému' ? AppColors.getColor('primary').lighter : AppColors.getColor('mono').lighterGrey,
+                              ),
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    value: 'Nahlásenie problému',
+                                      groupValue: type,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          if (newValue != null) type = newValue;
+                                        });
+                                      },
+                                      activeColor: AppColors.getColor('primary').main,
+                                    ),
+                                  Text(
+                                    'Nahlásenie problému',
+                                    style: TextStyle(
+                                      color:  type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
+                                    ),
                                   ),
-                                Text(
-                                  'Nahlásenie problému',
-                                  style: TextStyle(
-                                    color:  type == 'Nahlásenie problému' ? AppColors.getColor('primary').main : AppColors.getColor('mono').darkGrey,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                            SizedBox(width: 10,),
-                          Container(
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                type = 'Otázka';
+                              });
+                            },
+                            child:Container(
                             padding: EdgeInsets.only(right: 8),
                             height: 30,
                             width: 100,
@@ -129,6 +142,7 @@ class ContactButton extends StatelessWidget {
                               ],
                             ),
                           ),
+                          )
                           ],
                         ),
                          SizedBox(height: 20,),

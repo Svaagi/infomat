@@ -41,37 +41,28 @@ class MobileTeacherFeed extends StatefulWidget {
 }
 
 class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
-  bool isMobile = false;
-  bool isDesktop = false;
   bool _loading = true;
 
-  final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   @override
   void initState() {
-    super.initState();
-    final userAgent = html.window.navigator.userAgent.toLowerCase();
-    isMobile = userAgent.contains('mobile');
-    isDesktop = userAgent.contains('macintosh') ||
-        userAgent.contains('windows') ||
-        userAgent.contains('linux');
-
     widget.init(() {
       setState(() {
-      _loading = true;
-    });
+        _loading = true;
+      });
     }, () {
-    setState(() {
-      _loading = false;
+      setState(() {
+        _loading = false;
+      });
     });
-    });
+
+    super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_loading) {
-        return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
-    }
+    if(_loading) return Center(child: CircularProgressIndicator(),);
     return  Container(
             width: 900,
             child: SingleChildScrollView(
@@ -145,7 +136,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ),
                                           child: Row(
                                           children: [
-                                            Text("${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}", style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                            Text("${widget.studentsSum != 0 ? (widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round() : 0}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}", style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                               color: Theme.of(context).colorScheme.onPrimary,
                                             ),),
                                             SizedBox(width: 4,),
@@ -208,34 +199,50 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
+                         Row(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  width: 153,
+                                  child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
+                                    widget.addWeek();
+                                    widget.init(() {
+                                      setState(() {
+                                      _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                    });
+                                  }),
+                                ),
+                                
+                                SizedBox(
+                                  height: 40,
+                                  width: 168,
+                                  child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
+                                    widget.removeWeek();
+                                    widget.init(() {
+                                        setState(() {
+                                        _loading = true;
+                                      });
+                                      }, () {
+                                      setState(() {
+                                        _loading = false;
+                                      });
+                                      });
+                                  }),
+                                ),
+                              ],
+                            ),
                   Container(
                     padding: EdgeInsets.all(16),
                     alignment: Alignment.center,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 40,
-                            width: 153,
-                            child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
-                              widget.addWeek();
-                              widget.init;
-                            }),
-                          ),
-                          
-                          SizedBox(
-                            height: 40,
-                            width: 168,
-                            child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
-                              widget.removeWeek();
-                              widget.init;
-                            }),
-                          ),
-                        ],
-                      ),
+                      
                       Text(
                         'Výsledky',
                         textAlign: TextAlign.start,

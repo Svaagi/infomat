@@ -132,19 +132,16 @@ class _AppState extends State<App> {
           weeklyTestIndex = i- (getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]));
         });
       }
-
  }
 
   void init (void Function() start, void Function() end ) async {
     start();
-     final userAgent = html.window.navigator.userAgent.toLowerCase();
+      // Initialize the weekly challenge count based on the active weeks
+    final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
-
-      // Initialize the weekly challenge count based on the active weeks
-
        // Calculate the time until the next midnight
       DateTime now = DateTime.now();
       DateTime nextMidnight = DateTime(now.year, now.month, now.day + 1);
@@ -170,6 +167,8 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+    
+
     // Fetch the user data when the app starts
     init(() {}, () {});
   }
@@ -190,6 +189,13 @@ void updateWeeklyChallenge() {
   
 
   getWeeklyIndexes(weeklyChallenge);
+}
+
+void fetch() async {
+  init(() { }, () { });
+  setState(() {
+    _selectedIndex = 0;
+  });
 }
 
 
@@ -342,6 +348,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                       _tutorial = true;
                     });
                 },
+                fetch: fetch,
                 onItemTapped: _onNavigationItemSelected,
                 selectedIndex: _selectedIndex,
                 currentUserData: currentUserData,
@@ -366,6 +373,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       : PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: DesktopAppBar(
+            fetch: fetch,
             tutorial: () {
                   setState(() {
                       _tutorial = true;

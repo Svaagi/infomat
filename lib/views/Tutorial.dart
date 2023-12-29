@@ -104,7 +104,7 @@ class _TutorialState extends State<Tutorial> {
            padding: EdgeInsets.symmetric(horizontal: 16),
           width: 350,
           child: Text(
-            'len 16% ',
+            'Len 16% ',
             style: Theme.of(context)
                 .textTheme
                 .displayMedium!

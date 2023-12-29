@@ -43,8 +43,6 @@ class DesktopTeacherFeed extends StatefulWidget {
 }
 
 class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
-  bool isMobile = false;
-  bool isDesktop = false;
   bool _loading = true;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
@@ -52,12 +50,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
   @override
   void initState() {
     super.initState();
-    final userAgent = html.window.navigator.userAgent.toLowerCase();
-    isMobile = userAgent.contains('mobile');
-    isDesktop = userAgent.contains('macintosh') ||
-        userAgent.contains('windows') ||
-        userAgent.contains('linux');
-
+    
 
     widget.init(() {
       setState(() {

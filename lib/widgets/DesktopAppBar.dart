@@ -10,9 +10,10 @@ import 'package:infomat/models/UserModel.dart';
 class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final UserData? currentUserData;
   final Function(int) onNavigationItemSelected;
-  final VoidCallback? onUserDataChanged;
   int selectedIndex;
+  final VoidCallback? onUserDataChanged;
   final void Function() tutorial;
+  void Function() fetch;
 
 
   DesktopAppBar({
@@ -21,7 +22,8 @@ class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.onNavigationItemSelected,
     required this.selectedIndex,
     this.onUserDataChanged,
-    required this.tutorial
+    required this.tutorial,
+    required this.fetch
   }) : super(key: key);
 
   @override
@@ -69,7 +71,7 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                           ),
                           const SizedBox(width: 8),
                           if(!widget.currentUserData!.teacher) SvgPicture.asset('assets/icons/starYellowIcon.svg'),
-                          if(widget.currentUserData!.teacher && widget.currentUserData!.classes.length > 0)DropDown(currentUserData: widget.currentUserData, onUserDataChanged: widget.onUserDataChanged,),
+                          if(widget.currentUserData!.teacher && widget.currentUserData!.classes.length > 0)DropDown(currentUserData: widget.currentUserData, onUserDataChanged: widget.onUserDataChanged, fetch: widget.fetch, onNavigationItemSelected: widget.onNavigationItemSelected, selectedIndex: widget.selectedIndex),
                           const SizedBox(width: 16),
                           NotificationsDropDown(
                             currentUserData: widget.currentUserData, // Pass your user data

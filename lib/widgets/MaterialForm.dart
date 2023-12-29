@@ -207,7 +207,7 @@ class _MaterialFormState extends State<MaterialForm> {
                         ),
                       );
                     }).toList() ?? [],
-                    decoration: InputDecoration(labelText: 'Choose Class'),
+                    decoration: InputDecoration(labelText: 'Vyberte triedu'),
                   ),
                 SizedBox(height: 10),
                 Text('Typ obsahu'),

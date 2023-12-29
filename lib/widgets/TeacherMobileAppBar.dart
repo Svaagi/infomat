@@ -1,3 +1,5 @@
+import 'dart:js_interop_unsafe';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
@@ -13,9 +15,11 @@ class TeacherMobileAppBar extends StatelessWidget {
   final VoidCallback? onUserDataChanged;
   final void Function() tutorial;
   final void Function(int) onNavigationItemSelected;
+  void Function() fetch;
 
 
-  const TeacherMobileAppBar({
+
+  TeacherMobileAppBar({
     Key? key,
     required this.currentUserData,
     required this.logOut,
@@ -23,7 +27,8 @@ class TeacherMobileAppBar extends StatelessWidget {
     required this.onItemTapped,
     required this.onUserDataChanged,
     required this.tutorial,
-    required this.onNavigationItemSelected
+    required this.onNavigationItemSelected,
+    required this.fetch
   }) : super(key: key);
 
   @override
@@ -42,7 +47,7 @@ class TeacherMobileAppBar extends StatelessWidget {
         SizedBox(width: 50,), // Pushes the following widgets to the middle
 
         const Spacer(),
-         DropDown(currentUserData: currentUserData, onUserDataChanged: onUserDataChanged,),
+         DropDown(currentUserData: currentUserData, onUserDataChanged: onUserDataChanged, fetch: fetch, onNavigationItemSelected: onNavigationItemSelected, selectedIndex: selectedIndex),
         const Spacer(),
         IconButton(
         icon: SvgPicture.asset('assets/icons/infoIcon.svg', color: Colors.white,),
