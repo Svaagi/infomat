@@ -29,11 +29,11 @@ class _ProfileState extends State<Profile> {
   final PageController _pageController = PageController();
  UserData? currentUserData;
  int weeklyCapitol = 0;
-  int capitolOne = 0;
-  int capitolTwo = 0;
-  int capitolThree = 0;
-  int capitolFour = 0;
-  int capitolFive = 0;
+  int capitolOne = 14;
+  int capitolTwo = 43;
+  int capitolThree = 24;
+  int capitolFour = 52;
+  int capitolFive = 32;
 
   bool _isDisposed = false;
   List<String> badges = [];
@@ -680,7 +680,7 @@ class _ProfileState extends State<Profile> {
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Mediálna Gramotnosť:',
+                                                    'Mediálna gramotnosť:',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyLarge!

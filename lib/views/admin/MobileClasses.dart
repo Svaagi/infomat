@@ -184,7 +184,7 @@ class _MobileClassesState extends State<MobileClasses> {
                                           height: 48,
                                           child:  ReButton(
                                             color: "grey", 
-                                            text: 'PRIRADIŤ PROFIL',  
+                                            text: 'EXISTUJÚCI PROFIL',  
                                             onTap: () async {
                                                 widget.onNavigationItemSelected(3);
                                                 Navigator.of(context).pop();
@@ -232,7 +232,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     builder: (context, userSnapshot) {
                       if (userSnapshot.hasError) {
                         print('Error fetching user data: ${userSnapshot.error}');
-                        return Text('Error: ${userSnapshot.error}');
+                        return Container();
                       } else if (!userSnapshot.hasData) {
                         return Center(child: CircularProgressIndicator());
                       } else {
@@ -429,7 +429,7 @@ class _MobileClassesState extends State<MobileClasses> {
                     builder: (context, userSnapshot) {
                       if (userSnapshot.hasError) {
                         print('Error fetching user data: ${userSnapshot.error}');
-                        return Text('Error: ${userSnapshot.error}');
+                        return Container();
                       } else if (!userSnapshot.hasData) {
                         return Center(child: CircularProgressIndicator());
                       } else {

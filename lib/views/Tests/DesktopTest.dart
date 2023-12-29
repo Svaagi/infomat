@@ -454,6 +454,7 @@ class _DesktopTestState extends State<DesktopTest> {
                                     } else {
                                       tile = reTileMatchmaking(AppColors.getColor('red').lighter, AppColors.getColor('red').main, correct!.firstWhere((item) => item["index"] == index)["correct"], index, item, context, item2, false);
                                     }
+                                    itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
                                   } 
                                   if (tile != null) {
                                     return Column(
@@ -540,7 +541,15 @@ class _DesktopTestState extends State<DesktopTest> {
                                     );
                                   }
                                   } else {
-                                    
+                                    if (answersImage.isNotEmpty && index < answersImage!.length) {
+                                      String? item = answersImage?[index];
+                                      tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
+                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
+                                    } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
+                                      String? item = answers?[(index - (answersImage?.length ?? 0))];
+                                      tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 
+                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index - answersImage.length] : null;
+                                    }
                                     if (tile != null) {
                                     return Column(
                                       children: [

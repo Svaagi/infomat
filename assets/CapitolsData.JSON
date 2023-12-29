@@ -187,7 +187,7 @@
           ]
       },
       {
-          "introduction": "V tomto kvíze zistíš, prečo potrebujeme kritické myslenie a mediálnu gramotnosť. Spoznáš, aké nedokonalosti má ľudský mozog – tzv. „kognitívne skreslenia“. Kognitívne skreslenia sú vrodené vzorce rozmýšľania, ktoré nás vedú k nepresnostiam, neobjektívnosti a iracionálnosti pri rozhodovaní. Ide o akési „mentálne skratky“, ktoré majú evolučný pôvod, avšak v dnešnej komplikovanej informačnej dobe môžu viesť k častým chybám. V tomto kvíze spoznáš 5 kognitívnych skreslení: kotvenie, apofénia, konfirmačné skreslenie, heuristika dostupnosti a skreslenie preživšieho",
+          "introduction": "V tomto kvíze zistíš, prečo potrebujeme kritické myslenie a mediálnu gramotnosť. Spoznáš, aké nedokonalosti má ľudský mozog – tzv. „kognitívne skreslenia“. Kognitívne skreslenia sú vrodené vzorce rozmýšľania, ktoré nás vedú k nepresnostiam, neobjektívnosti a iracionálnosti pri rozhodovaní. Ide o akési „mentálne skratky“, ktoré majú evolučný pôvod, avšak v dnešnej komplikovanej informačnej dobe môžu viesť k častým chybám. V tomto kvíze spoznáš 5 kognitívnych skreslení: kotvenie, apofénia, konfirmačné skreslenie, heuristika dostupnosti a skreslenie preživšieho.",
           "name": "Kognitívne skreslenia",
           "points": 10,
           "questions": [
@@ -1763,7 +1763,7 @@
                 "division": [],
                 "definition": "Ad hominem je faul, pri ktorom sa diskutér schyľuje k osobnému útoku na názorového oponenta. Odpútava sa tým pozornosť od samotnej sily argumentov. Vnútorná logika argumentu môžu zostať nepoškodená, rečník sa snaží len zdiskreditovať osobu súpera.",
                 "explanation": [
-                  "Ad hominem útoky sú často vulgárne a podnecujú hnev. Publikum sa nedozvedá nové potrebné informácie, len je po diskusií viac polarizované. Kvalita takejto diskusie je veľmi nízka a riadená emóciami."
+                  "Ad hominem útoky sú často vulgárne a podnecujú hnev. Publikum sa nedozvedá nové potrebné informácie, len je po diskusii viac polarizované. Kvalita takejto diskusie je veľmi nízka a riadená emóciami."
                 ],
                 "images": [],
                 "matchmaking": [],
@@ -1792,7 +1792,7 @@
                 "images": [],
                 "matchmaking": [],
                 "matches": [],
-                "question": "Predstavte si situáciu, že sa vo verejnej diskusii moderátorka rozpráva o znčisťovaní životného prostredia: „Som presvedčená, že by sme mali znižovať uhlíkovú stopu. Treba investovať viac do zelených technológii a menej sa spoliehať na plyn, ropu a uhlie.“ Vyberte všetky reakcie, ktoré neobsahujú faul slameného panáka.",
+                "question": "Predstavte si situáciu, že sa vo verejnej diskusii moderátorka rozpráva o znečisťovaní životného prostredia: „Som presvedčená, že by sme mali znižovať uhlíkovú stopu. Treba investovať viac do zelených technológii a menej sa spoliehať na plyn, ropu a uhlie.“ Vyberte všetky reakcie, ktoré neobsahujú faul slameného panáka.",
                 "subQuestion": "",
                 "conclusion": "",
                 "title": ""
@@ -2001,11 +2001,10 @@
                 "conclusion": "",
                 "title": "Odkaz na tradíciu je argumentačná chyba, ktorá vychádza z predpokladu, že ak niečo sa robilo v minulosti, musí sa to robiť aj teraz. No pravdou je, že minulosťou sa oháňať nestačí, lebo v minulosti ľudstvo robilo mnoho chýb. Zároveň však toto neznamená, že každá tradícia je automaticky zlá. Každé odvolávanie sa na tradíciu treba kriticky vyhodnocovať a používať logické analýzy o tom, prečo sú jednotlivé tradície správne. Táto chyba preto nie nutne robí všetky argumenty automaticky nepoužiteľné, skôr len poukazuje na nutnosť hlbšieho vysvetlenia."
               }
-                            
             ]
           },
           {
-            "introduction": "V predošlých lekciach ste sa naučili ako delíme argumentačné chyby. Teória je síce podstatná, ale dôležitejšie je vedieť tieto chyby rozoznať v praxi. Preto si predstavíme, ako tieto argumentačné chyby fungujú v reálnom živote.",
+            "introduction": "V predošlých lekciách ste sa naučili, ako delíme argumentačné chyby. Teória je síce podstatná, ale dôležitejšie je vedieť tieto chyby rozoznať v praxi. Preto si predstavíme, ako tieto argumentačné chyby fungujú v reálnom živote.",
             "name": "Argumentačné chyby v praxi",
             "points": 4,
             "questions": [
@@ -3966,9 +3965,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureanswers/picture1.png",
-              "assets/pictureanswers/picture2.png",
-              "assets/pictureanswers/picture3.png"
+              "assets/pictureAnswers/picture1.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
             ],
             "correct": [
               { "correct": 1, "index": 1 }
@@ -3994,9 +3993,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureanswers/picture1.png",
-              "assets/pictureanswers/picture2.png",
-              "assets/pictureanswers/picture3.png"
+              "assets/pictureAnswers/picture1.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 }
@@ -4022,9 +4021,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureanswers/picture4.png",
-              "assets/pictureanswers/picture2.png",
-              "assets/pictureanswers/picture3.png"
+              "assets/pictureAnswers/picture4.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 }
@@ -4050,9 +4049,9 @@
               
             ],
             "answersImage": [
-              "assets/pictureanswers/picture4.png",
-              "assets/pictureanswers/picture2.png",
-              "assets/pictureanswers/picture3.png"
+              "assets/pictureAnswers/picture4.png",
+              "assets/pictureAnswers/picture2.png",
+              "assets/pictureAnswers/picture3.png"
             ],
             "correct": [
               { "correct": 0, "index": 0 },
@@ -4184,7 +4183,7 @@
         ]
         },
         {
-        "introduction": "Ako aj v predošlej lekcií, aj dnes si, ukážeme ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
+        "introduction": "Ako aj v predošlej lekcií, aj dnes si ukážeme, ako sa dajú výberom (nesprávnej) infografiky manipulovať dáta, ktoré sú čitateľom podávané.",
         "name": "Zavádzajúce grafy 2",
         "points": 3,
         "questions":[

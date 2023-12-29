@@ -456,7 +456,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                                 String item = answersImage[index];
                                 itemText = explanation.length > 1 && explanation[index].isNotEmpty  ? explanation[index] : null;
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
-                                borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
+                                borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').grey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
                                 if (widget.usersCompleted) {
                                   mainWidget = reTileImage(bgColor, borderColor, index, item, context, percentage: (widget.studentsSum != 0 ? widget.results.questions[questionIndex].answers[index]/widget.studentsSum : 0.0), correct: isCorrect, percentageColor: percentageColor);
@@ -488,7 +488,6 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
                                 mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
                               }
-
                               // Return the main widget alongside the item text
                               return Column(
                                 children: [

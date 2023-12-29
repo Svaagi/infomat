@@ -229,7 +229,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                     builder: (context, userSnapshot) {
                       if (userSnapshot.hasError) {
                         print('Error fetching user data: ${userSnapshot.error}');
-                        return Text('Error: ${userSnapshot.error}');
+                        return Container();
                       } else if (!userSnapshot.hasData) {
                         return const Center(child: CircularProgressIndicator());
                       } else {
@@ -423,7 +423,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
                     builder: (context, userSnapshot) {
                       if (userSnapshot.hasError) {
                         print('Error fetching user data: ${userSnapshot.error}');
-                        return Text('Error: ${userSnapshot.error}');
+                        return Container();
                       } else if (!userSnapshot.hasData) {
                         return Center(child: CircularProgressIndicator());
                       } else {

@@ -281,7 +281,7 @@ List<TableRow> _buildRows(List<UserData> students) {
           )
           ),
           padding: EdgeInsets.all(8),
-          child: Text('Preimerná Úspešnosť', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
+          child: Text('Priemerná úspešnosť', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
         ),
         Container(
           height: 50,

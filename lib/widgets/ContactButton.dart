@@ -26,7 +26,7 @@ class ContactButton extends StatelessWidget {
       height: 40,
       child: ReButton(
         color: "grey",  
-        text: 'Kontaktuje nás',
+        text: 'Kontaktujte nás',
         rightIcon: 'assets/icons/messageIcon.svg',
         onTap: () {
             showDialog(
