@@ -20,6 +20,7 @@ class NotificationsData {
   String title;
   TypeData type;
   String user;
+  bool seen;
 
   NotificationsData({
     required this.content,
@@ -27,5 +28,6 @@ class NotificationsData {
     required this.title,
     required this.type,
     required this.user,
+    required this.seen
   });
 }

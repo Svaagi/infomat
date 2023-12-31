@@ -37,6 +37,7 @@ Future<List<NotificationsData>> fetchNotifications(UserData userData) async {
         title: data['title'] ?? '',
         type: typeData,
         user: data['user'] ?? '',
+        seen: data['seen'] ?? false
       );
     }).toList();
 
@@ -114,4 +115,33 @@ Future<void> sendNotification(List<String> userIds, String content, String title
   }
 }
 
+Future<void> setAllNotificationsAsSeen(UserData userData) async {
+  try {
+    final CollectionReference usersRef = FirebaseFirestore.instance.collection('users');
+    CollectionReference notificationsRef = FirebaseFirestore.instance.collection('notifications');
+
+    // Iterate through user's notifications and set 'seen' to true
+    for (var notification in userData.notifications) {
+      await notificationsRef.doc(notification.id).update({'seen': true});
+    }
+
+    // Update user's notifications in the user document as well
+    // This step is needed if you're also keeping a reference of seen/unseen status in the user document
+    List<Map<String, Object?>> updatedNotificationsList = userData.notifications.map((notification) {
+      return {
+        'id': notification.id,
+        'seen': true, // Set seen to true
+        'date': notification.date, // Assuming each notification has a date field
+      };
+    }).toList();
+
+    await usersRef.doc(userData.id).update({
+      'notifications': updatedNotificationsList
+    });
+
+  } catch (e) {
+    print('Error setting notifications as seen: $e');
+    throw Exception('Failed to set notifications as seen');
+  }
+}
 

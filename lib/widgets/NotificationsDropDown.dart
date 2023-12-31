@@ -50,11 +50,31 @@ class NotificationsDropDown extends StatefulWidget {
 
 class _NotificationsDropDownState extends State<NotificationsDropDown> {
   late Stream<List<CompleteNotification>> _notificationsDataStream;
+  bool seen = true;
   
   @override
   void initState() {
     super.initState();
+    fetchSeen();
     _notificationsDataStream = _fetchCompleteNotificationsStream();
+  }
+
+  void fetchSeen () async {
+    User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        UserData userData = await fetchUser(user.uid); // Assuming fetchUser is defined
+          List<NotificationsData> notifications = await fetchNotifications(userData);
+
+        for (var notif in notifications) {
+          if(notif.seen == false) {
+            setState(() {
+            seen = false;
+              
+            });
+          
+          };
+      }
+    }
   }
 
   Stream<List<CompleteNotification>> _fetchCompleteNotificationsStream() async* {
@@ -68,6 +88,16 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
         await Future.delayed(Duration(seconds: 1)); 
         List<NotificationsData> notifications = await fetchNotifications(userData);
         List<CompleteNotification> completeNotifications = [];
+
+      for (var notif in notifications) {
+        if(notif.seen == false) {
+          setState(() {
+          seen = false;
+            
+          });
+        
+        };
+      }
 
       for (var notif in notifications) {
         switch (notif.type.type) {
@@ -129,7 +159,7 @@ Widget build(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
-          icon: SvgPicture.asset('assets/icons/bellIcon.svg'),
+          icon: seen ?  SvgPicture.asset('assets/icons/bellIcon.svg') : SvgPicture.asset('assets/icons/notificationBell.svg'),
           onPressed: () {
             _notificationsDataStream = _fetchCompleteNotificationsStream();
 
@@ -211,6 +241,9 @@ Widget build(BuildContext context) {
                                       } else {
                                         widget.onNavigationItemSelected(4);
                                       }
+                                      setState(() {
+                                        seen = true;
+                                      });
                                       widget.selectedIndex = -1;
                                       Navigator.of(context).pop();
                                     },

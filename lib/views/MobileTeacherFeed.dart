@@ -360,7 +360,9 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                               ),
                         ),
                         Container(
-                              height: 142,
+                              constraints: BoxConstraints(
+                                minHeight: 142
+                              ),
                               width: 804,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
@@ -377,11 +379,9 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                 Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.all(12),
-                                    height: 100,
                                     color: AppColors.getColor('mono').lighterGrey,
                                     child:  widget.posts.length == 0 ? Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-
                                       children: [
                                         Text('Ešte nebol pridaný žiaden príspevok. Nové príspevky môžete pridávať prostredníctvom sekcie ', style: Theme.of(context)
                                           .textTheme
@@ -407,12 +407,74 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ),
                                         ),
                                       ],
-                                    ): Column(
-                                  children: [
-                                    
-                                  ],
-                                )
-                                    
+                                    ):  ListView.builder(
+                                    shrinkWrap: true,
+                                itemCount: widget.posts.length > 3 ? 3 : widget.posts.length, // Specify the number of items in the list
+                                itemBuilder: (context, index) {
+                                    // This builder is called for each item of the list
+                                    return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: const EdgeInsets.only(right: 16.0),
+                                            child: CircularAvatar(name: widget.posts[index].user, width: 16, fontSize: 16,),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                widget.posts[index].user,
+                                                style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                    color: Theme.of(context).colorScheme.onBackground,
+                                                  ),
+                                              ),
+                                              Text(
+                                                widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
+                                                style: TextStyle(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10.0),
+                                        Text(widget.posts[index].value),
+                                        Row(
+                                          children: [
+                                            const Spacer(),
+                                            SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
+                                            const SizedBox(width: 4.0),
+                                            Text(widget.posts[index].comments.length.toString(),
+                                              style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                            ),
+                                            const SizedBox(width: 4.0),
+                                            Text(
+                                              sklon(widget.posts[index].comments.length),
+                                              style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  }
+                              )
                                 ) 
                             ],
                           )

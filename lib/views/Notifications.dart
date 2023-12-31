@@ -47,6 +47,7 @@ class _NotificationsState extends State<Notifications> {
   @override
   void initState() {
     super.initState();
+    setAllNotificationsAsSeen(widget.currentUserData!);
     _notificationsData = _fetchCompleteNotifications(widget.currentUserData!);
   }
 
