@@ -459,8 +459,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                       Container(
                                         margin: EdgeInsets.only(bottom: 10),
                                         padding: EdgeInsets.all(8),
-                                        width: 600,
-                                        decoration: BoxDecoration(
+                                        width: 300,                                        decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           border: Border.all(
                                             color: AppColors.getColor('mono').lightGrey,
@@ -500,8 +499,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ],
                                         ),
                                       ),
-                                      
-                                        
                                       ],
                                     );
                                   }
