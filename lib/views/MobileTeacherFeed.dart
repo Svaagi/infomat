@@ -408,45 +408,19 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                         ),
                                       ],
                                     ):  ListView.builder(
-                                    shrinkWrap: true,
-                                itemCount: widget.posts.length > 3 ? 3 : widget.posts.length, // Specify the number of items in the list
+                            shrinkWrap: true,
+                               itemCount: widget.posts.length > 2 ? 2 : widget.posts.length,  // Specify the number of items in the list
                                 itemBuilder: (context, index) {
                                     // This builder is called for each item of the list
-                                    return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    return Row(
+                                      
                                     children: [
-                                      Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      Container(
+                                      width: 100,
+
+                                        child: Column(
                                         children: [
-                                          Container(
-                                            margin: const EdgeInsets.only(right: 16.0),
-                                            child: CircularAvatar(name: widget.posts[index].user, width: 16, fontSize: 16,),
-                                          ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                widget.posts[index].user,
-                                                style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleMedium!
-                                                  .copyWith(
-                                                    color: Theme.of(context).colorScheme.onBackground,
-                                                  ),
-                                              ),
-                                              Text(
-                                                widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
-                                                style: TextStyle(
-                                                  color: AppColors.getColor('mono').grey,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 10.0),
-                                        Text(widget.posts[index].value),
-                                        Row(
+                                          Row(
                                           children: [
                                             const Spacer(),
                                             SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
@@ -471,6 +445,63 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                             ),
                                           ],
                                         ),
+                                        SizedBox(height: 5,),
+                                        Text(
+                                                widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
+                                                style: TextStyle(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                              ),
+                                        ]
+                                        )
+                                      ),
+                                      SizedBox(width: 10,),
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 10),
+                                        padding: EdgeInsets.all(8),
+                                        width: 600,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                            color: AppColors.getColor('mono').lightGrey,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: const EdgeInsets.only(right: 16.0),
+                                            child: CircularAvatar(name: widget.posts[index].user, width: 16, fontSize: 16,),
+                                          ),
+                                          Column(
+                                            
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                widget.posts[index].user,
+                                                style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                    color: Theme.of(context).colorScheme.onBackground,
+                                                  ),
+                                              ),
+                                              
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10.0),
+                                        Text(widget.posts[index].value),
+                                          ],
+                                        ),
+                                      ),
+                                      
+                                        
                                       ],
                                     );
                                   }

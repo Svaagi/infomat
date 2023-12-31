@@ -47,7 +47,7 @@ class _SchoolFormState extends State<SchoolForm> {
   int _selectedIndexClasses = 0;
   bool check = false;
   String? generatedCode;
-  List<int> selectedNumbers = [-1,-1,-1,-1,-1];
+  List<int> selectedNumbers = [-1,-1,-1,-1,-1,-1,-1,-1];
   List<int> selectedYears = [];
   bool _class = false;
   bool setTeacher = false;
@@ -57,12 +57,18 @@ class _SchoolFormState extends State<SchoolForm> {
   TextEditingController _three = TextEditingController();
   TextEditingController _four = TextEditingController();
   TextEditingController _five = TextEditingController();
+  TextEditingController _six = TextEditingController();
+  TextEditingController _seven = TextEditingController();
+  TextEditingController _eight = TextEditingController();
 
   String _oneError = '';
   String _twoError = '';
   String _threeError = '';
   String _fourError = '';
   String _fiveError = '';
+  String _sixError = '';
+  String _sevenError = '';
+  String _eightError = '';
 
 
   List<String> one = [];
@@ -70,6 +76,9 @@ class _SchoolFormState extends State<SchoolForm> {
   List<String> three = [];
   List<String> four = [];
   List<String> five = [];
+  List<String> six = [];
+  List<String> seven = [];
+  List<String> eight = [];
 
   List<String> combinedList = [];
 
@@ -80,6 +89,9 @@ class _SchoolFormState extends State<SchoolForm> {
       case 3: return _three;
       case 4: return _four;
       case 5: return _five;
+      case 6: return _six;
+      case 7: return _seven;
+      case 8: return _eight;
     }
     return _one;
   }
@@ -87,22 +99,49 @@ class _SchoolFormState extends State<SchoolForm> {
   void setError(int index, String message) {
   switch (index) {
     case 1:
-      _oneError = message;
+      setState(() {
+        _oneError = message;
+      });
       break;
     case 2:
-      _twoError = message;
+      setState(() {
+        _twoError = message;
+      });
       break;
     case 3:
-      _threeError = message;
+      setState(() {
+        _threeError = message;
+      });
       break;
     case 4:
-      _fourError = message;
+        setState(() {
+        _fourError = message;
+      });
       break;
     case 5:
-      _fiveError = message;
+        setState(() {
+        _fiveError = message;
+      });
+      break;
+    case 6:
+      setState(() {
+        _sixError = message;
+      });
+      break;
+    case 7:
+          setState(() {
+        _sevenError = message;
+      });
+      break;
+    case 8:
+          setState(() {
+        _eightError = message;
+      });
       break;
     default:
-      _oneError = message;
+      setState(() {
+        _oneError = message;
+      });
   }
 }
 
@@ -114,6 +153,9 @@ class _SchoolFormState extends State<SchoolForm> {
       case 3: return _threeError;
       case 4: return _fourError;
       case 5: return _fiveError;
+      case 6: return _sixError;
+      case 7: return _sevenError;
+      case 8: return _eightError;
     }
     return _oneError;
   }
@@ -125,6 +167,9 @@ class _SchoolFormState extends State<SchoolForm> {
       case 3: return three;
       case 4: return four;
       case 5: return five;
+      case 6: return six;
+      case 7: return seven;
+      case 8: return eight;
     }
     return one;
   }
@@ -132,7 +177,7 @@ class _SchoolFormState extends State<SchoolForm> {
   bool checkLists(List<int> indexes) {
     for (int index in indexes) {
       List<String> list = getList(index + 1);
-      if (list.isEmpty) {
+      if (list.isEmpty ) {
         return false; // If any list has length 0, return false
       }
     }
@@ -465,6 +510,12 @@ class _SchoolFormState extends State<SchoolForm> {
                                   _buildClassesCheckbox(3),
                                   SizedBox(height: 10,),
                                   _buildClassesCheckbox(4),
+                                  SizedBox(height: 10,),
+                                  _buildClassesCheckbox(5),
+                                  SizedBox(height: 10,),
+                                  _buildClassesCheckbox(6),
+                                  SizedBox(height: 10,),
+                                  _buildClassesCheckbox(7),
                                 ],
                               ),
                           ),
@@ -573,7 +624,7 @@ class _SchoolFormState extends State<SchoolForm> {
                                               height: 50,
                                               child: ReButton(
                                                 color: "grey", 
-                                                text: 'Pridať ďalšiu triedu pre ${selectedYears[index] + 1}. ročník ', 
+                                                text: 'Pridať triedu pre ${selectedYears[index] + 1}. ročník ', 
                                                 leftIcon: 'assets/icons/plusIcon.svg',
                                                 onTap: () {
                                                   setState(() {
@@ -920,7 +971,7 @@ class _SchoolFormState extends State<SchoolForm> {
       child: CheckboxListTile(
         contentPadding: EdgeInsets.zero,
         title: Text(
-          '${index + 1}. ročník SŠ',
+          '${index + 1}. ročník',
           style: TextStyle(
             color: Colors.black, // Purple when checked
           ),
@@ -1077,6 +1128,10 @@ class _SchoolFormState extends State<SchoolForm> {
 
           for (String name in combinedList) {
             addClass(name, _schoolIdController.text, null, userData.id, (String) {});
+          }
+
+          for (int i = 0; i < 8; i++) {
+            if(getController(i).text != '') addClass(getController(i).text, _schoolIdController.text, null, userData.id, (String) {});;
           }
         _onNavigationItemSelected(_selectedIndex + 1);
         

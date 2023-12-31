@@ -268,19 +268,19 @@ Container reTileMatchmaking(
             color: color,
           ),
           child: ListTile(
-             leading: percentage == 0 || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+             leading: percentage == 0 || percentage == null ? correct == null ? Text('${String.fromCharCode('a'.codeUnitAt(0) + _answer)})',
                 style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
                   ,
-              ) : correct ? Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+              ) : correct ? Text('${String.fromCharCode('a'.codeUnitAt(0) + _answer)})',
                   style: Theme.of(context)
                     .textTheme
                     .titleLarge!
                     .copyWith(
                       color: AppColors.getColor('green').main,
                     ),
-                ) : Text('${String.fromCharCode('a'.codeUnitAt(0) + index)})',
+                ) : Text('${String.fromCharCode('a'.codeUnitAt(0) + _answer)})',
                     style: Theme.of(context)
                       .textTheme
                       .titleLarge!

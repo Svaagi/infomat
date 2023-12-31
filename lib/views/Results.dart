@@ -228,6 +228,10 @@ Widget buildScoreTable(List<UserData> students) {
 List<TableRow> _buildRows(List<UserData> students) {
   List<TableRow> rows = [];
 
+
+  // Determine the number of capitols to display based on the selected period
+  int numberOfCapitols = (selectedPeriod == 'Všetky') ? students.first.capitols.length : (selectedPeriod == 'Prvý Polrok') ? 3 : 2; // Assuming each period has 4 capitols
+
   // Add header
   rows.add(
     TableRow(
@@ -245,18 +249,22 @@ List<TableRow> _buildRows(List<UserData> students) {
           padding: EdgeInsets.all(8),
           child: Text('Meno', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
         ),
-        ...students.first.capitols.map((e) => Container(
-           decoration: BoxDecoration(
+        ...List.generate(numberOfCapitols, (index) {
+          // Accessing elements in reverse order
+          if(selectedPeriod == 'Druhý Polrok') index += 3;
+          return Container(
+            decoration: BoxDecoration(
               color: AppColors.getColor('primary').light,
-
-                border: Border(
-                right:  BorderSide(color: Colors.white),
-              )
+              border: Border(
+                right: BorderSide(color: Colors.white),
               ),
-              height: 50,
-              padding: EdgeInsets.all(8),
-              child: Text(e.name, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
-        )),
+            ),
+            height: 50,
+            padding: EdgeInsets.all(8),
+            // Use reversedIndex to access the capitols in reverse order
+            child: Text(students.first.capitols[index].name, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
+          );
+        }),
         Container(
           height: 50,
           width: 80,
@@ -304,20 +312,23 @@ List<TableRow> _buildRows(List<UserData> students) {
   // Add data rows
   for (var student in students) {
     List<Map<String, int>> scores = getCapitolScores(student);
+
+    // Filter scores based on selectedPeriod
+    if (selectedPeriod == 'Prvý Polrok') {
+      scores = scores.take(3).toList();
+    } else if (selectedPeriod == 'Druhý Polrok') {
+      scores = scores.skip(3).toList();
+    } else if (selectedPeriod == 'Všetky') {
+      // Keep all scores
+    }
+
     int totalScore = getTotalScore(student);
     int maxScore = getMaxScore(student);
     double percentage = (totalScore / maxScore) * 100;
     String grade = getGrade(percentage);
-
-    // Modify this part to filter capitols based on selectedPeriod
-    if (selectedPeriod == 'Prvý Polrok') {
-      scores = scores.take(4).toList();  // Take first 4 capitols for Prvý Polrok
-    } else if (selectedPeriod == 'Druhý Polrok') {
-      scores = scores.skip(4).toList();  // Skip first 4 capitols for Druhý Polrok
-    }
     
 
-    rows.add(
+   rows.add(
       TableRow(
         children: [
           Container(

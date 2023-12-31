@@ -53,6 +53,7 @@ class _ChallengesState extends State<Challenges> {
   List<ResultCapitolsData>? currentResults;
   int studentsSum = 0;
   String resultsId = '';
+  final ScrollController _scrollController = ScrollController();
 
   double percentage(int capitolIndex, int testIndex) {
     if (currentResults![capitolIndex].tests[testIndex].points == 0 || studentsSum == 0) return 0;
@@ -69,6 +70,16 @@ class _ChallengesState extends State<Challenges> {
     } else {
       return false;
     }
+  }
+
+  void scrollUp() {
+    final currentScroll = _scrollController.offset;
+    final scrollPosition = (currentScroll - 150).clamp(0.0, _scrollController.position.maxScrollExtent);
+    _scrollController.animateTo(
+      scrollPosition,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
   }
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
@@ -228,6 +239,13 @@ Future<List<dynamic>> fetchQuestionData() async {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
 Widget build(BuildContext context) {
   if (_loading) {
       return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
@@ -292,6 +310,7 @@ Widget build(BuildContext context) {
                           ),
                           Expanded(
                             child: ListView.builder(
+                              controller: _scrollController,
                             reverse: true,
                             itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
@@ -377,6 +396,7 @@ Widget build(BuildContext context) {
                                                 weeklyCapitolIndex: widget.weeklyCapitolIndex,
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
+                                                scrollUp: scrollUp,
                                               ),
                                             ],
                                           ),
@@ -404,6 +424,7 @@ Widget build(BuildContext context) {
                     children: [
                       Expanded(
                         child: ListView.builder(
+                          controller: _scrollController,
                             reverse: true,
                             itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
@@ -489,6 +510,7 @@ Widget build(BuildContext context) {
                                                 weeklyCapitolIndex: widget.weeklyCapitolIndex,
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
+                                                scrollUp: scrollUp,
                                               ),
                                             ],
                                           ),
@@ -529,6 +551,7 @@ class StarButton extends StatelessWidget {
   int weeklyCapitolIndex; 
   int weeklyTestIndex;
   bool Function(int, int) isBehind;
+  void Function() scrollUp;
 
   StarButton({
     required this.number,
@@ -539,7 +562,8 @@ class StarButton extends StatelessWidget {
     required this.percentage,
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
-    required this.isBehind
+    required this.isBehind,
+    required this.scrollUp
   });
 
  int countTrueValues(List<UserQuestionsData>? questionList) {
@@ -611,14 +635,14 @@ Widget build(BuildContext context) {
                  onTap: () {
                     final RenderBox button = context.findRenderObject() as RenderBox;
                     if (userData!.teacher) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
                     } else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) == 0) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 1);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 1, scrollUp);
                     } 
                     else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) > 0) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 2);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 2, scrollUp);
                     }  else {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 0);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 0, scrollUp);
                     }
                     visibleContainerIndex(number);
                   },
@@ -650,9 +674,9 @@ Widget build(BuildContext context) {
                 onTap: () {
                   final RenderBox button = context.findRenderObject() as RenderBox;
                   if (userData!.teacher) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
                   } else {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 5);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 5, scrollUp);
                   }
                   visibleContainerIndex(number);
                 },
@@ -686,11 +710,11 @@ Widget build(BuildContext context) {
                 onTap: () {
                   final RenderBox button = context.findRenderObject() as RenderBox;
                   if (userData!.teacher) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
                   } else if (userData!.capitols[int.parse(capitolsId)].completed) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp);
                   } else {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 3);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 3, scrollUp);
                   }
                   visibleContainerIndex(number);
                 },
@@ -711,7 +735,7 @@ Widget build(BuildContext context) {
 
 
 
-void showPopupMenu(BuildContext context, int direction, RenderBox button, int columnId) {
+void showPopupMenu(BuildContext context, int direction, RenderBox button, int columnId, Function() scrollUp) {
   final double menuWidth = 400.0; // Set your desired menu width
   final double menuHeight = 200.0; // Set your desired menu height
 
@@ -720,6 +744,14 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
 
   double offsetX = buttonPosition.dx + button.size.width / 2 - menuWidth / 2;
   double offsetY = buttonPosition.dy + button.size.height + 10; // Adjust vertical position as needed
+
+
+  // Check if Y-coordinate of the button is lower than 200 and call scrollUp if it is
+  print(buttonPosition.dy);
+
+  if (buttonPosition.dy > 600) {
+    scrollUp();
+  }
 
   final RelativeRect position = RelativeRect.fromLTRB(
     offsetX,

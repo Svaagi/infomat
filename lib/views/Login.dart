@@ -4,6 +4,7 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/SchoolForm.dart';
+import 'package:infomat/widgets/PasswordChange.dart';
 import 'package:flutter/gestures.dart'; // Import this line
 import 'dart:html' as html;
 
@@ -25,6 +26,7 @@ class _LoginState extends State<Login> {
   bool isMobile = false;
   bool isDesktop = false;
   bool isSchool = false;
+  bool isPassword = false;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -143,6 +145,11 @@ class _LoginState extends State<Login> {
     if (isSchool){ 
       return SchoolForm(isSchool: () {setState(() {
       isSchool = false;
+    }); });
+    }
+    if (isPassword){ 
+      return PasswordChange(isPassword: () {setState(() {
+      isPassword = false;
     }); });
     }
 
@@ -294,19 +301,46 @@ class _LoginState extends State<Login> {
                                 },
                             ),
                           ),
+                          
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 60),
-                child: ReButton(
-                  color: "green", 
-                  text: 'PRIHLÁSIŤ SA',
-                  onTap: handleLogin,
+                Container(
+                  margin: const EdgeInsets.only(bottom: 60),
+                  child: Column(
+                    children: [
+                    ReButton(
+                    color: "green", 
+                    text: 'PRIHLÁSIŤ SA',
+                    onTap: handleLogin,
+                  ),
+                  SizedBox(height: 10,),
+                Text.rich(
+                  TextSpan(
+                    text: 'Obnoviť heslo',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                        decoration: TextDecoration.underline,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                    // You can also add onTap to make it clickable
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // Handle the tap event here, e.g., open a URL
+                        // You can use packages like url_launcher to launch URLs.
+                        setState(() {
+                          isPassword = true;
+                        });
+                      },
+                  ),
                 ),
+              ]
+            )
               )
             ],
           ),
