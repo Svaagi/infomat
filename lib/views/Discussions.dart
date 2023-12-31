@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:infomat/views/DesktopDiscussions.dart';
 import 'package:infomat/views/MobileDiscussions.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 
@@ -19,9 +20,24 @@ class Discussions extends StatefulWidget {
 }
 
 class _DiscussionsState extends State<Discussions> {
+  
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendDiscussionsEvent() async {
+    await analytics.logEvent(
+      name: 'diskusia',
+      parameters: {
+        'page': 'diskusia', // replace with your actual page/screen name
+      },
+    );
+  }
+  
   @override
   void initState() {
     super.initState();
+
+    sendDiscussionsEvent();
   }
 
 

@@ -5,6 +5,7 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/ResultsModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 class DesktopStudentFeed extends StatefulWidget {
@@ -64,6 +65,18 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendFeedEvent() async {
+    await analytics.logEvent(
+      name: 'domov',
+      parameters: {
+        'page': 'domov', // replace with your actual page/screen name
+      },
+    );
+  }
+
   @override
   void initState()
     {
@@ -73,6 +86,8 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
       isDesktop = userAgent.contains('macintosh') ||
           userAgent.contains('windows') ||
           userAgent.contains('linux');
+
+      sendFeedEvent();
 
         widget.init(() {
           setState(() {

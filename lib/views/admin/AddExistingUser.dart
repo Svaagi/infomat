@@ -167,6 +167,9 @@ class _AddExistingUserState extends State<AddExistingUser> {
                     color: "green", 
                     text: 'ULOŽIŤ', 
                     onTap: () async {
+                        Set<String> setA = Set.from(widget.currentClass!.data.teachers);
+                        Set<String> setB = Set.from(_selectedTeachers);
+                        await bulkRemoveClassFromUsers(setA.difference(setB).toList(), widget.currentClass!.id);
                         setState(() {
                           isLoading = true;
                           widget.currentClass!.data.teachers = _selectedTeachers;

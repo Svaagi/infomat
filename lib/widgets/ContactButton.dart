@@ -8,13 +8,15 @@ class ContactButton extends StatelessWidget {
   TextEditingController messageController;
   TextEditingController contactController;
   Future Function(String, String, String) sendMessage;
+  Future<void> sendContact;
 
   ContactButton({
     Key? key,
     required this.type,
     required this.messageController,
     required this.contactController,
-    required this.sendMessage
+    required this.sendMessage,
+    required this.sendContact
     
   }) : super(key: key);
 
@@ -211,6 +213,7 @@ class ContactButton extends StatelessWidget {
                                 sendMessage(messageController.text, contactController.text, type);
                                 Navigator.of(context).pop();
                                 messageController.text = '';
+                                sendContact;
                               }
                             },
                           ),

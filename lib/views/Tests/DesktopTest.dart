@@ -9,6 +9,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/controllers/ResultsController.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 class DesktopTest extends StatefulWidget {
@@ -67,6 +68,27 @@ class _DesktopTestState extends State<DesktopTest> {
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendStartEvent() async {
+    await analytics.logEvent(
+      name: 'test',
+      parameters: {
+        'event': 'start', // replace with your actual page/screen name
+      },
+    );
+  }
+
+  Future<void> sendCompleteEvent() async {
+    await analytics.logEvent(
+      name: 'test',
+      parameters: {
+        'event': 'complete', // replace with your actual page/screen name
+      },
+    );
+  }
+
 
   Future<void> fetchQuestionData(int index) async {
       setState(() {
@@ -113,6 +135,8 @@ class _DesktopTestState extends State<DesktopTest> {
   @override
   void initState() {
     super.initState();
+
+    sendStartEvent();
 
         
     if (countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions) == widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length) {
@@ -1148,6 +1172,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
           updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
           widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          sendCompleteEvent();
         } 
 
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;

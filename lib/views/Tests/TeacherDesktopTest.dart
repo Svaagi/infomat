@@ -9,6 +9,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 class TeacherDesktopTest extends StatefulWidget {
@@ -63,6 +64,18 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   bool checkTitle = false;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendStartEvent() async {
+    await analytics.logEvent(
+      name: 'test učiteľ',
+      parameters: {
+        'event': 'zobrazenie', // replace with your actual page/screen name
+      },
+    );
+  }
 
 
 
@@ -135,6 +148,8 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
   void initState() {
     // TODO: implement initState
     fetchQuestionData();
+
+    sendStartEvent();
     super.initState();
   }
   

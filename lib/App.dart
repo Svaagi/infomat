@@ -63,6 +63,7 @@ class _AppState extends State<App> {
   bool isMobile = false;
   bool isDesktop = false;
   bool _tutorial = false;
+  List<PostsData> _posts = [];
   bool _loadingChallenge = true;
   List<dynamic> data = [];
   List<dynamic> orderedData = [];
@@ -84,6 +85,25 @@ class _AppState extends State<App> {
 
   void removeWeek () {
     _activeWeeks.removeLast();
+  }
+
+  Future<void> fetchPosts() async {
+    try {
+      ClassData classes = await fetchClass(currentUserData!.schoolClass);
+      List<PostsData> posts = [];
+
+      posts.addAll(classes.posts);
+
+      posts.sort((a, b) => b.date.compareTo(a.date));
+      if(mounted) {
+        setState(() {
+          _posts = posts;
+        });
+      }
+
+    } catch (e) {
+      print('Error fetching posts: $e');
+    }
   }
 
 
@@ -160,6 +180,8 @@ class _AppState extends State<App> {
 
     await fetchUserData();
 
+    await fetchPosts();
+
     end();
   }
 
@@ -185,8 +207,6 @@ void updateWeeklyChallenge() {
   }
 
   _loadingChallenge = false;
-
-  
 
   getWeeklyIndexes(weeklyChallenge);
 }
@@ -267,12 +287,22 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         setUserSigned(user.uid);
       }
 
+      int count = 0;
+
+      for (UserCapitolsTestData tmp in userData.capitols[weeklyCapitolIndex].tests) {
+        if (tmp.completed) {
+          count++;
+        }
+      }
+
       // Update state with user data, and class data if available
       setState(() {
         currentUserData = userData;
         if (classData != null) {
           order = classData.capitolOrder;
           studentsSum = classData.students.length;
+          if (userData.capitols[weeklyCapitolIndex].tests[weeklyTestIndex].completed) weeklyBool = true;
+          completedCount = count;
         }
         _loadingUser = false;
       });
@@ -596,6 +626,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             init: init,
             results: currentResults,
             studentsSum: studentsSum,
+            posts: _posts,
           ) : DesktopTeacherFeed(
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
@@ -608,6 +639,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             init: init,
             results: currentResults,
             studentsSum: studentsSum,
+            posts: _posts,
           );
       case 1:
         return Challenges(

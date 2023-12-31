@@ -10,6 +10,8 @@ import 'dart:async';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/MaterialModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 
 
 class Learning extends StatefulWidget {
@@ -56,6 +58,18 @@ class _LearningState extends State<Learning> {
     } catch (e) {
       print('Error fetching user data: $e');
     }
+  }
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendDiscussionsEvent() async {
+    await analytics.logEvent(
+      name: 'vzdelávanie',
+      parameters: {
+        'page': 'vzdelávanie', // replace with your actual page/screen name
+      },
+    );
   }
 
 

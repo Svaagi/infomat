@@ -9,6 +9,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class TeacherMobileTest extends StatefulWidget {
   final int testIndex;
@@ -62,6 +63,18 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendStartEvent() async {
+    await analytics.logEvent(
+      name: 'test učiteľ',
+      parameters: {
+        'event': 'zobrazenie', // replace with your actual page/screen name
+      },
+    );
+  }
+
 
   Future<void> fetchQuestionData() async {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
@@ -111,6 +124,8 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
   @override
   void initState() {
     super.initState();
+
+    sendStartEvent();
     
 
     fetchQuestionData();

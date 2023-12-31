@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:flutter/gestures.dart'; 
 import 'package:infomat/models/ResultsModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:infomat/models/ClassModel.dart';
 
 
 import 'dart:html' as html;
@@ -21,6 +24,7 @@ class DesktopTeacherFeed extends StatefulWidget {
   void Function() removeWeek;
   List<ResultCapitolsData>? results;
   int studentsSum;
+  List<PostsData> posts;
 
 
   DesktopTeacherFeed({
@@ -35,7 +39,8 @@ class DesktopTeacherFeed extends StatefulWidget {
     required this.addWeek,
     required this.removeWeek,
     this.results,
-    required this.studentsSum
+    required this.studentsSum,
+    required this.posts
   }) : super(key: key);
 
   @override
@@ -47,10 +52,39 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendFeedEvent() async {
+    await analytics.logEvent(
+      name: 'domov',
+      parameters: {
+        'page': 'domov', // replace with your actual page/screen name
+      },
+    );
+  }
+
+  
+  String formatTimestamp(Timestamp timestamp) {
+    DateTime date = timestamp.toDate();
+    return "${date.day}.${date.month}.${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
+
+  }
+
+  String sklon(int length) {
+    if (length == 1) {
+      return 'odpoveď';
+    } else if (length > 1 && length < 5 ) {
+      return 'odpovede';
+    }
+    return 'odpovedí';
+  }
+
   @override
   void initState() {
     super.initState();
-    
+
+    sendFeedEvent();
 
     widget.init(() {
       setState(() {
@@ -328,7 +362,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                   ),
                   Align(
                     alignment: Alignment.center,
-                    child: Column(
+                    child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -354,7 +388,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                               ),
                               margin: EdgeInsets.all(16),
                               padding: EdgeInsets.all(16),
-                              child: Column(
+                              child: widget.posts.length == 0 ? Column(
                                 children: [
                                 Container(
                                     alignment: Alignment.center,
@@ -393,10 +427,14 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     
                                 )
                             ],
+                          ) : Column(
+                            children: [
+                              
+                            ],
                           )
                         ),
                         ],
-                      ),
+                      )
                   ),
                 ],
               ),

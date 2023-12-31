@@ -331,7 +331,7 @@ Future<void> updateUserSchoolClass(List<String> userIds, String newSchoolClassId
 
       // Update the 'schoolClass' field with the new class ID
       await userRef.update({
-        'schoolClass': newSchoolClassId
+        'schoolClass': newSchoolClassId,
       });
 
       print('School class updated to $newSchoolClassId for user $userId successfully.');

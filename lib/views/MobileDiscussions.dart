@@ -10,6 +10,7 @@ import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 
@@ -48,6 +49,18 @@ class _MobileDiscussionsState extends State<MobileDiscussions> {
   int? _editIndex;
   String _selectedLibrary = '';
   String _valueId = '';
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendCommentEvent() async {
+    await analytics.logEvent(
+      name: 'komentár',
+      parameters: {
+        'event': 'komentár', // replace with your actual page/screen name
+      },
+    );
+  }
 
 
   @override
@@ -1059,6 +1072,8 @@ Widget build(BuildContext context) {
                                 widget.currentUserData!.id
                               );
 
+                              sendCommentEvent();
+
                               setState(() {
                                 // Assuming _selectedPost!.comments is of type List<CommentsData>
                                 _selectedPost!.comments.add(newComment);
@@ -1232,6 +1247,8 @@ Widget build(BuildContext context) {
                             newAnswer,
                             _valueId != '' ? _valueId : widget.currentUserData!.id
                           );
+
+                          sendCommentEvent();
 
                           setState(() {
                             // Assuming _selectedComment!.answers is of type List<CommentsAnswersData>

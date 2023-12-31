@@ -20,6 +20,7 @@ import 'dart:html' as html;
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Challenges extends StatefulWidget {
   final Future<void> fetch;
@@ -70,9 +71,23 @@ class _ChallengesState extends State<Challenges> {
     }
   }
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendChallengeEvent() async {
+    await analytics.logEvent(
+      name: 'výzvy',
+      parameters: {
+        'page': 'výzvy', // replace with your actual page/screen name
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
+
+    sendChallengeEvent();
 
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
@@ -321,10 +336,10 @@ Widget build(BuildContext context) {
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
                                             ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
+                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
                                             : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
+                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
                                       OverflowBox(
@@ -433,10 +448,10 @@ Widget build(BuildContext context) {
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
                                             ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? SvgPicture.asset('assets/roadmap/leftRoad.svg')
+                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
                                             : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? SvgPicture.asset('assets/roadmap/rightRoad.svg')
+                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
                                       OverflowBox(

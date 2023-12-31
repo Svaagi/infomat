@@ -10,6 +10,7 @@ import 'package:infomat/Colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 
@@ -49,6 +50,18 @@ class _DesktopDiscussionsState extends State<DesktopDiscussions> {
   bool textFieldIsFocused = false;
   bool textFieldTwoIsFocused = false;
   String _valueId = '';
+
+   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendCommentEvent() async {
+    await analytics.logEvent(
+      name: 'komentár',
+      parameters: {
+        'event': 'komentár', // replace with your actual page/screen name
+      },
+    );
+  }
 
 
   String sklon(int length) {
@@ -1044,6 +1057,8 @@ Widget build(BuildContext context) {
                                 widget.currentUserData!.id
                               );
 
+                              sendCommentEvent();
+
                               setState(() {
                                 // Assuming _selectedPost!.comments is of type List<CommentsData>
                                 _selectedPost!.comments.add(newComment);
@@ -1255,6 +1270,8 @@ Widget build(BuildContext context) {
                               newAnswer,
                               _valueId != '' ? _valueId : widget.currentUserData!.id
                             );
+
+                            sendCommentEvent();
 
                             setState(() {
                               // Assuming _selectedComment!.answers is of type List<CommentsAnswersData>

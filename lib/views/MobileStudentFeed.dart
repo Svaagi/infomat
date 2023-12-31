@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 class MobileStudentFeed extends StatefulWidget {
@@ -47,6 +48,18 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendFeedEvent() async {
+    await analytics.logEvent(
+      name: 'domov',
+      parameters: {
+        'page': 'domov', // replace with your actual page/screen name
+      },
+    );
+  }
+
   @override
   void initState()
     {
@@ -56,6 +69,8 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
       isDesktop = userAgent.contains('macintosh') ||
           userAgent.contains('windows') ||
           userAgent.contains('linux');
+
+      sendFeedEvent();
 
       setState(() {
         _loading = false;

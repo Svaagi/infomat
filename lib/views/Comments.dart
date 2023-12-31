@@ -372,6 +372,7 @@ class _CommentsState extends State<Comments> {
                                   ],
                                 ),
                                 Spacer(),
+                               
                                 InkWell(
                                   onTap: () {
                                     setState(() {
@@ -405,21 +406,77 @@ class _CommentsState extends State<Comments> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 4.0),
-                              ],
-                            ) : Row(
+                                SizedBox(width: 5,),
+
+                                 if(MediaQuery.of(context).size.width > 1000) Row(
                                   children: [
-                                    SvgPicture.asset('assets/icons/commentIcon.svg'),
-                                    Text('Odpovedať',
+                                    SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
+                                    SizedBox(width: 4.0),
+                                    Text(comment.answers.length.toString(),
                                       style: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall!
-                                      .copyWith(
-                                        color: AppColors.getColor('mono').darkGrey,
-                                      ),
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: AppColors.getColor('mono').grey,
+                                        ),
+                                    ),
+                                    SizedBox(width: 4.0),
+                                    Text(
+                                      sklon(comment.answers.length),
+                                      style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: AppColors.getColor('mono').grey,
+                                        ),
                                     ),
                                   ],
                                 ),
+                                SizedBox(width: 4.0),
+                              ],
+                            ) : Row(
+                              children: [
+                                Row(
+                                children: [
+                                  SvgPicture.asset('assets/icons/commentIcon.svg'),
+                                  Text('Odpovedať',
+                                    style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      color: AppColors.getColor('mono').darkGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                                 Spacer(),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
+                                    SizedBox(width: 4.0),
+                                    Text(comment.answers.length.toString(),
+                                      style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: AppColors.getColor('mono').grey,
+                                        ),
+                                    ),
+                                    SizedBox(width: 4.0),
+                                    Text(
+                                      sklon(comment.answers.length),
+                                      style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                          color: AppColors.getColor('mono').grey,
+                                        ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ) 
+                            
                           ],
                         ),
                         )

@@ -44,6 +44,15 @@ class MainApp extends StatelessWidget {
     );
   }
 
+  Future<void> sendUniqueEvent(String id) async {
+    await analytics.logEvent(
+      name: 'login',
+      parameters: {
+        'di': id, 
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -99,6 +108,7 @@ class MainApp extends StatelessWidget {
           } else {
             if (snapshot.hasData) {
               // User is logged in, navigate to the specified screen
+              sendUniqueEvent(snapshot.data!.uid);
               sendLoginEvent();
               return const App();
             } else {

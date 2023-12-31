@@ -4,8 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:infomat/models/ResultsModel.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:infomat/models/ClassModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'dart:html' as html;
 
 
 class MobileTeacherFeed extends StatefulWidget {
@@ -20,6 +22,7 @@ class MobileTeacherFeed extends StatefulWidget {
   void Function() removeWeek;
   List<ResultCapitolsData>? results;
   int studentsSum;
+  List<PostsData> posts;
 
   MobileTeacherFeed({
     Key? key,
@@ -33,7 +36,8 @@ class MobileTeacherFeed extends StatefulWidget {
     required this.addWeek,
     required this.removeWeek,
     this.results,
-    required this.studentsSum
+    required this.studentsSum,
+    required this.posts
   }) : super(key: key);
 
   @override
@@ -43,9 +47,39 @@ class MobileTeacherFeed extends StatefulWidget {
 class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
   bool _loading = true;
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
+  Future<void> sendFeedEvent() async {
+    await analytics.logEvent(
+      name: 'domov',
+      parameters: {
+        'page': 'domov', // replace with your actual page/screen name
+      },
+    );
+  }
+
+  String formatTimestamp(Timestamp timestamp) {
+    DateTime date = timestamp.toDate();
+    return "${date.day}.${date.month}.${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
+
+  }
+
+  String sklon(int length) {
+    if (length == 1) {
+      return 'odpoveď';
+    } else if (length > 1 && length < 5 ) {
+      return 'odpovede';
+    }
+    return 'odpovedí';
+  }
+
+
+
 
   @override
   void initState() {
+    sendFeedEvent();
     widget.init(() {
       setState(() {
         _loading = true;
@@ -192,13 +226,13 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                         ),
                       ),
                        Transform.translate(
-              offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
-              child: SvgPicture.asset(
-                'assets/bottomBackground.svg',
-                fit: BoxFit.fill,
-                width: MediaQuery.of(context).size.width,
-              ),
-            ),
+                          offset: Offset(0, -1),  // This might help to snap the SVG directly against the container above
+                          child: SvgPicture.asset(
+                            'assets/bottomBackground.svg',
+                            fit: BoxFit.fill,
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                        ),
                          Row(
                               children: [
                                 SizedBox(
@@ -345,7 +379,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                     padding: EdgeInsets.all(12),
                                     height: 100,
                                     color: AppColors.getColor('mono').lighterGrey,
-                                    child: Column(
+                                    child:  widget.posts.length == 0 ? Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
 
                                       children: [
@@ -373,14 +407,18 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ),
                                         ),
                                       ],
-                                    )
+                                    ): Column(
+                                  children: [
                                     
+                                  ],
                                 )
+                                    
+                                ) 
                             ],
                           )
                         ),
                         ],
-                      ),
+                      )
                   ),
                 ],
               ),
