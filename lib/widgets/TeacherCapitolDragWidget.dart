@@ -114,7 +114,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
             child: Row(
               children: [
                 Text(
-                  'Všetky Kapitoly',
+                  'Všetky kapitoly',
                   style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),

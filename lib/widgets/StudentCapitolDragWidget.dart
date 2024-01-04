@@ -112,7 +112,7 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
               width: 600,
               child: 
                 Text(
-                  'Všetky Kapitoly',
+                  'Všetky kapitoly',
                   style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),

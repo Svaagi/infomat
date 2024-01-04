@@ -616,7 +616,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                 const Spacer(),
                ReButton(
                     color: "grey",
-                    text: 'Následujúca', 
+                    text: 'Následujúca,', 
                     rightIcon: 'assets/icons/arrowRightIcon.svg',
                     onTap: () {
                       if (questionIndex + 1 < (questionsPoint ?? 0)) {

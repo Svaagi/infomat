@@ -23,7 +23,7 @@ class _ContactViewState extends State<ContactView> {
 
   Future<void> sendContactEvent() async {
     await analytics.logEvent(
-      name: 'kontatk',
+      name: 'kontakt',
       parameters: {
         'event': 'kontatk', // replace with your actual page/screen name
       },
@@ -213,7 +213,6 @@ class _ContactViewState extends State<ContactView> {
               onTap: () {
                 if(_messageController.text != '') {
                   sendMessage(_messageController.text, _contactController.text, _type);
-                  Navigator.of(context).pop();
                   _messageController.text = '';
                   sendContactEvent();
                 }
