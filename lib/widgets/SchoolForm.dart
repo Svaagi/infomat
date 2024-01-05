@@ -1130,9 +1130,6 @@ class _SchoolFormState extends State<SchoolForm> {
             addClass(name, _schoolIdController.text, null, userData.id, (String) {});
           }
 
-          for (int i = 0; i < 8; i++) {
-            if(getController(i).text != '') addClass(getController(i).text, _schoolIdController.text, null, userData.id, (String) {});;
-          }
         _onNavigationItemSelected(_selectedIndex + 1);
         
       } catch (e) {

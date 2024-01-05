@@ -132,7 +132,7 @@ UserData userData = UserData(
             completed: false,
             id: '0',
             image: '',
-            name: 'Kritické Myslenie',
+            name: 'Kritické myslenie',
             tests: [
               UserCapitolsTestData(
                 completed: false,

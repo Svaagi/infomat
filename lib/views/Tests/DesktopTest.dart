@@ -19,6 +19,7 @@ class DesktopTest extends StatefulWidget {
   final UserData? userData;
   final List<dynamic> data;
   final String resultsId;
+  final bool isPressed;
 
   const DesktopTest(
       {Key? key,
@@ -27,7 +28,8 @@ class DesktopTest extends StatefulWidget {
       required this.capitolsId,
       required this.userData,
       required this.data,
-      required this.resultsId
+      required this.resultsId,
+      required this.isPressed
       })
       : super(key: key);
 
@@ -107,7 +109,7 @@ class _DesktopTestState extends State<DesktopTest> {
         title = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["questions"][questionIndex]["title"] ?? '';
         questionsPoint = widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["points"] ?? 0;
         introduction =  widget.data[int.parse(widget.capitolsId)]["tests"][widget.testIndex]["introduction"] ?? '';
-        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true) {
+        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed == true || widget.isPressed) {
             _answer = widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer;
             pressed = true;
 
@@ -567,8 +569,8 @@ class _DesktopTestState extends State<DesktopTest> {
                                   } else {
                                     if (answersImage.isNotEmpty && index < answersImage!.length) {
                                       String? item = answersImage?[index];
-                                      tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context);
-                                      itemText = explanation!.length > 1 && explanation![index - answersImage.length].isNotEmpty  ? explanation![index] : null;;
+                                      tile = reTileImage(AppColors.getColor('mono').white, AppColors.getColor('mono').black, index, item, context);
+                                      itemText = explanation!.length > 1 && explanation![index].isNotEmpty  ? explanation![index] : null;
                                     } else if ((answers?.length ?? 0) > 1 && index - (answersImage?.length ?? 0) < (answers?.length ?? 0)) {
                                       String? item = answers?[(index - (answersImage?.length ?? 0))];
                                       tile =   reTile(AppColors.getColor('mono').white, AppColors.getColor('mono').lightGrey, index, item, context); 
@@ -625,8 +627,6 @@ class _DesktopTestState extends State<DesktopTest> {
                                   if (!isSelected) {
                                     // If selected items are less than the limit, allow adding
                                       _answer.add(UserAnswerData(answer: index, index: index));
-                                      print(_answer[0].answer);
-                                      print(_answer[0].index);
                                   } else {
                                     // Always allow unchecking
                                     _answer.removeWhere((element) => element.answer == index);

@@ -21,14 +21,16 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Challenges extends StatefulWidget {
   final Future<void> fetch;
   final UserData? currentUserData;
   final int weeklyCapitolIndex;
   final int weeklyTestIndex;
+  final int weeklyChallenge;
 
-  const Challenges({Key? key, required this.fetch, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex});
+  const Challenges({Key? key, required this.fetch, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
 
   @override
   State<Challenges> createState() => _ChallengesState();
@@ -60,12 +62,8 @@ class _ChallengesState extends State<Challenges> {
     return  currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
   }
 
-  bool isBehind(int capitol, int test) {
-    if (userData.teacher) {
-      return false;
-    } else if (widget.weeklyCapitolIndex > capitol) {
-      return true;
-    } else if (widget.weeklyCapitolIndex == capitol && widget.weeklyTestIndex > test) {
+  bool isBehind(int globalIndex, int weeklyChallenge) {
+    if (globalIndex <= weeklyChallenge) {
       return true;
     } else {
       return false;
@@ -140,13 +138,13 @@ Future<void> refreshList() async {
     });
 }
 
-  void toggleOverlayVisibility(int index, int capitolId) {
+  void toggleOverlayVisibility(int index, int capitolId, bool isPressed) {
     setState(() {
       isOverlayVisible = !isOverlayVisible;
     });
 
     if (isOverlayVisible) {
-      overlayEntry = createOverlayEntry(context, index, capitolId);
+      overlayEntry = createOverlayEntry(context, index, capitolId, isPressed);
       Overlay.of(context).insert(overlayEntry);
     } else {
       overlayEntry.remove();
@@ -222,7 +220,7 @@ Future<List<dynamic>> fetchQuestionData() async {
     return (0.09 * 500) / width;
   }
 
-  OverlayEntry createOverlayEntry(BuildContext context, int testIndex, int capitolId) {
+  OverlayEntry createOverlayEntry(BuildContext context, int testIndex, int capitolId, bool isPressed) {
     return OverlayEntry(
       builder: (context) => Positioned.fill(
         child: GestureDetector(
@@ -231,7 +229,7 @@ Future<List<dynamic>> fetchQuestionData() async {
             alignment: Alignment.center,
             child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData) :  MobileTest(resultsId: resultsId,testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?
               TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData)
-               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data),
+               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data, isPressed: isPressed,),
           ),
         ),
       ),
@@ -311,7 +309,6 @@ Widget build(BuildContext context) {
                           Expanded(
                             child: ListView.builder(
                               controller: _scrollController,
-                            reverse: true,
                             itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
@@ -355,10 +352,10 @@ Widget build(BuildContext context) {
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
                                             ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
+                                                ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
                                             : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
+                                                ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
                                       OverflowBox(
@@ -387,9 +384,11 @@ Widget build(BuildContext context) {
                                                     )
                                                   : Container(),
                                               StarButton(
+                                                globalIndex: globalIndex,
+                                                weeklyChallenge: widget.weeklyChallenge,
                                                 number: testIndex,
                                                 userData: widget.currentUserData,
-                                                onPressed: (int number) => toggleOverlayVisibility(number, capitolIndex ?? 0),
+                                                onPressed: (int number, bool pressed) => toggleOverlayVisibility(number, capitolIndex ?? 0, pressed),
                                                 capitolsId: capitolIndex.toString(),
                                                 visibleContainerIndex: (int number) => toggleIndex(number, capitolIndex ?? 0),
                                                 percentage: percentage,
@@ -415,7 +414,7 @@ Widget build(BuildContext context) {
                       ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height,
-                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results: currentResults,studentsSum: studentsSum ,currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                         ),
                     ],
                   ),
@@ -425,7 +424,6 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: ListView.builder(
                           controller: _scrollController,
-                            reverse: true,
                             itemCount: 32 + 5, // Add 1 for the dummy item
                             itemBuilder: (BuildContext context, int globalIndex) {
                               if (globalIndex == 0) {
@@ -469,10 +467,10 @@ Widget build(BuildContext context) {
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
                                             ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
+                                                ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
                                             : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                ? (!isBehind(capitolIndex, testIndex)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
+                                                ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
                                       OverflowBox(
@@ -501,9 +499,11 @@ Widget build(BuildContext context) {
                                                     )
                                                   : Container(),
                                               StarButton(
+                                                globalIndex: globalIndex,
+                                                weeklyChallenge: widget.weeklyChallenge,
                                                 number: testIndex,
                                                 userData: widget.currentUserData,
-                                                onPressed: (int number) => toggleOverlayVisibility(number, capitolIndex ?? 0),
+                                                onPressed: (int number, bool pressed) => toggleOverlayVisibility(number, capitolIndex ?? 0, pressed),
                                                 capitolsId: capitolIndex.toString(),
                                                 visibleContainerIndex: (int number) => toggleIndex(number, capitolIndex ?? 0),
                                                 percentage: percentage,
@@ -528,7 +528,7 @@ Widget build(BuildContext context) {
                       if(MediaQuery.of(context).size.width > 1000) SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width / 2,
-                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results:currentResults,studentsSum: studentsSum ,currentUserData:  widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                       ),
                     ],
                   ),
@@ -542,9 +542,11 @@ Widget build(BuildContext context) {
 
 
 class StarButton extends StatelessWidget {
+  final int globalIndex;
+  final int weeklyChallenge;
   final int number;
   final UserData? userData;
-  final void Function(int) onPressed;
+  final void Function(int, bool) onPressed;
   final String capitolsId;
   final void Function(int) visibleContainerIndex;
   double Function(int, int) percentage;
@@ -554,6 +556,8 @@ class StarButton extends StatelessWidget {
   void Function() scrollUp;
 
   StarButton({
+    required this.globalIndex,
+    required this.weeklyChallenge,
     required this.number,
     required this.onPressed,
     required this.capitolsId,
@@ -586,7 +590,7 @@ Widget build(BuildContext context) {
     userData != null &&
       (userData!.teacher ? percentage(int.parse(capitolsId) , number) != 1.0 : !userData!.capitols[int.parse(capitolsId)].tests[number].completed)
         ? 
-      (!isBehind(int.parse(capitolsId), number)) ?
+      (!isBehind(globalIndex, weeklyChallenge)) ?
 
          Stack(
           alignment: Alignment.center,
@@ -714,7 +718,7 @@ Widget build(BuildContext context) {
                   } else if (userData!.capitols[int.parse(capitolsId)].completed) {
                     showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp);
                   } else {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 3, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp);
                   }
                   visibleContainerIndex(number);
                 },
@@ -747,7 +751,6 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
 
 
   // Check if Y-coordinate of the button is lower than 200 and call scrollUp if it is
-  print(buttonPosition.dy);
 
   if (buttonPosition.dy > 600) {
     scrollUp();
@@ -817,7 +820,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                       child: SizedBox(
                         width: 300,
                         child: ReButton( color: 'white', text: 'ZAČAŤ' , onTap: () {
-                          onPressed(number);
+                          onPressed(number, false);
                           Navigator.of(context).pop();
                         }),
                       )
@@ -852,10 +855,53 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                   Center(
                       child: SizedBox(
                         width: 300,
-                        child: ReButton( color: 'blue', text: 'POKRAČOVAŤ' , onTap: () {
-                          onPressed(number);
-                          Navigator.of(context).pop();
-                        }),
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            onPressed(number, false);
+                            Navigator.of(context).pop();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+ // Replace with your desired icon
+                              Text(
+                                'POKRAČOVAŤ',
+                                style: TextStyle(
+                                  color:  AppColors.getColor("mono").white,
+                                  fontFamily: GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
+                            backgroundColor: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.disabled)) {
+                                return AppColors.getColor("mono").lightGrey;
+                              } else if (states.contains(MaterialState.pressed)) {
+                                return  Color(0xff4689d6);
+                              } else if (states.contains(MaterialState.hovered)) {
+                                return Color(0xff4689d6);
+                              } else {
+                                return Color(0xff4689d6);
+                              }
+                            }),
+                            side: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                AppColors.getColor('blue').lighter;
+                              } else {
+                                return BorderSide.none;
+                              }
+                            }),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                          ),
+                        ),
                       )
                   ),
                 ],
@@ -995,7 +1041,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                       child: SizedBox(
                         width: 300,
                         child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
-                          onPressed(number);
+                          onPressed(number, false);
                           Navigator.of(context).pop();
                         }),
                       )
@@ -1060,7 +1106,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                       child: SizedBox(
                         width: 300,
                         child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
-                          onPressed(number);
+                          onPressed(number, true);
                           Navigator.of(context).pop();
                         }),
                       )
@@ -1097,7 +1143,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                       child: SizedBox(
                         width: 300,
                         child: ReButton( color: 'white', text: 'ZOBRAZIŤ' , onTap: () {
-                          onPressed(number);
+                          onPressed(number, false);
                           Navigator.of(context).pop();
                         }),
                       )
@@ -1130,7 +1176,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                 ),
                Center(
                   child: ReButton(color: "white",  text:  'ZOBRAZIŤ', onTap: () {
-                    onPressed(number);
+                    onPressed(number, false);
                     Navigator.of(context).pop();
                   }),
                 ),

@@ -7,6 +7,7 @@ import 'package:infomat/models/ResultsModel.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -61,7 +62,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
 
   String formatTimestamp(Timestamp timestamp) {
     DateTime date = timestamp.toDate();
-    return "${date.day}.${date.month}.${date.year}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
+    return "${date.day}.${date.month}., ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
 
   }
 
@@ -208,18 +209,57 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   ],
                                 ),
                                 SizedBox(height: 16,),
-                                Container(
-                                  height: 40,
-                                  width:  170,
-                                  child:  ReButton(
-                                    color: "primary", 
-                                    text: 'Zobraziť test',
-                                    rightIcon: 'assets/icons/arrowRightIcon.svg',
-                                    onTap: () {
-                                      widget.onNavigationItemSelected(1);
-                                    },
-                                  ),
-                                ),
+                                SizedBox(
+                                      width: 170,
+                                      height: 40,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          widget.onNavigationItemSelected(1);
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+              // Replace with your desired icon
+                                            Text(
+                                              'Zobraziť test',
+                                              style: TextStyle(
+                                                color:  AppColors.getColor("mono").white,
+                                                fontFamily: GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(width: 5,),
+                                            SvgPicture.asset('assets/icons/arrowRightIcon.svg', color: AppColors.getColor("mono").white)
+                                          ],
+                                        ),
+                                        style: ButtonStyle(
+                                          elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
+                                          backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                            if (states.contains(MaterialState.disabled)) {
+                                              return AppColors.getColor("mono").lightGrey;
+                                            } else if (states.contains(MaterialState.pressed)) {
+                                              return  Color(0xff7579d2);
+                                            } else if (states.contains(MaterialState.hovered)) {
+                                              return Color(0xff7579d2);
+                                            } else {
+                                              return Color(0xff7579d2);
+                                            }
+                                          }),
+                                          side: MaterialStateProperty.resolveWith((states) {
+                                            if (states.contains(MaterialState.pressed)) {
+                                              AppColors.getColor('blue').lighter;
+                                            } else {
+                                              return BorderSide.none;
+                                            }
+                                          }),
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(30),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
                               ],
                             )
                           ),

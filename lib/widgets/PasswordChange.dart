@@ -205,11 +205,14 @@ class _PasswordChangeState extends State<PasswordChange> {
                         });
                         final functions = FirebaseFunctions.instance;
 
-                        await functions.httpsCallable('updateUserEmailAndPassword').call({
+                        await functions.httpsCallable('updatePassword').call({
+                          'userEmail': _adminEmailController.text,
                           'newPassword': generatedPassword,
                         });
-                        sendUserPasswordEmail(_adminEmailController.text);
-                        widget.isPassword;
+                        await sendUserPasswordEmail(_adminEmailController.text);
+                        reShowToast('Heslo bolo zmenené', false, context);
+                        widget.isPassword();
+                        
                       };
                     },
                   ),

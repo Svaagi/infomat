@@ -90,7 +90,7 @@ class _TutorialState extends State<Tutorial> {
            padding: EdgeInsets.symmetric(horizontal: 16),
           width: 350,
           child: Text(
-            'S appkou Infomat si študenti a študentky každý týždeň cez krátke testy posilňujú kritické myslenie a v diskusnom fóre sa učia formulovať svoje názory.',
+            'S appkou Infomat si študentky a študenti prostredníctvom krátkych testov trénujú kritické myslenie.',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge!
@@ -104,7 +104,7 @@ class _TutorialState extends State<Tutorial> {
            padding: EdgeInsets.symmetric(horizontal: 16),
           width: 350,
           child: Text(
-            'Len 16% ',
+            'Len 16%',
             style: Theme.of(context)
                 .textTheme
                 .displayMedium!
@@ -117,7 +117,7 @@ class _TutorialState extends State<Tutorial> {
            padding: EdgeInsets.symmetric(horizontal: 16),
           width: 350,
           child: Text(
-            'mladých ľudí si overuje informácie z médií vždy alebo takmer vždy (RmS).',
+            'mladých ľudí si vždy alebo takmer vždy overuje informácie z médií.',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge!
@@ -160,7 +160,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Na začiatku každého týždňa dostaneš krátky test s priemerne 5 otázkami zameraných na odhalenie dezinformácií - napr. nájdi v článku argumentačnú chybu, nepravdivo odprezentované dáta alebo odhaľ falošný zdroj. Každý týždeň je možné vyplniť iba jeden test do deadline, následne test evidujeme ako nesplnený.',
+                  'Každý týždeň dostanete krátky test s otázkami zameranými na odhaľovanie dezinformácií, ako napríklad hľadanie argumentačných chýb, nepravdivo odprezentovaných informácií, alebo odhalenie falošného zdroja. Každý týždeň je možné vyplniť iba jeden test do určeného času. V opačnom prípade je test evidovaný ako nesplnený.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -219,7 +219,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Tu nájdeš aktuálne prebiehajúcu týždennú výzvu a tvoj doterajší progres a výsledky.',
+                  'Tu nájdete aktuálne prebiehajúcu týždennú výzvu, váš doterajší postup a výsledky.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -282,7 +282,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Tu nájdeš plán všetkých testov, ktoré spájame podľa obsahu do väčších tematických celkov - kapitol. ',
+                  'Tú nájdete plán všetkých testov, ktoré spájame podľa obsahu do tematických celkov - kapitol.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -345,7 +345,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Do diskusného fóra môže iba učiteľ/ka pridať tézu (napr. o aktuálnom spoločenskom dianí) a ty na ňu môžeš reagovať v komentároch. Kvalitné komentáre môžete učiteľ/ka oceniť hviezdičkou za aktivitu.',
+                  'Do diskusného fóra môže učiteľ/ka pridať tézu (napríklad o aktuálnom spoločenskom dianí) a vy na ňu môžete reagovať v komentároch. Hodnotné komentáre môžu byť ocenené.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -408,7 +408,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Tu nájdeš vzdelávacie tipy na podujatia, videá, články a programy.',
+                  'Tu nájdete tipy na zaujímavé články, videá, programy, podujatia, ktoré vám môže učiteľ/ka odporúčať.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
@@ -471,7 +471,7 @@ class _TutorialState extends State<Tutorial> {
                 width: 350,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Tu nájdeš tvoje zhrnuté výsledky. Jednu hviezdu dostaneš za každú správnu odpoveď v teste a za každý ocenený komentár. Tvoju aktivitu v appke môže učiteľ/ka započítať do tvojho hodnotenia na vysvedčení.',
+                  'Zobrazený súhrn vašich výsledkov. Hodnotenie môžete získať za splnené výzvy, ale aj za hodnotné príspevky do diskusie. Hodnotenie môže byť zarátané do vašeho výsledného hodnotenia z predmetu.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!

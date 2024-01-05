@@ -17,6 +17,8 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   double Function(int, int) percentage;
   int weeklyCapitolIndex;
   int weeklyTestIndex;
+  List<ResultCapitolsData>? results;
+  int studentsSum;
 
 
   TeacherCapitolDragWidget({
@@ -26,7 +28,9 @@ class TeacherCapitolDragWidget extends StatefulWidget {
     required this.refreshData,
     required this.percentage,
     required this.weeklyCapitolIndex,
-    required this.weeklyTestIndex
+    required this.weeklyTestIndex,
+    required this.results,
+    required this.studentsSum
   }) : super(key: key);
 
   @override
@@ -41,6 +45,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
   List<dynamic> localResultsDrag = [];
   bool _loadingCurrentClass = true;
    bool _loadingQuestionData = true;
+     int currentCapitol = 0;
 
   fetchCurrentClass() async {
     try {
@@ -57,6 +62,20 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
     }
   }
 
+    bool isBehind(int capitol, int test) {
+
+    if (currentCapitol > capitol) {
+      return true;
+    } else if (currentCapitol == capitol && widget.weeklyTestIndex > test) {
+
+      return true;
+    } else {
+
+      return false;
+      
+    }
+  }
+
   fetchQuestionData(List<int> num) async {
     try {
       setState(() {
@@ -70,6 +89,17 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
 
       for (int order = 0; order < widget.numbers.length; order++) {
         localResultsDrag.add(data[order]);
+      }
+
+       for (int i = 0; i < localResults.length; i++) {
+
+        if (widget.numbers[i] == widget.weeklyCapitolIndex) {
+          setState(() {
+          currentCapitol = i;
+            
+          });
+
+        }
       }
 
       setState(() {
@@ -149,6 +179,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                 bool isExpanded = index == expandedTileIndex;
                 dynamic capitol = localResults[index];
 
+
                 if (capitol == null) {
                   // If capitol data is null, return an empty SizedBox or another widget indicating no data
                   return Container();
@@ -210,20 +241,27 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                           child: ListTile(
                             title: Text(
                               capitol["tests"][subIndex]["name"],
-                              style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && index == widget.weeklyCapitolIndex  ? TextDecoration.underline : null,),
+                              style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && widget.numbers[index] == widget.weeklyCapitolIndex  ? TextDecoration.underline : null,),
                             ),
-                            trailing:  Row(
+                            trailing:  isBehind(index, subIndex) ? Row(
                               mainAxisSize: MainAxisSize.min,  // To shrink-wrap the Row
                               children: [
                                 Text('Úspešnosť: ${(widget.percentage(widget.numbers[index], subIndex)*100).toStringAsFixed(0)}%',
                                   style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                 ),  // Showing upto 2 decimal places
+                                const SizedBox(width: 10),
+                                SvgPicture.asset('assets/icons/adminIcon.svg', color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main, width: 18,),
                                 const SizedBox(width: 5),
-                                
-                                const SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
+                                Text(
+                                  '${widget.results![currentCapitol].tests[subIndex].completed}/${widget.studentsSum}',
+                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                     color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),  // Optional: To give some space between the Text and the Icon
                                 SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
                               ],
-                            ),
+                            ) : null,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                             dense: true,
                           ),

@@ -73,8 +73,10 @@ class _AppState extends State<App> {
   List<int> order = [0,1,2,3,4];
   List<ResultCapitolsData>? currentResults;
   int studentsSum = 0;
+  List<String> students = [];
 
   List<DateTime> _activeWeeks = [
+
   ];
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
@@ -100,6 +102,7 @@ class _AppState extends State<App> {
           _posts = posts;
         });
       }
+
 
     } catch (e) {
       print('Error fetching posts: $e');
@@ -128,27 +131,27 @@ class _AppState extends State<App> {
  void getWeeklyIndexes (int i) {
      if (i < getPoint(order[0])) {
         setState(() {
-          weeklyCapitolIndex = 0;
+          weeklyCapitolIndex = order[0];
           weeklyTestIndex = i;
         });
       } else if ( i >= getPoint(order[0]) && i < getPoint(order[1])) {
         setState(() {
-          weeklyCapitolIndex = 1;
+          weeklyCapitolIndex = order[1];
           weeklyTestIndex = i-getPoint(order[0]);
         });
       } else if ( i >= getPoint(order[0])+getPoint(order[1]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2])) {
         setState(() {
-          weeklyCapitolIndex = 2;
+          weeklyCapitolIndex = order[2];
           weeklyTestIndex = i-(getPoint(order[0])+getPoint(order[1]));
         });
       } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3])) {
         setState(() {
-          weeklyCapitolIndex = 3;
+          weeklyCapitolIndex = order[3];
           weeklyTestIndex = i-(getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]));
         });
       } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) + getPoint(order[4])) {
         setState(() {
-          weeklyCapitolIndex = 4;
+          weeklyCapitolIndex = order[4];
           weeklyTestIndex = i- (getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]));
         });
       }
@@ -295,6 +298,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         }
       }
 
+      await fetchCapitolsData();
+
+
       // Update state with user data, and class data if available
       setState(() {
         currentUserData = userData;
@@ -302,12 +308,15 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           order = classData.capitolOrder;
           studentsSum = classData.students.length;
           if (userData.capitols[weeklyCapitolIndex].tests[weeklyTestIndex].completed) weeklyBool = true;
+          students = classData.students;
+          
           completedCount = count;
         }
         _loadingUser = false;
       });
 
-      await fetchCapitolsData();
+
+
     } else {
       print('User is not logged in.');
     }
@@ -558,6 +567,10 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             weeklyCapitolLength: weeklyCapitolLength,
             weeklyChallenge: weeklyChallenge,
             weeklyTitle: weeklyTitle,
+            orderedData: orderedData,
+            weeklyCapitolIndex: weeklyCapitolIndex,
+            weeklyTestIndex: weeklyTestIndex,
+            init: init,
           ) : DesktopStudentFeed(
             capitolColor: capitolColor,
             capitolData: currentUserData!.capitols[weeklyCapitolIndex],
@@ -575,13 +588,12 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             addWeek: addWeek,
             removeWeek: removeWeek,
             init: init,
-            results: currentResults,
-            studentsSum: studentsSum,
             orderedData: orderedData,
             weeklyCapitolIndex: weeklyCapitolIndex,
           );
       case 1:
         return Challenges(
+          weeklyChallenge: weeklyChallenge,
           fetch: fetchUserData(),
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,
@@ -637,12 +649,14 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             addWeek: addWeek,
             removeWeek: removeWeek,
             init: init,
+            students: students,
             results: currentResults,
             studentsSum: studentsSum,
             posts: _posts,
           );
       case 1:
         return Challenges(
+          weeklyChallenge: weeklyChallenge,
           fetch: fetchUserData(),
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,

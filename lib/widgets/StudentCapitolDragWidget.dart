@@ -34,6 +34,8 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
   List<dynamic> localResultsDrag = [];
   bool _loadingCurrentClass = true;
   bool _loadingQuestionData = true;
+  int currentCapitol = 0;
+
 
   int countTrueValues(List<UserQuestionsData> questionList) {
     int count = 0;
@@ -44,6 +46,20 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
     }
     return count;
 }
+
+  bool isBehind(int capitol, int test) {
+
+    if (currentCapitol > capitol) {
+      return true;
+    } else if (currentCapitol == capitol && widget.weeklyTestIndex > test) {
+
+      return true;
+    } else {
+
+      return false;
+      
+    }
+  }
 
   fetchCurrentClass() async {
     try {
@@ -61,6 +77,7 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
 
   fetchQuestionData() async {
     try {
+
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
       for (int order in widget.numbers) {
@@ -70,6 +87,18 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
       for (int order = 0; order < widget.numbers.length; order++) {
         localResultsDrag.add(data[order]);
       }
+
+      for (int i = 0; i < localResults.length; i++) {
+
+        if (widget.numbers[i] == widget.weeklyCapitolIndex) {
+          setState(() {
+          currentCapitol = i;
+            
+          });
+
+        }
+      }
+
 
       setState(() {
         _loadingQuestionData = false;
@@ -128,6 +157,9 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                 itemBuilder: (ctx, index) {
                   bool isExpanded = index == expandedTileIndex;
                   dynamic capitol = localResults[index];
+
+                
+
 
                   if (capitol == null) {
                     // If capitol data is null, return an empty Container or another widget indicating no data
@@ -190,20 +222,33 @@ class _StudentCapitolDragWidgetState extends State<StudentCapitolDragWidget> {
                             child: ListTile(
                               title: Text(
                                 capitol["tests"][subIndex]["name"],
-                                style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && index == widget.weeklyCapitolIndex  ? TextDecoration.underline : null, ),
+                                style: TextStyle(fontSize: 14, decoration: subIndex == widget.weeklyTestIndex && widget.numbers[index] == widget.weeklyCapitolIndex  ? TextDecoration.underline : null, ),
                               ),
                               trailing: ((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
                                   widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100) != 0 ? Row(
                                 mainAxisSize: MainAxisSize.min,  // To shrink-wrap the Row
                                 children: [
-                                  Text('${((countTrueValues(widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions) /
+                                  Text('${((widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].points /
                                   widget.currentUserData!.capitols[widget.numbers[index]].tests[subIndex].questions.length)*100).toStringAsFixed(0)}%',
                                     style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                   ),  // Showing upto 2 decimal places
                                   const SizedBox(width: 5),  // Optional: To give some space between the Text and the Icon
                                   SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
                                 ],
-                              ) : null,
+                              ) : isBehind(index, subIndex) ? 
+                                Row(
+                                   mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Výzvu si nestihol urobiť',
+                                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.getColor('red').main ),
+                                    ),
+                                    SizedBox(width: 10,),
+                                    SvgPicture.asset('assets/icons/smallErrorIcon.svg', color: AppColors.getColor('red').main, width: 20,),
+                                  ],
+                                )
+                              
+                               : null ,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                               dense: true,
                             ),

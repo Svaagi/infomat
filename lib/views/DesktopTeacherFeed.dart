@@ -7,6 +7,9 @@ import 'package:infomat/models/ResultsModel.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:infomat/models/ClassModel.dart';
+import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/controllers/UserController.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 import 'dart:html' as html;
@@ -25,6 +28,7 @@ class DesktopTeacherFeed extends StatefulWidget {
   List<ResultCapitolsData>? results;
   int studentsSum;
   List<PostsData> posts;
+  List<String> students;
 
 
   DesktopTeacherFeed({
@@ -40,7 +44,8 @@ class DesktopTeacherFeed extends StatefulWidget {
     required this.removeWeek,
     this.results,
     required this.studentsSum,
-    required this.posts
+    required this.posts,
+    required this.students
   }) : super(key: key);
 
   @override
@@ -67,7 +72,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
   
   String formatTimestamp(Timestamp timestamp) {
     DateTime date = timestamp.toDate();
-    return "${date.day}.${date.month}, ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
+    return "${date.day}.${date.month}., ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
 
   }
 
@@ -213,18 +218,58 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                       ),
                                   SizedBox(height: 16), // Add some spacing between the items
-                                  Container(
-                                    height: 40,
-                                    width:  170,
-                                    child:  ReButton(
-                                      color: "primary", 
-                                      text: 'Zobraziť test',
-                                      rightIcon: 'assets/icons/arrowRightIcon.svg',
-                                      onTap: () {
-                                        widget.onNavigationItemSelected(1);
-                                      },
-                                    ),
-                                  ),
+
+                                   SizedBox(
+                                      width: 170,
+                                      height: 40,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          widget.onNavigationItemSelected(1);
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+              // Replace with your desired icon
+                                            Text(
+                                              'Zobraziť test',
+                                              style: TextStyle(
+                                                color:  AppColors.getColor("mono").white,
+                                                fontFamily: GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(width: 5,),
+                                            SvgPicture.asset('assets/icons/arrowRightIcon.svg', color: AppColors.getColor("mono").white)
+                                          ],
+                                        ),
+                                        style: ButtonStyle(
+                                          elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
+                                          backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                            if (states.contains(MaterialState.disabled)) {
+                                              return AppColors.getColor("mono").lightGrey;
+                                            } else if (states.contains(MaterialState.pressed)) {
+                                              return  Color(0xff7579d2);
+                                            } else if (states.contains(MaterialState.hovered)) {
+                                              return Color(0xff7579d2);
+                                            } else {
+                                              return Color(0xff7579d2);
+                                            }
+                                          }),
+                                          side: MaterialStateProperty.resolveWith((states) {
+                                            if (states.contains(MaterialState.pressed)) {
+                                              AppColors.getColor('blue').lighter;
+                                            } else {
+                                              return BorderSide.none;
+                                            }
+                                          }),
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(30),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                   
                                 ],
                               ),
@@ -322,36 +367,65 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     padding: EdgeInsets.all(12),
                                     height: 100,
                                     color: AppColors.getColor('mono').lighterGrey,
-                                    child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-
-                                      children: [
-                                        Text('Tu uvidíte výsledky vašich študentov. Celý prehľad je k dispozícií v sekcii ', style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium!
-                                          .copyWith(
-                                      ),),
-                                        Text.rich(
-                                          TextSpan(
-                                            text: 'Výsledky.',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleMedium!
-                                                .copyWith(
-                                                decoration: TextDecoration.underline,
-                                            ),
-                                            // You can also add onTap to make it clickable
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () {
-                                                // Handle the tap event here, e.g., open a URL
-                                                // You can use packages like url_launcher to launch URLs.
-                                                widget.onNavigationItemSelected(4);
-                                              },
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                    
+                                    child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: widget.students.length,
+                                    itemBuilder: (context, index) {
+                                      final userId = widget.students[index];
+                                      return FutureBuilder<UserData>(
+                                        future: fetchUser(userId),
+                                        builder: (context, userSnapshot) {
+                                          if (userSnapshot.hasError) {
+                                            print('Error fetching user data: ${userSnapshot.error}');
+                                            return Container();
+                                          } else if (!userSnapshot.hasData) {
+                                            return const Center(child: CircularProgressIndicator());
+                                          } else {
+                                            UserData userData = userSnapshot.data!;
+                                            return Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  margin: const EdgeInsets.all(10),
+                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius: BorderRadius.circular(10.0),
+                                                    border: Border.all(color: AppColors.getColor('mono').lightGrey),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children: [
+                                                      Text(
+                                                        '${userData.name}',
+                                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                                              color: AppColors.getColor('mono').black,
+                                                            ),
+                                                      ),
+                                                      const Spacer(),
+                                                      if(!userData.signed) Container(
+                                                        padding: EdgeInsets.all(8),
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(30),
+                                                          color: AppColors.getColor('blue').lighter
+                                                        ),
+                                                        child: Text(
+                                                            'Neprihlásený/á',
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .titleSmall!
+                                                                .copyWith(
+                                                                  color: AppColors.getColor('blue').main,
+                                                                ),
+                                                          ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                            ); 
+                                          }
+                                        },
+                                      );
+                                    },
+                                  ),
                                 )
                             ],
                           )

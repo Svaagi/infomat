@@ -13,6 +13,7 @@ import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/MaterialController.dart';
 import 'package:infomat/controllers/UserController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
 // Import other necessary packages and controllers
 
 class CompleteNotification {
@@ -51,12 +52,19 @@ class NotificationsDropDown extends StatefulWidget {
 class _NotificationsDropDownState extends State<NotificationsDropDown> {
   late Stream<List<CompleteNotification>> _notificationsDataStream;
   bool seen = true;
+  Timer? _timer;
   
   @override
   void initState() {
     super.initState();
     fetchSeen();
     _notificationsDataStream = _fetchCompleteNotificationsStream();
+    _setupPeriodicCheck();
+  }
+
+  void _setupPeriodicCheck() {
+    _timer = Timer.periodic(Duration(seconds: 5), (Timer t) => fetchSeen());
+    // Adjust the duration as needed. This example checks every 5 seconds.
   }
 
   void fetchSeen () async {

@@ -20,6 +20,10 @@ class MobileStudentFeed extends StatefulWidget {
   final String? capitolTitle;
   final UserCapitolsData? capitolData;
   final String? capitolColor;
+  void Function(void Function() start, void Function() end) init;
+  List<dynamic> orderedData;
+  int weeklyCapitolIndex;
+  int weeklyTestIndex;
 
   MobileStudentFeed({
     Key? key,
@@ -34,7 +38,11 @@ class MobileStudentFeed extends StatefulWidget {
     required this.weeklyBool,
     required this.weeklyCapitolLength,
     required this.weeklyChallenge,
-    required this.weeklyTitle
+    required this.weeklyTitle,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
+    required this.orderedData,
+    required this.init,
   }) : super(key: key);
 
   @override
@@ -64,17 +72,18 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
   void initState()
     {
       super.initState();
-      final userAgent = html.window.navigator.userAgent.toLowerCase();
-      isMobile = userAgent.contains('mobile');
-      isDesktop = userAgent.contains('macintosh') ||
-          userAgent.contains('windows') ||
-          userAgent.contains('linux');
 
       sendFeedEvent();
 
-      setState(() {
-        _loading = false;
-      });
+       widget.init(() {
+          setState(() {
+          _loading = true;
+          });
+          }, () {
+          setState(() {
+            _loading = false;
+          });
+        });
     }
    
   @override
@@ -121,7 +130,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           child: SizedBox(
                             width: 400, // Set your desired maximum width here
                             child: Text(
-                              widget.weeklyTitle ?? '',
+                              widget.orderedData[widget.weeklyCapitolIndex]['tests'][widget.weeklyTestIndex]['name'] ?? '',
                               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                 color: Theme.of(context).colorScheme.onPrimary,
                               ),
@@ -211,7 +220,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                   crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                   children: [
                       SvgPicture.asset(
-                        'assets/badges/badgeArg.svg',
+                        widget.orderedData[widget.weeklyCapitolIndex]['badge'],
                         height: 100,
                       ),
                       Padding(

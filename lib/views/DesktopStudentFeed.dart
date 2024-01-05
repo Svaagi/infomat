@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'dart:html' as html;
 import 'package:infomat/models/UserModel.dart';
-import 'package:infomat/models/ResultsModel.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 
@@ -25,10 +24,8 @@ class DesktopStudentFeed extends StatefulWidget {
   List<dynamic> orderedData;
   void Function() addWeek;
   void Function() removeWeek;
-    List<ResultCapitolsData>? results;
       int weeklyCapitolIndex;
   int weeklyTestIndex;
-    int studentsSum;
 
   DesktopStudentFeed({
     Key? key,
@@ -50,8 +47,6 @@ class DesktopStudentFeed extends StatefulWidget {
     required this.removeWeek,
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
-    this.results,
-     required this.studentsSum
   }) : super(key: key);
 
   @override
@@ -214,6 +209,42 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                           crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                           children: [
                             Row(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                                width: 153,
+                                child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
+                                  widget.addWeek();
+                                  widget.init(() {
+                                    setState(() {
+                                    _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                  });
+                                }),
+                              ),
+                              SizedBox(
+                                height: 40,
+                                width: 168,
+                                child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
+                                  widget.removeWeek();
+                                  widget.init(() {
+                                    setState(() {
+                                    _loading = true;
+                                    });
+                                    }, () {
+                                    setState(() {
+                                      _loading = false;
+                                    });
+                                  });
+                                }),
+                              ),
+                            ],
+                          ),
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                               children: [
                                 SvgPicture.asset('assets/icons/greenCheckIcon.svg'),
@@ -276,7 +307,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                         children: [
                             SvgPicture.asset(
-                              'assets/badges/badgeArg.svg',
+                              widget.orderedData[widget.weeklyCapitolIndex]['badge'],
                               height: 100,
                             ),
                             Padding(
