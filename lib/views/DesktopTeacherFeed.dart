@@ -330,7 +330,6 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 24),
                   Align(
                     alignment: Alignment.center,
@@ -347,8 +346,10 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                               color: Theme.of(context).colorScheme.onBackground,
                               ),
                         ),
-                        Container(
-                              height: 142,
+                        (widget.results![0].points > 0) ? Container(
+                              constraints: BoxConstraints(
+                                minHeight: 142
+                              ),
                               width: 804,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
@@ -362,19 +363,95 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                               padding: EdgeInsets.all(16),
                               child: Column(
                                 children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                  SizedBox(
+                                    width:  610,
+                                    height: 18,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: LinearProgressIndicator(
+                                        value: (widget.weeklyChallenge != 0) ? widget.weeklyChallenge / 32 : 0.0,
+                                        backgroundColor: AppColors.getColor('blue').lighter,
+                                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.getColor('green').main),
+                                      ),
+                                    )
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "${widget.weeklyChallenge}/32 výziev hotových",
+                                    style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                          color: AppColors.getColor('mono').black,
+                                        ),
+                                    ),
+                                  ]
+                                ,),
                                 Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.all(12),
-                                    height: 100,
-                                    color: AppColors.getColor('mono').lighterGrey,
                                     child: ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: widget.students.length,
+                                    itemCount: widget.students.length > 6 ? 6 + 1 : widget.students.length + 1,
                                     itemBuilder: (context, index) {
-                                      final userId = widget.students[index];
-                                      return FutureBuilder<UserData>(
-                                        future: fetchUser(userId),
-                                        builder: (context, userSnapshot) {
+                                     if (index == 0) {
+                                        // Return a special container for the first item
+                                        return Container(
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              border: Border(bottom: BorderSide(color: AppColors.getColor('mono').lightGrey)),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Meno žiaka',
+                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                        color: AppColors.getColor('mono').black,
+                                                      ),
+                                                ),
+                                                const Spacer(),
+                                                Container(
+                                                  width: 180,
+                                                  child:  Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                    'Posledný test ',
+                                                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                          color: AppColors.getColor('mono').black,
+                                                        ),
+                                                    ),
+                                                    Text(
+                                                      widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].name,
+                                                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                            color: AppColors.getColor('mono').grey,
+                                                          ),
+                                                    ),
+                                                    ],
+                                                  ),
+                                                ),
+                                               
+                                                const Spacer(),
+                                                Text(
+                                                  'Priemerná úspešnosť',
+                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                        color: AppColors.getColor('mono').black,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                      );
+                                      } else {
+                                        // Your existing code for other items
+                                        final userId = widget.students[index - 1];  // Adjust index since we added a special first item
+                                        return FutureBuilder<UserData>(
+                                          future: fetchUser(userId),
+                                          builder: (context, userSnapshot) {
                                           if (userSnapshot.hasError) {
                                             print('Error fetching user data: ${userSnapshot.error}');
                                             return Container();
@@ -382,54 +459,122 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                             return const Center(child: CircularProgressIndicator());
                                           } else {
                                             UserData userData = userSnapshot.data!;
+
                                             return Container(
                                                   padding: const EdgeInsets.all(10),
-                                                  margin: const EdgeInsets.all(10),
-                                                  height: 60,
+                                                  height: 40,
                                                   decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius: BorderRadius.circular(10.0),
-                                                    border: Border.all(color: AppColors.getColor('mono').lightGrey),
+                                                    border: Border(bottom: BorderSide(color: AppColors.getColor('mono').lightGrey)),
                                                   ),
                                                   child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                      Text(
-                                                        '${userData.name}',
-                                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                                              color: AppColors.getColor('mono').black,
-                                                            ),
-                                                      ),
-                                                      const Spacer(),
-                                                      if(!userData.signed) Container(
-                                                        padding: EdgeInsets.all(8),
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(30),
-                                                          color: AppColors.getColor('blue').lighter
-                                                        ),
+                                                      Container(
+                                                        width: 240,
                                                         child: Text(
-                                                            'Neprihlásený/á',
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .titleSmall!
-                                                                .copyWith(
-                                                                  color: AppColors.getColor('blue').main,
-                                                                ),
-                                                          ),
+                                                          '${userData.name}',
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                color: AppColors.getColor('mono').black,
+                                                              ),
+                                                        ),
                                                       ),
+                                                      Container(
+                                                        width: 345,
+                                                        child: Text(
+                                                          '${userData.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points}/${userData.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}',
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                color: AppColors.getColor('mono').black,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        child:  Text(
+                                                          '${userData.points}/168 = ${((userData.points/168)*100).round()}%',
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                color: AppColors.getColor('mono').black,
+                                                              ),
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
-                                            ); 
+                                            );
                                           }
                                         },
                                       );
+                                      }
                                     },
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 280,
+                                    height: 40,
+                                    child: ReButton(
+                                      color: "grey", 
+                                      text: 'Zobraziť známkovanie',
+                                      rightIcon: 'assets/icons/arrowRightIcon.svg',
+                                      onTap: () {
+                                          widget.onNavigationItemSelected(4);
+                                      }
+                                    ),
                                   ),
                                 )
                             ],
                           )
-                        ),
+                          ) : Container(
+                                height: 142,
+                                width: 804,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: AppColors.getColor('mono').lightGrey,
+                                    width: 2,
+                                  ),
+                                ),
+                                margin: EdgeInsets.all(8),
+                                padding: EdgeInsets.all(16),
+                                child: Column(
+                                  children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.all(12),
+                                      height: 100,
+                                      color: AppColors.getColor('mono').lighterGrey,
+                                      child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('Tu uvidíte výsledky vašich študentov. Celý prehľad je k dispozícií v sekcii ', style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium!
+                                            .copyWith(
+                                        ),),
+                                          Text.rich(
+                                            TextSpan(
+                                              text: 'Výsledky.',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                  decoration: TextDecoration.underline,
+                                              ),
+                                              // You can also add onTap to make it clickable
+                                              recognizer: TapGestureRecognizer()
+                                                ..onTap = () {
+                                                  // Handle the tap event here, e.g., open a URL
+                                                  // You can use packages like url_launcher to launch URLs.
+                                                  widget.onNavigationItemSelected(4);
+                                                },
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                      
+                                  )
+                              ],
+                            )
+                          ),
                         ],
                       ),
                   ),
@@ -501,13 +646,14 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     
                                 )
                             ],
-                          ) : ListView.builder(
+                          ) : Column(
+                            children: [
+                              ListView.builder(
                             shrinkWrap: true,
                                itemCount: widget.posts.length > 2 ? 2 : widget.posts.length,  // Specify the number of items in the list
                                 itemBuilder: (context, index) {
                                     // This builder is called for each item of the list
                                     return Row(
-                                      
                                     children: [
                                       Container(
                                       width: 100,
@@ -541,11 +687,11 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                         ),
                                         SizedBox(height: 5,),
                                         Text(
-                                                widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
-                                                style: TextStyle(
-                                                  color: AppColors.getColor('mono').grey,
-                                                ),
-                                              ),
+                                            widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
+                                            style: TextStyle(
+                                              color: AppColors.getColor('mono').grey,
+                                            ),
+                                          ),
                                         ]
                                         )
                                       ),
@@ -553,7 +699,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                       Container(
                                         margin: EdgeInsets.only(bottom: 10),
                                         padding: EdgeInsets.all(8),
-                                        width: 600,
+                                        width: 650,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           border: Border.all(
@@ -599,8 +745,25 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                       ],
                                     );
                                   }
-                              )
+                              ),
+                              Center(
+                                  child: SizedBox(
+                                    width: 180,
+                                    height: 40,
+                                    child: ReButton(
+                                      color: "grey", 
+                                      text: 'Zobraziť viac',
+                                      rightIcon: 'assets/icons/arrowRightIcon.svg',
+                                      onTap: () {
+                                          widget.onNavigationItemSelected(2);
+                                      }
+                                    ),
+                                  ),
+                                )
+                            ],
+                          ) 
                                 ),
+                                
                             ],
                           )
                   

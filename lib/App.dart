@@ -617,7 +617,10 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           setState(() {
             fetchUserData();
           });
-        });
+        },
+        weeklyCapitolIndex: weeklyCapitolIndex,
+        weeklyTestIndex: weeklyTestIndex,
+        );
       default:
         return Container(); // Handle other cases
     }
@@ -639,6 +642,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             results: currentResults,
             studentsSum: studentsSum,
             posts: _posts,
+            students: students,
           ) : DesktopTeacherFeed(
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,

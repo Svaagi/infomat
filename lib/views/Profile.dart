@@ -15,9 +15,13 @@ import 'package:flutter/services.dart' show rootBundle;
 
 class Profile extends StatefulWidget {
   final void Function() logOut;
+  final int weeklyCapitolIndex;
+  final int weeklyTestIndex;
 
   Profile({
     Key? key,
+    required this.weeklyCapitolIndex,
+    required this.weeklyTestIndex,
     required this.logOut,
   }) : super(key: key);
 
@@ -488,7 +492,7 @@ class _ProfileState extends State<Profile> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      '${currentUserData!.capitols[0].tests[0].points}/${weeklyCapitol}',
+                                                      '${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyCapitolIndex].points}/${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .titleLarge!

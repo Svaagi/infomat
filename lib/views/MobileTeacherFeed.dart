@@ -8,6 +8,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:infomat/models/UserModel.dart';
+import 'package:infomat/controllers/UserController.dart';
 
 
 
@@ -24,6 +26,7 @@ class MobileTeacherFeed extends StatefulWidget {
   List<ResultCapitolsData>? results;
   int studentsSum;
   List<PostsData> posts;
+    List<String> students;
 
   MobileTeacherFeed({
     Key? key,
@@ -38,7 +41,8 @@ class MobileTeacherFeed extends StatefulWidget {
     required this.removeWeek,
     this.results,
     required this.studentsSum,
-    required this.posts
+    required this.posts,
+    required this.students
   }) : super(key: key);
 
   @override
@@ -327,8 +331,10 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                               color: Theme.of(context).colorScheme.onBackground,
                               ),
                         ),
-                        Container(
-                              height: 142,
+                        (widget.results![0].points > 0) ? Container(
+                              constraints: BoxConstraints(
+                                minHeight: 142
+                              ),
                               width: 804,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
@@ -338,49 +344,161 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   width: 2,
                                 ),
                               ),
-                              margin: EdgeInsets.all(8),
+                              margin: EdgeInsets.all(16),
                               padding: EdgeInsets.all(16),
                               child: Column(
                                 children: [
                                 Container(
                                     alignment: Alignment.center,
-                                    padding: EdgeInsets.all(12),
-                                    height: 100,
-                                    color: AppColors.getColor('mono').lighterGrey,
-                                    child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-
-                                      children: [
-                                        Text('Tu uvidíte výsledky vašich študentov. Celý prehľad je k dispozícií v sekcii ', style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium!
-                                          .copyWith(
-                                      ),),
-                                        Text.rich(
-                                          TextSpan(
-                                            text: 'Výsledky.',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleMedium!
-                                                .copyWith(
-                                                decoration: TextDecoration.underline,
+                                    child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: widget.students.length > 6 ? 6 + 1 : widget.students.length + 1,
+                                    itemBuilder: (context, index) {
+                                     if (index == 0) {
+                                        // Return a special container for the first item
+                                        return Container(
+                                            padding: const EdgeInsets.all(10),
+                                            height: 60,
+                                            decoration: BoxDecoration(
+                                              border: Border(bottom: BorderSide(color: AppColors.getColor('mono').lightGrey)),
                                             ),
-                                            // You can also add onTap to make it clickable
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () {
-                                                // Handle the tap event here, e.g., open a URL
-                                                // You can use packages like url_launcher to launch URLs.
-                                                widget.onNavigationItemSelected(4);
-                                              },
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                    
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Meno žiaka',
+                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                        color: AppColors.getColor('mono').grey,
+                                                      ),
+                                                ),
+                                                const Spacer(),
+                                                Text(
+                                                  'Posledný test ',
+                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                        color: AppColors.getColor('mono').grey,
+                                                      ),
+                                                  ),
+                                              ],
+                                            ),
+                                      );
+                                      } else {
+                                        // Your existing code for other items
+                                        final userId = widget.students[index - 1];  // Adjust index since we added a special first item
+                                        return FutureBuilder<UserData>(
+                                          future: fetchUser(userId),
+                                          builder: (context, userSnapshot) {
+                                          if (userSnapshot.hasError) {
+                                            print('Error fetching user data: ${userSnapshot.error}');
+                                            return Container();
+                                          } else if (!userSnapshot.hasData) {
+                                            return const Center(child: CircularProgressIndicator());
+                                          } else {
+                                            UserData userData = userSnapshot.data!;
+                                            return Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  height: 40,
+                                                  decoration: BoxDecoration(
+                                                    border: Border(bottom: BorderSide(color: AppColors.getColor('mono').lightGrey)),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                          '${userData.name}',
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                color: AppColors.getColor('mono').black,
+                                                              ),
+                                                        ),
+                                                        Spacer(),
+                                                       Text(
+                                                          '${userData.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points}/${userData.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}',
+                                                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                color: AppColors.getColor('mono').black,
+                                                              ),
+                                                        ),
+                                                        SizedBox(width: 20,)
+                                                    ],
+                                                  ),
+                                            );
+                                          }
+                                        },
+                                      );
+                                      }
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                Center(
+                                  child: SizedBox(
+                                    width: 280,
+                                    height: 40,
+                                    child: ReButton(
+                                      color: "grey", 
+                                      text: 'Zobraziť známkovanie',
+                                      rightIcon: 'assets/icons/arrowRightIcon.svg',
+                                      onTap: () {
+                                          widget.onNavigationItemSelected(4);
+                                      }
+                                    ),
+                                  ),
                                 )
                             ],
                           )
-                        ),
+                          ) : Container(
+                                height: 142,
+                                width: 804,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: AppColors.getColor('mono').lightGrey,
+                                    width: 2,
+                                  ),
+                                ),
+                                margin: EdgeInsets.all(8),
+                                padding: EdgeInsets.all(16),
+                                child: Column(
+                                  children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.all(12),
+                                      height: 100,
+                                      color: AppColors.getColor('mono').lighterGrey,
+                                      child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('Tu uvidíte výsledky vašich študentov. Celý prehľad je k dispozícií v sekcii ', style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium!
+                                            .copyWith(
+                                        ),),
+                                          Text.rich(
+                                            TextSpan(
+                                              text: 'Výsledky.',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                  decoration: TextDecoration.underline,
+                                              ),
+                                              // You can also add onTap to make it clickable
+                                              recognizer: TapGestureRecognizer()
+                                                ..onTap = () {
+                                                  // Handle the tap event here, e.g., open a URL
+                                                  // You can use packages like url_launcher to launch URLs.
+                                                  widget.onNavigationItemSelected(4);
+                                                },
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                      
+                                  )
+                              ],
+                            )
+                          ),
                         ],
                       ),
                   ),
@@ -419,7 +537,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                 Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.all(12),
-                                    color: AppColors.getColor('mono').lighterGrey,
+                                    color: widget.posts.length == 0 ? AppColors.getColor('mono').lighterGrey : null,
                                     child:  widget.posts.length == 0 ? Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -452,50 +570,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                itemCount: widget.posts.length > 2 ? 2 : widget.posts.length,  // Specify the number of items in the list
                                 itemBuilder: (context, index) {
                                     // This builder is called for each item of the list
-                                    return Row(
-                                      
-                                    children: [
-                                      Container(
-                                      width: 100,
-
-                                        child: Column(
-                                        children: [
-                                          Row(
-                                          children: [
-                                            const Spacer(),
-                                            SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
-                                            const SizedBox(width: 4.0),
-                                            Text(widget.posts[index].comments.length.toString(),
-                                              style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: AppColors.getColor('mono').grey,
-                                                ),
-                                            ),
-                                            const SizedBox(width: 4.0),
-                                            Text(
-                                              sklon(widget.posts[index].comments.length),
-                                              style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: AppColors.getColor('mono').grey,
-                                                ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 5,),
-                                        Text(
-                                                widget.posts[index].edited ? '${formatTimestamp(widget.posts[index].date)} (upravené)' : formatTimestamp(widget.posts[index].date),
-                                                style: TextStyle(
-                                                  color: AppColors.getColor('mono').grey,
-                                                ),
-                                              ),
-                                        ]
-                                        )
-                                      ),
-                                      SizedBox(width: 10,),
+                                    return 
                                       Container(
                                         margin: EdgeInsets.only(bottom: 10),
                                         padding: EdgeInsets.all(8),
@@ -536,17 +611,56 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                       ),
                                       const SizedBox(height: 10.0),
                                         Text(widget.posts[index].value),
+                                      const SizedBox(height: 10.0),
+                                      Row(
+                                          children: [
+                                            SvgPicture.asset('assets/icons/smallTextBubbleIcon.svg', color: AppColors.getColor('mono').grey,),
+                                            const SizedBox(width: 4.0),
+                                            Text(widget.posts[index].comments.length.toString(),
+                                              style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                            ),
+                                            const SizedBox(width: 4.0),
+                                            Text(
+                                              sklon(widget.posts[index].comments.length),
+                                              style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  color: AppColors.getColor('mono').grey,
+                                                ),
+                                            ),
                                           ],
                                         ),
-                                      ),
-                                      ],
-                                    );
+                                          ],
+                                        ),
+                                      );
+                                     
                                   }
                               )
-                                ) 
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    width: 180,
+                                    height: 40,
+                                    child: ReButton(
+                                      color: "grey", 
+                                      text: 'Zobraziť viac',
+                                      rightIcon: 'assets/icons/arrowRightIcon.svg',
+                                      onTap: () {
+                                          widget.onNavigationItemSelected(2);
+                                      }
+                                    ),
+                                  ),
+                                )
                             ],
                           )
                         ),
+                        
                         ],
                       )
                   ),
