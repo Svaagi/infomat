@@ -1,9 +1,9 @@
 
 [
   {
-    "badge": "assets/badges/badgeCrit.svg",
-    "badgeActive": "assets/badges/badgeCritActive.svg",
-    "badgeDis": "assets/badges/badgeCritDis.svg",
+    "badge": "assets/badges/badgeCrit.png",
+    "badgeActive": "assets/badges/badgeCritActive.png",
+    "badgeDis": "assets/badges/badgeCritDis.png",
     "color": "primary",
     "name": "Kritické myslenie",
     "points": 14,
@@ -486,9 +486,9 @@
       ]
   },
   {
-      "badge": "assets/badges/badgeArg.svg",
-      "badgeActive": "assets/badges/badgeArgActive.svg",
-      "badgeDis": "assets/badges/badgeArgDis.svg",
+      "badge": "assets/badges/badgeArg.png",
+      "badgeActive": "assets/badges/badgeArgActive.png",
+      "badgeDis": "assets/badges/badgeArgDis.png",
       "color": "blue",
       "name": "Argumentácia",
       "points": 43,
@@ -1622,9 +1622,9 @@
       ]
   },
   {
-      "badge": "assets/badges/badgeMan.svg",
-      "badgeActive": "assets/badges/badgeManActive.svg",
-      "badgeDis": "assets/badges/badgeManDis.svg",
+      "badge": "assets/badges/badgeMan.png",
+      "badgeActive": "assets/badges/badgeManActive.png",
+      "badgeDis": "assets/badges/badgeManDis.png",
       "color": "green",
       "name": "Argumentačné chyby",
       "points": 24,
@@ -2282,9 +2282,9 @@
       ]
   },
   {
-    "badge": "assets/badges/badgeGram.svg",
-    "badgeActive": "assets/badges/badgeGramActive.svg",
-    "badgeDis": "assets/badges/badgeGramDis.svg",
+    "badge": "assets/badges/badgeGram.png",
+    "badgeActive": "assets/badges/badgeGramActive.png",
+    "badgeDis": "assets/badges/badgeGramDis.png",
     "color": "orange",
     "name": "Mediálna gramotnosť",
     "points": 52,
@@ -3924,9 +3924,9 @@
     ]
   },
   {
-    "badge": "assets/badges/badgeData.svg",
-    "badgeActive": "assets/badges/badgeDataActive.svg",
-    "badgeDis": "assets/badges/badgeDataDis.svg",
+    "badge": "assets/badges/badgeData.png",
+    "badgeActive": "assets/badges/badgeDataActive.png",
+    "badgeDis": "assets/badges/badgeDataDis.png",
     "color": "yellow",
     "name": "Práca s dátami",
     "points": 32,
