@@ -71,7 +71,7 @@ class _ChallengesState extends State<Challenges> {
 
   void scrollUp() {
     final currentScroll = _scrollController.offset;
-    final scrollPosition = (currentScroll - 150).clamp(0.0, _scrollController.position.maxScrollExtent);
+    final scrollPosition = (currentScroll + 150).clamp(0.0, _scrollController.position.maxScrollExtent);
     _scrollController.animateTo(
       scrollPosition,
       duration: Duration(milliseconds: 300),
