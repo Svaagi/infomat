@@ -159,6 +159,7 @@ class _AppState extends State<App> {
 
   void init (void Function() start, void Function() end ) async {
     start();
+
       // Initialize the weekly challenge count based on the active weeks
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
@@ -215,14 +216,12 @@ void updateWeeklyChallenge() {
 }
 
 void fetch() async {
+
   init(() { }, () { });
   setState(() {
     _selectedIndex = 0;
   });
 }
-
-
-
 
 
 int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDates) {
@@ -259,9 +258,21 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       });
   }
 
+  Future<void> fetchFake() async {
+  try {
+      print('fake');
+  }catch (e) {
+    print('Error fetching fake data: $e');
+    setState(() {
+      _loadingUser = false;
+    });
+  }
+  }
 
   Future<void> fetchUserData() async {
   try {
+      print('here');
+
     // Retrieve the Firebase Auth user
     User? user = FirebaseAuth.instance.currentUser;
 
@@ -333,6 +344,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
     try {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       data = json.decode(jsonData);
+
 
       for (int num in order) {
         orderedData.add(data[num]);
@@ -594,7 +606,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       case 1:
         return Challenges(
           weeklyChallenge: weeklyChallenge,
-          fetch: fetchUserData(),
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,
           weeklyTestIndex: weeklyTestIndex,
@@ -607,7 +618,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       case 3:
         return Learning(
           currentUserData: currentUserData,
-          fetch: fetchUserData(),
         );
       case 4:
         return Notifications(currentUserData: currentUserData, onNavigationItemSelected: _onNavigationItemSelected);
@@ -661,7 +671,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       case 1:
         return Challenges(
           weeklyChallenge: weeklyChallenge,
-          fetch: fetchUserData(),
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,
           weeklyTestIndex: weeklyTestIndex,
@@ -673,7 +682,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       case 3:
         return Learning(
           currentUserData: currentUserData,
-          fetch: fetchUserData(),
         );
       case 4:
         return  const Results(); // Handle other cases
@@ -682,7 +690,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       case 6:
         return isMobile
           ? MobileAdmin(
-              fetch: fetchUserData(),
               currentUserData: currentUserData,
               logOut: () {
                 FirebaseAuth.instance.signOut();
@@ -693,7 +700,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
               onUserChanged: _onUserDataChanged,
             )
           : DesktopAdmin(
-              fetch: fetchUserData(),
               currentUserData: currentUserData,
               logOut: () {
                 FirebaseAuth.instance.signOut();

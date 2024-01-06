@@ -52,7 +52,7 @@ class MobileStudentFeed extends StatefulWidget {
 class _MobileStudentFeedState extends State<MobileStudentFeed> {
   bool isMobile = false;
   bool isDesktop = false;
-  bool _loading = true;
+  bool _loading = false;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -75,15 +75,6 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
 
       sendFeedEvent();
 
-       widget.init(() {
-          setState(() {
-          _loading = true;
-          });
-          }, () {
-          setState(() {
-            _loading = false;
-          });
-        });
     }
    
   @override

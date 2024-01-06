@@ -5,6 +5,7 @@ import 'package:infomat/models/UserModel.dart';
 
 Future<List<NotificationsData>> fetchNotifications(UserData userData) async {
   try {
+    print('notification');
     CollectionReference notificationsRef =
         FirebaseFirestore.instance.collection('notifications');
 

@@ -15,13 +15,11 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 class Learning extends StatefulWidget {
-  final Future<void> fetch;
   final UserData? currentUserData;
 
 
   Learning({
     Key? key,
-    required this.fetch,
     required this.currentUserData,
   }) : super(key: key);
 

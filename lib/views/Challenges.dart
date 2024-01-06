@@ -24,13 +24,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Challenges extends StatefulWidget {
-  final Future<void> fetch;
   final UserData? currentUserData;
   final int weeklyCapitolIndex;
   final int weeklyTestIndex;
   final int weeklyChallenge;
 
-  const Challenges({Key? key, required this.fetch, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
+  const Challenges({Key? key, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
 
   @override
   State<Challenges> createState() => _ChallengesState();
@@ -118,7 +117,6 @@ Future<void> refreshList() async {
 
   Future<void> refreshData() async {
     await _dataFuture;
-    await widget.fetch;
   }
 
   void _onNavigationItemSelected(int index) {

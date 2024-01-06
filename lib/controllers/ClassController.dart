@@ -12,6 +12,7 @@ import 'package:infomat/widgets/Widgets.dart';
 
 Future<ClassData> fetchClass(String classId) async {
   try {
+    print('class');
     // Reference to the class document in Firestore
     DocumentReference classRef =
         FirebaseFirestore.instance.collection('classes').doc(classId);

@@ -25,11 +25,10 @@ import 'package:infomat/providers/ContactProvider.dart';
 
 
 class MobileAdmin extends StatefulWidget {
-  final Future<void> fetch;
   final UserData? currentUserData;
   final void Function() logOut;
   final void Function() onUserChanged;
-  const MobileAdmin({Key? key, required this.fetch, required this.currentUserData, required this.logOut, required this.onUserChanged});
+  const MobileAdmin({Key? key, required this.currentUserData, required this.logOut, required this.onUserChanged});
 
   @override
   State<MobileAdmin> createState() => _MobileAdminState();

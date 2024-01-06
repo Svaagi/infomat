@@ -11,6 +11,7 @@ import 'dart:math';
 
 Future<UserData> fetchUser(String userId) async {
   try {
+    print('user');
     // Retrieve the Firebase Auth user
     User? user = FirebaseAuth.instance.currentUser;
 

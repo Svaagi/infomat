@@ -53,7 +53,7 @@ class DesktopTeacherFeed extends StatefulWidget {
 }
 
 class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
-  bool _loading = true;
+  bool _loading = false;
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
@@ -90,16 +90,6 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
     super.initState();
 
     sendFeedEvent();
-
-    widget.init(() {
-      setState(() {
-      _loading = true;
-    });
-    }, () {
-    setState(() {
-      _loading = false;
-    });
-    });
 
   }
 

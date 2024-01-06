@@ -4,6 +4,7 @@ import 'package:infomat/models/UserModel.dart';
 
 Future<List<ResultCapitolsData>> fetchResults(String id) async {
   try {
+    print('results');
     DocumentReference resultsRef = FirebaseFirestore.instance.collection('results').doc(id);
 
     // Retrieve the document from Firestore

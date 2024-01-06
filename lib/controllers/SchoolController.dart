@@ -3,6 +3,7 @@ import 'package:infomat/models/SchoolModel.dart';
 
 Future<SchoolData> fetchSchool(String schoolId) async {
   try {
+    print('school');
     // Reference to the school document in Firestore
     DocumentReference schoolRef =
         FirebaseFirestore.instance.collection('schools').doc(schoolId);

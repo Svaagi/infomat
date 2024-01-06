@@ -50,7 +50,7 @@ class MobileTeacherFeed extends StatefulWidget {
 }
 
 class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
-  bool _loading = true;
+  bool _loading = false;
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
@@ -85,15 +85,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
   @override
   void initState() {
     sendFeedEvent();
-    widget.init(() {
-      setState(() {
-        _loading = true;
-      });
-    }, () {
-      setState(() {
-        _loading = false;
-      });
-    });
 
     super.initState();
 

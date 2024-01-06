@@ -63,7 +63,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
   }
 
   void _setupPeriodicCheck() {
-    _timer = Timer.periodic(Duration(seconds: 5), (Timer t) => fetchSeen());
+    _timer = Timer.periodic(Duration(seconds: 10), (Timer t) => fetchSeen());
     // Adjust the duration as needed. This example checks every 5 seconds.
   }
 

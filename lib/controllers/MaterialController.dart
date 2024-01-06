@@ -3,6 +3,7 @@ import 'package:infomat/models/MaterialModel.dart';
 
 Future<List<MaterialData>> fetchMaterials(List<String> materialIds) async {
   try {
+    print('material');
     // Reference to the "materials" collection in Firestore
     CollectionReference materialsRef =
         FirebaseFirestore.instance.collection('materials');
