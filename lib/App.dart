@@ -303,11 +303,15 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 
       int count = 0;
 
-      for (UserCapitolsTestData tmp in userData.capitols[weeklyCapitolIndex].tests) {
-        if (tmp.completed) {
-          count++;
+      for(int i = 0; i < userData.capitols.length; i++) {
+        for (UserCapitolsTestData tmp in userData.capitols[i].tests) {
+          if (tmp.completed) {
+            count++;
+          }
         }
       }
+
+      
 
       await fetchCapitolsData();
 

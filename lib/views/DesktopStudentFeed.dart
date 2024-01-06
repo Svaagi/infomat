@@ -370,7 +370,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: LinearProgressIndicator(
-                                        value: (widget.weeklyCapitolLength != 0) ? widget.completedCount / 10 : 0.0,
+                                        value: (widget.weeklyCapitolLength != 0) ? widget.completedCount / 32 : 0.0,
                                         backgroundColor: AppColors.getColor('blue').lighter,
                                         valueColor: AlwaysStoppedAnimation<Color>(AppColors.getColor('green').main),
                                       ),
@@ -378,7 +378,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                   ),
                                   SizedBox(width: isMobile ? 5 : 10),
                                   Text(
-                                    "${widget.completedCount}/10 výziev hotových",
+                                    "${widget.completedCount}/32 výziev hotových",
                                     style: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
