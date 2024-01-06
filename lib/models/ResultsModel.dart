@@ -38,7 +38,7 @@ class ResultQuestionsData {
 
 List<ResultCapitolsData> data = [
  ResultCapitolsData(
-    name: 'Kritické Myslenie',
+    name: 'Kritické myslenie',
     points: 0,
     completed: 0,
     tests: [
