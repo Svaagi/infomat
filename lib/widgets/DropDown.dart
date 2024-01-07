@@ -195,7 +195,13 @@ Widget build(BuildContext context) {
             .map<PopupMenuItem<String>>((OptionsData value) {
               return PopupMenuItem<String>(
                 value: value.id,
-                child: Text(value.data.name),
+                child:  Row(
+                  children: [
+                    if(dropdownValue == value.id) SvgPicture.asset('assets/icons/checkIcon.svg', color:  AppColors.getColor('mono').grey, width: 18,),
+                    SizedBox(width: 8,), 
+                    Text(value.data.name),
+                  ]
+                )
               );
             }).toList();
 

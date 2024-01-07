@@ -5,6 +5,7 @@ import 'package:infomat/controllers/userController.dart'; // Import the UserData
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:async/async.dart';
 import 'package:infomat/models/UserModel.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Results extends StatefulWidget {
   const Results({super.key});
@@ -22,7 +23,7 @@ class _ResultsState extends State<Results> {
   CancelableOperation<List<UserData>>? fetchStudentsOperation;
   int? studentIndex;
   bool _loading = true;
-  String selectedPeriod = 'Všetky';  // Initial selection
+  String selectedPeriod = 'Celý rok';  // Initial selection
 
 
   int indexOfElement(List<UserData> list, String id) {
@@ -44,44 +45,6 @@ class _ResultsState extends State<Results> {
       fetchStudents();
     });
   }
-
-  Widget buildRadioButtons() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Radio<String>(
-        value: 'Všetky',
-        groupValue: selectedPeriod,
-        onChanged: (String? value) {
-          setState(() {
-            selectedPeriod = value!;
-          });
-        },
-      ),
-      Text('Všetky'),
-      Radio<String>(
-        value: 'Prvý Polrok',
-        groupValue: selectedPeriod,
-        onChanged: (String? value) {
-          setState(() {
-            selectedPeriod = value!;
-          });
-        },
-      ),
-      Text('Prvý Polrok'),
-      Radio<String>(
-        value: 'Druhý Polrok',
-        groupValue: selectedPeriod,
-        onChanged: (String? value) {
-          setState(() {
-            selectedPeriod = value!;
-          });
-        },
-      ),
-      Text('Druhý Polrok'),
-    ],
-  );
-}
 
 
   Future<void> _fetchCurrentUserData() async {
@@ -140,9 +103,79 @@ Widget build(BuildContext context) {
       color: Theme.of(context).colorScheme.background,
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildRadioButtons(),  // Include the radio buttons
+            Container(
+                width: 138,
+                margin: EdgeInsets.only(top: 32, left: 16),
+                decoration: BoxDecoration(
+                  color: AppColors.getColor('mono').lighterGrey,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: PopupMenuButton<String>(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  offset: const Offset(0, 40),
+                  tooltip: '',
+                  icon: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 5,),
+                        Text(
+                          selectedPeriod,
+                          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: AppColors.getColor('primary').main,
+                          ),
+                        ),
+                        const Spacer(),
+                        SvgPicture.asset('assets/icons/downIcon.svg', color:  AppColors.getColor('primary').main),
+                      ],
+                    ),
+                  ),
+                  onSelected: (String? newValue) {
+                     setState(() {
+                      selectedPeriod = newValue!;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) {
+                    List<PopupMenuItem<String>> menuItems = [
+                      PopupMenuItem<String>(
+                            value: 'Celý rok',
+                            child: Row(
+                              children: [
+                                if(selectedPeriod == 'Celý rok') SvgPicture.asset('assets/icons/checkIcon.svg', color:  AppColors.getColor('mono').grey, width: 18,),
+                                SizedBox(width: 8,),
+                                Text('Celý rok'),
+                              ],
+                            )
+                          ),
+                    PopupMenuItem<String>(
+                            value: 'Prvý polrok',
+                            child:  Row(
+                              children: [
+                                if(selectedPeriod == 'Prvý polrok') SvgPicture.asset('assets/icons/checkIcon.svg', color:  AppColors.getColor('mono').grey, width: 18,),
+                                SizedBox(width: 8,),
+                                Text('Prvý polrok'),
+                              ],
+                            )
+                          ),
+                    PopupMenuItem<String>(
+                            value: 'Druhý polrok',
+                            child:  Row(
+                              children: [
+                                if(selectedPeriod == 'Druhý polrok') SvgPicture.asset('assets/icons/checkIcon.svg', color:  AppColors.getColor('mono').grey, width: 18,),
+                                SizedBox(width: 8,),
+                                Text('Druhý polrok'),
+                              ],
+                            )
+                          )
+                    ];
+                    return menuItems;
+                  },
+                ),
+              ),
             if (students != null)
               buildScoreTable(students!)
           ],
@@ -230,7 +263,7 @@ List<TableRow> _buildRows(List<UserData> students) {
 
 
   // Determine the number of capitols to display based on the selected period
-  int numberOfCapitols = (selectedPeriod == 'Všetky') ? students.first.capitols.length : (selectedPeriod == 'Prvý Polrok') ? 3 : 2; // Assuming each period has 4 capitols
+  int numberOfCapitols = (selectedPeriod == 'Celý rok') ? students.first.capitols.length : (selectedPeriod == 'Prvý polrok') ? 3 : 2; // Assuming each period has 4 capitols
 
   // Add header
   rows.add(
@@ -251,7 +284,7 @@ List<TableRow> _buildRows(List<UserData> students) {
         ),
         ...List.generate(numberOfCapitols, (index) {
           // Accessing elements in reverse order
-          if(selectedPeriod == 'Druhý Polrok') index += 3;
+          if(selectedPeriod == 'Druhý polrok') index += 3;
           return Container(
             decoration: BoxDecoration(
               color: AppColors.getColor('primary').light,
@@ -314,11 +347,11 @@ List<TableRow> _buildRows(List<UserData> students) {
     List<Map<String, int>> scores = getCapitolScores(student);
 
     // Filter scores based on selectedPeriod
-    if (selectedPeriod == 'Prvý Polrok') {
+    if (selectedPeriod == 'Prvý polrok') {
       scores = scores.take(3).toList();
-    } else if (selectedPeriod == 'Druhý Polrok') {
+    } else if (selectedPeriod == 'Druhý polrok') {
       scores = scores.skip(3).toList();
-    } else if (selectedPeriod == 'Všetky') {
+    } else if (selectedPeriod == 'Celý rok') {
       // Keep all scores
     }
 

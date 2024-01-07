@@ -126,9 +126,12 @@ class _DesktopTestState extends State<DesktopTest> {
             allCorrects = correct!.map((e) => String.fromCharCode(97 + int.parse(e["correct"].toString())) + ')').join(', ');
         }
 
-        checkTitle = false;
 
-        if(title != '' && definition == '' && images.length == 0 && division.length == 0) checkTitle = true;
+        if(title != '' && definition == '' && images.length == 0 && division.length == 0) {
+          checkTitle = true;
+        } else {
+          checkTitle = false;
+        }
 
 
       });
@@ -1202,7 +1205,6 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         questionIndex++;
         pressed = false;
         _answer = [];
-        checkTitle = false;
       });
     saveUserDataToFirestore(widget.userData!);
 
@@ -1214,7 +1216,6 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         questionIndex = 0;
         _answer = [];
         pressed = false;
-        checkTitle = false;
       });
       saveUserDataToFirestore(widget.userData!);
     

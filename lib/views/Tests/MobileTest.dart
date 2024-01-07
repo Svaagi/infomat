@@ -959,14 +959,17 @@ class _MobileTestState extends State<MobileTest> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].name,
-                    style:  Theme.of(context)
-                      .textTheme
-                      .headlineMedium!
-                      .copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].name,
+                      style:  Theme.of(context)
+                        .textTheme
+                        .headlineMedium!
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Stack(

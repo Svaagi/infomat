@@ -83,17 +83,11 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
 
-      checkTitle = false;
 
         
 
-        if (title == '' && definition == '' && images.isEmpty && division.isEmpty) {
-          checkTitle = false;
-        } else if (title != '' && definition == '' && images.isEmpty && division.isEmpty) {
-          checkTitle = true;
-        } else {
-          checkTitle = true;
-        }
+
+         
 
         _loading = false;
 
@@ -117,6 +111,12 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
             pressed = true;
 
         }
+
+        if(title != '' && definition == '' && images.length == 0 && division.length == 0) {
+          checkTitle = false;
+         } else {
+            checkTitle = true;
+         }
 
         if (matchmaking.length > 1) {
             allCorrects = correct.map((e) {
@@ -258,7 +258,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
             alignment: WrapAlignment.spaceEvenly,
 
             children: [
-            if (checkTitle ) Container(
+            if (checkTitle! ) Container(
               width: 670,
               margin:  const EdgeInsets.only(bottom: 12, left: 12, right: 30, top: 50),
               padding: const EdgeInsets.all(12),
@@ -371,7 +371,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
               ),
             ),
             Container(
-               width: ((title != '' || definition != '' || images.isNotEmpty) && checkTitle) ? 600 : 800,
+               width: ((title != '' || definition != '' || images.isNotEmpty) && checkTitle!) ? 600 : 800,
                 margin: const EdgeInsets.all(12),
                 padding: const EdgeInsets.all(12),
               child: 
@@ -414,8 +414,8 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                               ],
                             )
                         ),
-                        if(!checkTitle)const SizedBox(height: 30,),
-                           if(!checkTitle)Container(
+                        if(!checkTitle!)const SizedBox(height: 30,),
+                           if(!checkTitle!)Container(
                             padding: const EdgeInsets.all(4),
                             child: Text(
                               title,
@@ -618,17 +618,18 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                     color: "grey",
                     text: 'Nasledujúca', 
                     rightIcon: 'assets/icons/arrowRightIcon.svg',
-                    onTap: () {
+                    onTap: () async {
                       if (questionIndex + 1 < (questionsPoint ?? 0)) {
                         setState(() {
                         questionIndex++;
-                        fetchQuestionData();
+
                       });
+                        await fetchQuestionData();
+
                       } else {
                         setState(() {
                           questionIndex = 0;
                           pressed = false;
-                          checkTitle = false;
                         });
                       
                         _showscreen();
