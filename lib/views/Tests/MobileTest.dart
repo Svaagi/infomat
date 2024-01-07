@@ -19,15 +19,17 @@ class MobileTest extends StatefulWidget {
   final UserData? userData;
   final List<dynamic> data;
   final String resultsId;
+    void Function() refresh;
 
-  const MobileTest(
+  MobileTest(
       {Key? key,
       required this.testIndex,
       required this.overlay,
       required this.capitolsId,
       required this.userData,
       required this.data,
-      required this.resultsId
+      required this.resultsId,
+      required this.refresh
       })
       : super(key: key);
 
@@ -1228,7 +1230,10 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
           updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
-          widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          setState(() {
+            widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          });
+          widget.refresh();
           sendCompleteEvent();
         } 
 

@@ -11,7 +11,6 @@ class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final UserData? currentUserData;
   final Function(int) onNavigationItemSelected;
   int selectedIndex;
-  final VoidCallback? onUserDataChanged;
   final void Function() tutorial;
   void Function() fetch;
 
@@ -21,7 +20,6 @@ class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.currentUserData,
     required this.onNavigationItemSelected,
     required this.selectedIndex,
-    this.onUserDataChanged,
     required this.tutorial,
     required this.fetch
   }) : super(key: key);
@@ -71,7 +69,7 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                           ),
                           const SizedBox(width: 8),
                           if(!widget.currentUserData!.teacher) SvgPicture.asset('assets/icons/starYellowIcon.svg'),
-                          if(widget.currentUserData!.teacher && widget.currentUserData!.classes.length > 0)DropDown(currentUserData: widget.currentUserData, onUserDataChanged: widget.onUserDataChanged, fetch: widget.fetch, onNavigationItemSelected: widget.onNavigationItemSelected, selectedIndex: widget.selectedIndex),
+                          if(widget.currentUserData!.teacher && widget.currentUserData!.classes.length > 0)DropDown(currentUserData: widget.currentUserData,  fetch: widget.fetch, onNavigationItemSelected: widget.onNavigationItemSelected, selectedIndex: widget.selectedIndex),
                           const SizedBox(width: 16),
                           NotificationsDropDown(
                             currentUserData: widget.currentUserData, // Pass your user data
@@ -96,16 +94,7 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                               child: CircularAvatar(name: widget.currentUserData!.name, width: 16, fontSize: 16,),
                             ),
                           ),
-                          if(widget.currentUserData!.teacher)const SizedBox(width: 16),
-                          if(widget.currentUserData!.teacher)IconButton(
-                            icon: SvgPicture.asset('assets/icons/adminIcon.svg'),
-                            onPressed: () {
-                              widget.onNavigationItemSelected(6);
-                              widget.selectedIndex = -1;
-                            }
-                          ),
-                          
-                          const SizedBox(width: 30),
+                          const SizedBox(width: 16),
                         ],
                       )
                     ],

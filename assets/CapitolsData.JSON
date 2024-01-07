@@ -3927,7 +3927,7 @@
     "badge": "assets/badges/badgeData.png",
     "badgeActive": "assets/badges/badgeDataActive.png",
     "badgeDis": "assets/badges/badgeDataDis.png",
-    "color": "yellow",
+    "color": "pink",
     "name": "Práca s dátami",
     "points": 32,
     "weeklyChallenge": 0,

@@ -251,7 +251,7 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                   SizedBox(height: 28),
-                                  Wrap(
+                                  if(!isMobile) Wrap(
                                     alignment: WrapAlignment.center,
                                     crossAxisAlignment: WrapCrossAlignment.center,
                                     runSpacing: 5,

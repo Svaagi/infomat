@@ -24,12 +24,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Challenges extends StatefulWidget {
-  final UserData? currentUserData;
+  UserData? currentUserData;
   final int weeklyCapitolIndex;
   final int weeklyTestIndex;
   final int weeklyChallenge;
 
-  const Challenges({Key? key, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
+  Challenges({Key? key, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
 
   @override
   State<Challenges> createState() => _ChallengesState();
@@ -69,9 +69,16 @@ class _ChallengesState extends State<Challenges> {
     }
   }
 
-  void scrollUp() {
+  void refresh() {
+    setState(() {
+      widget.currentUserData = widget.currentUserData;
+    });
+  }
+
+  void scrollUp(double dy) {
+    double tmp =  dy - (MediaQuery.of(context).size.height/1.48);
     final currentScroll = _scrollController.offset;
-    final scrollPosition = (currentScroll + 150).clamp(0.0, _scrollController.position.maxScrollExtent);
+    final scrollPosition = (currentScroll + tmp).clamp(0.0, _scrollController.position.maxScrollExtent);
     _scrollController.animateTo(
       scrollPosition,
       duration: Duration(milliseconds: 300),
@@ -225,9 +232,9 @@ Future<List<dynamic>> fetchQuestionData() async {
           child: Container(
             color: Colors.black.withOpacity(0.5),
             alignment: Alignment.center,
-            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData) :  MobileTest(resultsId: resultsId,testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData) : widget.currentUserData!.teacher ?
+            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData) :  MobileTest(resultsId: resultsId,testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, refresh: refresh,) : widget.currentUserData!.teacher ?
               TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData)
-               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data, isPressed: isPressed,),
+               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data, isPressed: isPressed, refresh: refresh,),
           ),
         ),
       ),
@@ -376,7 +383,7 @@ Widget build(BuildContext context) {
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                         color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                            ? AppColors.getColor( 'blue').lighter
+                                                            ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? AppColors.getColor( data[capitolIndex]["color"]).lighter : AppColors.getColor( 'red').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
                                                     )
@@ -394,6 +401,7 @@ Widget build(BuildContext context) {
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
                                                 scrollUp: scrollUp,
+                                                color: data[capitolIndex]["color"]
                                               ),
                                             ],
                                           ),
@@ -491,7 +499,7 @@ Widget build(BuildContext context) {
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                         color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
-                                                            ? AppColors.getColor( 'blue').lighter
+                                                            ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? AppColors.getColor( data[capitolIndex]["color"]).lighter : AppColors.getColor( 'red').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
                                                     )
@@ -509,6 +517,7 @@ Widget build(BuildContext context) {
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
                                                 scrollUp: scrollUp,
+                                                color: data[capitolIndex]["color"]
                                               ),
                                             ],
                                           ),
@@ -551,7 +560,8 @@ class StarButton extends StatelessWidget {
   int weeklyCapitolIndex; 
   int weeklyTestIndex;
   bool Function(int, int) isBehind;
-  void Function() scrollUp;
+  void Function(double) scrollUp;
+  String color;
 
   StarButton({
     required this.globalIndex,
@@ -565,7 +575,8 @@ class StarButton extends StatelessWidget {
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
     required this.isBehind,
-    required this.scrollUp
+    required this.scrollUp,
+    required this.color
   });
 
  int countTrueValues(List<UserQuestionsData>? questionList) {
@@ -637,14 +648,14 @@ Widget build(BuildContext context) {
                  onTap: () {
                     final RenderBox button = context.findRenderObject() as RenderBox;
                     if (userData!.teacher) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp, color);
                     } else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) == 0) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 1, scrollUp);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 1, scrollUp, color);
                     } 
                     else if (int.parse(capitolsId)  == weeklyCapitolIndex && number == weeklyTestIndex && countTrueValues(userData!.capitols[int.parse(capitolsId)].tests[number].questions) > 0) {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 2, scrollUp);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 2, scrollUp, color);
                     }  else {
-                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 0, scrollUp);
+                      showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 0, scrollUp, color);
                     }
                     visibleContainerIndex(number);
                   },
@@ -676,9 +687,9 @@ Widget build(BuildContext context) {
                 onTap: () {
                   final RenderBox button = context.findRenderObject() as RenderBox;
                   if (userData!.teacher) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp, 'red');
                   } else {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 5, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 5, scrollUp, 'red');
                   }
                   visibleContainerIndex(number);
                 },
@@ -712,11 +723,11 @@ Widget build(BuildContext context) {
                 onTap: () {
                   final RenderBox button = context.findRenderObject() as RenderBox;
                   if (userData!.teacher) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 6, scrollUp, 'yellow');
                   } else if (userData!.capitols[int.parse(capitolsId)].completed) {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp, 'yellow');
                   } else {
-                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp);
+                    showPopupMenu(context, number % 2 == 0 ? 0 : 1, button, 4, scrollUp, 'yellow');
                   }
                   visibleContainerIndex(number);
                 },
@@ -737,7 +748,7 @@ Widget build(BuildContext context) {
 
 
 
-void showPopupMenu(BuildContext context, int direction, RenderBox button, int columnId, Function() scrollUp) {
+void showPopupMenu(BuildContext context, int direction, RenderBox button, int columnId, Function(double) scrollUp, String color) {
   final double menuWidth = 400.0; // Set your desired menu width
   final double menuHeight = 200.0; // Set your desired menu height
 
@@ -747,11 +758,32 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
   double offsetX = buttonPosition.dx + button.size.width / 2 - menuWidth / 2;
   double offsetY = buttonPosition.dy + button.size.height + 10; // Adjust vertical position as needed
 
+  Color getTan(String color) {
+    switch (color) {
+      case 'primary':
+        return Color(0xff7579d2);
+      case 'blue':
+        return Color(0xff4689d6);
+      case 'green':
+        return Color(0xff63bdae);
+      case 'orange':
+        return Color(0xfffd8f67);
+      case 'pink':
+        return Color(0xffea82ad);
+      default:
+        return Color(0xff7579d2);
+    }
+  }
+
 
   // Check if Y-coordinate of the button is lower than 200 and call scrollUp if it is
 
   if (buttonPosition.dy > 600) {
-    scrollUp();
+    if (columnId == 0) {
+      scrollUp(buttonPosition.dy - 50);
+    } else {
+      scrollUp(buttonPosition.dy);
+    }
   }
 
   final RelativeRect position = RelativeRect.fromLTRB(
@@ -760,7 +792,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
     offsetX + menuWidth,
     offsetY + menuHeight,
   );
-         Widget _buildSwitchableColumn(int index) {
+    Widget _buildSwitchableColumn(int index) {
         switch (index) {
           case 0:
             return Column(
@@ -778,7 +810,6 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                       ),
                     ],
                   ),
-                  
                     const SizedBox(height: 10),
                    Text(
                       'Táto výzva je nateraz zamknutá',
@@ -879,11 +910,11 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                               if (states.contains(MaterialState.disabled)) {
                                 return AppColors.getColor("mono").lightGrey;
                               } else if (states.contains(MaterialState.pressed)) {
-                                return  Color(0xff4689d6);
+                                return  getTan(color);
                               } else if (states.contains(MaterialState.hovered)) {
-                                return Color(0xff4689d6);
+                                return getTan(color);
                               } else {
-                                return Color(0xff4689d6);
+                                return getTan(color);
                               }
                             }),
                             side: MaterialStateProperty.resolveWith((states) {
@@ -1029,22 +1060,64 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                         ),
                         ),
                         SizedBox(width: 5),
-                        SvgPicture.asset('assets/icons/starYellowIcon.svg'),
+                        SvgPicture.asset('assets/icons/starYellowIcon.svg', color: Colors.white,),
                       ],
                     ),
                   ],
                 ),
                 SizedBox(height: 10,),
-                 Center(
+                Center(
                       child: SizedBox(
                         width: 300,
-                        child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
-                          onPressed(number, false);
-                          Navigator.of(context).pop();
-                        }),
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            onPressed(number, false);
+                            Navigator.of(context).pop();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+ // Replace with your desired icon
+                              Text(
+                                'ZOBRAZIŤ TEST',
+                                style: TextStyle(
+                                  color:  AppColors.getColor("mono").white,
+                                  fontFamily: GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
+                            backgroundColor: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.disabled)) {
+                                return AppColors.getColor("mono").lightGrey;
+                              } else if (states.contains(MaterialState.pressed)) {
+                                return  Color(0xfffac933);
+                              } else if (states.contains(MaterialState.hovered)) {
+                                return Color(0xfffac933);
+                              } else {
+                                return Color(0xfffac933);
+                              }
+                            }),
+                            side: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                AppColors.getColor('blue').lighter;
+                              } else {
+                                return BorderSide.none;
+                              }
+                            }),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                          ),
+                        ),
                       )
                   ),
-                
               ],
             );
           case 5:
@@ -1100,16 +1173,58 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
                   ],
                 ),
                 SizedBox(height: 10,),
-                 Center(
+                Center(
                       child: SizedBox(
                         width: 300,
-                        child: ReButton( color: 'blue', text: 'ZOBRAZIŤ TEST' , onTap: () {
-                          onPressed(number, true);
-                          Navigator.of(context).pop();
-                        }),
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            onPressed(number, true);
+                            Navigator.of(context).pop();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+ // Replace with your desired icon
+                              Text(
+                                'ZOBRAZIŤ TEST',
+                                style: TextStyle(
+                                  color:  AppColors.getColor("mono").white,
+                                  fontFamily: GoogleFonts.inter(fontWeight: FontWeight.w500).fontFamily
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0), // Set elevation to 0 for a flat appearance
+                            backgroundColor: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.disabled)) {
+                                return AppColors.getColor("mono").lightGrey;
+                              } else if (states.contains(MaterialState.pressed)) {
+                                return  Color(0xffec6f7e);
+                              } else if (states.contains(MaterialState.hovered)) {
+                                return Color(0xffec6f7e);
+                              } else {
+                                return Color(0xffec6f7e);
+                              }
+                            }),
+                            side: MaterialStateProperty.resolveWith((states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                AppColors.getColor('blue').lighter;
+                              } else {
+                                return BorderSide.none;
+                              }
+                            }),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                          ),
+                        ),
                       )
                   ),
-                
               ],
             );
             case 6:
@@ -1188,7 +1303,7 @@ void showPopupMenu(BuildContext context, int direction, RenderBox button, int co
     position: position,
     constraints: BoxConstraints(maxWidth: 400, minWidth: 0),
 
-    color: AppColors.getColor('blue').light,
+    color: AppColors.getColor(color).light,
     shape: TooltipShape(context: context, direction: direction % 2 == 0 ? 0 : 1),
     items: <PopupMenuEntry<int>>[
       PopupMenuItem<int>(

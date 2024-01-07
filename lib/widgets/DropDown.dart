@@ -20,7 +20,6 @@ class OptionsData {
 
 class DropDown extends StatefulWidget {
   final UserData? currentUserData;
-  final VoidCallback? onUserDataChanged;
   void Function() fetch;
   final Function(int) onNavigationItemSelected;
   int selectedIndex;
@@ -29,7 +28,6 @@ class DropDown extends StatefulWidget {
   DropDown({
     Key? key,
     required this.currentUserData,
-    this.onUserDataChanged,
     required this.fetch,
     required this.onNavigationItemSelected,
     required this.selectedIndex
@@ -123,11 +121,8 @@ class _DropDownState extends State<DropDown> {
   void myFunction(String parameter) async {
     widget.currentUserData!.schoolClass = parameter;
     await saveUserDataToFirestore(widget.currentUserData!).then((_) {
-      if (widget.onUserDataChanged != null) {
-        widget.onUserDataChanged!();
-      }
+
     });
-    widget.fetch;
     setState(() {
       widget.selectedIndex = 0;
     });
@@ -142,71 +137,88 @@ class _DropDownState extends State<DropDown> {
     if (widget.currentUserData != oldWidget.currentUserData) {
       fetchOptions(); // Call fetchOptions to update the dropdown
 
-      // If there is a callback defined, call it
-      if (widget.onUserDataChanged != null) {
-        widget.onUserDataChanged!();
-      }
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    bool isDropdownOpen = false;
-    if (_loading) return Center(child: CircularProgressIndicator(),);
-    return   Container(
-              width: 138,
-              margin: EdgeInsets.symmetric(vertical: 8),
-              
-              decoration: BoxDecoration(
-                color: isMobile ? Color(0xff989BDD) : AppColors.getColor('mono').lighterGrey,
-                borderRadius: BorderRadius.circular(30.0),
+Widget build(BuildContext context) {
+  bool isDropdownOpen = false;
+  if (_loading) return Center(child: CircularProgressIndicator());
+  return Container(
+    width: 138,
+    margin: EdgeInsets.symmetric(vertical: 8),
+    decoration: BoxDecoration(
+      color: isMobile ? Color(0xff989BDD) : AppColors.getColor('mono').lighterGrey,
+      borderRadius: BorderRadius.circular(30.0),
+    ),
+    child: PopupMenuButton<String>(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      offset: const Offset(0, 40),
+      tooltip: '',
+      icon: Padding(
+        padding: const EdgeInsets.only(right: 8.0),
+        child: Row(
+          children: [
+            SizedBox(width: 5,),
+            Text(
+              'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue, orElse: () => noClassOption).data.name}',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main,
               ),
-              child: PopupMenuButton<String>(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                offset: const Offset(0, 40),
-                tooltip: '',
-                icon: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 5,),
-                      Text(
-                        'Trieda: ${options!.firstWhere((option) => option.id == dropdownValue, orElse: () => noClassOption).data.name}',
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main,
-                        ),
-                      ),
-                      const Spacer(),
-                      SvgPicture.asset('assets/icons/downIcon.svg', color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main),
-                    ],
-                  ),
-                ),
-                onSelected: (String? newValue) {
-                  handleSelection(newValue!);
-                  setState(() {
-                    isDropdownOpen = !isDropdownOpen;
-                  });
-                },
-                onCanceled: () {
-                  setState(() {
-                    isDropdownOpen = !isDropdownOpen;
-                  });
-                },
-                itemBuilder: (BuildContext context) {
-                  return options!
-                      .where((OptionsData value) => value.id != "Žiadna") // Exclude "Žiadna" from the list
-                      .map<PopupMenuItem<String>>((OptionsData value) {
-                        return PopupMenuItem<String>(
-                          value: value.id,
-                          child: Text(value.data.name),
-                        );
-                      }).toList();
-                },
-              ),
-            );
-  }
+            ),
+            const Spacer(),
+            SvgPicture.asset('assets/icons/downIcon.svg', color: isMobile ? AppColors.getColor('mono').white : AppColors.getColor('primary').main),
+          ],
+        ),
+      ),
+      onSelected: (String? newValue) {
+        if (newValue != "admin") {
+          handleSelection(newValue!);
+          widget.fetch();
+        } else {
+          widget.onNavigationItemSelected(6);
+        }
+        setState(() {
+          isDropdownOpen = !isDropdownOpen;
+        });
+      },
+      onCanceled: () {
+        setState(() {
+          isDropdownOpen = !isDropdownOpen;
+        });
+      },
+      itemBuilder: (BuildContext context) {
+        List<PopupMenuItem<String>> menuItems = options!
+            .where((OptionsData value) => value.id != "Žiadna") // Exclude "Žiadna" from the list
+            .map<PopupMenuItem<String>>((OptionsData value) {
+              return PopupMenuItem<String>(
+                value: value.id,
+                child: Text(value.data.name),
+              );
+            }).toList();
+
+        // Add a 'Close' option
+        menuItems.add(
+          PopupMenuItem<String>(
+            value: "admin",
+            child: Row(
+              children: [
+                SvgPicture.asset('assets/icons/adminIcon.svg', width: 18,),
+                const SizedBox(width: 8,),
+                Text('Spravovať triedy'),
+
+              ],
+            ),
+          ),
+        );
+
+        return menuItems;
+      },
+    ),
+  );
+}
 
   Future<void> saveUserDataToFirestore(UserData userData) async {
     try {

@@ -21,10 +21,8 @@ import 'package:infomat/controllers/UserController.dart'; // Import the UserData
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/ResultsController.dart'; 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:infomat/widgets/MobileAppBar.dart';
 import 'package:infomat/widgets/DesktopAppBar.dart';
-import 'package:infomat/widgets/MobileBottomNavigation.dart';
-import 'package:infomat/widgets/TeacherMobileAppBar.dart';
+import 'package:infomat/widgets/MobileAppBar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/ClassModel.dart';
@@ -394,10 +392,10 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         key: _scaffoldKey,
         backgroundColor: Colors.transparent,
         appBar: isMobile
-      ? currentUserData!.teacher
-          ? PreferredSize(
+      ? 
+          PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: TeacherMobileAppBar(
+              child: MobileAppBar(
                 tutorial: () {
                   setState(() {
                       _tutorial = true;
@@ -407,21 +405,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                 onItemTapped: _onNavigationItemSelected,
                 selectedIndex: _selectedIndex,
                 currentUserData: currentUserData,
-                onUserDataChanged: _onUserDataChanged,
-                logOut: logOut,
-                onNavigationItemSelected: _onNavigationItemSelected,
-              ),
-            )
-          : PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: MobileAppBar(
-                tutorial: () {
-                  setState(() {
-                      _tutorial = true;
-                    });
-                },
-                currentUserData: currentUserData,
-                logOut: logOut,
                 onNavigationItemSelected: _onNavigationItemSelected,
               ),
             )
@@ -436,11 +419,10 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                 },
             currentUserData: currentUserData,
             onNavigationItemSelected: _onNavigationItemSelected,
-            onUserDataChanged: _onUserDataChanged,
             selectedIndex: _selectedIndex,
           ),
         ),
-      drawer: (currentUserData!.teacher && isMobile) ? Drawer(
+      drawer: ( isMobile) ? Drawer(
         backgroundColor:  AppColors.getColor('mono').white,
         child: ListView(
           padding: EdgeInsets.zero,
@@ -469,8 +451,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             buildNavItem(1, "assets/icons/starIcon.svg", "Výzva", context),
             buildNavItem(2, "assets/icons/textBubblesIcon.svg", "Diskusia", context),
             buildNavItem(3, "assets/icons/bookIcon.svg", "Vzdelávanie", context),
-            buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
-            buildNavItem(6, "assets/icons/adminIcon.svg", "Moja škola", context),
+            if(currentUserData!.teacher) buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
             buildNavItem(7, "assets/icons/messageIcon.svg", "Kontaktuje nás", context),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -559,15 +540,11 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           ],
         ),
       ) : null,
-      bottomNavigationBar:  (isMobile && !currentUserData!.teacher) ? MobileBottomNavigation(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onNavigationItemSelected,
-      ) : null,
-      body: !currentUserData!.teacher ? _buildStduentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
+      body: !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
     );
   }
 
-   Widget _buildStduentScreen(int index) {
+   Widget _buildStudentScreen(int index) {
     switch (index) {
       case 0:
         return isMobile ? MobileStudentFeed(
@@ -635,6 +612,8 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         weeklyCapitolIndex: weeklyCapitolIndex,
         weeklyTestIndex: weeklyTestIndex,
         );
+      case 7:
+        return ContactView();
       default:
         return Container(); // Handle other cases
     }

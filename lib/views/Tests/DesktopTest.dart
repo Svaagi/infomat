@@ -16,12 +16,13 @@ class DesktopTest extends StatefulWidget {
   final int testIndex;
   final Function overlay;
   final String capitolsId;
-  final UserData? userData;
+  UserData? userData;
   final List<dynamic> data;
   final String resultsId;
   final bool isPressed;
+  void Function() refresh;
 
-  const DesktopTest(
+  DesktopTest(
       {Key? key,
       required this.testIndex,
       required this.overlay,
@@ -29,7 +30,8 @@ class DesktopTest extends StatefulWidget {
       required this.userData,
       required this.data,
       required this.resultsId,
-      required this.isPressed
+      required this.isPressed,
+      required this.refresh
       })
       : super(key: key);
 
@@ -1171,7 +1173,10 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     widget.userData!.points += points.round();
         if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
           updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
-          widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          setState(() {
+            widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          });
+          widget.refresh();
           sendCompleteEvent();
         } 
 
