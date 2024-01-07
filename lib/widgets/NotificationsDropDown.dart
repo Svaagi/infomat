@@ -93,7 +93,6 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
 
       // Now, fetch notifications based on user data
       while (true) {
-        await Future.delayed(Duration(seconds: 1)); 
         List<NotificationsData> notifications = await fetchNotifications(userData);
         List<CompleteNotification> completeNotifications = [];
 
@@ -148,6 +147,8 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
 
         completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
         yield completeNotifications.reversed.toList();
+        await Future.delayed(Duration(seconds: 60)); 
+
       }
     } else {
       print('User is not logged in.');
