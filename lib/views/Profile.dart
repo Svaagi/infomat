@@ -70,7 +70,6 @@ class _ProfileState extends State<Profile> {
     
     _isDisposed = false; // Resetting _isDisposed state
     fetchUserData();
-    fetchCapitolsData();
     _loading = false;
   }
 
@@ -117,6 +116,9 @@ class _ProfileState extends State<Profile> {
           
           fetchStudents();
         }
+
+      fetchCapitolsData();
+
       } else {
         if (mounted) {
           setState(() {
@@ -179,11 +181,9 @@ class _ProfileState extends State<Profile> {
   Future<void> fetchCapitolsData() async {
     try {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-      Map<String, dynamic> data = json.decode(jsonData);
+      List<dynamic> data = json.decode(jsonData);
 
-      if (mounted && !_isDisposed) {
         setState(() {
-          weeklyCapitol = data[0]["tests"][data[0]["weeklyChallenge"]]["points"];
           capitolOne = data[0]["points"];
           capitolTwo = data[1]["points"];
           capitolThree = data[2]["points"];
@@ -191,7 +191,6 @@ class _ProfileState extends State<Profile> {
           capitolFive = data[4]["points"];
           percentage = ((currentUserData!.points / (capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive )) * 100).round();
         });
-      }
     } catch (e) {
       print('Error fetching question data: $e');
     }
