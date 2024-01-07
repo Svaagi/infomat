@@ -110,8 +110,14 @@ class _MobileAppBarState extends State<MobileAppBar> {
       const SizedBox(width: 8),
         IconButton(
         icon: seen ?  SvgPicture.asset('assets/icons/bellWhiteIcon.svg') : SvgPicture.asset('assets/icons/notificationBellWhite.svg'),
-        onPressed: () => 
-          widget.onNavigationItemSelected(5),
+        onPressed: () {
+          if(widget.currentUserData!.teacher) {
+           widget.onNavigationItemSelected(5);
+
+          } else {
+            widget.onNavigationItemSelected(4);
+          }
+        }
       ),
       if(!widget.currentUserData!.teacher)SizedBox(width: 8),
        if(!widget.currentUserData!.teacher)MouseRegion(
