@@ -90,7 +90,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
          Row(
           children: [
             Text(
-              '${widget.currentUserData!.points}/168',
+              '${widget.currentUserData!.points}/165',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
