@@ -2287,7 +2287,7 @@
     "badgeDis": "assets/badges/badgeGramDis.png",
     "color": "orange",
     "name": "Mediálna gramotnosť",
-    "points": 52,
+    "points": 56,
     "weeklyChallenge": 0,
     "tests": [
       {
@@ -3929,7 +3929,7 @@
     "badgeDis": "assets/badges/badgeDataDis.png",
     "color": "pink",
     "name": "Práca s dátami",
-    "points": 32,
+    "points": 31,
     "weeklyChallenge": 0,
     "tests": [
         {

@@ -36,8 +36,8 @@ class _ProfileState extends State<Profile> {
   int capitolOne = 14;
   int capitolTwo = 43;
   int capitolThree = 24;
-  int capitolFour = 52;
-  int capitolFive = 32;
+  int capitolFour = 56;
+  int capitolFive = 31;
 
   bool _isDisposed = false;
   List<String> badges = [];
