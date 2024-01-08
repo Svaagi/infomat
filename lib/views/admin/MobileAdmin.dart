@@ -96,24 +96,37 @@ class _MobileAdminState extends State<MobileAdmin> {
     try {
       SchoolData school = await fetchSchool(widget.currentUserData!.school);
       admin = await fetchUser(school.admin);
+      List<ClassDataWithId> tmp = [];
+
 
 
       setState(() {
         if (mounted) {
-          classes = school.classes;
+          if (widget.currentUserData!.admin) {
+            classes = school.classes;
+          } else {
+            classes = widget.currentUserData!.classes;
+          }
           teachers = school.teachers;
           adminId = school.admin;
           schoolName = school.name;
-          _loading = false;
         }
-        classDataList = [];
       });
 
       // Fetch class data once and store it in classDataList with IDs
-      for (String classId in classes!) {
+      for (String classId in classes) {
         ClassData classData = await fetchClass(classId);
-        classDataList.add(ClassDataWithId(classId, classData));
+        tmp.add(ClassDataWithId(classId, classData));
       }
+
+       tmp.sort((a, b) => a.data.name.compareTo(b.data.name));
+
+      setState(() {
+       classDataList = tmp;
+      });
+
+          _loading = false;
+
     } catch (e) {
       print('Error fetching school data: $e');
     }

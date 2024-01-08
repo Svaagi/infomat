@@ -993,7 +993,7 @@ Widget build(BuildContext context) {
                           hintText: _editComment ? 'Upraviť odpoveď' : 'Zapoj sa do diskusie',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8), // Adjust the value for less rounded corners
-                            borderSide: BorderSide(color: Colors.transparent), // Light grey border color
+                            borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -1001,7 +1001,7 @@ Widget build(BuildContext context) {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.transparent), // Light grey border color
+                            borderSide: BorderSide(color: AppColors.getColor('mono').lightGrey), // Light grey border color
                           ),
                           filled: true,
                           fillColor: Colors.white,

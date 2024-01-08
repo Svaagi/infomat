@@ -412,6 +412,11 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: DesktopAppBar(
             fetch: fetch,
+            setUser: (UserData user) {
+              setState(() {
+                currentUserData = user;
+              });
+            },
             tutorial: () {
                   setState(() {
                       _tutorial = true;
@@ -437,7 +442,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
-                      child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
+                      child: SvgPicture.asset('assets/icons/xIcon.svg', height: 15,),
                       onTap: () {
                         _scaffoldKey.currentState?.openEndDrawer();
                       },
@@ -452,6 +457,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             buildNavItem(2, "assets/icons/textBubblesIcon.svg", "Diskusia", context),
             buildNavItem(3, "assets/icons/bookIcon.svg", "Vzdelávanie", context),
             if(currentUserData!.teacher) buildNavItem(4, "assets/icons/resultsIcon.svg", "Výsledky", context),
+            if(currentUserData!.teacher) buildNavItem(6, "assets/icons/adminIcon.svg", "Spravovať triedy", context),
             buildNavItem(7, "assets/icons/messageIcon.svg", "Kontaktuje nás", context),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,

@@ -13,6 +13,7 @@ class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
   int selectedIndex;
   final void Function() tutorial;
   void Function() fetch;
+  Function(UserData) setUser;
 
 
   DesktopAppBar({
@@ -21,7 +22,8 @@ class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.onNavigationItemSelected,
     required this.selectedIndex,
     required this.tutorial,
-    required this.fetch
+    required this.fetch,
+    required this.setUser
   }) : super(key: key);
 
   @override
@@ -75,6 +77,7 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                             currentUserData: widget.currentUserData, // Pass your user data
                             onNavigationItemSelected: widget.onNavigationItemSelected,
                             selectedIndex: widget.selectedIndex,
+                            setUser: widget.setUser,
                           ),
                           if(!widget.currentUserData!.teacher)const SizedBox(width: 16),
                           IconButton(
@@ -93,6 +96,13 @@ class _DesktopAppBarState extends State<DesktopAppBar> {
                               },
                               child: CircularAvatar(name: widget.currentUserData!.name, width: 16, fontSize: 16,),
                             ),
+                          ),
+                          if(widget.currentUserData!.teacher)IconButton(
+                            icon: SvgPicture.asset('assets/icons/adminIcon.svg'),
+                            onPressed: () {
+                              widget.onNavigationItemSelected(6);
+                              widget.selectedIndex = -1;
+                            }
                           ),
                           const SizedBox(width: 16),
                         ],

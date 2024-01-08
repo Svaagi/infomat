@@ -12,7 +12,6 @@ void main() async {
   ui.bootstrapEngine();
 
 
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(

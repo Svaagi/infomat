@@ -35,14 +35,16 @@ class CompleteNotification {
 }
 
 class NotificationsDropDown extends StatefulWidget {
-  final UserData? currentUserData;
+  UserData? currentUserData;
   final Function(int) onNavigationItemSelected;
   int selectedIndex;
+  Function(UserData) setUser;
 
   NotificationsDropDown({
     required this.currentUserData,
     required this.onNavigationItemSelected,
-    required this.selectedIndex
+    required this.selectedIndex,
+    required this.setUser
   });
 
   @override
@@ -79,6 +81,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
             seen = false;
               
             });
+            widget.setUser(userData);
           
           };
       }
@@ -90,6 +93,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       UserData userData = await fetchUser(user.uid); // Assuming fetchUser is defined
+      widget.setUser(userData);
 
       // Now, fetch notifications based on user data
       while (true) {

@@ -110,7 +110,6 @@ class AddClassView extends StatelessWidget {
                       ReButton(
                         color: "green", 
                         text: 'ULOŽIŤ', 
-                        isDisabled: classNameController.text == '',
                         onTap: () async {
                           bool exists = await doesClassNameExist(classNameController.text, classes);
                           if(classNameController.text != '' && !exists) {
@@ -124,7 +123,6 @@ class AddClassView extends StatelessWidget {
                           } else {
                               if(exists)errorEdit('Meno už existuje');
                               if(classNameController.text == '') errorEdit('Pole je povinné') ;
-                              print('nic');
 
                               print(errorText);
                           }
