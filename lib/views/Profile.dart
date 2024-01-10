@@ -491,7 +491,7 @@ class _ProfileState extends State<Profile> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      '${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyCapitolIndex].points}/${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}',
+                                                      '${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points}/${currentUserData!.capitols[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .titleLarge!
