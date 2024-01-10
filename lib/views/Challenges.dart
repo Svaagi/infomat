@@ -184,16 +184,10 @@ Future<ClassData> fetchCurrentUserClass() async {
 
 Future<List<dynamic>> fetchQuestionData() async {
   List<dynamic> localResults = [];
-  List<UserData> userDataList = [];
 
   try {
     ClassData currentUserClass = await fetchCurrentUserClass();
     currentResults = await fetchResults(currentUserClass.results);
-
-    for (String userId in currentUserClass.students) {
-      UserData userData = await fetchUser(userId);
-      userDataList.add(userData);
-    }
 
     setState(() {
       resultsId = currentUserClass.results;

@@ -335,7 +335,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                         ),
                                         const SizedBox(height: 5,),
                                           Text(
-                                            '${test.points}/${test.questions.length} správných odpovedí',
+                                            '${test.points}/${test.questions.length} správnych odpovedí',
                                             style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                           ),
                                         ],

@@ -260,6 +260,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 color: AppColors.getColor('primary').lighter,
                               ),
                             ),
+                            const SizedBox(height: 20),
                               Text(
                                 textAlign: TextAlign.center,
                               widget.futureWeeklyTitle ?? '',
@@ -270,6 +271,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 color: Theme.of(context).colorScheme.onPrimary,
                               ),
                             ),
+                            const SizedBox(height: 20),
                             Text(
                                 "Kapitola: ${widget.capitolTitle}",
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
@@ -419,7 +421,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                               ),
                                               const SizedBox(height: 5,),
                                                 Text(
-                                                  '${test.points}/${test.questions.length} správných odpovedí',
+                                                  '${test.points}/${test.questions.length} správnych odpovedí',
                                                   style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                                 ),
                                               ],

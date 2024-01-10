@@ -213,7 +213,7 @@ Container reTileImage(Color color, Color borderColor, int index, String? item, B
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage}%', style:Theme.of(context)
+                  ) : Text('${percentage.round()}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(
@@ -287,7 +287,7 @@ Container reTileMatchmaking(
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage}%', style:Theme.of(context)
+                  ) : Text('${percentage.round()}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(
@@ -358,7 +358,7 @@ Container reTile(Color color, Color borderColor, int index, String? item, BuildC
                       .copyWith(
                         color: AppColors.getColor('red').main,
                       ),
-                  ) : Text('${percentage}%', style:Theme.of(context)
+                  ) : Text('${percentage.round()}%', style:Theme.of(context)
             .textTheme
             .titleLarge!
             .copyWith(

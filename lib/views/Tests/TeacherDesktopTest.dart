@@ -501,7 +501,11 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                                 bgColor = isCorrect ? AppColors.getColor('green').lighter : AppColors.getColor('mono').white;
                                 borderColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('mono').lightGrey;
                                 percentageColor = isCorrect ? AppColors.getColor('green').main : AppColors.getColor('red').main;
-                                mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
+                                if (widget.usersCompleted) {
+                                  mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true, percentage: (widget.results.questions[questionIndex].answers[index]/widget.studentsSum)*100);
+                                } else {
+                                  mainWidget = reTileMatchmaking(bgColor, borderColor, correct.firstWhere((cItem) => cItem["index"] == index)["correct"], index, item, context, item2, true);
+                                }
                               }
                               // Return the main widget alongside the item text
                               return Column(

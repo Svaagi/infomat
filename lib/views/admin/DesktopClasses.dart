@@ -53,6 +53,7 @@ class _DesktopClassesState extends State<DesktopClasses> {
       child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+            SizedBox(height: 30,),
               Row(
                 children: [
                   IconButton(

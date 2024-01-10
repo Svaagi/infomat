@@ -1149,6 +1149,9 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
             correctnessList[correctListIndex] = true;
           }
           points += partialPoints;
+          if(matchmaking.isNotEmpty) {
+            updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
+          }
         } else {
           points -= partialPoints;
         }
@@ -1168,7 +1171,10 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     if (points < 0) {
         points = 0.0;
     }
+
+    if(matchmaking.isEmpty) {
       updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
+    }
 
 
     // Update points, round it as per your instructions
