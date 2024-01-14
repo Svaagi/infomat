@@ -47,7 +47,7 @@ class MainApp extends StatelessWidget {
     await analytics.logEvent(
       name: 'login',
       parameters: {
-        'di': id, 
+        'id': id, 
       },
     );
   }

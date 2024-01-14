@@ -324,20 +324,6 @@ List<TableRow> _buildRows(List<UserData> students) {
           padding: EdgeInsets.all(8),
           child: Text('Priemerná úspešnosť', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
         ),
-        Container(
-          height: 50,
-          width: 80,
-          decoration: BoxDecoration(
-            border: Border(
-            right:  BorderSide(color: Colors.white),
-
-          ),
-          color: AppColors.getColor('green').light,
-
-          ),
-          padding: EdgeInsets.all(8),
-          child: Text('Známka', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
-        ),
       ],
     ),
   );
@@ -358,7 +344,6 @@ List<TableRow> _buildRows(List<UserData> students) {
     int totalScore = getTotalScore(student);
     int maxScore = getMaxScore(student);
     double percentage = (totalScore / maxScore) * 100;
-    String grade = getGrade(percentage);
     
 
    rows.add(
@@ -410,35 +395,12 @@ List<TableRow> _buildRows(List<UserData> students) {
               ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.5,
-                color: AppColors.getColor('mono').lighterGrey
-              ),
-            ),
-            padding: EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(grade),
-              ],
-            ),
-          ),
         ],
       ),
     );
   }
 
   return rows;
-}
-
-String getGrade(double percentage) {
-  if (percentage >= 90 && percentage <= 100) return '1';
-  if (percentage >= 75 && percentage < 90) return '2';
-  if (percentage >= 50 && percentage < 75) return '3';
-  if (percentage >= 30 && percentage < 50) return '4';
-  return '5';
 }
 
 

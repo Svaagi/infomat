@@ -175,7 +175,7 @@ class _MobileAdminState extends State<MobileAdmin> {
                         ),
                         const SizedBox(height: 10,),
                         Text(
-                          '${widget.currentUserData!.name}  {meno učiteľa prihlaseného v účte}',
+                          '${widget.currentUserData!.name}  (meno učiteľa prihlaseného v účte)',
                           style: Theme.of(context).textTheme.displaySmall!.copyWith(
                             color: Theme.of(context).colorScheme.onPrimary,
                           ),

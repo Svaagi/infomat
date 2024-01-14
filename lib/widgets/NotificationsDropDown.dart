@@ -176,6 +176,12 @@ Widget build(BuildContext context) {
           onPressed: () {
             _notificationsDataStream = _fetchCompleteNotificationsStream();
 
+            setAllNotificationsAsSeen(widget.currentUserData!);
+
+            setState(() {
+              seen = true;
+            });
+
             final RenderBox button = context.findRenderObject() as RenderBox;
             final RenderBox overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
             final RelativeRect position = RelativeRect.fromRect(

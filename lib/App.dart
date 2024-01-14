@@ -182,7 +182,6 @@ class _AppState extends State<App> {
 
     await fetchUserData();
 
-    await fetchPosts();
 
     end();
   }
@@ -195,6 +194,9 @@ class _AppState extends State<App> {
 
     // Fetch the user data when the app starts
     init(() {}, () {});
+
+    fetchPosts();
+
   }
 
 void updateWeeklyChallenge() {
