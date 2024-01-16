@@ -8,7 +8,9 @@ import 'package:infomat/models/UserModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Results extends StatefulWidget {
-  const Results({super.key});
+  int maxPoints;
+
+  Results({super.key, required this.maxPoints});
 
   @override
   State<Results> createState() => _ResultsState();
@@ -192,16 +194,13 @@ Widget build(BuildContext context) {
 
     for (var capitol in userData.capitols) {
       int capitolScore = 0;
-      int capitolMaxScore = 0;
 
       for (var test in capitol.tests) {
         capitolScore += test.points;
-        capitolMaxScore += test.questions.length;
       }
 
       scores.add({
         'score': capitolScore,
-        'maxScore': capitolMaxScore,
       });
     }
 
@@ -219,17 +218,6 @@ int getTotalScore(UserData userData) {
   return total;
 }
 
-int getMaxScore(UserData userData) {
-  int total = 0;
-
-  for (var capitol in userData.capitols) {
-    for (var test in capitol.tests) {
-      total += test.questions.length;
-    }
-  }
-
-  return total;
-}
 
 Widget buildScoreTable(List<UserData> students) {
   return SingleChildScrollView(
@@ -342,8 +330,7 @@ List<TableRow> _buildRows(List<UserData> students) {
     }
 
     int totalScore = getTotalScore(student);
-    int maxScore = getMaxScore(student);
-    double percentage = (totalScore / maxScore) * 100;
+    double percentage = (totalScore / widget.maxPoints) * 100;
     
 
    rows.add(
@@ -367,7 +354,7 @@ List<TableRow> _buildRows(List<UserData> students) {
               ),
             ),
                 padding: EdgeInsets.all(8),
-                child: Text('${score['score']} / ${score['maxScore']}'),
+                child: Text('${score['score']} / ${widget.maxPoints}'),
           )),
           Container(
             decoration: BoxDecoration(
@@ -391,7 +378,7 @@ List<TableRow> _buildRows(List<UserData> students) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("${totalScore} / ${maxScore} = ${percentage.toStringAsFixed(2)}%"),
+                Text("${totalScore} / ${widget.maxPoints} = ${percentage.toStringAsFixed(2)}%"),
               ],
             ),
           ),

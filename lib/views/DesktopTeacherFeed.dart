@@ -364,7 +364,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: LinearProgressIndicator(
-                                        value: (widget.weeklyChallenge != 0) ? widget.weeklyChallenge / 32 : 0.0,
+                                        value: (widget.weeklyChallenge + 1) / 32 ,
                                         backgroundColor: AppColors.getColor('blue').lighter,
                                         valueColor: AlwaysStoppedAnimation<Color>(AppColors.getColor('green').main),
                                       ),
@@ -372,7 +372,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                   ),
                                   SizedBox(width: 10),
                                   Text(
-                                    "${widget.weeklyChallenge}/32 výziev hotových",
+                                    "${widget.weeklyChallenge + 1}/32 výziev hotových",
                                     style: Theme.of(context)
                                       .textTheme
                                       .titleSmall!

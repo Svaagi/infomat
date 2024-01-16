@@ -158,17 +158,14 @@ class _AppState extends State<App> {
           }
 
         });
-      } else if ( i >= getTests(order[0]) && i < getTests(order[1])) {
+      } else if ( i >= getTests(order[0]) && i <  getTests(order[0]) + getTests(order[1])) {
         setState(() {
           weeklyCapitolIndex = order[1];
           weeklyTestIndex = i-getTests(order[0]);
           maxPoints = (getPoints(order[0]));
-            print('heere $weeklyCapitolIndex');
-            print('hee $weeklyTestIndex');
-          for (int j = 0; j <= i-getTests(order[0]); j++) {
+          for (int j = 0; j <=  weeklyTestIndex; j++) {
 
-            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
-            print(maxPoints);
+            maxPoints += data![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
 
           }
         });
@@ -177,8 +174,8 @@ class _AppState extends State<App> {
           weeklyCapitolIndex = order[2];
           weeklyTestIndex = i-(getTests(order[0])+getTests(order[1]));
           maxPoints = (getPoints(order[0]) + getPoints(order[1]));
-          for (int j = 0; j <= i-(getTests(order[0])+getTests(order[1])); j++) {
-            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          for (int j = 0; j <= weeklyTestIndex; j++) {
+            maxPoints += data![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
           }
         });
       } else if ( i >= getTests(order[0]) + getTests(order[1]) + getTests(order[2]) && i < getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3])) {
@@ -186,8 +183,8 @@ class _AppState extends State<App> {
           weeklyCapitolIndex = order[3];
           weeklyTestIndex = i-(getTests(order[0]) + getTests(order[1]) + getTests(order[2]));
           maxPoints = (getPoints(order[0]) + getPoints(order[1]) + getPoints(order[2]));
-          for (int j = 0; j <= i-(getTests(order[0]) + getTests(order[1]) + getTests(order[2])); j++) {
-            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          for (int j = 0; j <= weeklyTestIndex; j++) {
+            maxPoints += data![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
           }
         });
       } else if ( i >= getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]) && i < getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]) + getTests(order[4])) {
@@ -195,8 +192,8 @@ class _AppState extends State<App> {
           weeklyCapitolIndex = order[4];
           weeklyTestIndex = i- (getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]));
           maxPoints = (getPoints(order[0]) + getPoints(order[1]) + getPoints(order[2]) + getPoints(order[3]));
-          for (int j = 0; j <= i- (getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3])); j++) {
-            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          for (int j = 0; j <=  weeklyTestIndex; j++) {
+            maxPoints += data![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
           }
         });
       }
@@ -725,7 +722,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           currentUserData: currentUserData,
         );
       case 4:
-        return  const Results(); // Handle other cases
+        return  Results(maxPoints: maxPoints,); // Handle other cases
       case 5:
         return Notifications(currentUserData: currentUserData, onNavigationItemSelected: _onNavigationItemSelected);
       case 6:
