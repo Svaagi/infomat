@@ -30,6 +30,7 @@ class DesktopTeacherFeed extends StatefulWidget {
   List<PostsData> posts;
   List<String> students;
   int maxPoints;
+  bool load;
 
 
   DesktopTeacherFeed({
@@ -47,7 +48,8 @@ class DesktopTeacherFeed extends StatefulWidget {
     required this.studentsSum,
     required this.posts,
     required this.students,
-    required this.maxPoints
+    required this.maxPoints,
+    required this.load
   }) : super(key: key);
 
   @override
@@ -90,6 +92,10 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
   @override
   void initState() {
     super.initState();
+
+    setState(() {
+      _loading = widget.load;
+    });
 
     sendFeedEvent();
 

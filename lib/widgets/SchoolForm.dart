@@ -1084,8 +1084,8 @@ class _SchoolFormState extends State<SchoolForm> {
           'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
           'active': userData.active,
           'classes': [],
-          'school': '',
-          'schoolClass': userData.schoolClass,
+          'school': _schoolIdController.text,
+          'schoolClass': '',
           'signed': userData.signed,
           'teacher': true,
           'points': userData.points,
@@ -1125,10 +1125,6 @@ class _SchoolFormState extends State<SchoolForm> {
           );
 
           addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , [], setTeacher);
-
-          for (String name in combinedList) {
-            addClass(name, _schoolIdController.text, null, userData.id, (String) {});
-          }
 
         _onNavigationItemSelected(_selectedIndex + 1);
         

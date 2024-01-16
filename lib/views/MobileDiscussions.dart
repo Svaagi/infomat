@@ -244,19 +244,6 @@ Widget build(BuildContext context) {
                     }
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(5),
-                  child:  ReButton(
-                    color: "grey", 
-                    text: 'Vybrať z knižnice', 
-                    onTap: () {
-                      _onNavigationItemSelected(1);
-                      setState(() {
-                        _library = true;
-                      });
-                    }
-                  ),
-                ),
               ],
             ),
             Expanded( 

@@ -65,29 +65,38 @@ class _ResultsState extends State<Results> {
         final studentIds = classData.students;
         List<UserData> fetchedStudents = [];
 
-        for (var id in studentIds) {
-          fetchUserDataOperation?.cancel();  // Cancel the previous operation if it exists
-          fetchUserDataOperation = CancelableOperation<UserData>.fromFuture(fetchUser(id));
+        if (studentIds.isNotEmpty) {
+            for (var id in studentIds) {
+            fetchUserDataOperation?.cancel();  // Cancel the previous operation if it exists
+            fetchUserDataOperation = CancelableOperation<UserData>.fromFuture(fetchUser(id));
 
-          UserData userData = await fetchUserDataOperation!.value;
+            UserData userData = await fetchUserDataOperation!.value;
+
+            if (mounted) {
+              fetchedStudents.add(userData);
+            } else {
+              return;
+            }
+          }
+
+            // sort students by score
 
           if (mounted) {
-            fetchedStudents.add(userData);
-          } else {
-            return;
+            setState(() {
+              studentIndex = indexOfElement(fetchedStudents, user.uid);
+              students = fetchedStudents;
+              _loading = false;
+            });
           }
-        }
 
-        // sort students by score
-
-        if (mounted) {
+        } else {
           setState(() {
-            studentIndex = indexOfElement(fetchedStudents, user.uid);
-            students = fetchedStudents;
-            _loading = false;
+            _loading = true;
           });
         }
+        
 
+      
       } else {
         print('currentUserData is null');
       }

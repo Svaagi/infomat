@@ -74,6 +74,7 @@ class _AppState extends State<App> {
   int studentsSum = 0;
   List<String> students = [];
   int maxPoints = 0;
+  bool load = false;
 
   List<DateTime> _activeWeeks = [
 
@@ -332,6 +333,13 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         classData = await fetchClass(userData.schoolClass);
       } catch (e) {
         print('Error fetching class data: $e');
+      }
+
+      if (userData.classes.isEmpty) {
+        setState(() {
+          _selectedIndex = 6;
+          load = true;
+        });
       }
 
       // Proceed with fetching results if class data is available
@@ -699,6 +707,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             weeklyChallenge: weeklyChallenge,
             addWeek: addWeek,
             removeWeek: removeWeek,
+            load: load,
             init: init,
             students: students,
             results: currentResults,
