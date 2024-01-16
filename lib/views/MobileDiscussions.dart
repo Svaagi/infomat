@@ -567,10 +567,18 @@ Widget build(BuildContext context) {
                       try {
                         await addPost(widget.currentUserData!.schoolClass, newPost);
 
+
                         setState(() {
                           _posts.add(newPost);
                           _posts.sort((a, b) => b.date.compareTo(a.date));
                         });
+
+                        _onNavigationItemSelected(1);
+                        setState(() {
+                          _add = false;
+                        });
+
+                        
 
                         reShowToast('Príspevok odoslaný', false, context);
                         postController.clear();
@@ -580,172 +588,6 @@ Widget build(BuildContext context) {
                       }
                     },
                   ),
-              ],
-            ),
-          ),
-         if (_library) Container(
-            color: Theme.of(context).colorScheme.background,
-            width: 900,
-            child: Column(
-              children: [
-                Container(
-                  width: 900,
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: AppColors.getColor('mono').darkGrey,
-                        ),
-                        onPressed: () {
-                           showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              content: Container(
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                // Add content for the AlertDialog here
-                                // For example, you can add form fields to input teacher data
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Spacer(),
-                                        MouseRegion(
-                                          cursor: SystemMouseCursors.click,
-                                          child: GestureDetector(
-                                            child: SvgPicture.asset('assets/icons/xIcon.svg', height: 10,),
-                                            onTap: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                      'Zahodiť zmeny',
-                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                          color: AppColors.getColor('mono').black,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 15,),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                      'Vaše zmeny sa neuložia.',
-                                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child:  Container(
-                                        width: 150,
-                                        height: 48,
-                                        child:  ReButton(
-                                          color: "red", 
-                                          text: 'ZAHODIŤ',  
-                                          onTap: () {
-                                            _onNavigationItemSelected(0);
-                                            _library = false;
-                                            Navigator.of(context).pop();
-                                          }
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                          
-                        },
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Pridať príspevok z knižnice',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  color: Theme.of(context).colorScheme.onBackground,
-                                ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 100,),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20), // Add spacing between the header and content
-                 SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(12),
-                          height: 200,
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              _buildLibraryCheckbox('Library 1'),
-                              _buildLibraryCheckbox('Library 2'),
-                              _buildLibraryCheckbox('Library 3'),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20), // Add spacing between the ListView and ReButton
-                        
-                      ],
-                  ),
-                ),
-                Container(
-                          width: 151,
-                          height: 40,
-                          child: ReButton(
-                           color: "green",  
-                            isDisabled: _selectedLibrary == '',
-                            text: 'UVEREJNIŤ', 
-                            onTap: () async {
-                              PostsData newPost = PostsData(
-                                comments: [],
-                                date: Timestamp.now(),
-                                userId: FirebaseAuth.instance.currentUser!.uid,
-                                user: widget.currentUserData!.name,
-                                edited: false,
-                                value: _selectedLibrary,
-                                id: _posts.length.toString()
-                              );
-
-                              try {
-                                await addPost(widget.currentUserData!.schoolClass, newPost);
-
-                                setState(() {
-                                  _posts.add(newPost);
-                                  _posts.sort((a, b) => b.date.compareTo(a.date));
-                                });
-
-                                _selectedLibrary = '';
-                              } catch (e) {
-                                print('Error adding post: $e');
-                              }
-                            },
-                          ),
-                        )
               ],
             ),
           ),

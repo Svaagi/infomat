@@ -100,15 +100,6 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
         List<NotificationsData> notifications = await fetchNotifications(userData);
         List<CompleteNotification> completeNotifications = [];
 
-      for (var notif in notifications) {
-        if(notif.seen == false) {
-          setState(() {
-          seen = false;
-            
-          });
-        
-        };
-      }
 
       for (var notif in notifications) {
         switch (notif.type.type) {
@@ -173,8 +164,8 @@ Widget build(BuildContext context) {
       children: [
         IconButton(
           icon: seen ?  SvgPicture.asset('assets/icons/bellIcon.svg') : SvgPicture.asset('assets/icons/notificationBell.svg'),
-          onPressed: () {
-            _notificationsDataStream = _fetchCompleteNotificationsStream();
+          onPressed: () async {
+            _notificationsDataStream = await _fetchCompleteNotificationsStream();
 
             setAllNotificationsAsSeen(widget.currentUserData!);
 

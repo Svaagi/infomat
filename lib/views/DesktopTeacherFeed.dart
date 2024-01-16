@@ -29,6 +29,7 @@ class DesktopTeacherFeed extends StatefulWidget {
   int studentsSum;
   List<PostsData> posts;
   List<String> students;
+  int maxPoints;
 
 
   DesktopTeacherFeed({
@@ -45,7 +46,8 @@ class DesktopTeacherFeed extends StatefulWidget {
     this.results,
     required this.studentsSum,
     required this.posts,
-    required this.students
+    required this.students,
+    required this.maxPoints
   }) : super(key: key);
 
   @override
@@ -480,7 +482,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                                       ),
                                                       Container(
                                                         child:  Text(
-                                                          '${userData.points}/168 = ${((userData.points/168)*100).round()}%',
+                                                          '${userData.points}/${widget.maxPoints} = ${((userData.points/widget.maxPoints)*100).round()}%',
                                                           style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                                                 color: AppColors.getColor('mono').black,
                                                               ),

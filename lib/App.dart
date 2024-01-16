@@ -1,5 +1,6 @@
 import 'dart:html' as html;
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
@@ -72,6 +73,7 @@ class _AppState extends State<App> {
   List<ResultCapitolsData>? currentResults;
   int studentsSum = 0;
   List<String> students = [];
+  int maxPoints = 0;
 
   List<DateTime> _activeWeeks = [
 
@@ -81,10 +83,12 @@ class _AppState extends State<App> {
 
   void addWeek () {
     _activeWeeks.add(DateTime(2023, 12, 27));
+    maxPoints = 0;
   }
 
   void removeWeek () {
     _activeWeeks.removeLast();
+     maxPoints = 0;
   }
 
   Future<void> fetchPosts() async {
@@ -109,7 +113,7 @@ class _AppState extends State<App> {
 
 
 
- int getPoint (int i) {
+ int getTests (int i) {
     switch (i) {
       case 0:
         return 2;
@@ -126,31 +130,74 @@ class _AppState extends State<App> {
     }
  }
 
+  int getPoints (int i) {
+    switch (i) {
+      case 0:
+        return 14;
+      case 1:
+        return 43;
+      case 2:
+        return 24;
+      case 3:
+        return 56;
+      case 4:
+        return 31;
+      default:
+        return 0;
+    }
+ }
+
  void getWeeklyIndexes (int i) {
-     if (i < getPoint(order[0])) {
+     if (i < getTests(order[0])) {
         setState(() {
           weeklyCapitolIndex = order[0];
           weeklyTestIndex = i;
+
+          for (int j = 0; j <= i; j++) {
+            maxPoints += orderedData[0]["tests"][j]["questions"].length as int;
+          }
+
         });
-      } else if ( i >= getPoint(order[0]) && i < getPoint(order[1])) {
+      } else if ( i >= getTests(order[0]) && i < getTests(order[1])) {
         setState(() {
           weeklyCapitolIndex = order[1];
-          weeklyTestIndex = i-getPoint(order[0]);
+          weeklyTestIndex = i-getTests(order[0]);
+          maxPoints = (getPoints(order[0]));
+            print('heere $weeklyCapitolIndex');
+            print('hee $weeklyTestIndex');
+          for (int j = 0; j <= i-getTests(order[0]); j++) {
+
+            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+            print(maxPoints);
+
+          }
         });
-      } else if ( i >= getPoint(order[0])+getPoint(order[1]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2])) {
+      } else if ( i >= getTests(order[0])+getTests(order[1]) && i < getTests(order[0]) + getTests(order[1]) + getTests(order[2])) {
         setState(() {
           weeklyCapitolIndex = order[2];
-          weeklyTestIndex = i-(getPoint(order[0])+getPoint(order[1]));
+          weeklyTestIndex = i-(getTests(order[0])+getTests(order[1]));
+          maxPoints = (getPoints(order[0]) + getPoints(order[1]));
+          for (int j = 0; j <= i-(getTests(order[0])+getTests(order[1])); j++) {
+            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          }
         });
-      } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3])) {
+      } else if ( i >= getTests(order[0]) + getTests(order[1]) + getTests(order[2]) && i < getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3])) {
         setState(() {
           weeklyCapitolIndex = order[3];
-          weeklyTestIndex = i-(getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]));
+          weeklyTestIndex = i-(getTests(order[0]) + getTests(order[1]) + getTests(order[2]));
+          maxPoints = (getPoints(order[0]) + getPoints(order[1]) + getPoints(order[2]));
+          for (int j = 0; j <= i-(getTests(order[0]) + getTests(order[1]) + getTests(order[2])); j++) {
+            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          }
         });
-      } else if ( i >= getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) && i < getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]) + getPoint(order[4])) {
+      } else if ( i >= getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]) && i < getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]) + getTests(order[4])) {
         setState(() {
           weeklyCapitolIndex = order[4];
-          weeklyTestIndex = i- (getPoint(order[0]) + getPoint(order[1]) + getPoint(order[2]) + getPoint(order[3]));
+          weeklyTestIndex = i- (getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3]));
+          maxPoints = (getPoints(order[0]) + getPoints(order[1]) + getPoints(order[2]) + getPoints(order[3]));
+          for (int j = 0; j <= i- (getTests(order[0]) + getTests(order[1]) + getTests(order[2]) + getTests(order[3])); j++) {
+            maxPoints += orderedData![weeklyCapitolIndex]["tests"][j]["questions"].length as int;
+          }
         });
       }
  }
@@ -182,6 +229,9 @@ class _AppState extends State<App> {
 
     await fetchUserData();
 
+    
+    await fetchPosts();
+
 
     end();
   }
@@ -195,7 +245,6 @@ class _AppState extends State<App> {
     // Fetch the user data when the app starts
     init(() {}, () {});
 
-    fetchPosts();
 
   }
 
@@ -658,6 +707,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             results: currentResults,
             studentsSum: studentsSum,
             posts: _posts,
+            maxPoints: maxPoints,
           );
       case 1:
         return Challenges(

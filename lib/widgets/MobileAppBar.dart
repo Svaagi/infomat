@@ -113,9 +113,14 @@ class _MobileAppBarState extends State<MobileAppBar> {
         onPressed: () {
           if(widget.currentUserData!.teacher) {
            widget.onNavigationItemSelected(5);
-
+            setState(() {
+              seen = true;
+            });
           } else {
             widget.onNavigationItemSelected(4);
+            setState(() {
+              seen = true;
+            });
           }
         }
       ),
