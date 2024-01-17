@@ -32,6 +32,7 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'dart:async';
 
 
+
 class NonSwipeablePageController extends PageController {
   @override
   bool get canScroll => false;
@@ -239,6 +240,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     
+
 
     // Fetch the user data when the app starts
     init(() {}, () {});

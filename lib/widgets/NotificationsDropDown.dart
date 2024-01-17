@@ -142,7 +142,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
 
         completeNotifications..sort((a, b) => b.notification.date.compareTo(a.notification.date));
         yield completeNotifications.reversed.toList();
-        await Future.delayed(Duration(seconds: 60)); 
+        await Future.delayed(Duration(seconds: 90)); 
 
       }
     } else {

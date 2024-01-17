@@ -59,7 +59,7 @@ class _MobileAppBarState extends State<MobileAppBar> {
   }
 
   void _setupPeriodicCheck() {
-    _timer = Timer.periodic(Duration(seconds: 60), (Timer t) => fetchSeen());
+    _timer = Timer.periodic(Duration(seconds: 90), (Timer t) => fetchSeen());
     // Adjust the duration as needed. This example checks every 5 seconds.
   }
 

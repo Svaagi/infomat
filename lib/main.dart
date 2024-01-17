@@ -101,21 +101,22 @@ class MainApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          
+            if (snapshot.connectionState == ConnectionState.waiting) {
             // Display a loading indicator if the authentication state is still loading
             return const CircularProgressIndicator();
-          } else {
-            if (snapshot.hasData) {
-              // User is logged in, navigate to the specified screen
-              sendUniqueEvent(snapshot.data!.uid);
-              sendLoginEvent();
-              return const App();
             } else {
-              // User is not logged in, navigate to Login
-              return const Login();
+              if (snapshot.hasData) {
+                // User is logged in, navigate to the specified screen
+                sendUniqueEvent(snapshot.data!.uid);
+                sendLoginEvent();
+                return const App();
+              } else {
+                // User is not logged in, navigate to Login
+                return const Login();
+              }
             }
           }
-        },
       ),
     );
   }

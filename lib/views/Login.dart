@@ -27,10 +27,13 @@ class _LoginState extends State<Login> {
   bool isDesktop = false;
   bool isSchool = false;
   bool isPassword = false;
+  bool correct = false;
+          final TextEditingController _passwordTextController = TextEditingController();
+            
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
-  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
 
   @override
@@ -107,6 +110,31 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    if (!correct) {
+        return Scaffold(
+      body: Center(
+        child: Container(
+          width: 300,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _passwordController,
+              ),
+              ElevatedButton(onPressed: () {
+                if (_passwordController.text == 'mirri1234') {
+                  setState(() {
+                    correct = true;
+                  });
+                }
+              }, child: Text('ok'))
+            ],
+          ),
+      ),
+      )  
+        );
+      }
     if (_isEnterScreen) {
       return Container(
         color: Theme.of(context).primaryColor,
