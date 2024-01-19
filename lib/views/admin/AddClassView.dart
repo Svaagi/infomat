@@ -115,7 +115,7 @@ class AddClassView extends StatelessWidget {
                           if(classNameController.text != '' && !exists) {
                             errorEdit('');
 
-                            await addClass(classNameController.text, currentUserData!.school, addSchoolData, null, addToList);
+                            await addClass(classNameController.text, currentUserData!.school, addSchoolData, addToList);
                             
                             classNameController.text = '';
                             onNavigationItemSelected(0);

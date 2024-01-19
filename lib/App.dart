@@ -367,12 +367,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         }
       }
 
-      
-
-      await fetchCapitolsData();
-
-
-      // Update state with user data, and class data if available
+            // Update state with user data, and class data if available
       setState(() {
         currentUserData = userData;
         if (classData != null) {
@@ -385,6 +380,14 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         }
         _loadingUser = false;
       });
+
+
+      
+
+      await fetchCapitolsData();
+
+
+
 
 
 

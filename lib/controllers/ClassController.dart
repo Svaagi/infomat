@@ -976,7 +976,7 @@ Future<void> toggleAnswerAward(String classId, String postId, int commentIndex, 
   }
 }
 
-Future<void> addClass(String className, String school, void Function(ClassDataWithId)? addSchoolData, String? adminId, void Function(String) addToList) async {
+Future<void> addClass(String className, String school, void Function(ClassDataWithId)? addSchoolData, void Function(String) addToList) async {
   try {
     // Reference to the Firestore collection where classes are stored
     CollectionReference classCollection = FirebaseFirestore.instance.collection('classes');
@@ -1016,7 +1016,6 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
 
     addClassToSchool(newClassRef.id, school);
     addToList(newClassRef.id);
-    if (adminId != null) updateClasses([adminId], newClassRef.id);
     if (addSchoolData != null) addSchoolData(ClassDataWithId(newClassRef.id, newClass));
     
     print('Class added successfully with ID: ${newClassRef.id}');

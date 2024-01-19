@@ -1124,7 +1124,11 @@ class _SchoolFormState extends State<SchoolForm> {
             },
           );
 
-          addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , [], setTeacher);
+        addSchool(_schoolIdController.text,_schoolNameController.text, userData.id , [], setTeacher);
+
+        for (String name in combinedList) {
+            addClass(name, _schoolIdController.text, null, (String) {});
+          }
 
         _onNavigationItemSelected(_selectedIndex + 1);
         
