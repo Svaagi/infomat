@@ -704,6 +704,7 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
                 'assets/bottomBackground.svg',
                 fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                color: AppColors.getColor('primary').light,
               ),
             ),
             Spacer(),

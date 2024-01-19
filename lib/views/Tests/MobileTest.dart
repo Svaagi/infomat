@@ -1007,6 +1007,7 @@ class _MobileTestState extends State<MobileTest> {
                 'assets/bottomBackground.svg',
                 fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                color: AppColors.getColor('primary').light,
               ),
             ),
             const Spacer(),

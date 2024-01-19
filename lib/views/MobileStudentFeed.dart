@@ -192,6 +192,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                 'assets/bottomBackground.svg',
                 fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                color: AppColors.getColor('primary').light,
               ),
             ),
             !widget.weeklyBool ? Container(

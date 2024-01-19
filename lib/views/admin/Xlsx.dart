@@ -286,7 +286,9 @@ class _XlsxState extends State<Xlsx> {
                     color: "green", 
                     text: 'XLSX SÚBOR', 
                     onTap: () async {
-
+                      setState(() {
+                        loading = true;
+                      });
                       FileProcessingResult? result = await pickFile();
                       setState(() {
                         loading = false;

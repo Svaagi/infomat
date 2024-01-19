@@ -801,7 +801,7 @@ class _SchoolFormState extends State<SchoolForm> {
                             Container(
                               width: 300,
                               child: reTextField(
-                                "Zadajte oficiálny kod školy",
+                                "Zadajte oficiálny kód školy",
                                 false,
                                 _schoolIdController,
                                 _schoolIdBorderColor,

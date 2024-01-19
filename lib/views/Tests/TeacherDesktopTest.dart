@@ -715,6 +715,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                 'assets/bottomBackground.svg',
                 fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                color: AppColors.getColor('primary').light,
               ),
             ),
             const Spacer(),

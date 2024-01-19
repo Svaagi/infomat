@@ -84,7 +84,9 @@ class _AppState extends State<App> {
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   void addWeek () {
-    _activeWeeks.add(DateTime(2023, 12, 27));
+    if (_activeWeeks.length < 31) {
+      _activeWeeks.add(DateTime(2023, 12, 27));
+    }
     maxPoints = 0;
   }
 
@@ -156,7 +158,7 @@ class _AppState extends State<App> {
           weeklyTestIndex = i;
 
           for (int j = 0; j <= i; j++) {
-            maxPoints += orderedData[0]["tests"][j]["questions"].length as int;
+            maxPoints += data[0]["tests"][j]["questions"].length as int;
           }
 
         });
@@ -259,9 +261,10 @@ void updateWeeklyChallenge() {
       });
   }
 
+  getWeeklyIndexes(weeklyChallenge);
+
   _loadingChallenge = false;
 
-  getWeeklyIndexes(weeklyChallenge);
 }
 
 void fetch() async {
@@ -367,6 +370,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         }
       }
 
+      await fetchCapitolsData();
+
+
             // Update state with user data, and class data if available
       setState(() {
         currentUserData = userData;
@@ -380,15 +386,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
         }
         _loadingUser = false;
       });
-
-
-      
-
-      await fetchCapitolsData();
-
-
-
-
 
 
     } else {
@@ -408,24 +405,24 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       data = json.decode(jsonData);
 
+      updateWeeklyChallenge();
 
+      
       for (int num in order) {
         orderedData.add(data[num]);
       }
 
-      updateWeeklyChallenge();
-
       setState(() {
-          capitol = orderedData[weeklyCapitolIndex];
+          capitol = data[weeklyCapitolIndex];
           capitolLength = 32;
-          weeklyTitle = orderedData[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
+          weeklyTitle = data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
           futureWeeklyTitle =
-              orderedData[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
+              data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
           
-          weeklyCapitolLength = orderedData[weeklyCapitolIndex]["tests"].length ?? 0;
+          weeklyCapitolLength = data[weeklyCapitolIndex]["tests"].length ?? 0;
           
-          capitolTitle = orderedData[weeklyCapitolIndex]["name"] ?? '';
-          capitolColor = orderedData[0]["color"] ?? 'blue';
+          capitolTitle = data[weeklyCapitolIndex]["name"] ?? '';
+          capitolColor = data[0]["color"] ?? 'blue';
 
     });
           _loadingCapitols = false;

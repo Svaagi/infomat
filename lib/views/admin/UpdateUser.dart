@@ -235,6 +235,7 @@ bool isValidEmail(String email) {
                       ),
                     ],
                   ),
+                  SizedBox(height: 10,),
                   if (widget.teacher && !widget.admin)Wrap(
                     alignment: WrapAlignment.center,
                     children: [

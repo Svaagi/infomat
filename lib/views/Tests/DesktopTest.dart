@@ -952,6 +952,7 @@ class _DesktopTestState extends State<DesktopTest> {
                 'assets/bottomBackground.svg',
                 fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                color: AppColors.getColor('primary').light,
               ),
             ),
             Spacer(),
