@@ -810,7 +810,7 @@ class _SchoolFormState extends State<SchoolForm> {
                             ),
                             SizedBox(height: 40,),
                             Text(
-                              'Kód svojej školy si môžete vypýtať na vedení, zvyčajne ma 9 cifier.',
+                              'Kód školy môžete získať na sekretariáte školy.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
