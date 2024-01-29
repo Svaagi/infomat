@@ -85,10 +85,10 @@ packages:
     dependency: "direct dev"
     description:
       name: cloud_functions
-      sha256: de4a402a1dfad27b81c5b13ee3df7693c49139625a6f19854376d617b2f1cd2f
+      sha256: "88cf33c79249908461e500c507ccb88fe4ee26755555d837f29ade8eb340c0df"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.8"
+    version: "4.6.0"
   cloud_functions_platform_interface:
     dependency: transitive
     description:
@@ -169,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  file:
+    dependency: transitive
+    description:
+      name: file
+      sha256: "5fc22d7c25582e38ad9a8515372cd9a93834027aacf1801cf01164dac0ffa08c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   file_picker:
     dependency: "direct dev"
     description:
@@ -291,6 +299,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_pdfview:
+    dependency: "direct dev"
+    description:
+      name: flutter_pdfview
+      sha256: a9055bf920c7095bf08c2781db431ba23577aa5da5a056a7152dc89a18fbec6f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -325,6 +341,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  g_recaptcha_v3:
+    dependency: "direct main"
+    description:
+      name: g_recaptcha_v3
+      sha256: ee754d0a5621646e200b2d5d9c918d64725fb53d6a1b65cbd6f294c08e0fe529
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   google_fonts:
     dependency: "direct dev"
     description:
@@ -509,6 +533,62 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.3"
+  shared_preferences:
+    dependency: "direct dev"
+    description:
+      name: shared_preferences
+      sha256: "81429e4481e1ccfb51ede496e916348668fd0921627779233bd24cc3ff6abd02"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
+  shared_preferences_android:
+    dependency: transitive
+    description:
+      name: shared_preferences_android
+      sha256: "8568a389334b6e83415b6aae55378e158fbc2314e074983362d20c562780fb06"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.1"
+  shared_preferences_foundation:
+    dependency: transitive
+    description:
+      name: shared_preferences_foundation
+      sha256: "7708d83064f38060c7b39db12aefe449cb8cdc031d6062280087bc4cdb988f5c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.5"
+  shared_preferences_linux:
+    dependency: transitive
+    description:
+      name: shared_preferences_linux
+      sha256: "9f2cbcf46d4270ea8be39fa156d86379077c8a5228d9dfdb1164ae0bb93f1faa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  shared_preferences_platform_interface:
+    dependency: transitive
+    description:
+      name: shared_preferences_platform_interface
+      sha256: "22e2ecac9419b4246d7c22bfbbda589e3acf5c0351137d87dd2939d984d37c3b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  shared_preferences_web:
+    dependency: transitive
+    description:
+      name: shared_preferences_web
+      sha256: d762709c2bbe80626ecc819143013cc820fa49ca5e363620ee20a8b15a3e3daf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.1"
+  shared_preferences_windows:
+    dependency: transitive
+    description:
+      name: shared_preferences_windows
+      sha256: "841ad54f3c8381c480d0c9b508b89a34036f512482c407e6df7a9c4aa2ef8f59"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -674,6 +754,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.4-beta"
+  webview_flutter:
+    dependency: "direct dev"
+    description:
+      name: webview_flutter
+      sha256: "71e1bfaef41016c8d5954291df5e9f8c6172f1f6ff3af01b5656456ddb11f94c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.4"
+  webview_flutter_android:
+    dependency: transitive
+    description:
+      name: webview_flutter_android
+      sha256: "4ea3c4e1b8ed590162b15b8a61b41b1ef3ff179a314627c16ce40c086d94b8af"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.14.0"
+  webview_flutter_platform_interface:
+    dependency: transitive
+    description:
+      name: webview_flutter_platform_interface
+      sha256: d937581d6e558908d7ae3dc1989c4f87b786891ab47bb9df7de548a151779d8d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.10.0"
+  webview_flutter_wkwebview:
+    dependency: transitive
+    description:
+      name: webview_flutter_wkwebview
+      sha256: "4d062ad505390ecef1c4bfb6001cd857a51e00912cc9dfb66edb1886a9ebd80c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.10.2"
   win32:
     dependency: transitive
     description:

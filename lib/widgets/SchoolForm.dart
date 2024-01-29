@@ -9,7 +9,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'dart:math';
-import 'package:infomat/controllers/auth.dart';
+import 'package:infomat/auth/auth.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/App.dart';
 
@@ -1061,7 +1061,7 @@ class _SchoolFormState extends State<SchoolForm> {
 
    Future<void> registerAdmin(String name, String email, BuildContext context) async {
       try {
-        final functions = FirebaseFunctions.instance;
+        final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
 
         String generatePassword = generateRandomPassword();
         final result = await functions.httpsCallable('createAccount').call({

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>reCAPTCHA</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer> 
+</script>
+  </head>
+  <body style='background-color: 0xff4B4FB3;'>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" 
+        data-sitekey="6LeEcF8pAAAAAKq2MZLK8-nLnGyYSGt7W173heMi"
+        data-callback="captchaCallback"></div>
+
+    </form>
+    <script>
+      function captchaCallback(response) {
+        // Assuming you have a method 'receiveToken' in your Flutter app
+        // that you can call from JavaScript.
+        if (window.FlutterApp && window.FlutterApp.receiveToken) {
+          window.FlutterApp.receiveToken(response);
+        }
+      }
+    </script>
+    
+    
+    
+    
+  </body>
+</html>

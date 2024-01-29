@@ -4,7 +4,7 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/userController.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:infomat/controllers/auth.dart';
+import 'package:infomat/auth/auth.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:flutter/gestures.dart';
@@ -23,6 +23,8 @@ class UpdateUser extends StatefulWidget {
   final UserDataWithId? currentUser;
   final void Function(String) changeName;
   final void Function(String) changeEmail;
+  final UserData? currentUserData;
+  
 
   UpdateUser(
     {
@@ -36,7 +38,8 @@ class UpdateUser extends StatefulWidget {
       required this.currentClass,
       required this.currentUser,
       required this.changeEmail,
-      required this.changeName
+      required this.changeName,
+      required this.currentUserData
     }
   );
 
@@ -207,10 +210,18 @@ bool isValidEmail(String email) {
                             if(validEmail) _emailErrorText = '';
                           });
                           if(widget.editUserNameController.text != '' && widget.editUserEmailController.text != '') {
+                            if (widget.currentUserData!.email == widget.currentUser!.data.email) {
+                              setState(() {
+                                widget.currentUserData!.name = widget.editUserNameController.text; 
+                              });
+                            }
                             widget.changeEmail(widget.editUserEmailController.text);
                             widget.changeName(widget.editUserNameController.text);
 
                             saveUserDataToFirestore(widget.currentUser!.data, widget.currentUser!.id, widget.editUserEmailController.text, widget.editUserPasswordController.text, context );
+                            
+                            
+                            
 
                             widget.editUserNameController.text = '';
                             widget.editUserEmailController.text = '';
@@ -291,7 +302,7 @@ Future<void> saveUserDataToFirestore(
     DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userId);
 
     // Call the Firebase Function to update email and password
-    final functions = FirebaseFunctions.instance;
+    final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
     final result = await functions.httpsCallable('updateUserEmailAndPassword').call({
       'userId': userId,
       'newEmail': newEmail,

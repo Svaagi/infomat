@@ -3,7 +3,7 @@ import 'package:infomat/Colors.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/controllers/UserController.dart';
-import 'package:infomat/controllers/auth.dart';
+import 'package:infomat/auth/auth.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:flutter/gestures.dart';

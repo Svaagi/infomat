@@ -436,6 +436,7 @@ class _DesktopAdminState extends State<DesktopAdmin> {
         );
       case 4:
         return UpdateUser(
+          currentUserData: widget.currentUserData,
           admin: _admin,
           setAdmin: () {
             setState(() {

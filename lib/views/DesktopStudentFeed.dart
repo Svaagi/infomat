@@ -81,6 +81,16 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
       isDesktop = userAgent.contains('macintosh') ||
           userAgent.contains('windows') ||
           userAgent.contains('linux');
+      
+       widget.init(() {
+        setState(() {
+        _loading = true;
+      });
+      }, () {
+      setState(() {
+        _loading = false;
+      });
+    });
 
       sendFeedEvent();
 
@@ -457,7 +467,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 text: 'Zobraziť všetky výsledky',
                                 rightIcon: 'assets/icons/arrowRightIcon.svg',
                                 onTap: () {
-                                    widget.onNavigationItemSelected(1);
+                                    widget.onNavigationItemSelected(5);
                                 }
                               ),
                             )

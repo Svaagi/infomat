@@ -73,6 +73,16 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
     {
       super.initState();
 
+       widget.init(() {
+        setState(() {
+        _loading = true;
+      });
+      }, () {
+      setState(() {
+        _loading = false;
+      });
+    });
+
       sendFeedEvent();
 
     }
@@ -372,7 +382,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           text: 'Zobraziť všetky výsledky',
                           rightIcon: 'assets/icons/arrowRightIcon.svg',
                           onTap: () {
-                              widget.onNavigationItemSelected(1);
+                              widget.onNavigationItemSelected(5);
                           }
                         ),
                       ),

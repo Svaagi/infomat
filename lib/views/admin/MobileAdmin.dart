@@ -367,6 +367,7 @@ class _MobileAdminState extends State<MobileAdmin> {
       case 4:
         return UpdateUser(
           admin: _admin,
+          currentUserData: widget.currentUserData,
           currentClass: currentClass,
           setAdmin: () {
             setState(() {

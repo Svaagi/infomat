@@ -233,7 +233,7 @@ Future<void> registerUser(String schoolId, String classId, String recipient, Str
   String password = generateRandomPassword();
   List<Map<String, String>> userDetails = [];
   try {
-    final functions = FirebaseFunctions.instance;
+    final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
       userDetails.add({
         'name': name,
         'email': email,
@@ -435,7 +435,7 @@ Future<void> registerMultipleUsers(
     String name,
     BuildContext context
 ) async {
-    final functions = FirebaseFunctions.instance;
+    final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
     final firestore = FirebaseFirestore.instance;
     WriteBatch batch = firestore.batch();
     List<Map<String, String>> userDetails = [];
@@ -627,7 +627,7 @@ Future<void> deleteUserFunction(List<String> userIds, UserData currentUser, Buil
     // Step 3: Call the deleteAccount cloud function
     // Replace 'your-cloud-function-url' with the actual URL of your deleteAccount function
     final deleteAccountCallable =
-        FirebaseFunctions.instance.httpsCallable('deleteAccount');
+        FirebaseFunctions.instanceFor(region: 'europe-west1').httpsCallable('deleteAccount');
     await deleteAccountCallable(userIds);
 
     

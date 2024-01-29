@@ -203,7 +203,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                         setState(() {
                           generatedPassword = generateRandomPassword();
                         });
-                        final functions = FirebaseFunctions.instance;
+                        final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
 
                         await functions.httpsCallable('updatePassword').call({
                           'userEmail': _adminEmailController.text,

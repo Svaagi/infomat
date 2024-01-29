@@ -84,6 +84,16 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
 
   @override
   void initState() {
+     widget.init(() {
+        setState(() {
+        _loading = true;
+      });
+      }, () {
+      setState(() {
+        _loading = false;
+      });
+    });
+    
     sendFeedEvent();
 
     super.initState();

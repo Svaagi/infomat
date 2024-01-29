@@ -1,6 +1,6 @@
 import 'package:excel/excel.dart';
 import 'package:infomat/controllers/ClassController.dart';
-import 'package:infomat/controllers/auth.dart';
+import 'package:infomat/auth/auth.dart';
 import 'dart:typed_data';
 
 

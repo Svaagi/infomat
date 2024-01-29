@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
 import 'package:infomat/widgets/Widgets.dart';
-import 'package:infomat/controllers/auth.dart';
+import 'package:infomat/auth/auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/widgets/SchoolForm.dart';
 import 'package:infomat/widgets/PasswordChange.dart';
 import 'package:flutter/gestures.dart'; // Import this line
 import 'dart:html' as html;
+import 'dart:ui' as ui;
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:cloud_functions/cloud_functions.dart';
+import 'dart:js' as js;
+
 
 class Login extends StatefulWidget {
   
@@ -28,7 +35,10 @@ class _LoginState extends State<Login> {
   bool isSchool = false;
   bool isPassword = false;
   bool correct = false;
-          final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  String createdViewId = 'map_element';
+  bool disable = false;
+
             
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
@@ -40,15 +50,77 @@ class _LoginState extends State<Login> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
+
+    ui.platformViewRegistry.registerViewFactory(
+      createdViewId,
+      (int viewId) {
+        final iframe = html.IFrameElement()
+          ..style.height = '100%'
+          ..style.width = '100%'
+          ..src = '/recaptcha.html'
+          ..style.border = 'none';
+
+        // Set the webViewController when the iframe is created
+        return iframe;
+      },
+    );
+
+    js.context['FlutterApp'] = js.JsObject.jsify({
+    'receiveToken': (String token) {
+      verifyRecaptchaToken(token);
+    },
+  });
+
   }
 
+  void verifyRecaptchaToken(String token) async {
+    HttpsCallable callable = FirebaseFunctions.instanceFor(region: 'europe-west1').httpsCallable('verifyRecaptcha');
+    try {
+      final response = await callable.call({'token': token});
+      if (response.data['success']) {
+        // reCAPTCHA verification succeeded
+        // Proceed with login or other actions
+        setState(() {
+          disable =false;
+          _showCaptcha = false;
+        });
+      } else {
+        // reCAPTCHA verification failed
+        // Handle the failure
+        print('Robot');
+      }
+    } catch (e) {
+      // Handle errors
+      print('Error verifying reCAPTCHA: $e');
+    }
+  }
+
+  Future<bool> verifyToken(String token) async {
+  Uri uri = Uri.parse('https://www.google.com/recaptcha/api/siteverify');
+  final response = await http.post(
+    uri,
+    body: {
+      'secret': '6LeEcF8pAAAAAFuWQalaZZfyeCSnniPo_j_IN2sL',
+      'response': token,
+    },
+  );
+  final Map<String, dynamic> jsonResponse = json.decode(response.body);
+  if (jsonResponse['success']) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
   int _loginAttempts = 0;
-//  bool _showCaptcha = false;
+  bool _showCaptcha = false;
 
   toggleVisibility() {
     setState(() {
@@ -60,22 +132,6 @@ class _LoginState extends State<Login> {
     final email = _emailTextController.value.text;
     final password = _passwordTextController.value.text;
 
-    // Check if the CAPTCHA is enabled
-    /*if (_showCaptcha) {
-      // Verify the CAPTCHA
-      final result = await recaptchaV3Controller.verify();
-      if (result != null && result.isSuccess) {
-        // CAPTCHA verified successfully, proceed with login
-        _loginAttempts = 0; // Reset login attempts
-        _showCaptcha = false; // Hide CAPTCHA
-        setState(() {});
-        await Auth().signIn(email, password); // Perform login
-      } else {
-        // CAPTCHA verification failed
-        // Handle the failure, show an error message, etc.
-      }
-      return;
-    }*/
 
     // Perform validation
     if (_formKey.currentState!.validate()) {
@@ -101,8 +157,10 @@ class _LoginState extends State<Login> {
         if (_loginAttempts >= 10) {
           // Show the CAPTCHA
           setState(() {
-           // _showCaptcha = true;
+            _showCaptcha = true;
+            disable = true;
           });
+
         }
       }
     }
@@ -336,11 +394,27 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              if(_showCaptcha)
+              Center(
+                child:  SizedBox(
+              // Use a Webview widget to embed the reCAPTCHA widget
+              child: Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: HtmlElementView(
+                  viewType: createdViewId,
+                  ),
+              ),
+              width: 320, // Adjust the width as needed
+              height: 110, // Adjust the height as needed
+            ),
+              ),
+             
                 Container(
                   margin: const EdgeInsets.only(bottom: 60),
                   child: Column(
                     children: [
                     ReButton(
+                      isDisabled: disable,
                     color: "green", 
                     text: 'PRIHLÁSIŤ SA',
                     onTap: handleLogin,

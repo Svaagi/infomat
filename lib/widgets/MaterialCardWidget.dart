@@ -449,8 +449,10 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
     setState(() {
       if (isHeartFilled) {
         widget.userData!.materials.remove(materialId);
+        widget.favoriteMaterialIds.remove(materialId);
       } else if (!widget.userData!.materials.contains(materialId)) {
         widget.userData!.materials.add(materialId);
+        widget.favoriteMaterialIds.add(materialId);
       }
        isHeartFilledNotifier.value = !isHeartFilledNotifier.value; // Update ValueNotifier
       isHeartFilled = !isHeartFilled;

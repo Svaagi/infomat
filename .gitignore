@@ -42,3 +42,10 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# API
+lib/auth/firebase_config.json
+
+# data
+assets/CapitolsData.json
+assets/skoly.txt

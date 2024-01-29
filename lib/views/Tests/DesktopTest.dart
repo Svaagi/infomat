@@ -1122,7 +1122,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     return null;
 }
 
-  void onAnswerPressed() {
+  void onAnswerPressed() async {
     if (_answer.length > 0) {
       setState(() {
        double partialPoints = 1.00 / widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct.length;
@@ -1195,14 +1195,17 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
         if (areAllCompleted(widget.userData!)) {
           widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
-          updateResultsCapitol(widget.resultsId, int.parse(widget.capitolsId));
         }
         
         _answer = _answer;
         pressed = true;
 
       });
-      saveUserDataToFirestore(widget.userData!);
+      await saveUserDataToFirestore(widget.userData!);
+
+      if (areAllCompleted(widget.userData!)) {
+          updateResultsCapitol(widget.resultsId, int.parse(widget.capitolsId));
+        }
     }
   }
 

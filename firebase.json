@@ -1,6 +1,20 @@
 {
-    "hosting": {
-        "site": "infomat-39565",
-        "public": "build/web"
-    }
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/recaptcha.html",
+        "destination": "/recaptcha.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
 }

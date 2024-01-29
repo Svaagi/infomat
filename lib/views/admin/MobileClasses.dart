@@ -223,6 +223,7 @@ class _MobileClassesState extends State<MobileClasses> {
               ),
               SizedBox(height: 30,),
               ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: widget.currentClass!.data.teachers.length,
                 itemBuilder: (context, index) {
@@ -420,6 +421,7 @@ class _MobileClassesState extends State<MobileClasses> {
               ),
               SizedBox(height: 30,),
               ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: widget.currentClass!.data.students.length,
                 itemBuilder: (context, index) {

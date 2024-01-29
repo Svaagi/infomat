@@ -29,7 +29,9 @@ import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
+import 'package:infomat/widgets/ConsentForm.dart';
 import 'dart:async';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 
 
@@ -76,6 +78,7 @@ class _AppState extends State<App> {
   List<String> students = [];
   int maxPoints = 0;
   bool load = false;
+  bool consent = false;
 
   List<DateTime> _activeWeeks = [
 
@@ -357,7 +360,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       }
 
       if (!userData.signed) {
-        setUserSigned(user.uid);
+        setState(() {
+          consent = true;
+        });
       }
 
       int count = 0;
@@ -435,6 +440,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 
   @override
   Widget build(BuildContext context) {
+    if (consent) {
+
+    }
     if(_tutorial) {
         return Tutorial(check: () {
         setState(() {
@@ -444,6 +452,13 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
     }
     if (_loadingUser || _loadingCapitols || _loadingChallenge) {
         return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
+    }
+    if (consent) {
+        return ConsentForm(confirm: () {
+          setState(() {
+            consent = false;
+          });
+        },);
     }
     return 
       Scaffold(

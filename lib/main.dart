@@ -7,26 +7,32 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:infomat/App.dart';
 import 'package:infomat/views/Login.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'dart:html' as html;
+import 'dart:convert';
 
 void main() async {
-  ui.bootstrapEngine();
-
-
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyDDQ-UETB03fLb52hdDToOWbhihWlYopMU",
-      authDomain: "infomat-39565.firebaseapp.com",
-      projectId: "infomat-39565",
-      storageBucket: "infomat-39565.appspot.com",
-      messagingSenderId: "499783588915",
-      appId: "1:499783588915:web:bf87bfc63cb8ca258a5746",
-      measurementId: "G-VJ1NGGB6G4"
-    ),
-  );
 
-  
+  FirebaseOptions firebaseOptions = await loadFirebaseConfig();
+
+  await Firebase.initializeApp(options: firebaseOptions);
+
   runApp(const MainApp());
+}
+
+Future<FirebaseOptions> loadFirebaseConfig() async {
+  // Fetch the configuration from a JSON file
+  final response = await html.HttpRequest.getString('firebase_config.json');
+  final Map<String, dynamic> config = json.decode(response);
+  return FirebaseOptions(
+    apiKey: config['apiKey'],
+    authDomain: config['authDomain'],
+    projectId: config['projectId'],
+    storageBucket: config['storageBucket'],
+    messagingSenderId: config['messagingSenderId'],
+    appId: config['appId'],
+    measurementId: config['measurementId'],
+  );
 }
 
 class MainApp extends StatelessWidget {

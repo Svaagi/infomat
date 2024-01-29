@@ -179,7 +179,7 @@ Future<void> deleteClass(String classId, String school, void Function(String)? r
       DocumentSnapshot classSnapshot = await transaction.get(classRef);
 
       if (tmp.isNotEmpty) {
-        final functions = FirebaseFunctions.instance;
+        final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
         final deleteBulkAccountsCallable = functions.httpsCallable('deleteBulkAccounts');
         await deleteBulkAccountsCallable({'userIds': tmp});
         await deleteUsers(tmp);

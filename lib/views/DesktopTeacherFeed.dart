@@ -97,6 +97,16 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
       _loading = widget.load;
     });
 
+     widget.init(() {
+        setState(() {
+        _loading = true;
+      });
+      }, () {
+      setState(() {
+        _loading = false;
+      });
+    });
+
 
     sendFeedEvent();
 

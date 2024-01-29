@@ -1,6 +1,7 @@
 {
   "projects": {
-    "Infomat": "infomat-39565"
+    "Infomat": "info-mat-ae8c9",
+    "default": "info-mat-ae8c9"
   },
   "targets": {},
   "etags": {}
