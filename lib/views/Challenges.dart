@@ -350,10 +350,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(studentsSum == currentResults![capitolIndex].tests[testIndex].completed))
                                                 ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(studentsSum == currentResults![capitolIndex].tests[testIndex].completed))
                                                 ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -395,7 +395,8 @@ Widget build(BuildContext context) {
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
                                                 scrollUp: scrollUp,
-                                                color: data[capitolIndex]["color"]
+                                                color: data[capitolIndex]["color"],
+                                                completed: studentsSum == currentResults![capitolIndex].tests[testIndex].completed,
                                               ),
                                             ],
                                           ),
@@ -466,10 +467,10 @@ Widget build(BuildContext context) {
                                       OverflowBox(
                                         maxHeight: double.infinity,
                                         child: (testIndex + prevTestsSum) % 2 == 0 || (testIndex + prevTestsSum) == 0
-                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
+                                            ? (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(studentsSum == currentResults![capitolIndex].tests[testIndex].completed))
                                                 ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/leftRoad.svg') : SvgPicture.asset('assets/roadmap/leftRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/leftRoadFilled.svg')
-                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
+                                            : (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(studentsSum == currentResults![capitolIndex].tests[testIndex].completed))
                                                 ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? SvgPicture.asset('assets/roadmap/rightRoad.svg') :SvgPicture.asset('assets/roadmap/rightRoad.svg', color: AppColors.getColor('red').lighter)
                                                 : SvgPicture.asset('assets/roadmap/rightRoadFilled.svg'),
                                       ),
@@ -492,7 +493,7 @@ Widget build(BuildContext context) {
                                                       height: 170.0,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(percentage(capitolIndex, testIndex) == 1.0))
+                                                        color: (!widget.currentUserData!.teacher ? !(widget.currentUserData?.capitols[capitolIndex].tests[testIndex].completed ?? false) : !(studentsSum == currentResults![capitolIndex].tests[testIndex].completed))
                                                             ? (!isBehind(globalIndex, widget.weeklyChallenge)) ? AppColors.getColor( data[capitolIndex]["color"]).lighter : AppColors.getColor( 'red').lighter
                                                             : AppColors.getColor('yellow').lighter,
                                                       ),
@@ -511,7 +512,8 @@ Widget build(BuildContext context) {
                                                 weeklyTestIndex: widget.weeklyTestIndex,
                                                 isBehind: isBehind,
                                                 scrollUp: scrollUp,
-                                                color: data[capitolIndex]["color"]
+                                                color: data[capitolIndex]["color"],
+                                                completed: studentsSum == currentResults![capitolIndex].tests[testIndex].completed,
                                               ),
                                             ],
                                           ),
@@ -556,6 +558,7 @@ class StarButton extends StatelessWidget {
   bool Function(int, int) isBehind;
   void Function(double) scrollUp;
   String color;
+  bool completed;
 
   StarButton({
     required this.globalIndex,
@@ -570,7 +573,8 @@ class StarButton extends StatelessWidget {
     required this.weeklyTestIndex,
     required this.isBehind,
     required this.scrollUp,
-    required this.color
+    required this.color,
+    required this.completed
   });
 
  int countTrueValues(List<UserQuestionsData>? questionList) {
@@ -591,7 +595,7 @@ Widget build(BuildContext context) {
   return SizedBox(
     child: 
     userData != null &&
-      (userData!.teacher ? percentage(int.parse(capitolsId) , number) != 1.0 : !userData!.capitols[int.parse(capitolsId)].tests[number].completed)
+      (userData!.teacher ? !completed : !userData!.capitols[int.parse(capitolsId)].tests[number].completed)
         ? 
       (!isBehind(globalIndex, weeklyChallenge)) ?
 
