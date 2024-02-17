@@ -203,13 +203,16 @@ Widget build(BuildContext context) {
 
     for (var capitol in userData.capitols) {
       int capitolScore = 0;
+      int capitolMaxScore = 0;
 
       for (var test in capitol.tests) {
         capitolScore += test.points;
+        capitolMaxScore += test.questions.length;
       }
 
       scores.add({
         'score': capitolScore,
+        'maxScore': capitolMaxScore,
       });
     }
 
@@ -363,7 +366,7 @@ List<TableRow> _buildRows(List<UserData> students) {
               ),
             ),
                 padding: EdgeInsets.all(8),
-                child: Text('${score['score']} / ${widget.maxPoints}'),
+                child: Text('${score['score']} / ${score['maxScore']}'),
           )),
           Container(
             decoration: BoxDecoration(

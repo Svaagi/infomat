@@ -23,14 +23,13 @@ class DesktopTeacherFeed extends StatefulWidget {
   int weeklyTestIndex;
   void Function(void Function() start, void Function() end) init;
   List<dynamic> orderedData;
-  void Function() addWeek;
-  void Function() removeWeek;
   List<ResultCapitolsData>? results;
   int studentsSum;
   List<PostsData> posts;
   List<String> students;
   int maxPoints;
   bool load;
+  int days;
 
 
   DesktopTeacherFeed({
@@ -42,14 +41,13 @@ class DesktopTeacherFeed extends StatefulWidget {
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
     required this.orderedData,
-    required this.addWeek,
-    required this.removeWeek,
     this.results,
     required this.studentsSum,
     required this.posts,
     required this.students,
     required this.maxPoints,
-    required this.load
+    required this.load,
+    required this.days
   }) : super(key: key);
 
   @override
@@ -140,43 +138,6 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 30,),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: 40,
-                                  width: 153,
-                                  child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
-                                    widget.addWeek();
-                                    widget.init(() {
-                                      setState(() {
-                                      _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                    });
-                                  }),
-                                ),
-                                
-                                SizedBox(
-                                  height: 40,
-                                  width: 168,
-                                  child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
-                                    widget.removeWeek();
-                                    widget.init(() {
-                                        setState(() {
-                                        _loading = true;
-                                      });
-                                      }, () {
-                                      setState(() {
-                                        _loading = false;
-                                      });
-                                      });
-                                  }),
-                                ),
-                              ],
-                            ),
                             
                             SizedBox(height: 40,),
                             Row(
@@ -223,7 +184,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     ),
                                     SizedBox(height: 5,),
                                     Text(
-                                        "Čas na dokončenie",
+                                        "Čas na dokončenie: ${widget.days == 1 ? '${widget.days} deň' : '${widget.days} dni'}",
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                       ),
                                   SizedBox(height: 16), // Add some spacing between the items
@@ -296,7 +257,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     ) : Row(
                                       children: [
                                         Text(
-                                          "${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}",
+                                          "${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}",
                                           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                                             color: Theme.of(context).colorScheme.onPrimary,
                                           ),

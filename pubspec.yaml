@@ -62,3 +62,4 @@ flutter:
     - assets/CapitolsData.json
     - assets/recaptcha.html
     - assets/gdpr/
+    - assets/badgeCrit.png

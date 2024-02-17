@@ -105,7 +105,6 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
 
   @override
   void initState() {
-    super.initState();
     User? currentUser = FirebaseAuth.instance.currentUser;
     isHeartFilledNotifier = ValueNotifier(widget.favoriteMaterialIds.contains(widget.materialId));
     if (currentUser != null) {
@@ -118,6 +117,8 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
         });
       });
     }
+
+    super.initState();
   }
 
   @override
@@ -228,7 +229,7 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: (isHeartFilled ? SvgPicture.asset('assets/icons/whiteFilledHeartIcon.svg') : SvgPicture.asset('assets/icons/whiteHeartIcon.svg')),
+                      icon: (widget.favoriteMaterialIds.contains(widget.materialId) ? SvgPicture.asset('assets/icons/whiteFilledHeartIcon.svg') : SvgPicture.asset('assets/icons/whiteHeartIcon.svg')),
                         color: AppColors.getColor('mono').white,
                       onPressed: () {
                         toggleFavorite();
@@ -448,15 +449,23 @@ class _MaterialCardWidgetState extends State<MaterialCardWidget> {
 
     setState(() {
       if (isHeartFilled) {
-        widget.userData!.materials.remove(materialId);
-        widget.favoriteMaterialIds.remove(materialId);
+        setState(() {
+          widget.userData!.materials.remove(materialId);
+          widget.favoriteMaterialIds.remove(materialId);
+        });
+
       } else if (!widget.userData!.materials.contains(materialId)) {
-        widget.userData!.materials.add(materialId);
-        widget.favoriteMaterialIds.add(materialId);
+        setState(() {
+          widget.userData!.materials.add(materialId);
+          widget.favoriteMaterialIds.add(materialId);
+        });
+
       }
-       isHeartFilledNotifier.value = !isHeartFilledNotifier.value; // Update ValueNotifier
-      isHeartFilled = !isHeartFilled;
-      isHeartFilledOverlay = !isHeartFilledOverlay;
+       setState(() {
+          isHeartFilled = widget.favoriteMaterialIds.contains(widget.materialId);
+          isHeartFilledOverlay = widget.favoriteMaterialIds.contains(widget.materialId);
+          isHeartFilledNotifier = ValueNotifier(widget.favoriteMaterialIds.contains(widget.materialId));
+        });
     });
     saveUserDataToFirestore(widget.userData!);
     } catch (e) {

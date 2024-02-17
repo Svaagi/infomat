@@ -22,8 +22,6 @@ class DesktopStudentFeed extends StatefulWidget {
   final String? capitolColor;
   void Function(void Function() start, void Function() end) init;
   List<dynamic> orderedData;
-  void Function() addWeek;
-  void Function() removeWeek;
       int weeklyCapitolIndex;
   int weeklyTestIndex;
 
@@ -43,8 +41,6 @@ class DesktopStudentFeed extends StatefulWidget {
     required this.weeklyTitle,
     required this.orderedData,
     required this.init,
-    required this.addWeek,
-    required this.removeWeek,
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
   }) : super(key: key);
@@ -123,42 +119,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                           mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                           crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                           children: [
-                            Row(
-                            children: [
-                              SizedBox(
-                                height: 40,
-                                width: 153,
-                                child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
-                                  widget.addWeek();
-                                  widget.init(() {
-                                    setState(() {
-                                    _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                  });
-                                }),
-                              ),
-                              SizedBox(
-                                height: 40,
-                                width: 168,
-                                child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
-                                  widget.removeWeek();
-                                  widget.init(() {
-                                    setState(() {
-                                    _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                  });
-                                }),
-                              ),
-                            ],
-                          ),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                               children: [
@@ -209,42 +170,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                           mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                           crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                           children: [
-                            Row(
-                            children: [
-                              SizedBox(
-                                height: 40,
-                                width: 153,
-                                child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
-                                  widget.addWeek();
-                                  widget.init(() {
-                                    setState(() {
-                                    _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                  });
-                                }),
-                              ),
-                              SizedBox(
-                                height: 40,
-                                width: 168,
-                                child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
-                                  widget.removeWeek();
-                                  widget.init(() {
-                                    setState(() {
-                                    _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                  });
-                                }),
-                              ),
-                            ],
-                          ),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center, // Align items horizontally to center
                               children: [
@@ -309,7 +235,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                         crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                         children: [
-                          Image.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
+                          Image.asset('assets/badgeCrit.png',
                               height: 100,),
 
                             Padding(

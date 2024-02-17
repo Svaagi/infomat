@@ -79,9 +79,10 @@ class _AppState extends State<App> {
   int maxPoints = 0;
   bool load = false;
   bool consent = false;
+  int days = 0;
 
   List<DateTime> _activeWeeks = [
-
+    DateTime(2024, 2, 20)
   ];
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
@@ -230,6 +231,15 @@ class _AppState extends State<App> {
           updateWeeklyChallenge();
         });
       });
+
+    // Calculate days to the closest date in _activeWeeks
+    days = _activeWeeks
+      .where((date) => date.isAfter(now)) // Filter for future dates
+      .map((date) => date.difference(now).inDays) // Map to difference in days
+      .fold<int>(
+        999999, // Start with a large number
+        (previousValue, element) => element < previousValue ? element : previousValue,
+      ); // Find the smallest difference
 
     await fetchUserData();
 
@@ -421,8 +431,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           capitol = data[weeklyCapitolIndex];
           capitolLength = 32;
           weeklyTitle = data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
-          futureWeeklyTitle =
-              data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
+          
           
           weeklyCapitolLength = data[weeklyCapitolIndex]["tests"].length ?? 0;
           
@@ -430,6 +439,16 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           capitolColor = data[0]["color"] ?? 'blue';
 
     });
+
+    getWeeklyIndexes(weeklyChallenge + 1);
+
+    setState(() {
+      maxPoints = 0;
+      futureWeeklyTitle =
+              data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
+    });
+
+    getWeeklyIndexes(weeklyChallenge);
           _loadingCapitols = false;
 
   } catch (e) {
@@ -657,8 +676,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             weeklyChallenge: weeklyChallenge,
             weeklyTitle: weeklyTitle,
             weeklyTestIndex: weeklyTestIndex,
-            addWeek: addWeek,
-            removeWeek: removeWeek,
             init: init,
             orderedData: orderedData,
             weeklyCapitolIndex: weeklyCapitolIndex,
@@ -708,13 +725,12 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             weeklyCapitolIndex: weeklyCapitolIndex,
             weeklyTestIndex: weeklyTestIndex,
             weeklyChallenge: weeklyChallenge,
-            addWeek: addWeek,
-            removeWeek: removeWeek,
             init: init,
             results: currentResults,
             studentsSum: studentsSum,
             posts: _posts,
             students: students,
+            days: days,
           ) : DesktopTeacherFeed(
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
@@ -722,8 +738,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             weeklyCapitolIndex: weeklyCapitolIndex,
             weeklyTestIndex: weeklyTestIndex,
             weeklyChallenge: weeklyChallenge,
-            addWeek: addWeek,
-            removeWeek: removeWeek,
             load: load,
             init: init,
             students: students,
@@ -731,6 +745,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             studentsSum: studentsSum,
             posts: _posts,
             maxPoints: maxPoints,
+            days: days,
           );
       case 1:
         return Challenges(

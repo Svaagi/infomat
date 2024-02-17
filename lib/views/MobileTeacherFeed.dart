@@ -21,12 +21,11 @@ class MobileTeacherFeed extends StatefulWidget {
   int weeklyTestIndex;
   void Function(void Function() start, void Function() end) init;
   List<dynamic> orderedData;
-  void Function() addWeek;
-  void Function() removeWeek;
   List<ResultCapitolsData>? results;
   int studentsSum;
   List<PostsData> posts;
     List<String> students;
+  int days;
 
   MobileTeacherFeed({
     Key? key,
@@ -37,12 +36,11 @@ class MobileTeacherFeed extends StatefulWidget {
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
     required this.orderedData,
-    required this.addWeek,
-    required this.removeWeek,
     this.results,
     required this.studentsSum,
     required this.posts,
-    required this.students
+    required this.students,
+    required this.days
   }) : super(key: key);
 
   @override
@@ -93,7 +91,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
         _loading = false;
       });
     });
-    
+
     sendFeedEvent();
 
     super.initState();
@@ -155,7 +153,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   ),
                                 ),
                                 Text(
-                                    "Čas na dokončenie: 1 týždeň",
+                                    "Čas na dokončenie: ${widget.days == 1 ? '${widget.days} deň' : '${widget.days} dni'}",
                                     style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                   ),
                                 SizedBox(height: 16,),
@@ -279,43 +277,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                             color: AppColors.getColor('primary').light,
                           ),
                         ),
-                         Row(
-                              children: [
-                                SizedBox(
-                                  height: 40,
-                                  width: 153,
-                                  child: ReButton(color: 'grey',text: 'pridať týždeň', onTap: () {
-                                    widget.addWeek();
-                                    widget.init(() {
-                                      setState(() {
-                                      _loading = true;
-                                    });
-                                    }, () {
-                                    setState(() {
-                                      _loading = false;
-                                    });
-                                    });
-                                  }),
-                                ),
-                                
-                                SizedBox(
-                                  height: 40,
-                                  width: 168,
-                                  child: ReButton(color: 'grey',text: 'odobrať týždeň', onTap: () {
-                                    widget.removeWeek();
-                                    widget.init(() {
-                                        setState(() {
-                                        _loading = true;
-                                      });
-                                      }, () {
-                                      setState(() {
-                                        _loading = false;
-                                      });
-                                      });
-                                  }),
-                                ),
-                              ],
-                            ),
+                        
                   Container(
                     padding: EdgeInsets.all(16),
                     alignment: Alignment.center,

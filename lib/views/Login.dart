@@ -34,7 +34,6 @@ class _LoginState extends State<Login> {
   bool isDesktop = false;
   bool isSchool = false;
   bool isPassword = false;
-  bool correct = false;
   final TextEditingController _passwordTextController = TextEditingController();
   String createdViewId = 'map_element';
   bool disable = false;
@@ -168,31 +167,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    if (!correct) {
-        return Scaffold(
-      body: Center(
-        child: Container(
-          width: 300,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: _passwordController,
-              ),
-              ElevatedButton(onPressed: () {
-                if (_passwordController.text == 'mirri1234') {
-                  setState(() {
-                    correct = true;
-                  });
-                }
-              }, child: Text('ok'))
-            ],
-          ),
-      ),
-      )  
-        );
-      }
     if (_isEnterScreen) {
       return Container(
         color: Theme.of(context).primaryColor,

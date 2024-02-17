@@ -150,7 +150,7 @@ class _ConsentFormState extends State<ConsentForm> {
             
             SizedBox(height: 20,),
             ReButton(color: 'green',
-            text: "SÚHLASIM",
+            text: "SÚHLASÍM",
               onTap: () {
                 if (_isConfirmed) {
                   User? user = FirebaseAuth.instance.currentUser;

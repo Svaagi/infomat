@@ -119,12 +119,6 @@ Future<void> sendNotification(List<String> userIds, String content, String title
 Future<void> setAllNotificationsAsSeen(UserData userData) async {
   try {
     final CollectionReference usersRef = FirebaseFirestore.instance.collection('users');
-    CollectionReference notificationsRef = FirebaseFirestore.instance.collection('notifications');
-
-    // Iterate through user's notifications and set 'seen' to true
-    for (var notification in userData.notifications) {
-      await notificationsRef.doc(notification.id).update({'seen': true});
-    }
 
     // Update user's notifications in the user document as well
     // This step is needed if you're also keeping a reference of seen/unseen status in the user document

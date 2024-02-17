@@ -73,9 +73,8 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
     User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         UserData userData = await fetchUser(user.uid); // Assuming fetchUser is defined
-          List<NotificationsData> notifications = await fetchNotifications(userData);
 
-        for (var notif in notifications) {
+        for (var notif in userData.notifications) {
           if(notif.seen == false) {
             setState(() {
             seen = false;
