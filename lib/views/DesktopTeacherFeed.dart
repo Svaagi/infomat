@@ -257,7 +257,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     ) : Row(
                                       children: [
                                         Text(
-                                          "${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}",
+                                          "${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed != 0 ? widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed : 0).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}",
                                           style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                                             color: Theme.of(context).colorScheme.onPrimary,
                                           ),
