@@ -82,7 +82,8 @@ class _AppState extends State<App> {
   int days = 0;
 
   List<DateTime> _activeWeeks = [
-    DateTime(2024, 2, 20)
+     DateTime(2024, 2, 20),
+    DateTime(2024, 3, 20)
   ];
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
@@ -234,12 +235,17 @@ class _AppState extends State<App> {
 
     // Calculate days to the closest date in _activeWeeks
     days = _activeWeeks
-      .where((date) => date.isAfter(now)) // Filter for future dates
-      .map((date) => date.difference(now).inDays) // Map to difference in days
-      .fold<int>(
-        999999, // Start with a large number
-        (previousValue, element) => element < previousValue ? element : previousValue,
-      ); // Find the smallest difference
+    .where((date) => date.isAfter(now)) // Filter for future dates
+    .map((date) => date.difference(now).inDays) // Map to difference in days
+    .fold<int>(
+      999999, // Start with a large number
+      (previousValue, element) => element < previousValue ? element : previousValue,
+    );
+
+  // Check if there were no future dates and set days to zero
+  if (days == 999999) {
+    days = 0;
+  }
 
     await fetchUserData();
 
