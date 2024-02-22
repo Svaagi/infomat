@@ -87,6 +87,17 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
     return 'odpovedí';
   }
 
+  String day(int length) {
+    if (length == 0) {
+      return 'dní';
+    } else if (length == 1 ) {
+      return 'deň';
+    } else if (length > 1 && length < 4) {
+      return 'dni';
+    }
+    return 'dní';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -184,7 +195,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     ),
                                     SizedBox(height: 5,),
                                     Text(
-                                        "Čas na dokončenie: ${widget.days == 1 ? '${widget.days} deň' : '${widget.days} dni'}",
+                                        "Čas na dokončenie: ${day(widget.days)}'}",
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                       ),
                                   SizedBox(height: 16), // Add some spacing between the items

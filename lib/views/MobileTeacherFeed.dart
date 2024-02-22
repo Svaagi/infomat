@@ -77,6 +77,17 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
     return 'odpovedí';
   }
 
+    String day(int length) {
+    if (length == 0) {
+      return 'dní';
+    } else if (length == 1 ) {
+      return 'deň';
+    } else if (length > 1 && length < 4) {
+      return 'dni';
+    }
+    return 'dní';
+  }
+
 
 
 
@@ -153,7 +164,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   ),
                                 ),
                                 Text(
-                                    "Čas na dokončenie: ${widget.days == 1 ? '${widget.days} deň' : '${widget.days} dni'}",
+                                    "Čas na dokončenie: ${day(widget.days)}'}",
                                     style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                   ),
                                 SizedBox(height: 16,),
@@ -174,7 +185,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                           ),
                                           child: Row(
                                           children: [
-                                            Text("${widget.studentsSum != 0 ? (widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.studentsSum).round() : 0}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}", style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                            Text("${(widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed != 0 ? widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].points/widget.results![widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].completed : 0).round()}/${widget.results?[widget.weeklyCapitolIndex].tests[widget.weeklyTestIndex].questions.length}", style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                               color: Theme.of(context).colorScheme.onPrimary,
                                             ),),
                                             SizedBox(width: 4,),
