@@ -3,7 +3,8 @@
     "Infomat": "info-mat-ae8c9",
     "default": "info-mat-ae8c9",
     "infomat-dev": "infomat-39565",
-    "main": "info-mat-ae8c9"
+    "main": "info-mat-ae8c9",
+    "dev": "infomat-39565"
   },
   "targets": {},
   "etags": {}
