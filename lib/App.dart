@@ -460,20 +460,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
   @override
   Widget build(BuildContext context) {
     if (consent) {
-
-    }
-    if(_tutorial) {
-        return Tutorial(check: () {
-        setState(() {
-          _tutorial = false;
-        });
-      });
-    }
-    if (_loadingUser || _loadingCapitols || _loadingChallenge) {
-        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
-    }
-    if (true) {
-        return ConsentForm(confirm: () {
+      return ConsentForm(confirm: () {
           setState(() {
             consent = false;
           });
@@ -485,6 +472,16 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             });
           },
         );
+    }
+    if(_tutorial) {
+        return Tutorial(check: () {
+        setState(() {
+          _tutorial = false;
+        });
+      });
+    }
+    if (_loadingUser || _loadingCapitols || _loadingChallenge) {
+        return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
     return 
       Scaffold(

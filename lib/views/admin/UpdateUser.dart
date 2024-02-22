@@ -218,7 +218,7 @@ bool isValidEmail(String email) {
                             widget.changeEmail(widget.editUserEmailController.text);
                             widget.changeName(widget.editUserNameController.text);
 
-                            saveUserDataToFirestore(widget.currentUser!.data, widget.currentUser!.id, widget.editUserEmailController.text, widget.editUserPasswordController.text, context );
+                            saveUserDataToFirestore(widget.currentUser!.data, widget.currentUser!.id, widget.editUserEmailController.text, widget.editUserPasswordController.text, widget.editUserNameController.text, context );
                             
                             
                             
@@ -295,6 +295,7 @@ Future<void> saveUserDataToFirestore(
   String userId,
   String newEmail,
   String newPassword,
+  String newName,
   BuildContext context
 ) async {
   try {
@@ -317,7 +318,7 @@ Future<void> saveUserDataToFirestore(
       'weeklyDiscussionPoints': userData.weeklyDiscussionPoints,
       'teacher': userData.teacher,
       'email': newEmail, // Update the email in Firestore to the new email
-      'name': userData.name,
+      'name': newName,
       'active': userData.active,
       'classes': userData.classes,
       'notifications': userData.notifications,
