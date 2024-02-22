@@ -61,5 +61,5 @@ flutter:
     - assets/ziaci-vzor.xlsx
     - assets/CapitolsData.json
     - assets/recaptcha.html
-    - assets/gdpr/
+    - assets/gdpr.pdf
     - assets/badgeCrit.png

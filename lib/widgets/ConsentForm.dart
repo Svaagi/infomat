@@ -3,13 +3,20 @@ import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:infomat/controllers/UserController.dart';
+import 'dart:html' as html;
+import 'package:infomat/Colors.dart';
+import 'package:flutter/gestures.dart';
+
+
 
 class ConsentForm extends StatefulWidget {
   void Function() confirm;
+  final void Function() logOut;
 
 
   ConsentForm({
     required this.confirm,
+    required this.logOut
   });
 
   @override
@@ -34,51 +41,59 @@ class _ConsentFormState extends State<ConsentForm> {
     });
   }
 
+  void downloadPDF() {
+    final url = '/GDPR.pdf'; // Replace with your PDF's URL
+    final html.AnchorElement anchor = html.AnchorElement(href: url)
+      ..setAttribute('download', 'Infomat.pdf') // Optional: Set the download file name
+      ..click();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Center(
         child :Container(
-          width: 800,
-        padding: EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: MediaQuery.of(context).size.width > 1000 ? AppColors.getColor('primary').main.withOpacity(0.8) : Colors.white,
+
+        
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/gdpr/1.png'),
-            Image.asset('assets/gdpr/2.png'),
-            Image.asset('assets/gdpr/3.png'),
-            Image.asset('assets/gdpr/4.png'),
-            Image.asset('assets/gdpr/5.png'),
-            Image.asset('assets/gdpr/6.png'),
-            
-            
             Container(
-              width: 600,
-              child: Column(children: [
-                Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Text('Súhlasím s pravidlami a podmienkami.',
-                  style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
+              padding: EdgeInsets.all(20),
+              width: 800,
+              height: 600,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: Colors.black,
+                        ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Pre pokračovanie a používanie aplikácie Infomat je potrebné vyjadriť váš súhlas s ',
+                      ),
+                      TextSpan(
+                        text: 'podmienkami používania aplikácie.',
+                        style: TextStyle(
+                          color: Colors.blue, // Change the color to indicate it's clickable
+                        ),
+                        recognizer: TapGestureRecognizer()..onTap = () => downloadPDF(),
+                      ),
+                    ],
+                  ),
                 ),
-                ),
-                Checkbox(
-                  value: _isConfirmed,
-                  onChanged:  (bool? value) {
-                    setState(() {
-                      _isConfirmed = value!;
-                    });
-                  } ,
-                ),
-              ],
-            ),
 
             SizedBox(height: 60,),
                 Text(
@@ -148,17 +163,30 @@ class _ConsentFormState extends State<ConsentForm> {
 
             
             
-            SizedBox(height: 20,),
-            ReButton(color: 'green',
-            text: "SÚHLASÍM",
+            SizedBox(height: 30,),
+            SizedBox(
+              width: 350,
+              child: ReButton(color: 'green',
+                  text: "Súhlasím s pravidlami a podmienkami.",
+                    onTap: () {
+                      if (_isConfirmed) {
+                        User? user = FirebaseAuth.instance.currentUser;
+                        setUserSigned(user!.uid);
+                        widget.confirm();
+                      }
+                    },
+                  ),
+            ),
+            SizedBox(height: 10,),
+
+            ReButton(
+              color: "white",
+              delete: true,
+              text: 'Nesúhlasím',
               onTap: () {
-                if (_isConfirmed) {
-                  User? user = FirebaseAuth.instance.currentUser;
-                  setUserSigned(user!.uid);
-                  widget.confirm();
-                }
+                widget.logOut();
               },
-            )
+            ),
               ],),
             )
             

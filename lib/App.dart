@@ -472,12 +472,19 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
     if (_loadingUser || _loadingCapitols || _loadingChallenge) {
         return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    if (consent) {
+    if (true) {
         return ConsentForm(confirm: () {
           setState(() {
             consent = false;
           });
-        },);
+        },
+        logOut: () {
+            FirebaseAuth.instance.signOut();
+            setState(() {
+              fetchUserData();
+            });
+          },
+        );
     }
     return 
       Scaffold(
