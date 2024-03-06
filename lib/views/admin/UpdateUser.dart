@@ -218,7 +218,7 @@ bool isValidEmail(String email) {
                             widget.changeEmail(widget.editUserEmailController.text);
                             widget.changeName(widget.editUserNameController.text);
 
-                            saveUserDataToFirestore(widget.currentUser!.data, widget.currentUser!.id, widget.editUserEmailController.text, widget.editUserPasswordController.text, widget.editUserNameController.text, context );
+                            await saveUserDataToFirestore(widget.currentUser!.data, widget.currentUser!.id, widget.editUserEmailController.text, widget.editUserPasswordController.text, widget.editUserNameController.text, context );
                             
                             
                             
@@ -321,7 +321,6 @@ Future<void> saveUserDataToFirestore(
       'name': newName,
       'active': userData.active,
       'classes': userData.classes,
-      'notifications': userData.notifications,
       'materials': userData.materials,
       'school': userData.school,
       'schoolClass': userData.schoolClass,
@@ -357,8 +356,14 @@ Future<void> saveUserDataToFirestore(
 
 
 
+
     // Update the user document in Firestore with the new userDataMap
     await userRef.update(userDataMap);
+
+    print('owwwwwwwwwwwwwwwwww');
+
+
+
     reShowToast(userData.teacher ? 'Učiteľ úspešne upravený' : 'Žiak úspešne upravený', false, context);
   } catch (e) {
     reShowToast(userData.teacher ? 'Učiteľ sa nepodarilo upraviť' : 'Žiaka sa nepodarilo upraviť', true, context);
