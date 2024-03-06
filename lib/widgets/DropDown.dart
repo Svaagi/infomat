@@ -44,6 +44,7 @@ final OptionsData noClassOption = OptionsData(
     name: 'Žiadna',
     capitolOrder: [0,1,2,3,4],
     materials: [],
+    challenge: 0,
     posts: [],
     school: '',
     students: [],

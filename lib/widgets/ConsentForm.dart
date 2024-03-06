@@ -42,7 +42,7 @@ class _ConsentFormState extends State<ConsentForm> {
   }
 
   void downloadPDF() {
-    final url = '/GDPR.pdf'; // Replace with your PDF's URL
+    final url = 'assets/gdpr.pdf'; // Replace with your PDF's URL
     final html.AnchorElement anchor = html.AnchorElement(href: url)
       ..setAttribute('download', 'Infomat.pdf') // Optional: Set the download file name
       ..click();
@@ -94,75 +94,6 @@ class _ConsentFormState extends State<ConsentForm> {
                     ],
                   ),
                 ),
-
-            SizedBox(height: 60,),
-                Text(
-              textAlign: TextAlign.center,
-              'V súlade s GDPR (Všeobecným nariadením o ochrane údajov) by sme vás taktiež radi informovali, že naša aplikácia používa cookies. Sú tu dva typy cookies, ktoré zhromažďujeme:',
-              style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Text('Povinné Cookies:',
-                    style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-                  ),
-                Checkbox(
-                  value: true,
-                  onChanged:  (bool? value) {
-                    
-                  } ,
-                ),
-              ]
-              ),
-              Padding(padding: EdgeInsets.only(left: 20),
-                child:  Text('"Povinné Cookies: Tieto cookies sú nevyhnutné pre základnú funkcionalitu a bezpečnosť aplikácie. Sú nevyhnutné pre správne fungovanie aplikácie a nevyžadujú váš súhlas, pretože sú v súlade s výnimkami povolenými podľa GDPR."')
-              ),
-
-            SizedBox(height: 20,),
-
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Text('Analytické Cookies:',
-                    style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-                  ),
-                Checkbox(
-                  value: _isAnalytics,
-                  onChanged:  (bool? value) {
-                    setState(() {
-                      _isAnalytics = value!;
-                    });
-                  } ,
-                ),
-              ]
-              ),
-
-            Padding(padding: EdgeInsets.only(left: 20),
-              child:Text(' Tieto cookies používame na zhromažďovanie informácií o tom, ako interagujete s našou aplikáciou. Pomáhajú nám pochopiť, ako užívatelia používajú aplikáciu, čo nám umožňuje zlepšovať jej obsah a funkcie. Tieto údaje sú anonymizované a slúžia iba na štatistické účely. Váš súhlas s týmito cookies je dobrovoľný.'),
-            ),
-
-            
-            
             SizedBox(height: 30,),
             SizedBox(
               width: 350,

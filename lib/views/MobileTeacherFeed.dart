@@ -163,7 +163,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                   ),
                                 ),
                                 Text(
-                                    "Čas na dokončenie: ${day(widget.days)}'}",
+                                    "Čas na dokončenie: ${widget.days} ${day(widget.days)}",
                                     style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                   ),
                                 SizedBox(height: 16,),

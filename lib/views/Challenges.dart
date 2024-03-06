@@ -28,8 +28,11 @@ class Challenges extends StatefulWidget {
   final int weeklyCapitolIndex;
   final int weeklyTestIndex;
   final int weeklyChallenge;
+  final int futureWeeklyTestIndex;
+  final int futureWeeklyChallenge;
+  void Function() addWeek;
 
-  Challenges({Key? key, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge});
+  Challenges({Key? key, required this.currentUserData, required this.weeklyCapitolIndex, required this.weeklyTestIndex, required this.weeklyChallenge, required this.addWeek, required this.futureWeeklyChallenge, required this.futureWeeklyTestIndex});
 
   @override
   State<Challenges> createState() => _ChallengesState();
@@ -415,7 +418,7 @@ Widget build(BuildContext context) {
                       ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height,
-                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results: currentResults,studentsSum: studentsSum ,currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results: currentResults,studentsSum: studentsSum ,currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek, futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                         ),
                     ],
                   ),
@@ -531,7 +534,7 @@ Widget build(BuildContext context) {
                       if(MediaQuery.of(context).size.width > 1000) SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width / 2,
-                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results:currentResults,studentsSum: studentsSum ,currentUserData:  widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(results:currentResults,studentsSum: studentsSum ,currentUserData:  widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek,futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                       ),
                     ],
                   ),

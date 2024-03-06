@@ -17,9 +17,12 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   double Function(int, int) percentage;
   int weeklyCapitolIndex;
   int weeklyTestIndex;
+  int futureWeeklyCapitolIndex;
+  int futureWeeklyTestIndex;
   List<ResultCapitolsData>? results;
   int studentsSum;
-
+  void Function() addWeek;
+ 
 
   TeacherCapitolDragWidget({
     Key? key,
@@ -30,7 +33,10 @@ class TeacherCapitolDragWidget extends StatefulWidget {
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
     required this.results,
-    required this.studentsSum
+    required this.studentsSum,
+    required this.addWeek,
+    required this.futureWeeklyCapitolIndex,
+    required this.futureWeeklyTestIndex
   }) : super(key: key);
 
   @override
@@ -261,7 +267,18 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                                 const SizedBox(width: 10),  // Optional: To give some space between the Text and the Icon
                                 SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
                               ],
-                            ) : null,
+                            ) : Row(
+                              mainAxisSize: MainAxisSize.min, 
+                              children: [
+                                if (subIndex == widget.futureWeeklyTestIndex && widget.numbers[index] == widget.futureWeeklyCapitolIndex)
+                                Container(
+                                  height: 60,
+                                  width: 150,
+                                  child: ReButton(color: 'green', text: 'Spustiť test', onTap: widget.addWeek),
+                                )
+                                
+                              ],
+                            ),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                             dense: true,
                           ),

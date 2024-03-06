@@ -86,6 +86,7 @@ class ClassData {
   List<String> materials;
   List<int> capitolOrder;
   String results;
+  int challenge;
 
   ClassData({
     required this.name,
@@ -95,6 +96,7 @@ class ClassData {
     required this.teachers,
     required this.materials,
     required this.capitolOrder,
-    required this.results
+    required this.results,
+    required this.challenge
   });
 }

@@ -31,7 +31,9 @@ import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/widgets/ConsentForm.dart';
 import 'dart:async';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:infomat/widgets/CookieSettings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 
@@ -72,6 +74,8 @@ class _AppState extends State<App> {
   int weeklyChallenge = 0;
   int weeklyCapitolIndex = 0;
   int weeklyTestIndex = 0;
+  int futureWeeklyCapitolIndex = 0;
+  int futureWeeklyTestIndex = 0;
   List<int> order = [0,1,2,3,4];
   List<ResultCapitolsData>? currentResults;
   int studentsSum = 0;
@@ -80,23 +84,45 @@ class _AppState extends State<App> {
   bool load = false;
   bool consent = false;
   int days = 0;
+  bool _isConsentGiven = false;
+  bool settings = false;
 
-  List<DateTime> _activeWeeks = [
-    DateTime(2024, 2, 20)
-  ];
 
+
+ _checkConsent() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isConsentGiven = prefs.getBool('necessary') ?? false;
+    });
+
+  }
+
+  _setConsent(bool necessary, bool analytics) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('necessary', necessary);
+    await prefs.setBool('analytics', analytics);
+    setState(() {
+      _isConsentGiven = true;
+    });
+  }
+
+  void _showCookieSettings() {
+    setState(() {
+      settings = true;
+    });
+    // Implement the settings screen navigation logic
+    // For now, let's just print something to the console
+    print('Navigate to the settings screen');
+  }
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   void addWeek () {
-    if (_activeWeeks.length < 31) {
-      _activeWeeks.add(DateTime(2023, 12, 27));
+    if (weeklyChallenge < 31) {
+      incrementClassChallenge(currentUserData!.schoolClass, 1);
+      weeklyChallenge += 1;
     }
     maxPoints = 0;
-  }
-
-  void removeWeek () {
-    _activeWeeks.removeLast();
-     maxPoints = 0;
+    init(() { }, () { });
   }
 
   Future<void> fetchPosts() async {
@@ -210,6 +236,7 @@ class _AppState extends State<App> {
   void init (void Function() start, void Function() end ) async {
     start();
 
+
       // Initialize the weekly challenge count based on the active weeks
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
@@ -217,29 +244,10 @@ class _AppState extends State<App> {
         userAgent.contains('windows') ||
         userAgent.contains('linux');
        // Calculate the time until the next midnight
-      DateTime now = DateTime.now();
-      DateTime nextMidnight = DateTime(now.year, now.month, now.day + 1);
-      Duration initialDelay = nextMidnight.difference(now);
 
-      // Set up a timer to first trigger at the next midnight
-      Timer(initialDelay, () {
-        // Update the weekly challenge at midnight
-        updateWeeklyChallenge();
-
-        // Then set up a periodic timer to trigger every 24 hours after the first execution
-        Timer.periodic(Duration(days: 1), (Timer timer) {
-          updateWeeklyChallenge();
-        });
-      });
+      
 
     // Calculate days to the closest date in _activeWeeks
-    days = _activeWeeks
-      .where((date) => date.isAfter(now)) // Filter for future dates
-      .map((date) => date.difference(now).inDays) // Map to difference in days
-      .fold<int>(
-        999999, // Start with a large number
-        (previousValue, element) => element < previousValue ? element : previousValue,
-      ); // Find the smallest difference
 
     await fetchUserData();
 
@@ -255,6 +263,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     
+    _checkConsent();
 
 
     // Fetch the user data when the app starts
@@ -265,14 +274,6 @@ class _AppState extends State<App> {
 
 void updateWeeklyChallenge() {
   // Calculate the new weekly challenge count
-    int newWeeklyChallenge = calculatePassedActiveWeeks(DateTime.now(), _activeWeeks);
-
-    // Check if the weekly challenge count has changed
-    if (weeklyChallenge != newWeeklyChallenge) {
-      setState(() {
-        weeklyChallenge = newWeeklyChallenge;
-      });
-  }
 
   getWeeklyIndexes(weeklyChallenge);
 
@@ -364,6 +365,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       if (classData != null) {
         try {
           currentResults = await fetchResults(classData.results);
+          weeklyChallenge = classData.challenge;
         } catch (e) {
           print('Error fetching results data: $e');
         }
@@ -403,6 +405,8 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       });
 
 
+
+
     } else {
       print('User is not logged in.');
     }
@@ -420,7 +424,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       data = json.decode(jsonData);
 
-      updateWeeklyChallenge();
+      getWeeklyIndexes(weeklyChallenge);
+
+      _loadingChallenge = false;
 
       
       for (int num in order) {
@@ -446,6 +452,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
       maxPoints = 0;
       futureWeeklyTitle =
               data[weeklyCapitolIndex]["tests"][weeklyTestIndex]["name"] ?? '';
+      futureWeeklyCapitolIndex = weeklyCapitolIndex;
+      futureWeeklyTestIndex = weeklyTestIndex;
+      
     });
 
     getWeeklyIndexes(weeklyChallenge);
@@ -459,6 +468,16 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 
   @override
   Widget build(BuildContext context) {
+    if(settings) {
+      return CookieSettingsModal(
+        setConsent: _setConsent,
+        close: () {
+          setState(() {
+            settings = false;
+          });
+        },
+      );
+    }
     if (consent) {
       return ConsentForm(confirm: () {
           setState(() {
@@ -642,7 +661,16 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           ],
         ),
       ) : null,
-      body: !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
+      body: !_isConsentGiven && _selectedIndex == 0 ? SingleChildScrollView(
+        child: Column(
+        children: [
+          _buildConsentBar(),
+          !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
+        ],
+      ),
+        
+      ) : !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
+      
     );
   }
 
@@ -690,6 +718,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,
           weeklyTestIndex: weeklyTestIndex,
+          addWeek: addWeek,
+          futureWeeklyChallenge: futureWeeklyCapitolIndex,
+          futureWeeklyTestIndex: futureWeeklyTestIndex,
           
         );
       case 2:
@@ -757,6 +788,9 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           currentUserData: currentUserData,
           weeklyCapitolIndex: weeklyCapitolIndex,
           weeklyTestIndex: weeklyTestIndex,
+          futureWeeklyChallenge: futureWeeklyCapitolIndex,
+          futureWeeklyTestIndex: futureWeeklyTestIndex,
+          addWeek: addWeek,
         );
       case 2:
         return Discussions(
@@ -831,6 +865,79 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                 color: isSelected ? AppColors.getColor('primary').main : AppColors.getColor('mono').black,
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildConsentBar() {
+    return Positioned(
+      bottom: 0,
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+                  textAlign: TextAlign.center,
+                'Súbory cookies na stránke www.app.info-mat.sk',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge!
+                    .copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+              SizedBox(height: 10,),
+            Text(
+                textAlign: TextAlign.center,
+                'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+              SizedBox(height: 10,),
+              Text(
+                textAlign: TextAlign.center,
+                'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+              SizedBox(height: 10,),
+            Wrap(
+              children: [
+                Container(
+                  height: 50,
+                  width: 220,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true),),
+                ),
+                Container(
+                  height: 50,
+                  width: 180,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false),),
+                ),
+                Container(
+                  height: 50,
+                  width: 180,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings,),
+                ),
+
+
+              ],
+            )
           ],
         ),
       ),

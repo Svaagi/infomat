@@ -195,7 +195,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                     ),
                                     SizedBox(height: 5,),
                                     Text(
-                                        "Čas na dokončenie: ${day(widget.days)}'}",
+                                        "Čas na dokončenie: ${widget.days} ${day(widget.days)}",
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                       ),
                                   SizedBox(height: 16), // Add some spacing between the items

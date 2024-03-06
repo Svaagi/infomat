@@ -130,6 +130,7 @@ class _UpdateClassState extends State<UpdateClass> {
                     name: widget.editClassNameController.text,
                     school: widget.currentClass.data.school,
                     results: widget.currentClass.data.results,
+                    challenge: widget.currentClass.data.challenge,
                     students: List<String>.from(widget.currentClass.data.students),
                     teachers: List<String>.from(widget.currentClass.data.teachers),
                     materials: List<String>.from(widget.currentClass.data.materials),
