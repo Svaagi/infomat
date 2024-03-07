@@ -113,8 +113,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
     if(_loading) return Center(child: CircularProgressIndicator(),);
     return  Container(
             width: 900,
-            child: SingleChildScrollView(
-              child: Center(
+            child:  Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -641,7 +640,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                 ],
               ),
             ),
-          ),
         );
   }
 }

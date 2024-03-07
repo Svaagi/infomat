@@ -126,8 +126,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
     if (_loading) {
         return Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    return   SingleChildScrollView(
-              child: Center(
+    return   Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -751,7 +750,6 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                   ),
                 ],
               ),
-            ),
         );
   }
 }

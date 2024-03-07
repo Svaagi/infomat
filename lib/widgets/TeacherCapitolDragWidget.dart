@@ -22,6 +22,7 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   List<ResultCapitolsData>? results;
   int studentsSum;
   void Function() addWeek;
+  void Function(void Function(), void Function()) init;
  
 
   TeacherCapitolDragWidget({
@@ -36,7 +37,8 @@ class TeacherCapitolDragWidget extends StatefulWidget {
     required this.studentsSum,
     required this.addWeek,
     required this.futureWeeklyCapitolIndex,
-    required this.futureWeeklyTestIndex
+    required this.futureWeeklyTestIndex,
+    required this.init
   }) : super(key: key);
 
   @override
@@ -445,6 +447,8 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                         await fetchQuestionData(reorderedNumbers); 
                         await updateClassToFirestore(reorderedNumbers);
                         fetchCurrentClass(); 
+
+                        widget.init(() {}, () {});
 
                         Navigator.pop(context, reorderedNumbers);
                       },

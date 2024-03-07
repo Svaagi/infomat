@@ -263,8 +263,6 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     
-    _checkConsent();
-
 
     // Fetch the user data when the app starts
     init(() {}, () {});
@@ -721,6 +719,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           addWeek: addWeek,
           futureWeeklyChallenge: futureWeeklyCapitolIndex,
           futureWeeklyTestIndex: futureWeeklyTestIndex,
+          init: init,
           
         );
       case 2:
@@ -791,6 +790,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           futureWeeklyChallenge: futureWeeklyCapitolIndex,
           futureWeeklyTestIndex: futureWeeklyTestIndex,
           addWeek: addWeek,
+          init: init,
         );
       case 2:
         return Discussions(
@@ -872,15 +872,13 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
   }
 
   Widget _buildConsentBar() {
-    return Positioned(
-      bottom: 0,
-      child: Container(
+    return Container(
         color: Theme.of(context).primaryColor,
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Text(
                   textAlign: TextAlign.center,
                 'Súbory cookies na stránke www.app.info-mat.sk',
@@ -934,13 +932,10 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                   padding: EdgeInsets.all(5),
                   child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings,),
                 ),
-
-
               ],
             )
           ],
         ),
-      ),
     );
   }
 }
