@@ -100,11 +100,9 @@ class _ConsentFormState extends State<ConsentForm> {
               child: ReButton(color: 'green',
                   text: "Súhlasím s pravidlami a podmienkami.",
                     onTap: () {
-                      if (_isConfirmed) {
                         User? user = FirebaseAuth.instance.currentUser;
                         setUserSigned(user!.uid);
                         widget.confirm();
-                      }
                     },
                   ),
             ),
