@@ -94,24 +94,26 @@ class _AppState extends State<App> {
     }
     maxPoints = 0;
 
-    sendNotification(, content, title, type)
 
     init(() { }, () { });
   }
 
   Future<void> fetchPosts() async {
     try {
-      ClassData classes = await fetchClass(currentUserData!.schoolClass);
-      List<PostsData> posts = [];
+      if (currentUserData != null) {
+              ClassData classes = await fetchClass(currentUserData!.schoolClass);
+          List<PostsData> posts = [];
 
-      posts.addAll(classes.posts);
+          posts.addAll(classes.posts);
 
-      posts.sort((a, b) => b.date.compareTo(a.date));
-      if(mounted) {
-        setState(() {
-          _posts = posts;
-        });
+          posts.sort((a, b) => b.date.compareTo(a.date));
+          if(mounted) {
+            setState(() {
+              _posts = posts;
+            });
+          }
       }
+
 
 
     } catch (e) {
@@ -220,6 +222,7 @@ class _AppState extends State<App> {
 
     fetchUserData();
 
+
     
     await fetchPosts();
 
@@ -237,6 +240,7 @@ class _AppState extends State<App> {
     init(() {}, () {});
 
 
+
   }
 
 void updateWeeklyChallenge() {
@@ -245,6 +249,8 @@ void updateWeeklyChallenge() {
   getWeeklyIndexes(weeklyChallenge);
 
   _loadingChallenge = false;
+
+  print('loadinChallenge');
 
 }
 
@@ -288,14 +294,14 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
   }
 
   Future<void> fetchFake() async {
-  try {
-      print('fake');
-  }catch (e) {
-    print('Error fetching fake data: $e');
-    setState(() {
-      _loadingUser = false;
-    });
-  }
+    try {
+        print('fake');
+    }catch (e) {
+      print('Error fetching fake data: $e');
+      setState(() {
+        _loadingUser = false;
+      });
+    }
   }
 
   StreamSubscription<DocumentSnapshot>? _userDataSubscription;
@@ -315,6 +321,7 @@ void fetchUserData() {
 
         try {
           UserData userData = UserData.fromSnapshot(userSnapshot);
+
 
           // Cancel the previous class data subscription if it exists
           await _classDataSubscription?.cancel();
@@ -379,6 +386,7 @@ void fetchUserData() {
                 students = classData.students; // Assuming 'students' is defined elsewhere
                 completedCount = count; // Assuming 'completedCount' is defined elsewhere
               _loadingUser = false; // Assuming '_loadingUser' is a boolean state indicator defined elsewhere
+              print('loadingUser');
             });
           } catch (e) {
             print('Error processing user data: $e');
@@ -392,15 +400,25 @@ void fetchUserData() {
               },
               onError: (error) => print('Error listening to class data: $error'),
             );
-          }
+          } else {
+             if (userData.classes.isEmpty) {
+              setState(() {
+                _selectedIndex = 6;
+              });
+            }
 
           // Proceed with other operations that don't depend on real-time class data updates
           // Other setState calls or operations
           setState(() {
             currentUserData = userData;
             _loadingUser = false; // Update your loading state as necessary
+            _loadingCapitols = false;
+            _loadingChallenge = false;
             // Additional UI updates based on the user data
           });
+          }
+
+         
 
         } catch (e) {
           print('Error processing user data: $e');
@@ -473,6 +491,7 @@ void dispose() {
 
     getWeeklyIndexes(weeklyChallenge);
           _loadingCapitols = false;
+          print('loadinCapitols');
 
   } catch (e) {
     print('Error with loading capitols: $e');
