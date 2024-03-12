@@ -170,41 +170,19 @@ class _MainAppState extends State<MainApp> {
                 // User is logged in, navigate to the specified screen
                 sendUniqueEvent(snapshot.data!.uid);
                 sendLoginEvent();
-                return !_isConsentGiven ? Scaffold(
-                    body: SingleChildScrollView(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: MediaQuery.of(context).size.height,
-                        ),
-                        child: IntrinsicHeight(
-                          child: Stack(
-                            children: [
-                              Expanded(child: App()),
-                              if (!_isConsentGiven) _buildConsentBar(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                return !_isConsentGiven ?  Stack(
+                      children: [
+                        App(),
+                        if (!_isConsentGiven) _buildConsentBar(),
+                      ],
                   ) : const App();
               } else {
                 // User is not logged in, navigate to Login
-                return !_isConsentGiven ? Scaffold(
-                    body: SingleChildScrollView(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: MediaQuery.of(context).size.height,
-                        ),
-                        child: IntrinsicHeight(
-                          child: Stack(
-                            children: [
-                              Expanded(child: Login()),
-                              if (!_isConsentGiven) _buildConsentBar(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                return !_isConsentGiven ? Stack(
+                      children: [
+                        const Login(),
+                        if (!_isConsentGiven) _buildConsentBar(),
+                      ],
                   ) : const Login();
                 }
               }
@@ -214,8 +192,7 @@ class _MainAppState extends State<MainApp> {
     }
 
     Widget _buildConsentBar() {
-    return Positioned(
-            child:Container(
+    return Container(
               height: 200,
         color: AppColors.getColor('primary').light,
         width: MediaQuery.of(context).size.width,
@@ -280,7 +257,6 @@ class _MainAppState extends State<MainApp> {
             )
           ],
         ),
-    )
     );
   }
 }

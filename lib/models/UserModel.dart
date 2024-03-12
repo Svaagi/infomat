@@ -17,9 +17,18 @@ class UserNotificationsData {
   UserNotificationsData({
     required this.id,
     required this.seen,
-    this.date
+    this.date,
   });
+
+  factory UserNotificationsData.fromMap(Map<String, dynamic> map) {
+    return UserNotificationsData(
+      id: map['id'] as String,
+      seen: map['seen'] as bool,
+      date: map['date'] as Timestamp?,
+    );
+  }
 }
+
 
 class UserAnswerData {
   int? answer;
@@ -27,9 +36,17 @@ class UserAnswerData {
 
   UserAnswerData({
     required this.answer,
-    required this.index
+    required this.index,
   });
+
+  factory UserAnswerData.fromMap(Map<String, dynamic> map) {
+    return UserAnswerData(
+      answer: map['answer'],
+      index: map['index'],
+    );
+  }
 }
+
 
 class UserQuestionsData {
   List<UserAnswerData> answer;
@@ -39,9 +56,20 @@ class UserQuestionsData {
   UserQuestionsData({
     required this.answer,
     required this.completed,
-    required this.correct
+    required this.correct,
   });
+
+  factory UserQuestionsData.fromMap(Map<String, dynamic> map) {
+    return UserQuestionsData(
+      answer: map['answer'] != null
+          ? List<UserAnswerData>.from(map['answer'].map((x) => UserAnswerData.fromMap(x)))
+          : [],
+      completed: map['completed'] ?? false,
+      correct: List<bool>.from(map['correct']),
+    );
+  }
 }
+
 
 class UserCapitolsData {
   String id;
@@ -57,7 +85,18 @@ class UserCapitolsData {
     required this.completed,
     required this.tests,
   });
+
+  factory UserCapitolsData.fromMap(Map<String, dynamic> map) {
+    return UserCapitolsData(
+      id: map['id'] as String,
+      name: map['name'] as String,
+      image: map['image'] as String,
+      completed: map['completed'] as bool,
+      tests: (map['tests'] as List<dynamic>).map((testMap) => UserCapitolsTestData.fromMap(testMap)).toList(),
+    );
+  }
 }
+
 
 class UserCapitolsTestData {
   String name;
@@ -71,7 +110,17 @@ class UserCapitolsTestData {
     required this.points,
     required this.questions,
   });
+
+  factory UserCapitolsTestData.fromMap(Map<String, dynamic> map) {
+    return UserCapitolsTestData(
+      name: map['name'] as String,
+      completed: map['completed'] as bool,
+      points: map['points'] as int,
+      questions: (map['questions'] as List<dynamic>).map((questionMap) => UserQuestionsData.fromMap(questionMap)).toList(),
+    );
+  }
 }
+
 
 class UserData {
   int discussionPoints;
@@ -106,9 +155,48 @@ class UserData {
     required this.teacher,
     required this.points,
     required this.capitols,
-     required this.materials,
+    required this.materials,
     required this.notifications
   });
+
+  factory UserData.fromSnapshot(DocumentSnapshot snapshot) {
+    var data = snapshot.data() as Map<String, dynamic>;
+
+    List<UserCapitolsData> capitolList = [];
+    if (data['capitols'] != null) {
+      var capitols = List.from(data['capitols']);
+      for (var capitol in capitols) {
+        capitolList.add(UserCapitolsData.fromMap(capitol));
+      }
+    }
+
+    List<UserNotificationsData> notificationList = [];
+    if (data['notifications'] != null) {
+      var notifications = List.from(data['notifications']);
+      for (var notification in notifications) {
+        notificationList.add(UserNotificationsData.fromMap(notification));
+      }
+    }
+
+    return UserData(
+      admin: data['admin'] ?? false,
+      discussionPoints: data['discussionPoints'] ?? 0,
+      weeklyDiscussionPoints: data['weeklyDiscussionPoints'] ?? 0,
+      id: snapshot.id,
+      email: data['email'] ?? '',
+      name: data['name'] ?? '',
+      active: data['active'] ?? false,
+      school: data['school'] ?? '',
+      classes: List<String>.from(data['classes'] ?? []),
+      schoolClass: data['schoolClass'] ?? '',
+      teacher: data['teacher'] ?? false,
+      signed: data['signed'] ?? false,
+      points: data['points'] ?? 0,
+      capitols: capitolList,
+      materials: List<String>.from(data['materials'] ?? []),
+      notifications: notificationList,
+    );
+  }
 }
 
 

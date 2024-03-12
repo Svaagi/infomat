@@ -25,7 +25,6 @@ class MobileTeacherFeed extends StatefulWidget {
   int studentsSum;
   List<PostsData> posts;
     List<String> students;
-  int days;
 
   MobileTeacherFeed({
     Key? key,
@@ -40,7 +39,6 @@ class MobileTeacherFeed extends StatefulWidget {
     required this.studentsSum,
     required this.posts,
     required this.students,
-    required this.days
   }) : super(key: key);
 
   @override
@@ -161,10 +159,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                    "Čas na dokončenie: ${widget.days} ${day(widget.days)}",
-                                    style: TextStyle(color: AppColors.getColor('primary').lighter,),
-                                  ),
                                 SizedBox(height: 16,),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center

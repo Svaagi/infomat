@@ -258,12 +258,12 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                                   style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                 ),  // Showing upto 2 decimal places
                                 const SizedBox(width: 10),
-                                SvgPicture.asset('assets/icons/adminIcon.svg', color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main, width: 18,),
+                                SvgPicture.asset('assets/icons/adminIcon.svg', color: widget.results![index].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main, width: 18,),
                                 const SizedBox(width: 5),
                                 Text(
-                                  '${widget.results![currentCapitol].tests[subIndex].completed}/${widget.studentsSum}',
+                                  '${widget.results![index].tests[subIndex].completed}/${widget.studentsSum}',
                                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                     color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main,
+                                     color: widget.results![index].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main,
                                   ),
                                 ),
                                 const SizedBox(width: 10),  // Optional: To give some space between the Text and the Icon
@@ -345,7 +345,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                         if (newIndex > oldIndex) {
                           newIndex -= 1;
                         }
-                        if (newIndex != 0) { // Check if it's not the first item
+                        if (newIndex > currentCapitol) { // Check if it's not the first item
                           final item = reorderedNumbers.removeAt(oldIndex);
                           reorderedNumbers.insert(newIndex, item);
                           setState(() {});
@@ -382,7 +382,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                           ),
                         ),
                       ];
-                      if (number != 0) {
+                      if (number > currentCapitol) {
                         rowChildren.add(ReorderableDragStartListener(
                           index: number,
                           child: MouseRegion(

@@ -83,6 +83,7 @@ class _NotificationsDropDownState extends State<NotificationsDropDown> {
             widget.setUser(userData);
           
           };
+
       }
     }
   }

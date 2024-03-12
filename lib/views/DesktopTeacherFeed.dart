@@ -29,7 +29,6 @@ class DesktopTeacherFeed extends StatefulWidget {
   List<String> students;
   int maxPoints;
   bool load;
-  int days;
 
 
   DesktopTeacherFeed({
@@ -47,7 +46,6 @@ class DesktopTeacherFeed extends StatefulWidget {
     required this.students,
     required this.maxPoints,
     required this.load,
-    required this.days
   }) : super(key: key);
 
   @override
@@ -193,10 +191,7 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                         style: TextStyle(color: AppColors.getColor('primary').lighter,),
                                     ),
                                     SizedBox(height: 5,),
-                                    Text(
-                                        "Čas na dokončenie: ${widget.days} ${day(widget.days)}",
-                                        style: TextStyle(color: AppColors.getColor('primary').lighter,),
-                                      ),
+
                                   SizedBox(height: 16), // Add some spacing between the items
 
                                    SizedBox(

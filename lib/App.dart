@@ -31,6 +31,7 @@ import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/widgets/ConsentForm.dart';
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -82,12 +83,8 @@ class _AppState extends State<App> {
   int maxPoints = 0;
   bool load = false;
   bool consent = false;
-  int days = 0;
 
 
-
-
- 
   void addWeek () {
     if (weeklyChallenge < 31) {
       incrementClassChallenge(currentUserData!.schoolClass, 1);
@@ -208,20 +205,15 @@ class _AppState extends State<App> {
   void init (void Function() start, void Function() end ) async {
     start();
 
-
       // Initialize the weekly challenge count based on the active weeks
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
-       // Calculate the time until the next midnight
 
-      
 
-    // Calculate days to the closest date in _activeWeeks
-
-    await fetchUserData();
+    fetchUserData();
 
     
     await fetchPosts();
@@ -271,10 +263,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
   return passedWeeksCount;
 }
 
-   void _onUserDataChanged() {
-    fetchUserData();
-  }
-
   int countTrueTests(List<UserCapitolsTestData>? boolList) {
     int count = 0;
     if (boolList != null) {
@@ -305,94 +293,145 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
   }
   }
 
-  Future<void> fetchUserData() async {
-  try {
-      print('here');
+  StreamSubscription<DocumentSnapshot>? _userDataSubscription;
+StreamSubscription<DocumentSnapshot>? _classDataSubscription;
 
-    // Retrieve the Firebase Auth user
-    User? user = FirebaseAuth.instance.currentUser;
+void fetchUserData() {
+  final User? user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    final DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
 
-    if (user != null) {
-      // Fetch the user data using the fetchUser function
-      UserData userData = await fetchUser(user.uid);
-      
-      // Attempt to fetch class data
-      ClassData? classData;
-      try {
-        classData = await fetchClass(userData.schoolClass);
-      } catch (e) {
-        print('Error fetching class data: $e');
-      }
+    _userDataSubscription = userRef.snapshots().listen(
+      (userSnapshot) async {
+        if (!userSnapshot.exists) {
+          print('User document does not exist.');
+          return;
+        }
 
-      if (userData.classes.isEmpty) {
-        setState(() {
-          _selectedIndex = 6;
-          load = true;
-        });
-      }
-
-      // Proceed with fetching results if class data is available
-      if (classData != null) {
         try {
-          currentResults = await fetchResults(classData.results);
-          weeklyChallenge = classData.challenge;
-        } catch (e) {
-          print('Error fetching results data: $e');
-        }
-      }
+          UserData userData = UserData.fromSnapshot(userSnapshot);
 
-      if (!userData.signed) {
-        setState(() {
-          consent = true;
-        });
-      }
+          // Cancel the previous class data subscription if it exists
+          await _classDataSubscription?.cancel();
 
-      int count = 0;
+          // Listen to changes in the class document
+          if (userData.schoolClass.isNotEmpty) {
+            final DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(userData.schoolClass);
+            _classDataSubscription = classRef.snapshots().listen(
+              (classSnapshot) async {
+                if (classSnapshot.exists) {
+                  ClassData classData = ClassData.fromSnapshot(classSnapshot); // You need to implement this method
 
-      for(int i = 0; i < userData.capitols.length; i++) {
-        for (UserCapitolsTestData tmp in userData.capitols[i].tests) {
-          if (tmp.completed) {
-            count++;
+                  try {
+            // Convert the snapshot to UserData
+
+
+
+            if (userData.classes.isEmpty) {
+              setState(() {
+                _selectedIndex = 6;
+                load = true;
+              });
+            }
+
+              try {
+                currentResults = await fetchResults(classData.results);
+                weeklyChallenge = classData.challenge;
+              } catch (e) {
+                print('Error fetching results data: $e');
+              }
+
+            if (!userData.signed) {
+              setState(() {
+                consent = true;
+              });
+            }
+
+            int count = 0;
+
+            for(int i = 0; i < userData.capitols.length; i++) {
+              for (UserCapitolsTestData tmp in userData.capitols[i].tests) {
+                if (tmp.completed) {
+                  count++;
+                }
+              }
+            }
+
+            await fetchCapitolsData();
+
+            // Finally, update the state with all fetched and computed data
+            setState(() {
+              currentUserData = userData;
+              _selectedIndex = userData.classes.isEmpty ? 6 : _selectedIndex; // Assuming _selectedIndex is defined elsewhere
+              load = true; // Assuming 'load' is a boolean state indicator defined elsewhere
+              consent = !userData.signed;
+              // If classData is not null, set other state variables related to classData here
+                order = classData.capitolOrder; // Assuming 'order' is defined elsewhere
+                studentsSum = classData.students.length; // Assuming 'studentsSum' is defined elsewhere
+                if (userData.capitols.isNotEmpty && weeklyCapitolIndex < userData.capitols.length && weeklyTestIndex < userData.capitols[weeklyCapitolIndex].tests.length) {
+                  weeklyBool = userData.capitols[weeklyCapitolIndex].tests[weeklyTestIndex].completed; // Assuming 'weeklyBool' is a state variable
+                }
+                students = classData.students; // Assuming 'students' is defined elsewhere
+                completedCount = count; // Assuming 'completedCount' is defined elsewhere
+              _loadingUser = false; // Assuming '_loadingUser' is a boolean state indicator defined elsewhere
+            });
+          } catch (e) {
+            print('Error processing user data: $e');
+            setState(() {
+              _loadingUser = false;
+            });
           }
+                } else {
+                  print('Class document does not exist.');
+                }
+              },
+              onError: (error) => print('Error listening to class data: $error'),
+            );
+          }
+
+          // Proceed with other operations that don't depend on real-time class data updates
+          // Other setState calls or operations
+          setState(() {
+            currentUserData = userData;
+            _loadingUser = false; // Update your loading state as necessary
+            // Additional UI updates based on the user data
+          });
+
+        } catch (e) {
+          print('Error processing user data: $e');
+          setState(() {
+            _loadingUser = false;
+          });
         }
-      }
-
-      await fetchCapitolsData();
-
-
-            // Update state with user data, and class data if available
-      setState(() {
-        currentUserData = userData;
-        if (classData != null) {
-          order = classData.capitolOrder;
-          studentsSum = classData.students.length;
-          if (userData.capitols[weeklyCapitolIndex].tests[weeklyTestIndex].completed) weeklyBool = true;
-          students = classData.students;
-          
-          completedCount = count;
-        }
-        _loadingUser = false;
-      });
-
-
-
-
-    } else {
-      print('User is not logged in.');
-    }
-  } catch (e) {
-    print('Error fetching user data: $e');
-    setState(() {
-      _loadingUser = false;
-    });
+      },
+      onError: (error) {
+        print('Error listening to user data: $error');
+        setState(() {
+          _loadingUser = false;
+        });
+      },
+    );
+  } else {
+    print('User is not logged in.');
   }
 }
+
+@override
+void dispose() {
+  super.dispose();
+  _userDataSubscription?.cancel();
+  _classDataSubscription?.cancel();
+}
+
+
 
 
    Future<void> fetchCapitolsData() async {
     try {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       data = json.decode(jsonData);
+
+      print(weeklyChallenge);
 
       getWeeklyIndexes(weeklyChallenge);
 
@@ -719,7 +758,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             studentsSum: studentsSum,
             posts: _posts,
             students: students,
-            days: days,
           ) : DesktopTeacherFeed(
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
@@ -734,7 +772,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
             studentsSum: studentsSum,
             posts: _posts,
             maxPoints: maxPoints,
-            days: days,
           );
       case 1:
         return Challenges(
@@ -769,7 +806,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                   fetchUserData();
                 });
               },
-              onUserChanged: _onUserDataChanged,
             )
           : DesktopAdmin(
               currentUserData: currentUserData,
@@ -779,7 +815,6 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
                   fetchUserData();
                 });
               },
-              onUserChanged: _onUserDataChanged,
             );
       case 7:
         return ContactView();
