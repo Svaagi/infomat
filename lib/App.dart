@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:infomat/Colors.dart';
+import 'package:infomat/controllers/NotificationController.dart';
 import 'package:infomat/views/ContactView.dart';
 import 'package:infomat/views/Learning.dart';
 import 'package:infomat/views/Challenges.dart';
@@ -79,6 +80,7 @@ class _AppState extends State<App> {
   List<int> order = [0,1,2,3,4];
   List<ResultCapitolsData>? currentResults;
   int studentsSum = 0;
+  List<String> users = [];
   List<String> students = [];
   int maxPoints = 0;
   bool load = false;
@@ -91,6 +93,9 @@ class _AppState extends State<App> {
       weeklyChallenge += 1;
     }
     maxPoints = 0;
+
+    sendNotification(, content, title, type)
+
     init(() { }, () { });
   }
 
