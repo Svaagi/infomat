@@ -31,8 +31,7 @@ import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/widgets/ConsentForm.dart';
 import 'dart:async';
-import 'package:infomat/widgets/CookieSettings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 
@@ -84,38 +83,11 @@ class _AppState extends State<App> {
   bool load = false;
   bool consent = false;
   int days = 0;
-  bool _isConsentGiven = false;
-  bool settings = false;
 
 
 
- _checkConsent() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isConsentGiven = prefs.getBool('necessary') ?? false;
-    });
 
-  }
-
-  _setConsent(bool necessary, bool analytics) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('necessary', necessary);
-    await prefs.setBool('analytics', analytics);
-    setState(() {
-      _isConsentGiven = true;
-    });
-  }
-
-  void _showCookieSettings() {
-    setState(() {
-      settings = true;
-    });
-    // Implement the settings screen navigation logic
-    // For now, let's just print something to the console
-    print('Navigate to the settings screen');
-  }
-  final userAgent = html.window.navigator.userAgent.toLowerCase();
-
+ 
   void addWeek () {
     if (weeklyChallenge < 31) {
       incrementClassChallenge(currentUserData!.schoolClass, 1);
@@ -466,16 +438,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 
   @override
   Widget build(BuildContext context) {
-    if(settings) {
-      return CookieSettingsModal(
-        setConsent: _setConsent,
-        close: () {
-          setState(() {
-            settings = false;
-          });
-        },
-      );
-    }
+
     if (consent) {
       return ConsentForm(confirm: () {
           setState(() {
@@ -659,15 +622,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
           ],
         ),
       ) : null,
-      body: !_isConsentGiven && _selectedIndex == 0 ? SingleChildScrollView(
-        child: Column(
-        children: [
-          _buildConsentBar(),
-          !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
-        ],
-      ),
-        
-      ) : !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
+      body: !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
       
     );
   }
@@ -871,72 +826,5 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
     );
   }
 
-  Widget _buildConsentBar() {
-    return Container(
-        color: Theme.of(context).primaryColor,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-                  textAlign: TextAlign.center,
-                'Súbory cookies na stránke www.app.info-mat.sk',
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
-            Text(
-                textAlign: TextAlign.center,
-                'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
-              Text(
-                textAlign: TextAlign.center,
-                'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
-            Wrap(
-              children: [
-                Container(
-                  height: 50,
-                  width: 220,
-                  padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true),),
-                ),
-                Container(
-                  height: 50,
-                  width: 180,
-                  padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false),),
-                ),
-                Container(
-                  height: 50,
-                  width: 180,
-                  padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings,),
-                ),
-              ],
-            )
-          ],
-        ),
-    );
-  }
 }
 
