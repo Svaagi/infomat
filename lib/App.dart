@@ -219,6 +219,11 @@ class _AppState extends State<App> {
         userAgent.contains('windows') ||
         userAgent.contains('linux');
 
+
+    setState(() {
+      weeklyChallenge = 0;
+    });
+
     fetchUserData();
 
 
@@ -256,6 +261,7 @@ void updateWeeklyChallenge() {
 void fetch() async {
 
   init(() { }, () { });
+
   setState(() {
     _selectedIndex = 0;
   });

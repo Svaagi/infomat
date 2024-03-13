@@ -115,10 +115,21 @@ class _ConsentFormState extends State<ConsentForm> {
                   ),
                 ),
             SizedBox(height: 30,),
-            SizedBox(
+            MediaQuery.of(context).size.width > 1000
+                ? SizedBox(
               width: 400,
               child: ReButton(color: 'green',
                   text: "Súhlasím s podmienkami používania aplikácie",
+                    onTap: () {
+                        User? user = FirebaseAuth.instance.currentUser;
+                        setUserSigned(user!.uid);
+                        widget.confirm();
+                    },
+                  ),
+            ) : SizedBox(
+              width: 400,
+              child: ReButton(color: 'green',
+                  text: "Súhlasím s podmienkami používania",
                     onTap: () {
                         User? user = FirebaseAuth.instance.currentUser;
                         setUserSigned(user!.uid);

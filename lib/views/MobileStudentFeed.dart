@@ -141,10 +141,6 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                           ),
                         ),
                       ),
-                      Text(
-                          "Čas na dokončenie: 1 týždeň",
-                          style: TextStyle(color: AppColors.getColor('primary').lighter,),
-                        ),
                       const SizedBox(height: 16,),
                       ReButton(  color: "white",  text: 'ZAČAŤ', onTap:
                         () {

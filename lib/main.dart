@@ -193,8 +193,16 @@ class _MainAppState extends State<MainApp> {
 
 Widget _buildConsentBar() {
     return Container(
+      decoration: BoxDecoration(
+        color: AppColors.getColor('primary').light,
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.getColor('mono').white,
+            width: 2,
+          ),
+        ),
+      ),
       constraints: BoxConstraints(minHeight: 200, maxHeight: 400),
-      color: AppColors.getColor('primary').light,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(16),
       child: SingleChildScrollView(
