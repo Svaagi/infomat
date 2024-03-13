@@ -24,6 +24,7 @@ class DesktopStudentFeed extends StatefulWidget {
   List<dynamic> orderedData;
       int weeklyCapitolIndex;
   int weeklyTestIndex;
+  int points;
 
   DesktopStudentFeed({
     Key? key,
@@ -43,6 +44,7 @@ class DesktopStudentFeed extends StatefulWidget {
     required this.init,
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
+    required this.points
   }) : super(key: key);
 
   @override
@@ -97,8 +99,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
     if (_loading) {
         return const Center(child: CircularProgressIndicator()); // Show loading circle when data is being fetched
     }
-    return  SingleChildScrollView(
-              child: Center(
+    return  Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -155,11 +156,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
                               const SizedBox(height: 5,),
-                            Text(
-                                "Čas na dokončenie: 1 týždeň",
-                                style: TextStyle(color: AppColors.getColor('primary').lighter,),
-                              ),
-                            const SizedBox(height: 20,),
+                            
                             ReButton(color: "white" , text: 'ZAČAŤ', onTap:
                               () {
                                   widget.onNavigationItemSelected(1);
@@ -187,8 +184,16 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               ],
                             ),
                             const SizedBox(height: 40),
-                            Text(
+                            (widget.weeklyChallenge + 1) != 32 ? Text(
                               "budúci týždeň ťa čaká",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                color: AppColors.getColor('primary').lighter,
+                              ),
+                            ) : Text(
+                              "Gratulujeme!",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
@@ -197,7 +202,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                              Text(
+                              (widget.weeklyChallenge + 1) != 32 ? Text(
                                 textAlign: TextAlign.center,
                               widget.futureWeeklyTitle ?? '',
                               style: Theme.of(context)
@@ -206,10 +211,22 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                   .copyWith(
                                 color: Theme.of(context).colorScheme.onPrimary,
                               ),
+                            ) : Text(
+                                textAlign: TextAlign.center,
+                              'Všetky výzvy boli ukončené.',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
                             ),
                             const SizedBox(height: 20),
-                            Text(
+                            (widget.weeklyChallenge + 1) != 32 ? Text(
                                 "Kapitola: ${widget.capitolTitle}",
+                                style: TextStyle(color: AppColors.getColor('primary').lighter,),
+                              ):  Text(
+                                "Tvoje celkové skóre je ${widget.points}/168 ",
                                 style: TextStyle(color: AppColors.getColor('primary').lighter,),
                               ),
                           ],
@@ -336,7 +353,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                       height: 56,
                                       margin: const EdgeInsets.symmetric(vertical: 2),
                                       decoration: BoxDecoration(
-                                        color: widget.capitolData?.tests[widget.weeklyChallenge] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
+                                        color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
                                         borderRadius: BorderRadius.circular(10.0), // Rounded borders
                                       ),
                                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -352,13 +369,13 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                               .textTheme
                                               .titleSmall!
                                               .copyWith(
-                                                      color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
+                                                      color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
                                                   ),
                                               ),
                                               const SizedBox(height: 5,),
                                                 Text(
                                                   '${test.points}/${test.questions.length} správnych odpovedí',
-                                                  style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
+                                                  style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                                 ),
                                               ],
                                             ),
@@ -370,7 +387,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                                                   .textTheme
                                                   .titleSmall!
                                                   .copyWith(
-                                                          color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
+                                                          color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
                                                       ),
                                                   ),
                                                   const SizedBox(width: 8,),
@@ -404,7 +421,6 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                   
                 ],
               ),
-            ),
         );
   }
 }

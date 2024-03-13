@@ -28,8 +28,7 @@ import 'package:infomat/providers/ContactProvider.dart';
 class DesktopAdmin extends StatefulWidget {
   final UserData? currentUserData;
   final void Function() logOut;
-  final void Function() onUserChanged;
-  const DesktopAdmin({Key? key, required this.currentUserData, required this.logOut, required this.onUserChanged});
+  const DesktopAdmin({Key? key, required this.currentUserData, required this.logOut});
 
   @override
   State<DesktopAdmin> createState() => _DesktopAdminState();

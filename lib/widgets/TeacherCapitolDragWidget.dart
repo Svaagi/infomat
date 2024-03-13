@@ -17,9 +17,13 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   double Function(int, int) percentage;
   int weeklyCapitolIndex;
   int weeklyTestIndex;
+  int futureWeeklyCapitolIndex;
+  int futureWeeklyTestIndex;
   List<ResultCapitolsData>? results;
   int studentsSum;
-
+  void Function() addWeek;
+  void Function(void Function(), void Function()) init;
+ 
 
   TeacherCapitolDragWidget({
     Key? key,
@@ -30,7 +34,11 @@ class TeacherCapitolDragWidget extends StatefulWidget {
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
     required this.results,
-    required this.studentsSum
+    required this.studentsSum,
+    required this.addWeek,
+    required this.futureWeeklyCapitolIndex,
+    required this.futureWeeklyTestIndex,
+    required this.init
   }) : super(key: key);
 
   @override
@@ -111,6 +119,23 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
 
   return localResults;
 }
+  void refresh() {
+    try {
+      setState(() {
+        _loadingCurrentClass = true;
+        _loadingQuestionData = true;
+      });
+      fetchCurrentClass();
+      fetchQuestionData(widget.numbers);
+      setState(() {
+        _loadingCurrentClass = false;
+        _loadingQuestionData = false;
+      });
+    } catch (e) {
+      print('Error in refreshing data: $e');
+    }
+
+  }
 
   @override
   void initState() {
@@ -178,7 +203,6 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
               itemBuilder: (ctx, index) {
                 bool isExpanded = index == expandedTileIndex;
                 dynamic capitol = localResults[index];
-
 
                 if (capitol == null) {
                   // If capitol data is null, return an empty SizedBox or another widget indicating no data
@@ -250,18 +274,33 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                                   style: TextStyle(color: AppColors.getColor('mono').darkGrey)
                                 ),  // Showing upto 2 decimal places
                                 const SizedBox(width: 10),
-                                SvgPicture.asset('assets/icons/adminIcon.svg', color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main, width: 18,),
+                                SvgPicture.asset('assets/icons/adminIcon.svg', color: widget.results![widget.numbers[index]].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main, width: 18,),
                                 const SizedBox(width: 5),
                                 Text(
-                                  '${widget.results![currentCapitol].tests[subIndex].completed}/${widget.studentsSum}',
+                                  '${widget.results![widget.numbers[index]].tests[subIndex].completed}/${widget.studentsSum}',
                                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                     color: widget.results![currentCapitol].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main,
+                                     color: widget.results![widget.numbers[index]].tests[subIndex].completed/widget.studentsSum == 1.0 ? AppColors.getColor('green').main : AppColors.getColor('red').main,
                                   ),
                                 ),
                                 const SizedBox(width: 10),  // Optional: To give some space between the Text and the Icon
                                 SvgPicture.asset('assets/icons/correctIcon.svg')  // Replace with the icon you want
                               ],
-                            ) : null,
+                            ) : Row(
+                              mainAxisSize: MainAxisSize.min, 
+                              children: [
+                                if (subIndex == widget.futureWeeklyTestIndex && widget.numbers[index] == widget.futureWeeklyCapitolIndex && subIndex != widget.weeklyTestIndex )
+                                Container(
+                                  height: 60,
+                                  width: 150,
+                                  child: ReButton(color: 'green', text: 'Spustiť test', onTap: () {
+                                    widget.addWeek();
+                                    refresh();
+                                    } 
+                                  ),
+                                )
+                                
+                              ],
+                            ),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                             dense: true,
                           ),
@@ -326,7 +365,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                         if (newIndex > oldIndex) {
                           newIndex -= 1;
                         }
-                        if (newIndex != 0) { // Check if it's not the first item
+                        if (newIndex > currentCapitol) { // Check if it's not the first item
                           final item = reorderedNumbers.removeAt(oldIndex);
                           reorderedNumbers.insert(newIndex, item);
                           setState(() {});
@@ -363,7 +402,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                           ),
                         ),
                       ];
-                      if (number != 0) {
+                      if (number > currentCapitol) {
                         rowChildren.add(ReorderableDragStartListener(
                           index: number,
                           child: MouseRegion(
@@ -428,6 +467,8 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                         await fetchQuestionData(reorderedNumbers); 
                         await updateClassToFirestore(reorderedNumbers);
                         fetchCurrentClass(); 
+
+                        widget.init(() {}, () {});
 
                         Navigator.pop(context, reorderedNumbers);
                       },

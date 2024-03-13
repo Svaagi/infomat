@@ -25,7 +25,6 @@ class MobileTeacherFeed extends StatefulWidget {
   int studentsSum;
   List<PostsData> posts;
     List<String> students;
-  int days;
 
   MobileTeacherFeed({
     Key? key,
@@ -40,7 +39,6 @@ class MobileTeacherFeed extends StatefulWidget {
     required this.studentsSum,
     required this.posts,
     required this.students,
-    required this.days
   }) : super(key: key);
 
   @override
@@ -76,21 +74,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
     }
     return 'odpovedí';
   }
-
-    String day(int length) {
-    if (length == 0) {
-      return 'dní';
-    } else if (length == 1 ) {
-      return 'deň';
-    } else if (length > 1 && length < 4) {
-      return 'dni';
-    }
-    return 'dní';
-  }
-
-
-
-
+  
   @override
   void initState() {
      widget.init(() {
@@ -110,12 +94,19 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if(_loading) return Center(child: CircularProgressIndicator(),);
     return  Container(
             width: 900,
-            child: SingleChildScrollView(
-              child: Center(
+            child:  Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,10 +154,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                    "Čas na dokončenie: ${day(widget.days)}'}",
-                                    style: TextStyle(color: AppColors.getColor('primary').lighter,),
-                                  ),
                                 SizedBox(height: 16,),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
@@ -642,7 +629,6 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                 ],
               ),
             ),
-          ),
         );
   }
 }

@@ -17,9 +17,19 @@ class UserNotificationsData {
   UserNotificationsData({
     required this.id,
     required this.seen,
-    this.date
+    this.date,
   });
+
+  factory UserNotificationsData.fromMap(Map<String, dynamic> map) {
+    return UserNotificationsData(
+      id: map['id'] ?? '', // Assuming 'id' is always expected
+      seen: map['seen'] ?? false, // Defaulting to false if null
+      date: map['date'], // 'date' can be null, no change needed here
+    );
+  }
+
 }
+
 
 class UserAnswerData {
   int? answer;
@@ -27,9 +37,17 @@ class UserAnswerData {
 
   UserAnswerData({
     required this.answer,
-    required this.index
+    required this.index,
   });
+
+  factory UserAnswerData.fromMap(Map<String, dynamic> map) {
+    return UserAnswerData(
+      answer: map['answer'],
+      index: map['index'],
+    );
+  }
 }
+
 
 class UserQuestionsData {
   List<UserAnswerData> answer;
@@ -39,9 +57,21 @@ class UserQuestionsData {
   UserQuestionsData({
     required this.answer,
     required this.completed,
-    required this.correct
+    required this.correct,
   });
+
+  factory UserQuestionsData.fromMap(Map<String, dynamic> map) {
+    return UserQuestionsData(
+      answer: map['answer'] != null
+        ? List<UserAnswerData>.from(map['answer'].map((x) => UserAnswerData.fromMap(x)))
+        : [],
+      completed: map['completed'] ?? false,
+      correct: map['correct'] != null ? List<bool>.from(map['correct']) : [],
+    );
+  }
+
 }
+
 
 class UserCapitolsData {
   String id;
@@ -57,7 +87,21 @@ class UserCapitolsData {
     required this.completed,
     required this.tests,
   });
+
+  factory UserCapitolsData.fromMap(Map<String, dynamic> map) {
+    return UserCapitolsData(
+      id: map['id'] ?? '', // Assuming 'id' should have a default empty string if null
+      name: map['name'] ?? '', // Defaulting to an empty string if null
+      image: map['image'] ?? '', // Defaulting to an empty string if null
+      completed: map['completed'] ?? false,
+      tests: map['tests'] != null
+        ? (map['tests'] as List<dynamic>).map((testMap) => UserCapitolsTestData.fromMap(testMap)).toList()
+        : [],
+    );
+  }
+
 }
+
 
 class UserCapitolsTestData {
   String name;
@@ -71,7 +115,20 @@ class UserCapitolsTestData {
     required this.points,
     required this.questions,
   });
+
+  factory UserCapitolsTestData.fromMap(Map<String, dynamic> map) {
+    return UserCapitolsTestData(
+      name: map['name'] ?? '',
+      completed: map['completed'] ?? false,
+      points: map['points'] ?? 0,
+      questions: map['questions'] != null
+        ? (map['questions'] as List<dynamic>).map((questionMap) => UserQuestionsData.fromMap(questionMap)).toList()
+        : [],
+    );
+  }
+
 }
+
 
 class UserData {
   int discussionPoints;
@@ -106,9 +163,51 @@ class UserData {
     required this.teacher,
     required this.points,
     required this.capitols,
-     required this.materials,
+    required this.materials,
     required this.notifications
   });
+
+  factory UserData.fromSnapshot(DocumentSnapshot snapshot) {
+    var data = snapshot.data() as Map<String, dynamic>? ?? {};
+
+    // Use the same approach for extracting and handling fields as in fetchUser
+    List<UserCapitolsData> capitolList = [];
+    if (data['capitols'] != null) {
+      List<Map<String, dynamic>> capitols = List<Map<String, dynamic>>.from(data['capitols'] as List<dynamic>? ?? []);
+      for (var capitolData in capitols) {
+        capitolList.add(UserCapitolsData.fromMap(capitolData));
+      }
+    }
+
+    List<UserNotificationsData> notificationList = [];
+    if (data['notifications'] != null) {
+      List<Map<String, dynamic>> notifications = List<Map<String, dynamic>>.from(data['notifications'] as List<dynamic>? ?? []);
+      for (var notificationData in notifications) {
+        notificationList.add(UserNotificationsData.fromMap(notificationData));
+      }
+    }
+
+    // Repeat the approach for other fields as necessary
+
+    return UserData(
+      admin: data['admin'] ?? false,
+      discussionPoints: data['discussionPoints'] ?? 0,
+      weeklyDiscussionPoints: data['weeklyDiscussionPoints'] ?? 0,
+      id: snapshot.id,
+      email: data['email'] ?? '',
+      name: data['name'] ?? '',
+      active: data['active'] ?? false,
+      school: data['school'] ?? '',
+      classes: List<String>.from(data['classes'] ?? []),
+      schoolClass: data['schoolClass'] ?? '',
+      teacher: data['teacher'] ?? false,
+      signed: data['signed'] ?? false,
+      points: data['points'] ?? 0,
+      capitols: capitolList,
+      materials: List<String>.from(data['materials'] ?? []),
+      notifications: notificationList,
+    );
+  }
 }
 
 

@@ -43,7 +43,7 @@ class _LearningState extends State<Learning> {
   fetchCurrentClass() async {
     try {
         ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
-        // Fetch the user data using the fetchUser function
+        
         if (mounted) {
           setState(() {
             userData = widget.currentUserData;

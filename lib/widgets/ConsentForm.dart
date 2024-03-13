@@ -6,6 +6,9 @@ import 'package:infomat/controllers/UserController.dart';
 import 'dart:html' as html;
 import 'package:infomat/Colors.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 
 
 
@@ -41,12 +44,21 @@ class _ConsentFormState extends State<ConsentForm> {
     });
   }
 
-  void downloadPDF() {
-    final url = '/GDPR.pdf'; // Replace with your PDF's URL
-    final html.AnchorElement anchor = html.AnchorElement(href: url)
-      ..setAttribute('download', 'Infomat.pdf') // Optional: Set the download file name
-      ..click();
+  void downloadPDF() async {
+    try {
+    // Fetch the download URL
+    String downloadUrl = await firebase_storage.FirebaseStorage.instance
+        .ref('Infomat.pdf')
+        .getDownloadURL();
+
+    // Open the URL in a new tab
+    html.window.open(downloadUrl, '_blank');
+  } catch (e) {
+    print("Error fetching PDF URL: $e");
   }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +86,14 @@ class _ConsentFormState extends State<ConsentForm> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text(
+                    'Podmienky využívania aplikácie Infomat',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: AppColors.getColor('mono').black,
+                        ),
+                  ),
+                  SizedBox(height: 100,),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
@@ -94,86 +114,26 @@ class _ConsentFormState extends State<ConsentForm> {
                     ],
                   ),
                 ),
-
-            SizedBox(height: 60,),
-                Text(
-              textAlign: TextAlign.center,
-              'V súlade s GDPR (Všeobecným nariadením o ochrane údajov) by sme vás taktiež radi informovali, že naša aplikácia používa cookies. Sú tu dva typy cookies, ktoré zhromažďujeme:',
-              style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Text('Povinné Cookies:',
-                    style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-                  ),
-                Checkbox(
-                  value: true,
-                  onChanged:  (bool? value) {
-                    
-                  } ,
-                ),
-              ]
-              ),
-              Padding(padding: EdgeInsets.only(left: 20),
-                child:  Text('"Povinné Cookies: Tieto cookies sú nevyhnutné pre základnú funkcionalitu a bezpečnosť aplikácie. Sú nevyhnutné pre správne fungovanie aplikácie a nevyžadujú váš súhlas, pretože sú v súlade s výnimkami povolenými podľa GDPR."')
-              ),
-
-            SizedBox(height: 20,),
-
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Text('Analytické Cookies:',
-                    style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(
-                  color: Colors.black,
-                ),
-                  ),
-                Checkbox(
-                  value: _isAnalytics,
-                  onChanged:  (bool? value) {
-                    setState(() {
-                      _isAnalytics = value!;
-                    });
-                  } ,
-                ),
-              ]
-              ),
-
-            Padding(padding: EdgeInsets.only(left: 20),
-              child:Text(' Tieto cookies používame na zhromažďovanie informácií o tom, ako interagujete s našou aplikáciou. Pomáhajú nám pochopiť, ako užívatelia používajú aplikáciu, čo nám umožňuje zlepšovať jej obsah a funkcie. Tieto údaje sú anonymizované a slúžia iba na štatistické účely. Váš súhlas s týmito cookies je dobrovoľný.'),
-            ),
-
-            
-            
             SizedBox(height: 30,),
-            SizedBox(
-              width: 350,
+            MediaQuery.of(context).size.width > 1000
+                ? SizedBox(
+              width: 400,
               child: ReButton(color: 'green',
-                  text: "Súhlasím s pravidlami a podmienkami.",
+                  text: "Súhlasím s podmienkami používania aplikácie",
                     onTap: () {
-                      if (_isConfirmed) {
                         User? user = FirebaseAuth.instance.currentUser;
                         setUserSigned(user!.uid);
                         widget.confirm();
-                      }
+                    },
+                  ),
+            ) : SizedBox(
+              width: 400,
+              child: ReButton(color: 'green',
+                  text: "Súhlasím s podmienkami používania",
+                    onTap: () {
+                        User? user = FirebaseAuth.instance.currentUser;
+                        setUserSigned(user!.uid);
+                        widget.confirm();
                     },
                   ),
             ),

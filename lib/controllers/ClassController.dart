@@ -79,6 +79,7 @@ Future<ClassData> fetchClass(String classId) async {
           name: data['name'] as String? ?? '',
           school: data['school'] as String? ?? '',
           results: data['results'] as String? ?? '',
+          challenge: data['challenge'] as int? ?? 0,
           students: List<String>.from(data['students'] as List<dynamic>? ?? []),
           teachers: List<String>.from(data['teachers'] as List<dynamic>? ?? []),
           posts: postsDataList,
@@ -124,6 +125,7 @@ Future<void> editClass(String classId, ClassData newClassData, BuildContext cont
       'teachers': newClassData.teachers,
       'materials': newClassData.materials,
       'capitolOrder': newClassData.capitolOrder,
+      'challenge': newClassData.challenge,
       'posts': newClassData.posts.map((post) {
         return {
           'date': post.date,
@@ -990,6 +992,7 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
     // Create a ClassData instance with the provided name and results ID
     ClassData newClass = ClassData(
       name: className,
+      challenge: 0,
       capitolOrder: [0,1,2,3,4],
       materials: [],
       posts: [],
@@ -1008,6 +1011,7 @@ Future<void> addClass(String className, String school, void Function(ClassDataWi
       'school': newClass.school,
       'students': newClass.students,
       'teachers': newClass.teachers,
+      'challenge': newClass.challenge,
       'results': newClass.results // Include the results ID
     };
 
@@ -1040,6 +1044,37 @@ Future<bool> doesClassNameExist(String className, List<String> classIds) async {
     }
   }
   return false;
+}
+
+Future<void> incrementClassChallenge(String classId, int increment) async {
+  try {
+    // Reference to the class document in Firestore
+    DocumentReference classRef = FirebaseFirestore.instance.collection('classes').doc(classId);
+
+    // Retrieve the class document
+    DocumentSnapshot classSnapshot = await classRef.get();
+
+    if (classSnapshot.exists) {
+      // Extract the data from the class document
+      Map<String, dynamic> classData = classSnapshot.data() as Map<String, dynamic>;
+
+      // Current challenge value
+      int currentChallenge = classData['challenge'] as int? ?? 0;
+
+      // Calculate the new challenge value
+      int newChallenge = currentChallenge + increment;
+
+      // Update the challenge value in the Firestore document
+      await classRef.update({'challenge': newChallenge});
+
+      print('Challenge incremented successfully for class ID: $classId');
+    } else {
+      print('Class document does not exist for ID: $classId');
+    }
+  } catch (e) {
+    print('Error incrementing challenge for class ID $classId: $e');
+    throw Exception('Failed to increment challenge for class');
+  }
 }
 
 
