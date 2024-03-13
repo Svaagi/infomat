@@ -24,6 +24,7 @@ class MobileStudentFeed extends StatefulWidget {
   List<dynamic> orderedData;
   int weeklyCapitolIndex;
   int weeklyTestIndex;
+  int points;
 
   MobileStudentFeed({
     Key? key,
@@ -43,6 +44,7 @@ class MobileStudentFeed extends StatefulWidget {
     required this.weeklyTestIndex,
     required this.orderedData,
     required this.init,
+    required this.points
   }) : super(key: key);
 
   @override
@@ -94,7 +96,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
     }
     return  Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Align(
               alignment: Alignment.center,
@@ -152,6 +154,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                     ],
                   ) : Column(
                     crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const SizedBox(height: 30,),
                       Row(
@@ -170,25 +173,48 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                         ],
                       ),
                       const SizedBox(height: 40), // Add some spacing between the items
-                      Text(
-                        "budúci týždeň ťa čaká",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                          color: AppColors.getColor('primary').lighter,
-                        ),
-                      ),
-                        Text(
-                          textAlign: TextAlign.center,
-                        widget.futureWeeklyTitle ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge!
-                            .copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
+                      (widget.weeklyChallenge + 1) != 32 ? Text(
+                              "budúci týždeň ťa čaká",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                color: AppColors.getColor('primary').lighter,
+                              ),
+                            ) : Text(
+                              "Gratulujeme!",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                color: AppColors.getColor('primary').lighter,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                              (widget.weeklyChallenge + 1) != 32 ? Text(
+                                textAlign: TextAlign.center,
+                              widget.futureWeeklyTitle ?? '',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
+                            ) : Text(
+                                textAlign: TextAlign.center,
+                              'Všetky výzvy boli ukončené.',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            if(widget.weeklyChallenge + 1 == 32)  Text(
+                                "Tvoje celkové skóre je ${widget.points}/168 ",
+                                style: TextStyle(color: AppColors.getColor('primary').lighter,),
+                              ),
                       const SizedBox(height: 30,)
                     ],
                   ),
@@ -324,7 +350,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                 height: 56,
                                 margin: const EdgeInsets.symmetric(vertical: 2), // Add margin for spacing
                                 decoration: BoxDecoration(
-                                  color: widget.capitolData?.tests[widget.weeklyChallenge] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
+                                  color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ?  AppColors.getColor(widget.capitolColor!).main : AppColors.getColor('mono').lighterGrey, // Grey background color
                                   borderRadius: BorderRadius.circular(10.0), // Rounded borders
                                 ),
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -340,13 +366,13 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                         .textTheme
                                         .titleSmall!
                                         .copyWith(
-                                                color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
+                                                color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').darkGrey ,
                                             ),
                                         ),
                                         const SizedBox(height: 5,),
                                           Text(
                                             '${test.points}/${test.questions.length} správnych odpovedí',
-                                            style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
+                                            style: TextStyle(color:  widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey , fontSize: 12),
                                           ),
                                         ],
                                       ),
@@ -358,7 +384,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                                    color: widget.capitolData?.tests[widget.weeklyChallenge] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
+                                                    color: widget.capitolData?.tests[widget.weeklyTestIndex] == test ? AppColors.getColor('mono').white : AppColors.getColor('mono').grey ,
                                                 ),
                                             ),
                                             const SizedBox(width: 8,),

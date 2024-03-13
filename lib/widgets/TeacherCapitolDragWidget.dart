@@ -288,7 +288,7 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
                             ) : Row(
                               mainAxisSize: MainAxisSize.min, 
                               children: [
-                                if (subIndex == widget.futureWeeklyTestIndex && widget.numbers[index] == widget.futureWeeklyCapitolIndex)
+                                if (subIndex == widget.futureWeeklyTestIndex && widget.numbers[index] == widget.futureWeeklyCapitolIndex && subIndex != widget.weeklyTestIndex )
                                 Container(
                                   height: 60,
                                   width: 150,

@@ -508,7 +508,7 @@ void dispose() {
   @override
   Widget build(BuildContext context) {
 
-    if (true) {
+    if (consent) {
       return ConsentForm(confirm: () {
           setState(() {
             consent = false;
@@ -715,12 +715,14 @@ void dispose() {
             orderedData: orderedData,
             weeklyCapitolIndex: weeklyCapitolIndex,
             weeklyTestIndex: weeklyTestIndex,
+            points: currentUserData!.points,
             init: init,
           ) : DesktopStudentFeed(
             capitolColor: capitolColor,
             capitolData: currentUserData!.capitols[weeklyCapitolIndex],
             onNavigationItemSelected: _onNavigationItemSelected,
             capitolLength: capitolLength,
+            points: currentUserData!.points,
             capitolTitle: capitolTitle,
             capitolsId: weeklyCapitolIndex,
             completedCount: completedCount,
