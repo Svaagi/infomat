@@ -191,72 +191,87 @@ class _MainAppState extends State<MainApp> {
       );
     }
 
-    Widget _buildConsentBar() {
+Widget _buildConsentBar() {
     return Container(
-              height: 200,
-        color: AppColors.getColor('primary').light,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(16),
+      constraints: BoxConstraints(minHeight: 200, maxHeight: 400),
+      color: AppColors.getColor('primary').light,
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(16),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-                  textAlign: TextAlign.center,
-                'Súbory cookies na stránke www.app.info-mat.sk',
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
-            Text(
-                textAlign: TextAlign.center,
-                'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
-              Text(
-                textAlign: TextAlign.center,
-                'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-              SizedBox(height: 10,),
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Súbory cookies na stránke www.app.info-mat.sk',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Súbory cookies na stránke www.app.info-mat.sk',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
             Wrap(
               children: [
                 Container(
                   height: 50,
                   width: 220,
                   padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true),),
+                  child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true)),
                 ),
                 Container(
                   height: 50,
                   width: 180,
                   padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false),),
+                  child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false)),
                 ),
                 Container(
                   height: 50,
                   width: 180,
                   padding: EdgeInsets.all(5),
-                  child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings,),
+                  child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings),
                 ),
               ],
-            )
+            ),
           ],
         ),
+      ),
     );
   }
 }
