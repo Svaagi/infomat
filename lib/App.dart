@@ -405,10 +405,18 @@ void fetchUserData() {
               });
             }
 
+            if (!userData.signed) {
+              setState(() {
+                consent = true;
+              });
+            }
+
           // Proceed with other operations that don't depend on real-time class data updates
           // Other setState calls or operations
           setState(() {
             currentUserData = userData;
+
+            consent = !userData.signed;
             _loadingUser = false; // Update your loading state as necessary
             _loadingCapitols = false;
             _loadingChallenge = false;
@@ -500,7 +508,7 @@ void dispose() {
   @override
   Widget build(BuildContext context) {
 
-    if (consent) {
+    if (true) {
       return ConsentForm(confirm: () {
           setState(() {
             consent = false;

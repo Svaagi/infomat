@@ -6,6 +6,9 @@ import 'package:infomat/controllers/UserController.dart';
 import 'dart:html' as html;
 import 'package:infomat/Colors.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 
 
 
@@ -41,12 +44,21 @@ class _ConsentFormState extends State<ConsentForm> {
     });
   }
 
-  void downloadPDF() {
-    final url = 'assets/gdpr.pdf'; // Replace with your PDF's URL
-    final html.AnchorElement anchor = html.AnchorElement(href: url)
-      ..setAttribute('download', 'Infomat.pdf') // Optional: Set the download file name
-      ..click();
+  void downloadPDF() async {
+    try {
+    // Fetch the download URL
+    String downloadUrl = await firebase_storage.FirebaseStorage.instance
+        .ref('Infomat.pdf')
+        .getDownloadURL();
+
+    // Open the URL in a new tab
+    html.window.open(downloadUrl, '_blank');
+  } catch (e) {
+    print("Error fetching PDF URL: $e");
   }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +86,14 @@ class _ConsentFormState extends State<ConsentForm> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text(
+                    'Podmienky využívania aplikácie Infomat',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: AppColors.getColor('mono').black,
+                        ),
+                  ),
+                  SizedBox(height: 100,),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
@@ -96,9 +116,9 @@ class _ConsentFormState extends State<ConsentForm> {
                 ),
             SizedBox(height: 30,),
             SizedBox(
-              width: 350,
+              width: 400,
               child: ReButton(color: 'green',
-                  text: "Súhlasím s pravidlami a podmienkami.",
+                  text: "Súhlasím s podmienkami používania aplikácie",
                     onTap: () {
                         User? user = FirebaseAuth.instance.currentUser;
                         setUserSigned(user!.uid);
