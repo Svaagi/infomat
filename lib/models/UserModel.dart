@@ -22,11 +22,12 @@ class UserNotificationsData {
 
   factory UserNotificationsData.fromMap(Map<String, dynamic> map) {
     return UserNotificationsData(
-      id: map['id'] as String,
-      seen: map['seen'] as bool,
-      date: map['date'] as Timestamp?,
+      id: map['id'] ?? '', // Assuming 'id' is always expected
+      seen: map['seen'] ?? false, // Defaulting to false if null
+      date: map['date'], // 'date' can be null, no change needed here
     );
   }
+
 }
 
 
@@ -62,12 +63,13 @@ class UserQuestionsData {
   factory UserQuestionsData.fromMap(Map<String, dynamic> map) {
     return UserQuestionsData(
       answer: map['answer'] != null
-          ? List<UserAnswerData>.from(map['answer'].map((x) => UserAnswerData.fromMap(x)))
-          : [],
+        ? List<UserAnswerData>.from(map['answer'].map((x) => UserAnswerData.fromMap(x)))
+        : [],
       completed: map['completed'] ?? false,
-      correct: List<bool>.from(map['correct']),
+      correct: map['correct'] != null ? List<bool>.from(map['correct']) : [],
     );
   }
+
 }
 
 
@@ -88,13 +90,16 @@ class UserCapitolsData {
 
   factory UserCapitolsData.fromMap(Map<String, dynamic> map) {
     return UserCapitolsData(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      image: map['image'] as String,
-      completed: map['completed'] as bool,
-      tests: (map['tests'] as List<dynamic>).map((testMap) => UserCapitolsTestData.fromMap(testMap)).toList(),
+      id: map['id'] ?? '', // Assuming 'id' should have a default empty string if null
+      name: map['name'] ?? '', // Defaulting to an empty string if null
+      image: map['image'] ?? '', // Defaulting to an empty string if null
+      completed: map['completed'] ?? false,
+      tests: map['tests'] != null
+        ? (map['tests'] as List<dynamic>).map((testMap) => UserCapitolsTestData.fromMap(testMap)).toList()
+        : [],
     );
   }
+
 }
 
 
@@ -113,12 +118,15 @@ class UserCapitolsTestData {
 
   factory UserCapitolsTestData.fromMap(Map<String, dynamic> map) {
     return UserCapitolsTestData(
-      name: map['name'] as String,
-      completed: map['completed'] as bool,
-      points: map['points'] as int,
-      questions: (map['questions'] as List<dynamic>).map((questionMap) => UserQuestionsData.fromMap(questionMap)).toList(),
+      name: map['name'] ?? '',
+      completed: map['completed'] ?? false,
+      points: map['points'] ?? 0,
+      questions: map['questions'] != null
+        ? (map['questions'] as List<dynamic>).map((questionMap) => UserQuestionsData.fromMap(questionMap)).toList()
+        : [],
     );
   }
+
 }
 
 
@@ -160,23 +168,26 @@ class UserData {
   });
 
   factory UserData.fromSnapshot(DocumentSnapshot snapshot) {
-    var data = snapshot.data() as Map<String, dynamic>;
+    var data = snapshot.data() as Map<String, dynamic>? ?? {};
 
+    // Use the same approach for extracting and handling fields as in fetchUser
     List<UserCapitolsData> capitolList = [];
     if (data['capitols'] != null) {
-      var capitols = List.from(data['capitols']);
-      for (var capitol in capitols) {
-        capitolList.add(UserCapitolsData.fromMap(capitol));
+      List<Map<String, dynamic>> capitols = List<Map<String, dynamic>>.from(data['capitols'] as List<dynamic>? ?? []);
+      for (var capitolData in capitols) {
+        capitolList.add(UserCapitolsData.fromMap(capitolData));
       }
     }
 
     List<UserNotificationsData> notificationList = [];
     if (data['notifications'] != null) {
-      var notifications = List.from(data['notifications']);
-      for (var notification in notifications) {
-        notificationList.add(UserNotificationsData.fromMap(notification));
+      List<Map<String, dynamic>> notifications = List<Map<String, dynamic>>.from(data['notifications'] as List<dynamic>? ?? []);
+      for (var notificationData in notifications) {
+        notificationList.add(UserNotificationsData.fromMap(notificationData));
       }
     }
+
+    // Repeat the approach for other fields as necessary
 
     return UserData(
       admin: data['admin'] ?? false,

@@ -256,7 +256,6 @@ List<ResultCapitolsData> data = [
     
   ]
 ),
-
  ResultCapitolsData(
   points: 0,
   completed: 0,

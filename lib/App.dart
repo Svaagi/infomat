@@ -219,7 +219,6 @@ class _AppState extends State<App> {
         userAgent.contains('windows') ||
         userAgent.contains('linux');
 
-
     fetchUserData();
 
 
@@ -386,7 +385,6 @@ void fetchUserData() {
                 students = classData.students; // Assuming 'students' is defined elsewhere
                 completedCount = count; // Assuming 'completedCount' is defined elsewhere
               _loadingUser = false; // Assuming '_loadingUser' is a boolean state indicator defined elsewhere
-              print('loadingUser');
             });
           } catch (e) {
             print('Error processing user data: $e');
