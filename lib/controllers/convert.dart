@@ -72,6 +72,12 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
     for (int i = 1; i < excel.tables[table]!.rows.length; i++) {
       var row = excel.tables[table]!.rows[i];
 
+      // Check if all fields in the row are empty
+      bool allFieldsEmpty = row.every((cell) => cell?.value == null || cell!.value.toString().isEmpty);
+      if (allFieldsEmpty) {
+        continue; // Skip this row
+      }
+
       String getCellValue(dynamic cell) => cell?.value?.toString() ?? "";
 
       String name = getCellValue(row[0]);
@@ -116,6 +122,7 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
 
   return FileProcessingResult(incorrectRows: incorrectRows, data: processedData, errNum: errNum);
 }
+
 
 
 

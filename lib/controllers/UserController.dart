@@ -433,6 +433,8 @@ Future<void> registerMultipleUsers(
     ClassDataWithId currentClass,
     String email,
     String name,
+    bool emailTeacher,
+    bool emailStudents,
     BuildContext context
 ) async {
     final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
@@ -525,6 +527,11 @@ Future<void> registerMultipleUsers(
                 if(currentClass.id == user.classId) currentClass.data.students.add(userId);
 
                 batch.update(classRef, updateData);
+
+                if (emailStudents) {
+                    List<Map<String, String>> userDetail = userDetails.where((element) => element['email'] == user.email).toList();
+                    sendUserDetailsEmail(userDetail, user.email, user.name, false);
+                }
             } else {
                 // Handle user creation failure
                 // Log error or inform the user
@@ -534,7 +541,7 @@ Future<void> registerMultipleUsers(
         // Commit the batch
         await batch.commit();
 
-        sendUserDetailsEmail(userDetails, email, name, true);
+        if (emailTeacher) sendUserDetailsEmail(userDetails, email, name, false);
 
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {

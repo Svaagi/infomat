@@ -37,6 +37,8 @@ class _XlsxState extends State<Xlsx> {
   FileProcessingResult? table;
   bool showTable = true;
   bool loading = false;
+  bool emailStudent = false;
+  bool emailTeacher = false;
 
   Future<FileProcessingResult?> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(withData: true);
@@ -200,9 +202,55 @@ class _XlsxState extends State<Xlsx> {
                         color: AppColors.getColor('mono').grey,
                       ),
                 ),
+               
+                    Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: emailTeacher,
+                          onChanged: (value) {
+                            setState(() {
+                              emailTeacher = value!;
+                            });
+                          },
+                        ),
+                        Text(
+                            'Doručiť na moju e-mailovú adresu (prihlasovacie údaje budem distribuovať žiakom individuálne).',
+                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                  color: AppColors.getColor('mono').grey,
+                                ),
+                          ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: emailStudent,
+                          onChanged: (value) {
+                            setState(() {
+                              emailStudent = value!;
+                            });
+                          },
+                        ),
+                         Text(
+                          textAlign: TextAlign.left,
+                          'Doručiť každému žiakovi individuálne na jeho registrovanú adresu',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: AppColors.getColor('mono').grey,
+                              ),
+                        ),
+                        
+                      ],
+                    ),
+                    Text(
+                          textAlign: TextAlign.left,
+                          '(disponujem súhlasom žiakov s využitím ich e-mailových adries na doručenie prihlasovacích údajov).',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: AppColors.getColor('mono').grey,
+                              ),
+                        ),
+                  
               ],
             ),
-            
             const SizedBox(height: 10,),
             showTable && table != null
           ? Expanded( 
@@ -263,11 +311,11 @@ class _XlsxState extends State<Xlsx> {
                         color: "green",  
                         text: 'ULOŽIŤ', 
                         onTap: () async {
-                            if (table!.errNum == 0) {
+                            if (table!.errNum == 0 && ((emailStudent || emailTeacher))) {
                               setState(() {
                                 loading = true;
                               });
-                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass, widget.currentUserData!.email, widget.currentUserData!.name,  context, );
+                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass, widget.currentUserData!.email, widget.currentUserData!.name, emailTeacher, emailStudent, context, );
                               setState(() {
                                 widget.currentClass.data.students = widget.currentClass.data.students;
                                 loading = false;
@@ -286,7 +334,8 @@ class _XlsxState extends State<Xlsx> {
                     color: "green", 
                     text: 'XLSX SÚBOR', 
                     onTap: () async {
-                      setState(() {
+                      if (((emailStudent || emailTeacher))) {
+                        setState(() {
                         loading = true;
                       });
                       FileProcessingResult? result = await pickFile();
@@ -299,6 +348,8 @@ class _XlsxState extends State<Xlsx> {
                           showTable = true;
                         });
                       }
+                      }
+                      
                     },
                   ),
               )
