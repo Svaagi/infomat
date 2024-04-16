@@ -51,6 +51,7 @@ class _SchoolFormState extends State<SchoolForm> {
   List<int> selectedYears = [];
   bool _class = false;
   bool setTeacher = false;
+  bool _loading = false;
 
   TextEditingController _one = TextEditingController();
   TextEditingController _two = TextEditingController();
@@ -346,6 +347,7 @@ class _SchoolFormState extends State<SchoolForm> {
                         color: "green", 
                         text: 'ĎALEJ',
                         onTap: () async {
+
                           bool isUsed = await isEmailAlreadyUsed(_adminEmailController.text);
                           if(_schoolNameController.text != '') _schoolNameError = '';
                           if(_adminEmailController.text != '') _adminEmailError = '';
@@ -367,6 +369,7 @@ class _SchoolFormState extends State<SchoolForm> {
                               if(isUsed) _adminEmailError = 'Účet s daným E-mailom už existuje';
                             });
                           }
+
                         },
                       ),
                       SizedBox(height: 60),
@@ -544,7 +547,8 @@ class _SchoolFormState extends State<SchoolForm> {
                         ),
                       ],
                   ),
-                  if (_class)Column(
+                  if (_class) _loading ?Center(child: CircularProgressIndicator(),) : 
+                  Column(
                     children: <Widget>[
                       SizedBox(height: 60),
                        Container(
@@ -691,7 +695,10 @@ class _SchoolFormState extends State<SchoolForm> {
                         ReButton(
                           color: "green", 
                           text: 'ĎALEJ',
-                          onTap: () {
+                          onTap: () async {
+                            setState(() {
+                              _loading = true;
+                            });
                             for(int i = 0; i < selectedYears.length; i++) {
                               if(!getList(i).isEmpty) setError(selectedYears[i] + 1, '');
                             }
@@ -701,6 +708,7 @@ class _SchoolFormState extends State<SchoolForm> {
                              for(int i = 0; i < selectedYears.length; i++) {
                               if(getList(i).isEmpty) setError(selectedYears[i] + 1, 'Pole je povinné');
                             }
+                         
 
                           },
                         ),
@@ -1061,6 +1069,9 @@ class _SchoolFormState extends State<SchoolForm> {
 
    Future<void> registerAdmin(String name, String email, BuildContext context) async {
       try {
+        setState(() {
+          _loading = true;
+        });
         final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
 
         String generatePassword = generateRandomPassword();
@@ -1130,10 +1141,18 @@ class _SchoolFormState extends State<SchoolForm> {
             addClass(name, _schoolIdController.text, null, (String) {});
           }
 
-        _onNavigationItemSelected(_selectedIndex + 1);
+           _onNavigationItemSelected(_selectedIndex + 1);
+
+          setState(() {
+            _loading = false;
+          });
+
         
       } catch (e) {
         reShowToast('Správcu sa nepodarilo pridať', true, context);
+         setState(() {
+          _loading = false;
+        });
       }
     }
 }
