@@ -212,17 +212,14 @@ class _AppState extends State<App> {
   void init (void Function() start, void Function() end ) async {
     start();
 
-      // Initialize the weekly challenge count based on the active weeks
-    final userAgent = html.window.navigator.userAgent.toLowerCase();
-    isMobile = userAgent.contains('mobile');
-    isDesktop = userAgent.contains('macintosh') ||
-        userAgent.contains('windows') ||
-        userAgent.contains('linux');
+
+    weeklyChallenge = 0;
 
 
-    setState(() {
-      weeklyChallenge = 0;
-    });
+
+
+
+
 
     fetchUserData();
 
@@ -232,6 +229,8 @@ class _AppState extends State<App> {
 
 
     end();
+
+
   }
 
 
@@ -313,6 +312,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 StreamSubscription<DocumentSnapshot>? _classDataSubscription;
 
 void fetchUserData() {
+  
   final User? user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     final DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
