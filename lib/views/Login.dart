@@ -29,7 +29,6 @@ class _LoginState extends State<Login> {
   Color _emailBorderColor = Colors.white;
   Color _passwordBorderColor = Colors.white;
   String? _errorMessage;
-  bool _isEnterScreen = true;
   bool _isVisible = true;
   bool isMobile = false;
   bool isDesktop = false;
@@ -45,6 +44,7 @@ class _LoginState extends State<Login> {
 
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
+  late OverlayEntry _overlayEntry;
 
   @override
   void initState() {
@@ -76,6 +76,11 @@ class _LoginState extends State<Login> {
       verifyRecaptchaToken(token);
     },
   });
+
+   _overlayEntry = _createOverlayEntry();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Overlay.of(context).insert(_overlayEntry);
+    });
 
   }
 
@@ -166,43 +171,9 @@ class _LoginState extends State<Login> {
     }
   }
 
-  @override
+  @override 
   Widget build(BuildContext context) {
-    if (_isEnterScreen) {
-      return Container(
-        color: Theme.of(context).primaryColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    child: SvgPicture.asset('assets/logo.svg', width: 500),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: ReButton(
-                color: "white", 
-                text: 'PRIHLÁSENIE',
-                bold: true,
-                onTap: () {
-                  setState(() {
-                    _isEnterScreen = false;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(height: 60),
-          ],
-        ),
-      );
-    }
+   
     if (isSchool){ 
       return SchoolForm(isSchool: () {setState(() {
       isSchool = false;
@@ -424,5 +395,55 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+   OverlayEntry _createOverlayEntry() {
+    return OverlayEntry(
+      builder: (context) => _isEnterScreen()
+          ? GestureDetector(
+              onTap: () {
+                _overlayEntry.remove();
+              },
+              child: Container(
+                color: Theme.of(context).primaryColor,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Your enter screen content here
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              child: SvgPicture.asset('assets/logo.svg', width: 500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Center(
+                        child: ReButton(
+                          color: "white", 
+                          text: 'PRIHLÁSENIE',
+                          bold: true,
+                          onTap: () {
+                            _overlayEntry.remove();
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 60),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          : SizedBox.shrink(),
+    );
+  }
+
+   bool _isEnterScreen() {
+    // Your condition to determine if enter screen should be shown
+    return true;
   }
 }
