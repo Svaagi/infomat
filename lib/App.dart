@@ -215,7 +215,12 @@ class _AppState extends State<App> {
 
     weeklyChallenge = 0;
 
-
+      // Initialize the weekly challenge count based on the active weeks
+    final userAgent = html.window.navigator.userAgent.toLowerCase();
+    isMobile = userAgent.contains('mobile');
+    isDesktop = userAgent.contains('macintosh') ||
+        userAgent.contains('windows') ||
+        userAgent.contains('linux');
 
 
 
