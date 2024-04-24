@@ -531,7 +531,7 @@ Future<void> registerMultipleUsers(
 
                 if (emailStudents) {
                     List<Map<String, String>> userDetail = userDetails.where((element) => element['email'] == user.email).toList();
-                    sendUserDetailsEmail(userDetail, user.email, user.name, false, classNames);
+                    sendUserDetailsEmail(userDetail, user.email, user.name, true, classNames);
                 }
             } else {
                 // Handle user creation failure
