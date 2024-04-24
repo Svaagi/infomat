@@ -39,6 +39,8 @@ class _XlsxState extends State<Xlsx> {
   bool loading = false;
   bool emailStudent = false;
   bool emailTeacher = false;
+  List<String> classNames = [];
+
 
   Future<FileProcessingResult?> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(withData: true);
@@ -50,7 +52,7 @@ class _XlsxState extends State<Xlsx> {
       String fileName = pickedFile.name;
       String extension = fileName.split('.').last;
 
-      return processFile(fileBytes, extension, widget.classes, loading);
+      return processFile(fileBytes, extension, widget.classes, loading, classNames);
     } else {
       // User canceled the picker
       return null;
@@ -315,7 +317,7 @@ class _XlsxState extends State<Xlsx> {
                               setState(() {
                                 loading = true;
                               });
-                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass, widget.currentUserData!.email, widget.currentUserData!.name, emailTeacher, emailStudent, context, );
+                              await registerMultipleUsers(table!.data, widget.currentUserData!.school,widget.currentClass, widget.currentUserData!.email, widget.currentUserData!.name, emailTeacher, emailStudent, classNames,context, );
                               setState(() {
                                 widget.currentClass.data.students = widget.currentClass.data.students;
                                 loading = false;
