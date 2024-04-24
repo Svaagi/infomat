@@ -93,43 +93,48 @@ Future<void> deleteResults(String id) async {
 
 Future<void> updateResults(String id, int capitolIndex, int testIndex, int questionIndex, List<UserAnswerData> answerData, int points) async {
   try {
-    DocumentReference resultsRef = FirebaseFirestore.instance.collection('results').doc(id);
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    print('capitolIndex: $capitolIndex testIndex: $testIndex questionIndex: $questionIndex');
+    await firestore.runTransaction((transaction) async {
+      final DocumentReference resultsRef = firestore.collection('results').doc(id);
 
-    // Retrieve the current document
-    DocumentSnapshot snapshot = await resultsRef.get();
-    if (!snapshot.exists) {
-      throw Exception('Results document does not exist.');
-    }
-
-    var data = snapshot.data() as Map<String, dynamic>;
-    var resultsList = data['data'] as List;
-    var capitolData = resultsList[capitolIndex];
-    var testData = capitolData['tests'][testIndex];
-    var questionData = testData['questions'][questionIndex];
-
-    // Update points based on answers
-    for (var userAnswer in answerData) {
-      if (userAnswer.index != null && userAnswer.answer != null) {
-        int currentPoints = questionData['answers'][userAnswer.index];
-        questionData['answers'][userAnswer.index] = currentPoints + 1;
+      // Retrieve the current document
+      final DocumentSnapshot snapshot = await transaction.get(resultsRef);
+      if (!snapshot.exists) {
+        throw Exception('Results document does not exist.');
       }
-    }
 
-    // Update test and capitol points
-    capitolData['points'] += points;
-    testData['points'] += points;
-    questionData['points'] += points;
+      var data = snapshot.data() as Map<String, dynamic>;
+      var resultsList = List<Map<String, dynamic>>.from(data['data']);
+      var capitolData = resultsList[capitolIndex];
+      var testData = capitolData['tests'][testIndex];
+      var questionData = testData['questions'][questionIndex];
 
-    // Update the document in Firestore
-    await resultsRef.set(data);
+      // Update points based on answers
+      for (var userAnswer in answerData) {
+        if (userAnswer.index != null && userAnswer.answer != null) {
+          int currentPoints = questionData['answers'][userAnswer.index];
+          questionData['answers'][userAnswer.index] = currentPoints + 1;
+          print('should ve added');
+        }
+      }
 
+      // Update test and capitol points
+      capitolData['points'] += points;
+      testData['points'] += points;
+      questionData['points'] += points;
+
+      print('questionData: ${questionData['points']} testData: ${testData['points']} capitolData: ${capitolData['points']} points: $points');
+
+      // Set the updated data back to Firestore
+      transaction.set(resultsRef, {'data': resultsList});
+    });
   } catch (e) {
     print('Error updating results: $e Capitol Index: $capitolIndex Test Index: $testIndex Question Index: $questionIndex');
     throw Exception('Failed to update results');
   }
 }
+
 
 Future<void> updateResultsCapitol(String id, int capitolIndex) async {
   try {
