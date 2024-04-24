@@ -95,6 +95,8 @@ Future<void> updateResults(String id, int capitolIndex, int testIndex, int quest
   try {
     DocumentReference resultsRef = FirebaseFirestore.instance.collection('results').doc(id);
 
+    print('capitolIndex: $capitolIndex testIndex: $testIndex questionIndex: $questionIndex');
+
     // Retrieve the current document
     DocumentSnapshot snapshot = await resultsRef.get();
     if (!snapshot.exists) {
@@ -124,7 +126,7 @@ Future<void> updateResults(String id, int capitolIndex, int testIndex, int quest
     await resultsRef.set(data);
 
   } catch (e) {
-    print('Error updating results: $e');
+    print('Error updating results: $e Capitol Index: $capitolIndex Test Index: $testIndex Question Index: $questionIndex');
     throw Exception('Failed to update results');
   }
 }

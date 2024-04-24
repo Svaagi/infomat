@@ -1174,6 +1174,7 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     }
 
     if(matchmaking.isEmpty) {
+      print('odpovedal');
       updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
     }
 

@@ -61,7 +61,12 @@ class _ChallengesState extends State<Challenges> {
   final ScrollController _scrollController = ScrollController();
 
   double percentage(int capitolIndex, int testIndex) {
+    print('capitolIndex $capitolIndex');
+    print('testIndex $testIndex');
+    print(currentResults![capitolIndex].tests[testIndex].points);
     if (currentResults![capitolIndex].tests[testIndex].points == 0 || studentsSum == 0) return 0;
+    print('sem');
+    print(currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length));
     return  currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
   }
 

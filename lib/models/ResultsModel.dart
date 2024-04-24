@@ -191,10 +191,10 @@ List<ResultCapitolsData> data = [
       completed: 0,
       questions: [
         ResultQuestionsData(answers: [0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0], points: 0),
       ],
     ),
     ResultTestData(
@@ -202,9 +202,9 @@ List<ResultCapitolsData> data = [
       points: 0,
       completed: 0,
       questions: [
-        ResultQuestionsData(answers: [0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
       ],
     ),
     ResultTestData(
@@ -222,8 +222,8 @@ List<ResultCapitolsData> data = [
       points: 0,
       completed: 0,
       questions: [
-        ResultQuestionsData(answers: [0,0], points: 0),
-        ResultQuestionsData(answers: [0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
         ResultQuestionsData(answers: [0,0,0,0], points: 0),
       ],
     ),
@@ -232,10 +232,10 @@ List<ResultCapitolsData> data = [
       points: 0,
       completed: 0,
       questions: [
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0,0,0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0], points: 0),
       ],
     ),
     ResultTestData(
@@ -243,12 +243,12 @@ List<ResultCapitolsData> data = [
       points: 0,
       completed: 0,
       questions: [
-        ResultQuestionsData(answers: [0,0,0,0,0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0], points: 0),
-        ResultQuestionsData(answers: [0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
+        ResultQuestionsData(answers: [0,0,0,0], points: 0),
       ],
     ),
 

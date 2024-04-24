@@ -178,12 +178,7 @@ class _MainAppState extends State<MainApp> {
                   ) : const App();
               } else {
                 // User is not logged in, navigate to Login
-                return !_isConsentGiven ? Stack(
-                      children: [
-                        const Login(),
-                        if (!_isConsentGiven) _buildConsentBar(),
-                      ],
-                  ) : const Login();
+                return  const Login();
                 }
               }
             }
