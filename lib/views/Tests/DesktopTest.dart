@@ -1124,13 +1124,15 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
 
   void onAnswerPressed() async {
     if (_answer.length > 0) {
-      setState(() {
+      try {
+      double points = 0.0;
+
+        setState(() {
        double partialPoints = 1.00 / widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct.length;
 
-    // Initialize points to 0 for this specific run
-    double points = 0.0;
+          // Initialize points to 0 for this specific run
 
-   List<bool> correctnessList = List<bool>.filled(correct.length, false);
+        List<bool> correctnessList = List<bool>.filled(correct.length, false);
 
       for (var userAnswer in _answer) {
         // Try to find a matching correct answer based on index
@@ -1150,46 +1152,33 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
             correctnessList[correctListIndex] = true;
           }
           points += partialPoints;
-          if(matchmaking.isNotEmpty) {
-            updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
-          }
+
         } else {
           points -= partialPoints;
         }
       }
 
 
-    for (int i = 0; i < correct.length; i++) {
-        if (!_answer.any((item) => item.index == correct[i]["index"])) {
-            points -= partialPoints; // Decrement points by partialPoints for every missing answer
+        for (int i = 0; i < correct.length; i++) {
+            if (!_answer.any((item) => item.index == correct[i]["index"])) {
+                points -= partialPoints; // Decrement points by partialPoints for every missing answer
+            }
         }
-    }
 
-    // Update the user's data
-    widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct = correctnessList;
+        // Update the user's data
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct = correctnessList;
 
-    // Check if points are negative and if so, reset them to 0
-    if (points < 0) {
-        points = 0.0;
-    }
-
-    if(matchmaking.isEmpty) {
-      print('odpovedal');
-      updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
-    }
+        // Check if points are negative and if so, reset them to 0
+        if (points < 0) {
+            points = 0.0;
+        }
 
 
-    // Update points, round it as per your instructions
-    widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points += points.round();
-    widget.userData!.points += points.round();
-        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
-          updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
-          setState(() {
-            widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
-          });
-          widget.refresh();
-          sendCompleteEvent();
-        } 
+
+        // Update points, round it as per your instructions
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points += points.round();
+        widget.userData!.points += points.round();
+       
 
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
         widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
@@ -1202,11 +1191,28 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
         pressed = true;
 
       });
-      await saveUserDataToFirestore(widget.userData!);
 
-      if (areAllCompleted(widget.userData!)) {
-          updateResultsCapitol(widget.resultsId, int.parse(widget.capitolsId));
+       if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
+          updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
+          setState(() {
+            widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
+          });
+          widget.refresh();
+          sendCompleteEvent();
+        } 
+
+        await updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
+      
+        await saveUserDataToFirestore(widget.userData!);
+
+        if (areAllCompleted(widget.userData!)) {
+          await updateResultsCapitol(widget.resultsId, int.parse(widget.capitolsId));
         }
+      } catch (e) {
+        // Handle errors here, you can log them or display an error message
+        print('Error: $e');
+      }
+      
     }
   }
 
