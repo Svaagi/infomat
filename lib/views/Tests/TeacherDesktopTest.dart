@@ -403,7 +403,7 @@ class _TeacherDesktopTestState extends State<TeacherDesktopTest> {
                                     ),
                                 ),
                                 const SizedBox(width: 8,),
-                                Text('Úspešnosť: ${ (widget.studentsSum != 0 ? ((widget.results.questions[questionIndex].points/widget.studentsSum)*100).toInt() : 0)}%',
+                                Text('Úspešnosť: ${ (widget.studentsSum != 0 ? ((widget.results.questions[questionIndex].points/widget.results.questions[questionIndex].points)*100).toInt() : 0)}%',
                                   style: Theme.of(context)
                                     .textTheme
                                     .displayMedium!
