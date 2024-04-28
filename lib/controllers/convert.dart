@@ -30,12 +30,12 @@ class FileProcessingResult {
 
 
 
-Future<FileProcessingResult?> processFile(Uint8List fileBytes, String extension, List<String> classIds, bool loading) async {
+Future<FileProcessingResult?> processFile(Uint8List fileBytes, String extension, List<String> classIds, bool loading, List<String> classNames) async {
   FileProcessingResult? result;
 
   switch (extension) {
     case 'xlsx':
-      result = await processXLSX(fileBytes, classIds, loading);
+      result = await processXLSX(fileBytes, classIds, loading, classNames);
       break;
     default:
       print('Unsupported file type');
@@ -60,7 +60,7 @@ Future<bool> isValidAndUnusedEmail(String email) async {
 
 
 
-Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> classIds, bool loading) async {
+Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> classIds, bool loading, List<String> classNames) async {
   var excel = Excel.decodeBytes(fileBytes);
   final classes = await fetchClasses(classIds);
   List<IncorrectRow> incorrectRows = [];
@@ -71,6 +71,12 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
   for (var table in excel.tables.keys) {
     for (int i = 1; i < excel.tables[table]!.rows.length; i++) {
       var row = excel.tables[table]!.rows[i];
+
+      // Check if all fields in the row are empty
+      bool allFieldsEmpty = row.every((cell) => cell?.value == null || cell!.value.toString().isEmpty);
+      if (allFieldsEmpty) {
+        continue; // Skip this row
+      }
 
       String getCellValue(dynamic cell) => cell?.value?.toString() ?? "";
 
@@ -84,6 +90,9 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
       for (int j = 0; j < classes.length; j++) {
         if (classes[j].name == classValue) {
           classExists = true;
+          if(!classNames.contains(classValue)) {
+            classNames.add(classValue);
+          }
           classId = classIds[j];
         }
       }
@@ -116,6 +125,7 @@ Future<FileProcessingResult> processXLSX(Uint8List fileBytes, List<String> class
 
   return FileProcessingResult(incorrectRows: incorrectRows, data: processedData, errNum: errNum);
 }
+
 
 
 

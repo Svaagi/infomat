@@ -1175,15 +1175,17 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
     return null;
 }
 
- void onAnswerPressed() {
-    if (_answer.isNotEmpty) {
-      setState(() {
+ void onAnswerPressed() async {
+    if (_answer.length > 0) {
+      try {
+      double points = 0.0;
+
+        setState(() {
        double partialPoints = 1.00 / widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct.length;
 
-    // Initialize points to 0 for this specific run
-    double points = 0.0;
+          // Initialize points to 0 for this specific run
 
-   List<bool> correctnessList = List<bool>.filled(correct.length, false);
+        List<bool> correctnessList = List<bool>.filled(correct.length, false);
 
       for (var userAnswer in _answer) {
         // Try to find a matching correct answer based on index
@@ -1203,36 +1205,47 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
             correctnessList[correctListIndex] = true;
           }
           points += partialPoints;
+
         } else {
           points -= partialPoints;
         }
       }
 
 
-    for (int i = 0; i < correct.length; i++) {
-        if (!_answer.any((item) => item.index == correct[i]["index"])) {
-            points -= partialPoints; // Decrement points by partialPoints for every missing answer
+        for (int i = 0; i < correct.length; i++) {
+            if (!_answer.any((item) => item.index == correct[i]["index"])) {
+                points -= partialPoints; // Decrement points by partialPoints for every missing answer
+            }
         }
-    }
 
-    // Update the user's data
-    widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct = correctnessList;
+        // Update the user's data
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].correct = correctnessList;
 
-    // Check if points are negative and if so, reset them to 0
-    if (points < 0) {
-        points = 0.0;
-    }
-    updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
-
-    // Update points, round it as per your instructions
-    widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points += points.round();
-    widget.userData!.points += points.round();
+        // Check if points are negative and if so, reset them to 0
+        if (points < 0) {
+            points = 0.0;
+        }
 
 
 
+        // Update points, round it as per your instructions
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].points += points.round();
+        widget.userData!.points += points.round();
+       
 
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
+        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
 
-        if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
+        if (areAllCompleted(widget.userData!)) {
+          widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
+        }
+        
+        _answer = _answer;
+        pressed = true;
+
+      });
+
+       if (widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions.length - 1 == countTrueValues(widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions)) {
           updateResultsTest(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex);
           setState(() {
             widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].completed = true;
@@ -1241,19 +1254,18 @@ dynamic firstWhereOrNull(List<dynamic> list, bool Function(dynamic) test) {
           sendCompleteEvent();
         } 
 
-        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].completed = true;
-        widget.userData!.capitols[int.parse(widget.capitolsId)].tests[widget.testIndex].questions[questionIndex].answer = _answer;
+        await updateResults(widget.resultsId, int.parse(widget.capitolsId), widget.testIndex, questionIndex, _answer, points.round());
+      
+        await saveUserDataToFirestore(widget.userData!);
 
         if (areAllCompleted(widget.userData!)) {
-          widget.userData!.capitols[int.parse(widget.capitolsId)].completed = true;
-
+          await updateResultsCapitol(widget.resultsId, int.parse(widget.capitolsId));
         }
-        
-        _answer = _answer;
-        pressed = true;
-
-      });
-      saveUserDataToFirestore(widget.userData!);
+      } catch (e) {
+        // Handle errors here, you can log them or display an error message
+        print('Error: $e');
+      }
+      
     }
   }
 

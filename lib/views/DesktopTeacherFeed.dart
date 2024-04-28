@@ -273,8 +273,6 @@ class _DesktopTeacherFeedState extends State<DesktopTeacherFeed> {
                                         )
                                       ],
                                     ),
-                                    
-                                    
                                       Text('priemerné skóre',
                                         style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)
                                       ),

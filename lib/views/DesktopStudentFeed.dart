@@ -44,7 +44,7 @@ class DesktopStudentFeed extends StatefulWidget {
     required this.init,
     required this.weeklyCapitolIndex,
     required this.weeklyTestIndex,
-    required this.points
+    required this.points,
   }) : super(key: key);
 
   @override
@@ -74,13 +74,8 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
   void initState()
     {
       super.initState();
-      final userAgent = html.window.navigator.userAgent.toLowerCase();
-      isMobile = userAgent.contains('mobile');
-      isDesktop = userAgent.contains('macintosh') ||
-          userAgent.contains('windows') ||
-          userAgent.contains('linux');
-      
-       widget.init(() {
+
+     widget.init(() {
         setState(() {
         _loading = true;
       });
@@ -89,6 +84,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
         _loading = false;
       });
     });
+
 
       sendFeedEvent();
 

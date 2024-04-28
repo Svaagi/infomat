@@ -299,7 +299,7 @@ Future<void> registerUser(String schoolId, String classId, String recipient, Str
         }).toList(),
       });
 
-      sendUserDetailsEmail(userDetails, recipient, recipientName, false);
+      sendUserDetailsEmail(userDetails, recipient, recipientName, false, []);
 
       // Update class data
       Map<String, dynamic> updateData = teacher
@@ -433,6 +433,9 @@ Future<void> registerMultipleUsers(
     ClassDataWithId currentClass,
     String email,
     String name,
+    bool emailTeacher,
+    bool emailStudents,
+    List<String> classNames,
     BuildContext context
 ) async {
     final functions = FirebaseFunctions.instanceFor(region: 'europe-west1');
@@ -525,6 +528,11 @@ Future<void> registerMultipleUsers(
                 if(currentClass.id == user.classId) currentClass.data.students.add(userId);
 
                 batch.update(classRef, updateData);
+
+                if (emailStudents) {
+                    List<Map<String, String>> userDetail = userDetails.where((element) => element['email'] == user.email).toList();
+                    sendUserDetailsEmail(userDetail, user.email, user.name, true, classNames);
+                }
             } else {
                 // Handle user creation failure
                 // Log error or inform the user
@@ -534,7 +542,7 @@ Future<void> registerMultipleUsers(
         // Commit the batch
         await batch.commit();
 
-        sendUserDetailsEmail(userDetails, email, name, true);
+        if (emailTeacher) sendUserDetailsEmail(userDetails, email, name, false, classNames);
 
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {
@@ -545,7 +553,7 @@ Future<void> registerMultipleUsers(
 }
 
 
-Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String recipientEmail, String name, bool Xlsx) async {
+Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String recipientEmail, String name, bool Xlsx, List<String> classNames) async {
     final firestore = FirebaseFirestore.instance;
 
     String userDetailsText = userDetails.map((user) {
@@ -556,7 +564,7 @@ Future<void> sendUserDetailsEmail(List<Map<String, String>> userDetails, String 
         'to': [recipientEmail],
         'message': {
             'subject': Xlsx ? 'Prihlasovacie údaje žiakov' : 'Prihlasovacie údaje',
-            'text':'Dobrý deň,  $name,\n${Xlsx ? 'následujúce údaje sú prihlasovacie údaje novo registrovaných žiakov': 'toto sú nové prihlasovacie údaje pre email ${userDetails[0]['email']}'}:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
+            'text':'Dobrý deň,  $name,\n${Xlsx ? 'toto sú nové prihlasovacie údaje pre žiakov z triedy ${classNames.join(",")}': 'toto sú nové prihlasovacie údaje pre email ${userDetails[0]['email']}'}:\n\n$userDetailsText.\n\nNa túto správu neodpovedajte, bola odoslaná automaticky.'
         },
     }).then((value) {
         print('Queued email with user details for delivery!');

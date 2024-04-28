@@ -23,6 +23,7 @@ class TeacherCapitolDragWidget extends StatefulWidget {
   int studentsSum;
   void Function() addWeek;
   void Function(void Function(), void Function()) init;
+  final Future<void> Function() refreshQuestions;
  
 
   TeacherCapitolDragWidget({
@@ -38,7 +39,8 @@ class TeacherCapitolDragWidget extends StatefulWidget {
     required this.addWeek,
     required this.futureWeeklyCapitolIndex,
     required this.futureWeeklyTestIndex,
-    required this.init
+    required this.init,
+    required this.refreshQuestions
   }) : super(key: key);
 
   @override
@@ -119,13 +121,14 @@ class _TeacherCapitolDragWidgetState extends State<TeacherCapitolDragWidget> {
 
   return localResults;
 }
-  void refresh() {
+  void refresh() async {
     try {
       setState(() {
         _loadingCurrentClass = true;
         _loadingQuestionData = true;
       });
       fetchCurrentClass();
+      await widget.refreshQuestions;
       fetchQuestionData(widget.numbers);
       setState(() {
         _loadingCurrentClass = false;

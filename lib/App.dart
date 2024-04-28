@@ -33,6 +33,9 @@ import 'package:infomat/widgets/Widgets.dart';
 import 'package:infomat/widgets/ConsentForm.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:infomat/widgets/CookieSettings.dart';
+
 
 
 
@@ -85,9 +88,40 @@ class _AppState extends State<App> {
   int maxPoints = 0;
   bool load = false;
   bool consent = false;
+  bool _isConsentGiven = false;
+  bool settings = false;
+
+    _checkConsent() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isConsentGiven = prefs.getBool('necessary') ?? false;
+    });
+
+  }
+
+  _setConsent(bool necessary, bool analytics) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('necessary', necessary);
+    await prefs.setBool('analytics', analytics);
+    setState(() {
+      _isConsentGiven = true;
+    });
+  }
+
+  void _showCookieSettings() {
+    setState(() {
+      settings = true;
+    });
+    // Implement the settings screen navigation logic
+    // For now, let's just print something to the console
+    print('Navigate to the settings screen');
+  }
 
 
   void addWeek () {
+    setState(() {
+      _loadingChallenge = true;
+    });
     if (weeklyChallenge < 31) {
       incrementClassChallenge(currentUserData!.schoolClass, 1);
       weeklyChallenge += 1;
@@ -96,6 +130,10 @@ class _AppState extends State<App> {
 
 
     init(() { }, () { });
+
+    setState(() {
+      _loadingChallenge = false;
+    });
   }
 
   Future<void> fetchPosts() async {
@@ -212,6 +250,9 @@ class _AppState extends State<App> {
   void init (void Function() start, void Function() end ) async {
     start();
 
+
+    weeklyChallenge = 0;
+
       // Initialize the weekly challenge count based on the active weeks
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
@@ -220,9 +261,8 @@ class _AppState extends State<App> {
         userAgent.contains('linux');
 
 
-    setState(() {
-      weeklyChallenge = 0;
-    });
+
+    _checkConsent();
 
     fetchUserData();
     
@@ -230,6 +270,8 @@ class _AppState extends State<App> {
 
 
     end();
+
+
   }
 
 
@@ -311,6 +353,7 @@ int calculatePassedActiveWeeks(DateTime currentDate, List<DateTime> activeWeekDa
 StreamSubscription<DocumentSnapshot>? _classDataSubscription;
 
 void fetchUserData() {
+  
   final User? user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     final DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
@@ -511,7 +554,16 @@ void dispose() {
 
   @override
   Widget build(BuildContext context) {
-
+    if(settings) {
+        return CookieSettingsModal(
+          setConsent: _setConsent,
+          close: () {
+            setState(() {
+              settings = false;
+            });
+          },
+        );
+      }
     if (consent) {
       return ConsentForm(confirm: () {
           setState(() {
@@ -695,8 +747,18 @@ void dispose() {
           ],
         ),
       ) : null,
-      body: !currentUserData!.teacher ? _buildStudentScreen(_selectedIndex) : _buildTeacherScreen(_selectedIndex),
-      
+      body: !currentUserData!.teacher ? 
+        Stack(
+          children: [
+            _buildStudentScreen(_selectedIndex),
+            if (!_isConsentGiven) _buildConsentBar(),
+          ],
+        ) : Stack(
+          children: [
+            _buildTeacherScreen(_selectedIndex),
+            if (!_isConsentGiven) _buildConsentBar(),
+          ],
+        )
     );
   }
 
@@ -897,5 +959,97 @@ void dispose() {
     );
   }
 
+
+  Widget _buildConsentBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.getColor('primary').light,
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.getColor('mono').white,
+            width: 2,
+          ),
+        ),
+      ),
+      constraints: BoxConstraints(minHeight: 200, maxHeight: 400),
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Súbory cookies na stránke www.app.info-mat.sk',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Súbory cookies na stránke www.app.info-mat.sk',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
+            MediaQuery.of(context).size.width > 1000
+                ? Text(
+                    'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  )
+                : Text(
+                    'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+            SizedBox(height: 10),
+            Wrap(
+              children: [
+                Container(
+                  height: 50,
+                  width: 220,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true)),
+                ),
+                Container(
+                  height: 50,
+                  width: 180,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false)),
+                ),
+                Container(
+                  height: 50,
+                  width: 180,
+                  padding: EdgeInsets.all(5),
+                  child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 

@@ -61,7 +61,12 @@ class _ChallengesState extends State<Challenges> {
   final ScrollController _scrollController = ScrollController();
 
   double percentage(int capitolIndex, int testIndex) {
+    print('capitolIndex $capitolIndex');
+    print('testIndex $testIndex');
+    print(currentResults![capitolIndex].tests[testIndex].points);
     if (currentResults![capitolIndex].tests[testIndex].points == 0 || studentsSum == 0) return 0;
+    print('sem');
+    print(currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length));
     return  currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
   }
 
@@ -419,7 +424,7 @@ Widget build(BuildContext context) {
                       ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height,
-                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(init: widget.init,results: currentResults,studentsSum: studentsSum ,currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek, futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                          child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(refreshQuestions: fetchQuestionData,init: widget.init,results: currentResults,studentsSum: studentsSum ,currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek, futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                         ),
                     ],
                   ),
@@ -535,7 +540,7 @@ Widget build(BuildContext context) {
                       if(MediaQuery.of(context).size.width > 1000) SizedBox(
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width / 2,
-                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(init: widget.init ,results:currentResults,studentsSum: studentsSum ,currentUserData:  widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek,futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
+                        child: widget.currentUserData!.teacher ? TeacherCapitolDragWidget(refreshQuestions: fetchQuestionData, init: widget.init ,results:currentResults,studentsSum: studentsSum ,currentUserData:  widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, percentage: percentage, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex, addWeek: widget.addWeek,futureWeeklyCapitolIndex: widget.futureWeeklyChallenge, futureWeeklyTestIndex: widget.futureWeeklyTestIndex) : StudentCapitolDragWidget(currentUserData: widget.currentUserData, numbers: capitolsIds, refreshData: refreshList, weeklyCapitolIndex: widget.weeklyCapitolIndex, weeklyTestIndex: widget.weeklyTestIndex,),
                       ),
                     ],
                   ),

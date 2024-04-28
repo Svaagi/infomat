@@ -404,7 +404,7 @@ class _TeacherMobileTestState extends State<TeacherMobileTest> {
                                           ),
                                 ),
                                 SizedBox(width: 8,),
-                                Text('Úspešnosť: ${ (widget.studentsSum != 0 ? (widget.results.questions[questionIndex].points/widget.studentsSum).round()*100 : 0)}%',
+                                Text('Úspešnosť: ${ (widget.studentsSum != 0 ? ((widget.results.questions[questionIndex].points/widget.studentsSum)*100).toInt() : 0)}%',
                                     style: Theme.of(context)
                                       .textTheme
                                       .displayMedium!

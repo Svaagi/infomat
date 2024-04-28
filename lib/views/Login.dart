@@ -13,6 +13,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'dart:js' as js;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:infomat/widgets/CookieSettings.dart';
 
 
 
@@ -35,21 +37,25 @@ class _LoginState extends State<Login> {
   bool isDesktop = false;
   bool isSchool = false;
   bool isPassword = false;
-  final TextEditingController _passwordTextController = TextEditingController();
   String createdViewId = 'map_element';
   bool disable = false;
+  bool _isConsentGiven = false;
+  bool settings = false;
 
             
 
   final userAgent = html.window.navigator.userAgent.toLowerCase();
+  
+  final TextEditingController _passworController = TextEditingController();
 
-  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    _checkConsent();
 
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
@@ -77,6 +83,32 @@ class _LoginState extends State<Login> {
     },
   });
 
+  }
+
+  _checkConsent() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isConsentGiven = prefs.getBool('necessary') ?? false;
+    });
+
+  }
+
+  _setConsent(bool necessary, bool analytics) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('necessary', necessary);
+    await prefs.setBool('analytics', analytics);
+    setState(() {
+      _isConsentGiven = true;
+    });
+  }
+
+  void _showCookieSettings() {
+    setState(() {
+      settings = true;
+    });
+    // Implement the settings screen navigation logic
+    // For now, let's just print something to the console
+    print('Navigate to the settings screen');
   }
 
   void verifyRecaptchaToken(String token) async {
@@ -130,7 +162,7 @@ class _LoginState extends State<Login> {
 
   handleLogin() async {
     final email = _emailTextController.value.text;
-    final password = _passwordTextController.value.text;
+    final password = _passworController.value.text;
 
 
     // Perform validation
@@ -168,6 +200,16 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    if(settings) {
+      return CookieSettingsModal(
+        setConsent: _setConsent,
+        close: () {
+          setState(() {
+            settings = false;
+          });
+        },
+      );
+    }
     if (_isEnterScreen) {
       return Container(
         color: Theme.of(context).primaryColor,
@@ -186,7 +228,7 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            Center(
+            Center( 
               child: ReButton(
                 color: "white", 
                 text: 'PRIHLÁSENIE',
@@ -215,12 +257,15 @@ class _LoginState extends State<Login> {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).primaryColor,
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height <= 700
+        child: Stack(
+          children: [
+                    SizedBox(
+          height: isMobile
           ? 700
-          : MediaQuery.of(context).size.height >= 900
+          : isDesktop
               ? 900
               : MediaQuery.of(context).size.height,
           child: Column(
@@ -263,10 +308,11 @@ class _LoginState extends State<Login> {
                           ),
                           Container(
                             margin: const EdgeInsets.all(4),
-                            child:  reTextField(
+                            child:  
+                            reTextField(
                               "Heslo",
                               true,
-                              _passwordTextController,
+                              _passworController,
                               _passwordBorderColor,
                               visibility: _isVisible,
                               toggle: toggleVisibility
@@ -422,6 +468,98 @@ class _LoginState extends State<Login> {
             ],
           ),
         ),
+        if(!_isConsentGiven) Container(
+          decoration: BoxDecoration(
+            color: AppColors.getColor('primary').light,
+            border: Border(
+              bottom: BorderSide(
+                color: AppColors.getColor('mono').white,
+                width: 2,
+              ),
+            ),
+          ),
+          constraints: BoxConstraints(minHeight: 200, maxHeight: 400),
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MediaQuery.of(context).size.width > 1000
+                    ? Text(
+                        'Súbory cookies na stránke www.app.info-mat.sk',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      )
+                    : Text(
+                        'Súbory cookies na stránke www.app.info-mat.sk',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                SizedBox(height: 10),
+                MediaQuery.of(context).size.width > 1000
+                    ? Text(
+                        'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      )
+                    : Text(
+                        'Aby táto služba fungovala, používame niektoré nevyhnutné súbory cookies.',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                SizedBox(height: 10),
+                MediaQuery.of(context).size.width > 1000
+                    ? Text(
+                        'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      )
+                    : Text(
+                        'Chceli by sme nastaviť ďalšie súbory cookies, aby sme si mohli zapamätať vaše nastavenia, porozumieť tomu, ako ľudia používajú službu, a vykonať vylepšenia.',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                SizedBox(height: 10),
+                Wrap(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 220,
+                      padding: EdgeInsets.all(5),
+                      child: ReButton(color: 'white', text: 'Prijať všetky cookies', onTap: () => _setConsent(true, true)),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 180,
+                      padding: EdgeInsets.all(5),
+                      child: ReButton(color: 'white', text: 'Iba nevyhnutné', onTap: () => _setConsent(true, false)),
+                    ),
+                    Container(
+                      height: 50,
+                      width: 180,
+                      padding: EdgeInsets.all(5),
+                      child: ReButton(color: 'white', text: 'Nastavenia', onTap: _showCookieSettings),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )
+          ],
+        )
+
       ),
     );
   }
