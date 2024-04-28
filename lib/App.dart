@@ -119,6 +119,9 @@ class _AppState extends State<App> {
 
 
   void addWeek () {
+    setState(() {
+      _loadingChallenge = true;
+    });
     if (weeklyChallenge < 31) {
       incrementClassChallenge(currentUserData!.schoolClass, 1);
       weeklyChallenge += 1;
@@ -127,6 +130,10 @@ class _AppState extends State<App> {
 
 
     init(() { }, () { });
+
+    setState(() {
+      _loadingChallenge = false;
+    });
   }
 
   Future<void> fetchPosts() async {
