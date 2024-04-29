@@ -115,7 +115,6 @@ Future<void> updateResults(String id, int capitolIndex, int testIndex, int quest
         if (userAnswer.index != null && userAnswer.answer != null) {
           int currentPoints = questionData['answers'][userAnswer.index];
           questionData['answers'][userAnswer.index] = currentPoints + 1;
-          print('should ve added');
         }
       }
 
@@ -124,7 +123,6 @@ Future<void> updateResults(String id, int capitolIndex, int testIndex, int quest
       testData['points'] += points;
       questionData['points'] += points;
 
-      print('questionData: ${questionData['points']} testData: ${testData['points']} capitolData: ${capitolData['points']} points: $points');
 
       // Set the updated data back to Firestore
       transaction.set(resultsRef, {'data': resultsList});

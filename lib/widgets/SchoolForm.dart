@@ -696,9 +696,6 @@ class _SchoolFormState extends State<SchoolForm> {
                           color: "green", 
                           text: 'ĎALEJ',
                           onTap: () async {
-                            setState(() {
-                              _loading = true;
-                            });
                             for(int i = 0; i < selectedYears.length; i++) {
                               if(!getList(i).isEmpty) setError(selectedYears[i] + 1, '');
                             }
