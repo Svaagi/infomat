@@ -104,7 +104,8 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
   @override
   Widget build(BuildContext context) {
     if(_loading) return Center(child: CircularProgressIndicator(),);
-    return  Container(
+    return  SingleChildScrollView(
+      child: Container(
             width: 900,
             child:  Center(
                 child: Column(
@@ -629,6 +630,7 @@ class _MobileTeacherFeedState extends State<MobileTeacherFeed> {
                 ],
               ),
             ),
+      )
         );
   }
 }
