@@ -56,6 +56,14 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
   bool isDesktop = false;
   bool _loading = false;
 
+  List<String> badges = [
+    'assets/badges/badgeCrit.svg',
+    'assets/badges/badgeArg.svg',
+    'assets/badges/badgeMan.svg',
+    'assets/badges/badgeGram.svg',
+    'assets/badges/badgeData.svg',
+  ];
+
   final userAgent = html.window.navigator.userAgent.toLowerCase();
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
@@ -243,7 +251,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                   crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                   children: [
-                      SvgPicture.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
+                      SvgPicture.asset(badges[widget.capitolsId], width: 100,
                               height: 100,),
                       Padding(
                         padding: const EdgeInsets.all(10),

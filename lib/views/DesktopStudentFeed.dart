@@ -70,6 +70,14 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
     );
   }
 
+  List<String> badges = [
+    'assets/badges/badgeCrit.svg',
+    'assets/badges/badgeArg.svg',
+    'assets/badges/badgeMan.svg',
+    'assets/badges/badgeGram.svg',
+    'assets/badges/badgeData.svg',
+  ];
+
   @override
   void initState()
     {
@@ -248,7 +256,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                         crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                         children: [
-                          SvgPicture.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
+                           SvgPicture.asset(badges[widget.capitolsId], width: 100,
                               height: 100,),
 
                             Padding(
