@@ -248,7 +248,7 @@ class _DesktopStudentFeedState extends State<DesktopStudentFeed> {
                         mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                         crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                         children: [
-                          Image.asset('assets/badgeCrit.png',
+                          SvgPicture.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
                               height: 100,),
 
                             Padding(

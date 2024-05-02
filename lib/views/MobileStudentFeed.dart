@@ -61,6 +61,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
+
   Future<void> sendFeedEvent() async {
     await analytics.logEvent(
       name: 'domov',
@@ -242,7 +243,7 @@ class _MobileStudentFeedState extends State<MobileStudentFeed> {
                   mainAxisAlignment: MainAxisAlignment.center, // Align items vertically to center
                   crossAxisAlignment: CrossAxisAlignment.center, // Align items horizontally to center
                   children: [
-                      Image.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
+                      SvgPicture.asset(widget.orderedData[widget.weeklyCapitolIndex]['badge'],
                               height: 100,),
                       Padding(
                         padding: const EdgeInsets.all(10),

@@ -1,9 +1,9 @@
 
 [
   {
-    "badge": "assets/badges/badgeCrit.png",
-    "badgeActive": "assets/badges/badgeCritActive.png",
-    "badgeDis": "assets/badges/badgeCritDis.png",
+    "badge": "assets/badges/badgeCrit.svg",
+    "badgeActive": "assets/badges/badgeCritActive.svg",
+    "badgeDis": "assets/badges/badgeCritDis.svg",
     "color": "primary",
     "name": "Kritické myslenie",
     "points": 14,
@@ -486,9 +486,9 @@
       ]
   },
   {
-      "badge": "assets/badges/badgeArg.png",
-      "badgeActive": "assets/badges/badgeArgActive.png",
-      "badgeDis": "assets/badges/badgeArgDis.png",
+      "badge": "assets/badges/badgeArg.svg",
+      "badgeActive": "assets/badges/badgeArgActive.svg",
+      "badgeDis": "assets/badges/badgeArgDis.svg",
       "color": "blue",
       "name": "Argumentácia",
       "points": 43,
@@ -1622,9 +1622,9 @@
       ]
   },
   {
-      "badge": "assets/badges/badgeMan.png",
-      "badgeActive": "assets/badges/badgeManActive.png",
-      "badgeDis": "assets/badges/badgeManDis.png",
+      "badge": "assets/badges/badgeMan.svg",
+      "badgeActive": "assets/badges/badgeManActive.svg",
+      "badgeDis": "assets/badges/badgeManDis.svg",
       "color": "green",
       "name": "Argumentačné chyby",
       "points": 24,
@@ -2017,7 +2017,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [],
-                "images": ["assets/pictures/picture4.png", "assets/pictures/picture5.png"],
+                "images": ["assets/pictures/picture4.svg", "assets/pictures/picture5.svg"],
                 
                 "matchmaking": [],
                 "matches": [],
@@ -2040,7 +2040,7 @@
                 "division": [],
                 "definition": "",
                 "explanation": [],
-                "images": ["assets/pictures/picture6.png"],
+                "images": ["assets/pictures/picture6.svg"],
                 
                 "matchmaking": [],
                 "matches": [],
@@ -2069,7 +2069,7 @@
                 "explanation": [
                   "M1 – vyberanie čerešní („cherry-picking“): Ide o argumentačný faul, kedy diskutujúci úmyselne vyberie dôkaz, ktorý podporuje jeho tvrdenie, aj keď nezodpovedá všeobecnému trendu. V tomto prípade sa Milan dopustil tejto chyby, keď si zámerne vybral jednu špecifickú situáciu, ktorá sedí do jeho analýzy. M3 – klzký svah: Chyba, pri ktorej diskutujúci nesprávne predpokladá, že drobná zmena na začiatku príčinno-následkového reťazca bude nutne viesť k následnej lavíne nežiadúcich, občas až nadrozmerných, dôsledkov. M4 – červený sleď: Neférová argumentácia, pri ktorej sa diskutér snaží odviesť pozornosť od pôvodnej témy. V tomto prípade sa Milan snažil odviesť pozornosť od diskusie o globálnom otepľovaní tým, že prihodil do diskusie inú, tiež veľmi komplexnú tému – medzinárodné vzťahy."
                 ],
-                "images": ["assets/pictures/picture7.png"],
+                "images": ["assets/pictures/picture7.svg"],
                 
                 "matchmaking": [],
                 "matches": [],
@@ -2282,9 +2282,9 @@
       ]
   },
   {
-    "badge": "assets/badges/badgeGram.png",
-    "badgeActive": "assets/badges/badgeGramActive.png",
-    "badgeDis": "assets/badges/badgeGramDis.png",
+    "badge": "assets/badges/badgeGram.svg",
+    "badgeActive": "assets/badges/badgeGramActive.svg",
+    "badgeDis": "assets/badges/badgeGramDis.svg",
     "color": "orange",
     "name": "Mediálna gramotnosť",
     "points": 56,
@@ -2472,7 +2472,7 @@
             "Napriek tomu, že táto správa môže znieť prekvapivo, je pravdivá a spĺňa všetky znaky dôveryhodnosti. Pri hľadaní znakov dôveryhodnosti je dôležité nerobiť unáhlené závery na základe toho, či sa obsah článku zhoduje s naším svetonázorom."
           ],
           "images": [
-            "assets/pictures/picture41.png"
+            "assets/pictures/picture41.svg"
           ],
           
           "matchmaking": [
@@ -2498,7 +2498,7 @@
           "explanation": [
           ],
           "images": [
-            "assets/pictures/picture42.png"
+            "assets/pictures/picture42.svg"
           ],
           "matchmaking": [
           ],
@@ -2527,7 +2527,7 @@
             "Hlavným problémom tohto článku je, že ako zdroj svojich informácií uvádza komentár náhodného človeka na sociálnej sieti. Takýto zdroj nemožno považovať za dôveryhodný."
           ],
           "images": [
-            "assets/pictures/picture42.png"
+            "assets/pictures/picture42.svg"
           ],
           
           "matchmaking": [
@@ -2553,7 +2553,7 @@
           "explanation": [
           ],
           "images": [
-            "assets/pictures/picture43.png"
+            "assets/pictures/picture43.svg"
           ],
           "matchmaking": [
           ],
@@ -2582,7 +2582,7 @@
             " V tomto texte je niekoľko gramatických chýb, napríklad hneď v nadpise je „so“ na mieste, kde by malo byť „zo“. Časté gramatické chyby v texte napovedajú, že daný článok neprešiel korektúrou, a tým pádom môže byť kvalita redakčnej štruktúry pochybná."
           ],
           "images": [
-            "assets/pictures/picture43.png"
+            "assets/pictures/picture43.svg"
           ],
           
           "matchmaking": [
@@ -2609,7 +2609,7 @@
             "Tento článok je dôveryhodný – uvádza zdroje, používa emočne neutrálny jazyk. Ako autor je uvedené „TASR“, čo je skratka pre Tlačovú agentúru Slovenskej republiky. Keďže ide o správu prebratú z tejto tlačovej agentúry, takýto postup je korektný."
           ],
           "images": [
-            "assets/pictures/picture44.png"
+            "assets/pictures/picture44.svg"
           ],
           
           "matchmaking": [
@@ -2635,7 +2635,7 @@
           "explanation": [
           ],
           "images": [
-            "assets/pictures/picture45.png"
+            "assets/pictures/picture45.svg"
           ],
           "matchmaking": [
           ],
@@ -2664,7 +2664,7 @@
             "Nadpis tohto článku je šokujúci, apeluje na emócie a sľubuje veľké prekvapenia. Takéto nadpisy sa nazývajú „clickbait“ a väčšinou nekorešpondujú so samotným obsahom článku. Túto stratégiu využívajú najčastejšie bulvárne médiá."
           ],
           "images": [
-            "assets/pictures/picture45.png"
+            "assets/pictures/picture45.svg"
           ],
           
           "matchmaking": [
@@ -2690,7 +2690,7 @@
           "explanation": [
           ],
           "images": [
-            "assets/pictures/picture46.png"
+            "assets/pictures/picture46.svg"
           ],
           "matchmaking": [
           ],
@@ -2719,7 +2719,7 @@
             "Hlavným problémom tohto článku je, že sú použité dramatické a zavádzajúce obrázky. Fotografia naľavo je vytrhnutá z kontextu, nejde totiž o fotografiu zo Slovenska. Obrázok napravo zas apeluje na emócie čitateľa."
           ],
           "images": [
-            "assets/pictures/picture46.png"
+            "assets/pictures/picture46.svg"
           ],
           
           "matchmaking": [
@@ -2933,7 +2933,7 @@
               "Ide o clickbait nadpis, lebo autor zamlčiava pointu článku – nevieme, čo žena chovala na farme. Nadpis navodzuje pocit zvedavosti s cieľom zaujať čitateľov, aby klikli na článok. Samotný obsah článku je omnoho menej šokujúci: žena chovala hady."
             ],
             "images": [
-              "assets/pictures/picture20.png"
+              "assets/pictures/picture20.svg"
             ],
             
             "matchmaking": [],
@@ -2963,7 +2963,7 @@
               "Ide o hoax, lebo je to nepravdivá informácia, ktorá sa virálne šíri. Na snímke obrazovky je vidieť, že status má 36 tisíc zdieľaní. Tento status sa vo veľkom šíril slovenským Facebookom napriek tomu, že bol niekoľkokrát vyvrátený. Rómovia nedostávajú lieky zadarmo, neexistuje prideľovanie dávok na etnickom princípe."
             ],
             "images": [
-              "assets/pictures/picture21.png"
+              "assets/pictures/picture21.svg"
             ],
             
             "matchmaking": [],
@@ -2993,7 +2993,7 @@
               "Ide o pravdivú správu, ktorá sa nachádza na dôveryhodnom médiu. Aktuality.sk je načítanejší slovenský online mediálny portál. Správa je prevzatá od Tlačovej agentúry Slovenskej republiky. Nadpis nie je zavádzajúci a nepoužíva emočne zafarbený jazyk."
             ],
             "images": [
-              "assets/pictures/picture22.png"
+              "assets/pictures/picture22.svg"
             ],
             
             "matchmaking": [],
@@ -3023,8 +3023,8 @@
               "Nemôže ísť o misinformáciu, lebo túto fotomontáž musel niekto zámerne vytvoriť. Takže ide o zámerne nepravdivú informáciu, t. j. dezinformáciu."
             ],
             "images": [
-              "assets/pictures/picture23.png",
-              "assets/pictures/picture24.png"
+              "assets/pictures/picture23.svg",
+              "assets/pictures/picture24.svg"
             ],
             
             "matchmaking": [],
@@ -3054,7 +3054,7 @@
               "Táto informácia je vizuálne spracovaná tak, že na prvý pohľad napodobňuje bežný internetový mediálny portál. Avšak jej obsah je nepravdivý a zavádzajúci, dáva čitateľom falošnú nádej a apeluje na emócie."
             ],
             "images": [
-              "assets/pictures/picture25.png"
+              "assets/pictures/picture25.svg"
             ],
             
             "matchmaking": [],
@@ -3448,7 +3448,7 @@
               "Tvrdenie je vágne, lebo autor nešpecifikuje, aké voľby má na mysli. Ak ide len o prezidentské voľby, je to pravda. Avšak k volebným urnám celkovo už prišlo menej voličov, napríklad voľby do VÚC 2017 mali účasť 29,95%."
             ],
             "images": [
-              "assets/pictures/picture36.png"
+              "assets/pictures/picture36.svg"
             ],
             
             "matchmaking": [
@@ -3483,7 +3483,7 @@
             "Citát naozaj povedal pápež František v 2016 v Tbilisi, potvrdzuje to napríklad medzinárodná tlačová agentúra Reuters. Najlepšie na overenie faktov bolo vyhľadávať kľúčové slová: „pápež“, „František“, „Tbilisi“, „2016“, „gender“, atď. V Googli viete v sekcii „nástroje“ aj nastaviť časové obdobie, z ktorého chcete články."
             ],
             "images": [
-              "assets/pictures/picture37.png"
+              "assets/pictures/picture37.svg"
             ],
             "matchmaking": [
             ],
@@ -3510,7 +3510,7 @@
             "Pri argumentácii sa ľudia často odkazujú na autority. Preto je dôležité vedieť zistiť informácie o týchto autoritách a overiť si, nakoľko sú dôveryhodné. V tomto prípade ide o skutočného experta na medicínu, ale v čase zverejnenia statusu pôsobil na Výskumnom ústave veterinárskeho lekárstva."
             ],
             "images": [
-              "assets/pictures/picture38.png"
+              "assets/pictures/picture38.svg"
             ],
             
             "matchmaking": [
@@ -3541,7 +3541,7 @@
             " Ide o instagramový účet, ktorý publikuje správy z dôveryhodných zdrojov. Avšak správy sú redukované do jednej vety v prísevku, kvôli čomu môžu zaniknúť dôležité detaily. Príspevok tvrdí, že Dušan Dedeček „ide na slobodu“, čo môže evokovať, že  6.10.2020 bol oslobodený a je nevinný. To je lož  – vtedy bolo len rozhodnuté, že nebude väzobne stíhaný (toto rozhodnutie bolo neskôr zmenené vyšším súdom). To znamená, že p. Dedeček bude môcť byť na slobode, kým nebude právoplatne odsúdený. Príspevok teda nie je nepravdivý, ale kvôli stručnosti a nafrázovaniu pôsobí zavádzajúco."
             ],
             "images": [
-              "assets/pictures/picture39.png"
+              "assets/pictures/picture39.svg"
             ],
             
             "matchmaking": [
@@ -3571,7 +3571,7 @@
             "Tento prieskum bol uskutočnený a naozaj bol odvysielaný v správach RTVS. Avšak je vytrhnutý z kontextu, lebo status bol uverejnený v 2022 a prieskum pochádza z 2019. V tomto časovom období sa udialo mnoho vecí – v prvom rade sa začala vojna na Ukrajine, no taktiež osobnosti ako Angela Merkel alebo Andrej Babiš už nepatria medzi významných zahraničných politikov vo vedúcich pozíciách. Takýto status sa v septembri 2022 reálne virálne šíril slovenským Facebookom."
             ],
             "images": [
-              "assets/pictures/picture40.png"
+              "assets/pictures/picture40.svg"
             ],
             
             "matchmaking": [
@@ -3640,7 +3640,7 @@
             "explanation": [
               "V tomto prípade je kontext fotografie veľmi dôležitý. V skutočnosti ide o protest z roku 2004 v Chicagu, ktorý sa snažil poukázať na mučenie a kruté zaobchádzanie čínskej vlády s členmi spirituálneho hnutia Falun Gong. Žena na obrázku je len aktivistka-herečka, nejde o záber reálneho mučenia. Podobné obrázky sa šírili Twitterom, kde ho zdieľali ľudia s dobrým zámerom informovať o stave Ujgurskej menšiny v Číne. Podľa všetkého sú Ujguri naozaj nespravodlivo prenasledovaní a utláčaní vládou. Avšak aj ľudia s dobrým zámerom môžu šíriť misinformácie."
             ],
-            "images": ["assets/pictures/picture26.png"],
+            "images": ["assets/pictures/picture26.svg"],
             
             "matchmaking": [],
             "matches": [],
@@ -3665,7 +3665,7 @@
             "explanation": [
               "Ide o obrázok vygenerovaný programom Midjourney, ktorý je schopný generovať vysoko kvalitné obrázky. Uverejnil ho instagramový účet Arteficialismo, ktorý sa netají tým, že ide o výtvor umelej inteligencie."
             ],
-            "images": ["assets/pictures/picture27.png"],
+            "images": ["assets/pictures/picture27.svg"],
             "matchmaking": [],
             "matches": [],
             "question": "Zistite, či obrázok reálne zachytáva udalosť, v ktorej sa píše v nadpise článku (Nadpis článku je vymyslený pre účely tejto úlohy).",
@@ -3689,7 +3689,7 @@
             "explanation": [
               "Ide o fotomontáž zo stretnutia senátorov USA s bývalým prezidentom Afganistanu. Tvár známeho teroristu Osamu Bin Ladena je vystrihnutá a vložená na tvár afganského prezidenta. Autor tejto fotomontáže využil fakt, že afganský prezident má oblečenie typické pre moslimov. Udalosť sa v skutočnosti nestala, ale fotomontáž sa ako hoax šírila internetom po úmrtí senátora Johna McCaina."
             ],
-            "images": ["assets/pictures/picture28.png"],
+            "images": ["assets/pictures/picture28.svg"],
             
             "matchmaking": [],
             "matches": [],
@@ -3714,7 +3714,7 @@
             "explanation": [
               "Ide o fotografiu z roku 2006, na ktorej naozaj bojovníci z Brigády mučeníkov al-Aksá dávajú karafiáty mníškam. Na odhalenie pôvodu fotografie ste mohli zvoliť dva spôsoby: Za prvé, mohli ste zadať kľúčové slová zo statusu do vyhľadávača (napr. „Brigáda mučeníkov Al-Aksá“, „karafiáty“, „mníšky“, ideálne v anglickom jazyku). Za druhé, mohli ste vyhľadať rovno samotný obrázok cez Google Search Images alebo TinEye."
             ],
-            "images": ["assets/pictures/picture31.png"],
+            "images": ["assets/pictures/picture31.svg"],
             
             "matchmaking": [],
             "matches": [],
