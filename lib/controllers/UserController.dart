@@ -531,7 +531,7 @@ Future<void> registerMultipleUsers(
 
                 if (emailStudents) {
                     List<Map<String, String>> userDetail = userDetails.where((element) => element['email'] == user.email).toList();
-                    sendUserDetailsEmail(userDetail, user.email, user.name, true, classNames);
+                    sendUserDetailsEmail(userDetail, user.email, user.name, false, classNames);
                 }
             } else {
                 // Handle user creation failure
@@ -542,7 +542,7 @@ Future<void> registerMultipleUsers(
         // Commit the batch
         await batch.commit();
 
-        if (emailTeacher) sendUserDetailsEmail(userDetails, email, name, false, classNames);
+        if (emailTeacher) sendUserDetailsEmail(userDetails, email, name, true, classNames);
 
         reShowToast('Všetci žiaci úspešne registrovaní', false, context);
     } catch (e) {

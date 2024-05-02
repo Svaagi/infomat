@@ -68,7 +68,9 @@ class _XlsxState extends State<Xlsx> {
     ); 
     return Align(
       alignment: Alignment.center,
-      child: Container(
+      child: SingleChildScrollView(
+        child:
+      Container(
         padding: EdgeInsets.all(8),
         width: 900,
         child: Column(
@@ -361,6 +363,7 @@ class _XlsxState extends State<Xlsx> {
           ],
         ),
       ),
+      )
     );
   }
 }
