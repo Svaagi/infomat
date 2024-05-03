@@ -73,6 +73,7 @@ class _XlsxState extends State<Xlsx> {
       Container(
         padding: EdgeInsets.all(8),
         width: 900,
+        height: MediaQuery.of(context).size.height - 82,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
