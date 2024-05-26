@@ -265,9 +265,7 @@ class _LoginState extends State<Login> {
                     SizedBox(
           height: isMobile
           ? 700
-          : isDesktop
-              ? 900
-              : MediaQuery.of(context).size.height,
+          : 900,
           child: Column(
             children: <Widget>[
               Container(
