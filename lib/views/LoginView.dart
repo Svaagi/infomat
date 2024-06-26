@@ -27,10 +27,17 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // Kľúč pre formulár
   final _formKey = GlobalKey<FormState>();
+  
+  // Farby okrajov pre email a heslo
   Color _emailBorderColor = Colors.white;
   Color _passwordBorderColor = Colors.white;
+  
+  // Chybová správa
   String? _errorMessage;
+  
+  // Rôzne stavy obrazovky a viditeľnosti
   bool _isEnterScreen = true;
   bool _isVisible = true;
   bool isMobile = false;
@@ -42,27 +49,28 @@ class _LoginState extends State<Login> {
   bool _isConsentGiven = false;
   bool settings = false;
 
-            
-
+  // Používateľský agent
   final userAgent = html.window.navigator.userAgent.toLowerCase();
   
+  // Kontrolery pre textové polia hesla a emailu
   final TextEditingController _passworController = TextEditingController();
-
   final TextEditingController _emailTextController = TextEditingController();
 
   @override
   void initState() {
-    // TODO: implement initState
+    // Inicializácia stavu
     super.initState();
 
     _checkConsent();
 
+    // Kontrola používateľského agenta
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
     isDesktop = userAgent.contains('macintosh') ||
         userAgent.contains('windows') ||
         userAgent.contains('linux');
 
+    // Registrácia ViewFactory pre iframe element
     ui.platformViewRegistry.registerViewFactory(
       createdViewId,
       (int viewId) {
@@ -72,11 +80,12 @@ class _LoginState extends State<Login> {
           ..src = '/recaptcha.html'
           ..style.border = 'none';
 
-        // Set the webViewController when the iframe is created
+        // Nastavenie webViewController keď je iframe vytvorený
         return iframe;
       },
     );
 
+    // Inicializácia objektu FlutterApp pre JavaScript kontext
     js.context['FlutterApp'] = js.JsObject.jsify({
     'receiveToken': (String token) {
       verifyRecaptchaToken(token);
@@ -85,14 +94,15 @@ class _LoginState extends State<Login> {
 
   }
 
+  // Kontrola súhlasu používateľa
   _checkConsent() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _isConsentGiven = prefs.getBool('necessary') ?? false;
     });
-
   }
 
+  // Nastavenie súhlasu používateľa
   _setConsent(bool necessary, bool analytics) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('necessary', necessary);
@@ -102,70 +112,79 @@ class _LoginState extends State<Login> {
     });
   }
 
+  // Zobrazenie nastavení cookies
   void _showCookieSettings() {
     setState(() {
       settings = true;
     });
-    // Implement the settings screen navigation logic
-    // For now, let's just print something to the console
+    // Implementácia logiky navigácie na obrazovku nastavení
+    // Pre teraz len vypíšeme správu do konzoly
     print('Navigate to the settings screen');
   }
 
+  // Overenie reCAPTCHA tokenu
   void verifyRecaptchaToken(String token) async {
     HttpsCallable callable = FirebaseFunctions.instanceFor(region: 'europe-west1').httpsCallable('verifyRecaptcha');
     try {
       final response = await callable.call({'token': token});
       if (response.data['success']) {
-        // reCAPTCHA verification succeeded
-        // Proceed with login or other actions
+        // reCAPTCHA overenie bolo úspešné
+        // Pokračovať s prihlásením alebo inými akciami
         setState(() {
-          disable =false;
+          disable = false;
           _showCaptcha = false;
         });
       } else {
-        // reCAPTCHA verification failed
-        // Handle the failure
+        // reCAPTCHA overenie zlyhalo
+        // Spracovanie neúspechu
         print('Robot');
       }
     } catch (e) {
-      // Handle errors
+      // Spracovanie chýb
       print('Error verifying reCAPTCHA: $e');
     }
   }
 
+  // Overenie tokenu cez Google reCAPTCHA API
   Future<bool> verifyToken(String token) async {
-  Uri uri = Uri.parse('https://www.google.com/recaptcha/api/siteverify');
-  final response = await http.post(
-    uri,
-    body: {
-      'secret': '6LeEcF8pAAAAAFuWQalaZZfyeCSnniPo_j_IN2sL',
-      'response': token,
-    },
-  );
-  final Map<String, dynamic> jsonResponse = json.decode(response.body);
-  if (jsonResponse['success']) {
-    return true;
-  } else {
-    return false;
+    Uri uri = Uri.parse('https://www.google.com/recaptcha/api/siteverify');
+    final response = await http.post(
+      uri,
+      body: {
+        'secret': '6LeEcF8pAAAAAFuWQalaZZfyeCSnniPo_j_IN2sL',
+        'response': token,
+      },
+    );
+    final Map<String, dynamic> jsonResponse = json.decode(response.body);
+    if (jsonResponse['success']) {
+      setState(() {
+        disable = false;
+      });
+      return true;
+    } else {
+      return false;
+    }
   }
-}
 
-
+  // Počet pokusov o prihlásenie
   int _loginAttempts = 0;
+  
+  // Zobrazenie CAPTCHA
   bool _showCaptcha = false;
 
+  // Prepnutie viditeľnosti hesla
   toggleVisibility() {
     setState(() {
       _isVisible = !_isVisible;
     });
   }
 
+  // Spracovanie prihlásenia
   handleLogin() async {
     final email = _emailTextController.value.text;
     final password = _passworController.value.text;
 
-
-    // Perform validation
+    // Vykonanie validácie
     if (_formKey.currentState!.validate()) {
       setState(() {
         _errorMessage = null;
@@ -174,8 +193,8 @@ class _LoginState extends State<Login> {
       });
 
       try {
-        // Call your login function here
-        // Replace the 'signIn' method with your actual authentication logic
+        // Zavolanie funkcie prihlásenia
+        // Nahradiť metódu 'signIn' vlastnou autentifikačnou logikou
         await Auth().signIn(email, password);
       } catch (error) {
         setState(() {
@@ -184,15 +203,14 @@ class _LoginState extends State<Login> {
           _passwordBorderColor = Theme.of(context).colorScheme.error;
         });
 
-        // Check if the login attempts exceed 10
+        // Kontrola, či počet pokusov o prihlásenie presiahol 10
         _loginAttempts++;
         if (_loginAttempts >= 10) {
-          // Show the CAPTCHA
+          // Zobrazenie CAPTCHA
           setState(() {
             _showCaptcha = true;
             disable = true;
           });
-
         }
       }
     }

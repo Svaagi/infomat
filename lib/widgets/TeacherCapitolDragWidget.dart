@@ -10,6 +10,8 @@ import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/ResultsModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
+// Child widget pre Challenges. Slúži ako drag and drop jednotlivých kapitol pre zmenu poradia učiteľom
+
 class TeacherCapitolDragWidget extends StatefulWidget {
   final UserData? currentUserData;
   List<int> numbers;

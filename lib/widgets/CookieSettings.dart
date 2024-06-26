@@ -53,7 +53,7 @@ class _CookieSettingsModalState extends State<CookieSettingsModal> {
                 },
               ),
               Text(
-                'Sú to základné súbory cookie, ktoré umožňujú pohybovať sa po webovej stránke a používať jej funkcie. Tieto súbory cookie neukladajú žiadne informácie o vás, ktoré by sa dali použiť na marketing alebo na zapamätaniesi, čo ste si na internete pozerali.',
+                'Sú to základné súbory cookie, ktoré umožňujú pohybovať sa po webovej stránke a používať jej funkcie. Tieto súbory cookie neukladajú žiadne informácie o vás, ktoré by sa dali použiť na marketing alebo na zapamätanie si, čo ste si na internete pozerali.',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!

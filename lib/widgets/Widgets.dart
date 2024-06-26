@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
+// jednotlivé widgety, ktoré sa opakujú v aplikácii
+
 Container reTextField(
   String text,
   bool isPasswordType,

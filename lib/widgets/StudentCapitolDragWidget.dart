@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
+// Child widget pre Challenges. Slúži ako drag and drop jednotlivých kapitol pre zmenu poradia učiteľom
+
 class StudentCapitolDragWidget extends StatefulWidget {
   final UserData? currentUserData;
   final List<int> numbers;
