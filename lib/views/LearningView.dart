@@ -28,48 +28,49 @@ class Learning extends StatefulWidget {
 }
 
 class _LearningState extends State<Learning> {
-  bool showAll = true;
-   ClassData? currentClassData ;
-   final PageController _pageController = PageController();
-   bool _loading = true;
-   bool isMobile = false;
-  bool isDesktop = false;
-  bool _add = false;
-  List<String> favouriteMaterials = [];
-  UserData? userData;
+  bool showAll = true; // Zobraziť všetky materiály
+  ClassData? currentClassData; // Dáta aktuálnej triedy
+  final PageController _pageController = PageController(); // Ovládanie stránok
+  bool _loading = true; // Premenná pre načítavanie
+  bool isMobile = false; // Detekcia mobilného zariadenia
+  bool isDesktop = false; // Detekcia desktopového zariadenia
+  bool _add = false; // Premenná pre pridávanie materiálov
+  List<String> favouriteMaterials = []; // Zoznam obľúbených materiálov
+  UserData? userData; // Dáta používateľa
 
-  final userAgent = html.window.navigator.userAgent.toLowerCase();
+  final userAgent = html.window.navigator.userAgent.toLowerCase(); // User agent
 
+  // Načítanie aktuálnej triedy
   fetchCurrentClass() async {
     try {
-        ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
-        
-        if (mounted) {
-          setState(() {
-            userData = widget.currentUserData;
-            currentClassData = classData;
-            _loading = false;
-            favouriteMaterials = widget.currentUserData!.materials;
-          });
-        }
-      
+      ClassData classData = await fetchClass(widget.currentUserData!.schoolClass);
+
+      if (mounted) {
+        setState(() {
+          userData = widget.currentUserData;
+          currentClassData = classData;
+          _loading = false;
+          favouriteMaterials = widget.currentUserData!.materials;
+        });
+      }
     } catch (e) {
       print('Error fetching user data: $e');
     }
   }
 
+  // Firebase Analytics
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
+  // Odoslanie udalosti vzdelávania
   Future<void> sendDiscussionsEvent() async {
     await analytics.logEvent(
       name: 'vzdelávanie',
       parameters: {
-        'page': 'vzdelávanie', // replace with your actual page/screen name
+        'page': 'vzdelávanie', // Názov stránky
       },
     );
   }
-
 
 
   @override

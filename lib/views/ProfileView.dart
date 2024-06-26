@@ -30,59 +30,57 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final PageController _pageController = PageController();
- UserData? currentUserData;
- int weeklyCapitol = 0;
-  int capitolOne = 14;
-  int capitolTwo = 43;
-  int capitolThree = 24;
-  int capitolFour = 56;
-  int capitolFive = 31;
+ final PageController _pageController = PageController(); // Ovládanie stránok
+  UserData? currentUserData; // Dáta aktuálneho používateľa
+  int weeklyCapitol = 0; // Týždenný kapitola
+  int capitolOne = 14; // Počet bodov pre kapitolu 1
+  int capitolTwo = 43; // Počet bodov pre kapitolu 2
+  int capitolThree = 24; // Počet bodov pre kapitolu 3
+  int capitolFour = 56; // Počet bodov pre kapitolu 4
+  int capitolFive = 31; // Počet bodov pre kapitolu 5
 
-  bool _isDisposed = false;
-  List<String> badges = [];
-  List<UserData>? students;
-  CancelableOperation<UserData>? fetchUserDataOperation;
-  CancelableOperation<List<UserData>>? fetchStudentsOperation;
-  int? studentIndex;
-  String? className;
-  bool _loading = true;
-  int percentage = 0;
-  bool hide = true;
-  bool isMobile = false;
-  
+  bool _isDisposed = false; // Indikátor, či bol widget zrušený
+  List<String> badges = []; // Zoznam odznakov
+  List<UserData>? students; // Zoznam študentov
+  CancelableOperation<UserData>? fetchUserDataOperation; // Operácia na načítanie údajov používateľa
+  CancelableOperation<List<UserData>>? fetchStudentsOperation; // Operácia na načítanie zoznamu študentov
+  int? studentIndex; // Index aktuálneho študenta
+  String? className; // Názov triedy
+  bool _loading = true; // Indikátor načítavania
+  int percentage = 0; // Percentuálny pokrok
+  bool hide = true; // Indikátor zobrazenia/skrytia
+  bool isMobile = false; // Detekcia mobilného zariadenia
 
-  final userAgent = html.window.navigator.userAgent.toLowerCase();
+  final userAgent = html.window.navigator.userAgent.toLowerCase(); // User agent
 
   final List<String> placeIcons = [
-    'assets/icons/firstPlaceIcon.png',
-    'assets/icons/secondPlaceIcon.png',
-    'assets/icons/thirdPlaceIcon.png',
+    'assets/icons/firstPlaceIcon.png', // Ikona pre prvé miesto
+    'assets/icons/secondPlaceIcon.png', // Ikona pre druhé miesto
+    'assets/icons/thirdPlaceIcon.png', // Ikona pre tretie miesto
   ];
-
-
 
   @override
   void initState() {
     super.initState();
     final userAgent = html.window.navigator.userAgent.toLowerCase();
-    isMobile = userAgent.contains('mobile');
-    
-    _isDisposed = false; // Resetting _isDisposed state
-    fetchUserData();
-    _loading = false;
+    isMobile = userAgent.contains('mobile'); // Detekcia mobilného zariadenia
+    _isDisposed = false; // Resetovanie stavu _isDisposed
+    fetchUserData(); // Načítanie údajov používateľa
+    _loading = false; // Načítavanie ukončené
   }
 
   int indexOfElement(List<UserData> list, String id) {
+    // Nájde index elementu podľa ID v zozname
     for (var i = 0; i < list.length; i++) {
       if (list[i].id == id) {
         return i;
       }
     }
-    return -1; // return -1 if the id is not found
+    return -1; // Vráti -1, ak ID nie je nájdené
   }
 
   int calculateTotalPointsForCapitol(int capitolIndex) {
+    // Vypočíta celkový počet bodov pre kapitolu
     if (currentUserData == null ||
         capitolIndex < 0 ||
         capitolIndex >= currentUserData!.capitols.length) {
@@ -91,7 +89,7 @@ class _ProfileState extends State<Profile> {
 
     int totalPoints = 0;
 
-    // Iterate through each test in the selected capitol and sum the points
+    // Iterácia cez každý test v zvolenej kapitole a súčet bodov
     for (final test in currentUserData!.capitols[capitolIndex].tests) {
       totalPoints += test.points;
     }
@@ -100,11 +98,12 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> fetchUserData() async {
+    // Načítanie údajov používateľa
     try {
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
-        fetchUserDataOperation?.cancel();  // Cancel the previous operation if it exists
+        fetchUserDataOperation?.cancel();  // Zruší predchádzajúcu operáciu, ak existuje
         fetchUserDataOperation = CancelableOperation<UserData>.fromFuture(fetchUser(user.uid));
         
         UserData userData = await fetchUserDataOperation!.value;
@@ -114,15 +113,15 @@ class _ProfileState extends State<Profile> {
             currentUserData = userData;
           });
           
-          fetchStudents();
+          fetchStudents(); // Načítanie študentov
         }
 
-      fetchCapitolsData();
+        fetchCapitolsData(); // Načítanie údajov o kapitolách
 
       } else {
         if (mounted) {
           setState(() {
-            currentUserData = null; // Set currentUserData to null when the user is not logged in
+            currentUserData = null; // Nastavenie currentUserData na null, ak používateľ nie je prihlásený
           });
         }
         print('User is not logged in.');
@@ -130,7 +129,7 @@ class _ProfileState extends State<Profile> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          currentUserData = null; // Set currentUserData to null on error
+          currentUserData = null; // Nastavenie currentUserData na null pri chybe
         });
       }
       print('Error fetching user data: $e');
@@ -138,16 +137,17 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> fetchStudents() async {
+    // Načítanie zoznamu študentov
     try {
       User? user = FirebaseAuth.instance.currentUser;
 
-      if (user != null && currentUserData != null ) {
+      if (user != null && currentUserData != null) {
         final classData = await fetchClass(currentUserData!.schoolClass);
         final studentIds = classData.students;
         List<UserData> fetchedStudents = [];
 
         for (var id in studentIds) {
-          fetchUserDataOperation?.cancel();  // Cancel the previous operation if it exists
+          fetchUserDataOperation?.cancel();  // Zruší predchádzajúcu operáciu, ak existuje
           fetchUserDataOperation = CancelableOperation<UserData>.fromFuture(fetchUser(id));
 
           UserData userData = await fetchUserDataOperation!.value;
@@ -159,14 +159,14 @@ class _ProfileState extends State<Profile> {
           }
         }
 
-        // sort students by score
+        // Zoradenie študentov podľa bodov
         fetchedStudents.sort((a, b) => b.points.compareTo(a.points));
 
         if (mounted) {
           setState(() {
             studentIndex = indexOfElement(fetchedStudents, user.uid);
             students = fetchedStudents;
-            className = classData.name;
+            className = classData.name; // Nastavenie názvu triedy
           });
         }
       } else {
@@ -177,20 +177,20 @@ class _ProfileState extends State<Profile> {
     }
   }
 
-
   Future<void> fetchCapitolsData() async {
+    // Načítanie údajov o kapitolách
     try {
       String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
       List<dynamic> data = json.decode(jsonData);
 
-        setState(() {
-          capitolOne = data[0]["points"];
-          capitolTwo = data[1]["points"];
-          capitolThree = data[2]["points"];
-          capitolFour = data[3]["points"];
-          capitolFive = data[4]["points"];
-          percentage = ((currentUserData!.points / (capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive )) * 100).round();
-        });
+      setState(() {
+        capitolOne = data[0]["points"];
+        capitolTwo = data[1]["points"];
+        capitolThree = data[2]["points"];
+        capitolFour = data[3]["points"];
+        capitolFive = data[4]["points"];
+        percentage = ((currentUserData!.points / (capitolOne + capitolTwo + capitolThree + capitolFour + capitolFive)) * 100).round();
+      });
     } catch (e) {
       print('Error fetching question data: $e');
     }

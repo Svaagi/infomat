@@ -44,48 +44,48 @@ class Challenges extends StatefulWidget {
 
 
 class _ChallengesState extends State<Challenges> {
-  bool _loading = true;
-  bool isOverlayVisible = false;
-  late OverlayEntry overlayEntry;
-  int _visibleContainerTest = -1;
-  int _visibleContainerCapitol = -1;
-  Future<List<dynamic>>? _dataFuture;
-  List<int> capitolsIds = [];
-  bool isMobile = false;
-  bool isDesktop = false;
-  List<dynamic> data = [];
-  final PageController _pageController = PageController();
-  List<ResultCapitolsData>? currentResults;
-  int studentsSum = 0;
-  String resultsId = '';
-  final ScrollController _scrollController = ScrollController();
+ bool _loading = true; // Premenná pre načítavanie
+  bool isOverlayVisible = false; // Viditeľnosť prekrytia
+  late OverlayEntry overlayEntry; // Overlay vstup
+  int _visibleContainerTest = -1; // Index viditeľného testu
+  int _visibleContainerCapitol = -1; // Index viditeľného kapitola
+  Future<List<dynamic>>? _dataFuture; // Budúce dáta
+  List<int> capitolsIds = []; // Zoznam ID kapitol
+  bool isMobile = false; // Detekcia mobilného zariadenia
+  bool isDesktop = false; // Detekcia desktopového zariadenia
+  List<dynamic> data = []; // Dáta
+  final PageController _pageController = PageController(); // Ovládanie stránok
+  List<ResultCapitolsData>? currentResults; // Aktuálne výsledky
+  int studentsSum = 0; // Počet študentov
+  String resultsId = ''; // ID výsledkov
+  final ScrollController _scrollController = ScrollController(); // Ovládanie posunu
 
+  // Výpočet percentuálneho bodového výsledku
   double percentage(int capitolIndex, int testIndex) {
     print('capitolIndex $capitolIndex');
     print('testIndex $testIndex');
     print(currentResults![capitolIndex].tests[testIndex].points);
     if (currentResults![capitolIndex].tests[testIndex].points == 0 || studentsSum == 0) return 0;
     print('sem');
-    print(currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length));
-    return  currentResults![capitolIndex].tests[testIndex].points/(studentsSum*widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
+    print(currentResults![capitolIndex].tests[testIndex].points / (studentsSum * widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length));
+    return currentResults![capitolIndex].tests[testIndex].points / (studentsSum * widget.currentUserData!.capitols[capitolIndex].tests[testIndex].questions.length);
   }
 
+  // Kontrola, či je test za aktuálnov týždennou výzvou
   bool isBehind(int globalIndex, int weeklyChallenge) {
-    if (globalIndex <= weeklyChallenge) {
-      return true;
-    } else {
-      return false;
-    }
+    return globalIndex <= weeklyChallenge;
   }
 
+  // Obnovenie stavu widgetu
   void refresh() {
     setState(() {
       widget.currentUserData = widget.currentUserData;
     });
   }
 
+  // Posunutie nahor po kliknutí na Star Button
   void scrollUp(double dy) {
-    double tmp =  dy - (MediaQuery.of(context).size.height/1.48);
+    double tmp = dy - (MediaQuery.of(context).size.height / 1.48);
     final currentScroll = _scrollController.offset;
     final scrollPosition = (currentScroll + tmp).clamp(0.0, _scrollController.position.maxScrollExtent);
     _scrollController.animateTo(
@@ -95,14 +95,16 @@ class _ChallengesState extends State<Challenges> {
     );
   }
 
+  // Firebase Analytics
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
+  // Odoslanie udalosti výzvy
   Future<void> sendChallengeEvent() async {
     await analytics.logEvent(
       name: 'výzvy',
       parameters: {
-        'page': 'výzvy', // replace with your actual page/screen name
+        'page': 'výzvy', // Názov stránky
       },
     );
   }
@@ -115,26 +117,26 @@ class _ChallengesState extends State<Challenges> {
 
     final userAgent = html.window.navigator.userAgent.toLowerCase();
     isMobile = userAgent.contains('mobile');
-    isDesktop = userAgent.contains('macintosh') ||
-        userAgent.contains('windows') ||
-        userAgent.contains('linux');
+    isDesktop = userAgent.contains('macintosh') || userAgent.contains('windows') || userAgent.contains('linux');
 
-     _dataFuture = fetchQuestionData();
+    _dataFuture = fetchQuestionData();
   }
 
-Future<void> refreshList() async {
-  setState(() {
-    _dataFuture = fetchQuestionData();
-  });
+  // Obnovenie zoznamu
+  Future<void> refreshList() async {
+    setState(() {
+      _dataFuture = fetchQuestionData();
+    });
 
-  await _dataFuture;
-}
+    await _dataFuture;
+  }
 
-
+  // Obnovenie dát
   Future<void> refreshData() async {
     await _dataFuture;
   }
 
+  // Výber položky navigácie
   void _onNavigationItemSelected(int index) {
     setState(() {
       _pageController.animateToPage(
@@ -145,13 +147,15 @@ Future<void> refreshList() async {
     });
   }
 
+  // Prepínanie indexu
   void toggleIndex(int index, int capitolIndex) {
     setState(() {
-       _visibleContainerTest = index;
-       _visibleContainerCapitol = capitolIndex;
+      _visibleContainerTest = index;
+      _visibleContainerCapitol = capitolIndex;
     });
-}
+  }
 
+  // Prepínanie viditeľnosti overlay
   void toggleOverlayVisibility(int index, int capitolId, bool isPressed) {
     setState(() {
       isOverlayVisible = !isOverlayVisible;
@@ -165,6 +169,7 @@ Future<void> refreshList() async {
     }
   }
 
+  // Počítanie úspešných testov
   int countTrueTests(List<UserCapitolsTestData>? boolList) {
     int count = 0;
     if (boolList != null) {
@@ -177,57 +182,57 @@ Future<void> refreshList() async {
     return count;
   }
 
+  // Prepínanie overlay
   void toggle() {
     refreshData();
     overlayEntry.remove();
     isOverlayVisible = false;
   }
 
-
-Future<ClassData> fetchCurrentUserClass() async {
-  // Assuming you know how to retrieve the currentUser's classId
-  String currentUserClassId = widget.currentUserData!.schoolClass;
-  return await fetchClass(currentUserClassId);
-  
-}
-
-Future<List<dynamic>> fetchQuestionData() async {
-  List<dynamic> localResults = [];
-
-  try {
-    ClassData currentUserClass = await fetchCurrentUserClass();
-    currentResults = await fetchResults(currentUserClass.results);
-
-    setState(() {
-      resultsId = currentUserClass.results;
-      studentsSum = currentUserClass.students.length;
-    });
-
-    capitolsIds = currentUserClass.capitolOrder;
-
-    String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
-    data = json.decode(jsonData);
-    
-
-    for (int order in [0,1,2,3,4]) {
-      localResults.add(data[order]);
-    }
-
-    setState(() {
-      _loading = false;
-    });
-
-  } catch (e) {
-    print('Error fetching question data: $e');
+  // Načítanie dát aktuálneho používateľského triedy
+  Future<ClassData> fetchCurrentUserClass() async {
+    String currentUserClassId = widget.currentUserData!.schoolClass;
+    return await fetchClass(currentUserClassId);
   }
 
-  return localResults;
-}
+  // Načítanie dát otázok
+  Future<List<dynamic>> fetchQuestionData() async {
+    List<dynamic> localResults = [];
 
+    try {
+      ClassData currentUserClass = await fetchCurrentUserClass();
+      currentResults = await fetchResults(currentUserClass.results);
+
+      setState(() {
+        resultsId = currentUserClass.results;
+        studentsSum = currentUserClass.students.length;
+      });
+
+      capitolsIds = currentUserClass.capitolOrder;
+
+      String jsonData = await rootBundle.loadString('assets/CapitolsData.json');
+      data = json.decode(jsonData);
+
+      for (int order in [0, 1, 2, 3, 4]) {
+        localResults.add(data[order]);
+      }
+
+      setState(() {
+        _loading = false;
+      });
+    } catch (e) {
+      print('Error fetching question data: $e');
+    }
+
+    return localResults;
+  }
+
+  // Výpočet offsetu
   double computeOffset(double width) {
     return (0.09 * 500) / width;
   }
 
+  // Vytvorenie overlay
   OverlayEntry createOverlayEntry(BuildContext context, int testIndex, int capitolId, bool isPressed) {
     return OverlayEntry(
       builder: (context) => Positioned.fill(
@@ -235,9 +240,46 @@ Future<List<dynamic>> fetchQuestionData() async {
           child: Container(
             color: Colors.black.withOpacity(0.5),
             alignment: Alignment.center,
-            child: isMobile ? widget.currentUserData!.teacher ?  TeacherMobileTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData) :  MobileTest(resultsId: resultsId,testIndex: testIndex,data: data , overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, refresh: refresh,) : widget.currentUserData!.teacher ?
-              TeacherDesktopTest(testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), usersCompleted: percentage(capitolId, testIndex) != 0, studentsSum: studentsSum,  results: currentResults![capitolId].tests[testIndex], userData: widget.currentUserData)
-               : DesktopTest(resultsId:  resultsId,testIndex: testIndex, overlay: toggle, capitolsId: capitolId.toString(), userData: widget.currentUserData, data: data, isPressed: isPressed, refresh: refresh,),
+            child: isMobile
+                ? widget.currentUserData!.teacher
+                    ? TeacherMobileTest(
+                        testIndex: testIndex,
+                        overlay: toggle,
+                        capitolsId: capitolId.toString(),
+                        usersCompleted: percentage(capitolId, testIndex) != 0,
+                        studentsSum: studentsSum,
+                        results: currentResults![capitolId].tests[testIndex],
+                        userData: widget.currentUserData,
+                      )
+                    : MobileTest(
+                        resultsId: resultsId,
+                        testIndex: testIndex,
+                        data: data,
+                        overlay: toggle,
+                        capitolsId: capitolId.toString(),
+                        userData: widget.currentUserData,
+                        refresh: refresh,
+                      )
+                : widget.currentUserData!.teacher
+                    ? TeacherDesktopTest(
+                        testIndex: testIndex,
+                        overlay: toggle,
+                        capitolsId: capitolId.toString(),
+                        usersCompleted: percentage(capitolId, testIndex) != 0,
+                        studentsSum: studentsSum,
+                        results: currentResults![capitolId].tests[testIndex],
+                        userData: widget.currentUserData,
+                      )
+                    : DesktopTest(
+                        resultsId: resultsId,
+                        testIndex: testIndex,
+                        overlay: toggle,
+                        capitolsId: capitolId.toString(),
+                        userData: widget.currentUserData,
+                        data: data,
+                        isPressed: isPressed,
+                        refresh: refresh,
+                      ),
           ),
         ),
       ),
@@ -246,11 +288,10 @@ Future<List<dynamic>> fetchQuestionData() async {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    // Dispose ovládača posunu
     _scrollController.dispose();
     super.dispose();
   }
-
   @override
 Widget build(BuildContext context) {
   if (_loading) {

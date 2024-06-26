@@ -11,12 +11,12 @@ import 'package:infomat/views/Challenges.dart';
 import 'package:infomat/views/Results.dart';
 import 'package:infomat/views/Notifications.dart';
 import 'package:infomat/views/Profile.dart';
-import 'package:infomat/views/DesktopStudentFeed.dart';
+import 'package:infomat/views/feed/DesktopStudentFeed.dart';
 import 'package:infomat/views/Tutorial.dart';
-import 'package:infomat/views/MobileStudentFeed.dart';
-import 'package:infomat/views/DesktopTeacherFeed.dart';
-import 'package:infomat/views/MobileTeacherFeed.dart';
-import 'package:infomat/views/Discussions.dart';
+import 'package:infomat/views/feed/MobileStudentFeed.dart';
+import 'package:infomat/views/feed/DesktopTeacherFeed.dart';
+import 'package:infomat/views/feed/MobileTeacherFeed.dart';
+import 'package:infomat/views/discussions/Discussions.dart';
 import 'package:infomat/views/admin/DesktopAdmin.dart';
 import 'package:infomat/views/admin/MobileAdmin.dart';
 import 'package:infomat/controllers/UserController.dart'; // Import the UserData class and fetchUser function
@@ -38,9 +38,6 @@ import 'package:infomat/widgets/CookieSettings.dart';
 
 
 
-
-
-
 class NonSwipeablePageController extends PageController {
   @override
   bool get canScroll => false;
@@ -54,51 +51,107 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  // Kľúč pre Scaffold
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  
+  // Index aktuálne vybraného prvku
   int _selectedIndex = 0;
+  
+  // Dáta aktuálneho používateľa
   UserData? currentUserData;
+  
+  // Počet kapitol
   int? capitolLength;
+  
+  // Aktuálna kapitola
   dynamic capitol;
+  
+  // Týždenný názov
   String? weeklyTitle;
+  
+  // Budúci týždenný názov
   String? futureWeeklyTitle;
+  
+  // Boolovská premenná pre týždennú kontrolu
   bool weeklyBool = false;
+  
+  // Dĺžka týždennej kapitoly
   int weeklyCapitolLength = 0;
+  
+  // Počet dokončených kapitol
   int completedCount = 0;
+  
+  // Názov kapitoly
   String? capitolTitle;
+  
+  // Boolovská premenná pre načítavanie kapitol
   bool _loadingCapitols = true;
+  
+  // Boolovská premenná pre načítavanie používateľských dát
   bool _loadingUser = true;
+  
+  // Farba kapitoly
   String? capitolColor;
+  
+  // Boolovské premenné pre detekciu zariadenia
   bool isMobile = false;
   bool isDesktop = false;
+  
+  // Boolovská premenná pre tutoriál
   bool _tutorial = false;
+  
+  // Zoznam príspevkov
   List<PostsData> _posts = [];
+  
+  // Boolovská premenná pre načítavanie výzvy
   bool _loadingChallenge = true;
+  
+  // Zoznam dát
   List<dynamic> data = [];
   List<dynamic> orderedData = [];
+  
+  // Index týždennej výzvy
   int weeklyChallenge = 0;
   int weeklyCapitolIndex = 0;
   int weeklyTestIndex = 0;
   int futureWeeklyCapitolIndex = 0;
   int futureWeeklyTestIndex = 0;
-  List<int> order = [0,1,2,3,4];
+  
+  // Poradie kapitol
+  List<int> order = [0, 1, 2, 3, 4];
+  
+  // Aktuálne výsledky
   List<ResultCapitolsData>? currentResults;
+  
+  // Počet študentov
   int studentsSum = 0;
+  
+  // Zoznam používateľov a študentov
   List<String> users = [];
   List<String> students = [];
+  
+  // Maximálny počet bodov
   int maxPoints = 0;
+  
+  // Boolovská premenná pre načítavanie
   bool load = false;
+  
+  // Boolovská premenná pre súhlas
   bool consent = false;
   bool _isConsentGiven = false;
+  
+  // Boolovská premenná pre nastavenia
   bool settings = false;
 
-    _checkConsent() async {
+  // Kontrola súhlasu používateľa
+  _checkConsent() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _isConsentGiven = prefs.getBool('necessary') ?? false;
     });
-
   }
 
+  // Nastavenie súhlasu používateľa
   _setConsent(bool necessary, bool analytics) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('necessary', necessary);
@@ -108,17 +161,17 @@ class _AppState extends State<App> {
     });
   }
 
+  // Zobrazenie nastavení cookies
   void _showCookieSettings() {
     setState(() {
       settings = true;
     });
-    // Implement the settings screen navigation logic
-    // For now, let's just print something to the console
     print('Navigate to the settings screen');
   }
 
 
-  void addWeek () {
+   // Pridanie týždňa
+  void addWeek() {
     setState(() {
       _loadingChallenge = true;
     });
@@ -128,14 +181,14 @@ class _AppState extends State<App> {
     }
     maxPoints = 0;
 
-
-    init(() { }, () { });
+    init(() {}, () {});
 
     setState(() {
       _loadingChallenge = false;
     });
   }
 
+   // Načítanie príspevkov
   Future<void> fetchPosts() async {
     try {
       if (currentUserData != null) {
@@ -160,7 +213,7 @@ class _AppState extends State<App> {
   }
 
 
-
+  // Získanie testov podľa indexu
  int getTests (int i) {
     switch (i) {
       case 0:
@@ -178,6 +231,7 @@ class _AppState extends State<App> {
     }
  }
 
+// Získanie bodov podľa indexu
   int getPoints (int i) {
     switch (i) {
       case 0:
@@ -195,6 +249,7 @@ class _AppState extends State<App> {
     }
  }
 
+ // Získanie týždenných indexov
  void getWeeklyIndexes (int i) {
      if (i < getTests(order[0])) {
         setState(() {

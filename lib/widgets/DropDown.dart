@@ -8,6 +8,8 @@ import 'dart:html' as html;
 import 'package:infomat/models/ClassModel.dart';
 import 'package:infomat/models/UserModel.dart';
 
+// dropdown na prep9nanie jednotliv7ch tried učiteľom
+
 class OptionsData {
   String id;
   ClassData data;

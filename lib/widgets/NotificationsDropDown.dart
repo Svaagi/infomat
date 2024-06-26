@@ -14,7 +14,8 @@ import 'package:infomat/controllers/MaterialController.dart';
 import 'package:infomat/controllers/UserController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
-// Import other necessary packages and controllers
+
+// dropdown notifikácií v appbare
 
 class CompleteNotification {
   final NotificationsData notification;

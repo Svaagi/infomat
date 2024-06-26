@@ -7,6 +7,8 @@ import 'package:async/async.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// Tabuľka žiakov a ich počty bodov
+
 class Results extends StatefulWidget {
   int maxPoints;
 

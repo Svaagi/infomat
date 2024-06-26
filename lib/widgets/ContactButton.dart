@@ -3,6 +3,8 @@ import 'package:infomat/Colors.dart';
 import 'package:infomat/widgets/Widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// Kontaktujte nás tlačítko
+
 class ContactButton extends StatelessWidget {
   String type;
   TextEditingController messageController;
