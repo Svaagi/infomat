@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infomat/controllers/ClassController.dart';
 import 'package:infomat/widgets/Widgets.dart';
@@ -13,7 +12,7 @@ import 'package:infomat/auth/auth.dart';
 import 'package:infomat/models/UserModel.dart';
 import 'package:infomat/App.dart';
 
-
+// Tento kód definuje formulár pre pridanie školy do aplikácie.
 
 class SchoolForm extends StatefulWidget {
   final void Function() isSchool;
@@ -22,37 +21,61 @@ class SchoolForm extends StatefulWidget {
     Key? key,
     required this.isSchool,
   }) : super(key: key);
+  
   @override
   _SchoolFormState createState() => _SchoolFormState();
 }
 
 class _SchoolFormState extends State<SchoolForm> {
-   final NonSwipeablePageController _pageController = NonSwipeablePageController();
-   final PageController _pageClassesController = PageController();
+
+  // Kontroléry pre manipuláciu s navigáciou stránok
+  final NonSwipeablePageController _pageController = NonSwipeablePageController();
+  final PageController _pageClassesController = PageController();
+  
+  // Aktuálny krok vo formulári
   int currentStep = 1;
+  
+  // Správa o výsledku
   String? resultMessage;
+  
+  // Príznaky pre rozlíšenie medzi mobilným a desktopovým zobrazením
   bool isMobile = false;
   bool isDesktop = false;
+  
+  // Premenné pre spracovanie chýb
   String _schoolIdError = '';
   Color _schoolIdBorderColor = AppColors.getColor('mono').lightGrey;
+  String _schoolNameError = '';
+  String _adminNameError = '';
+  String _adminEmailError = '';
+  
+  // Kontroléry pre textové polia vo formulári
   TextEditingController _schoolIdController = TextEditingController();
   TextEditingController _schoolNameController = TextEditingController();
-  String _schoolNameError = '';
   TextEditingController _adminNameController = TextEditingController();
-  String _adminNameError = '';
   TextEditingController _adminEmailController = TextEditingController();
-  String _adminEmailError = '';
   TextEditingController _codeController = TextEditingController();
+  
+  // Indexy pre sledovanie vybraných položiek
   int _selectedIndex = 0;
   int _selectedIndexClasses = 0;
+  
+  // Príznak pre zaškrtnutie
   bool check = false;
+  
+  // Generovaný kód
   String? generatedCode;
-  List<int> selectedNumbers = [-1,-1,-1,-1,-1,-1,-1,-1];
+  
+  // Zoznamy pre výber čísiel a rokov
+  List<int> selectedNumbers = [-1, -1, -1, -1, -1, -1, -1, -1];
   List<int> selectedYears = [];
+  
+  // Príznaky pre triedu, učiteľa a načítavanie
   bool _class = false;
   bool setTeacher = false;
   bool _loading = false;
-
+  
+  // Kontroléry pre ďalšie textové polia
   TextEditingController _one = TextEditingController();
   TextEditingController _two = TextEditingController();
   TextEditingController _three = TextEditingController();
@@ -61,7 +84,8 @@ class _SchoolFormState extends State<SchoolForm> {
   TextEditingController _six = TextEditingController();
   TextEditingController _seven = TextEditingController();
   TextEditingController _eight = TextEditingController();
-
+  
+  // Chybové správy pre jednotlivé textové polia
   String _oneError = '';
   String _twoError = '';
   String _threeError = '';
@@ -70,8 +94,8 @@ class _SchoolFormState extends State<SchoolForm> {
   String _sixError = '';
   String _sevenError = '';
   String _eightError = '';
-
-
+  
+  // Zoznamy pre jednotlivé textové polia
   List<String> one = [];
   List<String> two = [];
   List<String> three = [];
@@ -80,9 +104,11 @@ class _SchoolFormState extends State<SchoolForm> {
   List<String> six = [];
   List<String> seven = [];
   List<String> eight = [];
-
+  
+  // Kombinovaný zoznam
   List<String> combinedList = [];
-
+  
+  // Funkcia na získanie správneho kontroléra podľa indexu
   TextEditingController getController(int index) {
     switch (index) {
       case 1: return _one;
@@ -97,56 +123,57 @@ class _SchoolFormState extends State<SchoolForm> {
     return _one;
   }
 
+  // Funkcia na nastavenie chybovej správy podľa indexu
   void setError(int index, String message) {
-  switch (index) {
-    case 1:
-      setState(() {
-        _oneError = message;
-      });
-      break;
-    case 2:
-      setState(() {
-        _twoError = message;
-      });
-      break;
-    case 3:
-      setState(() {
-        _threeError = message;
-      });
-      break;
-    case 4:
+    switch (index) {
+      case 1:
         setState(() {
-        _fourError = message;
-      });
-      break;
-    case 5:
+          _oneError = message;
+        });
+        break;
+      case 2:
         setState(() {
-        _fiveError = message;
-      });
-      break;
-    case 6:
-      setState(() {
-        _sixError = message;
-      });
-      break;
-    case 7:
-          setState(() {
-        _sevenError = message;
-      });
-      break;
-    case 8:
-          setState(() {
-        _eightError = message;
-      });
-      break;
-    default:
-      setState(() {
-        _oneError = message;
-      });
+          _twoError = message;
+        });
+        break;
+      case 3:
+        setState(() {
+          _threeError = message;
+        });
+        break;
+      case 4:
+        setState(() {
+          _fourError = message;
+        });
+        break;
+      case 5:
+        setState(() {
+          _fiveError = message;
+        });
+        break;
+      case 6:
+        setState(() {
+          _sixError = message;
+        });
+        break;
+      case 7:
+        setState(() {
+          _sevenError = message;
+        });
+        break;
+      case 8:
+        setState(() {
+          _eightError = message;
+        });
+        break;
+      default:
+        setState(() {
+          _oneError = message;
+        });
+    }
   }
-}
 
-
+  // Funkcia na získanie chybovej správy podľa indexu
   String getError(int index) {
     switch (index) {
       case 1: return _oneError;
@@ -161,6 +188,7 @@ class _SchoolFormState extends State<SchoolForm> {
     return _oneError;
   }
 
+  // Funkcia na získanie zoznamu podľa indexu
   List<String> getList(int index) {
     switch (index) {
       case 1: return one;
@@ -175,63 +203,72 @@ class _SchoolFormState extends State<SchoolForm> {
     return one;
   }
 
+  // Funkcia na kontrolu zoznamov podľa indexov
   bool checkLists(List<int> indexes) {
     for (int index in indexes) {
       List<String> list = getList(index + 1);
-      if (list.isEmpty ) {
-        return false; // If any list has length 0, return false
+      if (list.isEmpty) {
+        return false; // Ak je zoznam prázdny, vráti false
       }
     }
-    return true; // All lists have length greater than 0
+    return true; // Všetky zoznamy majú aspoň jeden prvok
   }
 
-
+  // Funkcia na generovanie náhodného čísla
   int generateRandomInt({int length = 6}) {
     final Random random = Random();
-    final int min = pow(10, length - 1).toInt(); // Cast to int
-    final int max = pow(10, length).toInt() - 1; // Cast to int
+    final int min = pow(10, length - 1).toInt(); // Prevod na int
+    final int max = pow(10, length).toInt() - 1; // Prevod na int
     return min + random.nextInt(max - min + 1);
   }
   
+  // Funkcia na odoslanie overovacieho kódu e-mailom
+  Future<void> sendVerificationCode(String recipientEmail, String name, String verificationCode) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance; // Vytvorenie inštancie FirebaseFirestore
 
-  Future<void> sendVerificationCode( String recipientEmail, String name, String verificationCode) async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance; // Create an instance of FirebaseFirestore
-
-
-    await firestore.collection('mail').add(
-      {
-        'to': [recipientEmail],
-        'message': {
-          'from': 'Infomat', // Specify sender name here
-          'subject': 'Verifikácia',
-          'html': 'Dobrý deň, $name,<br>váš overovací kód je <b>$verificationCode</b>.<br><br>Na túto správu neodpovedajte, bola odoslaná automaticky.'
-        },
+    await firestore.collection('mail').add({
+      'to': [recipientEmail],
+      'message': {
+        'from': 'Infomat', // Zadajte meno odosielateľa
+        'subject': 'Verifikácia',
+        'html': 'Dobrý deň, $name,<br>váš overovací kód je <b>$verificationCode</b>.<br><br>Na túto správu neodpovedajte, bola odoslaná automaticky.'
       },
-    ).then(
-      (value) {
-        print('Queued email for delivery!');
-      },
-);
+    }).then((value) {
+      print('Queued email for delivery!');
+    });
     
     print('done');
   }
 
+  // Funkcia na kontrolu, či číslo existuje v súbore assetov
   Future<bool> numberExistsInAssetFile(String number) async {
-    // Read the text file from assets
+    // Načítanie textového súboru z assetov
     final String data = await rootBundle.loadString('assets/skoly.txt');
 
-    // Split the file contents into lines
+    // Rozdelenie obsahu súboru na riadky
     final List<String> lines = data.split('\n');
 
-    // Check if the number exists in any of the lines
+    // Kontrola, či číslo existuje v niektorom z riadkov
     for (String line in lines) {
       if (line.trim() == number) {
         return true;
       }
     }
 
-    // If the number is not found, return false
+    // Ak číslo nebolo nájdené, vráti false
     return false;
+  }
+
+
+  
+  // Iniciačná funkcia
+  @override
+  void initState() {
+    super.initState();
+
+    // Určenie, či je zariadenie mobilné alebo desktopové
+    isMobile = WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.light;
+    isDesktop = !isMobile;
   }
 
 
@@ -966,6 +1003,7 @@ class _SchoolFormState extends State<SchoolForm> {
     );
   }
 
+  // Funkcia na vytvorenie zaškrtávacieho políčka pre triedy
   Widget _buildClassesCheckbox(int index) {
     return Container(
       decoration: BoxDecoration(
